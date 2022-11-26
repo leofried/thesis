@@ -8,10 +8,10 @@ let rec run_sims (scheme : Scheme.t) (iters_left : int) (cum : float) : float =
   if iters_left = 0 then cum else
   let teams = List.init (Scheme.number_of_teams scheme) (fun _ -> Team.make ()) in
   let winner = List.hd @@ Scheme.run scheme teams in
-  let penalty = get_best_team_skill teams -. Team.get_skill winner in
-  run_sims scheme (iters_left - 1) (cum +. penalty)
+  let decay = get_best_team_skill teams -. Team.get_skill winner in
+  run_sims scheme (iters_left - 1) (cum +. decay)
 
-let analyze_scheme (scheme : Scheme.t) ~(luck : float) ~(iters : int) : unit =
+let analyze_scheme ~(luck : float) ~(iters : int) (scheme : Scheme.t) : unit =
   Team.set_luck luck;
   let score = (run_sims scheme iters 0.) /. (Int.to_float iters) in
   print_endline @@
@@ -19,7 +19,7 @@ let analyze_scheme (scheme : Scheme.t) ~(luck : float) ~(iters : int) : unit =
     Scheme.to_string scheme ^
     " with luck = " ^
     Float.to_string luck ^
-    " has a penalty of " ^
+    " has a decay of " ^
     Float.to_string (Float.round (score *. 1000.) /. 10.) ^
     "%."
 ;;
