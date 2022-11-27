@@ -11,7 +11,7 @@ let rec run_sims (scheme : Scheme.t) (iters_left : int) (cum : float) : float =
   let decay = get_best_team_skill teams -. Team.get_skill winner in
   run_sims scheme (iters_left - 1) (cum +. decay)
 
-let analyze_scheme ~(luck : float) ~(iters : int) (scheme : Scheme.t) : unit =
+let analyze_scheme ?(luck : float = 1.) ~(iters : int) (scheme : Scheme.t) : unit =
   Team.set_luck luck;
   let score = (run_sims scheme iters 0.) /. (Int.to_float iters) in
   print_endline @@

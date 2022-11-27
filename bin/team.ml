@@ -8,7 +8,7 @@ let get_next_team_name () = "Team " ^ (team_index := !team_index + 1; Int.to_str
 let make ?(name = get_next_team_name()) ?(skill = Util.get_gaussian()) () : t = {name; skill}
 
 
-let luck = ref 0.;;
+let luck = ref 1.;;
 
 let set_luck (lck : float) = (luck := lck);;
 
