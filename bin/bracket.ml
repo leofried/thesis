@@ -1,5 +1,5 @@
 open Util;;
-
+(*
 let rec sum (int_list : int list) : int =
   match int_list with
   | [] -> 0;
@@ -14,26 +14,27 @@ let rec sum (int_list : int list) : int =
 let check (int_list : int list) : unit =
   if sum int_list <> 1 then Throw.error()
 ;;
+*)
 
-let rec convert (rev_int_list : int list) (i : int) (arr : int Tree.t array) : unit =
-  match rev_int_list with
+let rec convert (int_list : int list) (i : int) (arr : int Tree.t array) : unit =
+  match int_list with
   | [1] -> ()
   | [] | [_] -> Throw.error ()
   | 0 :: tl -> convert tl i arr
+  | x :: _ when x < 0 -> Throw.error ()
   | a :: b :: tl -> 
     let j = i - a + 1 in
     arr.(j) <- Branch (arr.(j), arr.(i));
     convert (a - 2 :: b + 1 :: tl) (i - 1) arr
 ;;
 
-
 let build_tree (int_list : int list) : int Tree.t =
-  check int_list;
   let n = Util.Int_list.sum_one_list int_list in
   let arr = Array.init n (fun i -> Tree.Leaf i) in
-  convert (List.rev int_list) (n - 1) arr;
+  convert int_list (n - 1) arr;
   arr.(0)
 ;;
+
 let rec run_bracket (tree : int Tree.t) (teams : Team.t list) : Team.t list =
   match tree with
   | Leaf i -> [List.nth teams i]
@@ -45,17 +46,25 @@ let rec run_bracket (tree : int Tree.t) (teams : Team.t list) : Team.t list =
 ;;
 
 let make (bracket : int list) : Scheme.t =
-  let name = Int_list.to_string bracket in
+  let name = Int_list.to_string Int.to_string bracket in
   let n = Int_list.sum_one_list bracket in
   Scheme.make_scheme name n (run_bracket (build_tree bracket))
 ;;
 
 
-
-(*
-let rec bracket_to_int_list (bracket : t) : int list =
+let rec bracket_children (bracket : int list) : int list list =
   match bracket with
-  | Line _ -> [1]
-  | Game (i, j) -> 0 :: Util.sum_two_lists (bracket_to_int_list i) (bracket_to_int_list j)
+  | [] -> []
+  | hd :: tl -> 
+    let lst = List.map (fun lst -> 0 :: Int_list.sum_two_lists [hd] lst) (bracket_children tl) in
+    if hd = 0 then lst else (2 :: (hd - 1) :: tl) :: lst
 ;;
-*)
+
+let rec get_all_brackets (number_of_teams : int) : int list list =
+  match number_of_teams with
+  | 1 -> [[1]]
+  | n ->
+    get_all_brackets (n-1)
+    |> List.map bracket_children
+    |> List.flatten
+    |> List.sort_uniq (List.compare Int.compare)

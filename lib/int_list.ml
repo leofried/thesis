@@ -19,17 +19,17 @@ let rec sum_one_list = function
 
 let rec sum_two_lists (l1 : int list) (l2 : int list) : int list =
   match l1, l2 with
-  | [], [] -> []
+  | _, [] -> l1
+  | [], _ -> l2
   | h1 :: t1, h2 :: t2 -> h1 + h2 :: sum_two_lists t1 t2
-  | _ -> invalid_arg "Lists must be of the same length."
 ;;
 
-let to_string = function
+let to_string (stringify : 'a -> string) = function
   | [] -> "[]"
-  | [i] -> "[" ^ (Int.to_string i) ^ "]"
+  | [i] -> "[" ^ (stringify i) ^ "]"
   | hd :: tl ->
     let rec f = function
     | [] -> "]"
-    | hd :: tl -> ", " ^ (Int.to_string hd) ^ f tl
-    in "[" ^ (Int.to_string hd) ^ f tl
+    | hd :: tl -> ", " ^ (stringify hd) ^ f tl
+    in "[" ^ (stringify hd) ^ f tl
 ;;

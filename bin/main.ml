@@ -2,12 +2,22 @@ open Util;;
 
 Rand.set_seed ();;
 
+let iters = 1000000;;
+let luck = 1.;;
 
-Analysis.analyze_scheme ~iters:1000 ~luck:1. (Bracket.make (List.init 68 (
-  function | 0 -> 0 | 67 -> 2 | _ -> 1
-)));;
+List.iter
+  (fun bracket ->
+    Analysis.analyze_scheme ~iters ~luck (Bracket.make bracket)
+  )
+  (Bracket.get_all_brackets 8)
+;;
+
 
 (*
+let k : string = Int_list.to_string (Int_list.to_string Int.to_string) (Bracket.make_all 12);;
+print_endline k;;
+
+
 let f x = print_endline @@ Bracket.to_string @@ Bracket.make @@ x;;
 
 
