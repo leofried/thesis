@@ -1,3 +1,5 @@
+open Util;;
+
 type t = {name : string; number_of_teams : int; run : Team.t list -> Team.t list};;
 
 let make_scheme (name : string) (number_of_teams : int) (run : Team.t list -> Team.t list) : t =
@@ -6,7 +8,7 @@ let make_scheme (name : string) (number_of_teams : int) (run : Team.t list -> Te
 let number_of_teams (scheme : t) : int = scheme.number_of_teams;;
 
 let verify_number_of_teams (scheme : t) (teams : Team.t list) =
-  if (List.length teams) != scheme.number_of_teams then Util.error ()
+  if (List.length teams) != scheme.number_of_teams then Throw.error ()
 ;;
 
 let run (scheme: t) (teams : Team.t list) : Team.t list =

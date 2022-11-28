@@ -1,3 +1,4 @@
+open Util;;
 
 let play_games (teams : Team.t list) (cycles : int) : int array array =
   let n = List.length teams in
@@ -32,7 +33,7 @@ let score_team (games : int array array) (teams : int list) (m : imap) (t1 : int
 let rec rank_teams (teams : Team.t list) (games : int array array) (indicies : int list) : Team.t list =
   let scores = List.fold_left (score_team games indicies) IMap.empty indicies in
   match IMap.cardinal scores with
-  | 1 -> Util.shuffle (List.map (List.nth teams) indicies)
+  | 1 -> Rand.shuffle (List.map (List.nth teams) indicies)
   | _ ->
     let levels = snd @@ List.split @@ IMap.bindings @@ scores in
     List.fold_left (fun ranks level -> (rank_teams teams games level) @ ranks) [] levels

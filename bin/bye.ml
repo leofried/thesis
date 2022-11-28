@@ -1,3 +1,4 @@
+(*
 type t = Team.t option;;
 
 let play_game (b1 : t) (b2 : t) : t * t =
@@ -21,3 +22,4 @@ let fill (teams : Team.t list) : t list =
 ;;
 
 let empty (teams : t list) : Team.t list = List.filter_map Fun.id teams;;
+*)

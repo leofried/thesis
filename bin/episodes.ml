@@ -1,7 +1,6 @@
-
+(*
 let two () : unit =
   let iters = 1000000 in
-(*
   List.iter
     (fun luck -> 
       Analysis.analyze_scheme ~iters ~luck (Scheme_round_robin.make 3);
@@ -9,7 +8,6 @@ let two () : unit =
     )
     [0.33; 1.00; 3.00]
   ;
-*)
   List.iter
     (fun n -> 
       List.iter
@@ -22,5 +20,5 @@ let two () : unit =
     (List.init 12 (fun x -> x + 1))
 ;;
 
-
+*)
 

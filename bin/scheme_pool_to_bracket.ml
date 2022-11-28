@@ -1,4 +1,4 @@
-let rec make_pots (pool_count : int) (teams : Team.t list) : Team.t list list =
+(*let rec make_pots (pool_count : int) (teams : Team.t list) : Team.t list list =
   if List.length teams <= pool_count then [teams] else
     let pot, ts = Util.apply (fun (pot, ts) -> List.hd ts :: pot, List.tl ts) pool_count ([], teams) in
     Util.shuffle pot :: make_pots pool_count ts
@@ -51,4 +51,4 @@ let make ~(pool_count : int) ~(teams_to_bracket : int) (number_of_teams : int) :
     (Int.to_string pool_count ^ " pool format breaking " ^ Int.to_string teams_to_bracket ^ " teams to bracket")
     number_of_teams
     (run_pool_to_bracket ~pool_count ~teams_to_bracket)
-;;
+;;*)

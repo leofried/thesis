@@ -1,6 +1,8 @@
+open Util;;
+
 let rec get_best_team_skill (teams : Team.t list) : float =
   match teams with
-  | [] -> Util.error ()
+  | [] -> Throw.error ()
   | [t] -> Team.get_skill t
   | hd :: tl -> Float.max (Team.get_skill hd) (get_best_team_skill tl)
 
@@ -32,12 +34,12 @@ let calculate_better_team_win_pct ~(luck : float) ~(iters : int): unit =
     let t2 = Team.make () in
     let w, l = Team.play_game t1 t2 in
     if Float.compare (Team.get_skill w) (Team.get_skill l) > 0 then
-      Util.inc count
+      Int_list.inc count
   done;
   print_endline @@
     "With luck = " ^
     Float.to_string luck ^ 
     " the better teams wins " ^ 
-    (Int.to_string @@ Float.to_int @@ Float.round (100. *. Util.divide !count iters)) ^ 
+    (Int.to_string @@ Float.to_int @@ Float.round (100. *. Int_list.divide !count iters)) ^ 
     "% of the time."
   ;;

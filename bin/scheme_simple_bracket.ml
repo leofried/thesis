@@ -1,4 +1,4 @@
-let build_matchups (teams : Bye.t list) : (Bye.t * Bye.t) list =
+(*let build_matchups (teams : Bye.t list) : (Bye.t * Bye.t) list =
   let size = (List.length teams) / 2 in
   let upper, lower = Util.apply (fun (upper, lower) -> (List.hd lower :: upper), (List.tl lower)) size ([], teams) in
   List.combine upper lower
@@ -35,3 +35,4 @@ let make (number_of_teams : int) : Scheme.t =
 
 
   
+*)

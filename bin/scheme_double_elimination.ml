@@ -1,3 +1,5 @@
+
+(*
 let four_team_top_three (teams : Bye.t list) : Bye.t list =
   match teams with
   | [t1; t2; t3; t4] ->
@@ -56,4 +58,4 @@ let run_bracket (recharge : bool) (teams : Team.t list) : Team.t list =
 
 let make (recharge : bool) (number_of_teams : int) : Scheme.t =
   Scheme.make_scheme ("Double Elimination (" ^ (if recharge then "" else "no ") ^ "recharge)") number_of_teams (run_bracket recharge)
-;;
+;;*)
