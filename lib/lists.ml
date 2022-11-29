@@ -26,15 +26,39 @@ let to_string (stringify : 'a -> string) = function
     in "[" ^ (stringify hd) ^ f tl
 ;;
 
-let average (lst : float list) : float =
+let average_float_list (lst : float list) : float =
   (List.fold_left ( +. ) 0. lst) /. (Int.to_float (List.length lst))
 ;;
 
-let stats (lst : float list) : float * float * float =
-  let mean = average lst in
+let stats (lst : float list) : float * float * float * float=
+  let mean = average_float_list lst in
   let sqers = List.map (fun x -> Float.pow (x -. mean) 2.0) lst in
-  let var = average sqers in
+  let var = average_float_list sqers in
   let stdev = Float.pow var 0.5 in
   let stder = stdev /. (Float.pow (Int.to_float (List.length lst)) 0.5) in
-  mean, stdev, stder
+  let nmdev = stdev /. (List.fold_left (+.) 0. lst) in
+  mean, stdev, stder, nmdev
+;;
+
+let rec find x lst =
+  match lst with
+  | [] -> invalid_arg "index out of bounds"
+  | h :: t -> if x = h then 0 else 1 + find x t
+;;
+
+
+          
+let pareto (lst : (string * float * float) list) : (string * float * float) list =
+  let rec pareto (best : float) (lst : (string * float * float) list) : (string * float * float) list = 
+    match lst with
+    | [] -> []
+    | (str, one, two) :: lst ->
+        if compare two best < 0 then
+          (str, one, two) :: pareto two lst
+        else
+          pareto best lst
+        in
+    lst
+    |> List.sort (fun (_, x, _) (_, y, _) -> Float.compare x y)
+    |> pareto Float.max_float
 ;;

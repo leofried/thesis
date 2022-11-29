@@ -6,26 +6,35 @@ let rec get_best_team_skill (teams : Team.t list) : float =
   | [t] -> Team.get_skill t
   | hd :: tl -> Float.max (Team.get_skill hd) (get_best_team_skill tl)
 
-let rec run_sims (scheme : Scheme.t) (iters_left : int) (so_far : float list) : float list =
-  if iters_left = 0 then so_far else
+let rec run_sims (scheme : Scheme.t) (iters_left : int) (decays: float list) (seed_wins : float array) : float list =
+  if iters_left = 0 then decays else
   let teams = List.init (Scheme.number_of_teams scheme) (fun _ -> Team.make ()) in
   let winner = List.hd @@ Scheme.run scheme teams in
   let decay = get_best_team_skill teams -. Team.get_skill winner in
-  run_sims scheme (iters_left - 1) (decay :: so_far)
-
-let analyze_scheme ?(digits : int = 2) ?(luck : float = 1.) ~(iters : int) (scheme : Scheme.t) : unit =
+  Math.inc_array seed_wins (Lists.find winner teams);
+  run_sims scheme (iters_left - 1) (decay :: decays) seed_wins
+(*
+let analyze_scheme (scheme : Scheme.t) : float * float =
+  let seed_wins = Array.make (Scheme.number_of_teams scheme) 0. in
+  let mean, _, stder, _ = Lists.stats (run_sims scheme iters [] seed_wins) in
+  let _, _, _, nmdev = Lists.stats (Array.to_list seed_wins) in
+*)
+let analyze_scheme ?(luck : float = 1.) ~(iters : int) (scheme : Scheme.t) : unit =
   Team.set_luck luck;
-  let mean, _, stder = Lists.stats (run_sims scheme iters [])  in
+  let seed_wins = Array.make (Scheme.number_of_teams scheme) 0. in
+  let mean, _, stder, _ = Lists.stats (run_sims scheme iters [] seed_wins) in
+  let _, _, _, nmdev = Lists.stats (Array.to_list seed_wins) in
   print_endline @@
     "A " ^
     Scheme.to_string scheme ^
-    " with luck = " ^
+(*    " with luck = " ^
     Float.to_string luck ^
-    " has a decay of " ^
-    Math.to_pct ~digits mean ^
-    "% +/- " ^
-    Math.to_pct ~digits stder ^
-    "%."
+*)    " has a decay of " ^
+    Math.to_pct ~digits:2 mean ^
+    " +/- " ^
+    Math.to_pct ~digits:2 stder ^
+    ", and an imbalance of " ^
+    Math.to_pct ~digits:2 nmdev
 ;;
 
 let calculate_better_team_win_pct ~(luck : float) ~(iters : int): unit =

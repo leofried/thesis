@@ -1,5 +1,3 @@
-open Util;;
-
 let play_games (teams : Team.t list) (cycles : int) : int array array =
   let n = List.length teams in
   let arr = Array.init n (fun _ -> Array.make n 0) in
@@ -30,20 +28,25 @@ let score_team (games : int array array) (teams : int list) (m : imap) (t1 : int
   IMap.add points new_lst m
 ;;
 
-let tiebreak : Team.t list -> Team.t list = Rand.shuffle;;
+let tiebreak (lst : int list) : int list =
+  let nd = List.map (fun c -> (Random.bits (), c)) lst in
+  let sond = List.sort compare nd in
+  List.map snd sond
+;;
 
-let rec rank_teams (teams : Team.t list) (games : int array array) (indicies : int list) : Team.t list =
+let rec rank_teams (teams : Team.t list) (indicies : int list) (games : int array array) : int list =
   let scores = List.fold_left (score_team games indicies) IMap.empty indicies in
   match IMap.cardinal scores with
-  | 1 -> tiebreak (List.map (List.nth teams) indicies)
+  | 1 -> tiebreak indicies
   | _ ->
     let levels = snd @@ List.split @@ IMap.bindings @@ scores in
-    List.fold_left (fun ranks level -> (rank_teams teams games level) @ ranks) [] levels
+    List.fold_left (fun ranks level -> (rank_teams teams level games) @ ranks) [] levels
 ;;
 
 let run_round_robin (cycles : int) (teams : Team.t list) : Team.t list = 
-  let games = play_games teams cycles in
-  rank_teams teams games (List.init (List.length teams) Fun.id)
+  play_games teams cycles
+  |> rank_teams teams (List.init (List.length teams) Fun.id)
+  |> List.map (List.nth teams)
 ;;
 
 let make ?(cycles = 1) (number_of_teams : int) : Scheme.t =

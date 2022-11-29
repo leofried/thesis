@@ -7,9 +7,3 @@ let rec get_gaussian() : float =
   if s > 1.0 then get_gaussian()
   else x *. sqrt (-2.0 *. (log s) /. s)
 ;;
-
-let shuffle (lst : 'a list) : 'a list =
-  let nd = List.map (fun c -> (Random.bits (), c)) lst in
-  let sond = List.sort compare nd in
-  List.map snd sond
-;;

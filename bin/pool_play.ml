@@ -3,7 +3,7 @@ open Util;;
 let rec make_pots (pool_count : int) (teams : Team.t list) : Team.t list list =
   if List.length teams <= pool_count then [teams] else
     let pot, ts = Lists.top_of_list teams pool_count in
-    Rand.shuffle pot :: make_pots pool_count ts
+    pot :: make_pots pool_count ts
 ;;
 
 let rec make_pools (pool_count : int) (pots : Team.t list list) : Team.t list list =
