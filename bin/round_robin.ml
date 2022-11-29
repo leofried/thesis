@@ -30,10 +30,12 @@ let score_team (games : int array array) (teams : int list) (m : imap) (t1 : int
   IMap.add points new_lst m
 ;;
 
+let tiebreak : Team.t list -> Team.t list = Rand.shuffle;;
+
 let rec rank_teams (teams : Team.t list) (games : int array array) (indicies : int list) : Team.t list =
   let scores = List.fold_left (score_team games indicies) IMap.empty indicies in
   match IMap.cardinal scores with
-  | 1 -> Rand.shuffle (List.map (List.nth teams) indicies)
+  | 1 -> tiebreak (List.map (List.nth teams) indicies)
   | _ ->
     let levels = snd @@ List.split @@ IMap.bindings @@ scores in
     List.fold_left (fun ranks level -> (rank_teams teams games level) @ ranks) [] levels
