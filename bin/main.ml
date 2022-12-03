@@ -2,15 +2,12 @@ open Util;;
 Rand.set_seed () ;;
 
 
+let iters = Math.pow 10 5;;
 
-let iters = 1000000;;
-
-for n = 8 to 8 do
-  List.iter
-    (fun bracket ->
-      Analysis.analyze_scheme ~iters (Pool_play.make n ~pool_count:1 (Bracket.make bracket));
-      Analysis.analyze_scheme ~iters (Bracket.make bracket)
-    )
-    (List.hd (Bracket.get_all_brackets n))
-  ; print_endline "";
+for n = 1 to 8 do
+  Analysis.analyze_schemes ~iters (List.map 
+    (fun bracket -> Pool_play.make n ~pool_count:2 (Bracket.make bracket))
+    (List.flatten (Bracket.get_all_brackets n))
+  );
+  print_endline "";
 done;;

@@ -35,12 +35,11 @@ let make (bracket : int list) : Scheme.t =
   Scheme.make_scheme name n (run_bracket (build_tree bracket))
 ;;
 
-
 let rec bracket_children (bracket : int list) : int list list =
   match bracket with
   | [] -> []
   | hd :: tl -> 
-    let lst = List.map (fun lst -> 0 :: Lists.sum_two_lists [hd] lst) (bracket_children tl) in
+    let lst = List.map (fun lst -> 0 :: hd + List.hd lst :: List.tl lst) (bracket_children tl) in
     if hd = 0 then lst else (2 :: (hd - 1) :: tl) :: lst
 ;;
 

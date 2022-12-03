@@ -12,7 +12,7 @@ let rec make_pools (pool_count : int) (pots : Team.t list list) : Team.t list li
   | _ ->
     pots
     |> List.map List.tl
-    |> List.filter Lists.is_not_empty
+    |> List.filter ((<>) [])
     |> make_pools pool_count
     |> List.cons (List.map List.hd pots)
   ;;
@@ -23,7 +23,7 @@ let rec make_seeds (pools : Team.t list list) : Team.t list =
   | _ ->
     pools
     |> List.map List.tl
-    |> List.filter Lists.is_not_empty
+    |> List.filter ((<>) [])
     |> make_seeds
     |> List.append (List.map List.hd pools)
 ;;
