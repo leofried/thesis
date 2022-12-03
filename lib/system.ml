@@ -1,6 +1,10 @@
 exception ImplementationError
 let error () = raise ImplementationError
 
+let line () = print_endline "";;
+
+let time (f : unit -> unit) = print_endline (Float.to_string (Unix.times (f ())).tms_utime ^ " seconds.");;
+
 (*
 let rec pow a = function
 | 0 -> 1

@@ -3,9 +3,9 @@ open Util;;
 let rec convert (bracket : int list) (i : int) (arr : int Tree.t array) : unit =
   match bracket with
   | [1] -> ()
-  | [] | [_] -> Throw.error ()
+  | [] | [_] -> System.error ()
   | 0 :: tl -> convert tl i arr
-  | x :: _ when x < 0 -> Throw.error ()
+  | x :: _ when x < 0 -> System.error ()
   | a :: b :: tl -> 
     let j = i - a + 1 in
     arr.(j) <- Branch (arr.(j), arr.(i));
@@ -29,10 +29,17 @@ let rec run_bracket (tree : int Tree.t) (teams : Team.t list) : Team.t list =
     winner :: loser :: (List.tl top) @ (List.tl bot)
 ;;
 
+let rec count_games (bracket : int list) : int =
+  match bracket with
+  | 0 :: tl -> count_games tl
+  | _ -> List.length bracket - 1
+;;
+
 let make (bracket : int list) : Scheme.t =
   let name = Lists.to_string Int.to_string bracket ^ "-bracket" in
   let n = List.fold_left ( + ) 0 bracket in
-  Scheme.make_scheme name n (run_bracket (build_tree bracket))
+  let games = count_games bracket in
+  Scheme.make_scheme name n games (run_bracket (build_tree bracket))
 ;;
 
 let rec bracket_children (bracket : int list) : int list list =

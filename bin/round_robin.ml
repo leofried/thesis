@@ -50,5 +50,5 @@ let run_round_robin (cycles : int) (teams : Team.t list) : Team.t list =
 ;;
 
 let make ?(cycles = 1) (number_of_teams : int) : Scheme.t =
-  Scheme.make_scheme ((Int.to_string cycles) ^ "-Round Robin") number_of_teams (run_round_robin cycles)
+  Scheme.make_scheme ((Int.to_string cycles) ^ "-Round Robin") number_of_teams (number_of_teams - 1) (run_round_robin cycles)
 ;;

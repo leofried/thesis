@@ -1,14 +1,16 @@
 open Util;;
 
-type t = {name : string; number_of_teams : int; run : Team.t list -> Team.t list};;
+type t = {name : string; number_of_teams : int; max_games : int; run : Team.t list -> Team.t list};;
 
-let make_scheme (name : string) (number_of_teams : int) (run : Team.t list -> Team.t list) : t =
-  {name; number_of_teams; run};;
+let make_scheme (name : string) (number_of_teams : int) (max_games : int) (run : Team.t list -> Team.t list) : t =
+  {name; number_of_teams; max_games; run};;
 
 let number_of_teams (scheme : t) : int = scheme.number_of_teams;;
 
+let max_games (scheme : t) : int = scheme.max_games;;
+
 let verify_number_of_teams (scheme : t) (teams : Team.t list) =
-  if (List.length teams) != scheme.number_of_teams then Throw.error ()
+  if (List.length teams) != scheme.number_of_teams then System.error ()
 ;;
 
 let run (scheme: t) (teams : Team.t list) : Team.t list =
