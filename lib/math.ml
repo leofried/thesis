@@ -4,7 +4,7 @@ let inc_ref (r : int ref) : unit = r := !r + 1;;
 
 let inc_array (arr : int array) (i : int) : unit = arr.(i) <- arr.(i) + 1;;
 
-let pos_sub (x : float) (y : float) = if x <. y then 0. else y -. x;;
+let pos_sub (x : float) (y : float) = if x <. y then 0. else x -. y;;
 
 let sqrt_int (x : int) = sqrt (Int.to_float x);;
 

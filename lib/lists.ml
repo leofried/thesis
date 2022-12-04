@@ -22,10 +22,7 @@ let to_string (stringify : 'a -> string) = function
     | hd :: tl -> ", " ^ (stringify hd) ^ f tl
     in "[" ^ (stringify hd) ^ f tl
 ;;
-
-
-
-(*          
+       
 let pareto (lst : (string * float * float) list) : (string * float * float) list =
   let rec pareto (best : float) (lst : (string * float * float) list) : (string * float * float) list = 
     match lst with
@@ -39,4 +36,4 @@ let pareto (lst : (string * float * float) list) : (string * float * float) list
     lst
     |> List.sort (fun (_, x, _) (_, y, _) -> Float.compare x y)
     |> pareto Float.max_float
-;;*)
+;;

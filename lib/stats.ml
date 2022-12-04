@@ -26,10 +26,6 @@ let binom_error ?(accuracy : int = 3) ~(iters : int) ~(cats : int) () : float =
       normed_stdev (List.map Int.to_float (Array.to_list arr)) :: f (x - 1)
   in
   let data = f (Math.pow 10 accuracy) in
-  print_float @@ mean data;
-  print_endline "";
-  print_float @@ normed_stdev data;
-  print_endline "";
-  mean data +. 3. *. normed_stdev data;;
+  mean data +. 2.5 *. normed_stdev data;;
 ;;
     

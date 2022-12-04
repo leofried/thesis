@@ -1,0 +1,24 @@
+Luck: 1.
+Iters: 1000000
+Decay Error: 0.05%
+Imbalance Error: 0.1%
+
+(36.27%, 0.%) = 36.27%: 8 team 8 pool format breaking to a 8 team [0, 0, 0, 0, 8, 0, 0, 0]-bracket
+
+(36.27%, 0.04%) = 36.31%: 8 team 8 pool format breaking to a 8 team [0, 0, 0, 0, 8, 0, 0, 0]-bracket
+(36.36%, 0.03%) = 36.4%: 8 team 4 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(42.43%, 5.36%) = 47.79%: 8 team 8 pool format breaking to a 7 team [0, 0, 0, 6, 1, 0, 0]-bracket
+(49.36%, 7.72%) = 57.07%: 8 team 3 pool format breaking to a 2 team [2, 0]-bracket
+(49.31%, 8.%) = 57.31%: 8 team 8 pool format breaking to a 6 team [0, 0, 4, 2, 0, 0]-bracket
+(49.87%, 8.3%) = 58.17%: 8 team 4 pool format breaking to a 3 team [2, 1, 0]-bracket
+(57.75%, 10.67%) = 68.42%: 8 team 8 pool format breaking to a 5 team [0, 2, 3, 0, 0]-bracket
+(60.59%, 12.12%) = 72.71%: 8 team 8 pool format breaking to a 5 team [0, 4, 0, 1, 0]-bracket
+(67.48%, 13.36%) = 80.84%: 8 team 4 pool format breaking to a 2 team [2, 0]-bracket
+(67.48%, 13.36%) = 80.84%: 8 team 8 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(67.57%, 13.36%) = 80.93%: 8 team 2 pool format breaking to a 1 team [1]-bracket
+(70.29%, 14.66%) = 84.95%: 8 team 8 pool format breaking to a 4 team [2, 1, 1, 0]-bracket
+(82.46%, 17.25%) = 99.71%: 8 team 3 pool format breaking to a 1 team [1]-bracket
+(82.54%, 17.71%) = 100.25%: 8 team 8 pool format breaking to a 3 team [2, 1, 0]-bracket
+(102.38%, 23.15%) = 125.53%: 8 team 8 pool format breaking to a 2 team [2, 0]-bracket
+(102.54%, 23.15%) = 125.68%: 8 team 4 pool format breaking to a 1 team [1]-bracket
+(142.44%, 35.36%) = 177.8%: 8 team 8 pool format breaking to a 1 team [1]-bracket
