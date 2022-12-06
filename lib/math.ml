@@ -1,10 +1,8 @@
-open Ops;;
-
 let inc_ref (r : int ref) : unit = r := !r + 1;;
 
 let inc_array (arr : int array) (i : int) : unit = arr.(i) <- arr.(i) + 1;;
 
-let pos_sub (x : float) (y : float) = if x <. y then 0. else x -. y;;
+let pos_sub (x : float) (y : float) = if x < y then 0. else x -. y;;
 
 let sqrt_int (x : int) = sqrt (Int.to_float x);;
 
@@ -25,3 +23,5 @@ let rec pow a = function
   let b = pow a (n / 2) in
   b * b * (if n mod 2 = 0 then 1 else a)
 ;;
+
+let rec gcd a b = if b = 0 then a else gcd b (a mod b);;

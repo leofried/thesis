@@ -35,11 +35,17 @@ let rec count_games (bracket : int list) : int =
   | _ -> List.length bracket - 1
 ;;
 
+let rec is_fair (bracket : int list) (seed_size : int) : bool =
+  match bracket with
+  | [] -> true
+  | hd :: tl -> if hd mod seed_size = 0 then is_fair tl seed_size else false
+;;
+
 let make (bracket : int list) : Scheme.t =
   let name = Lists.to_string Int.to_string bracket ^ "-bracket" in
   let n = List.fold_left ( + ) 0 bracket in
   let games = count_games bracket in
-  Scheme.make_scheme name n games (run_bracket (build_tree bracket))
+  Scheme.make_scheme name n games (is_fair bracket) (run_bracket (build_tree bracket))
 ;;
 
 let rec bracket_children (bracket : int list) : int list list =

@@ -54,5 +54,6 @@ let make (number_of_teams : int) ?(pool_count : int = 1) (bracket : Scheme.t) : 
     (Int.to_string pool_count ^ " pool format breaking to a " ^ (Scheme.to_string bracket))
     number_of_teams
     (Math.divide_up number_of_teams pool_count + Scheme.max_games bracket - 1)
+    (fun _ -> number_of_teams mod pool_count = 0 && Scheme.is_fair bracket pool_count)
     (run_pool_to_bracket pool_count bracket)
 ;;

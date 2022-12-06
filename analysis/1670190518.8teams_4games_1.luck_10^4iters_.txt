@@ -1,0 +1,130 @@
+Teams: 8
+Games: 4
+Luck: 1.
+Iters: 10^4
+
+Ran 10^4 iterations (error = 0.%):
+(35.92% [0.52%], 0.47%[true]): 8 team 2 pool format breaking to a 2 team [2, 0]-bracket
+(67.55% [0.75%], 13.37%[false]): 8 team 2 pool format breaking to a 1 team [1]-bracket
+(36.92% [0.54%], 2.47%[false]): 8 team 3 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(35.79% [0.52%], 0.34%[true]): 8 team 4 pool format breaking to a 8 team [0, 0, 0, 0, 8, 0, 0, 0]-bracket
+(35.02% [0.52%], 2.02%[false]): 8 team 4 pool format breaking to a 7 team [0, 0, 0, 6, 1, 0, 0]-bracket
+(37.17% [0.53%], 2.62%[false]): 8 team 4 pool format breaking to a 6 team [0, 0, 4, 2, 0, 0]-bracket
+(36.16% [0.52%], 1.81%[false]): 8 team 4 pool format breaking to a 5 team [0, 2, 3, 0, 0]-bracket
+(39.06% [0.56%], 5.8%[false]): 8 team 4 pool format breaking to a 5 team [0, 4, 0, 1, 0]-bracket
+(36.04% [0.53%], 0.32%[true]): 8 team 4 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(39.32% [0.56%], 4.76%[false]): 8 team 4 pool format breaking to a 4 team [2, 1, 1, 0]-bracket
+(50.95% [0.65%], 8.33%[false]): 8 team 4 pool format breaking to a 3 team [2, 1, 0]-bracket
+(102.31% [0.93%], 23.15%[false]): 8 team 4 pool format breaking to a 1 team [1]-bracket
+(36.53% [0.53%], 0.29%[true]): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 0, 8, 0, 0, 0]-bracket
+(38.11% [0.54%], 2.55%[false]): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 2, 5, 1, 0, 0]-bracket
+(37.06% [0.54%], 3.04%[false]): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 4, 2, 2, 0, 0]-bracket
+(42.68% [0.6%], 7.44%[false]): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 6, 1, 0, 1, 0]-bracket
+(41.92% [0.58%], 5.36%[false]): 8 team 8 pool format breaking to a 7 team [0, 0, 0, 6, 1, 0, 0]-bracket
+(43.32% [0.59%], 5.91%[false]): 8 team 8 pool format breaking to a 7 team [0, 0, 2, 3, 2, 0, 0]-bracket
+(46.89% [0.64%], 8.96%[false]): 8 team 8 pool format breaking to a 7 team [0, 0, 4, 2, 0, 1, 0]-bracket
+(51.49% [0.66%], 8.92%[false]): 8 team 8 pool format breaking to a 6 team [0, 2, 1, 3, 0, 0]-bracket
+(54.58% [0.69%], 10.34%[false]): 8 team 8 pool format breaking to a 6 team [0, 2, 3, 0, 1, 0]-bracket
+(67.21% [0.76%], 13.36%[false]): 8 team 8 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(82.76% [0.83%], 17.72%[false]): 8 team 8 pool format breaking to a 3 team [2, 1, 0]-bracket
+(145.32% [1.07%], 35.36%[false]): 8 team 8 pool format breaking to a 1 team [1]-bracket
+
+Ran 10^3 iterations (error = 1.%):
+(34.3% [1.67%], 0.52%[true]): 8 team 2 pool format breaking to a 2 team [2, 0]-bracket
+(66.59% [2.29%], 13.37%[false]): 8 team 2 pool format breaking to a 1 team [1]-bracket
+(38.52% [1.69%], 2.33%[false]): 8 team 3 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(49.6% [2.03%], 7.86%[false]): 8 team 3 pool format breaking to a 2 team [2, 0]-bracket
+(35.33% [1.61%], 0.85%[true]): 8 team 4 pool format breaking to a 8 team [0, 0, 0, 0, 8, 0, 0, 0]-bracket
+(36.42% [1.66%], 1.98%[false]): 8 team 4 pool format breaking to a 7 team [0, 0, 0, 6, 1, 0, 0]-bracket
+(39.56% [1.75%], 3.59%[false]): 8 team 4 pool format breaking to a 6 team [0, 0, 4, 2, 0, 0]-bracket
+(38.24% [1.76%], 2.58%[false]): 8 team 4 pool format breaking to a 5 team [0, 2, 3, 0, 0]-bracket
+(40.62% [1.78%], 5.42%[false]): 8 team 4 pool format breaking to a 5 team [0, 4, 0, 1, 0]-bracket
+(36.45% [1.6%], 1.2%[true]): 8 team 4 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(38.14% [1.68%], 4.51%[false]): 8 team 4 pool format breaking to a 4 team [2, 1, 1, 0]-bracket
+(46.41% [2.%], 8.39%[false]): 8 team 4 pool format breaking to a 3 team [2, 1, 0]-bracket
+(104.2% [2.91%], 23.15%[false]): 8 team 4 pool format breaking to a 1 team [1]-bracket
+(34.43% [1.63%], 0.59%[true]): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 0, 8, 0, 0, 0]-bracket
+(36.52% [1.64%], 2.27%[false]): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 2, 5, 1, 0, 0]-bracket
+(40.05% [1.75%], 3.06%[false]): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 4, 2, 2, 0, 0]-bracket
+(41.19% [1.91%], 7.3%[false]): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 6, 1, 0, 1, 0]-bracket
+(39.09% [1.78%], 5.28%[false]): 8 team 8 pool format breaking to a 7 team [0, 0, 0, 6, 1, 0, 0]-bracket
+(44.14% [1.87%], 6.35%[false]): 8 team 8 pool format breaking to a 7 team [0, 0, 2, 3, 2, 0, 0]-bracket
+(47.76% [1.99%], 6.8%[false]): 8 team 8 pool format breaking to a 7 team [0, 0, 4, 0, 3, 0, 0]-bracket
+(49.16% [2.12%], 8.81%[false]): 8 team 8 pool format breaking to a 7 team [0, 0, 4, 2, 0, 1, 0]-bracket
+(51.88% [2.09%], 8.99%[false]): 8 team 8 pool format breaking to a 6 team [0, 2, 1, 3, 0, 0]-bracket
+(52.11% [2.14%], 9.86%[false]): 8 team 8 pool format breaking to a 6 team [0, 2, 3, 0, 1, 0]-bracket
+(65.66% [2.36%], 13.38%[false]): 8 team 8 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(77.35% [2.54%], 17.59%[false]): 8 team 8 pool format breaking to a 3 team [2, 1, 0]-bracket
+(145.01% [3.37%], 35.36%[false]): 8 team 8 pool format breaking to a 1 team [1]-bracket
+
+Ran 10^2 iterations (error = 3.%):
+(30.63% [4.81%], 4.31%[true]): 8 team 2 pool format breaking to a 2 team [2, 0]-bracket
+(64.14% [7.45%], 13.77%[false]): 8 team 2 pool format breaking to a 1 team [1]-bracket
+(33.85% [4.3%], 3.3%[false]): 8 team 3 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(49.23% [6.55%], 3.59%[false]): 8 team 3 pool format breaking to a 3 team [2, 1, 0]-bracket
+(52.31% [6.75%], 9.52%[false]): 8 team 3 pool format breaking to a 2 team [2, 0]-bracket
+(31.72% [4.73%], 3.25%[true]): 8 team 4 pool format breaking to a 8 team [0, 0, 0, 0, 8, 0, 0, 0]-bracket
+(33.01% [4.85%], 1.41%[false]): 8 team 4 pool format breaking to a 7 team [0, 0, 0, 6, 1, 0, 0]-bracket
+(28.1% [4.93%], 3.38%[false]): 8 team 4 pool format breaking to a 6 team [0, 0, 4, 2, 0, 0]-bracket
+(37.26% [5.52%], 3.51%[false]): 8 team 4 pool format breaking to a 5 team [0, 2, 3, 0, 0]-bracket
+(35.51% [5.1%], 7.05%[false]): 8 team 4 pool format breaking to a 5 team [0, 4, 0, 1, 0]-bracket
+(32.24% [4.85%], 1.93%[true]): 8 team 4 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(37.55% [4.77%], 4.31%[false]): 8 team 4 pool format breaking to a 4 team [2, 1, 1, 0]-bracket
+(54.66% [6.44%], 8.72%[false]): 8 team 4 pool format breaking to a 3 team [2, 1, 0]-bracket
+(80.9% [8.24%], 13.65%[false]): 8 team 4 pool format breaking to a 2 team [2, 0]-bracket
+(92.67% [9.83%], 23.2%[false]): 8 team 4 pool format breaking to a 1 team [1]-bracket
+(31.97% [4.74%], 4.04%[true]): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 0, 8, 0, 0, 0]-bracket
+(37.96% [5.61%], 4.34%[false]): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 2, 5, 1, 0, 0]-bracket
+(26.13% [4.74%], 2.39%[false]): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 4, 2, 2, 0, 0]-bracket
+(47.94% [6.51%], 9.37%[false]): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 6, 1, 0, 1, 0]-bracket
+(36.36% [5.1%], 6.65%[false]): 8 team 8 pool format breaking to a 7 team [0, 0, 0, 6, 1, 0, 0]-bracket
+(40.65% [5.11%], 8.78%[false]): 8 team 8 pool format breaking to a 7 team [0, 0, 2, 3, 2, 0, 0]-bracket
+(44.31% [5.23%], 7.17%[false]): 8 team 8 pool format breaking to a 7 team [0, 0, 4, 0, 3, 0, 0]-bracket
+(37.18% [5.51%], 8.55%[false]): 8 team 8 pool format breaking to a 7 team [0, 0, 4, 2, 0, 1, 0]-bracket
+(45.3% [5.73%], 10.69%[false]): 8 team 8 pool format breaking to a 6 team [0, 2, 1, 3, 0, 0]-bracket
+(36.47% [4.51%], 10.25%[false]): 8 team 8 pool format breaking to a 6 team [0, 2, 3, 0, 1, 0]-bracket
+(59.% [7.03%], 11.24%[false]): 8 team 8 pool format breaking to a 6 team [0, 4, 0, 1, 1, 0]-bracket
+(61.02% [6.99%], 10.89%[false]): 8 team 8 pool format breaking to a 5 team [0, 2, 3, 0, 0]-bracket
+(67.41% [7.53%], 13.22%[false]): 8 team 8 pool format breaking to a 5 team [2, 1, 1, 1, 0]-bracket
+(56.8% [6.74%], 13.75%[false]): 8 team 8 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(96.04% [9.09%], 19.76%[false]): 8 team 8 pool format breaking to a 3 team [2, 1, 0]-bracket
+(149.33% [11.79%], 35.36%[false]): 8 team 8 pool format breaking to a 1 team [1]-bracket
+
+Ran 10^1 iterations (error = 11.%):
+(3.08% [3.08%], 10.35%[true]): 8 team 2 pool format breaking to a 2 team [2, 0]-bracket
+(50.25% [27.78%], 14.88%[false]): 8 team 2 pool format breaking to a 1 team [1]-bracket
+(27.82% [17.64%], 8.86%[false]): 8 team 3 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(47.51% [24.06%], 10.35%[false]): 8 team 3 pool format breaking to a 3 team [2, 1, 0]-bracket
+(45.01% [14.01%], 14.88%[false]): 8 team 3 pool format breaking to a 2 team [2, 0]-bracket
+(111.11% [21.4%], 19.09%[false]): 8 team 3 pool format breaking to a 1 team [1]-bracket
+(33.1% [13.77%], 7.07%[true]): 8 team 4 pool format breaking to a 8 team [0, 0, 0, 0, 8, 0, 0, 0]-bracket
+(13.% [6.86%], 18.32%[false]): 8 team 4 pool format breaking to a 7 team [0, 0, 0, 6, 1, 0, 0]-bracket
+(54.65% [24.11%], 7.07%[false]): 8 team 4 pool format breaking to a 6 team [0, 0, 4, 2, 0, 0]-bracket
+(29.91% [15.17%], 12.82%[false]): 8 team 4 pool format breaking to a 5 team [0, 2, 3, 0, 0]-bracket
+(23.82% [15.27%], 12.82%[false]): 8 team 4 pool format breaking to a 5 team [0, 4, 0, 1, 0]-bracket
+(28.61% [15.86%], 8.86%[true]): 8 team 4 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(35.52% [15.04%], 12.82%[false]): 8 team 4 pool format breaking to a 4 team [2, 1, 1, 0]-bracket
+(77.03% [27.93%], 24.35%[false]): 8 team 4 pool format breaking to a 3 team [2, 1, 0]-bracket
+(71.15% [25.83%], 15.81%[false]): 8 team 4 pool format breaking to a 2 team [2, 0]-bracket
+(53.42% [21.7%], 28.16%[false]): 8 team 4 pool format breaking to a 1 team [1]-bracket
+(33.14% [16.85%], 11.65%[true]): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 0, 8, 0, 0, 0]-bracket
+(64.53% [21.6%], 14.88%[false]): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 2, 5, 1, 0, 0]-bracket
+(55.4% [23.53%], 13.89%[false]): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 4, 2, 2, 0, 0]-bracket
+(43.% [14.34%], 20.53%[false]): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 6, 1, 0, 1, 0]-bracket
+(38.29% [19.2%], 7.07%[false]): 8 team 8 pool format breaking to a 7 team [0, 0, 0, 6, 1, 0, 0]-bracket
+(47.05% [14.8%], 11.65%[false]): 8 team 8 pool format breaking to a 7 team [0, 0, 2, 3, 2, 0, 0]-bracket
+(29.02% [17.03%], 13.89%[false]): 8 team 8 pool format breaking to a 7 team [0, 0, 4, 0, 3, 0, 0]-bracket
+(74.64% [35.26%], 10.35%[false]): 8 team 8 pool format breaking to a 7 team [0, 0, 4, 2, 0, 1, 0]-bracket
+(83.27% [24.44%], 17.53%[false]): 8 team 8 pool format breaking to a 6 team [0, 0, 4, 2, 0, 0]-bracket
+(58.84% [27.43%], 18.32%[false]): 8 team 8 pool format breaking to a 6 team [0, 2, 1, 3, 0, 0]-bracket
+(64.3% [24.49%], 13.89%[false]): 8 team 8 pool format breaking to a 6 team [0, 2, 3, 0, 1, 0]-bracket
+(67.63% [24.54%], 13.89%[false]): 8 team 8 pool format breaking to a 6 team [0, 4, 0, 1, 1, 0]-bracket
+(37.08% [11.37%], 13.89%[false]): 8 team 8 pool format breaking to a 5 team [0, 2, 3, 0, 0]-bracket
+(102.59% [24.3%], 19.82%[false]): 8 team 8 pool format breaking to a 5 team [0, 4, 0, 1, 0]-bracket
+(51.4% [25.89%], 21.21%[false]): 8 team 8 pool format breaking to a 5 team [2, 1, 1, 1, 0]-bracket
+(83.35% [32.75%], 13.89%[false]): 8 team 8 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(63.89% [16.7%], 17.53%[false]): 8 team 8 pool format breaking to a 4 team [2, 1, 1, 0]-bracket
+(34.93% [15.85%], 23.75%[false]): 8 team 8 pool format breaking to a 3 team [2, 1, 0]-bracket
+(118.54% [34.58%], 23.75%[false]): 8 team 8 pool format breaking to a 2 team [2, 0]-bracket
+(130.42% [34.74%], 35.36%[false]): 8 team 8 pool format breaking to a 1 team [1]-bracket
+
