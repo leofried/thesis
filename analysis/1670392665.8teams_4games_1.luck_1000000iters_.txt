@@ -1,0 +1,20 @@
+Teams: 8
+Games: 4
+Luck: 1.
+Iters: 1000000
+Time: 58.2244505882
+
+Decay Error: 0.05%
+Imbalance Error: 0.03%
+
+Paretos
+(36.49%, 0.%): 8 team 2 pool format breaking to a 2 team [2, 0]-bracket
+
+Raw
+(36.49%, 0.05%): 8 team 2 pool format breaking to a 2 team [2, 0]-bracket
+(36.53%, 2.36%): 8 team 3 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(37.34%, 2.19%): 8 team 3 pool format breaking to a 3 team [2, 1, 0]-bracket
+(49.34%, 7.72%): 8 team 3 pool format breaking to a 2 team [2, 0]-bracket
+(67.53%, 13.36%): 8 team 2 pool format breaking to a 1 team [1]-bracket
+(82.44%, 17.25%): 8 team 3 pool format breaking to a 1 team [1]-bracket
+

@@ -1,0 +1,50 @@
+Teams: 8
+Games: 4
+Luck: 1.
+Iters: 100000
+Time: 26.6197788715
+
+Decay Error: 0.16%
+Imbalance Error: 0.11%
+
+Paretos
+(35.33%, 0.%): 8 team 4 pool format breaking to a 8 team [0, 0, 0, 0, 8, 0, 0, 0]-bracket
+
+Raw
+(35.33%, 0.06%): 8 team 4 pool format breaking to a 8 team [0, 0, 0, 0, 8, 0, 0, 0]-bracket
+(35.48%, 1.95%): 8 team 4 pool format breaking to a 7 team [0, 0, 0, 6, 1, 0, 0]-bracket
+(36.2%, 2.79%): 8 team 4 pool format breaking to a 6 team [0, 0, 4, 2, 0, 0]-bracket
+(36.26%, 0.1%): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 0, 8, 0, 0, 0]-bracket
+(36.28%, 1.97%): 8 team 4 pool format breaking to a 5 team [0, 2, 3, 0, 0]-bracket
+(36.38%, 0.13%): 8 team 4 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(36.47%, 0.15%): 8 team 2 pool format breaking to a 2 team [2, 0]-bracket
+(36.57%, 2.33%): 8 team 3 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(37.25%, 2.64%): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 2, 5, 1, 0, 0]-bracket
+(37.47%, 2.18%): 8 team 3 pool format breaking to a 3 team [2, 1, 0]-bracket
+(37.72%, 3.15%): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 4, 2, 2, 0, 0]-bracket
+(39.03%, 4.51%): 8 team 4 pool format breaking to a 4 team [2, 1, 1, 0]-bracket
+(39.3%, 6.07%): 8 team 4 pool format breaking to a 5 team [0, 4, 0, 1, 0]-bracket
+(42.51%, 7.21%): 8 team 8 pool format breaking to a 8 team [0, 0, 0, 6, 1, 0, 1, 0]-bracket
+(42.52%, 5.36%): 8 team 8 pool format breaking to a 7 team [0, 0, 0, 6, 1, 0, 0]-bracket
+(43.69%, 5.96%): 8 team 8 pool format breaking to a 7 team [0, 0, 2, 3, 2, 0, 0]-bracket
+(45.44%, 7.09%): 8 team 8 pool format breaking to a 7 team [0, 0, 4, 0, 3, 0, 0]-bracket
+(47.73%, 8.79%): 8 team 8 pool format breaking to a 7 team [0, 0, 4, 2, 0, 1, 0]-bracket
+(49.15%, 7.72%): 8 team 3 pool format breaking to a 2 team [2, 0]-bracket
+(49.41%, 7.98%): 8 team 8 pool format breaking to a 6 team [0, 0, 4, 2, 0, 0]-bracket
+(50.05%, 8.3%): 8 team 4 pool format breaking to a 3 team [2, 1, 0]-bracket
+(50.92%, 8.71%): 8 team 8 pool format breaking to a 6 team [0, 2, 1, 3, 0, 0]-bracket
+(53.34%, 10.38%): 8 team 8 pool format breaking to a 6 team [0, 2, 3, 0, 1, 0]-bracket
+(55.25%, 10.98%): 8 team 8 pool format breaking to a 6 team [0, 4, 0, 1, 1, 0]-bracket
+(57.74%, 10.66%): 8 team 8 pool format breaking to a 5 team [0, 2, 3, 0, 0]-bracket
+(60.25%, 12.12%): 8 team 8 pool format breaking to a 5 team [0, 4, 0, 1, 0]-bracket
+(62.12%, 12.68%): 8 team 8 pool format breaking to a 5 team [2, 1, 1, 1, 0]-bracket
+(67.28%, 13.36%): 8 team 4 pool format breaking to a 2 team [2, 0]-bracket
+(67.46%, 13.36%): 8 team 8 pool format breaking to a 4 team [0, 4, 0, 0]-bracket
+(67.67%, 13.36%): 8 team 2 pool format breaking to a 1 team [1]-bracket
+(69.98%, 14.63%): 8 team 8 pool format breaking to a 4 team [2, 1, 1, 0]-bracket
+(82.17%, 17.25%): 8 team 3 pool format breaking to a 1 team [1]-bracket
+(82.41%, 17.69%): 8 team 8 pool format breaking to a 3 team [2, 1, 0]-bracket
+(102.45%, 23.15%): 8 team 4 pool format breaking to a 1 team [1]-bracket
+(102.75%, 23.15%): 8 team 8 pool format breaking to a 2 team [2, 0]-bracket
+(142.77%, 35.36%): 8 team 8 pool format breaking to a 1 team [1]-bracket
+

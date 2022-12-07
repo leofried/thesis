@@ -13,6 +13,7 @@ let rec run_sims (scheme : Scheme.t) (iters_left : int) (decays: float list) (se
   let decay = get_best_team_skill teams -. Team.get_skill winner in
   Math.inc_array seed_wins (Lists.find winner teams);
   run_sims scheme (iters_left - 1) (decay :: decays) seed_wins
+;;
 
 let prog = ref 0;; 
 
