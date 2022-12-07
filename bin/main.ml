@@ -18,5 +18,5 @@ let f ~n ~iters_pow ~pool_counts ~max_games =
 
 
 (*f ~n:8 ~iters_pow:4 ~pool_counts:[1;2;3;4;8] ~max_games:4;;*)
-f ~n:12 ~iters_pow:4 ~pool_counts:[1;2;3;4;5;6;12] ~max_games:6;;
-(*f ~n:24 ~iters_start:3 ~iters_pow:4 ~pool_counts:[3;4;5;6] ~max_games:9;;*)
+f ~n:12 ~iters_pow:5 ~pool_counts:[1;2;3;4;5;6;12] ~max_games:8;;
+(*f ~n:24 ~iters_pow:6 ~pool_counts:[3;4;5;6] ~max_games:9;;*)
