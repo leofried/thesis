@@ -17,6 +17,8 @@ let f ~n ~iters_pow ~pool_counts ~max_games =
 ;;
 
 
-f ~n:8 ~iters_pow:6 ~pool_counts:[2;3;] ~max_games:4;;
+(*f ~n:8 ~iters_pow:5 ~pool_counts:[2;3;] ~max_games:4;;*)
 (*f ~n:12 ~iters_pow:5 ~pool_counts:[1;2;3;4;5;6;12] ~max_games:8;;*)
 (*f ~n:24 ~iters_pow:2 ~pool_counts:[3;4;5;6] ~max_games:9;;*)
+
+Analysis.analyze_schemes ~iters:1000000 [Round_robin.make 10];;

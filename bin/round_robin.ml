@@ -1,19 +1,21 @@
 let play_games (teams : Team.t list) (cycles : int) : int array array =
+  let teams_arr = Array.of_list teams in
+
   let n = List.length teams in
-  let arr = Array.init n (fun _ -> Array.make n 0) in
+  let wins_arr = Array.init n (fun _ -> Array.make n 0) in
   for i = 0 to n - 1 do
-    let t1 = List.nth teams i in
+    let t1 = teams_arr.(i) in
     for j = i + 1 to n - 1 do
-      let t2 = List.nth teams j in
+      let t2 = teams_arr.(j) in
       for _ = 1 to cycles do
         if fst @@ Team.play_game t1 t2 = t1 then
-          arr.(i).(j) <- (arr.(i).(j)) + 1
+          wins_arr.(i).(j) <- (wins_arr.(i).(j)) + 1
         else
-          arr.(j).(i) <- (arr.(j).(i)) + 1
+          wins_arr.(j).(i) <- (wins_arr.(j).(i)) + 1
       done
     done
   done;
-  arr
+  wins_arr
 ;;
 
 module IMap = Map.Make(Int);;
