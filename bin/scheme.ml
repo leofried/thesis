@@ -1,8 +1,12 @@
-open Util;;
-
 (*Do we need to hide this?*)
-type t = {name : string; number_of_teams : int; max_games : int; is_fair : int -> bool; run : Team.t list -> Team.t list};;
-
+type t = {
+  name : string;
+  number_of_teams : int;
+  max_games : int;
+  is_fair : int -> bool;
+  run : Team.t list -> Team.t list
+};;
+(*
 let make_scheme (name : string) (number_of_teams : int) (max_games : int) (is_fair : int -> bool) (run : Team.t list -> Team.t list) : t =
   {name; number_of_teams; max_games; is_fair; run};;
 
@@ -23,4 +27,4 @@ let run (scheme: t) (teams : Team.t list) : Team.t list =
   ranks
 ;;
 
-let to_string (scheme : t) = (Int.to_string scheme.number_of_teams) ^ " team " ^ scheme.name;;
+let to_string (scheme : t) = (Int.to_string scheme.number_of_teams) ^ " team " ^ scheme.name;;*)

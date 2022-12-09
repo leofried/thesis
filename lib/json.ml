@@ -1,7 +1,7 @@
 type t = Yojson.Basic.t;;
 
 let json_file_name ~(number_of_teams : int) ~(luck : float) : string =
-  "analysis/teams_" ^ Int.to_string number_of_teams ^ "_luck_" ^ Float.to_string luck ^ ".json"
+  "analysis/teams_" ^ Int.to_string number_of_teams ^ "_luck_" ^ Float.to_string (Float.round (luck *. 100.)) ^ "json"
 ;;
 
 let read ~(luck : float) ~(number_of_teams : int) : t =

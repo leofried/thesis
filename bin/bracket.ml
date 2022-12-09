@@ -42,10 +42,14 @@ let rec is_fair (bracket : int list) (seed_size : int) : bool =
 ;;
 
 let make (bracket : int list) : Scheme.t =
-  let name = Lists.to_string Int.to_string bracket ^ "-bracket" in
-  let n = List.fold_left ( + ) 0 bracket in
-  let games = count_games bracket in
-  Scheme.make_scheme name n games (is_fair bracket) (run_bracket (build_tree bracket))
+  let number_of_teams = List.fold_left ( + ) 0 bracket in
+  {
+    name = Int.to_string number_of_teams ^ " team " ^ Lists.to_string Int.to_string bracket ^ "-bracket";
+    number_of_teams;
+    max_games = count_games bracket;
+    is_fair = is_fair bracket;
+    run = run_bracket (build_tree bracket)
+  }
 ;;
 
 let rec bracket_children (bracket : int list) : int list list =

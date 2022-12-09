@@ -52,5 +52,11 @@ let run_round_robin (cycles : int) (teams : Team.t list) : Team.t list =
 ;;
 
 let make ?(cycles = 1) (number_of_teams : int) : Scheme.t =
-  Scheme.make_scheme ((Int.to_string cycles) ^ "-Round Robin") number_of_teams (number_of_teams - 1) (fun _ -> true) (run_round_robin cycles)
+  {
+    name = Int.to_string number_of_teams ^ " team " ^ Int.to_string cycles ^ "-Round Robin";
+    number_of_teams;
+    max_games = number_of_teams - 1;
+    is_fair = (fun _ -> true);
+    run = run_round_robin cycles;
+  }
 ;;

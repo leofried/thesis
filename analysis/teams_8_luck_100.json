@@ -1,0 +1,290 @@
+{
+  "8 team 2 pool format breaking to a 2 team [2, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.3594089832911159,
+    "margin": 0.005230261562491631,
+    "seed_wins": [ 1218, 1252, 1233, 1239, 1242, 1277, 1264, 1275 ],
+    "is_fair": true,
+    "max_games": 4
+  },
+  "8 team 2 pool format breaking to a 1 team [1]-bracket": {
+    "iters": 10000,
+    "decay": 0.6770682356628127,
+    "margin": 0.007564902837389412,
+    "seed_wins": [ 2426, 0, 2523, 0, 2504, 0, 2547, 0 ],
+    "is_fair": false,
+    "max_games": 3
+  },
+  "8 team 3 pool format breaking to a 4 team [0, 4, 0, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.367734031577915,
+    "margin": 0.0053063483887817176,
+    "seed_wins": [ 1551, 1012, 1190, 1532, 952, 1185, 1541, 1037 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 3 pool format breaking to a 3 team [2, 1, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.3726505336848473,
+    "margin": 0.005390162041891153,
+    "seed_wins": [ 1506, 1047, 1196, 1484, 1015, 1210, 1513, 1029 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 3 pool format breaking to a 2 team [2, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.4955431935347916,
+    "margin": 0.006396527711634532,
+    "seed_wins": [ 1618, 1671, 0, 1667, 1680, 0, 1677, 1687 ],
+    "is_fair": false,
+    "max_games": 3
+  },
+  "8 team 3 pool format breaking to a 1 team [1]-bracket": {
+    "iters": 10000,
+    "decay": 0.8204542692318729,
+    "margin": 0.008322609900503113,
+    "seed_wins": [ 3285, 0, 0, 3279, 0, 0, 3436, 0 ],
+    "is_fair": false,
+    "max_games": 2
+  },
+  "8 team 4 pool format breaking to a 8 team [0, 0, 0, 0, 8, 0, 0, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.3548534059538662,
+    "margin": 0.005150603366822634,
+    "seed_wins": [ 1293, 1263, 1282, 1237, 1242, 1277, 1237, 1169 ],
+    "is_fair": true,
+    "max_games": 4
+  },
+  "8 team 4 pool format breaking to a 7 team [0, 0, 0, 6, 1, 0, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.363261005842552,
+    "margin": 0.005309055115602496,
+    "seed_wins": [ 1499, 1297, 1277, 1003, 1490, 1281, 1189, 964 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 4 pool format breaking to a 6 team [0, 0, 4, 2, 0, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.36570964389097,
+    "margin": 0.005349891001998425,
+    "seed_wins": [ 1579, 1495, 967, 961, 1558, 1495, 970, 975 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 4 pool format breaking to a 5 team [0, 2, 3, 0, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.3644570103176873,
+    "margin": 0.005288275385207416,
+    "seed_wins": [ 1527, 1305, 1222, 937, 1516, 1247, 1276, 970 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 4 pool format breaking to a 5 team [0, 4, 0, 1, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.3915199557143094,
+    "margin": 0.005597259326107654,
+    "seed_wins": [ 2218, 1045, 848, 897, 2197, 971, 868, 956 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 4 pool format breaking to a 4 team [0, 4, 0, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.36863696327854223,
+    "margin": 0.005325529233240414,
+    "seed_wins": [ 1213, 1331, 1220, 1222, 1215, 1270, 1260, 1269 ],
+    "is_fair": true,
+    "max_games": 3
+  },
+  "8 team 4 pool format breaking to a 4 team [2, 1, 1, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.3886460324477014,
+    "margin": 0.005580891015355718,
+    "seed_wins": [ 1946, 1221, 890, 924, 1957, 1242, 899, 921 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 4 pool format breaking to a 3 team [2, 1, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.5045368480413316,
+    "margin": 0.006439658478449287,
+    "seed_wins": [ 2120, 1422, 1393, 0, 2149, 1486, 1430, 0 ],
+    "is_fair": false,
+    "max_games": 3
+  },
+  "8 team 4 pool format breaking to a 2 team [2, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.6723051166772316,
+    "margin": 0.007449148781885042,
+    "seed_wins": [ 2577, 2508, 0, 0, 2440, 2475, 0, 0 ],
+    "is_fair": false,
+    "max_games": 2
+  },
+  "8 team 4 pool format breaking to a 1 team [1]-bracket": {
+    "iters": 10000,
+    "decay": 1.0280784921758095,
+    "margin": 0.009179571647971721,
+    "seed_wins": [ 5056, 0, 0, 0, 4944, 0, 0, 0 ],
+    "is_fair": false,
+    "max_games": 1
+  },
+  "8 team 8 pool format breaking to a 8 team [0, 0, 0, 0, 8, 0, 0, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.3627838584483033,
+    "margin": 0.005301687940652758,
+    "seed_wins": [ 1292, 1275, 1329, 1191, 1249, 1244, 1196, 1224 ],
+    "is_fair": true,
+    "max_games": 3
+  },
+  "8 team 8 pool format breaking to a 8 team [0, 0, 0, 2, 5, 1, 0, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.38100958214745434,
+    "margin": 0.0054432036870694315,
+    "seed_wins": [ 1751, 1137, 1219, 1388, 1340, 1313, 944, 908 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 8 pool format breaking to a 8 team [0, 0, 0, 4, 2, 2, 0, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.3813455576283882,
+    "margin": 0.00548816968628986,
+    "seed_wins": [ 1747, 1741, 1171, 1308, 1006, 1049, 999, 979 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 8 pool format breaking to a 8 team [0, 0, 0, 6, 1, 0, 1, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.42592424802468476,
+    "margin": 0.0060815918719327264,
+    "seed_wins": [ 3109, 1268, 920, 886, 1044, 964, 898, 911 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 8 pool format breaking to a 7 team [0, 0, 0, 6, 1, 0, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.42589679819992954,
+    "margin": 0.005884323715769469,
+    "seed_wins": [ 1822, 1293, 1368, 1437, 1359, 1394, 1327, 0 ],
+    "is_fair": false,
+    "max_games": 3
+  },
+  "8 team 8 pool format breaking to a 7 team [0, 0, 2, 3, 2, 0, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.4342414037580931,
+    "margin": 0.0058417472657086075,
+    "seed_wins": [ 1824, 1873, 1335, 1459, 1397, 1064, 1048, 0 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 8 pool format breaking to a 7 team [0, 0, 4, 0, 3, 0, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.455673986077908,
+    "margin": 0.006134290725919066,
+    "seed_wins": [ 1834, 2094, 2084, 993, 1019, 1016, 960, 0 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 8 pool format breaking to a 7 team [0, 0, 4, 2, 0, 1, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.48319351110303044,
+    "margin": 0.006515209398458971,
+    "seed_wins": [ 3155, 1352, 1262, 1037, 1096, 1072, 1026, 0 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 8 pool format breaking to a 6 team [0, 0, 4, 2, 0, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.49929876765228853,
+    "margin": 0.006374143812305295,
+    "seed_wins": [ 1993, 2000, 1511, 1485, 1519, 1492, 0, 0 ],
+    "is_fair": false,
+    "max_games": 3
+  },
+  "8 team 8 pool format breaking to a 6 team [0, 2, 1, 3, 0, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.5125633194406577,
+    "margin": 0.006532891149482788,
+    "seed_wins": [ 2014, 2144, 2085, 1454, 1105, 1198, 0, 0 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 8 pool format breaking to a 6 team [0, 2, 3, 0, 1, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.5354566663375339,
+    "margin": 0.006865228343669415,
+    "seed_wins": [ 3260, 1427, 1508, 1445, 1179, 1181, 0, 0 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 8 pool format breaking to a 6 team [0, 4, 0, 1, 1, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.5551173647961067,
+    "margin": 0.0069875723295579496,
+    "seed_wins": [ 3427, 2109, 1117, 1059, 1176, 1112, 0, 0 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 8 pool format breaking to a 5 team [0, 2, 3, 0, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.5841570791710732,
+    "margin": 0.007042160342398142,
+    "seed_wins": [ 2177, 2315, 2259, 1592, 1657, 0, 0, 0 ],
+    "is_fair": false,
+    "max_games": 3
+  },
+  "8 team 8 pool format breaking to a 5 team [0, 4, 0, 1, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.6029878006157952,
+    "margin": 0.007231886837006572,
+    "seed_wins": [ 3504, 1640, 1661, 1583, 1612, 0, 0, 0 ],
+    "is_fair": false,
+    "max_games": 3
+  },
+  "8 team 8 pool format breaking to a 5 team [2, 1, 1, 1, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.6168100781962125,
+    "margin": 0.0072983174811973115,
+    "seed_wins": [ 3534, 2363, 1617, 1242, 1244, 0, 0, 0 ],
+    "is_fair": false,
+    "max_games": 4
+  },
+  "8 team 8 pool format breaking to a 4 team [0, 4, 0, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.6865088464566175,
+    "margin": 0.007717399080855291,
+    "seed_wins": [ 2425, 2495, 2506, 2574, 0, 0, 0, 0 ],
+    "is_fair": false,
+    "max_games": 2
+  },
+  "8 team 8 pool format breaking to a 4 team [2, 1, 1, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.7079402029531346,
+    "margin": 0.007815375506190695,
+    "seed_wins": [ 3841, 2526, 1804, 1829, 0, 0, 0, 0 ],
+    "is_fair": false,
+    "max_games": 3
+  },
+  "8 team 8 pool format breaking to a 3 team [2, 1, 0]-bracket": {
+    "iters": 10000,
+    "decay": 0.8365294857825516,
+    "margin": 0.00839000109853057,
+    "seed_wins": [ 4137, 2893, 2970, 0, 0, 0, 0, 0 ],
+    "is_fair": false,
+    "max_games": 2
+  },
+  "8 team 8 pool format breaking to a 2 team [2, 0]-bracket": {
+    "iters": 10000,
+    "decay": 1.0206360802985464,
+    "margin": 0.009153252875544899,
+    "seed_wins": [ 4993, 5007, 0, 0, 0, 0, 0, 0 ],
+    "is_fair": false,
+    "max_games": 1
+  },
+  "8 team 8 pool format breaking to a 1 team [1]-bracket": {
+    "iters": 10000,
+    "decay": 1.4273967948520312,
+    "margin": 0.010652226695786977,
+    "seed_wins": [ 10000, 0, 0, 0, 0, 0, 0, 0 ],
+    "is_fair": false,
+    "max_games": 0
+  }
+}
