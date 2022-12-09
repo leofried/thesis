@@ -15,6 +15,26 @@ let stderr (lst : float list) : float = stdev lst /. Math.sqrt_int (List.length 
 
 let normed_stdev (lst : float list) : float = (stdev lst) /. (List.fold_left Float.add 0. lst);;
 
+let mean_two (n1, mean1 : int * float) (n2, mean2 : int * float) : float =
+  let m1 = Int.to_float n1 in
+  let m2 = Int.to_float n2 in
+  (mean1 *. m1 +. mean2 *. m2 ) /. (m1 +. m2)
+;;
+
+let stdev_two (n1, mean1, stdev1 : int * float * float) (n2, mean2, stdev2 : int * float * float) : float =
+  let m1 = Int.to_float n1 in
+  let m2 = Int.to_float n2 in
+  sqrt (((m1 -. 1.) *. stdev1 *. stdev1 +. (m2 -. 1.) *. stdev2 *. stdev2) /. (m1 +. m2 -. 1.) +.
+  m1 *. m2 *. (mean1 -. mean2) *. (mean1 -. mean2) /. (m1 +. m2) /. (m1 +. m2 -. 1.))
+;;
+
+let stderr_two (n1, mean1, stderr1 : int * float * float) (n2, mean2, stderr2 : int * float * float) : float =
+  let m1 = Int.to_float n1 in
+  let m2 = Int.to_float n2 in
+  stdev_two (n1, mean1, stderr1 *. sqrt m1) (n2, mean2, stderr2 *. sqrt m2) /.
+  (sqrt (m1 +. m2))
+;;
+
 let binom_error ?(accuracy : int = 3) ~(iters : int) ~(cats : int) () : float = 
   let rec f = function
     | 0 -> []

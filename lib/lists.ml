@@ -13,6 +13,13 @@ let rec find x lst =
   | h :: t -> if x = h then 0 else 1 + find x t
 ;;
 
+let rec sum_two_lists (l1 : int list) (l2 : int list) : int list =
+  match l1, l2 with
+  | [], [] -> []
+  | h1 :: t1, h2 :: t2 -> h1 + h2 :: sum_two_lists t1 t2
+  | _ -> System.error ()
+;;
+
 let to_string (stringify : 'a -> string) = function
   | [] -> "[]"
   | [i] -> "[" ^ (stringify i) ^ "]"
