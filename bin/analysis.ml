@@ -1,5 +1,36 @@
 open Util;;
 
+type data = {
+  iters : int;
+  decay : float;
+  margin : float;
+  seed_wins : int list;
+  is_fair : bool;
+  max_games : int;
+}
+
+let json_to_data (json : Json.t) : data =
+  {
+    iters = Json.rip_int "iters" json;
+    decay = Json.rip_float "decay" json;
+    margin = Json.rip_float "margin" json;
+    seed_wins = Json.rip_int_list "seed_wins" json;
+    is_fair = Json.rip_bool "is_fair" json;
+    max_games = Json.rip_int "max_games" json
+  }
+;;
+
+let data_to_json (data : data) : Json.t =
+  `Assoc [
+    ("iters", `Int data.iters);
+    ("decay", `Float data.decay);
+    ("margin", `Float data.margin);
+    ("seed_wins", `List (List.map (fun x -> `Int x) data.seed_wins));
+    ("is_fair", `Bool data.is_fair);
+    ("max_games", `Int data.max_games)
+  ]
+;;
+
 let rec get_best_team_skill (teams : Team.t list) : float =
   match teams with
   | [] -> System.error ()
@@ -16,56 +47,48 @@ let rec run_sims (scheme : Scheme.t) (iters_left : int) (decays: float list) (se
   run_sims scheme (iters_left - 1) (decay :: decays) seed_wins
 ;;
 
-let get_data ~(iters : int) (scheme : Scheme.t) : Json.t =
+let get_data ~(iters : int) (scheme : Scheme.t) : data =
   let seed_wins = Array.make (scheme.number_of_teams) 0 in
   let sims = run_sims scheme iters [] seed_wins in
-
-  `Assoc [
-    ("iters", `Int iters);
-    ("decay", `Float (Stats.mean sims));
-    ("margin", `Float (Stats.stderr sims));
-    ("seed_wins", `List (List.map (fun x -> `Int x) (Array.to_list seed_wins)));
-    ("is_fair", `Bool (scheme.is_fair (scheme.number_of_teams)));
-    ("max_games", `Int (scheme.max_games))
-  ]
+  {
+    iters;
+    decay = Stats.mean sims;
+    margin = Stats.stderr sims;
+    seed_wins = Array.to_list seed_wins;
+    is_fair = scheme.is_fair (scheme.number_of_teams);
+    max_games = scheme.max_games
+  }
 ;;
 
-let get_data_from_json (json : Json.t) : int * float * float * int list =
-  Json.rip_int "iters" json,
-  Json.rip_float "decay" json,
-  Json.rip_float "margin" json,
-  Json.rip_int_list "seed_wins" json
-;;
-
-let analyze_scheme ?(luck : float = 1.) ~(iters : int) (scheme : Scheme.t) : unit =
+let analyze_scheme ~(luck : float) ~(iters : int) (scheme : Scheme.t) : unit =
   if iters < 2 then System.error ();
   Team.set_luck luck;
 
   let number_of_teams = scheme.number_of_teams in
   let name = scheme.name in
-  let data = get_data ~iters scheme in
+
+  let new_data = get_data ~iters scheme in
 
   let old_json = Json.read ~luck ~number_of_teams in
-  let new_json =
-    if Json.has_key name old_json then begin
-      let jiters, jdecay, jmargin, jseed_wins = get_data_from_json (Json.member name old_json) in
-      let diters, ddecay, dmargin, dseed_wins = get_data_from_json data in
-
-      Json.overwrite_key name (`Assoc [
-        ("iters", `Int (jiters + diters));
-        ("decay", `Float (Stats.mean_two (jiters, jdecay) (diters, ddecay)));
-        ("margin", `Float (Stats.stderr_two (jiters, jdecay, jmargin) (diters, ddecay, dmargin)));
-        ("seed_wins", `List (List.map (fun x -> `Int x) (Lists.sum_two_lists jseed_wins dseed_wins)));
-        ("is_fair", Json.member "is_fair" data);
-        ("max_games", Json.member "max_games" data)
-      ]) old_json
-  end else
-    Json.combine old_json (`Assoc [name, data])
+  let combined_data = if Json.has_key name old_json then
+    let old_data = json_to_data (Json.member name old_json) in
+    {
+      iters = old_data.iters + new_data.iters;
+      decay = Stats.mean_two (old_data.iters, old_data.decay) (new_data.iters, new_data.decay);
+      margin = Stats.stderr_two (old_data.iters, old_data.decay, old_data.margin) (new_data.iters, new_data.decay, new_data.margin);
+      seed_wins = Lists.sum_two_lists old_data.seed_wins new_data.seed_wins;
+      is_fair = new_data.is_fair;
+      max_games = new_data.max_games
+    }
+  else new_data
   in
-  Json.write ~luck ~number_of_teams new_json
+
+  old_json
+  |> Json.set_key name (data_to_json combined_data)
+  |> Json.write ~luck ~number_of_teams
 ;;
 
-let analyze_schemes ?(luck : float = 1.) ~(iters : int) (schemes : Scheme.t list) : unit =
+let analyze_schemes ~(luck : float) ~(iters : int) (schemes : Scheme.t list) : unit =
   let n = ref 0 in
   List.iter (fun scheme ->
     Math.inc_ref n;
@@ -73,3 +96,16 @@ let analyze_schemes ?(luck : float = 1.) ~(iters : int) (schemes : Scheme.t list
     analyze_scheme ~luck ~iters scheme
   ) schemes
 ;;
+
+let pareto_report ~(luck : float) ~(number_of_teams : int) ~(max_games : int) : unit =
+  Json.read ~luck ~number_of_teams
+  |> Json.to_object
+  |> List.map (fun (name, json) -> name, json_to_data json)
+  |> List.filter (fun (_, data) -> data.max_games <= max_games)
+  |> List.map (fun (name, data) -> (name, data.decay, if data.is_fair then 0. else Stats.normed_stdev (List.map Int.to_float data.seed_wins)))
+  |> Lists.pareto
+  |> (fun lst -> if List.length lst = 0 then print_endline "No such formats have been analyzed."; lst)
+  |> List.iter (fun (name, decay, imbalance) -> 
+      print_endline @@ "(" ^ Math.to_pct ~digits:2 decay ^ ", " ^ Math.to_pct ~digits:2 imbalance ^ "): " ^ name
+    )
+  

@@ -21,7 +21,7 @@ let write ~(luck : float) ~(number_of_teams : int) (json : t) : unit =
 
 let member = Yojson.Basic.Util.member
 
-let combine = Yojson.Basic.Util.combine
+let to_object = Yojson.Basic.Util.to_assoc
 
 let has_key (key : string) (json : t) : bool =
   member key json <> `Null
@@ -35,12 +35,21 @@ let rip_float (key : string) (json : t) : float =
   Yojson.Basic.Util.to_float (member key json)
 ;;
 
+let rip_bool (key : string) (json : t) : bool =
+  Yojson.Basic.Util.to_bool (member key json)
+;;
+
 let rip_int_list (key : string) (json : t) : int list =
   Yojson.Basic.Util.convert_each Yojson.Basic.Util.to_int (member key json)
 ;;
 
-let overwrite_key (key : string) (value : t) (json : t) : t =
-  json
-  |> Yojson.Basic.Util.to_assoc
-  |> List.map (fun (jkey, jvalue) -> (jkey, if jkey = key then value else jvalue))
-  |> (fun x -> `Assoc x)
+let set_key (key : string) (value : t) (json : t) : t =
+  if has_key key json then
+    json
+    |> Yojson.Basic.Util.to_assoc
+    |> List.map (fun (jkey, jvalue) -> (jkey, if jkey = key then value else jvalue))
+    |> (fun x -> `Assoc x)
+  else
+    Yojson.Basic.Util.combine json (`Assoc [key, value])
+;;
+  
