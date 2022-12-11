@@ -58,3 +58,11 @@ let make (number_of_teams : int) ?(pool_count : int = 1) (bracket : Scheme.t) : 
     run = run_pool_to_bracket pool_count bracket;
   }
 ;;
+
+let get_all_pools ~number_of_teams ~pool_counts ~max_games : Scheme.t list=
+  let all_brackets = List.map Bracket.make (List.flatten (Bracket.get_all_brackets number_of_teams)) in
+  pool_counts
+  |> List.map (fun pool_count -> List.map (make number_of_teams ~pool_count) all_brackets)
+  |> List.flatten
+  |> List.filter (fun (s : Scheme.t) -> s.max_games <= max_games)
+;;

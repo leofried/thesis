@@ -108,4 +108,3 @@ let pareto_report ~(luck : float) ~(number_of_teams : int) ~(max_games : int) : 
   |> List.iter (fun (name, decay, imbalance) -> 
       print_endline @@ "(" ^ Math.to_pct ~digits:2 decay ^ ", " ^ Math.to_pct ~digits:2 imbalance ^ "): " ^ name
     )
-  
