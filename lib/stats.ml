@@ -48,4 +48,13 @@ let binom_error ?(accuracy : int = 3) ~(iters : int) ~(cats : int) () : float =
   let data = f (Math.pow 10 accuracy) in
   mean data;;
 ;;
-    
+
+let sample lst =
+ (* print_endline @@ Lists.to_string (fun (a, b) -> a ^ " -> " ^ Float.to_string b ^ "z\n") (List.sort (fun (_, a) (_, b) -> Float.compare a b) lst);
+ *) let rec take k = function
+    | (v, p) :: tl -> if k < p then v else take (k -. p) tl
+    | _ -> System.error ()
+  in
+  let tot = List.fold_left (fun acc (_, p) -> acc +. p) 0.0 lst in
+  take (Random.float tot) lst
+;;

@@ -35,12 +35,15 @@ let build_getter (params : (string * (parameter * bool)) list) : getter =
 
 let run (specs : spec) : unit =
   let rec f (specs : spec) (args : string list) (params : (string * (parameter * bool)) list) : unit =
-    match specs, args with
-    | Final prog, [] -> prog (build_getter params)
-    | Menu _, [] -> System.error ()
-    | spec, rg :: rem_args -> 
+    match args with
+    | [] -> begin match specs with
+      | Final prog -> prog (build_getter params)
+      | Menu _ -> System.error ()
+      end 
+    | rg :: rem_args -> 
+      if String.sub rg 0 1 <> "-" then System.error ();
       let arg = String.sub rg 1 (String.length rg - 1) in
-      match spec with
+      match specs with
       | Final _ -> g specs arg rem_args params
       | Menu options ->
         match List.assoc_opt arg (List.map (fun (a, b, c) -> (a, (b, c))) options) with

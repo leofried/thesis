@@ -1,0 +1,42 @@
+{
+  "4 team 1 pool format breaking to a 4 team [0, 4, 0, 0]-bracket": {
+    "iters": 10,
+    "decay": 0.10550756191089805,
+    "margin": 0.07920321607253906,
+    "seed_wins": [ 3, 1, 5, 1 ],
+    "is_fair": true,
+    "max_games": 5
+  },
+  "4 team 1 pool format breaking to a 4 team [2, 1, 1, 0]-bracket": {
+    "iters": 10,
+    "decay": 0.07626328671147217,
+    "margin": 0.0574055331835101,
+    "seed_wins": [ 4, 0, 3, 3 ],
+    "is_fair": true,
+    "max_games": 6
+  },
+  "4 team 1 pool format breaking to a 3 team [2, 1, 0]-bracket": {
+    "iters": 10,
+    "decay": 0.17087672038530904,
+    "margin": 0.09772682424645084,
+    "seed_wins": [ 5, 3, 1, 1 ],
+    "is_fair": true,
+    "max_games": 5
+  },
+  "4 team 1 pool format breaking to a 2 team [2, 0]-bracket": {
+    "iters": 10,
+    "decay": 0.2684104711975605,
+    "margin": 0.18934532089383327,
+    "seed_wins": [ 6, 3, 0, 1 ],
+    "is_fair": true,
+    "max_games": 4
+  },
+  "4 team 1 pool format breaking to a 1 team [1]-bracket": {
+    "iters": 10,
+    "decay": 0.5707558933628073,
+    "margin": 0.3228804196873946,
+    "seed_wins": [ 3, 2, 5, 0 ],
+    "is_fair": true,
+    "max_games": 3
+  }
+}
