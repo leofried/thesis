@@ -9,7 +9,7 @@ let read ~(luck : float) ~(number_of_teams : int) : t =
   if Sys.file_exists file_name then
     Yojson.Basic.from_file file_name
   else
-    `Assoc []
+    `List []
 ;;
 
 let write ~(luck : float) ~(number_of_teams : int) (json : t) : unit =
@@ -19,9 +19,9 @@ let write ~(luck : float) ~(number_of_teams : int) (json : t) : unit =
   flush channel
 ;;
 
-let member = Yojson.Basic.Util.member
+let member = Yojson.Basic.Util.member;;
 
-let to_object = Yojson.Basic.Util.to_assoc
+let to_list = Yojson.Basic.Util.to_list;;
 
 let has_key (key : string) (json : t) : bool =
   member key json <> `Null
@@ -39,7 +39,12 @@ let rip_bool (key : string) (json : t) : bool =
   Yojson.Basic.Util.to_bool (member key json)
 ;;
 
-let rip_int_list (key : string) (json : t) : int list =
+let rip_string (key : string) (json : t) : string =
+  Yojson.Basic.Util.to_string (member key json)
+;;
+
+
+let rip_list (key : string) (json : t) : int list =
   Yojson.Basic.Util.convert_each Yojson.Basic.Util.to_int (member key json)
 ;;
 

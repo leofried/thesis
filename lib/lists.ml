@@ -30,8 +30,8 @@ let to_string (stringify : 'a -> string) = function
     in "[" ^ (stringify hd) ^ f tl
 ;;
        
-let pareto (lst : (string * float * float) list) : (string * float * float) list =
-  let rec pareto (best : float) (lst : (string * float * float) list) : (string * float * float) list = 
+let pareto (lst : ('a * float * float) list) : ('a * float * float) list =
+  let rec pareto (best : float) (lst : ('a * float * float) list) : ('a * float * float) list = 
     match lst with
     | [] -> []
     | (str, one, two) :: lst ->
@@ -39,8 +39,8 @@ let pareto (lst : (string * float * float) list) : (string * float * float) list
           (str, one, two) :: pareto two lst
         else
           pareto best lst
-        in
-    lst
-    |> List.sort (fun (_, x, _) (_, y, _) -> Float.compare x y)
-    |> pareto Float.max_float
+  in
+  lst
+  |> List.sort (fun (_, x, _) (_, y, _) -> Float.compare x y)
+  |> pareto Float.max_float
 ;;

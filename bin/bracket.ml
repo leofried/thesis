@@ -1,5 +1,7 @@
 open Util;;
 
+let kind = "bracket";;
+
 let rec convert (bracket : int list) (i : int) (arr : int Tree.t array) : unit =
   match bracket with
   | [1] -> ()
@@ -47,10 +49,15 @@ let make (bracket : int list) : Scheme.t =
     name = Int.to_string number_of_teams ^ " team " ^ Lists.to_string Int.to_string bracket ^ "-bracket";
     number_of_teams;
     max_games = count_games bracket;
-    is_fair = is_fair bracket;
-    run = run_bracket (build_tree bracket)
+    is_fair = is_fair bracket number_of_teams;
+    run = run_bracket (build_tree bracket);
+    (*unrip bracket?*)
+    (*named args for .make?*)
+    json = `Assoc [(Scheme.kind_key, `String kind); ("bracket", `List (List.map (fun x -> `Int x) bracket))]
   }
 ;;
+
+let make_from_json (json : Json.t) : Scheme.t = make (Json.rip_list "bracket" json);;
 
 let rec bracket_children (bracket : int list) : int list list =
   match bracket with

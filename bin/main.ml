@@ -12,12 +12,12 @@ Args.run @@ Args.Menu [
     Args.Menu [
       "report", [], 
         Args.Menu [
-          "pareto", [], Args.Final (fun getter -> Report.print_pareto
+          "pareto", [], Args.Final (fun getter -> Report.pareto
             ~number_of_teams: (getter._int "number_of_teams")
             ~luck: (getter._float "luck")
             ~max_games: (getter._int "max_games")
           );
-          "all", [], Args.Final (fun getter -> Report.print_all
+          "all", [], Args.Final (fun getter -> Report.all
             ~number_of_teams: (getter._int "number_of_teams")
             ~luck: (getter._float "luck")
             ~max_games: (getter._int "max_games")
@@ -39,6 +39,7 @@ Args.run @@ Args.Menu [
                 ~number_of_teams: (getter._int "number_of_teams")
                 ~pool_counts: (getter._list "pool_counts")
                 ~max_games: (getter._int "max_games"))
+                (*make vs make_from_json*)
           );
           "smart", [], Args.Final (fun getter -> Simulate.sim_smart
             ~number_of_teams: (getter._int "number_of_teams")
