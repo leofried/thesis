@@ -51,13 +51,12 @@ let make (bracket : int list) : Scheme.t =
     max_games = count_games bracket;
     is_fair = is_fair bracket number_of_teams;
     run = run_bracket (build_tree bracket);
-    (*unrip bracket?*)
-    (*named args for .make?*)
-    json = `Assoc [(Scheme.kind_key, `String kind); ("bracket", `List (List.map (fun x -> `Int x) bracket))]
+    json = `Assoc [(Scheme.kind_key, `String kind); ("bracket", Json.place_list bracket)]
   }
 ;;
 
 let make_from_json (json : Json.t) : Scheme.t = make (Json.rip_list "bracket" json);;
+
 
 let rec bracket_children (bracket : int list) : int list list =
   match bracket with

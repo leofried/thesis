@@ -48,6 +48,10 @@ let rip_list (key : string) (json : t) : int list =
   Yojson.Basic.Util.convert_each Yojson.Basic.Util.to_int (member key json)
 ;;
 
+let place_list (lst : int list) : t =
+  `List (List.map (fun x -> `Int x) lst)
+;;
+
 let set_key (key : string) (value : t) (json : t) : t =
   if has_key key json then
     json

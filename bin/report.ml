@@ -4,7 +4,7 @@ open Scheme;;
 
 
 let get_pareto_list ~(luck : float) ~(number_of_teams : int) ~(max_games : int) : (Scheme.t * float * float) list=
-  Data.get_data_list ~luck ~number_of_teams ~max_games true
+  Data.read_data_list ~luck ~number_of_teams ~max_games true
   |> List.map (fun data -> data.scheme, data.decay, Data.calculate_imbalance data true)
   |> Lists.pareto
 ;;
@@ -36,6 +36,6 @@ let all ~(luck : float) ~(number_of_teams : int) ~(max_games : int) : unit =
     )
     (List.sort
       (fun d1 d2 -> Float.compare d2.decay d1.decay)
-      (Data.get_data_list ~luck ~number_of_teams ~max_games true)
+      (Data.read_data_list ~luck ~number_of_teams ~max_games true)
     )
 ;;

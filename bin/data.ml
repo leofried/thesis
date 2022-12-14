@@ -8,10 +8,6 @@ type t = {
   seed_wins : int list;
 };;
 
-(*speed up? build scheme every time?
-merge with json.ml? (read/write etc) + folders
-prevents circular pool play stuff*)
-
 let json_to_scheme (json : Json.t) : Scheme.t =
   let kind = Json.rip_string "kind" json in
   let rec f = function
@@ -38,7 +34,7 @@ let data_to_json (data : t) : Json.t =
     ("iters", `Int data.iters);
     ("decay", `Float data.decay);
     ("margin", `Float data.margin);
-    ("seed_wins", `List (List.map (fun x -> `Int x) data.seed_wins));
+    ("seed_wins", Json.place_list data.seed_wins);
   ]
 ;;
 
@@ -46,7 +42,7 @@ let calculate_imbalance (data : t) (fair_to_zero : bool) : float =
   if fair_to_zero && data.scheme.is_fair then 0. else Stats.normed_stdev (List.map Int.to_float data.seed_wins)
 ;;
 
-let get_data_list ~(luck : float) ~(number_of_teams : int) ?(max_games : int = Int.max_int) (throw : bool) : t list =
+let read_data_list ~(luck : float) ~(number_of_teams : int) ?(max_games : int = Int.max_int) (throw : bool) : t list =
   let lst = Json.read ~luck ~number_of_teams
     |> Json.to_list
     |> List.map json_to_data
@@ -59,3 +55,9 @@ let get_data_list ~(luck : float) ~(number_of_teams : int) ?(max_games : int = I
     lst
 ;;
 
+let write_data_list ~(luck : float) ~(number_of_teams : int) (data : t list) : unit =
+  data
+  |> List.map data_to_json
+  |> (fun lst -> `List lst)
+  |> Json.write ~luck ~number_of_teams
+;;

@@ -64,7 +64,6 @@ let make ~(number_of_teams : int) ~(pool_count : int) (bracket : int list) : Sch
   }
 ;;
 
-(*has to now about bracket internals*)
 let make_from_json (json : Json.t) : Scheme.t = make
   ~number_of_teams: (Json.rip_int "number_of_teams" json)
   ~pool_count: (Json.rip_int "pool_count" json)
