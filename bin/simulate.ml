@@ -2,8 +2,6 @@ open Util;;
 open Data;;
 open Scheme;;
 
-(*[24964130 TOTAL SIMS]*)
-
 let rec get_best_team_skill (teams : Team.t list) : float =
   match teams with
   | [] -> System.error ()
