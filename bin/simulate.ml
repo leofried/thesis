@@ -1,6 +1,4 @@
 open Util;;
-open Data;;
-open Scheme;;
 
 let rec get_best_team_skill (teams : Team.t list) : float =
   match teams with
@@ -39,13 +37,10 @@ let combine_data (new_data : Data.t) (old_data : Data.t) : Data.t =
     scheme = new_data.scheme;
   }
 
-let run_single_scheme ~(luck : float) ~(iters : int) (lst : Data.t list) (scheme : Scheme.t) : Data.t list =
-  if iters < 2 then System.error ();
-  Team.set_luck luck;
-
+let sim_scheme ~(iters : int) (lst : Data.t list) (scheme : Scheme.t) : Data.t list =
   let new_data = get_data ~iters scheme in
   let found, new_lst = List.fold_left_map
-    (fun found old_data ->
+    (fun found (old_data : Data.t) ->
       if old_data.scheme.json = scheme.json then
         true, combine_data new_data old_data
       else 
@@ -59,17 +54,30 @@ let run_single_scheme ~(luck : float) ~(iters : int) (lst : Data.t list) (scheme
 
 
 let sim_schemes ~(luck : float) ~(iters : int) (schemes : Scheme.t list) : unit =
+  if iters < 2 then System.error ();
+  Team.set_luck luck;
+  
   let number_of_teams = ((List.hd schemes).number_of_teams) in
-  let n = ref 0 in
-  let data = List.fold_left 
-    (fun data scheme ->
-      Math.inc_ref n;
-      print_endline @@ (Int.to_string !n) ^ "/" ^ Int.to_string (List.length schemes) ^ ": " ^ scheme.name;
-      run_single_scheme ~luck ~iters data scheme
+  let count = ref 0 in
+  let total = (List.length schemes) in
+
+  List.fold_left 
+    (fun data (scheme : Scheme.t) ->
+      if scheme.number_of_teams <> number_of_teams then System.error();
+      Math.inc_ref count;
+      print_endline @@ (Int.to_string !count) ^ "/" ^ Int.to_string total ^ ": " ^ scheme.name;
+      sim_scheme ~iters data scheme
     )
     (Data.read_data_list ~luck ~number_of_teams false)
     schemes
-  in Data.write_data_list ~luck ~number_of_teams data 
+  |> Data.write_data_list ~luck ~number_of_teams  
+;;
+
+let sim_specs ~(name : string) ~(luck : float) ~(iters : int) : unit =
+  Json.read_specs ~name
+  |> Json.to_list
+  |> List.map Data.json_to_scheme
+  |> sim_schemes ~luck ~iters
 ;;
 
 let rec sim_smart  ~(luck : float) ~(number_of_teams : int) ~(max_games : int) ~(iters : int) ~(batch_size : int) : unit =
@@ -84,7 +92,7 @@ let rec sim_smart  ~(luck : float) ~(number_of_teams : int) ~(max_games : int) ~
   in
 
   let data = Data.read_data_list ~luck ~number_of_teams ~max_games true in
-  let total = List.fold_left (fun x d -> x + d.iters) 0 data in
+  let total = List.fold_left (fun x (d : Data.t) -> x + d.iters) 0 data in
   
   data
   |> List.map (p_helper pareto_list) 

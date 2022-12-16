@@ -1,20 +1,41 @@
 type t = Yojson.Basic.t;;
 
-let json_file_name ~(number_of_teams : int) ~(luck : float) : string =
-  "analysis/teams_" ^ Int.to_string number_of_teams ^ "_luck_" ^ Float.to_string (Float.round (luck *. 100.)) ^ "json"
+let data_file_name ~(number_of_teams : int) ~(luck : float) : string =
+  "analysis/data/teams_" ^ Int.to_string number_of_teams ^ "_luck_" ^ Float.to_string (Float.round (luck *. 100.)) ^ "json"
 ;;
 
-let read ~(luck : float) ~(number_of_teams : int) : t =
-  let file_name = json_file_name ~luck ~number_of_teams in
+let read_analysis ~(luck : float) ~(number_of_teams : int) : t =
+  let file_name = data_file_name ~luck ~number_of_teams in
   if Sys.file_exists file_name then
     Yojson.Basic.from_file file_name
   else
     `List []
 ;;
 
-let write ~(luck : float) ~(number_of_teams : int) (json : t) : unit =
+let write_analysis ~(luck : float) ~(number_of_teams : int) (json : t) : unit =
   if not @@ Sys.file_exists "analysis/" then Sys.mkdir "analysis/" 0;
-  let channel = open_out (json_file_name ~luck ~number_of_teams) in
+  if not @@ Sys.file_exists "analysis/data/" then Sys.mkdir "analysis/data/" 0;
+  let channel = open_out (data_file_name ~luck ~number_of_teams) in
+  Yojson.Basic.pretty_to_channel channel json;
+  flush channel
+;;
+
+let specs_file_name ~(name : string) : string =
+  "analysis/specs/" ^ name ^ ".json"
+;;
+
+let read_specs ~(name : string) : t =
+  let file_name = specs_file_name ~name in
+  if Sys.file_exists file_name then
+    Yojson.Basic.from_file file_name
+  else
+    let () = print_endline "No such formats specified." in System.error ()
+;;
+
+let write_specs ~(name : string) (json : t) : unit =
+  if not @@ Sys.file_exists "analysis/" then Sys.mkdir "analysis/" 0;
+  if not @@ Sys.file_exists "analysis/specs/" then Sys.mkdir "analysis/specs/" 0;
+  let channel = open_out (specs_file_name ~name ) in
   Yojson.Basic.pretty_to_channel channel json;
   flush channel
 ;;

@@ -43,7 +43,7 @@ let calculate_imbalance (data : t) (fair_to_zero : bool) : float =
 ;;
 
 let read_data_list ~(luck : float) ~(number_of_teams : int) ?(max_games : int = Int.max_int) (throw : bool) : t list =
-  let lst = Json.read ~luck ~number_of_teams
+  let lst = Json.read_analysis ~luck ~number_of_teams
     |> Json.to_list
     |> List.map json_to_data
     |> List.filter (fun data -> data.scheme.max_games <= max_games)
@@ -59,5 +59,5 @@ let write_data_list ~(luck : float) ~(number_of_teams : int) (data : t list) : u
   data
   |> List.map data_to_json
   |> (fun lst -> `List lst)
-  |> Json.write ~luck ~number_of_teams
+  |> Json.write_analysis ~luck ~number_of_teams
 ;;

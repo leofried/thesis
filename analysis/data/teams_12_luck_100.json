@@ -1,0 +1,14 @@
+[
+  {
+    "scheme": {
+      "kind": "pool_play",
+      "number_of_teams": 12,
+      "pool_count": 12,
+      "bracket": { "kind": "bracket", "bracket": [ 1 ] }
+    },
+    "iters": 500,
+    "decay": 1.6370815656846174,
+    "margin": 0.046994227018623436,
+    "seed_wins": [ 500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+  }
+]

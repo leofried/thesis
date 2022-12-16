@@ -1,12 +1,14 @@
 type getter = {
   _int : string -> int;
   _float : string -> float;
+  _string : string -> string;
   _list : string -> int list;
 }
 
 type parameter =
   | Int of int option
   | Float of float option
+  | String of string option
   | List of int list option
 
 type spec =
@@ -25,6 +27,11 @@ let build_getter (params : (string * (parameter * bool)) list) : getter =
       | Float (Some x) -> x
       | _ -> System.error ()
     );
+    _string = (fun (arg : string) ->
+      match fst (List.assoc arg params) with
+      | String (Some x) -> x
+      | _ -> System.error ()
+    );
     _list = (fun (arg : string) ->
       match fst (List.assoc arg params) with
       | List (Some x) -> x
@@ -41,7 +48,7 @@ let run (specs : spec) : unit =
       | Menu _ -> System.error ()
       end 
     | rg :: rem_args -> 
-      if String.sub rg 0 1 <> "-" then System.error ();
+      if rg.[0] <> '-' then  System.error ();
       let arg = String.sub rg 1 (String.length rg - 1) in
       match specs with
       | Final _ -> g specs arg rem_args params
@@ -61,6 +68,11 @@ let run (specs : spec) : unit =
       )
       | Float _ -> f specs (List.tl args) (
         (arg, (Float (Some (float_of_string (List.hd args))), true)) ::
+        (List.remove_assoc arg params)
+      )
+      | String _ -> f specs (List.tl args) (
+        if (List.hd args).[0] = '-' then System.error() else
+        (arg, (String (Some (List.hd args)), true)) ::
         (List.remove_assoc arg params)
       )
       | List _ -> h specs arg [] args (List.remove_assoc arg params)
