@@ -13,7 +13,7 @@ let json_to_scheme (json : Json.t) : Scheme.t =
   let rec f = function
     | [] -> System.error ()
     | hd :: tl ->
-      let module Mod = (val hd : Scheme.kind) in
+      let module Mod = (val hd : Scheme.KIND) in
       if Mod.kind = kind then Mod.make_from_json json else f tl
  in f [(module Round_robin); (module Bracket); (module Pool_play)]
 ;;

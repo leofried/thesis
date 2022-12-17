@@ -62,7 +62,7 @@ let make ?(cycles = 1) (number_of_teams : int): Scheme.t =
     max_games = number_of_teams - 1;
     is_fair = true;
     run = run_round_robin cycles;
-    json = `Assoc [(Scheme.kind_key, `String kind); ("cycles", `Int cycles); ("number_of_teams", `Int number_of_teams)]
+    json = `Assoc [(Scheme.kind, `String kind); ("cycles", `Int cycles); ("number_of_teams", `Int number_of_teams)]
   }
 ;;
 

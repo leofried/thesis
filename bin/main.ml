@@ -1,7 +1,7 @@
 open Util;;
 Rand.set_seed () ;;
 
-Args.run @@ Args.Menu [
+let specs = Args.Menu [
   "", [],
     Args.Menu [
       "report",
@@ -75,3 +75,5 @@ Args.run @@ Args.Menu [
         ];
     ];
 ];;
+
+let f, x = Args.parse specs in f x;;

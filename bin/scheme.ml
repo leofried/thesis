@@ -9,9 +9,9 @@ type t = {
   json : Json.t;
 };;
 
-let kind_key = "kind";;
+let kind = "kind";;
 
-module type kind = sig
+module type KIND = sig
   val kind : string
   val make_from_json : Json.t -> t
 end

@@ -5,9 +5,9 @@ let kind = "bracket";;
 let rec convert (bracket : int list) (i : int) (arr : int Tree.t array) : unit =
   match bracket with
   | [1] -> ()
-  | [] | [_] -> System.error ()
+  | [] | [_] -> invalid_arg "Bracket.convert"
   | 0 :: tl -> convert tl i arr
-  | x :: _ when x < 0 -> System.error ()
+  | x :: _ when x < 0 -> invalid_arg "Bracket.convert"
   | a :: b :: tl -> 
     let j = i - a + 1 in
     arr.(j) <- Branch (arr.(j), arr.(i));
@@ -51,7 +51,7 @@ let make (bracket : int list) : Scheme.t =
     max_games = count_games bracket;
     is_fair = is_fair bracket number_of_teams;
     run = run_bracket (build_tree bracket);
-    json = `Assoc [(Scheme.kind_key, `String kind); ("bracket", Json.place_list bracket)]
+    json = `Assoc [(Scheme.kind, `String kind); ("bracket", Json.place_list bracket)]
   }
 ;;
 

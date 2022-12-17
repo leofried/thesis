@@ -60,7 +60,7 @@ let make ~(number_of_teams : int) ~(pool_count : int) (bracket : int list) : Sch
     max_games = Math.divide_up number_of_teams pool_count + bracket_scheme.max_games - 1;
     is_fair = number_of_teams mod pool_count = 0 && Bracket.is_fair bracket pool_count;
     run = run_pool_to_bracket pool_count bracket_scheme;
-    json = `Assoc [(Scheme.kind_key, `String kind); ("number_of_teams", `Int number_of_teams); ("pool_count", `Int pool_count); ("bracket", bracket_scheme.json); ]
+    json = `Assoc [(Scheme.kind, `String kind); ("number_of_teams", `Int number_of_teams); ("pool_count", `Int pool_count); ("bracket", bracket_scheme.json); ]
   }
 ;;
 

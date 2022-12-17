@@ -52,8 +52,8 @@ let binom_error ?(accuracy : int = 3) ~(iters : int) ~(cats : int) () : float =
 
 let sample (n : int) (lst : ('a * float) list) : 'a list =
   let rec take k = function
+    | [] -> assert false
     | (v, p) :: tl -> if k < p then v else take (k -. p) tl
-    | _ -> System.error ()
   in let rec f n lst =
     match n with
     | 0 -> []
