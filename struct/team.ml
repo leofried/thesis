@@ -1,4 +1,3 @@
-
 type t = {name : string; skill : float};;
 
 let team_index = ref 0;;
@@ -25,6 +24,4 @@ let play_game (t1 : t) (t2 : t) : t * t =
 ;;
 
 let get_skill (t : t) : float = t.skill;;
-
-let compare (t1: t) (t2: t) : int = String.compare t1.name t2.name;;
 

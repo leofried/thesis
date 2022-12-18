@@ -3,7 +3,7 @@ open Struct;;
 
 let rec get_best_team_skill (teams : Team.t list) : float =
   match teams with
-  | [] -> System.error ()
+  | [] -> assert false
   | [t] -> Team.get_skill t
   | hd :: tl -> Float.max (Team.get_skill hd) (get_best_team_skill tl)
 ;;
@@ -55,7 +55,7 @@ let sim_scheme ~(iters : int) (lst : Data.t list) (scheme : Scheme.t) : Data.t l
 
 
 let sim_schemes ~(luck : float) ~(iters : int) (schemes : Scheme.t list) : unit =
-  if iters < 2 then System.error ();
+  if iters < 2 then assert false;
   Team.set_luck luck;
   
   let number_of_teams = ((List.hd schemes).number_of_teams) in
@@ -64,35 +64,32 @@ let sim_schemes ~(luck : float) ~(iters : int) (schemes : Scheme.t list) : unit 
 
   List.fold_left 
     (fun data (scheme : Scheme.t) ->
-      if scheme.number_of_teams <> number_of_teams then System.error();
+      if scheme.number_of_teams <> number_of_teams then assert false;
       Math.inc_ref count;
       print_endline @@ (Int.to_string !count) ^ "/" ^ Int.to_string total ^ ": " ^ scheme.name;
       sim_scheme ~iters data scheme
     )
-    (Data.read_data_list ~luck ~number_of_teams false)
+    (Data.read ~luck ~number_of_teams false)
     schemes
-  |> Data.write_data_list ~luck ~number_of_teams  
+  |> Data.write ~luck ~number_of_teams  
 ;;
 
-let sim_specs ~(name : string) ~(luck : float) ~(iters : int) : unit =
-  Json.read_specs ~name
-  |> Json.to_list
-  |> List.map Data.json_to_scheme
-  |> sim_schemes ~luck ~iters
+let sim_specs ~(file_name : string) ~(luck : float) ~(iters : int) : unit =
+  sim_schemes ~luck ~iters (Specs.read file_name true)
 ;;
 
 let rec sim_smart  ~(luck : float) ~(number_of_teams : int) ~(max_games : int) ~(iters : int) ~(batch_size : int) : unit =
   let pareto_list = Report.get_pareto_list ~luck ~number_of_teams ~max_games in
 
   let rec p_helper (lst : (Scheme.t * float * float) list) (data : Data.t) : Scheme.t * float = 
-    let imb = Data.calculate_imbalance data true in
+    let imb = Report.calculate_imbalance data true in
     match lst with
-    | [] -> System.error ()
+    | [] -> assert false
     | (_, c, d) :: _ when d <= imb -> data.scheme, 1. /. Float.pow 2. ((data.decay -. c) /. data.margin)
     | _ :: tl -> p_helper tl data
   in
 
-  let data = Data.read_data_list ~luck ~number_of_teams ~max_games true in
+  let data = Data.read ~luck ~number_of_teams ~max_games true in
   let total = List.fold_left (fun x (d : Data.t) -> x + d.iters) 0 data in
   
   data

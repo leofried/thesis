@@ -55,7 +55,7 @@ let run_round_robin (cycles : int) (teams : Team.t list) : Team.t list =
   |> List.map (List.nth teams)
 ;;
 
-let make ?(cycles = 1) (number_of_teams : int): Scheme.t =
+let make ~(cycles : int) ~(number_of_teams : int): Scheme.t =
   {
     name = Int.to_string number_of_teams ^ " team " ^ Int.to_string cycles ^ "-Round Robin";
     number_of_teams;
@@ -67,5 +67,5 @@ let make ?(cycles = 1) (number_of_teams : int): Scheme.t =
 ;;
 
 let make_from_json (json : Json.t) : Scheme.t = make
-  ~cycles:(Json.rip_int "cycles" json)
-  (Json.rip_int "number_of_teams" json)
+  ~cycles: (Json.rip Json.to_int "cycles" json)
+  ~number_of_teams: (Json.rip Json.to_int "number_of_teams" json)

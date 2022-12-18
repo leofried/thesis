@@ -43,7 +43,7 @@ let rec is_fair (bracket : int list) (seed_size : int) : bool =
   | hd :: tl -> if hd mod seed_size = 0 then is_fair tl seed_size else false
 ;;
 
-let make (bracket : int list) : Scheme.t =
+let make ~(bracket : int list) : Scheme.t =
   let number_of_teams = List.fold_left ( + ) 0 bracket in
   {
     name = Int.to_string number_of_teams ^ " team " ^ Lists.to_string Int.to_string bracket ^ "-bracket";
@@ -51,11 +51,11 @@ let make (bracket : int list) : Scheme.t =
     max_games = count_games bracket;
     is_fair = is_fair bracket number_of_teams;
     run = run_bracket (build_tree bracket);
-    json = `Assoc [(Scheme.kind, `String kind); ("bracket", Json.place_list bracket)]
+    json = `Assoc [(Scheme.kind, `String kind); ("bracket", Json.place_int_list bracket)]
   }
 ;;
 
-let make_from_json (json : Json.t) : Scheme.t = make (Json.rip_list "bracket" json);;
+let make_from_json (json : Json.t) : Scheme.t = make ~bracket:(Json.rip_list Json.to_int "bracket" json);;
 
 
 let rec bracket_children (bracket : int list) : int list list =

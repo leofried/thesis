@@ -1,4 +1,5 @@
 type getter = {
+  _bool : string -> bool;
   _int : string -> int;
   _float : string -> float;
   _string : string -> string;
@@ -6,6 +7,7 @@ type getter = {
 };;
 
 type parameter =
+  | Bool of bool option
   | Int of int option
   | Float of float option
   | String of string option
@@ -28,6 +30,11 @@ let build_getter (params : (string * (parameter * bool)) list) : getter =
       fail ("Argument -" ^ s ^ " was not defined.")
     ) params;
   {
+    _bool = (fun (arg : string) ->
+      match fst (List.assoc arg params) with
+      | Bool (Some x) -> x
+      | _ -> fail_prog ("argument -" ^ arg ^ "does not have type bool.")
+    );
     _int = (fun (arg : string) ->
       match fst (List.assoc arg params) with
       | Int (Some x) -> x
@@ -81,6 +88,13 @@ let parse (specs : spec) : (getter -> unit) * getter =
       if args = [] then fail ("No value provided to argument -" ^ arg ^ ".");
       let value = List.hd args in
       match param with
+      | Bool _ -> 
+        begin match bool_of_string_opt value with
+        | None -> fail ("Argument -" ^ arg ^ " has type bool. Received: '" ^ value ^ "'.")
+        | Some x -> f specs (List.tl args) (
+          (arg, (Bool (Some x), true)) ::
+          (List.remove_assoc arg params)
+        ) end
       | Int _ -> 
         begin match int_of_string_opt value with
         | None -> fail ("Argument -" ^ arg ^ " has type int. Received: '" ^ value ^ "'.")

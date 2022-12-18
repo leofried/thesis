@@ -33,10 +33,10 @@ let specs = Args.Menu [
         Args.Menu [
           "specs",
             [
-              "name", String None;
+              "file_name", String None;
             ],
             Args.Final (fun getter -> Simulate.sim_specs
-              ~name: (getter._string "name")
+              ~file_name: (getter._string "file_name")
               ~luck: (getter._float "luck")
               ~iters: (Math.pow 10 (getter._int "iters_pow"))
             );
@@ -56,27 +56,28 @@ let specs = Args.Menu [
         ];
       "enumerate",
         [
-          "number_of_teams", Int None;
-          "name", String None
+          "file_name", String None;
+          "overwrite", Bool (Some true);
         ],
         Args.Menu [
           "pool_play",
             [
+              "number_of_teams", Int None;
               "max_games", Int (Some Int.max_int); 
               "pool_counts", List None;
             ],
-            Args.Final (fun getter -> 
-              (Pool_play.get_all_pools
+            Args.Final (fun getter -> Specs.write
+              ~file_name: (getter._string "file_name")
+              ~overwrite: (getter._bool "overwrite")
+              ~schemes: (Pool_play.get_all_pools
                 ~number_of_teams: (getter._int "number_of_teams")
                 ~pool_counts: (getter._list "pool_counts")
                 ~max_games: (getter._int "max_games")
               ) 
-              |> List.map (fun (x : Scheme.t) -> x.json)
-              |> (fun x -> print_endline (Int.to_string (List.length x) ^ " brackets constructed. May have overwritten."); `List x)
-              |> Json.write_specs ~name: (getter._string "name")
             );
         ];
     ];
 ];;
 
 let f, x = Args.parse specs in f x;;
+
