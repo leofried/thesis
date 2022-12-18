@@ -1,4 +1,5 @@
 open Util;;
+open Struct;;
 
 type t = {
   scheme : Scheme.t;

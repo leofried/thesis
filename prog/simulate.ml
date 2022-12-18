@@ -1,4 +1,5 @@
 open Util;;
+open Struct;;
 
 let rec get_best_team_skill (teams : Team.t list) : float =
   match teams with

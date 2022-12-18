@@ -1,4 +1,7 @@
 open Util;;
+open Struct;;
+open Prog;;
+
 Rand.set_seed () ;;
 
 let specs = Args.Menu [

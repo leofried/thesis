@@ -1,4 +1,5 @@
 open Util;;
+open Struct;;
 
 
 let get_pareto_list ~(luck : float) ~(number_of_teams : int) ~(max_games : int) : (Scheme.t * float * float) list=
