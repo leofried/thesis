@@ -36,7 +36,7 @@ let all ~(luck : float) ~(number_of_teams : int) ~(max_games : int) : unit =
       Math.to_pct ~digits:2 (calculate_imbalance data false) ^
       " [" ^
       Bool.to_string data.scheme.is_fair ^
-      "], " ^
+      ", " ^
       Math.to_pct ~digits:2 (Stats.binom_error_formula ~iters:data.iters ~cats:data.scheme.number_of_teams) ^
       "]) in " ^
       Int.to_string data.iters ^

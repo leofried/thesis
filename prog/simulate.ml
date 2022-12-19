@@ -54,8 +54,8 @@ let sim_scheme ~(iters : int) (lst : Data.t list) (scheme : Scheme.t) : Data.t l
 ;;
 
 
-let sim_schemes ~(luck : float) ~(iters : int) (schemes : Scheme.t list) : unit =
-  if iters < 2 then assert false;
+let sim_schemes ~(luck : float) ~(iters_pow : int) (schemes : Scheme.t list) : unit =
+  if iters_pow < 1 then assert false;
   Team.set_luck luck;
   
   let number_of_teams = ((List.hd schemes).number_of_teams) in
@@ -67,18 +67,14 @@ let sim_schemes ~(luck : float) ~(iters : int) (schemes : Scheme.t list) : unit 
       if scheme.number_of_teams <> number_of_teams then assert false;
       Math.inc_ref count;
       print_endline @@ (Int.to_string !count) ^ "/" ^ Int.to_string total ^ ": " ^ scheme.name;
-      sim_scheme ~iters data scheme
+      sim_scheme ~iters:(Math.pow 10 iters_pow) data scheme
     )
     (Data.read ~luck ~number_of_teams false)
     schemes
   |> Data.write ~luck ~number_of_teams  
 ;;
 
-let sim_specs ~(file_name : string) ~(luck : float) ~(iters : int) : unit =
-  sim_schemes ~luck ~iters (Specs.read file_name true)
-;;
-
-let rec sim_smart  ~(luck : float) ~(number_of_teams : int) ~(max_games : int) ~(iters : int) ~(batch_size : int) : unit =
+let rec sim_smart  ~(luck : float) ~(number_of_teams : int) ~(max_games : int) ~(iters_pow : int) ~(batch_size : int) : unit =
   let pareto_list = Report.get_pareto_list ~luck ~number_of_teams ~max_games in
 
   let rec p_helper (lst : (Scheme.t * float * float) list) (data : Data.t) : Scheme.t * float = 
@@ -95,9 +91,9 @@ let rec sim_smart  ~(luck : float) ~(number_of_teams : int) ~(max_games : int) ~
   data
   |> List.map (p_helper pareto_list) 
   |> Stats.sample batch_size
-  |> sim_schemes ~luck ~iters;
+  |> sim_schemes ~luck ~iters_pow;
 
-  print_endline @@ "Total sims = " ^ Int.to_string (total + iters * batch_size);
+  print_endline @@ "Total sims = " ^ Int.to_string (total + (Math.pow 10 iters_pow) * batch_size);
 
-  sim_smart ~luck ~number_of_teams ~max_games ~iters ~batch_size
+  sim_smart ~luck ~number_of_teams ~max_games ~iters_pow ~batch_size
 ;;

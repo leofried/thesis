@@ -4,7 +4,21 @@ open Prog;;
 
 Rand.set_seed () ;;
 
-let specs = Args.Menu [
+let specs_menu = [
+  "pool_play",
+    [
+      "max_games", Args.Int (Some Int.max_int); 
+      "pool_counts", Args.List None;
+    ],
+    (fun (getter : Args.getter) -> Pool_play.get_all_pools
+      ~number_of_teams: (getter._int "number_of_teams")
+      ~pool_counts: (getter._list "pool_counts")
+      ~max_games: (getter._int "max_games")
+    );
+]
+
+
+let args = Args.Menu [
   "", [],
     Args.Menu [
       "report",
@@ -35,10 +49,10 @@ let specs = Args.Menu [
             [
               "file_name", String None;
             ],
-            Args.Final (fun getter -> Simulate.sim_specs
-              ~file_name: (getter._string "file_name")
+            Args.Final (fun getter -> Simulate.sim_schemes
               ~luck: (getter._float "luck")
-              ~iters: (Math.pow 10 (getter._int "iters_pow"))
+              ~iters_pow: (getter._int "iters_pow")
+              (Specs.read (getter._string "file_name") true)
             );
           "smart",
             [
@@ -50,33 +64,48 @@ let specs = Args.Menu [
               ~number_of_teams: (getter._int "number_of_teams")
               ~luck: (getter._float "luck")
               ~max_games: (getter._int "max_games")
-              ~iters: (Math.pow 10 (getter._int "iters_pow"))
+              ~iters_pow: (getter._int "iters_pow")
               ~batch_size: (getter._int "batch_size")
             )
         ];
       "enumerate",
         [
+          "number_of_teams", Int None;
           "file_name", String None;
           "overwrite", Bool (Some true);
         ],
-        Args.Menu [
-          "pool_play",
-            [
-              "number_of_teams", Int None;
-              "max_games", Int (Some Int.max_int); 
-              "pool_counts", List None;
-            ],
+        Args.Menu (
+          List.map (fun (name, args, f) -> name, args,
             Args.Final (fun getter -> Specs.write
               ~file_name: (getter._string "file_name")
               ~overwrite: (getter._bool "overwrite")
-              ~schemes: (Pool_play.get_all_pools
+              ~schemes: (f getter)
+            )
+          ) specs_menu
+        );
+      "pipeline",
+        [
+          "number_of_teams", Int None;
+          "luck", Float (Some 1.); 
+        ],
+        Args.Menu (
+          List.map (fun (name, args, f) -> name, args,
+            Args.Final (fun getter ->
+              let schemes = f getter in
+              Simulate.sim_schemes
+                ~luck: (getter._float "luck")
+                ~iters_pow: 2
+                schemes;
+              Simulate.sim_smart
                 ~number_of_teams: (getter._int "number_of_teams")
-                ~pool_counts: (getter._list "pool_counts")
+                ~luck: (getter._float "luck")
                 ~max_games: (getter._int "max_games")
-              ) 
-            );
-        ];
+                ~iters_pow: 2
+                ~batch_size: 500
+            )
+          ) specs_menu
+        );
     ];
 ];;
 
-let f, x = Args.parse specs in f x;;
+let f, x = Args.parse args in f x;;
