@@ -80,4 +80,3 @@ let specs = Args.Menu [
 ];;
 
 let f, x = Args.parse specs in f x;;
-

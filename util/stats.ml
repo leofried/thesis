@@ -35,7 +35,7 @@ let stderr_two (n1, mean1, stderr1 : int * float * float) (n2, mean2, stderr2 : 
   (sqrt (m1 +. m2))
 ;;
 
-let binom_error ?(accuracy : int = 3) ~(iters : int) ~(cats : int) () : float = 
+let binom_error_monte_carlo ~(accuracy : int) ~(iters : int) ~(cats : int) : float = 
   let rec f = function
     | 0 -> []
     | x ->
@@ -48,6 +48,8 @@ let binom_error ?(accuracy : int = 3) ~(iters : int) ~(cats : int) () : float =
   let data = f (Math.pow 10 accuracy) in
   mean data;;
 ;;
+
+let binom_error_formula ~(iters : int) ~(cats : int) : float = 1. /. Math.sqrt_int (iters * cats);;
 
 
 let sample (n : int) (lst : ('a * float) list) : 'a list =

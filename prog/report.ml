@@ -2,7 +2,12 @@ open Util;;
 open Struct;;
 
 let calculate_imbalance (data : Data.t) (fair_to_zero : bool) : float =
-  if fair_to_zero && data.scheme.is_fair then 0. else Stats.normed_stdev (List.map Int.to_float data.seed_wins)
+  let raw = Stats.normed_stdev (List.map Int.to_float data.seed_wins) in
+  if fair_to_zero then
+    if data.scheme.is_fair then 0.
+    else max 0.0001 (raw -. (Stats.binom_error_formula ~iters:data.iters ~cats:data.scheme.number_of_teams))
+  else
+    max 0.0001 raw
 ;;
 
 let get_pareto_list ~(luck : float) ~(number_of_teams : int) ~(max_games : int) : (Scheme.t * float * float) list=
@@ -21,7 +26,7 @@ let pareto ~(luck : float) ~(number_of_teams : int) ~(max_games : int) : unit =
 
 let all ~(luck : float) ~(number_of_teams : int) ~(max_games : int) : unit =
   List.iter
-    (fun (data : Data.t) -> 
+    (fun (data : Data.t) ->
       print_endline @@
       "(" ^ 
       Math.to_pct ~digits:2 data.decay ^
@@ -31,6 +36,8 @@ let all ~(luck : float) ~(number_of_teams : int) ~(max_games : int) : unit =
       Math.to_pct ~digits:2 (calculate_imbalance data false) ^
       " [" ^
       Bool.to_string data.scheme.is_fair ^
+      "], " ^
+      Math.to_pct ~digits:2 (Stats.binom_error_formula ~iters:data.iters ~cats:data.scheme.number_of_teams) ^
       "]) in " ^
       Int.to_string data.iters ^
       " iters : " ^
