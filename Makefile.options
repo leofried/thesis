@@ -1,16 +1,16 @@
 
 #----------------------------------------------------------------------
-#           SETTINGS FOR THE ELIOM PROJECT graffiti
+#           SETTINGS FOR THE ELIOM PROJECT main
 #----------------------------------------------------------------------
 
-PROJECT_NAME := graffiti
+PROJECT_NAME := tourney_tracker
 
 # Source files for the server
-SERVER_FILES := $(wildcard *.eliomi *.eliom)
+SERVER_FILES := $(wildcard *.eliomi *.eliom *.ml)
 # Source files for the client
-CLIENT_FILES := $(wildcard *.eliomi *.eliom)
+CLIENT_FILES := $(wildcard *.eliomi *.eliom *.ml)
 
-# OCamlfind packages for the server
+# OCamlfind packages for t\phe server
 SERVER_PACKAGES := lwt_ppx js_of_ocaml-ppx_deriving_json
 # OCamlfind packages for the client
 CLIENT_PACKAGES := lwt_ppx js_of_ocaml-ppx js_of_ocaml-ppx_deriving_json
@@ -44,7 +44,7 @@ PREFIX := /usr/local/
 # Local folder for make test.* (must end with /)
 # Do not add files manually in this directory.
 # It is just here to test your installation before installing in /
-TEST_PREFIX := local/
+TEST_PREFIX := _local/
 
 # The installation tree (relative to $(PREFIX) when
 # installing/running or $(TEST_PREFIX) when testing).
