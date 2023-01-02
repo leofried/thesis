@@ -1,2 +1,6 @@
-_build/
-_opam/
+_client/
+_deps/
+_server/
+_local/
+.depend
+__old/

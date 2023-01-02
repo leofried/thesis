@@ -1,5 +1,0 @@
-(executable
- (public_name tourney_format)
- (name main)
- (libraries util struct prog)
-)
