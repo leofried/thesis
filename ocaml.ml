@@ -104,8 +104,7 @@ module Stats = struct
   let stdev (lst : float list) : float =
     let mean = mean lst in
     lst
-    |> List.map (fun x -> (x -. mean) ** 2.0)
-    |> List.fold_left Float.add 0.
+    |> List.fold_left (fun sum x -> sum +. (x -. mean) ** 2.0) 0.
     |> Fun.flip Math.divide_float_int (List.length lst - 1)
     |> sqrt
   ;;
@@ -383,13 +382,10 @@ module Data = struct
     seed_wins : int list;
   };;
 
-  let calculate_imbalance (data : t) (fair_to_zero : bool) : float =
+  let calculate_imbalance (data : t) : float =
     let raw = Stats.normed_stdev (List.map Int.to_float data.seed_wins) in
-    if fair_to_zero then
       if data.scheme.is_fair then 0.
       else max 0.0001 (raw -. (Stats.binom_error_formula ~iters:data.iters ~cats:data.scheme.number_of_teams))
-    else
-      max 0.0001 raw
   ;;
 end
 
@@ -409,6 +405,7 @@ end = struct
     let winner = List.hd @@ scheme.run teams in
     let decay = get_best_team_skill teams -. Team.get_skill winner in
     Math.inc_array seed_wins (Lists.find winner teams);
+    print_endline @@ string_of_int iters_left;
     run_sims scheme (iters_left - 1) (decay :: decays) seed_wins
   ;;
 
@@ -431,7 +428,7 @@ let f ?(luck : float = 1.) ~(iters : int) (scheme : Scheme.t) =
   [
     "Hyperparameters: iters = " ^ string_of_int iters ^ ", luck = " ^ string_of_float luck;
     "Format: " ^ scheme.Scheme.name ^ ".";
-    "Decay: " ^ Math.to_pct ~digits:2 data.decay;
-    "Imbalance: " ^ Math.to_pct ~digits:2 (Data.calculate_imbalance data true)
+    "Decay: " ^ Math.to_pct ~digits:2 data.decay ^ " (" ^ Math.to_pct ~digits:2 data.margin ^ ")" ;
+    "Imbalance: " ^ Math.to_pct ~digits:2 (Data.calculate_imbalance data) ^ " (" ^ Math.to_pct ~digits:2 (Stats.binom_error_formula ~iters ~cats:scheme.number_of_teams) ^ ")"
   ]
 ;;
