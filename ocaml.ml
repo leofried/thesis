@@ -296,6 +296,8 @@ module Bracket : sig
 
   val make : bracket:int list -> Scheme.t
 
+  val string_to_bracket : string -> int list
+
   val get_all_brackets : int -> int list list list
 end = struct
   let rec convert (bracket : int list) (i : int) (arr : int Tree.t array) : unit =
@@ -349,6 +351,8 @@ end = struct
       run = run_bracket (build_tree bracket);
     }
   ;;  
+
+  let string_to_bracket str = List.map int_of_string (String.split_on_char '_' str);;
   
   let rec bracket_children (bracket : int list) : int list list =
     match bracket with
@@ -373,6 +377,85 @@ end = struct
   
 end
 
+module Pool_play : sig
+  val make : number_of_teams:int -> pool_count:int -> bracket:int list -> Scheme.t
+
+  val get_all_pools :
+    number_of_teams:int ->
+    pool_counts:int list -> 
+    max_games:int -> 
+      Scheme.t list
+
+end = struct
+  let rec make_pots (pool_count : int) (teams : Team.t list) : Team.t list list =
+    if List.length teams <= pool_count then [teams] else
+      let pot, ts = Lists.top_of_list teams pool_count in
+      pot :: make_pots pool_count ts
+  ;;
+  
+  let rec make_pools (pool_count : int) (pots : Team.t list list) : Team.t list list =
+    match pots with
+    | [] -> []
+    | _ ->
+      pots
+      |> List.map List.tl
+      |> List.filter ((<>) [])
+      |> make_pools pool_count
+      |> List.cons (List.map List.hd pots)
+    ;;
+  
+  let rec make_seeds (pools : Team.t list list) : Team.t list =
+    match pools with
+    | [] -> []
+    | _ ->
+      pools
+      |> List.map List.tl
+      |> List.filter ((<>) [])
+      |> make_seeds
+      |> List.append (List.map List.hd pools)
+  ;;
+  
+  let run_pool (pool : Team.t list) : Team.t list =
+    (Round_robin.make ~number_of_teams:(List.length pool) ~cycles:1).run pool
+  ;;
+  
+  let run_bracket (bracket : Scheme.t) (teams : Team.t list) : Team.t list =
+    let teams_to_bracket = bracket.number_of_teams in
+    let top = List.filteri (fun i _ -> i < teams_to_bracket) teams in
+    let bottom = List.filteri (fun i _ -> i >= teams_to_bracket) teams in
+    let ranks = bracket.run top in
+    ranks @ bottom
+  ;;
+  
+  let run_pool_to_bracket (pool_count : int) (bracket : Scheme.t) (teams : Team.t list) : Team.t list =
+    teams
+    |> make_pots pool_count
+    |> make_pools pool_count
+    |> List.map run_pool
+    |> make_seeds
+    |> run_bracket bracket
+  ;;
+  
+  let make ~(number_of_teams : int) ~(pool_count : int) ~(bracket : int list) : Scheme.t =
+    let bracket_scheme = Bracket.make ~bracket in
+    {
+      name = Int.to_string number_of_teams ^ " team " ^ Int.to_string pool_count ^ " pool format breaking to a " ^ bracket_scheme.name;
+      number_of_teams;
+      max_games = Math.divide_up number_of_teams pool_count + bracket_scheme.max_games - 1;
+      is_fair = number_of_teams mod pool_count = 0 && Bracket.is_fair bracket pool_count;
+      run = run_pool_to_bracket pool_count bracket_scheme;
+    }
+  ;;
+  
+  let get_all_pools ~number_of_teams ~pool_counts ~max_games : Scheme.t list =
+    let all_brackets = List.flatten (Bracket.get_all_brackets number_of_teams) in
+    pool_counts
+    |> List.map (fun pool_count -> List.map (fun bracket -> make ~number_of_teams ~pool_count ~bracket) all_brackets)
+    |> List.flatten
+    |> List.filter (fun (s : Scheme.t) -> s.max_games <= max_games)
+  ;;
+end
+
 module Data = struct
   type t = {
     scheme : Scheme.t;
@@ -382,10 +465,13 @@ module Data = struct
     seed_wins : int list;
   };;
 
-  let calculate_imbalance (data : t) : float =
+  let calculate_imbalance (data : t) (fair_to_zero : bool) : float =
     let raw = Stats.normed_stdev (List.map Int.to_float data.seed_wins) in
+    if fair_to_zero then
       if data.scheme.is_fair then 0.
       else max 0.0001 (raw -. (Stats.binom_error_formula ~iters:data.iters ~cats:data.scheme.number_of_teams))
+    else
+      max 0.0001 raw
   ;;
 end
 
@@ -423,12 +509,38 @@ end = struct
   ;;
 end
 
-let f ?(luck : float = 1.) ~(iters : int) (scheme : Scheme.t) =
+module Params_specs = struct
+  module type S = sig
+    type 'a param_name;;
+    type ('a, 'b, 'c) params_type constraint 'b = [< [`WithoutSuffix | `WithSuffix | `Endsuffix]];;
+
+    val int : string -> (int, [ `WithoutSuffix ], [ `One of int ] param_name) params_type
+    val prod : ('a, [ `WithoutSuffix ], 'b) params_type ->
+      ('c, [< `Endsuffix | `WithoutSuffix ] as 'd, 'e) params_type ->
+      ('a * 'c, 'd, 'b * 'e) params_type
+  end
+
+  module M (X : S) = struct
+    type (_, _) t = 
+        | Int : string -> (int, [ `One of int] X.param_name) t
+        | Int_def : string * int -> (int, [ `One of int] X.param_name) t
+        | Prod : ('a, 'b) t * ('c, 'd) t -> ('a * 'c, 'b * 'd) t
+    ;;
+        
+    let rec get_eliom_param : type a c. (a, c) t -> (a, [`WithoutSuffix], c) X.params_type = function
+        | Int name -> X.int name
+        | Int_def (name, _) -> X.int name
+        | Prod (p1, p2) -> X.prod (get_eliom_param p1) (get_eliom_param p2)
+    ;;
+  end
+end
+
+let f ~(luck : float) ~(iters : int) (scheme : Scheme.t) =
   let data = Simulator.sim_scheme ~luck ~iters scheme in
   [
     "Hyperparameters: iters = " ^ string_of_int iters ^ ", luck = " ^ string_of_float luck;
     "Format: " ^ scheme.Scheme.name ^ ".";
     "Decay: " ^ Math.to_pct ~digits:2 data.decay ^ " (" ^ Math.to_pct ~digits:2 data.margin ^ ")" ;
-    "Imbalance: " ^ Math.to_pct ~digits:2 (Data.calculate_imbalance data) ^ " (" ^ Math.to_pct ~digits:2 (Stats.binom_error_formula ~iters ~cats:scheme.number_of_teams) ^ ")"
+    "Imbalance: " ^ Math.to_pct ~digits:2 (Data.calculate_imbalance data false) ^ " (" ^ Math.to_pct ~digits:2 (Stats.binom_error_formula ~iters ~cats:scheme.number_of_teams) ^ ")"
   ]
 ;;
