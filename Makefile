@@ -238,3 +238,17 @@ clean:
 
 distclean: clean
 	-rm -rf $(TEST_PREFIX) $(DEPSDIR) .depend
+
+##------------------------------
+## Everything below this line was not written by Eliom
+## Compiler
+
+##.PHONY = compile
+##SRCS := $(wildcard *.ml)
+##BINS := $(SRCS:%.ml=%)
+
+##compile: ${BINS}
+
+##%: %.ml
+##	ocamlc -c $<
+	

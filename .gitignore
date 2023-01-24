@@ -1,6 +1,10 @@
+__old/
+
 _client/
 _deps/
 _server/
 _local/
 .depend
-__old/
+
+_build/
+
