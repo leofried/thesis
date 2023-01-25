@@ -5,7 +5,7 @@
 
 PROJECT_NAME := zz
 
-FILES := zz.eliom param_specs.ml simulator.ml data.ml pool_play.ml round_robin.ml bracket.ml scheme.ml team.ml tree.ml rand.ml stats.ml lists.ml math.ml
+FILES := zz.eliom simulator.ml data.ml pool_play.ml round_robin.ml bracket.ml scheme.ml param_specs.ml team.ml tree.ml rand.ml stats.ml lists.ml math.ml
 
 # Source files for the server
 SERVER_FILES := ${FILES}

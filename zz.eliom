@@ -9,13 +9,13 @@ let f ~(luck : float) ~(iters : int) (scheme : Scheme.t) =
     ]
 ;;
 
-let builder ~name ~param ~make =
-    let param_ = Param_specs.((Int_def ("iters", 10000) ** Float_def ("luck", 1.)) ** param) in
+let builder (scheme_builder : ('a, 'b) Scheme.eliom_builder) =
+    let param = Param_specs.((Int_def ("iters", 10000) ** Float_def ("luck", 1.)) ** scheme_builder.params) in
     let results_service = Eliom_registration.Html.create
-        ~path: (Eliom_service.Path [name])
-        ~meth: (Eliom_service.Get Eliom_parameter.(Param_specs.get_eliom_param param_))
+        ~path: (Eliom_service.Path [scheme_builder.name])
+        ~meth: (Eliom_service.Get Eliom_parameter.(Param_specs.get_eliom_param param))
         (fun ((iters, luck), specs) () -> 
-            let scheme = make specs in
+            let scheme = scheme_builder.make specs in
             let data = f ~iters ~luck scheme in
             Lwt.return Eliom_content.Html.D.(html
                 (head (title (txt "Tourney Tracker")) [])
@@ -23,10 +23,10 @@ let builder ~name ~param ~make =
             )
         )
     in let _ = Eliom_registration.Html.create
-        ~path:(Eliom_service.Path [name])
+        ~path:(Eliom_service.Path [scheme_builder.name])
         ~meth:(Eliom_service.Get Eliom_parameter.unit)
         (fun () () ->
-            let f = Eliom_content.Html.D.Form.get_form ~service:results_service (Param_specs.get_form_function param_) in
+            let f = Eliom_content.Html.D.Form.get_form ~service:results_service (Param_specs.get_form_function param) in
             Lwt.return @@
             Eliom_content.Html.D.(html
                 (head (title (txt "")) [])
@@ -34,6 +34,10 @@ let builder ~name ~param ~make =
     in ()
 ;;
 
+
+let () =
+    builder Round_robin.eliom;
+    builder Bracket.eliom;
 
 (*
 let bracket_service = service_builder
@@ -88,7 +92,7 @@ let create_form =
          Lwt.return @@
          Eliom_content.Html.D.(html
              (head (title (txt "")) [])
-             (body [f])))*)
+             (body [f])))
 
 
 
@@ -100,5 +104,5 @@ let round_robin_service = builder
         ~cycles
     )
 ;;
-
+*)
 print_endline " here";;

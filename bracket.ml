@@ -50,8 +50,6 @@ let make ~(bracket : int list) : Scheme.t =
   }
 ;;  
 
-let string_to_bracket str = List.map int_of_string (String.split_on_char '_' str);;
-
 let rec bracket_children (bracket : int list) : int list list =
   match bracket with
   | [] -> []
@@ -72,3 +70,10 @@ let rec get_all_brackets (number_of_teams : int) : int list list list =
     |> List.sort_uniq (List.compare Int.compare)
     |> Fun.flip List.cons lst
 ;;
+
+let eliom : (string, Param_specs.one_string) Scheme.eliom_builder = 
+  {
+    name = "bracket";
+    params = Param_specs.String "bracket";
+    make = fun (bracket) -> make ~bracket:(List.map int_of_string (String.split_on_char '_' bracket));
+  }
