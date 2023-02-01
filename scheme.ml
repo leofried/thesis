@@ -7,20 +7,22 @@ module type S = sig
   val is_fair : argument -> bool
   val run : argument -> Team.t list -> Team.t list
 
-  type one_argument
+ 
   val kind : string
-  val params : (argument, one_argument) Param_specs.t
+(*  type one_argument
+    val params : (argument, one_argument) Param_specs.t *)
 end
 
 (*scheme vs format*)
 
-type (_, _) s =
-| Round_robin : (int * int, (Param_specs.one_int * Param_specs.one_int)) s
-(*| Bracket : int list s*)
+type _ s =
+| Round_robin : (int * int) s
+| Bracket : string s
 ;;
 
-type t = Format : ('a, 'b) s * 'a -> t;;
+type t = Format : 'a s * 'a -> t;;
 
+(*
 let modulize_one : type a b. (a, b) s -> (module S with type argument = a and type one_argument = b) = function
   | Round_robin -> (module Round_robin : S with type argument = a and type one_argument = b)
 (*  | Bracket -> (module Bracket : S with type argument = a)*)
@@ -29,6 +31,11 @@ let modulize_one : type a b. (a, b) s -> (module S with type argument = a and ty
 let modulize : type a b. (a, b) s -> (module S with type argument = a) = fun x ->
   let module M = (val (modulize_one x) : S with type argument = a and type one_argument = b) in
   (module M : S with type argument = a)
+;;*)
+
+let modulize : type a . a s -> (module S with type argument = a) = function
+  | Round_robin -> (module Round_robin : S with type argument = a)
+  | Bracket -> (module Bracket : S with type argument = a)
 ;;
 
 let name : t -> string = fun (Format (kind, arg)) ->
@@ -56,17 +63,24 @@ let run : t -> Team.t list -> Team.t list = fun (Format (kind, arg)) ->
   M.run arg
 ;;
 
-let kind : type a b. (a, b) s -> string = fun kind ->
-  let module M = (val (modulize_one kind) : S with type argument = a and type one_argument = b) in
+let kind_s : type a. a s -> string = fun kind ->
+  let module M = (val (modulize kind) : S with type argument = a) in
   M.kind
 ;;
 
+let kind_t : t -> string = fun (Format (kind, _)) ->
+  let module M = (val (modulize kind) : S with type argument = 'a) in
+  M.kind
+;;
+
+
+(*
 let params : type a b. (a, b) s -> (a, b) Param_specs.t = fun kind ->
   let module M = (val (modulize_one kind) : S with type argument = a and type one_argument = b) in
   M.params
 ;;
 
-
+*)
 
 (*
   

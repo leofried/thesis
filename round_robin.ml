@@ -67,12 +67,14 @@ let run ((_, cycles) : argument) = run_round_robin cycles;;
 
 let kind = "round_robin";;
 
+
+(*
 type one_argument = Param_specs.one_int * Param_specs.one_int;;
 
 let params : (argument, one_argument) Param_specs.t = Param_specs.((Int "number_of_teams") ** (Int_def ("cycles", 1)));
 
 
-(*
+
 let make ~(cycles : int) ~(number_of_teams : int) : Scheme.t =
   {
     name = Int.to_string number_of_teams ^ " team " ^ Int.to_string cycles ^ "-Round Robin";

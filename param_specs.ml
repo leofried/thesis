@@ -1,4 +1,3 @@
-
 type one_int   = [ `One of int] Eliom_parameter.param_name;;
 type one_float = [ `One of float] Eliom_parameter.param_name;;
 type one_string = [ `One of string] Eliom_parameter.param_name;;
@@ -39,3 +38,20 @@ let get_form_function (param_ : ('a, 'c) t) (arg : 'c) =
 
 
 
+
+(************************* ELIOM SCHEME ***************)
+
+type (_, _) s =
+    | Round_robin : (int * int, one_int * one_int) s
+    | Bracket : (string, one_string) s
+;;
+
+let f : type a b . (a, b) s -> a Scheme.s = function
+    | Round_robin -> Round_robin
+    | Bracket -> Bracket
+;;
+
+let p : type a b . (a, b) s -> (a, b) t = function
+    | Round_robin -> (Int "number_of_teams") ** (Int_def ("cycles", 1))
+    | Bracket -> (String "bracket")
+;;
