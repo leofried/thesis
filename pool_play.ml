@@ -1,4 +1,4 @@
-let rec make_pots (pool_count : int) (teams : Team.t list) : Team.t list list =
+(*let rec make_pots (pool_count : int) (teams : Team.t list) : Team.t list list =
   if List.length teams <= pool_count then [teams] else
     let pot, ts = Lists.top_of_list teams pool_count in
     pot :: make_pots pool_count ts
@@ -65,3 +65,4 @@ let get_all_pools ~number_of_teams ~pool_counts ~max_games : Scheme.t list =
   |> List.flatten
   |> List.filter (fun (s : Scheme.t) -> s.max_games <= max_games)
 ;;
+*)

@@ -39,6 +39,20 @@ let rec is_fair (bracket : int list) (seed_size : int) : bool =
   | hd :: tl -> if hd mod seed_size = 0 then is_fair tl seed_size else false
 ;;
 
+type argument = int list;;
+
+let number_of_teams (bracket : argument) = List.fold_left ( + ) 0 bracket;;
+
+let name (bracket : argument) = Int.to_string (number_of_teams bracket) ^ " team " ^ Lists.to_string Int.to_string bracket ^ "-bracket";;
+
+let max_games (bracket : argument) = count_games bracket;;
+
+let is_fair (bracket : argument) = is_fair bracket (number_of_teams bracket);;
+
+let run (bracket : argument) = run_bracket (build_tree bracket);;
+
+let kind = "bracket";;
+(*
 let make ~(bracket : int list) : Scheme.t =
   let number_of_teams = List.fold_left ( + ) 0 bracket in
   {
@@ -77,3 +91,4 @@ let eliom : (string, Param_specs.one_string) Scheme.eliom_builder =
     params = Param_specs.String "bracket";
     make = fun (bracket) -> make ~bracket:(List.map int_of_string (String.split_on_char '_' bracket));
   }
+  *)

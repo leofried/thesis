@@ -7,8 +7,8 @@ let rec get_best_team_skill (teams : Team.t list) : float =
 
 let rec run_sims (scheme : Scheme.t) (iters_left : int) (decays: float list) (seed_wins : int array) : float list =
   if iters_left = 0 then decays else
-  let teams = List.init (scheme.number_of_teams) (fun _ -> Team.make ()) in
-  let winner = List.hd @@ scheme.run teams in
+  let teams = List.init (Scheme.number_of_teams scheme) (fun _ -> Team.make ()) in
+  let winner = List.hd @@ (Scheme.run scheme) teams in
   let decay = get_best_team_skill teams -. Team.get_skill winner in
   Math.inc_array seed_wins (Lists.find winner teams);
   print_endline @@ string_of_int iters_left;
@@ -17,7 +17,7 @@ let rec run_sims (scheme : Scheme.t) (iters_left : int) (decays: float list) (se
 
 let sim_scheme ~(luck : float) ~(iters : int) (scheme : Scheme.t) : Data.t =
   Team.set_luck luck;
-  let seed_wins = Array.make (scheme.number_of_teams) 0 in
+  let seed_wins = Array.make (Scheme.number_of_teams scheme) 0 in
   let sims = run_sims scheme iters [] seed_wins in
   {
     iters;
