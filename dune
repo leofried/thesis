@@ -1,6 +1,6 @@
 (executable
- (name zzz)
- (libraries eliom yojson)
+ (name main)
+ (libraries yojson)
  (preprocess
   (pps ppx_yojson_conv))
 )

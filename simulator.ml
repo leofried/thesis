@@ -11,7 +11,7 @@ let rec run_sims (scheme : Scheme.t) (iters_left : int) (decays: float list) (se
   let winner = List.hd @@ (Scheme.run scheme) teams in
   let decay = get_best_team_skill teams -. Team.get_skill winner in
   Math.inc_array seed_wins (Lists.find winner teams);
-  print_endline @@ string_of_int iters_left;
+ (* print_endline @@ string_of_int iters_left; *)
   run_sims scheme (iters_left - 1) (decay :: decays) seed_wins
 ;;
 

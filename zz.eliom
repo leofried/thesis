@@ -5,23 +5,26 @@ module App = Eliom_registration.App (
   end
 );;
 
+let%shared dds_to_json;;
+
 let %shared _ = Random.self_init ();;
 
-let%server log data = Data.record data; Lwt.return ();;
+let%server log str = print_endline str; Lwt.return ();;
 
-let%client log = ~%(Eliom_client.server_function [%json: data] log);;
+let%client log = ~%(Eliom_client.server_function [%json: dds] log)
 
-let%shared scheme = Scheme.(Format (Round_robin, (3, 1)));;
+let%shared scheme = Scheme.Format ((module Round_robin), (33, 1));;
 
 let%client () =
   Eliom_client.onload
     (* NB The service underlying the server_function isn't available
        on the client before loading the page. *)
-    (fun () -> Lwt.async (fun () -> log (
-        Simulator.sim_scheme ~luck:1. ~iters:1000 scheme
-    )))
-;;
-
+    (fun () ->
+       Lwt.async
+         (fun () -> log (
+            Math.to_pct ~digits:2 (Simulator.sim_scheme ~iters:10000 ~luck:1. scheme).decay;
+        )))
+    ;;
 
 App.create
     ~path: (Eliom_service.Path [])
