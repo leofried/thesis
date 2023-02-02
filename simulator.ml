@@ -21,6 +21,7 @@ let sim_scheme ~(luck : float) ~(iters : int) (scheme : Scheme.t) : Data.t =
   let sims = run_sims scheme iters [] seed_wins in
   {
     iters;
+    luck;
     decay = Stats.mean sims;
     margin = Stats.stderr sims;
     seed_wins = Array.to_list seed_wins;

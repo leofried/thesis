@@ -39,7 +39,7 @@ let rec is_fair (bracket : int list) (seed_size : int) : bool =
   | hd :: tl -> if hd mod seed_size = 0 then is_fair tl seed_size else false
 ;;
 
-type argument = string;;
+type argument = string [@@deriving yojson];;
 
 let stb str = List.map int_of_string (String.split_on_char '_' str);;
 

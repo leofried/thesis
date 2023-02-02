@@ -4,6 +4,7 @@ module _ = Lists;;
 module _ = Rand;;
 module _ = Tree;;
 module _ = Team;;
+module _ = Json;;
 
 module _ = Bracket;;
 module _ = Round_robin;;

@@ -4,21 +4,47 @@ module App = Eliom_registration.App (
     let global_data_path = None
   end
 );;
+
+let %shared _ = Random.self_init ();;
+
+let%server log data = Data.record data; Lwt.return ();;
+
+let%client log = ~%(Eliom_client.server_function [%json: data] log);;
+
+let%shared scheme = Scheme.(Format (Round_robin, (3, 1)));;
+
+let%client () =
+  Eliom_client.onload
+    (* NB The service underlying the server_function isn't available
+       on the client before loading the page. *)
+    (fun () -> Lwt.async (fun () -> log (
+        Simulator.sim_scheme ~luck:1. ~iters:1000 scheme
+    )))
+;;
+
+
+App.create
+    ~path: (Eliom_service.Path [])
+    ~meth: (Eliom_service.Get Eliom_parameter.unit)
+    (fun (str) () -> 
+        Lwt.return Eliom_content.Html.D.(html
+            (head (title (txt "Tourney Tracker")) [])
+            (body [])
+        )
+    )
+    ;;
+
+
+;;print_endline "here";;
+
 (*
-type%shared messages =
-    Data.t
-    [@@deriving json]
-
-let%server bus = Eliom_bus.create [%json: messages]
-
+open%shared Lwt.Infix
+(*
+let%shared ( >>= ) l f = Lwt.bind l f;;
+let%shared ( >>> ) l f = Lwt.bind l (fun x -> Lwt.return f x);;*)
 
 
-let%server count = ref 0
-let%server () = Lwt.async (fun () -> 
-       	Lwt_stream.iter (fun () -> incr count) (Eliom_bus.stream bus))
-*)
-
-let%shared get_str_list ~scheme ~iters ~luck =
+let%shared get_str_list ~scheme ~iters ~luck () =
     let data = Simulator.sim_scheme ~luck ~iters scheme in
     let lst = [
     "DECAY" ^ Math.to_pct ~digits:2 data.decay;
@@ -30,14 +56,17 @@ let%shared get_str_list ~scheme ~iters ~luck =
 ;;
 
 let%client init_client ~scheme ~iters ~luck () =
-    let lst = get_str_list ~scheme ~iters ~luck
-    in (Eliom_client.change_page_uri (Scheme.kind_t scheme ^ "?str=" ^ (List.hd lst)));
+    Eliom_client.change_page_uri "bracket"
+    >|= get_str_list ~scheme ~iters ~luck
+    >|= List.hd
+    >|= (^) (Scheme.kind_t scheme ^ "?str=")
+    >>= Eliom_client.change_page_uri
 ;;
 
-let builder : type a b . (a, b) Param_specs.s -> unit = fun scheme_builder ->
-    let param = Param_specs.((Int_def ("iters", 10000) ** Float_def ("luck", 1.)) ** (Param_specs.p scheme_builder)) in
+let builder : type a b . (a, b) Param_specs.Scheme.s -> unit = fun x ->
+    let param = Param_specs.((Int_def ("iters", 10000) ** Float_def ("luck", 1.)) ** (Param_specs.Scheme.as_specs x)) in
     let _ = App.create
-        ~path: (Eliom_service.Path [Scheme.kind_s (Param_specs.f scheme_builder)])
+        ~path: (Eliom_service.Path [Scheme.kind_s (Param_specs.Scheme.as_scheme x)])
         ~meth: (Eliom_service.Get (Eliom_parameter.string "str"))
         (fun (str) () -> 
             Lwt.return Eliom_content.Html.D.(html
@@ -46,21 +75,28 @@ let builder : type a b . (a, b) Param_specs.s -> unit = fun scheme_builder ->
             )
         )
     
-    in let calculating_service = App.create
-        ~path:(Eliom_service.Path [Scheme.kind_s (Param_specs.f scheme_builder) ^ "_calculating"])
-        ~meth:(Eliom_service.Get (Param_specs.get_eliom_param param))
-        (fun ((iters, luck), specs) () ->
-            let scheme = Scheme.Format ((Param_specs.f scheme_builder), specs) in
-            let _ = [%client (init_client ~%scheme ~%iters ~%luck () : unit Lwt.t) ] in
-            Lwt.return Eliom_content.Html.D.(html
-                (head (title (txt "Tourney Tracker")) [])
-                (body [p [txt "Calculating"]])
-            )
-        )
+    in 
+    let calculating_service = App.create
+    ~path:(Eliom_service.Path [Scheme.kind_s (Param_specs.Scheme.as_scheme x) ^ "_calculating"])
+    ~meth:(Eliom_service.Get (Param_specs.get_eliom_param param))
+    (fun ((iters, luck), specs) () ->
+        let scheme = Scheme.Format ((Param_specs.Scheme.as_scheme x), specs) in
+        
+         let t, u = Lwt.wait in
+         let _ = [%client (init_client ~%scheme ~%iters ~%luck t () : unit Lwt.t) ] in
+         let r = Lwt.return Eliom_content.Html.D.(html
+
+
+         (head (title (txt "Tourney Tracker")) [])
+         (body [p [txt "Calculating..."]])
+     )
+     in
+     r
+    )
 
 
     in let _ = App.create
-        ~path:(Eliom_service.Path [Scheme.kind_s (Param_specs.f scheme_builder)])
+        ~path:(Eliom_service.Path [Scheme.kind_s (Param_specs.Scheme.as_scheme x)])
         ~meth:(Eliom_service.Get Eliom_parameter.unit)
         (fun () () ->
             let f = Eliom_content.Html.D.Form.get_form ~service:calculating_service (Param_specs.get_form_function param) in
@@ -71,11 +107,11 @@ let builder : type a b . (a, b) Param_specs.s -> unit = fun scheme_builder ->
     
 
     in let internal_service = App.create
-        ~path:(Eliom_service.Path [Scheme.kind_s (Param_specs.f scheme_builder) ^ "_internal"])
+        ~path:(Eliom_service.Path [Scheme.kind_s (Param_specs.Scheme.as_scheme x) ^ "_internal"])
         ~meth:(Eliom_service.Get (Param_specs.get_eliom_param param))
         (fun ((iters, luck), specs) () ->
-            let scheme = Scheme.Format ((Param_specs.f scheme_builder), specs) in
-            let lst = get_str_list ~scheme ~iters ~luck in
+            let scheme = Scheme.Format ((Param_specs.Scheme.as_scheme x), specs) in
+            let lst = get_str_list ~scheme ~iters ~luck () in
             Lwt.return Eliom_content.Html.D.(html
                 (head (title (txt "Tourney Tracker")) [])
                 (body [p [txt (List.hd lst)]])
@@ -83,7 +119,7 @@ let builder : type a b . (a, b) Param_specs.s -> unit = fun scheme_builder ->
         )
 
     in let _ = App.create
-        ~path:(Eliom_service.Path [Scheme.kind_s (Param_specs.f scheme_builder) ^ "_pre"])
+        ~path:(Eliom_service.Path [Scheme.kind_s (Param_specs.Scheme.as_scheme x) ^ "_pre"])
         ~meth:(Eliom_service.Get Eliom_parameter.unit)
         (fun () () ->
             let f = Eliom_content.Html.D.Form.get_form ~service:internal_service (Param_specs.get_form_function param) in
@@ -97,15 +133,26 @@ let builder : type a b . (a, b) Param_specs.s -> unit = fun scheme_builder ->
 
 
 let () =
-    builder Param_specs.Round_robin;
-    builder Param_specs.Bracket;
+    builder Param_specs.Scheme.Round_robin;
+    builder Param_specs.Scheme.Bracket;
 ;;
 
 
 
 
+let%server log str = Lwt_io.write_line Lwt_io.stdout str;;
 
+let%client log =
+  ~%(Eliom_client.server_function [%json: string] log);;
 
+let%client () =
+  Eliom_client.onload
+    (* NB The service underlying the server_function isn't available
+       on the client before loading the page. *)
+    (fun () ->
+       Lwt.async
+         (fun () -> log "Hello from the client to the server!"))
+    ;;
 
 
 
@@ -175,4 +222,6 @@ let round_robin_service = builder
     )
 ;;
 *)
-print_endline " here";;
+;;print_endline " here";;
+
+*)

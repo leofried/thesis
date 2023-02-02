@@ -12,7 +12,7 @@ type (_, _) t =
 ;;
 
 let ( ** ) a b = Prod (a, b);;
-          
+        
 let rec get_eliom_param : type a c. (a, c) t -> (a, [`WithoutSuffix], c) Eliom_parameter.params_type = function
     | Int name -> Eliom_parameter.int name
     | Int_def (name, _) -> Eliom_parameter.int name
@@ -37,21 +37,19 @@ let get_form_function (param_ : ('a, 'c) t) (arg : 'c) =
 ;;
 
 
+module Scheme = struct
+    type (_, _) s =
+        | Round_robin : (int * int, one_int * one_int) s
+        | Bracket : (string, one_string) s
+    ;;
 
+    let as_scheme : type a b . (a, b) s -> a Scheme.s = function
+        | Round_robin -> Round_robin
+        | Bracket -> Bracket
+    ;;
 
-(************************* ELIOM SCHEME ***************)
-
-type (_, _) s =
-    | Round_robin : (int * int, one_int * one_int) s
-    | Bracket : (string, one_string) s
-;;
-
-let f : type a b . (a, b) s -> a Scheme.s = function
-    | Round_robin -> Round_robin
-    | Bracket -> Bracket
-;;
-
-let p : type a b . (a, b) s -> (a, b) t = function
-    | Round_robin -> (Int "number_of_teams") ** (Int_def ("cycles", 1))
-    | Bracket -> (String "bracket")
-;;
+    let as_specs : type a b . (a, b) s -> (a, b) t = function
+        | Round_robin -> (Int "number_of_teams") ** (Int_def ("cycles", 1))
+        | Bracket -> (String "bracket")
+    ;;
+end

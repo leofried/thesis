@@ -53,7 +53,7 @@ let run_round_robin (cycles : int) (teams : Team.t list) : Team.t list =
 
 
 
-type argument = int * int;;
+type argument = int * int [@@deriving yojson];;
 
 let name ((number_of_teams, cycles) : argument) = (Int.to_string number_of_teams ^ " team " ^ Int.to_string cycles ^ "-Round Robin");;
 
