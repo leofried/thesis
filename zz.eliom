@@ -5,26 +5,24 @@ module App = Eliom_registration.App (
   end
 );;
 
-let%shared dds_to_json;;
-
 let %shared _ = Random.self_init ();;
 
-let%server log str = print_endline str; Lwt.return ();;
+let%server log data = print_endline "here"; Data.write [Data.t_of_yojson @@ Json.t_of_u data]; Lwt.return ();;
 
-let%client log = ~%(Eliom_client.server_function [%json: dds] log)
+let%client log = ~%(Eliom_client.server_function [%json: Json.u] log)
 
-let%shared scheme = Scheme.Format ((module Round_robin), (33, 1));;
-
-let%client () =
-  Eliom_client.onload
-    (* NB The service underlying the server_function isn't available
-       on the client before loading the page. *)
+let%client () = Eliom_client.onload
     (fun () ->
        Lwt.async
          (fun () -> log (
-            Math.to_pct ~digits:2 (Simulator.sim_scheme ~iters:10000 ~luck:1. scheme).decay;
-        )))
-    ;;
+            Json.u_of_t @@ Data.yojson_of_t (Simulator.sim_scheme
+                ~iters:10
+                ~luck:1.
+                (Scheme.Format ((module Round_robin), (33, 1)))
+            )
+        ))
+    )
+;;
 
 App.create
     ~path: (Eliom_service.Path [])

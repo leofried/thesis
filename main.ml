@@ -6,4 +6,4 @@ let br : string Scheme.s = (module Bracket);;
 
 print_endline "begin";;
 let data = List.init 20 (fun i -> Simulator.sim_scheme ~luck:1. ~iters:100 (Scheme.Format (rr, (i + 1, 1))));;
-Data.write ~luck:1. ~number_of_teams:22 data;;
+Data.write data;;
