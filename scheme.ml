@@ -56,7 +56,7 @@ let yojson_of_t (Format (kind, arg)) : Json.t =
 ;;
 
 let t_of_yojson_helper (lst : (module S) list) (json : Json.t) : t =
-  let kind = Json.(rip to_string "kind" json) in
+  let kind = Json.(rip_member to_string "kind" json) in
   let rec f = function
     | [] -> assert false
     | hd :: tl ->

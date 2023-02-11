@@ -1,6 +1,6 @@
 (executable
  (name main)
- (libraries yojson)
+ (libraries yojson lwt)
  (preprocess
   (pps ppx_yojson_conv))
 )

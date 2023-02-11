@@ -50,30 +50,10 @@ let read () : t list =
 ;;
 
 let write (data : t list) : unit =
-  print_endline "hi";
   read ()
   |> (@) data
   |> combine_data
   |> List.map yojson_of_t
   |> (fun lst -> `List lst)
-  |> (fun x -> print_endline (Yojson.Safe.to_string x); x)
   |> Json.write ["analysis"] "data" true
 ;;
-
-(*
-let record (data : t) =
-  print_endline @@ "Hyperparameters: iters = " ^ string_of_int data.iters ^ ", luck = " ^ string_of_float data.luck;
-  print_endline @@ "Format: " ^ Scheme.name data.scheme ^ ".";
-  print_endline @@ "Decay: " ^ Math.to_pct ~digits:2 data.decay ^ " (" ^ Math.to_pct ~digits:2 data.margin ^ ")" ;
-  print_endline @@ "Imbalance: " ^ Math.to_pct ~digits:2 (calculate_imbalance data false) ^ " (" ^ Math.to_pct ~digits:2 (Stats.binom_error_formula ~iters:data.iters ~cats:(Scheme.number_of_teams data.scheme)) ^ ")"
-;;
-
-let write ~(luck : float) ~(number_of_teams : int) (data : t list) : unit =
-  print_endline "wti";
-  data
-  |> List.map yojson_of_t
-  |> (fun lst -> `List lst)
-  |> Json.write ["analysis"] (get_file_name ~luck ~number_of_teams)
-;;
-
-  *)

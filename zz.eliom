@@ -7,22 +7,15 @@ module App = Eliom_registration.App (
 
 let %shared _ = Random.self_init ();;
 
-let%server log data = print_endline "here"; Data.write [Data.t_of_yojson @@ Json.t_of_u data]; Lwt.return ();;
 
-let%client log = ~%(Eliom_client.server_function [%json: Json.u] log)
+[%%client
+    let server = ~%(Eliom_client.server_function [%json: Json.u] (Comms.wrap Comms.Functions.server));;
 
-let%client () = Eliom_client.onload
-    (fun () ->
-       Lwt.async
-         (fun () -> log (
-            Json.u_of_t @@ Data.yojson_of_t (Simulator.sim_scheme
-                ~iters:10
-                ~luck:1.
-                (Scheme.Format ((module Round_robin), (33, 1)))
-            )
-        ))
-    )
-;;
+    let () = Eliom_client.onload @@ Comms.bundle
+        ~server
+        ~client: Comms.Functions.client
+        ~init: Comms.Functions.init
+];;
 
 App.create
     ~path: (Eliom_service.Path [])
@@ -35,9 +28,19 @@ App.create
     )
     ;;
 
-
 ;;print_endline "here";;
 
+
+
+
+
+            
+            (*log (
+            Json.u_of_t @@ Data.yojson_of_t (Simulator.sim_scheme
+                ~iters:10
+                ~luck:1.
+                (Scheme.Format ((module Round_robin), (33, 1)))
+            )*)
 (*
 open%shared Lwt.Infix
 (*
@@ -222,7 +225,4 @@ let round_robin_service = builder
         ~cycles
     )
 ;;
-*)
-;;print_endline " here";;
-
-*)
+*)*)
