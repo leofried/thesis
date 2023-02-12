@@ -57,7 +57,7 @@ type argument = int * int [@@deriving yojson];;
 
 let name ((number_of_teams, cycles) : argument) = (Int.to_string number_of_teams ^ " team " ^ Int.to_string cycles ^ "-Round Robin");;
 
-let number_of_teams ((number_of_teams, _) : argument) =  number_of_teams ;;
+let number_of_teams ((number_of_teams, _) : argument) = number_of_teams ;;
 
 let max_games ((number_of_teams, cycles) : argument) = (number_of_teams - 1) * cycles;;
 
@@ -67,28 +67,4 @@ let run ((_, cycles) : argument) = run_round_robin cycles;;
 
 let kind = "round_robin";;
 
-
-(*
-type one_argument = Param_specs.one_int * Param_specs.one_int;;
-
-let params : (argument, one_argument) Param_specs.t = Param_specs.((Int "number_of_teams") ** (Int_def ("cycles", 1)));
-
-
-
-let make ~(cycles : int) ~(number_of_teams : int) : Scheme.t =
-  {
-    name = Int.to_string number_of_teams ^ " team " ^ Int.to_string cycles ^ "-Round Robin";
-    number_of_teams;
-    max_games = number_of_teams - 1;
-    is_fair = true;
-    run = run_round_robin cycles;
-  }
-;;
-
-let eliom : (int * int, Param_specs.one_int * Param_specs.one_int) Scheme.eliom_builder = 
-  {
-    name = "round_robin";
-    params = Param_specs.((Int "number_of_teams") ** (Int_def ("cycles", 1)));
-    make = fun (number_of_teams, cycles) -> make ~number_of_teams ~cycles;
-  }
-  *)
+let get_all ~(number_of_teams : int) ~(max_games : int) : argument list = List.init (max_games / (number_of_teams - 1)) (fun cycles -> number_of_teams, cycles)

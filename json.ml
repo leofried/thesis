@@ -55,10 +55,11 @@ type u =
   | List of u list
   | Tuple of u list
   | Variant of (string * u option)
-  (**)
+  (*
+  *)
   [@@deriving json]
+  
 ;;
-
 let rec t_of_u : u -> t = function
   | Null -> `Null
   | Bool b -> `Bool b

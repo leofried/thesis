@@ -1,32 +1,14 @@
 open Infix;;
 
 let luck = 1.;;
-let number_of_teams = 6;;
-let max_games = 6;;
+let number_of_teams = 8;;
+let max_games = 4;;
 
 let batch_size = 1;;
 let iters = 1000;;
 
 let init () =
-  [
-    {
-      scheme = Scheme.Format ((module Round_robin), (6, 1));
-      luck = 1.;
-      iters = 10;
-      margin = 0.;
-      decay = 0.;
-      seed_wins = []
-    };
-    {
-      scheme = Scheme.Format ((module Bracket), "4_2_0_0");
-      luck = 1.;
-      iters = 10;
-      margin = 0.;
-      decay = 0.;
-      seed_wins = []
-    };
-  ]
-  |> Json.place_list Data.yojson_of_t
+  `List []
 ;;
 
 let client =  

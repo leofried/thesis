@@ -39,33 +39,6 @@ let rec is_fair (bracket : int list) (seed_size : int) : bool =
   | hd :: tl -> if hd mod seed_size = 0 then is_fair tl seed_size else false
 ;;
 
-type argument = string [@@deriving yojson];;
-
-let stb str = List.map int_of_string (String.split_on_char '_' str);;
-
-let number_of_teams (bracket : argument) = List.fold_left ( + ) 0 (stb bracket);;
-
-let name (bracket : argument) = Int.to_string (number_of_teams bracket) ^ " team " ^ Lists.to_string Int.to_string (stb bracket) ^ "-bracket";;
-
-let max_games (bracket : argument) = count_games (stb bracket);;
-
-let is_fair (bracket : argument) = is_fair (stb bracket) (number_of_teams bracket);;
-
-let run (bracket : argument) = run_bracket (build_tree (stb bracket));;
-
-let kind = "bracket";;
-(*
-let make ~(bracket : int list) : Scheme.t =
-  let number_of_teams = List.fold_left ( + ) 0 bracket in
-  {
-    name = Int.to_string number_of_teams ^ " team " ^ Lists.to_string Int.to_string bracket ^ "-bracket";
-    number_of_teams;
-    max_games = count_games bracket;
-    is_fair = is_fair bracket number_of_teams;
-    run = run_bracket (build_tree bracket);
-  }
-;;  
-
 let rec bracket_children (bracket : int list) : int list list =
   match bracket with
   | [] -> []
@@ -86,6 +59,63 @@ let rec get_all_brackets (number_of_teams : int) : int list list list =
     |> List.sort_uniq (List.compare Int.compare)
     |> Fun.flip List.cons lst
 ;;
+
+
+
+
+
+type argument = string [@@deriving yojson];;
+
+let stb str = print_endline str; List.map int_of_string (String.split_on_char '_' str);;
+let bts bra = List.fold_left (fun str n -> str ^ "_" ^ string_of_int n) (string_of_int (List.hd bra)) (List.tl bra)
+
+let number_of_teams (bracket : argument) = List.fold_left ( + ) 0 (stb bracket);;
+
+let name (bracket : argument) = Int.to_string (number_of_teams bracket) ^ " team " ^ Lists.to_string Int.to_string (stb bracket) ^ "-bracket";;
+
+let max_games (bracket : argument) = count_games (stb bracket);;
+
+let is_fair (bracket : argument) = is_fair (stb bracket) (number_of_teams bracket);;
+
+let run (bracket : argument) = run_bracket (build_tree (stb bracket));;
+
+let kind = "bracket";;
+
+let get_all ~(number_of_teams : int) ~(max_games : int) : argument list =
+  get_all_brackets number_of_teams
+  |> List.hd
+  |> List.filter (fun bracket -> count_games bracket <= max_games)
+  |> List.map bts
+;; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(*
+let make ~(bracket : int list) : Scheme.t =
+  let number_of_teams = List.fold_left ( + ) 0 bracket in
+  {
+    name = Int.to_string number_of_teams ^ " team " ^ Lists.to_string Int.to_string bracket ^ "-bracket";
+    number_of_teams;
+    max_games = count_games bracket;
+    is_fair = is_fair bracket number_of_teams;
+    run = run_bracket (build_tree bracket);
+  }
+;;  
+
+
 
 let eliom : (string, Param_specs.one_string) Scheme.eliom_builder = 
   {
