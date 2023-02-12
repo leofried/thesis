@@ -42,11 +42,20 @@ let combine_data =
   ) []
 ;;
 
+
+
 let read () : t list =
   Json.read ["analysis"] "data"
   |> Option.value ~default:(`List [])
   |> Json.to_list
   |> List.map t_of_yojson
+;;
+
+let read_filter ~luck ~number_of_teams ~max_games : t list =
+  read ()
+  |> List.filter (fun data -> data.luck = luck)
+  |> List.filter (fun data -> (Scheme.number_of_teams data.scheme = number_of_teams))
+  |> List.filter (fun data -> (Scheme.max_games data.scheme <= max_games))
 ;;
 
 let write (data : t list) : unit =

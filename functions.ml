@@ -1,15 +1,64 @@
 open Infix;;
 
 let luck = 1.;;
-let number_of_teams = 12;;
+let number_of_teams = 6;;
 let max_games = 6;;
 
+let batch_size = 1;;
+let iters = 1000;;
+
+let init () =
+  [
+    {
+      scheme = Scheme.Format ((module Round_robin), (6, 1));
+      luck = 1.;
+      iters = 10;
+      margin = 0.;
+      decay = 0.;
+      seed_wins = []
+    };
+    {
+      scheme = Scheme.Format ((module Bracket), "4_2_0_0");
+      luck = 1.;
+      iters = 10;
+      margin = 0.;
+      decay = 0.;
+      seed_wins = []
+    };
+  ]
+  |> Json.place_list Data.yojson_of_t
+;;
+
+let client =  
+  Json.rip_list Data.t_of_yojson
+  >> List.map Data.(fun data -> Simulator.sim_scheme ~luck:data.luck ~iters:data.iters data.scheme)
+  >> Json.place_list Data.yojson_of_t
+;;
+
+let server data =
+  data
+  |> Json.rip_list Data.t_of_yojson
+  |> Data.write;
+  Reporter.next_smart_schemes ~number_of_teams ~max_games ~luck ~batch_size
+  |> List.map (fun scheme -> {
+       Data.scheme;
+       luck;
+       iters;
+       margin = 0.;
+       decay = 0.;
+       seed_wins = []
+   })
+  |> Json.place_list Data.yojson_of_t
+;;
 
 
 
 
 
 
+
+
+(*
 
 
 
@@ -39,10 +88,8 @@ let client : Json.t -> Json.t = fun x ->
 incr y;
 print_endline (string_of_int !y);
   (
-    Json.rip_list Data.t_of_yojson
-    >> List.map Data.(fun data -> Simulator.sim_scheme ~luck:data.luck ~iters:data.iters data.scheme)
-    >> Json.place_list Data.yojson_of_t
+
   ) x
 ;;
 
-let init () : Json.t = print_endline "Connected";`List [] ;;
+let init () : Json.t = print_endline "Connected";`List [] ;;*)

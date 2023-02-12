@@ -7,7 +7,7 @@ let bundle ~server ~client ~init () =
   )
 ;;
 
-let rec wrap (f : Json.t -> Json.t) (x : Json.u) : Json.u Lwt.t = Lwt.return (Json.wrap f x);;
+let wrap (f : Json.t -> Json.t) (x : Json.u) : Json.u Lwt.t = Lwt.return (Json.wrap f x);;
 
 module Functions : sig
   val server : Json.t -> Json.t

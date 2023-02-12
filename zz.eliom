@@ -7,6 +7,8 @@ module App = Eliom_registration.App (
 
 let %shared _ = Random.self_init ();;
 
+Lwt_engine.set (new Lwt_engine.libev ()) ;;
+
 
 [%%client
     let server = ~%(Eliom_client.server_function [%json: Json.u] (Comms.wrap Comms.Functions.server));;

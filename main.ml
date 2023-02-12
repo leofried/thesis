@@ -1,6 +1,5 @@
 Random.self_init ();;
 
-
 let rr : (int * int) Scheme.s = (module Round_robin);;
 let br : string Scheme.s = (module Bracket);; 
 
@@ -9,3 +8,4 @@ let data = List.init 20 (fun i -> Simulator.sim_scheme ~luck:1. ~iters:100 (Sche
 Data.write data;;
 
 module _ = Comms;;
+module _ = Reporter;;
