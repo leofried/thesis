@@ -1,0 +1,146 @@
+[
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 1,
+    "bracket": { "kind": "bracket", "bracket": [ 0, 2, 3, 0, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 1,
+    "bracket": { "kind": "bracket", "bracket": [ 0, 4, 0, 1, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 1,
+    "bracket": { "kind": "bracket", "bracket": [ 2, 1, 1, 1, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 1,
+    "bracket": { "kind": "bracket", "bracket": [ 0, 4, 0, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 1,
+    "bracket": { "kind": "bracket", "bracket": [ 2, 1, 1, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 1,
+    "bracket": { "kind": "bracket", "bracket": [ 2, 1, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 1,
+    "bracket": { "kind": "bracket", "bracket": [ 2, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 1,
+    "bracket": { "kind": "bracket", "bracket": [ 1 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 2,
+    "bracket": { "kind": "bracket", "bracket": [ 0, 2, 3, 0, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 2,
+    "bracket": { "kind": "bracket", "bracket": [ 0, 4, 0, 1, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 2,
+    "bracket": { "kind": "bracket", "bracket": [ 2, 1, 1, 1, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 2,
+    "bracket": { "kind": "bracket", "bracket": [ 0, 4, 0, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 2,
+    "bracket": { "kind": "bracket", "bracket": [ 2, 1, 1, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 2,
+    "bracket": { "kind": "bracket", "bracket": [ 2, 1, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 2,
+    "bracket": { "kind": "bracket", "bracket": [ 2, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 2,
+    "bracket": { "kind": "bracket", "bracket": [ 1 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 3,
+    "bracket": { "kind": "bracket", "bracket": [ 0, 2, 3, 0, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 3,
+    "bracket": { "kind": "bracket", "bracket": [ 0, 4, 0, 1, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 3,
+    "bracket": { "kind": "bracket", "bracket": [ 2, 1, 1, 1, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 3,
+    "bracket": { "kind": "bracket", "bracket": [ 0, 4, 0, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 3,
+    "bracket": { "kind": "bracket", "bracket": [ 2, 1, 1, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 3,
+    "bracket": { "kind": "bracket", "bracket": [ 2, 1, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 3,
+    "bracket": { "kind": "bracket", "bracket": [ 2, 0 ] }
+  },
+  {
+    "kind": "pool_play",
+    "number_of_teams": 5,
+    "pool_count": 3,
+    "bracket": { "kind": "bracket", "bracket": [ 1 ] }
+  }
+]

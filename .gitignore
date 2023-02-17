@@ -1,10 +1,3 @@
-__old/
-
-_client/
-_deps/
-_server/
-_local/
-.depend
-
 _build/
-
+_opam/
+_old/

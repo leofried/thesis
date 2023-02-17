@@ -1,0 +1,98 @@
+[
+  {
+    "scheme": {
+      "kind": "pool_play",
+      "number_of_teams": 4,
+      "pool_count": 4,
+      "bracket": { "kind": "bracket", "bracket": [ 0, 4, 0, 0 ] }
+    },
+    "iters": 1000000,
+    "decay": 0.28089142246267884,
+    "margin": 0.00048570973543692265,
+    "seed_wins": [ 250654, 249001, 250036, 250309 ]
+  },
+  {
+    "scheme": {
+      "kind": "pool_play",
+      "number_of_teams": 4,
+      "pool_count": 2,
+      "bracket": { "kind": "bracket", "bracket": [ 2, 0 ] }
+    },
+    "iters": 1000000,
+    "decay": 0.2801040178206507,
+    "margin": 0.0004848223424629995,
+    "seed_wins": [ 249711, 251396, 249212, 249681 ]
+  },
+  {
+    "scheme": {
+      "kind": "pool_play",
+      "number_of_teams": 4,
+      "pool_count": 2,
+      "bracket": { "kind": "bracket", "bracket": [ 0, 4, 0, 0 ] }
+    },
+    "iters": 1000000,
+    "decay": 0.26922933907682034,
+    "margin": 0.0004703663778231455,
+    "seed_wins": [ 248965, 250840, 249901, 250294 ]
+  },
+  {
+    "scheme": {
+      "kind": "pool_play",
+      "number_of_teams": 4,
+      "pool_count": 1,
+      "bracket": { "kind": "bracket", "bracket": [ 1 ] }
+    },
+    "iters": 1000000,
+    "decay": 0.28107111383925176,
+    "margin": 0.0004857917109225857,
+    "seed_wins": [ 250470, 249538, 249853, 250139 ]
+  },
+  {
+    "scheme": {
+      "kind": "pool_play",
+      "number_of_teams": 4,
+      "pool_count": 1,
+      "bracket": { "kind": "bracket", "bracket": [ 2, 0 ] }
+    },
+    "iters": 1000000,
+    "decay": 0.2358462797422625,
+    "margin": 0.0004316024402978864,
+    "seed_wins": [ 249517, 249776, 250296, 250411 ]
+  },
+  {
+    "scheme": {
+      "kind": "pool_play",
+      "number_of_teams": 4,
+      "pool_count": 1,
+      "bracket": { "kind": "bracket", "bracket": [ 2, 1, 0 ] }
+    },
+    "iters": 1000000,
+    "decay": 0.22279111468556198,
+    "margin": 0.0004152870635428702,
+    "seed_wins": [ 250439, 249772, 249422, 250367 ]
+  },
+  {
+    "scheme": {
+      "kind": "pool_play",
+      "number_of_teams": 4,
+      "pool_count": 1,
+      "bracket": { "kind": "bracket", "bracket": [ 2, 1, 1, 0 ] }
+    },
+    "iters": 1000000,
+    "decay": 0.21889368906721443,
+    "margin": 0.0004102058044114242,
+    "seed_wins": [ 249198, 250702, 249975, 250125 ]
+  },
+  {
+    "scheme": {
+      "kind": "pool_play",
+      "number_of_teams": 4,
+      "pool_count": 1,
+      "bracket": { "kind": "bracket", "bracket": [ 0, 4, 0, 0 ] }
+    },
+    "iters": 1000000,
+    "decay": 0.26407180948311393,
+    "margin": 0.00046494549045545877,
+    "seed_wins": [ 249134, 249925, 250357, 250584 ]
+  }
+]
