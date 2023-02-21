@@ -9,11 +9,11 @@ let specs_menu = [
   "pool_play",
     [
       "max_games", Args.Int (Some Int.max_int); 
-      "pool_counts", Args.List None;
+    (*  "pool_counts", Args.List None; *)
     ],
-    (fun (getter : Args.getter) -> Pool_play.get_all_pools
+    (fun (getter : Args.getter) -> Scheme.get_all (module Pool_play)
       ~number_of_teams: (getter._int "number_of_teams")
-      ~pool_counts: (getter._list "pool_counts")
+     (* ~pool_counts: (getter._list "pool_counts") *)
       ~max_games: (getter._int "max_games")
     );
 ]

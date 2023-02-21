@@ -1,7 +1,5 @@
 open Util;;
 
-let kind = "bracket";;
-
 let rec convert (bracket : int list) (i : int) (arr : int Tree.t array) : unit =
   match bracket with
   | [1] -> ()
@@ -37,26 +35,11 @@ let rec count_games (bracket : int list) : int =
   | _ -> List.length bracket - 1
 ;;
 
-let rec is_fair (bracket : int list) (seed_size : int) : bool =
+let rec is_fair_helper (bracket : int list) (seed_size : int) : bool =
   match bracket with
   | [] -> true
-  | hd :: tl -> if hd mod seed_size = 0 then is_fair tl seed_size else false
+  | hd :: tl -> if hd mod seed_size = 0 then is_fair_helper tl seed_size else false
 ;;
-
-let make ~(bracket : int list) : Scheme.t =
-  let number_of_teams = List.fold_left ( + ) 0 bracket in
-  {
-    name = Int.to_string number_of_teams ^ " team " ^ Lists.to_string Int.to_string bracket ^ "-bracket";
-    number_of_teams;
-    max_games = count_games bracket;
-    is_fair = is_fair bracket number_of_teams;
-    run = run_bracket (build_tree bracket);
-    json = `Assoc [(Scheme.kind, `String kind); ("bracket", Json.place_int_list bracket)]
-  }
-;;
-
-let make_from_json (json : Json.t) : Scheme.t = make ~bracket:(Json.rip_list Json.to_int "bracket" json);;
-
 
 let rec bracket_children (bracket : int list) : int list list =
   match bracket with
@@ -78,3 +61,29 @@ let rec get_all_brackets (number_of_teams : int) : int list list list =
     |> List.sort_uniq (List.compare Int.compare)
     |> Fun.flip List.cons lst
 ;;
+
+
+
+
+
+type argument = int list [@@deriving yojson];;
+
+let number_of_teams (bracket : argument) = List.fold_left ( + ) 0 (bracket);;
+
+let name (bracket : argument) = Int.to_string (number_of_teams bracket) ^ " team " ^ Lists.to_string Int.to_string (bracket) ^ "-bracket";;
+
+let max_games (bracket : argument) = count_games (bracket);;
+
+let is_fair (bracket : argument) = is_fair_helper (bracket) (number_of_teams bracket);;
+
+let run (bracket : argument) = run_bracket (build_tree (bracket));;
+
+let kind = "bracket";;
+
+let get_all ~(number_of_teams : int) ~(max_games : int) : argument list =
+  get_all_brackets number_of_teams
+  |> List.hd
+  |> List.filter (fun bracket -> count_games bracket <= max_games)
+;;
+
+

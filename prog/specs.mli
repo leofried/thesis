@@ -1,6 +1,10 @@
 exception NoSuchFormatsHaveBeen of string
 
-val json_to_scheme : Util.Json.t -> Struct.Scheme.t
+module Scheme :
+  sig
+    include module type of Struct.Scheme
+    val t_of_yojson : Yojson.Safe.t -> t
+  end
 
-val read : string -> bool -> Struct.Scheme.t list
-val write : schemes:Struct.Scheme.t list -> file_name:string -> overwrite:bool -> unit
+val read : string -> bool -> Scheme.t list
+val write : schemes:Scheme.t list -> file_name:string -> overwrite:bool -> unit

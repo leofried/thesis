@@ -1,7 +1,3 @@
-open Util;;
-
-let kind = "round_robin"
-
 let play_games (teams : Team.t list) (cycles : int) : int array array =
   let teams_arr = Array.of_list teams in
 
@@ -55,17 +51,24 @@ let run_round_robin (cycles : int) (teams : Team.t list) : Team.t list =
   |> List.map (List.nth teams)
 ;;
 
-let make ~(cycles : int) ~(number_of_teams : int): Scheme.t =
-  {
-    name = Int.to_string number_of_teams ^ " team " ^ Int.to_string cycles ^ "-Round Robin";
-    number_of_teams;
-    max_games = number_of_teams - 1;
-    is_fair = true;
-    run = run_round_robin cycles;
-    json = `Assoc [(Scheme.kind, `String kind); ("cycles", `Int cycles); ("number_of_teams", `Int number_of_teams)]
-  }
-;;
 
-let make_from_json (json : Json.t) : Scheme.t = make
-  ~cycles: (Json.rip Json.to_int "cycles" json)
-  ~number_of_teams: (Json.rip Json.to_int "number_of_teams" json)
+
+type argument = int * int [@@deriving yojson];;
+
+let name ((number_of_teams, cycles) : argument) = (Int.to_string number_of_teams ^ " team " ^ Int.to_string cycles ^ "-Round Robin");;
+
+let number_of_teams ((number_of_teams, _) : argument) = number_of_teams ;;
+
+let max_games ((number_of_teams, cycles) : argument) = (number_of_teams - 1) * cycles;;
+
+let is_fair ((_, _) : argument) = true;;
+
+let run ((_, cycles) : argument) = run_round_robin cycles;;
+
+let kind = "round_robin";;
+
+let get_all ~(number_of_teams : int) ~(max_games : int) : argument list =
+  if number_of_teams = 1 then
+    [(1, 0)]
+  else
+    List.init (1 + max_games / (number_of_teams - 1)) (fun cycles -> number_of_teams, cycles)

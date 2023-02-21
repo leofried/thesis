@@ -1,4 +1,6 @@
 (library
  (name prog)
  (libraries util struct)
+ (preprocess
+  (pps ppx_yojson_conv))
 )
