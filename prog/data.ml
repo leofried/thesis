@@ -54,7 +54,10 @@ let read ~(luck : float) ~(number_of_teams : int) ?(max_games : int = Int.max_in
 ;;
 
 let write ~(luck : float) ~(number_of_teams : int) (data : t list) : unit =
-  data
+  read ~luck ~number_of_teams false
+  |> List.append data
+  |> List.sort (fun x y -> Json.compare (Scheme.yojson_of_t x.scheme)
+  |> combine_data
   |> Json.place_list yojson_of_t
   |> Json.write path (get_file_name ~luck ~number_of_teams) false
 ;;
