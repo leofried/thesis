@@ -1,10 +1,12 @@
-type t = {name : string; skill : float};;
+type t = {name : string; skill : float; mutable games : int};;
 
 let team_index = ref 0;;
 
 let get_next_team_name () = "Team " ^ (team_index := !team_index + 1; Int.to_string !team_index);;
 
-let make ?(name = get_next_team_name()) ?(skill = Util.Rand.get_gaussian()) () : t = {name; skill}
+let make ?(name = get_next_team_name()) ?(skill = Util.Rand.get_gaussian()) () : t = {name; skill; games = 0}
+
+let make_n (n : int) = List.init n (fun _ -> make ());;
 
 
 let luck = ref 1.;;
@@ -12,7 +14,16 @@ let luck = ref 1.;;
 let set_luck (lck : float) = (luck := lck);;
 
 
-let play_game (t1 : t) (t2 : t) : t * t =
+let play_game (t1 : t) (t2 : t) (is_bracket : bool): t * t =
+  if is_bracket then begin
+    let new_games = 1 + max t1.games t2.games in
+    t1.games <- new_games;
+    t2.games <- new_games;
+  end else begin
+    t1.games <- t1.games + 1;
+    t2.games <- t2.games + 1;
+  end;
+
   let debug = false in
   let t1p = t1.skill +. Util.Rand.get_gaussian() *. !luck in
   let t2p = t2.skill +. Util.Rand.get_gaussian() *. !luck in
@@ -24,4 +35,6 @@ let play_game (t1 : t) (t2 : t) : t * t =
 ;;
 
 let get_skill (t : t) : float = t.skill;;
+
+let max_games : t list -> int = List.fold_left (fun n t -> max n t.games) 0;;
 

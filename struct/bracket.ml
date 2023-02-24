@@ -25,7 +25,7 @@ let rec run_bracket (tree : int Tree.t) (teams : Team.t list) : Team.t list =
   | Branch (i, j) ->
     let top = run_bracket i teams in
     let bot = run_bracket j teams in
-    let winner, loser = Team.play_game (List.hd top) (List.hd bot) in
+    let winner, loser = Team.play_game (List.hd top) (List.hd bot) true in
     winner :: loser :: (List.tl top) @ (List.tl bot)
 ;;
 
@@ -72,7 +72,7 @@ let number_of_teams (bracket : argument) = List.fold_left ( + ) 0 (bracket);;
 
 let name (bracket : argument) = Int.to_string (number_of_teams bracket) ^ " team " ^ Lists.to_string Int.to_string (bracket) ^ "-bracket";;
 
-let max_games (bracket : argument) = count_games (bracket);;
+(* let max_games (bracket : argument) = count_games (bracket);; *)
 
 let is_fair (bracket : argument) = is_fair_helper (bracket) (number_of_teams bracket);;
 

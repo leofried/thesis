@@ -1,10 +1,17 @@
 open Util;;
 open Struct;;
-open Prog;;
+(*open Prog;;*)
 
 Rand.set_seed () ;;
 print_endline "" ;;
 
+let arg = (12, 5, [2; 3; 0; 0]);;
+let s = Scheme.Format ((module Pool_play), arg);;
+
+print_int (Scheme.max_games s);;
+print_endline "";;
+
+(*
 let specs_menu = [
   "pool_play",
     [
@@ -109,4 +116,4 @@ let args = Args.Menu [
     ];
 ];;
 
-let f, x = Args.parse args in f x;;
+let f, x = Args.parse args in f x;;*)

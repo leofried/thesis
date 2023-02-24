@@ -8,7 +8,7 @@ let play_games (teams : Team.t list) (cycles : int) : int array array =
     for j = i + 1 to n - 1 do
       let t2 = teams_arr.(j) in
       for _ = 1 to cycles do
-        if fst @@ Team.play_game t1 t2 = t1 then
+        if fst @@ Team.play_game t1 t2 false = t1 then
           wins_arr.(i).(j) <- (wins_arr.(i).(j)) + 1
         else
           wins_arr.(j).(i) <- (wins_arr.(j).(i)) + 1
@@ -59,7 +59,7 @@ let name ((number_of_teams, cycles) : argument) = (Int.to_string number_of_teams
 
 let number_of_teams ((number_of_teams, _) : argument) = number_of_teams ;;
 
-let max_games ((number_of_teams, cycles) : argument) = (number_of_teams - 1) * cycles;;
+(*let max_games ((number_of_teams, cycles) : argument) = (number_of_teams - 1) * cycles;;*)
 
 let is_fair ((_, _) : argument) = true;;
 

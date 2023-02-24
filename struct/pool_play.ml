@@ -49,7 +49,7 @@ let run_pool_to_bracket (pool_count : int) (bracket : Scheme.t) (teams : Team.t 
   |> run_bracket bracket
 ;;
 
-let max_games_helper ~number_of_teams ~pool_count ~bracket = Math.divide_up number_of_teams pool_count + Bracket.max_games bracket - 1;;
+(*let max_games_helper ~number_of_teams ~pool_count ~bracket = Math.divide_up number_of_teams pool_count + Bracket.max_games bracket - 1;;*)
 
 
 
@@ -59,7 +59,7 @@ let number_of_teams (number_of_teams, _, _ : argument) = number_of_teams;;
 
 let name (number_of_teams, pool_count, bracket : argument) = Int.to_string number_of_teams ^ " team " ^ Int.to_string pool_count ^ " pool format breaking to a " ^ Bracket.name bracket;;
 
-let max_games (number_of_teams, pool_count, bracket : argument) = max_games_helper ~number_of_teams ~pool_count ~bracket
+(*let max_games (number_of_teams, pool_count, bracket : argument) = max_games_helper ~number_of_teams ~pool_count ~bracket*)
 
 let is_fair (number_of_teams, pool_count, bracket : argument) = number_of_teams mod pool_count = 0 && Bracket.is_fair_helper bracket pool_count;;
 
@@ -70,10 +70,11 @@ let kind = "pool_play";;
 (* do we want to restrict to pool count numbers?*)
 let get_all ~(number_of_teams : int) ~(max_games : int) : argument list =
   let all_brackets = List.flatten (Bracket.get_all_brackets number_of_teams) in
+  let _  = max_games in
   
   List.init (Math.divide_up number_of_teams 2) ((+) 1)
   |> List.cons number_of_teams
   |> List.map (fun pool_count -> List.map (fun (bracket : int list) -> number_of_teams, pool_count, bracket) all_brackets)
   |> List.flatten
-  |> List.filter (fun (number_of_teams, pool_count, bracket) -> max_games_helper ~number_of_teams ~pool_count ~bracket <= max_games)
+(*  |> List.filter (fun (number_of_teams, pool_count, bracket) -> max_games_helper ~number_of_teams ~pool_count ~bracket <= max_games)*)
 ;;
