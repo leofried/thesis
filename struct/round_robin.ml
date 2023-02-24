@@ -8,7 +8,7 @@ let play_games (teams : Team.t list) (cycles : int) : int array array =
     for j = i + 1 to n - 1 do
       let t2 = teams_arr.(j) in
       for _ = 1 to cycles do
-        if fst @@ Team.play_game t1 t2 false = t1 then
+        if fst @@ Team.play_game false t1 t2 = t1 then
           wins_arr.(i).(j) <- (wins_arr.(i).(j)) + 1
         else
           wins_arr.(j).(i) <- (wins_arr.(j).(i)) + 1
@@ -66,9 +66,10 @@ let is_fair ((_, _) : argument) = true;;
 let run ((_, cycles) : argument) = run_round_robin cycles;;
 
 let kind = "round_robin";;
-
+(*
 let get_all ~(number_of_teams : int) ~(max_games : int) : argument list =
   if number_of_teams = 1 then
     [(1, 0)]
   else
     List.init (1 + max_games / (number_of_teams - 1)) (fun cycles -> number_of_teams, cycles)
+    *)

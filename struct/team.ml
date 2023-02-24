@@ -14,7 +14,7 @@ let luck = ref 1.;;
 let set_luck (lck : float) = (luck := lck);;
 
 
-let play_game (t1 : t) (t2 : t) (is_bracket : bool): t * t =
+let play_game (is_bracket : bool) (t1 : t) (t2 : t) : t * t =
   if is_bracket then begin
     let new_games = 1 + max t1.games t2.games in
     t1.games <- new_games;
@@ -24,7 +24,7 @@ let play_game (t1 : t) (t2 : t) (is_bracket : bool): t * t =
     t2.games <- t2.games + 1;
   end;
 
-  let debug = false in
+  let debug = true in
   let t1p = t1.skill +. Util.Rand.get_gaussian() *. !luck in
   let t2p = t2.skill +. Util.Rand.get_gaussian() *. !luck in
   let cmp = compare t1p t2p in
@@ -33,8 +33,4 @@ let play_game (t1 : t) (t2 : t) (is_bracket : bool): t * t =
     | true -> if debug then print_endline (t1.name ^ " beat " ^ t2.name) else (); t1, t2
     | false -> if debug then print_endline (t2.name ^ " beat " ^ t1.name) else (); t2, t1
 ;;
-
-let get_skill (t : t) : float = t.skill;;
-
-let max_games : t list -> int = List.fold_left (fun n t -> max n t.games) 0;;
 

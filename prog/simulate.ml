@@ -4,15 +4,15 @@ open Struct;;
 let rec get_best_team_skill (teams : Team.t list) : float =
   match teams with
   | [] -> assert false
-  | [t] -> Team.get_skill t
-  | hd :: tl -> Float.max (Team.get_skill hd) (get_best_team_skill tl)
+  | [t] -> t.skill
+  | hd :: tl -> Float.max hd.skill (get_best_team_skill tl)
 ;;
 
 let rec run_sims (scheme : Scheme.t) (iters_left : int) (decays: float list) (seed_wins : int array) : float list =
   if iters_left = 0 then decays else
   let teams = List.init (Scheme.number_of_teams scheme) (fun _ -> Team.make ()) in
   let winner = List.hd @@ (Scheme.run scheme) teams in
-  let decay = get_best_team_skill teams -. Team.get_skill winner in
+  let decay = get_best_team_skill teams -. winner.skill in
   Math.inc_array seed_wins (Lists.find winner teams);
   run_sims scheme (iters_left - 1) (decay :: decays) seed_wins
 ;;

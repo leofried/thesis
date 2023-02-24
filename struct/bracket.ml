@@ -1,89 +1,44 @@
 open Util;;
+open Infix;;
 
-let rec convert (bracket : int list) (i : int) (arr : int Tree.t array) : unit =
-  match bracket with
-  | [1] -> ()
-  | [] | [_] -> invalid_arg "Bracket.convert"
-  | 0 :: tl -> convert tl i arr
-  | x :: _ when x < 0 -> invalid_arg "Bracket.convert"
-  | a :: b :: tl -> 
-    let j = i - a + 1 in
-    arr.(j) <- Branch (arr.(j), arr.(i));
-    convert (a - 2 :: b + 1 :: tl) (i - 1) arr
-;;
+type argument = int list [@@deriving yojson];; (*validate that a given int list is a bracket*)
 
-let build_tree (bracket : int list) : int Tree.t =
-  let n = List.fold_left ( + ) 0 bracket in
-  let arr = Array.init n (fun i -> Tree.Leaf i) in
-  convert bracket (n - 1) arr;
-  arr.(0)
-;;
-
-let rec run_bracket (tree : int Tree.t) (teams : Team.t list) : Team.t list =
-  match tree with
-  | Leaf i -> [List.nth teams i]
-  | Branch (i, j) ->
-    let top = run_bracket i teams in
-    let bot = run_bracket j teams in
-    let winner, loser = Team.play_game (List.hd top) (List.hd bot) true in
-    winner :: loser :: (List.tl top) @ (List.tl bot)
-;;
-
-let rec count_games (bracket : int list) : int =
-  match bracket with
-  | 0 :: tl -> count_games tl
-  | _ -> List.length bracket - 1
-;;
-
-let rec is_fair_helper (bracket : int list) (seed_size : int) : bool =
-  match bracket with
-  | [] -> true
-  | hd :: tl -> if hd mod seed_size = 0 then is_fair_helper tl seed_size else false
-;;
-
-let rec bracket_children (bracket : int list) : int list list =
-  match bracket with
-  | [] -> []
-  | hd :: tl -> 
-    let lst = List.map (fun lst -> 0 :: hd + List.hd lst :: List.tl lst) (bracket_children tl) in
-    if hd = 0 then lst else (2 :: (hd - 1) :: tl) :: lst
-;;
-
-let rec get_all_brackets (number_of_teams : int) : int list list list =
-  match number_of_teams with
-  | 1 -> [[[1]]]
-  | n ->
-    let lst = get_all_brackets (n-1) in
-    lst
-    |> List.hd
-    |> List.map bracket_children
-    |> List.flatten
-    |> List.sort_uniq (List.compare Int.compare)
-    |> Fun.flip List.cons lst
-;;
-
-
-
-
-
-type argument = int list [@@deriving yojson];;
+let kind = "bracket";;
 
 let number_of_teams (bracket : argument) = List.fold_left ( + ) 0 (bracket);;
 
 let name (bracket : argument) = Int.to_string (number_of_teams bracket) ^ " team " ^ Lists.to_string Int.to_string (bracket) ^ "-bracket";;
 
-(* let max_games (bracket : argument) = count_games (bracket);; *)
-
-let is_fair (bracket : argument) = is_fair_helper (bracket) (number_of_teams bracket);;
-
-let run (bracket : argument) = run_bracket (build_tree (bracket));;
-
-let kind = "bracket";;
-
-let get_all ~(number_of_teams : int) ~(max_games : int) : argument list =
-  get_all_brackets number_of_teams
-  |> List.hd
-  |> List.filter (fun bracket -> count_games bracket <= max_games)
+let is_fair (bracket : argument) = 
+  let rec f  (bracket : argument) (seed_size : int) : bool =
+    match bracket with
+    | [] -> true
+    | hd :: tl -> if hd mod seed_size = 0 then f tl seed_size else false
+  in f bracket (number_of_teams bracket)
 ;;
 
-
+let run (bracket : argument) (teams : Team.t list) : Team.t list =
+  let rec run_reversed (bracket : argument) (teams : Team.t list) =
+    match bracket with
+    | [] -> assert false
+    | [_] -> teams
+    | hd :: md :: tl ->
+      let n = hd / 2 in
+      let dead, alive =
+        teams
+        |> Lists.top_of_list_rev n
+        |> Tuple.map_right (Lists.top_of_list n)
+        |> Tuple.associate_left
+        |> Tuple.map_left (
+          Tuple.uncurry List.combine
+          >> List.map (Tuple.uncurry (Team.play_game true))
+          >> List.split
+          >> Tuple.commute
+        )
+        |> Tuple.associate_right
+        |> Tuple.map_right (Tuple.uncurry List.append)
+      in
+      (run_reversed ((md + n) :: tl) alive) @ dead
+  in
+  run_reversed bracket (List.rev teams)
+;;

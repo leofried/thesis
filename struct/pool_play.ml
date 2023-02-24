@@ -2,7 +2,7 @@ open Util;;
 
 let rec make_pots (pool_count : int) (teams : Team.t list) : Team.t list list =
   if List.length teams <= pool_count then [teams] else
-    let pot, ts = Lists.top_of_list teams pool_count in
+    let pot, ts = Lists.top_of_list pool_count teams in
     pot :: make_pots pool_count ts
 ;;
 
@@ -61,13 +61,14 @@ let name (number_of_teams, pool_count, bracket : argument) = Int.to_string numbe
 
 (*let max_games (number_of_teams, pool_count, bracket : argument) = max_games_helper ~number_of_teams ~pool_count ~bracket*)
 
-let is_fair (number_of_teams, pool_count, bracket : argument) = number_of_teams mod pool_count = 0 && Bracket.is_fair_helper bracket pool_count;;
+let is_fair (_ : argument) = assert false;;
+  (*number_of_teams mod pool_count = 0 && Bracket.is_fair_helper bracket pool_count;;*)
 
 let run (_, pool_count, bracket : argument) = run_pool_to_bracket pool_count (Scheme.Format ((module Bracket), bracket));;
 
 let kind = "pool_play";;
 
-(* do we want to restrict to pool count numbers?*)
+(* do we want to restrict to pool count numbers?
 let get_all ~(number_of_teams : int) ~(max_games : int) : argument list =
   let all_brackets = List.flatten (Bracket.get_all_brackets number_of_teams) in
   let _  = max_games in
@@ -77,4 +78,4 @@ let get_all ~(number_of_teams : int) ~(max_games : int) : argument list =
   |> List.map (fun pool_count -> List.map (fun (bracket : int list) -> number_of_teams, pool_count, bracket) all_brackets)
   |> List.flatten
 (*  |> List.filter (fun (number_of_teams, pool_count, bracket) -> max_games_helper ~number_of_teams ~pool_count ~bracket <= max_games)*)
-;;
+;;*)

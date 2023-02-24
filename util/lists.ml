@@ -1,11 +1,22 @@
-let rec top_of_list lst n = 
+let rec top_of_list n lst = 
   if n = 0 then [], lst else
     match lst with
     | [] -> invalid_arg "Lists.top_of_list"
     | hd :: tl -> 
-      let top, bot = top_of_list tl (n-1) in
+      let top, bot = top_of_list (n-1) tl in
       hd :: top, bot
 ;;
+
+let top_of_list_rev n lst = 
+  let rec f n top lst =
+    if n = 0 then top, lst else
+      match lst with
+      | [] -> invalid_arg "Lists.top_of_list_rev"
+      | hd :: tl -> 
+        f (n-1) (hd :: top) tl
+  in f n [] lst
+;;
+
 
 let rec find x lst =
   match lst with

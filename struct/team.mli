@@ -1,4 +1,4 @@
-type t 
+type t = private {name : string; skill : float; mutable games : int}
 
 val make : ?name:string -> ?skill:float -> unit -> t
 
@@ -6,8 +6,4 @@ val make_n : int -> t list
 
 val set_luck : float -> unit
 
-val play_game : t -> t -> bool -> t * t
-
-val get_skill : t -> float
-
-val max_games : t list -> int
+val play_game : bool -> t -> t -> t * t

@@ -5,10 +5,11 @@ open Struct;;
 Rand.set_seed () ;;
 print_endline "" ;;
 
-let arg = (12, 5, [2; 3; 0; 0]);;
-let s = Scheme.Format ((module Pool_play), arg);;
+let arg = ([2; 7; 4; 0; 0; 0]);;
+let s = Scheme.Format ((module Bracket), arg);;
 
-print_int (Scheme.max_games s);;
+let teams = Team.make_n (Scheme.number_of_teams s);;
+print_endline @@ Lists.to_string (fun t -> t.Team.name) (Scheme.run s teams);;
 print_endline "";;
 
 (*

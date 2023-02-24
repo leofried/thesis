@@ -9,7 +9,7 @@ module type S = sig
   val is_fair : argument -> bool
   val run : argument -> Team.t list -> Team.t list
 
-  val get_all : number_of_teams : int -> max_games : int -> argument list
+(*  val get_all : number_of_teams : int -> max_games : int -> argument list *)
 end
 
 type 'a s = (module S with type argument = 'a);;
@@ -45,18 +45,18 @@ let kind_t (Format (kind, _)) : string =
   kind_s kind
 ;;
 
-let get_all : type a. a s -> number_of_teams : int -> max_games : int -> t list = fun kind ~number_of_teams ~max_games ->
+(*let get_all : type a. a s -> number_of_teams : int -> max_games : int -> t list = fun kind ~number_of_teams ~max_games ->
   let module M = (val kind : S with type argument = a) in
-  let _ = List.map (fun arg -> Format(kind, arg)) (M.get_all ~number_of_teams ~max_games)
+ let _ = List.map (fun arg -> Format(kind, arg)) (M.get_all ~number_of_teams ~max_games)
   in assert false;
-;;
+;;*)
 
 let max_games (Format (kind, arg)) : int = 
   let module M = (val kind : S with type argument = 'a) in
   M.number_of_teams arg
   |> Team.make_n
   |> M.run arg
-  |> Team.max_games
+  |> List.fold_left (fun n t -> max n t.Team.games) 0
 ;;
 
 let yojson_of_t (Format (kind, arg)) : Json.t =
