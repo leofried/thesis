@@ -1,19 +1,19 @@
 let mean (lst : float list) : float =
-  Math.divide_float_int (List.fold_left Float.add 0. lst) (List.length lst)
+  Math.divide_float_int (Lists.fold (+.) lst) (List.length lst)
 ;;
 
 let stdev (lst : float list) : float =
   let mean = mean lst in
   lst
   |> List.map (fun x -> (x -. mean) ** 2.0)
-  |> List.fold_left Float.add 0.
+  |> Lists.fold (+.)
   |> Fun.flip Math.divide_float_int (List.length lst - 1)
   |> sqrt
 ;;
 
 let stderr (lst : float list) : float = stdev lst /. Math.sqrt_int (List.length lst);;
 
-let normed_stdev (lst : float list) : float = (stdev lst) /. (List.fold_left Float.add 0. lst);;
+let normed_stdev (lst : float list) : float = (stdev lst) /. (Lists.fold (+.) lst);;
 
 let mean_two (n1, mean1 : int * float) (n2, mean2 : int * float) : float =
   let m1 = Int.to_float n1 in
@@ -60,7 +60,7 @@ let sample (n : int) (lst : ('a * float) list) : 'a list =
     match n with
     | 0 -> []
     | _ ->
-      let tot = List.fold_left (fun acc (_, p) -> acc +. p) 0.0 lst in
+      let tot = Lists.fold (+.) (snd (List.split lst)) in
       take (Random.float tot) lst :: (f (n - 1) lst)
   in f n lst
 ;;

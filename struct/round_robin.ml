@@ -59,10 +59,6 @@ let name ((number_of_teams, cycles) : argument) = (Int.to_string number_of_teams
 
 let number_of_teams ((number_of_teams, _) : argument) = number_of_teams ;;
 
-(*let max_games ((number_of_teams, cycles) : argument) = (number_of_teams - 1) * cycles;;*)
-
-let is_fair ((_, _) : argument) = true;;
-
 let run ((_, cycles) : argument) = run_round_robin cycles;;
 
 let kind = "round_robin";;

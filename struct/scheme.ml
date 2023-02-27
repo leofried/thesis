@@ -6,15 +6,21 @@ module type S = sig
   val kind : string
   val name : argument -> string
   val number_of_teams : argument -> int
-  val is_fair : argument -> bool
   val run : argument -> Team.t list -> Team.t list
-
-(*  val get_all : number_of_teams : int -> max_games : int -> argument list *)
 end
 
 type 'a s = (module S with type argument = 'a);;
 
 type t = Format : 'a s * 'a -> t;;
+
+let kind_s : type a. a s -> string = fun kind ->
+  let module M = (val kind : S with type argument = a) in
+  M.kind
+;;
+
+let kind_t (Format (kind, _)) : string =
+  kind_s kind
+;;
 
 let name (Format (kind, arg)) : string =
   let module M = (val kind : S with type argument = 'a) in
@@ -26,37 +32,18 @@ let number_of_teams (Format (kind, arg)) : int =
   M.number_of_teams arg
 ;;
 
-let is_fair (Format (kind, arg)) : bool =
-   let module M = (val kind : S with type argument = 'a) in
-  M.is_fair arg
-;;
-
 let run (Format (kind, arg)) : Team.t list -> Team.t list =
   let module M = (val kind : S with type argument = 'a) in
   M.run arg
 ;;
-
-let kind_s : type a. a s -> string = fun kind ->
-  let module M = (val kind : S with type argument = a) in
-  M.kind
-;;
-
-let kind_t (Format (kind, _)) : string =
-  kind_s kind
-;;
-
-(*let get_all : type a. a s -> number_of_teams : int -> max_games : int -> t list = fun kind ~number_of_teams ~max_games ->
-  let module M = (val kind : S with type argument = a) in
- let _ = List.map (fun arg -> Format(kind, arg)) (M.get_all ~number_of_teams ~max_games)
-  in assert false;
-;;*)
 
 let max_games (Format (kind, arg)) : int = 
   let module M = (val kind : S with type argument = 'a) in
   M.number_of_teams arg
   |> Team.make_n
   |> M.run arg
-  |> List.fold_left (fun n t -> max n t.Team.games) 0
+  |> List.map (fun t -> t.Team.games)
+  |> Lists.fold max
 ;;
 
 let yojson_of_t (Format (kind, arg)) : Json.t =

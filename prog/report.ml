@@ -1,4 +1,4 @@
-open Util;;
+(*open Util;;
 open Struct;;
 
 let calculate_imbalance (data : Data.t) (fair_to_zero : bool) : float =
@@ -48,3 +48,4 @@ let all ~(luck : float) ~(number_of_teams : int) ~(max_games : int) : unit =
       (Data.read ~luck ~number_of_teams ~max_games true)
     )
 ;;
+*)

@@ -1,4 +1,4 @@
-open Util;;
+(*open Util;;
 open Struct;;
 
 let rec get_best_team_skill (teams : Team.t list) : float =
@@ -81,4 +81,4 @@ let rec sim_smart  ~(luck : float) ~(number_of_teams : int) ~(max_games : int) ~
   |> sim_schemes ~luck ~iters_pow;
 
   sim_smart ~luck ~number_of_teams ~max_games ~iters_pow ~batch_size
-;;
+;;*)

@@ -5,13 +5,28 @@ open Struct;;
 Rand.set_seed () ;;
 print_endline "" ;;
 
-let arg = ([2; 7; 4; 0; 0; 0]);;
-let s = Scheme.Format ((module Bracket), arg);;
+(*let arg = [[16; 0; 0; 0; 0]; [8; 4; 0; 2; 0; 1; 0]];;
+let s = Scheme.Format ((module (Chain.M (Bracket))), arg);;
 
 let teams = Team.make_n (Scheme.number_of_teams s);;
 print_endline @@ Lists.to_string (fun t -> t.Team.name) (Scheme.run s teams);;
 print_endline "";;
+*)
 
+
+let s : Scheme2.t = Chain [
+  Pools (2, Round_robin);
+  Offset (0, Bracket [8; 0; 0; 0]);
+  Offset (4, Bracket [8; 0; 2; 0; 0])
+];;
+print_endline @@ Scheme2.name s
+
+let teams = Team.make_n (Scheme2.number_of_teams s);;
+print_endline @@ Lists.to_string (fun t -> t.Team.name) (Scheme2.run s teams);;
+print_int (Scheme2.max_games s 20);;
+print_endline "";;
+
+print_endline @@ string_of_bool (Scheme2.is_symmetric s 20);;
 (*
 let specs_menu = [
   "pool_play",

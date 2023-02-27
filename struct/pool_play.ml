@@ -61,8 +61,6 @@ let name (number_of_teams, pool_count, bracket : argument) = Int.to_string numbe
 
 (*let max_games (number_of_teams, pool_count, bracket : argument) = max_games_helper ~number_of_teams ~pool_count ~bracket*)
 
-let is_fair (_ : argument) = assert false;;
-  (*number_of_teams mod pool_count = 0 && Bracket.is_fair_helper bracket pool_count;;*)
 
 let run (_, pool_count, bracket : argument) = run_pool_to_bracket pool_count (Scheme.Format ((module Bracket), bracket));;
 
