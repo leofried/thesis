@@ -25,3 +25,5 @@ let rec pow a = function
 ;;
 
 let rec gcd a b = if b = 0 then a else gcd b (a mod b);;
+
+let divisors n = List.init n (fun x -> x + 1) |> List.filter (fun x -> n mod x = 0)

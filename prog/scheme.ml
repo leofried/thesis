@@ -19,7 +19,7 @@ let rec number_of_teams = function
 
 let rec name = function
   | Round_robin -> "round_robin"
-  | Bracket bracket -> Lists.to_string Int.to_string (bracket) ^ "-bracket"
+  | Bracket bracket -> Lists.to_string Int.to_string false bracket ^ "-bracket"
   | Pools (pool_count, scheme) -> string_of_int pool_count ^ "-pool " ^ name scheme
   | Offset (offset, scheme) -> "<" ^ string_of_int offset ^ ">-" ^ name scheme
   | Chain lst -> String.concat " -> " (List.map name lst)
@@ -145,14 +145,27 @@ let max_games scheme =
 ;;
 
 
+let symmetry_offset_helper n input=
+  let rec f i n lst = match n with
+    | 0 -> Some i
+    | n when n < 0 -> None
+    | n -> f (i + 1) (n - List.hd lst) (List.tl lst)
+  in
+
+  input
+  |$> f 0 n
+  |> Tuple.pair input
+  |> Tuple.unsieve
+  |@> Tuple.uncurry (Fun.flip Lists.top_of_list)
+;;
 
 let rec track_symmetry scheme input : int list option =
 
-  print_endline (name scheme);
+  (*print_endline (name scheme);
   (match input with
   | None -> ()
   | Some x -> print_endline @@ Lists.to_string string_of_int x
-  );
+  );*)
   
   match scheme with
   | Round_robin -> 
@@ -188,30 +201,23 @@ let rec track_symmetry scheme input : int list option =
 
   | Pools (n, scheme) ->
     input
-    |~> List.for_all (fun k -> k mod n = 0)
+    |$> Options.filter (List.for_all (fun k -> k mod n = 0))
     |@> List.map (fun k -> k / n)
-     |> Debug.mark "[re]"
      |> track_symmetry scheme
-     |> Debug.mark "pos"
     |@> List.map (fun k -> k * n)
 
   | Offset (n, scheme) ->
-    let rec f i n lst = match n with
-      | 0 -> Some i
-      | n when n < 0 -> None
-      | n -> f (i + 1) (n - List.hd lst) (List.tl lst)
-    in
-
     input
-    |$> f 0 n
-     |> Tuple.pair input
-     |> Tuple.seive
-    |@> Tuple.uncurry (Fun.flip Lists.top_of_list)
-    |@> Tuple.right
-     |> track_symmetry scheme
+    |> symmetry_offset_helper n
+    |> Tuple.sieve
+    |> Tuple.map_right (track_symmetry scheme)
+    |> Tuple.unsieve
+    |@> Tuple.uncurry List.append
 
   | Chain lst ->
     List.fold_left (Fun.flip track_symmetry) input lst
 ;;
+
+let get_symmetric_tiers scheme n = track_symmetry scheme (Some [n])
   
-let is_symmetric scheme n = Option.is_some (track_symmetry scheme (Some [n]));;
+let is_symmetric scheme n = Option.is_some (get_symmetric_tiers scheme n);;

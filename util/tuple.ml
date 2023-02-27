@@ -4,10 +4,15 @@ let right = snd;;
 
 let pair a b = (a, b);;
 
-let seive = function
+let unsieve = function
   | None, _ -> None
   | _, None -> None
   | Some x, Some y -> Some (x, y)
+;;
+
+let sieve = function
+  | None -> None, None
+  | Some (x, y) -> Some x, Some y
 ;;
 
 let map_left f (a, b) = f a, b;;

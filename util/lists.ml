@@ -44,14 +44,14 @@ let rec sum_two_lists (l1 : int list) (l2 : int list) : int list =
   | _ -> invalid_arg "Lists.sum_two_lists"
 ;;
 
-let to_string (stringify : 'a -> string) = function
+let to_string (stringify : 'a -> string) (new_line : bool) = function
   | [] -> "[]"
   | [i] -> "[" ^ (stringify i) ^ "]"
   | hd :: tl ->
     let rec f = function
     | [] -> "]"
-    | hd :: tl -> ", " ^ (stringify hd) ^ f tl
-    in "[" ^ (stringify hd) ^ f tl
+    | hd :: tl -> (if new_line then "\n" else "") ^ ", " ^ (stringify hd) ^ f tl
+    in "[ " ^ (stringify hd) ^ f tl
 ;;
        
 let pareto (lst : ('a * float * float) list) : ('a * float * float) list =
