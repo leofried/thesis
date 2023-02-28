@@ -1,4 +1,74 @@
 open Util;;
+open Infix;;
+
+let symmetry_offset_helper n input=
+  let rec f i n lst = match n with
+    | 0 -> Some i
+    | n when n < 0 -> None
+    | n -> f (i + 1) (n - List.hd lst) (List.tl lst)
+  in
+
+  input
+  |$> f 0 n
+   |> Tuple.pair input
+   |> Tuple.unsieve
+  |@> Tuple.uncurry (Fun.flip Lists.top_of_list)
+;;
+
+let rec track_symmetry (scheme : Scheme.t) input : int list option =
+  match scheme with
+  | Round_robin -> 
+    input
+    |@> Lists.fold (+)
+    |@> Fun.flip List.init (fun _ -> 1)
+
+  | Bracket bracket ->
+    let rec f input = function
+     | [] -> Some input
+     | hd :: tl ->
+        if hd = 0 then 
+          f input tl
+        else if hd < List.hd input then 
+          None
+        else
+          f (List.tl input) ((hd - (List.hd input)) :: tl)
+    in
+
+    let rec slide = function
+      | [] -> assert false
+      | [n] -> [n]
+      | hd :: md :: tl -> hd / 2 :: slide (md + hd / 2 :: tl)
+    in
+ 
+    input
+    |$> Fun.flip f (List.rev bracket)
+    |@> Tuple.pair bracket
+    |@> Tuple.map_left slide
+    |@> Tuple.map_left (List.filter ((<>) 0))
+    |@> Tuple.map_left List.rev
+    |@> Tuple.uncurry List.append
+
+  | Pools (n, scheme) ->
+    input
+    |$> Options.filter (List.for_all (fun k -> k mod n = 0))
+    |@> List.map (fun k -> k / n)
+     |> track_symmetry scheme
+    |@> List.map (fun k -> k * n)
+
+  | Offset (n, scheme) ->
+    input
+    |> symmetry_offset_helper n
+    |> Tuple.sieve
+    |> Tuple.map_right (track_symmetry scheme)
+    |> Tuple.unsieve
+    |@> Tuple.uncurry List.append
+
+  | Chain lst ->
+    List.fold_left (Fun.flip track_symmetry) input lst
+;;
+
+let get_symmetric_tiers scheme n = track_symmetry scheme (Some [n])
+
 
 let get_all_brackets (max_games : int) (tiers : int list) : int list list =
   let rec f (max_games : int) (target_sum : int) (tiers : int list) (sq : bool) : int list list =
@@ -21,8 +91,8 @@ let get_all_brackets (max_games : int) (tiers : int list) : int list list =
 let extend ~(number_of_teams : int) ~(max_games : int) (so_far : Scheme.t list) : Scheme.t list list =
   let k = (List.length so_far) - 1 in
   number_of_teams
-  |> Scheme.get_symmetric_tiers (Chain so_far)
-  |> Scheme.symmetry_offset_helper (k)
+  |> get_symmetric_tiers (Chain so_far)
+  |> symmetry_offset_helper (k)
   |> Option.value ~default:([], [])
   |> Tuple.right
   |> get_all_brackets max_games

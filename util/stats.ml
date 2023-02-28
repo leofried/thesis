@@ -1,3 +1,37 @@
+type t = {
+  samples : int;
+  sum : float;
+  sum_squares : float;
+};;
+
+let empty = {
+  samples = 0;
+  sum = 0.;
+  sum_squares = 0.;
+}
+
+let of_list lst = {
+  samples = List.length lst;
+  sum = Lists.fold (+.) lst;
+  sum_squares = Lists.fold (+.) (List.map (fun x -> x ** 2.) lst)
+};;
+
+let combine s1 s2 = {
+  samples = s1.samples + s2.samples;
+  sum = s1.sum +. s2.sum;
+  sum_squares = s1.sum_squares +. s2.sum_squares;
+}
+
+let mean {samples; sum; _}= Math.divide_float_int sum samples;;
+
+let stdev {samples; sum; sum_squares} = 
+  sqrt (Math.divide_float_int (sum_squares -. (Math.divide_float_int (sum ** 2.) samples)) (samples - 1))
+;;
+
+let stderr ({samples; _} as stats) = stdev stats /. (Math.sqrt_int samples);;
+
+
+(*
 let mean (lst : float list) : float =
   Math.divide_float_int (Lists.fold (+.) lst) (List.length lst)
 ;;
@@ -63,4 +97,4 @@ let sample (n : int) (lst : ('a * float) list) : 'a list =
       let tot = Lists.fold (+.) (snd (List.split lst)) in
       take (Random.float tot) lst :: (f (n - 1) lst)
   in f n lst
-;;
+;;*)

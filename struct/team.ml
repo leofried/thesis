@@ -26,7 +26,7 @@ let play_game (is_bracket : bool) (t1 : t) (t2 : t) : t * t =
     t2.games <- t2.games + 1;
   end;
 
-  let debug = true in
+  let debug = false in
   let t1p = t1.skill +. Rand.get_gaussian() *. !luck in
   let t2p = t2.skill +. Rand.get_gaussian() *. !luck in
   let cmp = compare t1p t2p in

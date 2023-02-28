@@ -1,4 +1,4 @@
 (library
- (name prog)
+ (name struct)
  (libraries util)
 )

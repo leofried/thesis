@@ -1,18 +1,32 @@
 open Util;;
-open Prog;;
-(*open Prog;;*)
+open Struct;;
 
 Rand.set_seed () ;;
 print_endline "" ;;
 
 
+let number_of_teams = 12;;
+let number_advance = 2;;
 
-let lst = Test.build_all ~number_of_teams:10 ~max_games:8 ~number_advance:3;;
+let lst = Sptb.build_all ~number_of_teams ~max_games:8 ~number_advance;;
+let sp : Data.s = {number_of_teams; number_advance; luck = 1.};;
+List.iter (fun s -> 
+  let stats = (Simulate.simulate s sp 1_000_000).stats in
+  print_float @@ Stats.mean stats;
+  print_string @@ " [";
+  print_float @@ Stats.stderr stats;
+  print_string @@ "] : ";
+  print_endline @@ Scheme.name s;
+) lst;;
+
+
+(*
+let lst = Sptb.build_all ~number_of_teams:12 ~max_games:8 ~number_advance:1;;
 print_endline @@ Lists.to_string Scheme.name true @@ lst;;
 print_int (List.length lst);;
 
 
-(*
+
 let s = Scheme.Chain [Pools (2, Round_robin); Offset (0, Bracket [4;2;0;0]); Offset (1, Bracket [1])];;
 print_int (Scheme.max_games s 12);;
 print_endline @@ Lists.to_string string_of_int false (Option.value (Scheme.get_symmetric_tiers s 12) ~default: [])
