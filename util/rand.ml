@@ -16,3 +16,9 @@ let rec get_gaussian() : float =
       next_gaussian := None;
       r
 ;;
+
+let shuffle lst =
+  let nd = List.map (fun c -> (Random.bits (), c)) lst in
+  let sond = List.sort compare nd in
+  List.map snd sond
+;;

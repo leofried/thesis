@@ -2,7 +2,7 @@ type t = {
   samples : int;
   sum : float;
   sum_squares : float;
-};;
+} [@@deriving yojson];;
 
 let empty = {
   samples = 0;
@@ -10,11 +10,14 @@ let empty = {
   sum_squares = 0.;
 }
 
-let of_list lst = {
-  samples = List.length lst;
-  sum = Lists.fold (+.) lst;
-  sum_squares = Lists.fold (+.) (List.map (fun x -> x ** 2.) lst)
-};;
+let of_list = function
+  | [] -> empty
+  | lst -> {
+    samples = List.length lst;
+    sum = Lists.fold (+.) lst;
+    sum_squares = Lists.fold (+.) (List.map (fun x -> x ** 2.) lst)
+  }
+;;
 
 let combine s1 s2 = {
   samples = s1.samples + s2.samples;

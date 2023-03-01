@@ -35,4 +35,3 @@ let play_game (is_bracket : bool) (t1 : t) (t2 : t) : t * t =
     | true -> if debug then print_endline (t1.name ^ " beat " ^ t2.name) else (); t1, t2
     | false -> if debug then print_endline (t2.name ^ " beat " ^ t1.name) else (); t2, t1
 ;;
-

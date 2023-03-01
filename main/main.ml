@@ -4,12 +4,22 @@ open Struct;;
 Rand.set_seed () ;;
 print_endline "" ;;
 
+let number_of_teams = 24;;
+let number_advance = 1;;
 
-let number_of_teams = 12;;
-let number_advance = 2;;
+let max_games = 9;;
+let specs = {Data.default_specs with number_of_teams; number_advance; max_games};;
 
+
+
+Data.print specs;;
+Simulate.simulate_schemes specs 1000 (Sptb.build_all specs);;
+Simulate.simulate_smart_looped specs 100_000;;
+
+
+(*
 let lst = Sptb.build_all ~number_of_teams ~max_games:8 ~number_advance;;
-let sp : Data.s = {number_of_teams; number_advance; luck = 1.};;
+
 List.iter (fun s -> 
   let stats = (Simulate.simulate s sp 1_000_000).stats in
   print_float @@ Stats.mean stats;
@@ -20,7 +30,7 @@ List.iter (fun s ->
 ) lst;;
 
 
-(*
+
 let lst = Sptb.build_all ~number_of_teams:12 ~max_games:8 ~number_advance:1;;
 print_endline @@ Lists.to_string Scheme.name true @@ lst;;
 print_int (List.length lst);;

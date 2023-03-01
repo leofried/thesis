@@ -7,6 +7,7 @@ type t =
   | Pools of int * t
   | Offset of int * t
   | Chain of t list
+[@@deriving yojson]
 ;;
 
 let rec number_of_teams = function
@@ -53,16 +54,12 @@ let rec run = function
       IMap.add points new_lst m
     in
 
-    let tiebreak (lst : int list) : int list =
-      let nd = List.map (fun c -> (Random.bits (), c)) lst in
-      let sond = List.sort compare nd in
-      List.map snd sond
-    in
+
 
     let rec rank_teams (teams : Team.t list) (indicies : int list): int list =
       let scores = List.fold_left (score_team wins_arr indicies) IMap.empty indicies in
       match IMap.cardinal scores with
-      | 1 -> tiebreak indicies
+      | 1 -> Rand.shuffle indicies
       | _ ->
         let levels = snd @@ List.split @@ IMap.bindings @@ scores in
         List.fold_left (fun ranks level -> (rank_teams teams level) @ ranks) [] levels
@@ -124,8 +121,7 @@ let rec run = function
     make_pots
     >> reorient List.cons (*make pools*)
     >> List.map (run scheme)
-    >> reorient List.append (*rank*)
-
+    >> reorient (Rand.shuffle >> List.append) (*rank*)
 
   | Offset (n, scheme) ->
     Lists.top_of_list n

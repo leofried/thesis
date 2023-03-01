@@ -1,0 +1,100 @@
+[
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 4, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 4, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 6396,
+      "sum": 2604.2587808647777,
+      "sum_squares": 2986.612090198306
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 4, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 8, 0, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 10821,
+      "sum": 4072.605557052971,
+      "sum_squares": 4475.9377858360685
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 4, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 8, 4, 0, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 9380,
+      "sum": 3617.2623689004886,
+      "sum_squares": 4025.8348250821537
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 2, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 2, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 13367,
+      "sum": 4971.016116039685,
+      "sum_squares": 5382.1050368071965
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 2, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 4, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 93300,
+      "sum": 31753.72627103383,
+      "sum_squares": 32929.69793028288
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 2, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 4, 2, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 1273594,
+      "sum": 418741.3977548802,
+      "sum_squares": 422079.90265194984
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 2, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 8, 0, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 14092,
+      "sum": 5182.758274968686,
+      "sum_squares": 5532.589012866727
+    }
+  ]
+]

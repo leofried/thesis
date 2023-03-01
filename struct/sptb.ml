@@ -88,34 +88,34 @@ let get_all_brackets (max_games : int) (tiers : int list) : int list list =
 ;;
 
 
-let extend ~(number_of_teams : int) ~(max_games : int) (so_far : Scheme.t list) : Scheme.t list list =
+let extend (specs : Data.s) (so_far : Scheme.t list) : Scheme.t list list =
   let k = (List.length so_far) - 1 in
-  number_of_teams
+  specs.number_of_teams
   |> get_symmetric_tiers (Chain so_far)
   |> symmetry_offset_helper (k)
   |> Option.value ~default:([], [])
   |> Tuple.right
-  |> get_all_brackets max_games
+  |> get_all_brackets specs.max_games
   |> List.map (fun bracket -> so_far @ [Offset (k, Bracket bracket)])
-  |> List.filter  (fun lst -> Scheme.max_games (Chain lst) number_of_teams <= max_games)
+  |> List.filter  (fun lst -> Scheme.max_games (Chain lst) specs.number_of_teams <= specs.max_games)
 ;;
 
 
-let build_all ~(number_of_teams) ~(max_games) ~(number_advance) : Scheme.t list =
+let build_all (specs : Data.s) : Scheme.t list =
   let pool_options =
-    number_of_teams
+    specs.number_of_teams
     |> Math.divisors
     |> List.map (fun x -> Scheme.Pools (x, Round_robin))
-    |> List.filter (fun s -> Scheme.max_games s number_of_teams <= max_games)
+    |> List.filter (fun s -> Scheme.max_games s specs.number_of_teams <= specs.max_games)
     |> List.map (fun x -> [x])
   in
     List.map 
     (fun lst -> Scheme.Chain lst)
     (List.fold_left
       (fun so_far_lst _ -> 
-        List.flatten (List.map (extend ~number_of_teams ~max_games) so_far_lst)
+        List.flatten (List.map (extend specs) so_far_lst)
       )
       pool_options
-      (List.init number_advance Fun.id)
+      (List.init specs.number_advance Fun.id)
     )
 ;;
