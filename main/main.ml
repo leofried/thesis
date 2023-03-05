@@ -4,10 +4,10 @@ open Struct;;
 Rand.set_seed () ;;
 print_endline "" ;;
 
-let number_of_teams = 24;;
-let number_advance = 1;;
+let number_of_teams = 12;;
+let number_advance = 4;;
 
-let max_games = 9;;
+let max_games = 8;;
 let specs = {Data.default_specs with number_of_teams; number_advance; max_games};;
 
 
