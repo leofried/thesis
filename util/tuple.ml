@@ -4,6 +4,8 @@ let right = snd;;
 
 let pair a b = (a, b);;
 
+let flip (a, b) = (b, a);;
+
 let unsieve = function
   | None, _ -> None
   | _, None -> None
