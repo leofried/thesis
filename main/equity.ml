@@ -47,8 +47,8 @@ let compare x y = match List.compare Float.compare (team_equities y) (team_equit
 
 let make_all ~(number_of_teams : int) ~(max_games : int)
     ?(base = 32)
-    ?(no_ones = false)
-    ?(no_twos = false)
+    ?(no_ones = true)
+    ?(no_twos = true)
     ?(size_equity_consistent = false)
     ?(size_diff_max = false)
     ()

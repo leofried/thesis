@@ -11,9 +11,9 @@ let all = Equity.make_all ~number_of_teams ~max_games () ;;
 
 let path = "analysis/equity-signatures/" ^ string_of_int number_of_teams ^ "teams" ^ string_of_int max_games ^ "games.txt";;
 let channel = Out_channel.open_bin path in
-Out_channel.output_string channel "Average Team Equity - Minimum Team Equity | Equity Signature";
+Out_channel.output_string channel "Minimum Team Equity | Equity Signature";
 List.iter (fun s ->
-  let str = "\n" ^ string_of_float (Math.divide_int_int 1 number_of_teams -. List.hd (Equity.team_equities s)) ^ "  |  " ^ 
+  let str = "\n" ^ string_of_float (List.hd (Equity.team_equities s)) ^ "  |  " ^ 
   (Lists.to_string (fun (x, y) -> "(" ^ string_of_int x ^ ", " ^ string_of_float (Adic.to_float y) ^ ")") false s) in
   Out_channel.output_string channel str;
 ) all;
