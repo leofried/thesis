@@ -79,3 +79,9 @@ let rec verify_base_two_sum = function
     else
       verify_base_two_sum (md + hd / 2 :: tl)
     ;;
+
+let rec pair_offset = function
+  | [] -> []
+  | [_] -> []
+  | a :: (b :: _ as lst) -> (a, b) :: pair_offset lst
+;;
