@@ -26,4 +26,11 @@ let rec pow a = function
 
 let rec gcd a b = if b = 0 then a else gcd b (a mod b);;
 
-let divisors n = List.init n (fun x -> x + 1) |> List.filter (fun x -> n mod x = 0)
+let divisors n = List.init n (fun x -> x + 1) |> List.filter (fun x -> n mod x = 0);;
+
+let rec log b = function
+  | 1 -> 0
+  | n -> 1 + if n mod b = 0 then log b (n / b) else (log b (n / b + 1))
+;;
+
+let next_pow b x = pow b (log b x)

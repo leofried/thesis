@@ -133,9 +133,10 @@ let rec run = function
     Fun.flip (List.fold_left (Fun.flip run)) lst
 ;;
 
-let max_games scheme = 
-  Team.make_n
-  >> run scheme
-  >> List.map (fun t -> t.Team.games)
-  >> Lists.fold max
+let max_games n scheme =
+  n
+  |> Team.make_n
+  |> run scheme
+  |> List.map (fun t -> t.Team.games)
+  |> Lists.fold max
 ;;

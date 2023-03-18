@@ -1,5 +1,7 @@
 open Infix;;
 
+type 'a t = 'a list;;
+
 let rec top_of_list n lst = 
   if n = 0 then [], lst else
     match lst with
