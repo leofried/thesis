@@ -2,6 +2,17 @@ open Infix;;
 
 type 'a t = 'a list;;
 
+let rec unwind = function
+  | [] -> []
+  | lst -> 
+    lst
+    |> List.filter ((<>) [])
+    |> List.map (Tuple.apply (List.hd, List.tl))
+    |> List.split
+    |> Tuple.map_right unwind
+    |> Tuple.uncurry List.append
+;;
+
 let rec top_of_list n lst = 
   if n = 0 then [], lst else
     match lst with
@@ -86,4 +97,41 @@ let rec pair_offset = function
   | [] -> []
   | [_] -> []
   | a :: (b :: _ as lst) -> (a, b) :: pair_offset lst
+;;
+
+let group_by lst =
+  let rec f = function
+    | [] -> []
+    | (tag, ele) :: tl ->
+      let assoc = f tl in
+      if List.mem_assoc tag assoc then
+        List.map (fun (tg, lst) -> tg, if tg = tag then ele :: lst else lst) assoc
+      else
+        (tag, [ele]) :: assoc
+  in
+  lst
+  |> List.rev
+  |> f
+  |> List.rev
+  |> List.map (Tuple.map_right List.rev)
+;;
+
+let stable_sort_dec compare = List.stable_sort (fun a b -> ~- (compare a b));;
+
+let rec count = function
+  | [] -> []
+  | hd :: tl ->
+    let counts = count tl in
+    if List.mem_assoc hd counts then
+      List.map (fun (tag, n) -> tag, if tag = hd then n + 1 else n) counts
+    else
+      (hd, 1) :: counts
+;;
+
+let count_int (lst : int t) =
+  let rec f counts = function
+    | [] -> counts
+    | hd :: tl ->
+        f (List.mapi (fun i n -> if hd = i then n + 1 else n) counts) tl
+  in f (List.init (1 + fold Int.max lst) (fun _ -> 0)) lst
 ;;

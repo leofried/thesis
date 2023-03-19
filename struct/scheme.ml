@@ -7,6 +7,7 @@ type t =
   | Pools of int * t
   | Offset of int * t
   | Chain of t list
+  | Grid of (int * int) list list
 [@@deriving yojson]
 ;;
 
@@ -16,6 +17,7 @@ let rec number_of_teams = function
   | Pools (_, scheme) -> number_of_teams scheme
   | Offset (n, scheme) -> n + number_of_teams scheme
   | Chain lst -> Lists.fold max (List.map number_of_teams lst)
+  | Grid grid -> List.length (List.concat grid)
 ;;
 
 let rec name = function
@@ -24,6 +26,7 @@ let rec name = function
   | Pools (pool_count, scheme) -> string_of_int pool_count ^ "-pool " ^ name scheme
   | Offset (offset, scheme) -> "<" ^ string_of_int offset ^ ">-" ^ name scheme
   | Chain lst -> String.concat " -> " (List.map name lst)
+  | Grid _ -> "grid"
 ;;
 
 let rec run = function
@@ -54,8 +57,6 @@ let rec run = function
       IMap.add points new_lst m
     in
 
-
-
     let rec rank_teams (teams : Team.t list) (indicies : int list): int list =
       let scores = List.fold_left (score_team wins_arr indicies) IMap.empty indicies in
       match IMap.cardinal scores with
@@ -68,39 +69,33 @@ let rec run = function
     List.map (Array.get teams_arr) (rank_teams teams (List.init (List.length teams) Fun.id))
 
 
-  | Bracket bracket ->
+  | Bracket bracket -> (fun teams ->
     Lists.verify_base_two_sum bracket;
-
-    let rec run_reversed (teams : Team.t list) = function
-    | [] -> assert false
-    | [_] -> teams
-    | hd :: md :: tl ->
-      let n = hd / 2 in
-      let dead, alive =
-        teams
-        |> Lists.top_of_list_rev n
-        |> Tuple.map_right (Lists.top_of_list n)
-        |> Tuple.associate_left
-        |> Tuple.map_left (
-          Tuple.uncurry List.combine
-          >> List.map (Tuple.uncurry (Team.play_game true))
-          >> List.split
-          >> Tuple.commute
-        )
-        |> Tuple.associate_right
-        |> Tuple.map_right (Tuple.uncurry List.append)
-      in
-      (run_reversed alive ((md + n) :: tl)) @ dead
-
+    
+    let round teams =
+      let n = List.length teams / 2 in
+      teams
+      |> Lists.top_of_list_rev n
+      |> Tuple.uncurry List.combine
+      |> List.map (Tuple.uncurry (Team.play_game true))
+      |> List.split
     in
-    Lists.top_of_list (number_of_teams (Bracket bracket))
-    >> Tuple.map_left (
-      List.rev
-      >> Fun.flip run_reversed bracket
-    )
-    >> Tuple.uncurry List.append
-
-
+    
+    
+      let rec run_reversed (teams : Team.t list) = function
+        | [] -> assert false
+        | [_] -> teams
+        | hd :: md :: tl ->
+          let players, byes = Lists.top_of_list hd teams in
+          let winners, losers = round players in
+          run_reversed (winners @ byes) (hd / 2 + md :: tl) @ losers
+      in
+    
+      let players, dead = Lists.top_of_list (Lists.fold (+) bracket) teams in
+      let order = run_reversed (List.rev players) bracket in
+      order @ dead
+  )
+    
   | Pools (pool_count, scheme) ->
     let rec make_pots (teams : Team.t list) : Team.t list list =
       if List.length teams <= pool_count then [teams] else
@@ -121,7 +116,7 @@ let rec run = function
     make_pots
     >> reorient List.cons (*make pools*)
     >> List.map (run scheme)
-    >> reorient (Rand.shuffle >> List.append) (*rank*)
+    >> reorient List.append (*rank*)
 
   | Offset (n, scheme) ->
     Lists.top_of_list n
@@ -131,6 +126,9 @@ let rec run = function
 
   | Chain lst ->
     Fun.flip (List.fold_left (Fun.flip run)) lst
+
+  | Grid grid ->
+    Grid.run grid
 ;;
 
 let max_games n scheme =

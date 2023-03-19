@@ -43,3 +43,5 @@ let split_perfect (x, y) =
   if Math.next_pow 2 a = a then (reduce (b, y), reduce (a, y))
   else invalid_arg "Adic.split_perfect"
 ;;
+
+let is_perfect x = Tuple.uncurry (=) (split_perfect x);;

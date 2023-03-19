@@ -6,20 +6,14 @@ Rand.set_seed () ;;
 print_endline "" ;;
 
 
-
-let grid = [
+let grid = Scheme.Grid (Grid.transform [
   [4; 2; 2; 0; 0];
-  [3; 2; 1; 0];
-  [3; 2; 1; 0];
-  [4; 2; 0; 0];
-  [4; 2; 0; 0];
-];;
+  [3;2;1;0];
+  [3;2;1;0];
+  [3;2;1;0];
+  [3;2;1;0];
+]);;
 
-Pool_play.(verify @@ transform grid);;
-
-
-
-(*
 
 let lame = Scheme.Chain [
   Pools (4, Round_robin);
@@ -42,20 +36,26 @@ let crossover = Scheme.Chain [
   Bracket [4; 8; 3; 0; 0; 0]
 ];;
 
-let formats = [overcorrection; default];;
+let formats = [lame; crossover; grid];;
 
-Simulate.simulate_schemes (Data.default_specs 21) 000000 formats;;
+Simulate.simulate_schemes (Data.default_specs 21) 100000 formats;;
 
 List.iter (fun (s, st) ->
   print_endline @@ Scheme.name s;
   print_endline @@ Math.to_pct ~digits:2 (Stats.mean st);
   print_endline @@ Math.to_pct ~digits:2 (Stats.stderr st);
 ) @@ Data.read (Data.default_specs 21);;
+(*
+
+let teams = Team.make_n 21;;
+Team.set_luck 0.;;
+
+Scheme.run grid teams;;
+print_endline "---";;
+Scheme.run crossover teams;;
 
 
 *)
-
-
 (*
 let number_of_teams = 21;;
 let max_games = 8;;
