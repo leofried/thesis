@@ -37,3 +37,5 @@ let compare ?(left = fun _ _ -> 0) ?(right = fun _ _ -> 0) (a, b) (c, d) =
   | z -> z
 ;;
 
+let to_string left right (a, b) = "(" ^ left a ^ ", " ^ right b ^ ")";;
+

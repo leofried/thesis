@@ -26,7 +26,7 @@ let rec name = function
   | Pools (pool_count, scheme) -> string_of_int pool_count ^ "-pool " ^ name scheme
   | Offset (offset, scheme) -> "<" ^ string_of_int offset ^ ">-" ^ name scheme
   | Chain lst -> String.concat " -> " (List.map name lst)
-  | Grid _ -> "grid"
+  | Grid grid -> Lists.to_string (Lists.to_string (string_of_float >>@ Adic.to_float) false) false grid
 ;;
 
 let rec run = function

@@ -28,5 +28,9 @@ let all_parts_cut n m =
 ;;
 
 let all_parts_exact n m =
-  List.filter (fun x -> List.length x = m) (all_parts n) ;;
+  List.filter_map (fun x ->
+    let k = m - List.length x in
+    if k < 0 then None
+    else Some (x @ (List.init k (fun _ -> 0))))
+  (all_parts n) ;;
 ;;

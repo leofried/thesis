@@ -49,7 +49,7 @@ let make_all ~(number_of_teams : int) ~(max_games : int)
     ?(base = 32)
     ?(no_ones = true)
     ?(no_twos = true)
-    ?(size_equity_consistent = false)
+    ?(size_equity_consistent = true)
     ?(size_diff_max = false)
     ()
   =

@@ -135,3 +135,10 @@ let count_int (lst : int t) =
         f (List.mapi (fun i n -> if hd = i then n + 1 else n) counts) tl
   in f (List.init (1 + fold Int.max lst) (fun _ -> 0)) lst
 ;;
+
+let rec combos = function
+  | [] -> [[]]
+  | hd :: tl -> 
+    let rest = combos tl in
+    List.flatten (List.map (fun x -> (List.map (List.cons x) rest)) hd)
+  ;;
