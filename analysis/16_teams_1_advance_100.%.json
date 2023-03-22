@@ -1,0 +1,128 @@
+[
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 2, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 2, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 638962,
+      "sum": 232248.57505051646,
+      "sum_squares": 240283.84861746794
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 4, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 16, 0, 0, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 11480,
+      "sum": 4689.232426262915,
+      "sum_squares": 5162.55389721739
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 4, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 8, 4, 4, 0, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 22072,
+      "sum": 8569.125875161875,
+      "sum_squares": 9131.64912251959
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 4, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 8, 4, 0, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 14113,
+      "sum": 5654.571976357017,
+      "sum_squares": 6069.9930686204525
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 4, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 8, 0, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 15524,
+      "sum": 6166.276661600691,
+      "sum_squares": 6649.135068834638
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 4, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 4, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 9743,
+      "sum": 4050.054662560467,
+      "sum_squares": 4535.799504352232
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 8, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 16, 0, 0, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 7891,
+      "sum": 3365.5035440370816,
+      "sum_squares": 3813.873076499783
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 8, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 8, 0, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 7314,
+      "sum": 3134.391336212032,
+      "sum_squares": 3603.790266255853
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 16, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 16, 0, 0, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 7591,
+      "sum": 3224.201647137052,
+      "sum_squares": 3612.4617898818324
+    }
+  ]
+]

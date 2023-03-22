@@ -1,5 +1,6 @@
 open Util;;
 open Infix;;
+open Engine;;
 
 type t = 
   | Round_robin
@@ -7,9 +8,10 @@ type t =
   | Pools of int * t
   | Offset of int * t
   | Chain of t list
-  | Grid of (int * int) list list
 [@@deriving yojson]
 ;;
+
+let kind = "recursive_offset_chain";;
 
 let rec number_of_teams = function
   | Round_robin -> 1
@@ -17,16 +19,14 @@ let rec number_of_teams = function
   | Pools (_, scheme) -> number_of_teams scheme
   | Offset (n, scheme) -> n + number_of_teams scheme
   | Chain lst -> Lists.fold max (List.map number_of_teams lst)
-  | Grid grid -> List.length (List.concat grid)
 ;;
 
-let rec name = function
+let rec to_string = function
   | Round_robin -> "round_robin"
   | Bracket bracket -> Lists.to_string Int.to_string false bracket ^ "-bracket"
-  | Pools (pool_count, scheme) -> string_of_int pool_count ^ "-pool " ^ name scheme
-  | Offset (offset, scheme) -> "<" ^ string_of_int offset ^ ">-" ^ name scheme
-  | Chain lst -> String.concat " -> " (List.map name lst)
-  | Grid grid -> Lists.to_string (Lists.to_string (string_of_float >>@ Adic.to_float) false) false grid
+  | Pools (pool_count, scheme) -> string_of_int pool_count ^ "-pool " ^ to_string scheme
+  | Offset (offset, scheme) -> "<" ^ string_of_int offset ^ ">-" ^ to_string scheme
+  | Chain lst -> String.concat " -> " (List.map to_string lst)
 ;;
 
 let rec run = function
@@ -123,18 +123,6 @@ let rec run = function
     >> Tuple.map_right (run scheme)
     >> Tuple.uncurry List.append
 
-
   | Chain lst ->
     Fun.flip (List.fold_left (Fun.flip run)) lst
-
-  | Grid grid ->
-    Grid.run grid
-;;
-
-let max_games n scheme =
-  n
-  |> Team.make_n
-  |> run scheme
-  |> List.map (fun t -> t.Team.games)
-  |> Lists.fold max
 ;;

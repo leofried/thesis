@@ -1,0 +1,80 @@
+[
+  [
+    [ "Bracket", [ 1 ] ],
+    {
+      "samples": 1000,
+      "sum": 1952.1955336069432,
+      "sum_squares": 4926.645237839295
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 4, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 8, 0, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 51190,
+      "sum": 5.0230999925124316,
+      "sum_squares": 0.07353880821751503
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 4, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 4, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 62740,
+      "sum": 6.031831923301654,
+      "sum_squares": 0.09102594678085499
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 8, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 16, 8, 0, 0, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 43311,
+      "sum": 4.619722228047884,
+      "sum_squares": 0.07414458065870524
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 8, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 16, 0, 0, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 60348,
+      "sum": 5.819247853513693,
+      "sum_squares": 0.09080459332103839
+    }
+  ],
+  [
+    [
+      "Chain",
+      [
+        [ "Pools", 8, [ "Round_robin" ] ],
+        [ "Offset", 0, [ "Bracket", [ 8, 0, 0, 0 ] ] ]
+      ]
+    ],
+    {
+      "samples": 87404,
+      "sum": 8.604013181173732,
+      "sum_squares": 0.1261712183834009
+    }
+  ]
+]

@@ -8,7 +8,13 @@ let get_next_team_name () = "Team " ^ (team_index := !team_index + 1; Int.to_str
 
 let make ?(name = get_next_team_name()) ?(skill = Rand.get_gaussian()) () : t = {name; skill; games = 0}
 
-let make_n (n : int) = List.init n (fun _ -> make ());;
+let make_n (fidel : float) (n : int) = 
+  List.init n (fun _ -> make ())
+  |> List.map (fun x -> x, Rand.get_gaussian () *. (1. -. fidel) -. x.skill *. fidel)
+  |> List.sort (Tuple.compare ~right:Float.compare)
+  |> List.split
+  |> Tuple.left
+;;
 
 
 let luck = ref 1.;;
