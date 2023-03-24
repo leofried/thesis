@@ -1,6 +1,6 @@
 open Util;;
 
-module M (Scheme : Scheme.S) = struct
+module M (Scheme : S.SCHEME) = struct
 
   type s = { 
     number_of_teams : int;

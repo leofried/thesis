@@ -32,7 +32,7 @@ let transform grid =
   if verify grid then grid else assert false
 ;;
 
-let grid_to_equity : t -> Equity.t = List.map (Tuple.apply (List.length, Lists.fold Adic.add));;
+let grid_to_equity : t -> Signature.t = List.map (Tuple.apply (List.length, Lists.fold Adic.add));;
 
 let grid_to_pool_sizes : t -> int list = List.map List.length;;
 
@@ -142,7 +142,7 @@ let run grid =
   >> bracket (grid_to_bracket grid)
 ;;
 
-let get_all_grids (equity : Equity.t) ~(max_games : int) : t list =
+let get_all_grids (equity : Signature.t) ~(max_games : int) : t list =
   let f (number_of_teams, equity) =
     let base = float_of_int (Math.pow 2 (max_games - number_of_teams + 1)) in
     let eq_int = int_of_float ((Adic.to_float equity) *. base) in

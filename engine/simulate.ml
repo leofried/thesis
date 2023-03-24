@@ -2,7 +2,7 @@ open Util;;
 
 (*SMART SIM TEMPERATURE*)
 
-module M (Scheme : Scheme.S) = struct
+module M (Scheme : S.SCHEME) = struct
 
   module Data = Data.M (Scheme);;
 

@@ -1,4 +1,4 @@
-module type S = sig
+module type SCHEME = sig
   type t [@@deriving yojson]
 
   val kind : string

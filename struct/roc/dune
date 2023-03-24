@@ -1,5 +1,5 @@
 (library
- (name struct)
+ (name roc)
  (libraries util engine)
  (preprocess
   (pps ppx_yojson_conv))

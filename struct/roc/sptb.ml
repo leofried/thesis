@@ -4,7 +4,7 @@ open Engine;;
 
 (*THINK ABOUT POOL_TO_BRACKET SEEDING*)
 
-module Data = Data.M (Roc);;
+module Data = Data.M (Scheme);;
 
 let symmetry_offset_helper n input=
   let rec f i n lst = match n with
@@ -20,7 +20,7 @@ let symmetry_offset_helper n input=
   |@> Tuple.uncurry (Fun.flip Lists.top_of_list)
 ;;
 
-let rec track_symmetry (scheme : Roc.t) input : int list option =
+let rec track_symmetry (scheme : Scheme.t) input : int list option =
   match scheme with
   | Round_robin -> 
     input
@@ -91,7 +91,7 @@ let get_all_brackets (max_games : int) (tiers : int list) : int list list =
   in List.map List.rev (f max_games 1 tiers false)
 ;;
 
-let extend (specs : Data.s) (so_far : Roc.t list) : Roc.t list list =
+let extend (specs : Data.s) (so_far : Scheme.t list) : Scheme.t list list =
   let k = (List.length so_far) - 1 in
   specs.number_of_teams
   |> get_symmetric_tiers (Chain so_far)
@@ -103,16 +103,16 @@ let extend (specs : Data.s) (so_far : Roc.t list) : Roc.t list list =
   |> List.filter  (fun lst -> Data.max_games specs.number_of_teams (Chain lst) <= specs.max_games)
 ;;
 
-let build_all (specs : Data.s) : Roc.t list =
+let build_all (specs : Data.s) : Scheme.t list =
   let pool_options =
     specs.number_of_teams
     |> Math.divisors
-    |> List.map (fun x -> Roc.Pools (x, Round_robin))
+    |> List.map (fun x -> Scheme.Pools (x, Round_robin))
     |> List.filter (fun s -> Data.max_games specs.number_of_teams s <= specs.max_games)
     |> List.map (fun x -> [x])
   in
     List.map 
-    (fun lst -> Roc.Chain lst)
+    (fun lst -> Scheme.Chain lst)
     (List.fold_left
       (fun so_far_lst _ -> 
         List.flatten (List.map (extend specs) so_far_lst)

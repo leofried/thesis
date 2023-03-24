@@ -1,11 +1,9 @@
 open Util;;
 open Engine;;
-open Struct;;
+open Roc;;
 
 Rand.set_seed () ;;
 print_endline "" ;;
-
-module Scheme = Roc;;
 
 module Data = Data.M (Scheme);;
 module Simulate = Simulate.M (Scheme);;
