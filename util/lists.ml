@@ -2,17 +2,6 @@ open Infix;;
 
 type 'a t = 'a list;;
 
-let rec unwind = function
-  | [] -> []
-  | lst -> 
-    lst
-    |> List.filter ((<>) [])
-    |> List.map (Tuple.apply (List.hd, List.tl))
-    |> List.split
-    |> Tuple.map_right unwind
-    |> Tuple.uncurry List.append
-;;
-
 let rec top_of_list n lst = 
   if n = 0 then [], lst else
     match lst with
@@ -60,13 +49,13 @@ let rec sum_two_lists (l1 : int list) (l2 : int list) : int list =
   | _ -> invalid_arg "Lists.sum_two_lists"
 ;;
 
-let to_string (stringify : 'a -> string) (new_line : bool) = function
+let to_string ?(new_line : bool = false) (stringify : 'a -> string) = function
   | [] -> "[]"
   | [i] -> "[" ^ (stringify i) ^ "]"
   | hd :: tl ->
     let rec f = function
     | [] -> "]"
-    | hd :: tl -> (if new_line then "\n" else "") ^ ", " ^ (stringify hd) ^ f tl
+    | hd :: tl -> (if new_line then "\n" else "") ^ "; " ^ (stringify hd) ^ f tl
     in "[ " ^ (stringify hd) ^ f tl
 ;;
        

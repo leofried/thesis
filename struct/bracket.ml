@@ -62,3 +62,21 @@ let output_tiers : t -> Tiers.t =
     | hd :: md :: tl -> hd / 2 ::f (md + hd / 2 :: tl)
   in input_tiers >>@ f
 ;;
+
+let to_tree (bracket : t) : int Tree.t list =
+  let rec convert (i : int) (arr : int Tree.t array) = function
+    | [] -> assert false
+    | [_] -> ()  
+    | 0 :: tl -> convert i arr tl
+    | x :: _ when x < 0 -> assert false
+    | a :: b :: tl -> 
+      let j = i - a + 1 in
+      arr.(j) <- Branch (arr.(j), arr.(i));
+      convert (i - 1) arr (a - 2 :: b + 1 :: tl)
+  in
+    
+  let n = Lists.fold (+) bracket in
+  let arr = Array.init n (fun i -> Tree.Leaf i) in
+  convert (n - 1) arr bracket;
+  Tuple.left @@ Lists.top_of_list (count_advance bracket) (Array.to_list arr)
+;;

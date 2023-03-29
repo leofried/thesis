@@ -16,7 +16,7 @@ module S = struct
     (string_of_int number_of_teams) ^ " teams -> " ^
     (string_of_int number_of_pools) ^ " pools -> {" ^
     (string_of_int auto_bids) ^ "} -> " ^
-    (String.concat " -> " (List.map (Lists.to_string string_of_int false) brackets))
+    (String.concat " -> " (List.map (Lists.to_string string_of_int) brackets))
   ;;
 
   let run {number_of_pools; auto_bids; brackets; _} teams =
