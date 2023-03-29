@@ -1,6 +1,6 @@
 open Util;;
 open Engine;;
-open Roc;;
+open Struct;;
 
 Rand.set_seed () ;;
 print_endline "" ;;
@@ -8,13 +8,16 @@ print_endline "" ;;
 module Data = Data.M (Scheme);;
 module Simulate = Simulate.M (Scheme);;
 
-let number_of_teams = 24;;
-let number_advance = 1;;
-let max_games = 8;;
-let specs = {(Data.default_specs number_of_teams) with number_advance; max_games};;
 
-Data.print specs;;
-let all = Scheme.Round_robin :: (Scheme.Bracket [1]) :: Sptb.build_all specs;;
-print_int (List.length all);;
-Simulate.simulate_schemes specs 1000 all;;
-Simulate.simulate_smart_looped specs 100_000;;
+let number_of_teams = 12;;
+
+let specs number_advance = {(Specs.default number_of_teams) with
+  number_advance;
+  max_games = 8;
+};;
+
+
+List.iter (fun k -> print_int k; print_string " -> "; print_int (List.length (Scheme.get_all (specs k))); print_endline "")
+(List.init number_of_teams ((+) 1))
+
+(*List.iter (fun s -> print_endline @@ Scheme.to_string s) (Scheme.get_all specs);;*)

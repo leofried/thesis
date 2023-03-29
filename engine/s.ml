@@ -3,6 +3,7 @@ module type SCHEME = sig
 
   val kind : string
 
-  val to_string : t -> string
   val run : t -> Team.t list -> Team.t list
+
+  val to_string : t -> string
 end

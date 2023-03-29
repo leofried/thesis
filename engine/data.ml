@@ -2,22 +2,6 @@ open Util;;
 
 module M (Scheme : S.SCHEME) = struct
 
-  type s = { 
-    number_of_teams : int;
-    number_advance : int;
-    luck : float;
-    fidel : float;
-    max_games : int;
-  };;
-
-  let default_specs number_of_teams = {
-    number_of_teams;
-    number_advance = 1;
-    luck = 1.;
-    fidel = 0.;
-    max_games = Int.max_int;
-  }
-
   type t = Scheme.t * Stats.t [@@deriving yojson];;
 
   let max_games n scheme =
@@ -28,15 +12,15 @@ module M (Scheme : S.SCHEME) = struct
     |> Lists.fold max
   ;;
 
-  let get_file_name {number_of_teams; number_advance; luck; fidel; _} =
+  let get_file_name (specs : Specs.t) =
     Scheme.kind ^ "_" ^
-    string_of_int number_of_teams ^ "_teams_" ^
-    string_of_int number_advance ^ "_advance_" ^
-    string_of_float luck ^ "_luck_" ^
-    string_of_float fidel ^ "_fidel"
+    string_of_int specs.number_of_teams ^ "_teams_" ^
+    string_of_int specs.number_advance ^ "_advance_" ^
+    string_of_float specs.luck ^ "_luck_" ^
+    string_of_float specs.fidel ^ "_fidel"
   ;;
 
-  let read specs =
+  let read (specs : Specs.t) =
     Json.read ["analysis"] (get_file_name specs)
     |> Option.value ~default:(`List [])
     |> Json.to_list
