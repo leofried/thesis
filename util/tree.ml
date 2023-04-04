@@ -72,11 +72,8 @@ let color (lst : int t list) (number_of_colors : int) : int list =
   in
 
   lst
-  |> Debug.print (Lists.to_string (to_string string_of_int))
   |> List.map (map (fun x -> x, None))
-  |> Debug.print (Lists.to_string (to_string (Tuple.to_string string_of_int (Options.to_string string_of_int))))
   |> f 0 (Lists.fold (+) (List.map (count (fun _ -> true)) lst))
-  |> Debug.print (Lists.to_string (to_string (Tuple.to_string string_of_int (Options.to_string string_of_int))))
   |> List.map to_list
   |> List.concat
   |> List.sort (Tuple.compare ~left:Int.compare)

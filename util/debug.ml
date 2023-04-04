@@ -1,4 +1,4 @@
-let debug = false;;
+let debug = true;;
 
 let hold p x = if debug then p x else (); x;;
 
