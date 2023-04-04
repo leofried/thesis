@@ -1,6 +1,6 @@
 open Util;;
 
-(*SMART SIM TEMPERATURE*)
+(*SMART SIM TEMPERATURE, LOTS OF OPTIONALITY HERE*)
 
 module M (Scheme : S.SCHEME) = struct
 
@@ -63,12 +63,14 @@ module M (Scheme : S.SCHEME) = struct
     |> List.map (fun (scheme, i) -> (scheme, simulate_scheme specs i scheme))
   ;;
 
-  let simulate_smart_looped (specs : Specs.t) (iters : int) =
+  let simulate_smart_looped ?(schemes : Scheme.t list = []) (specs : Specs.t) (iters : int) =
+    simulate_schemes specs 1000 schemes;
+    
     Debug.loop (fun () ->
+      print_endline "cycle complete";
       Data.read specs
       |> simulate_smart specs iters
-      |> Data.write specs;
-      print_endline "cycle complete"
+      |> Data.write specs
     )
   ;;
 end

@@ -61,5 +61,5 @@ let run pool_count =
   make_pots
   >> reorient List.cons (*make pools*)
   >> List.map round_robin
-  >> reorient List.append (*rank*)
+(*  >> reorient List.append rank*)
 ;;

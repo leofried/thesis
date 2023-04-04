@@ -2,6 +2,19 @@ open Infix;;
 
 type 'a t = 'a list;;
 
+(*CLean*)
+
+let rec unwind = function
+  | [] -> []
+  | lst -> 
+    lst
+    |> List.filter ((<>) [])
+    |> List.map (Tuple.apply (List.hd, List.tl))
+    |> List.split
+    |> Tuple.map_right unwind
+    |> Tuple.uncurry List.append
+;;
+
 let rec top_of_list n lst = 
   if n = 0 then [], lst else
     match lst with

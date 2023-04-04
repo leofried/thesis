@@ -10,7 +10,7 @@ module S = struct
     brackets : Bracket.t list
   } [@@deriving yojson];;
 
-  let kind = "???";;
+  let kind = "SymmMultiNew";;
 
   let to_string {number_of_teams; number_of_pools; auto_bids; brackets} =
     (string_of_int number_of_teams) ^ " teams -> " ^
@@ -19,8 +19,22 @@ module S = struct
     (String.concat " -> " (List.map (Lists.to_string string_of_int) brackets))
   ;;
 
+
   let run {number_of_pools; auto_bids; brackets; _} teams =
-    let autos, teams = Lists.top_of_list auto_bids (Pools.run number_of_pools teams) in
+    let autos, pools =
+      Pools.run number_of_pools teams
+      |> List.map (Lists.top_of_list (auto_bids / number_of_pools))
+      |> List.split
+    in
+
+    let rec f pools = function
+      | [] -> Lists.unwind pools
+      | c :: colors -> 
+         List.hd (List.nth pools c) ::
+         (f (List.mapi (fun i -> if i = c then List.tl else Fun.id) pools) colors)
+    in
+    let teams = f pools (Tree.color (Bracket.to_tree (List.hd brackets)) number_of_pools) in
+
     let teams, advs = List.fold_left_map 
       (fun teams bracket ->
         Bracket.run_bracket bracket teams
@@ -29,9 +43,9 @@ module S = struct
       )
       teams
       brackets
-    in List.concat [autos; List.concat advs; teams]
+    in List.concat [List.flatten autos; List.flatten advs; teams]
   ;; 
-end;;
+end
 
 include S;;
 module Data = Data.M (S);;

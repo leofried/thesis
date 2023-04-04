@@ -13,7 +13,7 @@ module M (Scheme : S.SCHEME) = struct
   ;;
 
   let get_file_name (specs : Specs.t) =
-    Scheme.kind ^ "_" ^
+    "SymmMultiOld" ^ "_" ^
     string_of_int specs.number_of_teams ^ "_teams_" ^
     string_of_int specs.number_advance ^ "_advance_" ^
     string_of_float specs.luck ^ "_luck_" ^

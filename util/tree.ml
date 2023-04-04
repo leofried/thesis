@@ -36,7 +36,6 @@ let color (lst : int t list) (number_of_colors : int) : int list =
   in
 
   let get_farthest_color counts colors =
-    print_endline @@ Lists.to_string string_of_int colors;
     let rec f arr colors =
       if Array.fold_left (+) 0 arr = 1 then Lists.find 1 (Array.to_list arr)
       else match colors with
