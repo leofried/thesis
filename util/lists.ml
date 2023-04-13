@@ -2,7 +2,7 @@ open Infix;;
 
 type 'a t = 'a list;;
 
-(*CLean*)
+(*CLean (comparer?)*)
 
 let rec unwind = function
   | [] -> []
