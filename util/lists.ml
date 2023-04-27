@@ -36,7 +36,7 @@ let top_of_list_rev n lst =
 
 let rec find x lst =
   match lst with
-  | [] -> invalid_arg "Lists.find"
+  | [] -> 0
   | h :: t -> if x = h then 0 else 1 + find x t
 ;;
 

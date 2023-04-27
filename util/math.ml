@@ -33,4 +33,4 @@ let rec log b = function
   | n -> 1 + if n mod b = 0 then log b (n / b) else (log b (n / b + 1))
 ;;
 
-let next_pow b x = pow b (log b x)
+let next_pow b x = pow b (log b x);;
