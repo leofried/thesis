@@ -1,0 +1,717 @@
+[
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 4,
+      "auto_bids": 4,
+      "brackets": []
+    },
+    {
+      "samples": 4000,
+      "sum": 6680.573478671295,
+      "sum_squares": 15986.217477257193
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 4,
+      "auto_bids": 0,
+      "brackets": [ [ 8, 0 ] ]
+    },
+    {
+      "samples": 4000,
+      "sum": 5434.783869243549,
+      "sum_squares": 11393.158092733811
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 4,
+      "auto_bids": 0,
+      "brackets": [ [ 8, 4, 0 ] ]
+    },
+    {
+      "samples": 4000,
+      "sum": 4997.04433598465,
+      "sum_squares": 9833.380541056789
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 4,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0 ], [ 4, 2, 0 ] ]
+    },
+    {
+      "samples": 4001,
+      "sum": 4508.803652075532,
+      "sum_squares": 8246.510497227988
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 4,
+      "auto_bids": 0,
+      "brackets": [ [ 8, 0, 0 ], [ 4, 2, 0 ] ]
+    },
+    {
+      "samples": 4070,
+      "sum": 4179.59825227903,
+      "sum_squares": 7109.8228594105385
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 4,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0, 0 ], [ 10, 1, 0 ] ]
+    },
+    {
+      "samples": 4000,
+      "sum": 4705.999079328238,
+      "sum_squares": 8724.89973970663
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 4,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0, 0 ], [ 6, 1, 0 ], [ 2, 0 ] ]
+    },
+    {
+      "samples": 4107,
+      "sum": 4030.0318665161476,
+      "sum_squares": 6762.814842208284
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 4,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0, 0 ], [ 2, 1, 0 ], [ 4, 2, 0 ] ]
+    },
+    {
+      "samples": 4009,
+      "sum": 4154.5924062636905,
+      "sum_squares": 7159.6928790988695
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 4,
+      "brackets": []
+    },
+    {
+      "samples": 4000,
+      "sum": 4348.297385602857,
+      "sum_squares": 7677.777096278215
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 2,
+      "brackets": [ [ 4, 0 ] ]
+    },
+    {
+      "samples": 4478,
+      "sum": 4079.977390542067,
+      "sum_squares": 6441.627065242631
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 2,
+      "brackets": [ [ 4, 2, 0 ] ]
+    },
+    {
+      "samples": 7030,
+      "sum": 5910.71703514231,
+      "sum_squares": 8668.688943534746
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 2,
+      "brackets": [ [ 4, 2, 2, 0 ] ]
+    },
+    {
+      "samples": 10571,
+      "sum": 8567.719798825799,
+      "sum_squares": 12258.924365858516
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 2,
+      "brackets": [ [ 8, 0, 2, 0 ] ]
+    },
+    {
+      "samples": 6697,
+      "sum": 5667.569185809894,
+      "sum_squares": 8413.475848811653
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 2,
+      "brackets": [ [ 8, 0, 0 ] ]
+    },
+    {
+      "samples": 5094,
+      "sum": 4541.002587348179,
+      "sum_squares": 6991.784917022355
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 2,
+      "brackets": [ [ 4, 6, 0, 0 ] ]
+    },
+    {
+      "samples": 4358,
+      "sum": 4003.033754595145,
+      "sum_squares": 6253.7336890013285
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 2,
+      "brackets": [ [ 2, 0 ], [ 2, 1, 0 ] ]
+    },
+    {
+      "samples": 19011,
+      "sum": 14955.679053764086,
+      "sum_squares": 21244.967147474563
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 2,
+      "brackets": [ [ 2, 0 ], [ 4, 0, 1, 0 ] ]
+    },
+    {
+      "samples": 65006,
+      "sum": 49400.44871950148,
+      "sum_squares": 68788.00501883813
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 2,
+      "brackets": [ [ 2, 0 ], [ 2, 3, 0, 0 ] ]
+    },
+    {
+      "samples": 128328,
+      "sum": 96069.66732027114,
+      "sum_squares": 130791.2771336551
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 2,
+      "brackets": [ [ 2, 0 ], [ 6, 1, 0, 0 ] ]
+    },
+    {
+      "samples": 89098,
+      "sum": 67114.52387925968,
+      "sum_squares": 91749.08226701168
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 2,
+      "brackets": [ [ 4, 0, 0 ], [ 2, 1, 0 ] ]
+    },
+    {
+      "samples": 279527,
+      "sum": 207884.85968026597,
+      "sum_squares": 282990.8601551586
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 8, 0 ] ]
+    },
+    {
+      "samples": 4019,
+      "sum": 4193.954396191836,
+      "sum_squares": 7443.567066714657
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 6, 0 ] ]
+    },
+    {
+      "samples": 4004,
+      "sum": 4288.791881968706,
+      "sum_squares": 7787.4708716094365
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 2, 6, 0 ] ]
+    },
+    {
+      "samples": 4003,
+      "sum": 4217.598651139041,
+      "sum_squares": 7428.836290525797
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 8, 4, 0 ] ]
+    },
+    {
+      "samples": 4001,
+      "sum": 4382.564230057556,
+      "sum_squares": 7991.816622901549
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 6, 0 ], [ 2, 3, 0, 0 ] ]
+    },
+    {
+      "samples": 21024,
+      "sum": 16465.777281542963,
+      "sum_squares": 23478.133636417504
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0 ], [ 4, 0 ] ]
+    },
+    {
+      "samples": 6141,
+      "sum": 5259.535774547301,
+      "sum_squares": 7851.44162016276
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0 ], [ 4, 2, 0 ] ]
+    },
+    {
+      "samples": 12028,
+      "sum": 9750.394686622894,
+      "sum_squares": 13757.511783511365
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0 ], [ 4, 2, 2, 0 ] ]
+    },
+    {
+      "samples": 11517,
+      "sum": 9209.41988072304,
+      "sum_squares": 12820.515404002585
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0 ], [ 8, 0, 2, 0 ] ]
+    },
+    {
+      "samples": 12123,
+      "sum": 9805.61357443216,
+      "sum_squares": 13884.944490103973
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0 ], [ 8, 0, 0 ] ]
+    },
+    {
+      "samples": 6274,
+      "sum": 5328.045428497773,
+      "sum_squares": 7751.269764199544
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0 ], [ 4, 6, 0, 0 ] ]
+    },
+    {
+      "samples": 6291,
+      "sum": 5405.16472453976,
+      "sum_squares": 7995.3946869873125
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0 ], [ 2, 0 ], [ 2, 1, 0 ] ]
+    },
+    {
+      "samples": 21227,
+      "sum": 16535.857229637866,
+      "sum_squares": 23355.183368057125
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0 ], [ 2, 0 ], [ 4, 0, 1, 0 ] ]
+    },
+    {
+      "samples": 1675268,
+      "sum": 1238037.420479894,
+      "sum_squares": 1682509.3512814783
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 2, 0 ], [ 4, 0 ] ]
+    },
+    {
+      "samples": 8837,
+      "sum": 7313.1444967744865,
+      "sum_squares": 10746.591870296521
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 2, 0 ], [ 4, 2, 0 ] ]
+    },
+    {
+      "samples": 43845,
+      "sum": 33476.81074110404,
+      "sum_squares": 46020.36049038104
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 2, 0 ], [ 4, 2, 2, 0 ] ]
+    },
+    {
+      "samples": 229274,
+      "sum": 171055.8204827464,
+      "sum_squares": 229669.34879410444
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 8, 0, 0 ], [ 4, 2, 0 ] ]
+    },
+    {
+      "samples": 8382,
+      "sum": 6911.734249296238,
+      "sum_squares": 10053.025929625583
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 2, 0 ], [ 2, 5, 0 ] ]
+    },
+    {
+      "samples": 4983,
+      "sum": 4513.921246329629,
+      "sum_squares": 7107.632954149723
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 2, 0 ], [ 4, 0, 5, 0 ] ]
+    },
+    {
+      "samples": 5267,
+      "sum": 4633.419236871929,
+      "sum_squares": 7029.8357126197225
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 2, 0 ], [ 6, 3, 0 ] ]
+    },
+    {
+      "samples": 5076,
+      "sum": 4572.529156957892,
+      "sum_squares": 7112.354231706496
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 2, 0 ], [ 4, 4, 3, 0 ] ]
+    },
+    {
+      "samples": 4397,
+      "sum": 4070.1533269041793,
+      "sum_squares": 6401.482787420005
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 2, 0 ], [ 10, 1, 0 ] ]
+    },
+    {
+      "samples": 4022,
+      "sum": 4083.7234543335353,
+      "sum_squares": 6987.333689416354
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 2, 0 ], [ 2, 3, 0 ], [ 2, 0 ] ]
+    },
+    {
+      "samples": 71485,
+      "sum": 53976.962249246,
+      "sum_squares": 74029.3806148955
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 2, 0 ], [ 6, 1, 0 ], [ 2, 0 ] ]
+    },
+    {
+      "samples": 29984,
+      "sum": 23225.361850424644,
+      "sum_squares": 32625.29265145247
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 2, 0 ], [ 2, 1, 0 ], [ 4, 0 ] ]
+    },
+    {
+      "samples": 7826,
+      "sum": 6597.539601587783,
+      "sum_squares": 9628.341847141295
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 2, 0 ], [ 2, 1, 0 ], [ 4, 2, 0 ] ]
+    },
+    {
+      "samples": 32087,
+      "sum": 24697.537772090232,
+      "sum_squares": 33797.14467560496
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 2, 0 ], [ 2, 1, 0 ], [ 4, 2, 2, 0 ] ]
+    },
+    {
+      "samples": 30644,
+      "sum": 23499.34219336902,
+      "sum_squares": 31701.50938532678
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 2, 0 ], [ 2, 1, 0 ], [ 8, 0, 2, 0 ] ]
+    },
+    {
+      "samples": 19854,
+      "sum": 15540.269943067022,
+      "sum_squares": 21591.287318345392
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 2, 0 ], [ 2, 1, 0 ], [ 2, 5, 1, 0 ] ]
+    },
+    {
+      "samples": 27228,
+      "sum": 21004.85391276733,
+      "sum_squares": 28558.112560748566
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 2, 0 ], [ 2, 1, 0 ], [ 6, 3, 1, 0 ] ]
+    },
+    {
+      "samples": 21564,
+      "sum": 16865.123964864044,
+      "sum_squares": 23068.17023833276
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0, 0 ], [ 2, 5, 0 ] ]
+    },
+    {
+      "samples": 4167,
+      "sum": 3919.9959495427606,
+      "sum_squares": 6195.865690905453
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0, 0 ], [ 4, 0, 5, 0 ] ]
+    },
+    {
+      "samples": 4486,
+      "sum": 4107.811385751697,
+      "sum_squares": 6317.656883724833
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0, 0 ], [ 6, 3, 0 ] ]
+    },
+    {
+      "samples": 4304,
+      "sum": 4004.05144569307,
+      "sum_squares": 6302.833409385283
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0, 0 ], [ 4, 4, 3, 0 ] ]
+    },
+    {
+      "samples": 4297,
+      "sum": 3975.8280860746304,
+      "sum_squares": 6149.582290935401
+    }
+  ],
+  [
+    {
+      "number_of_teams": 12,
+      "number_of_pools": 2,
+      "auto_bids": 0,
+      "brackets": [ [ 4, 0, 0 ], [ 10, 1, 0 ] ]
+    },
+    {
+      "samples": 4028,
+      "sum": 4099.646963937266,
+      "sum_squares": 6853.743752929362
+    }
+  ]
+]

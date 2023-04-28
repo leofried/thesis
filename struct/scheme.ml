@@ -10,7 +10,7 @@ module S = struct
     brackets : Bracket.t list
   } [@@deriving yojson];;
 
-  let kind = "SymmMultiNew";;
+  let kind = "symm_multi";;
 
   let to_string {number_of_teams; number_of_pools; auto_bids; brackets} =
     (string_of_int number_of_teams) ^ " teams -> " ^
@@ -33,7 +33,8 @@ module S = struct
          List.hd (List.nth pools c) ::
          (f (List.mapi (fun i -> if i = c then List.tl else Fun.id) pools) colors)
     in
-    let teams = f pools (Tree.color (Bracket.to_tree (List.hd brackets)) number_of_pools) in
+
+    let teams = if brackets = [] then (List.flatten pools) else f pools (Tree.color (Bracket.to_tree (List.hd brackets)) number_of_pools) in
 
     let teams, advs = List.fold_left_map 
       (fun teams bracket ->

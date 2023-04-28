@@ -30,7 +30,7 @@ let run_bracket bracket teams =
     | hd :: md :: tl ->
       let players, byes = Lists.top_of_list hd teams in
       let winners, losers = run_round players in
-      run_reversed (winners @ byes) (hd / 2 + md :: tl) @ losers
+      run_reversed (winners @ byes) (hd / 2 + md :: tl) @ (Rand.shuffle losers)
   in
 
   let players, dead = Lists.top_of_list (Lists.fold (+) bracket) teams in
