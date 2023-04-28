@@ -55,12 +55,6 @@ let fold_left_i f acc =
   >> List.fold_left (fun acc x -> f acc x) acc
 ;;
 
-let rec sum_two_lists (l1 : int list) (l2 : int list) : int list =
-  match l1, l2 with
-  | [], [] -> []
-  | h1 :: t1, h2 :: t2 -> h1 + h2 :: sum_two_lists t1 t2
-  | _ -> invalid_arg "Lists.sum_two_lists"
-;;
 
 let to_string ?(new_line : bool = false) (stringify : 'a -> string) = function
   | [] -> "[]"
@@ -136,3 +130,19 @@ let rec combos = function
     let rest = combos tl in
     List.flatten (List.map (fun x -> (List.map (List.cons x) rest)) hd)
   ;;
+
+let rec pop_all = function
+  | [] -> []
+  | [x] -> [x, []]
+  | hd :: tl -> (hd, tl) :: (List.map (Tuple.map_right (List.cons hd)) (pop_all tl))
+;;
+
+let rec inner_shuffle = function
+| [] -> [[]]
+| [] :: tl -> inner_shuffle tl
+| hd :: tl ->
+  hd
+  |> pop_all
+  |> List.map (fun (i, hd) -> List.map (List.cons i) (inner_shuffle (hd :: tl)))
+  |> List.flatten
+;;

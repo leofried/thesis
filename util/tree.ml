@@ -46,6 +46,15 @@ let rec to_string f = function
   | Branch (x, y) -> "{" ^ to_string f x ^ ", " ^ to_string f y ^ "}"
 ;;
 
+let rec share = function
+  | Leaf x -> [x, Dyadic.one]
+  | Branch (x, y) -> List.map (Tuple.map_right (Dyadic.mul Dyadic.half)) (share x @ share y);;
+;;
+
+
+
+
+
 let color (lst : int t list) (number_of_colors : int) : int list =
 
   let rec get_nearby_colors target = function

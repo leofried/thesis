@@ -1,5 +1,8 @@
 type t = int * int;;
 
+let zero = (0, 0);;
+let one = (1, 0);;
+let half = (1, 1);;
 
 let rec of_float f : t =
   if ceil f = floor f then (int_of_float f, 0)
@@ -31,6 +34,8 @@ let add (x1, y1) (x2, y2) =
   let (x4, _) = expand (x2, y2) y3 in
   reduce (x3 + x4, y3)
 ;;
+
+let mul (x1, y1) (x2, y2) = (x1 * x2, y1 + y2);;
 
 let log_base x = 
   Tuple.right (reduce x)

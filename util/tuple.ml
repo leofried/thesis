@@ -31,6 +31,8 @@ let uncurry f (a, b) = f a b;;
 
 let apply (f, g) x = f x, g x;;
 
+let join f x = x, f x
+
 let compare ?(left = fun _ _ -> 0) ?(right = fun _ _ -> 0) (a, b) (c, d) =
   match left a c with
   | 0 -> right b d
