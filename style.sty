@@ -1,0 +1,51 @@
+    \usepackage{amssymb}
+    \usepackage{amsmath}
+    \usepackage{amsthm}
+    \usepackage[most]{tcolorbox}
+    \usepackage{hyperref}
+    \usepackage{complexity}
+    \usepackage{indentfirst}
+    \usepackage{float}
+
+    \newtcbtheorem[number within=subsection]{theorem}{Theorem}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
+    \newtcbtheorem[number within=subsection, use counter from=theorem]{definition}{Definition}%
+    {enhanced, breakable, colback=blue!5,colframe=teal!100!,fonttitle=\bfseries}{def}
+    \newtcbtheorem[number within=subsection, use counter from=theorem]{figg}{Figure}%
+    {enhanced, breakable, colback=red!5,colframe=purple!100!,fonttitle=\bfseries}{fig}
+
+    
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\NN}{\mathcal{N}}
+    \newcommand{\F}{\mathcal{F}}
+    \newcommand{\B}{\boldsymbol{B}}
+    \renewcommand{\R}{\mathbb{R}}
+    \newcommand{\T}{\mathcal{T}}
+    \renewcommand{\S}{\mathcal{S}}
+    \renewcommand{\E}{\mathbb{E}}
+    \renewcommand{\P}{\mathbb{P}}
+    
+    \newcommand{\true}{\mathbf{true}}
+    \newcommand{\false}{\mathbf{false}}
+    \renewcommand{\and}{\mathbf{\;and\;}}
+    
+    \newcommand{\form}{\ComplexityFont{Format}}
+    \newcommand{\symm}{\ComplexityFont{Symm}}
+    \renewcommand{\det}{\ComplexityFont{Det}}
+    \newcommand{\bound}{\ComplexityFont{Bounded}}
+
+    \newcommand{\fig}[4]{
+            \begin{figg}{#3}{#4}
+            \centering
+            \includegraphics[scale=#1]{images/#2}
+        \end{figg}
+    }
+
+    \newcommand{\theo}[4]{
+        \begin{theorem}{#1}{#4}
+            #2
+            \tcblower
+            \begin{proof}
+            #3
+            \end{proof}
+        \end{theorem}
+    }

@@ -1,0 +1,170 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\section {Brackets} 
+
+\begin{definition}{Bracket}{}
+A \textit{bracket} is a tournament format in which teams are first placed in the leaves of a binary tree, and then games are successively played between teams in nodes that share a parent, placing the winner of each game in the shared parent node. At the end of the tournament, the entire tree will be filled out, and the team that has been in the root of the tree (which is the only team that has not yet lost a game) is declared champion.
+\end{definition}
+
+Brackets are traditionally stylized like so:
+\fig{1}{2023 College Football Playoff Empty.png}{The 2023 College Football Playoff, Start}{}
+By the end of the tournament, the bracket would look like this:
+\fig{1}{2023 College Football Playoff Full.png} {The 2023 College Football Playoff, End}{}
+In the first round, Georgia played Ohio State, and Michigan played TCU. Georgia and TCU won their respective games, so they advanced to the next round. Then Georgia beat TCU, winning the tournament.
+
+\subsection{Balanced Brackets}
+
+The 2023 College Football Playoff has a special property that not all brackets have: it is \textit{balanced}. 
+\begin{definition}{Bye}{}
+    When a team doesn't have to play during a certain round of a bracket, we say that team has a \textit{bye}.
+\end{definition}
+\begin{definition}{Balanced Bracket}{}
+    A \textit{balanced bracket} is a bracket with no byes.
+\end{definition} 
+
+The 2023 West Coast Conference Men's Basketball Tournament, on the other hand, is unbalanced:
+\fig{0.8}{2023 West Coast Conference Men's Basketball Tournament.png}{The 2023 West Coast Conference Men's Basketball Tournament}{}
+
+
+
+Saint Mary's and Gonzaga each have three byes and so only need to win two games to win the tournament, while Portland, San Diego, Pacific, and Pepperdine need to win five. Unsurprisingly, this format conveys a massive advantage to Saint Mary's and Gonzaga, but this was intentional: those two teams were being rewarded for doing the best during the regular season.
+
+In many cases, however, it is undesirable to grant advantages to certain teams over others. One might hope, for any $n$, to able to construct a balanced bracket for $n$ teams, but unfortunately this is rarely possible.
+
+\theo{}{
+There exists an $n$-team balanced bracket if and only if $n$ is a power of two.}{
+In a balanced bracket, no byes are assigned, so at the conclusion of every round, there are half as many teams alive as at the beginning of the round. If $n$ is not a power of two, then this process will eventually lead to a non-one odd number of teams remaining, at which point a bye will have to be assigned, meaning the bracket is not in fact balanced.\\
+
+If $n$ is a power of two, however, we can inductively build up a balanced bracket. For $n = 1$, the unique one-team bracket is balanced, and for any other $n$, once we have a balanced bracket for $n / 2$ teams, we can replace each starting line with a play-in game, resulting in an $n$-team balanced bracket.
+}{balanced brackets}
+%\begin{proof}
+%    First, let $n$ be a power two. The unique 1-team bracket is balanced, so the theorem is true for $n=1$. Then, inductively, once we have an $n$-team balanced bracket, we can easily construct a $2n$-team balanced bracket by running two $n$-team balanced brackets and then having the winners play each other the championship game.
+ %   We note that brackets, as binary trees, can be constructed inductivly. A bracket is either \begin{itemize}
+  %      \item The one team bracket, or
+   %     \item The winner of brackets $b_1$ and $b_2$ play each other in the championship game, for two brackets $b_1$ and $b_2.$
+ %   \end{itemize}
+    
+%\end{proof}
+
+Given this, brackets are often not a great option when we want to avoid giving some teams advantages over others. They are a great tool, however, when we want to dole out advantages, for example, after some teams do better during the regular season and ought to be rewarded with an easier path in bracket.
+
+\subsection{Seeded Brackets}
+\begin{definition}{Seeding}{}
+    \textit{Seeding} is a process in which teams are seeded (ranked) by how good and/or deserving they are, and then higher seeded teams are given an easier schedule in the ensuing tournament.
+\end{definition}
+To seed a bracket, first assign each of the starting lines an integer between $1$ and $n$. Then, put each team on the line designated by their seed and run the bracket as normal.
+
+As an example, on the left is the an $8$-team bracket used in the 2015 NBA Eastern Conference Playoffs. At the end of the regular season, the top eight teams in the Eastern Conference were seeded and placed into the bracket as shown on the right. Finally, the bracket was played out normally (results not shown).
+\fig{.7}{2015 NBA Eastern Conference Playoffs.png}{2015 NBA Eastern Conference Playoffs}{}
+
+Note that despite this bracket being balanced. the higher seeds are still at advantage: they have an easier set of opponents. Compare $1$-seeded Atlanta, who's first two rounds are versus $8$-seeded Brooklyn and then (most likely) $4$-seeded Toronto, versus $7$-seeded Boston, who's first two rounds are versus $2$-seeded Cleveland and then (most likely) $3$-seeded Chicago. Atlanta's schedule is far easier: despite them having the same number of games to win as Boston, Atlanta will have to play lower seeds in each round than Boston will.
+
+Thus we've identified two ways in which brackets can convey an advantage onto certain teams: by giving them more byes, and by giving them easier (expected) opponents. Not every seeding of a bracket does this: for example, consider the following seeding for the 2015 NBA Eastern Conference Playoffs.
+
+\fig{1}{NBA Bad Seeding.png}{An Alternative Seeding of the 2015 NBA Eastern Conference Playoffs}{}
+
+This seeding does a very poor job of rewarding the higher-seeded teams: the $1$- and $2$- seeds are matched up in the first round, while the easiest road is given to the $7$-seed, who plays the $8$-seed in the first round and then (most likely) the $5$-seed in the second. Since the whole point of seeding is to give the higher-seeded teams an advantage, we introduce the concept of a \textit{proper seeding.}
+
+\begin{definition}{Proper Seeding}{}
+    A bracket is \textit{properly seeded} if, should that bracket go to chalk (that is, should the higher-seeded team always win), then, in every round, it is better to be a higher-seeded team than a lower-seeded one, where: \begin{itemize}
+        \item It is better to still be alive than to have been eliminated.
+        \item It is better to have a bye than to be playing a game.
+        \item It is better to be playing a lower seed than to be playing a higher seed.
+    \end{itemize}
+\end{definition}
+It is clear that the actual 2015 NBA Eastern Conference Playoffs was properly seeded, while our alternative seeding was not. In fact, most seedings are not proper. In order to catalog those that are we need one more piece of machinery.
+
+%The notion of a proper seeding raises a number of question, which these next few theorems aim to answer.
+
+%\theo{    Every bracket admits at most one proper seeding.}{
+%If two seedings of single bracket are different, then there must be a round in which, if the bracket went to chalk, then either \begin{itemize}
+  %  \item Different sets of teams are eliminated,
+ %   \item Different sets of teams are on bye, or
+%    \item Different match-ups are being played.
+%\end{itemize}
+%The first case would mean that one of the seedings would have a higher-seeded team eliminated rather than a lower-seeded one, so that seeding would not be proper. The second case would mean that one of the seedings would have a lower-seeded team on bye rather than a higher-seeded one, so that seeding would not be proper. Finally the third case would imply that one of the seedings would give an easier match-up to a lower-seeded team rather than a higher-seeded one, so that seeding would not be proper.\\
+
+%In any case, one of those seedings cannot be proper, so only one proper seeding can exist.
+%different set of teams having byes, or to different matchups being played. If the seedings disagree on which teams will have a bye in a given round, then one of them is giving a lower-seeded team a bye when a better-seeded team is playing a game, and thus is not proper.
+ %  \begin{proof} Because it is better to have a bye than to be playing a game, if there are $k$ teams that don't have byes, then the $k$ lowest seeds must be those teams. Additionally, because it is better to be playing a lower-seeded team than a higher-seeded team, the first-round match-ups must be: the $k$th-lowest seed versus the lowest seed, the ($k$-$1$)-th lowest seed versus the second lowest seed, etc. Then, we can assume that the better teams won and proceed to the next round building out matchups round-by-round until we reach the championship game, at which point the seeds can be assigned to their
+ %  \end{proof}
+%}{}
+
+
+%We need a little more machinery to proceed.
+%Note that this proof doesn't actually use the shape of the bracket at all to place the seeds, only the number of teams that have byes through each round. We can use this then to prove an stronger result, but first we will need a little bit of machinery.
+
+\subsection{Bracket Signatures}
+
+\begin{definition}{Bracket Signature}{}
+    The \textit{signature} of a bracket a list of integers of length $r + 1$, where $r$ is the number of rounds in that bracket, such that the $i$th position in the list is equal to the number of teams that play their first game in that round.
+\end{definition}
+
+For example, the signature of the 2023 College Football Playoff is $[4; 0; 0],$ the signature of the 2023 West Coast Conference Men's Basketball Tournament is $[4;2;2;2;0;0],$ and the signature of the 2015 NBA Eastern Conference Playoffs is $[8; 0; 0; 0].$
+
+\theo{}{
+    Let $A = [a_0; ...; a_r]$ be a list of integers.  Then $A$ is a bracket signature if and only if $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$}{
+        Let $A$ be the signature for some bracket. Assume that every game in the bracket was a coin flip, and consider each team's probability of winning the tournament. A team that gets $i$ byes must win $r-i$ games, and so will win the tournament with probability $\left(\frac{1}{2}\right)^{r - i}.$ For each $i \in \{0, ..., r\}$, there are $a_i$ teams that got that many byes, so (because any two teams winning are mutually exclusive) $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i}$$ is the probability that one team wins, which is just $1.$\\
+
+        We prove the other direction by induction on $r$. If $r = 0$, then the only list with the desired property is $[1]$, which is the signature for the unique $1$-team bracket. For any other $r$, first note that $a_0$ must be even: if it were odd, then \begin{align*}
+            \sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i}
+            &= \frac{1}{2^r} \cdot \sum_{i=0}^r a_i \cdot 2^i\\
+            &= \frac{1}{2^r} \cdot \left(a_0 + 2 \sum_{i=1}^r a_i \cdot 2^{i-1}\right)\\
+            &= k/2^r &\textrm{for some odd $k$}\\
+            &\neq 1.
+        \end{align*}
+        Now, consider the signature $B = [a_1 + a_0/2; a_2; ...; a_r].$ By induction, there exists a bracket with signature $B$. But if we take that bracket and replace $a_0/2$ of the starting lines that receive no byes with play-in games, we get a new bracket with signature $A.$
+}{signaturesum}
+
+Note that two different brackets might have the same signature: for example, the following two $6$-team brackets each have the signature $[4;2;0;0].$
+
+\fig{.8}{6 team bracket signatures.png}{Two brackets with the same signature}{sixes}
+
+However,
+
+\theo{}{The right bracket in Figure \ref{fig:sixes} does not admit a proper seeding.}{
+Proper seedings must give higher-seeded teams more byes than lower-seeded teams, so the two teams with byes must be the 1-seed and the 2-seed. However, in the semifinals, this would match the 1-seed against the 2-seed, meaning that each of them would play a more difficult opponent than the other two semifinalists. Thus the seeding is not proper, and so the bracket admits no proper seedings.}{}
+
+We will see that it is not a coincidence that only one of the two brackets with signature $[4;2;0;0]$ admits a proper seeding.
+
+\subsection{Proper Brackets}
+
+\begin{definition}{Proper Bracket}{}
+    A \textit{proper bracket} is a bracket that has been properly seeded.
+\end{definition}
+
+\theo{The Fundamental Theorem of Brackets}{Each bracket signature admits exactly one proper bracket.}{
+    Let $A = [a_0; ... a_r]$ be an $n$-team bracket signature. We proceed by induction on $r.$ If $r = 0$, then the only possible bracket signature is $[1]$, and it points to the unique one-team bracket, which is indeed proper.\\
+
+    For any other $r$, note first that, because it is better to have a bye than to be playing, the $a_0$ teams that don't have a first-round bye must be seeds $n - a_0 + 1$ through $n$. Additionally, since higher-seeded teams must have lower-seeded opponents, the first-round match-ups must to be $n - a_0 + 1 + i$ vs $n - i$ for $i \in \{0, ..., a_0/2 - 1\}.$\\
+
+    Now, consider the bracket signature $B = [a_1 + a_0/2; a_2; ...; a_r].$ By induction, $B$ admits exactly one proper bracket. Additionally, if the first round of the proper bracket with signature $A$ goes to chalk, we will be left with a bracket with signature $B$ for seeds $1$ through $n - a_0/2.$ This bracket is still subject to the proper bracket constraints, and so must be exactly the the proper bracket admitted by $B$.\\
+
+    Thus both the first-round match-ups and the rest of the bracket are determined, and by combining them we get a proper bracket with signature $A$, so $A$ admits exactly one proper bracket.
+}{signatureproper}
+
+The fundamental theorem of brackets means that we can refer to the proper bracket $A = [a_0; ...; a_r]$ in a well-defined way, as long as $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$
+
+For the rest of this paper, we will focus on the space of proper brackets rather than brackets in general. In other chapters the word ``bracket" likely refers only to proper brackets.
+
+(As a quick aside, there are times where a bracket being proper is not as important as it might seem. Two possible reasons are if there is some other factor more important than a proper seeding (like avoiding rematches from earlier in the tournament) or if our seeding is in the form of tiers rather than a rank-order. That said, for convenience as well as prevalence reasons, we will focus just on proper brackets.)
+
+The fundamental theorem of brackets also gives us a handle on how many (proper) brackets exist for $n$ teams:
+
+\theo{}{There are $P(n)$ $n$-team proper brackets, where $P(n)$ is the number of partitions of $1$ into $n$ powers of $\frac{1}{2}.$}{
+    By the fundamental theorem of brackets, there is one $n$-team proper bracket for each $n$-team bracket signature, and by Theorem \ref{th:signaturesum}, the set of $n$-team bracket signatures the set of lists $A = [a_0; ...; a_n]$ such that $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$ However, such lists are in a bijective correspondence with partitions of $1$ into $n$ powers of $\frac{1}{2}$: the number $\left(\frac{1}{2}\right)^{r - i}$ occurs in the partition $a_i$ times.
+}{}
+
+The sequence $P(n)$ is detailed in \href{https://oeis.org/A002572}{A002572}.
+
+
+
+\subsection{More Seeding}
+\subsection{Multiple Elimination}
+
+
+
+
+\end{document}
