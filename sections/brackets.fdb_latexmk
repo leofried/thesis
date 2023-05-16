@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1684203447 "c:/Users/leofr/Documents/LeoWork/00School/04College/17Senior/Thesis/Latex/main.tex" "main.pdf" "main" 1684203449 0
-  "c:/Users/leofr/Documents/LeoWork/00School/04College/17Senior/Thesis/Latex/main.tex" 1684203427 287 defcf371e3c259c16fac56e248a622ab ""
+["pdflatex"] 1684203211 "c:/Users/leofr/Documents/LeoWork/00School/04College/17Senior/Thesis/Latex/sections/brackets.tex" "sections/brackets.pdf" "brackets" 1684203214 0
+  "c:/Users/leofr/Documents/LeoWork/00School/04College/17Senior/Thesis/Latex/sections/brackets.tex" 1684203211 15625 7e7fb62d826ecc1990dd9ef8653821aa ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1684193517 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1684194639 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1684194069 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
@@ -166,6 +166,7 @@
   "c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty" 1684197375 325 f9f16d12354225b7dd52a3321f085955 ""
   "c:/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty" 1684198114 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "c:/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1684198149 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
+  "c:/texlive/2023/texmf-dist/tex/latex/subfiles/subfiles.cls" 1684198779 1507 57de335d88fde4e5c924dfed577fdb74 ""
   "c:/texlive/2023/texmf-dist/tex/latex/subfiles/subfiles.sty" 1684198779 5262 70ab9987ec94ed2beeb5c2d951d465f6 ""
   "c:/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex" 1684198911 34642 fe3992acc7371a490bcf8e6f5088d89c ""
   "c:/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcbexternal.code.tex" 1684198911 9035 4b513840c732c6c5b8144fc5723eb425 ""
@@ -202,14 +203,14 @@
   "images/2023 West Coast Conference Men's Basketball Tournament.png" 1684202525 13226 9cc1583c1dc1daabe8fd304f046d2df0 ""
   "images/6 team bracket signatures.png" 1684202525 2432 5720c990c84484b6d3c82896f39371e7 ""
   "images/NBA Bad Seeding.png" 1684202525 4404 1b3682fad801fe08de88f6a3ec06d22f ""
-  "main.aux" 1684203449 1738 c98551573ada03655db9b637b43eb625 "pdflatex"
-  "main.out" 1684203449 928 44f6e6f336fe62db9a58e800442ecb67 "pdflatex"
-  "main.tex" 1684203427 287 defcf371e3c259c16fac56e248a622ab ""
-  "sections/brackets.tex" 1684203447 15621 25cbf15e63f4f8143055ad13fdb90047 ""
+  "sections/../main.tex" 1684202672 287 defcf371e3c259c16fac56e248a622ab ""
+  "sections/brackets.aux" 1684203213 1738 c98551573ada03655db9b637b43eb625 "pdflatex"
+  "sections/brackets.out" 1684203213 928 44f6e6f336fe62db9a58e800442ecb67 "pdflatex"
+  "sections/brackets.tex" 1684203211 15625 7e7fb62d826ecc1990dd9ef8653821aa ""
   "style.sty" 1684202525 1695 e2fb6e6dbdae2c47d9be6677fd8028eb ""
   (generated)
-  "main.aux"
-  "main.log"
-  "main.out"
-  "main.pdf"
+  "sections/brackets.aux"
+  "sections/brackets.log"
+  "sections/brackets.out"
+  "sections/brackets.pdf"
   (rewritten before read)
