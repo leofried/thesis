@@ -2,38 +2,38 @@
     \usepackage{amsmath}
     \usepackage{amsthm}
     \usepackage[most]{tcolorbox}
-    \usepackage{hyperref}
+    \usepackage[hidelinks]{hyperref}
     \usepackage{complexity}
     \usepackage{indentfirst}
     \usepackage{float}
+
+    \hbadness=10000
+
+    \newcommand{\sub}[1]{
+        \documentclass[../../main.tex]{subfiles}
+        \begin{document}
+        #1
+        \end{document}
+    }
+
+    \newcommand{\newsection}[1]{\def\foldername{#1}\section{#1}}
+
+    \newcommand{\sect}[1]{
+        \newsection{#1}
+        \subfile{sections/#1/intro}
+    }
+    \newcommand{\subsect}[1]{
+        \subsection{#1}
+        \subfile{sections/\foldername/#1}
+    }
+
+
 
     \newtcbtheorem[number within=subsection]{theorem}{Theorem}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
     \newtcbtheorem[number within=subsection, use counter from=theorem]{definition}{Definition}%
     {enhanced, breakable, colback=blue!5,colframe=teal!100!,fonttitle=\bfseries}{def}
     \newtcbtheorem[number within=subsection, use counter from=theorem]{figg}{Figure}%
     {enhanced, breakable, colback=red!5,colframe=purple!100!,fonttitle=\bfseries}{fig}
-
-    
-    \newcommand{\N}{\mathbb{N}}
-    \newcommand{\NN}{\mathcal{N}}
-    \newcommand{\F}{\mathcal{F}}
-    \newcommand{\B}{\boldsymbol{B}}
-    \renewcommand{\R}{\mathbb{R}}
-    \newcommand{\T}{\mathcal{T}}
-    \renewcommand{\S}{\mathcal{S}}
-    \renewcommand{\E}{\mathbb{E}}
-    \renewcommand{\P}{\mathbb{P}}
-    
-    \newcommand{\true}{\mathbf{true}}
-    \newcommand{\false}{\mathbf{false}}
-    \renewcommand{\and}{\mathbf{\;and\;}}
-    
-    \newcommand{\form}{\ComplexityFont{Format}}
-    \newcommand{\symm}{\ComplexityFont{Symm}}
-    \renewcommand{\det}{\ComplexityFont{Det}}
-    \newcommand{\bound}{\ComplexityFont{Bounded}}
-
-    \newcommand{\bracksig}[1]{\mathbf{#1}}
 
     \newcommand{\fig}[4]{
             \begin{figg}{#3}{#4}
@@ -51,3 +51,19 @@
             \end{proof}
         \end{theorem}
     }
+
+    
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\NN}{\mathcal{N}}
+    \newcommand{\F}{\mathcal{F}}
+    \newcommand{\B}{\boldsymbol{B}}
+    \renewcommand{\R}{\mathbb{R}}
+    \newcommand{\T}{\mathcal{T}}
+    \renewcommand{\S}{\mathcal{S}}
+    \renewcommand{\E}{\mathbb{E}}
+    \renewcommand{\P}{\mathbb{P}}
+    \newcommand{\true}{\mathbf{true}}
+    \newcommand{\false}{\mathbf{false}}
+    \renewcommand{\and}{\mathbf{\;and\;}}
+
+    \newcommand{\bracksig}[1]{\mathbf{#1}}

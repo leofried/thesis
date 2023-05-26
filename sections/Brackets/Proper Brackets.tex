@@ -1,0 +1,29 @@
+\sub{
+
+\begin{definition}{Proper Bracket}{}
+    A \textit{proper bracket} is a bracket that admits a proper seeding.
+\end{definition}
+
+\theo{}{Each bracket signature admits exactly one proper bracket, which itself admits only one proper seeding.}{
+    Let $A = [a_0; ... a_r]$ be an $n$-team bracket signature. We proceed by induction on $r.$ If $r = 0$, then the only possible bracket signature is $[1]$, and it points to the unique one-team bracket, which can only be seeded in one way and is indeed proper.\\
+
+    For any other $r$, note first that, because it is better to have a bye than to be playing, the $a_0$ teams that don't have a first-round bye must be seeds $n - a_0 + 1$ through $n$. Additionally, since higher-seeded teams must have lower-seeded opponents, the first-round matchups must be $n - a_0 + 1 + i$ vs $n - i$ for $i \in \{0, ..., a_0/2 - 1\}.$\\
+
+    Now, consider the bracket signature $B = [a_1 + a_0/2; a_2; ...; a_r].$ By induction, $B$ admits exactly one proper bracket which admits one proper seeding. Additionally, if the first round of the proper bracket with signature $A$ goes to chalk, we will be left with a bracket with signature $B$ for seeds $1$ through $n - a_0/2.$ This bracket is still subject to the proper seeding constraints, and so must be exactly the proper bracket and seeding admitted by $B$.\\
+
+    Thus both the first-round matchups and the rest of the bracket are determined, and by combining them we get a proper bracket and seeding with signature $A$, so $A$ admits exactly one proper bracket which itself admits only one proper seeding.
+}{Signature Proper}
+
+This theorem means that we can refer to the proper bracket $A = [a_0; ...; a_r]$ in a well-defined way, as long as $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$
+
+It also gives us a handle on how many (proper) brackets exist for $n$ teams:
+
+\theo{}{There are $P(n)$ $n$-team proper brackets, where $P(n)$ is the number of partitions of $1$ into $n$ powers of $\frac{1}{2}.$}{
+    By Theorem \ref{th:Signature Proper}, there is one $n$-team proper bracket for each $n$-team bracket signature, and by Theorem \ref{th:Signature Sum}, the set of $n$-team bracket signatures the set of lists $A = [a_0; ...; a_n]$ such that $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$ However, such lists are in a bijective correspondence with partitions of $1$ into $n$ powers of $\frac{1}{2}$: the number $\left(\frac{1}{2}\right)^{r - i}$ occurs in the partition $a_i$ times.
+}{}
+
+The sequence $P(n)$ is detailed in \href{https://oeis.org/A002572}{A002572}.
+
+
+
+}

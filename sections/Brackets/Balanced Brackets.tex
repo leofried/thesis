@@ -1,0 +1,30 @@
+\sub{
+
+The 2023 College Football Playoff has a special property that not all brackets have: it is \textit{balanced}. 
+\begin{definition}{Bye}{}
+    When a team doesn't have to play during a certain round of a bracket, we say that team has a \textit{bye}.
+\end{definition}
+
+\begin{definition}{Balanced Bracket}{}
+    A \textit{balanced bracket} is a bracket with no byes.
+\end{definition} 
+
+The 2023 West Coast Conference Men's Basketball Tournament, on the other hand, is unbalanced:
+\fig{0.8}{2023 West Coast Conference Men's Basketball Tournament.png}{The 2023 West Coast Conference Men's Basketball Tournament}{}
+
+
+
+Saint Mary's and Gonzaga each have three byes and so only need to win two games to win the tournament, while Portland, San Diego, Pacific, and Pepperdine need to win five. Unsurprisingly, this format conveys a massive advantage to Saint Mary's and Gonzaga, but this was intentional: those two teams were being rewarded for doing the best during the regular season.
+
+In many cases, however, it is undesirable to grant advantages to certain teams over others. One might hope, for any $n$, to be able to construct a balanced bracket for $n$ teams, but unfortunately this is rarely possible.
+
+\theo{}{
+There exists an $n$-team balanced bracket if and only if $n$ is a power of two.}{
+In a balanced bracket, no byes are assigned, so at the conclusion of every round, there are half as many teams alive as at the beginning of the round. If $n$ is not a power of two, then this process will eventually lead to a non-one odd number of teams remaining, at which point a bye will have to be assigned, meaning the bracket is not in fact balanced.\\
+
+If $n$ is a power of two, however, we can inductively build up a balanced bracket. For $n = 1$, the unique one-team bracket is balanced, and for any other $n$, once we have a balanced bracket for $n / 2$ teams, we can replace each leaf node with  starting line with a play-in game, resulting in an $n$-team balanced bracket.
+}{Balanced brackets}
+
+Given this, brackets are often not a great option when we want to avoid giving some teams advantages over others. They are a great tool, however, when we want to dole out advantages, for example, after some teams do better during the regular season and ought to be rewarded with an easier path in bracket.
+
+}

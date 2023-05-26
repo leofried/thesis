@@ -1,0 +1,35 @@
+\sub{
+    
+\begin{definition}{Bracket Signature}{}
+    The \textit{signature} of a bracket is a list of integers of length $r + 1$, where $r$ is the number of rounds in that bracket, such that the $i$th position in the list denotes the number of teams that play their first game in that round.
+\end{definition}
+
+For example, the signature of the 2023 College Football Playoff is $\bracksig{[4; 0; 0]},$ the signature of the 2023 West Coast Conference Men's Basketball Tournament is $\bracksig{[4;2;2;2;0;0]},$ and the signature of the 2015 NBA Eastern Conference Playoffs is $\bracksig{[8; 0; 0; 0]}
+.$ It's worth verifying these signatures before moving on to Theorem \ref{th:Signature Sum}.
+
+\theo{}{
+    Let $A = [a_0; ...; a_r]$ be a list of integers.  Then $A$ is a bracket signature if and only if $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$}{
+        Let $A$ be the signature for some bracket. Assume that every game in the bracket was a coin flip, and consider each team's probability of winning the tournament. A team that gets $i$ byes must win $r-i$ games, and so will win the tournament with probability $\left(\frac{1}{2}\right)^{r - i}.$ For each $i \in \{0, ..., r\}$, there are $a_i$ teams that got that many byes, so (because any two teams winning are mutually exclusive) $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i}$$ is the probability that one of the teams wins, which is just $1.$\\
+
+        We prove the other direction by induction on $r$. If $r = 0$, then the only list with the desired property is $[1]$, which is the signature for the unique $1$-team bracket. For any other $r$, first note that $a_0$ must be even: if it were odd, then \begin{align*}
+            \sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i}
+            &= \frac{1}{2^r} \cdot \sum_{i=0}^r a_i \cdot 2^i\\
+            &= \frac{1}{2^r} \cdot \left(a_0 + 2 \sum_{i=1}^r a_i \cdot 2^{i-1}\right)\\
+            &= k/2^r &\textrm{for some odd $k$}\\
+            &\neq 1.
+        \end{align*}
+        Now, consider the signature $B = [a_1 + a_0/2; a_2; ...; a_r].$ By induction, there exists a bracket with signature $B$. But if we take that bracket and replace $a_0/2$ of the starting lines that receive no byes with play-in games, we get a new bracket with signature $A.$
+}{Signature Sum}
+
+Note that two different brackets might have the same signature: for example, the following two $6$-team brackets each have the signature $[4;2;0;0].$
+
+\fig{.8}{6 team bracket signatures.png}{Two brackets with the same signature}{sixes}
+
+However,
+
+\theo{}{The right bracket in Figure \ref{fig:sixes} does not admit a proper seeding.}{
+Proper seedings must give higher-seeded teams more byes than lower-seeded teams, so the two teams with byes must be the 1-seed and the 2-seed. However, in the semifinals, this would match the 1-seed against the 2-seed, meaning that each of them would play a more difficult opponent than the other two semifinalists. Thus the seeding is not proper, and so the bracket admits no proper seedings.}{}
+
+We will see that it is not a coincidence that only one of the two brackets with signature $\bracksig{[4;2;0;0]}$ admits a proper seeding.
+
+}
