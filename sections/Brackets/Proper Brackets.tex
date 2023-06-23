@@ -1,5 +1,8 @@
 \sub{
 
+
+
+
 \begin{definition}{Seeding}{}
     \textit{Seeding} is a process in which teams are seeded (ranked) by how good and/or deserving they are, and then higher seeded teams are given an easier schedule in the ensuing tournament.
 \end{definition}
@@ -23,14 +26,46 @@ This seeding does a very poor job of rewarding the higher-seeded teams: the $1$-
         \item It is better to be playing a lower seed than to be playing a higher seed.
     \end{itemize}
 \end{definition}
-It is clear that the actual 2015 NBA Eastern Conference Playoffs was properly seeded, while our alternative seeding was not. In fact, most seedings are not proper. In order to catalog those that are we need one more piece of machinery.
+
+It is clear that the actual 2015 NBA Eastern Conference Playoffs was properly seeded, while our alternative seeding was not. In fact, most seedings are not proper. 
+
+\theo{}{
+    Each bracket admits at most one proper seeding.
+}{
+    We analyze an arbitrary round of the bracket.\\
+
+    Two proper seedings cannot disagree on how many teams have a bye in that round or how many teams have been eliminated thus far in the tournament, as these are set by the shape of the bracket. Additionally, because having a bye is better than playing a game which is better than being eliminated, any two proper seedings must agree on which teams are in each of those categories for that round. Thus, the only place that two proper seedings could disagree would be in how they matchup the playing teams in a given round.\\
+
+    However, this too is set by the definition of a proper seeding: the highest-seeding playing team must be matched agains the lowest-seeding playing team, second-highest against second-lowest, etc.\\
+
+    Thus, two proper seedings can't disagree in the given round, and since we picked are round arbitrary, we find that they can't disagree at any point in the tournament.\\
+
+    Therefore, each bracket admits at most one proper seeding.
+}{at_most_one_proper_seeding}
+
+However, not every bracket admits this one proper seeding. Consider the following six-team bracket:
+
+\fig{1}{non proper bracket.png}{A Six-Team Bracket}{six_team_not_proper}
+
+\begin{definition}{Proper Bracket}{}
+    A \textit{proper bracket} is a bracket that admits a proper seeding.
+\end{definition}
+
+\theo{}{The bracket in Figure \ref{fig:six_team_not_proper} is not proper.}{
+Proper seedings must give higher-seeded teams more byes than lower-seeded teams, so the two teams with byes must be the 1-seed and the 2-seed. However, in the semifinals, this would match the 1-seed against the 2-seed, meaning that each of them would play a more difficult opponent than the other two semifinalists. Thus the seeding is not proper, and so the bracket admits no proper seedings.}{}
+
+So we have a natural question to investigate: in what way can we characterize the set of proper brackets? Answering this question will require us to develop a key piece of machinery.
     
 \begin{definition}{Bracket Signature}{}
     The \textit{signature} of a bracket is a list of integers of length $r + 1$, where $r$ is the number of rounds in that bracket, such that the $i$th position in the list denotes the number of teams that play their first game in that round.
 \end{definition}
 
-For example, the signature of the 2023 College Football Playoff is $\bracksig{[4; 0; 0]},$ the signature of the 2023 West Coast Conference Men's Basketball Tournament is $\bracksig{[4;2;2;2;0;0]},$ and the signature of the 2015 NBA Eastern Conference Playoffs is $\bracksig{[8; 0; 0; 0]}
-.$ It's worth verifying these signatures before moving on to Theorem \ref{th:Signature Sum}.
+For example, the signature of the 2023 College Football Playoff is $\bracksig{[4; 0; 0]},$ the signature of the 2023 West Coast Conference Men's Basketball Tournament is $\bracksig{[4;2;2;2;0;0]},$ the signature of the 2015 NBA Eastern Conference Playoffs is $\bracksig{[8; 0; 0; 0]}
+,$ and the signature of the six-team bracket in Figure \ref{fig:six_team_not_proper} is $\bracksig{[4; 2; 0; 0]}.$ It's worth verifying these signatures before moving on.
+
+Let's note a few important properties of bracket signatures. Firstly, multiple brackets can share the same signature: both brackets in Figure \ref{fig:sixes} have signature $\bracksig{[4;2;0;0]}.$
+\fig{.8}{6 team bracket signatures.png}{Two brackets with the same signature}{sixes}
+And secondly, bracket signatures have a nice sum-product with the list of powers of 1/2, and in fact, every list with this sum-product is the signature of some bracket.
 
 \theo{}{
     Let $A = [a_0; ...; a_r]$ be a list of integers.  Then $A$ is a bracket signature if and only if $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$}{
@@ -46,39 +81,29 @@ For example, the signature of the 2023 College Football Playoff is $\bracksig{[4
         Now, consider the signature $B = [a_1 + a_0/2; a_2; ...; a_r].$ By induction, there exists a bracket with signature $B$. But if we take that bracket and replace $a_0/2$ of the starting lines that receive no byes with play-in games, we get a new bracket with signature $A.$
 }{Signature Sum}
 
-Note that two different brackets might have the same signature: for example, the following two $6$-team brackets each have the signature $[4;2;0;0].$
+%excersize for the reader: how many brackets with signature X
+Now that we have developed the idea of a bracket signature, we can use them to describe the set of proper brackets.
 
-\fig{.8}{6 team bracket signatures.png}{Two brackets with the same signature}{sixes}
-
-However,
-
-\theo{}{The right bracket in Figure \ref{fig:sixes} does not admit a proper seeding.}{
-Proper seedings must give higher-seeded teams more byes than lower-seeded teams, so the two teams with byes must be the 1-seed and the 2-seed. However, in the semifinals, this would match the 1-seed against the 2-seed, meaning that each of them would play a more difficult opponent than the other two semifinalists. Thus the seeding is not proper, and so the bracket admits no proper seedings.}{}
-
-We will see that it is not a coincidence that only one of the two brackets with signature $\bracksig{[4;2;0;0]}$ admits a proper seeding.
-
-\begin{definition}{Proper Bracket}{}
-    A \textit{proper bracket} is a bracket that admits a proper seeding.
-\end{definition}
-
-\theo{}{Each bracket signature admits exactly one proper bracket, which itself admits only one proper seeding.}{
-    Let $A = [a_0; ... a_r]$ be an $n$-team bracket signature. We proceed by induction on $r.$ If $r = 0$, then the only possible bracket signature is $[1]$, and it points to the unique one-team bracket, which can only be seeded in one way and is indeed proper.\\
+\theo{}{Each bracket signature admits exactly one proper bracket.}{
+    Let $A = [a_0; ... a_r]$ be an $n$-team bracket signature. We proceed by induction on $r.$ If $r = 0$, then the only possible bracket signature is $[1]$, and it points to the unique one-team bracket, which is indeed proper.\\
 
     For any other $r$, note first that, because it is better to have a bye than to be playing, the $a_0$ teams that don't have a first-round bye must be seeds $n - a_0 + 1$ through $n$. Additionally, since higher-seeded teams must have lower-seeded opponents, the first-round matchups must be $n - a_0 + 1 + i$ vs $n - i$ for $i \in \{0, ..., a_0/2 - 1\}.$\\
 
-    Now, consider the bracket signature $B = [a_1 + a_0/2; a_2; ...; a_r].$ By induction, $B$ admits exactly one proper bracket which admits one proper seeding. Additionally, if the first round of the proper bracket with signature $A$ goes to chalk, we will be left with a bracket with signature $B$ for seeds $1$ through $n - a_0/2.$ This bracket is still subject to the proper seeding constraints, and so must be exactly the proper bracket and seeding admitted by $B$.\\
+    Now, consider the bracket signature $B = [a_1 + a_0/2; a_2; ...; a_r].$ By induction, $B$ admits exactly one proper bracket which by Theorem \ref{th:at_most_one_proper_seeding} admits one proper seeding. Additionally, if the first round of the proper bracket with signature $A$ goes to chalk, we will be left with a bracket with signature $B$ for seeds $1$ through $n - a_0/2.$ This bracket is still subject to the proper seeding constraints, and so must be exactly the proper bracket and seeding admitted by $B$.\\
 
-    Thus both the first-round matchups and the rest of the bracket are determined, and by combining them we get a proper bracket and seeding with signature $A$, so $A$ admits exactly one proper bracket which itself admits only one proper seeding.
+    Thus both the first-round matchups and the rest of the bracket are determined, and by combining them we get a proper bracket with signature $A$, so $A$ admits exactly one proper bracket.
 }{Signature Proper}
 
-This theorem means that we can refer to the proper bracket $A = [a_0; ...; a_r]$ in a well-defined way, as long as $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$
+Theorem \ref{th:Signature Proper} means that we can refer to the proper bracket $A = [a_0; ...; a_r]$ in a well-defined way, as long as $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$
 
 It also gives us a handle on how many (proper) brackets exist for $n$ teams:
 
 \theo{}{There are $P(n)$ $n$-team proper brackets, where $P(n)$ is the number of partitions of $1$ into $n$ powers of $\frac{1}{2}.$}{
-    By Theorem \ref{th:Signature Proper}, there is one $n$-team proper bracket for each $n$-team bracket signature, and by Theorem \ref{th:Signature Sum}, the set of $n$-team bracket signatures the set of lists $A = [a_0; ...; a_n]$ such that $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$ However, such lists are in a bijective correspondence with partitions of $1$ into $n$ powers of $\frac{1}{2}$: the number $\left(\frac{1}{2}\right)^{r - i}$ occurs in the partition $a_i$ times.
+    By Theorem \ref{th:Signature Proper}, there is one $n$-team proper bracket for each $n$-team bracket signature, and by Theorem \ref{th:Signature Sum}, the set of $n$-team bracket signatures is the set of lists $A = [a_0; ...; a_n]$ such that $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$ However, such lists are in a bijective correspondence with partitions of $1$ into $n$ powers of $\frac{1}{2}$: the number $\left(\frac{1}{2}\right)^{r - i}$ occurs in the partition $a_i$ times.\\
+
+    The sequence $P(n)$ is detailed in \href{https://oeis.org/A002572}{A002572}.
 }{}
 
-The sequence $P(n)$ is detailed in \href{https://oeis.org/A002572}{A002572}.
-
+In practice, virtually every sports league that uses a traditional bracket uses a proper one: while different leagues take very different approaches to how many byes to give teams (compare the 2023 West Coast Conference Men's Basketball Tournament with the 2015 NBA Eastern Conference
+Playoffs), they pretty all use proper brackets, making bracket signatures a pretty convinient labelling system for the set of brackets that we might reasonably encounter.
 }
