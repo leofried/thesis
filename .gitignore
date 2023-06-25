@@ -6,3 +6,5 @@
 **/*.pdf
 **/*.synctex*
 **/*.toc
+**/*.bbl
+**/*.blg

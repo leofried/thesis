@@ -1,0 +1,54 @@
+\sub{
+
+\begin{definition}{Bracket Signature}{}
+    The \textit{signature} of a bracket is a list of integers of length $r + 1$, where $r$ is the number of rounds in that bracket, such that the $i$th position in the list denotes the number of teams that play their first game in that round.
+\end{definition}
+
+For example, the signature of the 2023 College Football Playoff is $\bracksig{[4; 0; 0]},$ the signature of the 2023 West Coast Conference Men's Basketball Tournament is $\bracksig{[4;2;2;2;0;0]},$ the signature of the 2015 NBA Eastern Conference Playoffs is $\bracksig{[8; 0; 0; 0]}
+,$ and the signature of the six-team bracket in Figure \ref{fig:six_team_not_proper} is $\bracksig{[4; 2; 0; 0]}.$ It's worth verifying these signatures before moving on.
+
+Let's note a few important properties of bracket signatures. Firstly, multiple brackets can share the same signature: both brackets in Figure \ref{fig:sixes} have signature $\bracksig{[4;2;0;0]}.$
+\fig{.8}{6 team bracket signatures.png}{Two Brackets with the Same Signature}{sixes}
+And secondly, bracket signatures have a nice sum-product with the list of powers of 1/2, and in fact, every list with this sum-product is the signature of some bracket.
+
+\theo{}{
+    Let $A = [a_0; ...; a_r]$ be a list of integers.  Then $A$ is a bracket signature if and only if $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$}{
+        Let $A$ be the signature for some bracket. Assume that every game in the bracket was a coin flip, and consider each team's probability of winning the tournament. A team that gets $i$ byes must win $r-i$ games, and so will win the tournament with probability $\left(\frac{1}{2}\right)^{r - i}.$ For each $i \in \{0, ..., r\}$, there are $a_i$ teams that got that many byes, so (because any two teams winning are mutually exclusive) $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i}$$ is the probability that one of the teams wins, which is just $1.$\\
+
+        We prove the other direction by induction on $r$. If $r = 0$, then the only list with the desired property is $[1]$, which is the signature for the unique $1$-team bracket. For any other $r$, first note that $a_0$ must be even: if it were odd, then \begin{align*}
+            \sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i}
+            &= \frac{1}{2^r} \cdot \sum_{i=0}^r a_i \cdot 2^i\\
+            &= \frac{1}{2^r} \cdot \left(a_0 + 2 \sum_{i=1}^r a_i \cdot 2^{i-1}\right)\\
+            &= k/2^r &\textrm{for some odd $k$}\\
+            &\neq 1.
+        \end{align*}
+        Now, consider the signature $B = [a_1 + a_0/2; a_2; ...; a_r].$ By induction, there exists a bracket with signature $B$. But if we take that bracket and replace $a_0/2$ of the starting lines that receive no byes with play-in games, we get a new bracket with signature $A.$
+}{Signature Sum}
+
+%excersize for the reader: how many brackets with signature X
+Now that we have developed the idea of a bracket signature, we can use them to describe the space of proper brackets.
+
+\theo{The Fundamental Theorem of Brackets}{There is exactly one proper bracket with each bracket signature.}{
+    Let $A = [a_0; ... a_r]$ be an $n$-team bracket signature. We proceed by induction on $r.$ If $r = 0$, then the only possible bracket signature is $[1]$, and it points to the unique one-team bracket, which is indeed proper.\\
+
+    For any other $r$, the first-round matchups of a proper bracket with signature $A$ are defined by Theorem \ref{th:proper_condition_two}. Then if those matchups go to chalk, we are left with a proper bracket with signature $B = [a_1 + a_0/2; a_2; ...; a_r]$, which induction tells us exists admits exactly one proper bracket.\\
+
+    Thus both the first-round matchups and the rest of the bracket are determined, and by combining them we get a proper bracket with signature $A$, there is exactly one proper bracket with signature $A$.
+}{signature_proper}
+
+%Theorem \ref{th:Signature Proper} \theoref ???
+The fundamental theorem of brackets means that we can refer to the proper bracket $A = [a_0; ...; a_r]$ in a well-defined way, as long as $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$
+
+It also gives us a handle on how many (proper) brackets exist for $n$ teams:
+
+\theo{}{There are $P(n)$ $n$-team proper brackets, where $P(n)$ is the number of partitions of $1$ into $n$ powers of $\frac{1}{2}.$}{
+    By \ref{th:signature_proper}, there is one $n$-team proper bracket for each $n$-team bracket signature, and by Theorem \ref{th:Signature Sum}, the set of $n$-team bracket signatures is the set of lists $A = [a_0; ...; a_n]$ such that $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$ Such lists are in a bijective correspondence with partitions of $1$ into $n$ powers of $\frac{1}{2}$: the number $\left(\frac{1}{2}\right)^{r - i}$ occurs in the partition $a_i$ times.\\
+
+    The sequence $P(n)$ is detailed in by the OEIS in A002572 \cite{oeis}.
+}{}
+
+In practice, virtually every sports league that uses a traditional bracket uses a proper one: while different leagues take very different approaches to how many byes to give teams (compare the 2023 West Coast Conference Men's Basketball Tournament with the 2015 NBA Eastern Conference
+Playoffs), they are almost all proper. This makes bracket signatures a convinient labeling system for the set of brackets that we might reasonably encounter. They also make are a powerful tool for specifying new brackets: if you are interested in (say) an eleven-team bracket where four teams get no byes, four teams get one bye, one team gets two byes and two teams get three byes, we can describe the proper bracket with those specs as $\bracksig{[4; 4; 1; 2; 0; 0]}$ and use Theorems \ref{th:proper_condition_one} through \ref{th:proper_condition_two} to draw it with ease:
+
+\fig{1}{eleven team.png}{The Proper Bracket of Signature $\bracksig{[4; 4; 1; 2; 0; 0]}$}{}
+}

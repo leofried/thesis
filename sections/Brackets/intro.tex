@@ -1,7 +1,7 @@
 \sub{
 
 \begin{definition}{Bracket}{}
-    A \textit{bracket} is a tournament format in which teams are first placed in the leaves of a binary tree, and then games are successively played between teams in nodes that share a parent, placing the winner of each game in the shared parent node. At the end of the tournament, the entire tree will be filled out, and the team that has been in the root of the tree (which is the only team that has not yet lost a game) is declared champion.
+    A \textit{bracket} is a tournament format in which teams are placed in the leaves of a binary tree, and games are successively played between teams in nodes that share a parent, placing the winner of each game in the shared parent node. At the end of the tournament, the entire tree will be filled out, and the team that has been in the root of the tree (which is the only team that has not yet lost a game) is declared champion.
 \end{definition}
 
 Brackets are traditionally stylized like so:
@@ -27,6 +27,14 @@ The 2023 West Coast Conference Men's Basketball Tournament, on the other hand, i
 Saint Mary's and Gonzaga each have three byes and so only need to win two games to win the tournament, while Portland, San Diego, Pacific, and Pepperdine need to win five. Unsurprisingly, this format conveys a massive advantage to Saint Mary's and Gonzaga, but this was intentional: those two teams were being rewarded for doing the best during the regular season.
 
 In many cases, however, it is undesirable to grant advantages to certain teams over others. One might hope, for any $n$, to be able to construct a balanced bracket for $n$ teams, but unfortunately this is rarely possible.
+
+\begin{definition}{Starting Line}{}
+    A \textit{starting line} is a leaf node of a bracket where a team gets place before they play their first game.
+\end{definition} 
+
+\begin{definition}{Play-in Game}{}
+    A \textit{play-in game} is sub-bracket of the main bracket consisting of just two teams (and thus just a single game).
+\end{definition} 
 
 \theo{}{
 There exists an $n$-team balanced bracket if and only if $n$ is a power of two.}{
