@@ -34,43 +34,42 @@ It is clear that the actual 2015 NBA Eastern Conference Playoffs was properly se
 
 A few quick lemmas about proper brackets:
 
-\theo{}{
+\lemm{}{
     In a proper bracket, if $m$ teams have a bye in a given round, those teams must be seeds $1$ through $m$.
 }{
     If they did not, the seeding would be in violation of condiiton (1).
 }{proper_condition_one}
 
-\theo{}{
+\lemm{}{
     If a proper bracket goes to chalk, then after each round the $m$ teams remaining will be the top $m$ seeds.
 }{
     We will prove the contrapositive. Assume that for some $i<j$, after some round, the $i$-seed has been eliminated but the $j$-seed is still alive. Let $k$ be the seed of the team that the $i$-seed lost to. Because the bracket went to chalk, $k < i$. Now consider what the $j$-seed did in that round. If they had a bye, then the bracket violates condition (1). Assume instead they played the $\ell$-seed. They beat the $\ell$-seed, so $j < \ell,$ giving, $$k < i < j < \ell.$$ In the round that the $i$-seed was eliminated, the $i$-seed played the $k$-seed, while the $j$-seed played the $\ell$-seed, despite the $i$-seed being higher seeded than the $j$-seed, violating condition (2). Thus, the bracket is not proper.
 }{proper_condition_one_point_five}
 
-\theo{}{
+\lemm{}{
     In a proper bracket, if $m$ teams have a bye and $k$ games are being played in a given round, then if the bracket goes to chalk those matchups will be seed $m + i$ vs seed $(m + 2k + 1) - i$ for $i \in \{1, ..., k\}.$
 }{
     In the given round, there are $m + 2k$ teams remaining. Theorem \ref{th:proper_condition_one_point_five} tells us that (if the bracket goes to chalk) those teams must be seeds $1$ through $m + 2k$. Theorem \ref{th:proper_condition_one} tells us that seeds $1$ through $m$ must have a bye, so the teams playing must be seeds $m + 1$ through $m + 2k$. Then condition (2) tells us that the matchups must be exactly $m + i$ vs seed $(m + 2k + 1) - i$ for $i \in \{1, ..., k\}.$ 
 }{proper_condition_two}
 
-We can use Theorems \ref{th:proper_condition_one} and \ref{th:proper_condition_two} to easily properly seed brackets. For example, consider the seven-team bracket below:
+We can use Lemmas \ref{th:proper_condition_one} and \ref{th:proper_condition_two} to easily properly seed brackets. For example, consider the seven-team bracket below:
 
 \fig{1}{7 team unseeded.png}{A Seven-Team Bracket}{}
 
-Theorem \ref{th:proper_condition_one} tells us that the first-round matchup must be between the 6-seed and the 7-seed. Theorem \ref{th:proper_condition_two} tells us that if the bracket goes to chalk, the second-round matchups must be 3v6 and 4v5, so the 3-seed must go in the bottom second-round starting. Finally, we can apply Theorem \ref{th:proper_condition_two} again to the semifinals to find that the 1-seed should play the winner of the 4v5 matchup, while the 2-seed should play the winner of the 3v(6v7) matchup. In total, our proper seeding looks like so:
+Lemma \ref{th:proper_condition_one} tells us that the first-round matchup must be between the 6-seed and the 7-seed. Lemma \ref{th:proper_condition_two} tells us that if the bracket goes to chalk, the second-round matchups must be 3v6 and 4v5, so the 3-seed must go in the bottom second-round starting. Finally, we can apply Lemma \ref{th:proper_condition_two} again to the semifinals to find that the 1-seed should play the winner of the 4v5 matchup, while the 2-seed should play the winner of the 3v(6v7) matchup. In total, our proper seeding looks like so:
 
 \fig{1}{7 team seeded.png}{A Seven-Team Bracket, Properly Seeded}{}
 
-We can also quickly simulate the bracket going to chalk to verify 
-Theorem \ref{th:proper_condition_one_point_five}.
+We can also quickly simulate the bracket going to chalk to verify Lemma \ref{th:proper_condition_one_point_five}.
 
-Theorems \ref{th:proper_condition_one} through \ref{th:proper_condition_two} are quite powerful: it is not a coincidence that we managed to specify exactly what a proper seeding of the above bracket must look like with no room for variation.
+Lemmas \ref{th:proper_condition_one} through \ref{th:proper_condition_two} are quite powerful: it is not a coincidence that we managed to specify exactly what a proper seeding of the above bracket must look like with no room for variation.
 
 \theo{}{
     Each bracket admits at most one proper seeding.
 }{
     We analyze an arbitrary round of the bracket. Assume that thus far the bracket went to chalk.\\
 
-    Two proper seedings cannot disagree on how many teams have a bye in that round or how many teams have been eliminated thus far in the tournament, as these are set by the shape of the bracket. Additionally, Theorem \ref{th:proper_condition_one} determines which teams get a bye, and Theorem \ref{th:proper_condition_one_point_five} determines which teams have been eliminated. Thus, the only place that two proper seedings could disagree would be in how they match up the playing teams in a given round, but this is set by Theorem \ref{th:proper_condition_two}.\\
+    Two proper seedings cannot disagree on how many teams have a bye in that round or how many teams have been eliminated thus far in the tournament, as these are set by the shape of the bracket. Additionally, Lemma \ref{th:proper_condition_one} determines which teams get a bye, and Lemma \ref{th:proper_condition_one_point_five} determines which teams have been eliminated. Thus, the only place that two proper seedings could disagree would be in how they match up the playing teams in a given round, but this is set by Lemma \ref{th:proper_condition_two}.\\
 
     So two proper seedings can't disagree about anything in the given round, and since we picked the round arbitrarily, we find that they can't disagree at any point in the tournament. Therefore, each bracket admits at most one proper seeding.
 }{at_most_one_proper_seeding}
@@ -82,7 +81,7 @@ Note that not every bracket admits even this one proper seeding. Consider the fo
 
 
 \theo{}{The bracket in Figure \ref{fig:six_team_not_proper} admits no proper seedings.}{
-Theorem \ref{th:proper_condition_one} requires that the two teams getting byes be the 1- and 2-seed, but Theorem \ref{th:proper_condition_two} requires that in the second round the 1- and 2-seeds do not play each other. Thus, the bracket admits no proper seedings.}{six_not_proper}
+Lemma \ref{th:proper_condition_one} requires that the two teams getting byes be the 1- and 2-seed, but Lemma \ref{th:proper_condition_two} requires that in the second round the 1- and 2-seeds do not play each other. Thus, the bracket admits no proper seedings.}{six_not_proper}
 
 Theorems \ref{th:at_most_one_proper_seeding} and \ref{th:six_not_proper} together imply that some but not all brackets admit a proper seeding. Can we characterize this space of proper brackets in any way? Answering this question will require the development of a key piece of machinery.
 }

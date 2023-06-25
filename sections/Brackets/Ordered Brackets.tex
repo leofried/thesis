@@ -57,5 +57,62 @@ In particular, a bracket being ordered is a stronger claim than it being proper.
     Thus $\mathcal{B}$ satisfies both conditions, and so is a proper bracket.
 }{ordered_proper}
 
+With Theorem \ref{th:ordered_proper}, we can use the language of bracket signatures to describe ordered bracket without concerns over collision. For the next few theorems, we will attempt to describe which bracket signatures induce ordered brackets by first enumerating three categories of ordered bracket and then proving that all other proper brackets are not ordered.
+
+Firstly,
+
+\theo{}{The unique one-team bracket of signature $\bracksig{[1]}$ is ordered.}{There is only one team in the bracket, so the ordered bracket condition is satisfied.}{one_team_ordered}
+
+Next we show that brackets of the following form are ordered:
+
+\fig{1}{ladder_ordered.png}{The Second Category of Ordered Brackets}{ladder_ordered}
+
+\theo{}{
+    Brackets of the form of Figure \ref{fig:ladder_ordered} are ordered \cite{montana}.
+}{
+    Assume the participating teams are SST. We decompose the ordered bracket conditions into two parts: first that the 1-seed has (at least tied for) the best chance of winning, and second that the other seeds have probability to win the bracket in the order of their seed.\\
+
+    First, the 1-seed beats every other team with probability with at least probability 0.5, and if they win their one game, they win the tournament, so the 1-seed wins the tournament with probability at least 0.5, meaning they have (at least tied for) the best chance of the winning.\\
+
+    Next, note that the probability for any other team to win is the probability that they win the sub-bracket multiplied by the probability that they beat the 1-seed. The first list is ordered because the sub-bracket is ordered, and the second list is ordered because the teams are SST, products are also ordered, implying that the rest of the seeds have probability to win the bracket in the order of their seed.\\
+
+    Thus, brackets of Figure \ref{fig:ladder_ordered} are ordered.
+}{ladder_ordered_proof}
+
+\begin{corollary}{}{ladder_ordered_signatures}
+    If the bracket $[a_0, ..., a_r]$ is ordered, then so is the bracket $[a_0, ..., a_{r-1}, a_r + 1, 0].$
+\end{corollary}
+
+\begin{corollary}{}{ladder_ordered_examples}
+    The following brackets are ordered:
+    \begin{itemize}
+        \item $\bracksig{[2; 0]}$
+        \item $\bracksig{[2; 1; 0]}$
+        \item $\bracksig{[2; 1; 1; 0]}$
+        \item $\bracksig{[2; 1; 1; 1; 0]}$
+        \item $\bracksig{[2; 1; 1; 1; 1; 0]}$
+        \item etc.
+    \end{itemize}
+\end{corollary}
+
+\fig{.59}{ladder_brackets.png}{The Ordered Brackets Described by Corollary \ref{th:ladder_ordered_examples}}{ladder_brackets}
+
+The brackets pictured in Figure \ref{fig:ladder_brackets} are often referred to as ``ladder brackets,'' referencing the fact that lower-seeded teams must climb up them one rung (game) at a time. Ladder brackets are as punishing a bracket to the lower-seeded teams as one could design, forcing the two lowest-seeded teams to beat every other team in order to win the tournament. On the other hand, by putting the 1-seed just a single game away from winning the bracket, if your teams really are seeded in an SST manner, it does a fantastic job of selecting the best team as the winner.
+
+Finally, let's examine the third category of ordered brackets.
+
+\begin{definition}{The Third Category of Ordered Brackets}{}
+    FILL THIS IN
+\end{definition}
+
+\lemm{}{
+    If two games are played in a given round of an ordered bracket, then the winners of those games must play in the following round.
+}{
+
+}{}
+
+
+%excersize: proof that [4;0;0] is ordered.
+%bracket vs seeding vs list of teams
 
 }

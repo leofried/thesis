@@ -33,6 +33,11 @@
 
 
     \newtcbtheorem[number within=subsection]{theorem}{Theorem}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
+    \newtcbtheorem[number within=subsection, use counter from=theorem]{lemma}{Lemma}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
+    \newtcbtheorem[number within=subsection, use counter from=theorem]{corollary}{Corollary}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
+    
+
+    %better naming system for refrences of lemma/theo/corr/ fundamental
     \newtcbtheorem[number within=subsection, use counter from=theorem]{definition}{Definition}%
     {enhanced, breakable, colback=blue!5,colframe=teal!100!,fonttitle=\bfseries}{def}
     \newtcbtheorem[number within=subsection, use counter from=theorem]{figg}{Figure}%
@@ -59,8 +64,19 @@
             \begin{proof}
             #3
             \end{proof}
-            \ifthenelse{\equal{#1}{}}{}{\namedlabel{theo:#4}{#1}}
+     %       \ifthenelse{\equal{#1}{}}{}{\namedlabel{theo:#4}{#1}}
         \end{theorem}
+    }
+    
+    \newcommand{\lemm}[4]{
+        \begin{lemma}{#1}{#4}
+            #2
+            \tcblower
+            \begin{proof}
+            #3
+            \end{proof}
+     %       \ifthenelse{\equal{#1}{}}{}{\namedlabel{theo:#4}{#1}}
+        \end{lemma}
     }
     
     \newcommand{\N}{\mathbb{N}}
