@@ -6,7 +6,8 @@
     \usepackage{complexity}
     \usepackage{indentfirst}
     \usepackage{float}
-    \usepackage{carlito}
+ %   \usepackage{carlito}
+    \usepackage{subfiles}
 
     \hbadness=10000
 
@@ -35,7 +36,6 @@
     \newtcbtheorem[number within=subsection]{theorem}{Theorem}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
     \newtcbtheorem[number within=subsection, use counter from=theorem]{lemma}{Lemma}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
     \newtcbtheorem[number within=subsection, use counter from=theorem]{corollary}{Corollary}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
-    
 
     %better naming system for refrences of lemma/theo/corr/ fundamental
     \newtcbtheorem[number within=subsection, use counter from=theorem]{definition}{Definition}%
@@ -75,20 +75,25 @@
             \begin{proof}
             #3
             \end{proof}
-     %       \ifthenelse{\equal{#1}{}}{}{\namedlabel{theo:#4}{#1}}
-        \end{lemma}
+       \end{lemma}
+    }
+
+    \newcommand{\corr}[4]{
+        \begin{corollary}{#1}{#4}
+            #2
+            \tcblower
+            \begin{proof}
+            #3
+            \end{proof}
+       \end{corollary}
     }
     
-    \newcommand{\N}{\mathbb{N}}
-    \newcommand{\NN}{\mathcal{N}}
-    \newcommand{\F}{\mathcal{F}}
-    \newcommand{\B}{\boldsymbol{B}}
-    \renewcommand{\R}{\mathbb{R}}
-    \newcommand{\T}{\mathcal{T}}
-    \renewcommand{\S}{\mathcal{S}}
-    \renewcommand{\E}{\mathbb{E}}
+
+    \renewcommand{\A}{\mathcal{A}}
+    \newcommand{\B}{\mathcal{B}}
+    \renewcommand{\C}{\mathcal{C}}
     \renewcommand{\P}{\mathbb{P}}
-    \newcommand{\true}{\mathbf{true}}
-    \newcommand{\false}{\mathbf{false}}
-    \renewcommand{\and}{\mathbf{\;and\;}}
+
+
     \newcommand{\bracksig}[1]{\mathbf{#1}}
+    
