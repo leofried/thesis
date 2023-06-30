@@ -76,7 +76,7 @@ Next we show that brackets of the following form are ordered:
 
     Next, note that the probability for any other team to win is the probability that they win the sub-bracket multiplied by the probability that they beat the 1-seed. The first list is ordered because the sub-bracket is ordered, and the second list is ordered because the teams are SST, products are also ordered, implying that the rest of the seeds have probability to win the bracket in the order of their seed.\\
 
-    Thus, brackets of Figure \ref{fig:ladder_ordered} are ordered.
+    Thus, brackets of the form of Figure \ref{fig:ladder_ordered} are ordered.
 }{ladder_ordered_proof}
 
 \begin{corollary}{}{ladder_ordered_signatures}
@@ -108,8 +108,13 @@ Finally, let's examine the third category of ordered brackets.
 \lemm{}{
     If two games are played in a given round of an ordered bracket, then the winners of those games must play in the following round.
 }{
-
+    Assume for contradiction that an ordered bracket exists in which two games are played in a given and round and the winners of those games do not play each other.
+    Let $a, b, c$ and $d$ be the seeds of the four teams who would play in those two games if the bracket went to chalk such that the $a$-seed would play the $d$-seed and the $b$-seed would play the $c$-seed, and such that $a < d$ and $b < c$. 
 }{}
+
+% \begin{corollary}{}{}
+%     No more than two games can be played in an ordered bracket.
+% \end{corollary}
 
 
 %excersize: proof that [4;0;0] is ordered.
