@@ -86,7 +86,7 @@ let get_all (specs : Specs.t) =
     if advance = specs.number_advance then [base] else
     List.init (specs.number_advance - advance) ((+) 1)
     |> List.map (fun target_sum -> Bracket.get_all_brackets
-      ~max_games: (base.number_of_teams / base.number_of_pools - 1)
+      ~max_games:(specs.max_games - (base.number_of_teams / base.number_of_pools - 1))
       ~target_sum
       ~tiers
       ~require_games: true

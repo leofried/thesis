@@ -2,14 +2,53 @@
   [
     {
       "number_of_teams": 16,
+      "number_of_pools": 16,
+      "auto_bids": 0,
+      "brackets": [ [ 16, 0, 0, 0, 0 ] ]
+    },
+    {
+      "samples": 7967,
+      "sum": 12215.466273221138,
+      "sum_squares": 27308.49605712902
+    }
+  ],
+  [
+    {
+      "number_of_teams": 16,
+      "number_of_pools": 8,
+      "auto_bids": 0,
+      "brackets": [ [ 8, 0, 0, 0 ] ]
+    },
+    {
+      "samples": 10012,
+      "sum": 15559.470245873052,
+      "sum_squares": 35172.27583115538
+    }
+  ],
+  [
+    {
+      "number_of_teams": 16,
+      "number_of_pools": 8,
+      "auto_bids": 0,
+      "brackets": [ [ 16, 0, 0, 0, 0 ] ]
+    },
+    {
+      "samples": 13601,
+      "sum": 20856.252005261824,
+      "sum_squares": 46796.74849442863
+    }
+  ],
+  [
+    {
+      "number_of_teams": 16,
       "number_of_pools": 4,
       "auto_bids": 0,
       "brackets": [ [ 4, 0, 0 ] ]
     },
     {
-      "samples": 13540,
-      "sum": 20857.52714995463,
-      "sum_squares": 46978.239403737985
+      "samples": 16964,
+      "sum": 26235.08277705557,
+      "sum_squares": 59173.18237856823
     }
   ],
   [
@@ -20,9 +59,48 @@
       "brackets": [ [ 8, 0, 0, 0 ] ]
     },
     {
-      "samples": 19788,
-      "sum": 30229.993112538083,
-      "sum_squares": 67567.69736278847
+      "samples": 23314,
+      "sum": 35657.39896501267,
+      "sum_squares": 79960.93746024258
+    }
+  ],
+  [
+    {
+      "number_of_teams": 16,
+      "number_of_pools": 4,
+      "auto_bids": 0,
+      "brackets": [ [ 8, 4, 0, 0, 0 ] ]
+    },
+    {
+      "samples": 7787,
+      "sum": 11852.583733403013,
+      "sum_squares": 26484.894988589134
+    }
+  ],
+  [
+    {
+      "number_of_teams": 16,
+      "number_of_pools": 4,
+      "auto_bids": 0,
+      "brackets": [ [ 8, 4, 4, 0, 0, 0 ] ]
+    },
+    {
+      "samples": 21172,
+      "sum": 32073.048725663684,
+      "sum_squares": 71390.211808283
+    }
+  ],
+  [
+    {
+      "number_of_teams": 16,
+      "number_of_pools": 4,
+      "auto_bids": 0,
+      "brackets": [ [ 16, 0, 0, 0, 0 ] ]
+    },
+    {
+      "samples": 12050,
+      "sum": 18644.660198338195,
+      "sum_squares": 42118.628831836184
     }
   ],
   [
@@ -33,9 +111,9 @@
       "brackets": [ [ 2, 0 ] ]
     },
     {
-      "samples": 42789,
-      "sum": 63769.767538448126,
-      "sum_squares": 140875.1380865489
+      "samples": 52341,
+      "sum": 77994.67059059207,
+      "sum_squares": 172420.4232880259
     }
   ],
   [
@@ -46,9 +124,9 @@
       "brackets": [ [ 4, 0, 0 ] ]
     },
     {
-      "samples": 96636,
-      "sum": 142926.55583320447,
-      "sum_squares": 314639.61650794116
+      "samples": 115777,
+      "sum": 171160.9609914144,
+      "sum_squares": 376853.09948151547
     }
   ],
   [
@@ -59,9 +137,9 @@
       "brackets": [ [ 4, 2, 0, 0 ] ]
     },
     {
-      "samples": 569598,
-      "sum": 835379.1590997929,
-      "sum_squares": 1831229.669828559
+      "samples": 782724,
+      "sum": 1147723.8096862526,
+      "sum_squares": 2515175.9506663466
     }
   ],
   [
@@ -72,9 +150,9 @@
       "brackets": [ [ 8, 0, 0, 0 ] ]
     },
     {
-      "samples": 75624,
-      "sum": 112351.27512181373,
-      "sum_squares": 247765.10873058383
+      "samples": 84257,
+      "sum": 125194.8897581139,
+      "sum_squares": 276238.9900180868
     }
   ]
 ]
