@@ -1,0 +1,2 @@
+How many brackets with some signature?
+Prove that [8; 0; 0; 0] is not ordered.

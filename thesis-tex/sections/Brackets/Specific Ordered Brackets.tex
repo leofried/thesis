@@ -1,0 +1,132 @@
+\sub {
+
+Let's consider the proper bracket $\bracksig{[16; 0; 0; 0; 0]}$, which was used in the 2022 NCAA Women's Basketball Tournament Wichita Region, and is shown here: (Sometimes brackets are drawn in the manner below, with teams starting on both sides and the winner of each side playing in the championship game.)
+
+\fig{0.8}{2021 NCAA Basketball Tournament South Region.png}{2022 NCAA Women's Basketball Tournament Wichita Region}{}
+
+The definition of a proper seeding ensures that as long as the bracket goes to chalk (that is, higher seeds always beat lower seeds), it will always be better to be a higher seed than a lower seed. But what if it doesn't go to chalk?
+
+One counter-intuitive fact about the NCAA Basketball Tournament is that it is probably better to be a 10-seed than a 9-seed. (This doesn't violate the proper seeding property because 9-seeds have an easier first-round matchup than 10-seeds, and for further rounds, proper seedings only care about what happens if the bracket goes to chalk, which would eliminate both the 9-seed and 10-seed in the first round.) Why? Let's look at whom each seed-line matchups against in the first two rounds:
+
+\begin{figg}{NCAA Basketball Tournament 9- and 10-seed Schedules}{}
+    \centering
+    \begin{tabular}{ c | c c }
+         Seed & First Round & Second Round \\
+         \hline
+         9 & 8 & 1\\
+        10 & 7 & 2
+    \end{tabular}
+\end{figg}
+
+The 9-seed has an easier first-round matchup, while the 10-seed has an easier second-round matchup. However, this isn't quite symmetrical. Because the teams are (most likely) drawn from a roughly normal distribution, the difference in skill between the 1- and 2-seeds is far greater than the difference between the 7- and 8-seeds, implying that the 10-seed does in fact have an easier route than the 9-seed.
+
+Nate Silver investigated this matter in full, finding that in the NCAA Basketball Tournament, seed-lines 10 through 15 give teams better odds of winning the region than seed-lines 8 and 9. Of course this does not mean that the 11-seed (say) has a better chance of winning a given region than the 8-seed does, as the 8-seed is a much better team than the 11-seed. But it does mean that the 8-seed would love to swap places with the 11-seed, and that doing so would increase their odds to win the region.
+
+This is not a great state of affairs: the whole point of seeding is confer an advantage to higher-seeded teams, and the proper bracket $\bracksig{[16; 0; 0; 0; 0]}$ is failing to do that. Not to mention that giving lower-seeded teams an easier route than higher-seeded ones can incentivize teams to lose during the regular season in order to try to get a lower but more advantageous seed.
+
+To fix this, we need a stronger notion of what makes a bracket effective than properness. The issue with proper seedings is the false assumption that higher-seeded teams will always beat lower-seeded teams. A more nuanced assumption might look like this:
+
+\begin{definition}{$t_i$}{}
+    For ease of use, in mathematical formulae we sometimes use the notation $t_i$ to refer to the $i$-seed in a tournament.
+\end{definition}
+
+\begin{definition}{Strongly Stochastically Transitive}{}
+    A list of teams is \textit{strongly stochastically transitive} if for each $i, j, k$ such that $j < k$, $$\P(t_i \textrm{ beats } t_j) \leq \P(t_i \textrm{ beats } t_k).$$
+\end{definition}
+
+A list of teams being strongly stochastically transitive (or SST) captures the intuition that each team ought to do better against lowers-seeded teams than against lower-seeded teams.
+
+A few quick implications of this definition are:
+
+\begin{corollary}{}{}
+    If a list of teams is SST, then for each $i < j$, $\P(t_i \textrm{ beats } t_j) \geq 0.5.$
+\end{corollary}
+
+\begin{corollary}{}{}
+    If a list of teams is SST, then for each $i, j, k, \ell$ such that $i < j$ and $k < \ell$, $$\P(t_i \textrm{ beats } t_\ell) \geq \P(t_j \textrm{ beats } t_k).$$
+\end{corollary}
+
+Note that not every set of teams can be seeded to be SST. Consider, for example, the game of rock-paper-scissors. Rock beats paper which beats scissors which beats rock, so no ordering of these ``teams'' will be SST. For our purposes, however, SST will work well enough.
+
+Our new, nuanced alternative a proper bracket is an \textit{ordered bracket}.
+
+\begin{definition}{Ordered Bracket}{}
+    A bracket and seeding are \textit{ordered} if, for any SST list of teams, if $i < j$, then $\P(t_i\textrm{ wins the tournament} )\geq \P(t_j\textrm{ wins the tournament}).$
+\end{definition}
+
+In many ways, a bracket being ordered is the strongest thing we can want without making any ``moral'' judgements. It might be unclear (and vary by situation) whether a it is better for a format to almost always declare the most-skilled team the winner, or to give each team roughly the same chance of winning, or anywhere in between. But certainly, better teams should win more, which is what the ordered bracket stipulation requires.
+
+In particular, a bracket being ordered is a stronger claim than it being proper.
+%/A vs /B
+\theo{}{Every ordered bracket is proper.}{
+    %this proof is el garbo pants
+    Let $\A$ be an ordered $n$-team bracket with $r$ rounds.\\
+    
+    Consider a list of teams such that every team wins every game with probability 0.5. These teams are SST. A team that plays their first game in the $i$th round will win the tournament with probability $(\frac{1}{2})^{r-i}$, so teams that get more byes will have a higher probability to win the tournament than teams with fewer byes. Thus, higher-seeded teams must have more byes than lower-seeded teams, so in each round, the teams with byes must be the highest-seeded teams that are still alive. Thus, condition (1) is met.\\
+
+
+
+    %i vs j
+    %k vs l
+    %i < k, j < l
+    %i < j
+    %
+
+
+    % i < j < k < l s.t. 
+
+   % Now assume for contradiction that condition (2) is not met for the first time in round $s$, so there exists seeds $i < j < k < \ell$ such that in round $s$, if the bracket goes to chalk, they are each paired up against each other, but in some configuration other than $t_i$ vs $t_\ell$ and $t_j$ against $t_k$. Now consider the following SST matchup table: games between teams 
+    %
+    %$t_i$ played $t_j$ and $t_k$ played $t_\ell,$ where $i < k$ but $j < \ell.$ Without loss of geneeralization, assume $i < j.$  
+
+    Consider an arbitrary round $i$. Let $t_1, ... t_m$ be the teams that would be playing in this round if the bracket went to chalk so far, ordered by seed. Consider the following SST matchup table on the teams remaining: every team wins every game with probability 0.5, except for games involving $t_m$, who is guarenteed to lose every game they play. Then, each team playing this round will win the tournament with probability $(\frac{1}{2})^{r-i},$ other than $t_m$ who wins with probability $0$ and the team playing $t_m$ who wins with probability $(\frac{1}{2})^{r-i-1}.$ Since that team has a better chance of winning than the other teams playing this round, and $\B$ is ordered, the team playing $t_m$ has to be the highest-seeded team playing this round, which is $t_1.$  We can then build more SSTs, adding the next-lowest seed as also losing every game they play to ensure that they must play the next-highest seed, until we've shown that all the teams playing this round must be matched up according to condition (2).\\
+
+    Thus $\B$ satisfies both conditions, and so is a proper bracket.
+}{ordered_proper}
+
+With Theorem \ref{th:ordered_proper}, we can use the language of bracket signatures to describe ordered bracket without concerns over collision. What are some examples of ordered brackets? Let's look at three particularly important ones.
+
+We begin with the unique one-team bracket.
+
+\fig{1}{one_team.png}{The One-Team Bracket $\bracksig{[1]}$.}{}
+\theo{}{The one-team bracket $\bracksig{[1]}$ is ordered.}{Since there is only team, the ordered bracket condition is vacuously true.}{}
+
+Next we look at the unique two-team bracket.
+
+\fig{1}{two_team.png}{The Two-Team Bracket $\bracksig{[2; 0]}$.}{}
+\theo{}{The two-team bracket $\bracksig{[2; 0]}$ is ordered.}{Let $\A = \bracksig{[2; 0]}.$ Then,
+\begin{align*}
+   \P[t_1 \textrm{ wins } \A] = \P[t_1 \textrm{ beats } t_2] \geq 0.5 \geq \P[t_2 \textrm{ beats } t_1] = \P[t_2 \textrm{ wins } \A],
+\end{align*}    
+so $\A$ is ordered.
+}{}
+
+And thirdly, we show that the balanced four-team bracket is ordered.
+
+\fig{1}{four_team.png}{The Four-Team Bracket $\bracksig{[4; 0; 0]}$.}{}
+\theo{}{The four-team bracket $\bracksig{[4; 0; 0]}$ is ordered.}{Let $\A = \bracksig{[2; 0]}.$ Let $p_{ij}$ be the probability that the $i$-seed beats the $j$-seed. Then,
+\begin{align*}
+    \P[t_1 \textrm{ wins } \A] &= p_{14} \cdot (p_{23}p_{12} + p_{32} p_{13})\\
+    &= p_{14}p_{23}p_{12} + p_{14}p_{32} p_{13}\\
+    &\geq p_{14}p_{23}p_{21} + p_{24}p_{41} p_{23}\\
+    &= p_{23} \cdot (p_{14}p_{21} + p_{41}p_{24})\\
+    &= \P[t_2 \textrm{ wins } \A]
+\end{align*}
+\begin{align*}
+    \P[t_2 \textrm{ wins } \A] &= p_{23} \cdot (p_{14}p_{21} + p_{41} p_{24})\\
+    &\geq p_{32} \cdot (p_{14}p_{31} + p_{41} p_{34})\\
+    &= \P[t_3 \textrm{ wins } \A]
+\end{align*}
+\begin{align*}
+    \P[t_3 \textrm{ wins } \A] &= p_{32} \cdot (p_{14}p_{31} + p_{41} p_{34})\\
+    &= p_{32}p_{14}p_{31} + p_{32}p_{41} p_{34}\\
+    &\geq p_{42}p_{23}p_{41} + p_{32}p_{41} p_{43}\\
+    &= p_{41} \cdot (p_{23}p_{42} + p_{32}p_{43})\\
+    &= \P[t_4 \textrm{ wins } \A]
+\end{align*}
+
+Thus the four-team bracket $\bracksig{[4; 0; 0]}$ is ordered.
+}{}
+
+In the next section, we stop describing particular ordered brackets in favor of a more general result.
+}
