@@ -1,0 +1,106 @@
+[
+  [
+    {
+      "number_of_teams": 15,
+      "number_of_pools": 3,
+      "auto_bids": 3,
+      "brackets": []
+    },
+    {
+      "samples": 5016,
+      "sum": 6561.976709362051,
+      "sum_squares": 12930.019192334927
+    }
+  ],
+  [
+    {
+      "number_of_teams": 15,
+      "number_of_pools": 3,
+      "auto_bids": 0,
+      "brackets": [ [ 6, 0 ] ]
+    },
+    {
+      "samples": 8117,
+      "sum": 8671.959215303954,
+      "sum_squares": 15147.573553803782
+    }
+  ],
+  [
+    {
+      "number_of_teams": 15,
+      "number_of_pools": 3,
+      "auto_bids": 0,
+      "brackets": [ [ 6, 3, 0 ] ]
+    },
+    {
+      "samples": 69359,
+      "sum": 68300.22179567965,
+      "sum_squares": 112035.10054908712
+    }
+  ],
+  [
+    {
+      "number_of_teams": 15,
+      "number_of_pools": 3,
+      "auto_bids": 0,
+      "brackets": [ [ 6, 3, 3, 0 ] ]
+    },
+    {
+      "samples": 351168,
+      "sum": 341898.16586901975,
+      "sum_squares": 556198.0451792417
+    }
+  ],
+  [
+    {
+      "number_of_teams": 15,
+      "number_of_pools": 3,
+      "auto_bids": 0,
+      "brackets": [ [ 6, 3, 3, 3, 0 ] ]
+    },
+    {
+      "samples": 461258,
+      "sum": 448410.0142698547,
+      "sum_squares": 726856.0651907069
+    }
+  ],
+  [
+    {
+      "number_of_teams": 15,
+      "number_of_pools": 3,
+      "auto_bids": 0,
+      "brackets": [ [ 12, 0, 3, 0 ] ]
+    },
+    {
+      "samples": 29363,
+      "sum": 29391.563595311934,
+      "sum_squares": 48500.236911190295
+    }
+  ],
+  [
+    {
+      "number_of_teams": 15,
+      "number_of_pools": 3,
+      "auto_bids": 0,
+      "brackets": [ [ 12, 0, 0 ] ]
+    },
+    {
+      "samples": 6649,
+      "sum": 7215.736852303137,
+      "sum_squares": 12769.108997292378
+    }
+  ],
+  [
+    {
+      "number_of_teams": 15,
+      "number_of_pools": 3,
+      "auto_bids": 0,
+      "brackets": [ [ 6, 9, 0, 0 ] ]
+    },
+    {
+      "samples": 9035,
+      "sum": 9933.565407887267,
+      "sum_squares": 17745.709050294703
+    }
+  ]
+]

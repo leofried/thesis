@@ -1,0 +1,6 @@
+(library
+ (name struct)
+ (libraries util engine)
+ (preprocess
+  (pps ppx_yojson_conv))
+)

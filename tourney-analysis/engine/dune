@@ -1,0 +1,6 @@
+(library
+ (name engine)
+ (libraries util)
+ (preprocess
+  (pps ppx_yojson_conv))
+)
