@@ -1,0 +1,3 @@
+{"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QIt is clear that the actual 2015 NBA Eastern Conference Playoffs was properly seeded, while our alternative seeding was not.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThe Det-Symm Correspondence.\\E$"}
+{"rule":"A_NNS","sentence":"^\\QIf an 11-seed wins in the first-round, they take on the schedule of a 6-seed for the rest of the tournament, while if the 9-seed wins, they take on the schedule of an 8-seed.\\E$"}

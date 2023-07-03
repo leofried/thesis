@@ -1,0 +1,99 @@
+    \usepackage{amssymb}
+    \usepackage{amsmath}
+    \usepackage{amsthm}
+    \usepackage[most]{tcolorbox}
+    \usepackage[hidelinks]{hyperref}
+    \usepackage{complexity}
+    \usepackage{indentfirst}
+    \usepackage{float}
+ %   \usepackage{carlito}
+    \usepackage{subfiles}
+
+    \hbadness=10000
+
+    \newcommand{\sub}[1]{
+        \documentclass[../../main.tex]{subfiles}
+        \begin{document}
+        #1
+        \end{document}
+    }
+
+    \newcommand{\newsection}[1]{\def\foldername{#1}\section{#1}}
+    %book/chapters? also subsections?
+
+
+    \newcommand{\sect}[1]{
+        \newsection{#1}
+        \subfile{sections/#1/intro}
+    }
+    \newcommand{\subsect}[1]{
+        \subsection{#1}
+        \subfile{sections/\foldername/#1}
+    }
+
+
+
+    \newtcbtheorem[number within=subsection]{theorem}{Theorem}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
+    \newtcbtheorem[number within=subsection, use counter from=theorem]{lemma}{Lemma}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
+    \newtcbtheorem[number within=subsection, use counter from=theorem]{corollary}{Corollary}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
+
+    %better naming system for refrences of lemma/theo/corr/ fundamental
+    \newtcbtheorem[number within=subsection, use counter from=theorem]{definition}{Definition}%
+    {enhanced, breakable, colback=blue!5,colframe=teal!100!,fonttitle=\bfseries}{def}
+    \newtcbtheorem[number within=subsection, use counter from=theorem]{figg}{Figure}%
+    {enhanced, breakable, colback=red!5,colframe=purple!100!,fonttitle=\bfseries}{fig}
+
+    \newcommand{\fig}[4]{
+            \begin{figg}{#3}{#4}
+            \centering
+            \includegraphics[scale=#1]{images/#2}
+        \end{figg}
+    }
+
+    \makeatletter
+        \def\namedlabel#1#2{\begingroup
+        \def\@currentlabel{#2}%
+        \label{#1}\endgroup
+        }
+    \makeatother
+
+    \newcommand{\theo}[4]{
+        \begin{theorem}{#1}{#4}
+            #2
+            \tcblower
+            \begin{proof}
+            #3
+            \end{proof}
+     %       \ifthenelse{\equal{#1}{}}{}{\namedlabel{theo:#4}{#1}}
+        \end{theorem}
+    }
+    
+    \newcommand{\lemm}[4]{
+        \begin{lemma}{#1}{#4}
+            #2
+            \tcblower
+            \begin{proof}
+            #3
+            \end{proof}
+       \end{lemma}
+    }
+
+    \newcommand{\corr}[4]{
+        \begin{corollary}{#1}{#4}
+            #2
+            \tcblower
+            \begin{proof}
+            #3
+            \end{proof}
+       \end{corollary}
+    }
+    
+
+    \renewcommand{\A}{\mathcal{A}}
+    \newcommand{\B}{\mathcal{B}}
+    \renewcommand{\C}{\mathcal{C}}
+    \renewcommand{\P}{\mathbb{P}}
+
+
+    \newcommand{\bracksig}[1]{\mathbf{#1}}
+    

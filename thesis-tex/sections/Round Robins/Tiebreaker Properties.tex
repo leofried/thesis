@@ -1,0 +1,53 @@
+\sub{
+
+    The most commonly used and widely accepted tiebreaker is the \textit{two-team head-to-head tiebreaker}. (For now we separate the two-team head-to-head tiebreaker with the three-or-more-team head-to-head tiebreaker.)
+
+    \begin{definition}{The Two-Team Head-to-Head Tiebreaker}{}
+        The \textit{Two-Team Head-to-Head Tiebreaker} is a tiebreaker that takes a pair of tied teams and ranks the team that beat the other team higher.
+    \end{definition}
+
+    There is a reason that the two-team head-to-head tiebreaker is so universal; it has pile of really nice properties. For one, it is simple: it takes only once sentence to explain and we don't need any examples to see what it does. But it's not just that: the two-team head-to-head tiebreaker has a number of formal attractive properties as well.
+
+    Firstly, the two-team head-to-head tiebreker is \textit{local}.
+
+    \begin{definition}{Local Tiebreakers}{}
+        A tiebreaker is \textit{local} if it doesn't depend on the result of games not involving any of the tied teams.
+    \end{definition}
+
+    The two-team head-to-head tiebreaker looks only at the result of a single game played between the two tied teams, so it is certainly local. Some examples of non-local tiebreakers would be ``record against the 3rd place team'' or something like that (since determining which team is that 3rd place team requires looking at games played between teams that are not being tiebroken). In practice, non-isolated tiebreakers are quite common, finding their way into the \href{https://bigten.org/news/2011/8/10/Big_Ten_Conference_Football_Divisional_Tiebreaker.aspx}{Big Ten Football Tiebreakers} as well as the \href{https://ak-static-int.nba.com/wp-content/uploads/sites/2/2017/06/NBA_Tiebreaker_Procedures.pdf}{NBA Playoff Tiebreakers}.
+
+    There are a couple reasons why local tiebreakers are preferable to non-local ones. The first concern is a practical one: non-local tiebreakers require that we know how the entire round-robin went before we can figure out which of a smaller subset of teams should be ranked higher, which can slow down the calculation process considerably. If we're not careful, non-local tiebreakers can also lead to unbreakable circular dependencies, where the ordering of a first set of tied teams impacts the ordering of a second set of teams, but the ordering of the second set of tied teams also impacts the ordering of the first set.
+
+    However, there is also a moral argument as to why we prefer local tiebreakers: it just seems a little silly that in order to decide which of $t_1$ and $t_2$ get ranked higher, we have to examine the result of the game between $t_3$ and $t_4$: we have all of the information about games involving $t_1$ or $t_2$ already -- that should be sufficient for deciding their relative placement.
+
+
+
+    % <!-- /wp:paragraph -->
+
+
+
+
+%     %We say a tiebreaker is <em>isolated</em> if it is not affected by the results of games not involving the tied teams. An example of a tiebreaker that is not isolated would be "record against the 1st place team" or something like that. In practice, non-isolated tiebreakers are quite common, finding their way into the <a href="https://bigten.org/news/2011/8/10/Big_Ten_Conference_Football_Divisional_Tiebreaker.aspx">Big Ten Football Tiebreakers</a>, as well as the <a href="https://ak-static-int.nba.com/wp-content/uploads/sites/2/2017/06/NBA_Tiebreaker_Procedures.pdf">NBA Playoff Tiebreakers</a>.</p>
+% <!-- /wp:paragraph -->
+
+% <!-- wp:paragraph -->
+% <p>However, there are two reasons why I think we should prefer isolated tiebreakers to non-isolated ones.</p>
+% <!-- /wp:paragraph -->
+
+% <!-- wp:paragraph -->
+% <p>The first reason is a practical one: it requires that we know how to the entire round-robin went before we can figure out which of a smaller subset of teams should be ranked higher, which can slow down the calculation process considerably. If we're not careful, it can also lead to unbreakable circular dependencies, where the ordering of a first set of teams impacts the ordering of a second set of teams, but the ordering of the second set also impacts the ordering of the first set.</p>
+% <!-- /wp:paragraph -->
+
+% <!-- wp:paragraph -->
+% <p>The second reason is a moral one: it seems at least little silly that games played between two teams <em>neither of which are the tied teams</em> should affect the placement of the tied teams. Imagine two teams were tied, and then afterwards we had Elmo and Mickey Mouse play a game and based our tiebreaker on that. That would be ridiculous! But in some ways, non-isolated tiebreakers do exactly this, basing their output on games that don't involve the tied teams whatsoever. </p>
+% <!-- /wp:paragraph -->
+
+% <!-- wp:paragraph -->
+% <p>(Real non-isolated tiebreakers are not quite as bad as the Elmo-Mickey Mouse example, because at least they look at the results of games between teams that our tied teams each already played. However, they still feel a <em>little</em> silly.)</p>
+% <!-- /wp:paragraph -->
+
+% <!-- wp:paragraph -->
+% <p>A tiebreaker not being isolated does not spell doom for its use (remember, no tiebreaker other than <strong>2TH2H</strong> can have all six properties), but all else being equal, we would definitely prefer isolated tiebreakers to non-isolated ones.</p>
+% <!-- /wp:paragraph -->
+
+}

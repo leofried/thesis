@@ -1,0 +1,87 @@
+\sub{
+
+\begin{definition}{Seeding}{seeding}
+    A \textit{seeding} of an $n$-team bracket is a map from an ordered list of $n$ teams to the $n$ starting lines in the bracket.
+\end{definition}
+
+Seeding is typically used to reward better and more deserving teams: as an example, on the left is the $8$-team bracket used in the 2015 NBA Eastern Conference Playoffs along with the numbers on each starting line indicating the seeding to be used. At the end of the regular season, the top eight teams in the Eastern Conference were ranked and placed into the bracket as shown on the right.
+\fig{.7}{2015 NBA Eastern Conference Playoffs v2.png}{2015 NBA Eastern Conference Playoffs}{}
+
+Note that despite this bracket being balanced, the higher seeds are still at advantage: they have an easier set of opponents. Compare $1$-seeded Atlanta, who's first two rounds are versus $8$-seeded Brooklyn and then (most likely) $4$-seeded Toronto, versus $7$-seeded Boston, who's first two rounds are versus $2$-seeded Cleveland and then (most likely) $3$-seeded Chicago. Atlanta's schedule is far easier: despite them having the same number of games to win as Boston, Atlanta will have to play lower seeds in each round than Boston will.
+
+Thus, we've identified two ways in which brackets can convey an advantage onto certain teams: by giving them more byes, and by giving them easier (expected) opponents. Not every seeding of a bracket does this: for example, consider the following alternative seeding for the 2015 NBA Eastern Conference Playoffs.
+
+\fig{1}{NBA Bad Seeding.png}{An Alternative Seeding of the 2015 NBA Eastern Conference Playoffs}{}
+
+This seeding does a very poor job of rewarding the higher-seeded teams: the $1$- and $2$-seeds are matched up in the first round, while the easiest road is given to the $7$-seed, who plays the $8$-seed in the first round and then (most likely) the $5$-seed in the second. Since the whole point of seeding is to give the higher-seeded teams an advantage, we introduce the concept of a \textit{proper seeding.}
+
+\begin{definition}{Chalk}{}
+    A tournament \textit{goes to chalk} if the higher-seeded teams wins every game during the tournament.
+\end{definition}
+
+\begin{definition}{Proper Seeding}{}
+    A \textit{proper seeding} of a bracket is one such that if the bracket goes to chalk, then in every round it is better to be a higher-seeded team than a lower-seeded one, where: \begin{itemize}
+        \item[(1)] It is better to have a bye than to be playing a game.
+        \item[(2)] It is better to be playing a lower seed than to be playing a higher seed.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}{Proper Bracket}{}
+    A \textit{proper bracket} is a bracket that has been properly seeded.
+\end{definition}
+
+It is clear that the actual 2015 NBA Eastern Conference Playoffs was properly seeded, while our alternative seeding was not.
+
+A few quick lemmas about proper brackets:
+
+\lemm{}{
+    In a proper bracket, if $m$ teams have a bye in a given round, those teams must be seeds $1$ through $m$.
+}{
+    If they did not, the seeding would be in violation of condiiton (1).
+}{proper_condition_one}
+
+\lemm{}{
+    If a proper bracket goes to chalk, then after each round the $m$ teams remaining will be the top $m$ seeds.
+}{
+    We will prove the contrapositive. Assume that for some $i<j$, after some round, the $i$-seed has been eliminated but the $j$-seed is still alive. Let $k$ be the seed of the team that the $i$-seed lost to. Because the bracket went to chalk, $k < i$. Now consider what the $j$-seed did in that round. If they had a bye, then the bracket violates condition (1). Assume instead they played the $\ell$-seed. They beat the $\ell$-seed, so $j < \ell,$ giving, $$k < i < j < \ell.$$ In the round that the $i$-seed was eliminated, the $i$-seed played the $k$-seed, while the $j$-seed played the $\ell$-seed, despite the $i$-seed being higher seeded than the $j$-seed, violating condition (2). Thus, the bracket is not proper.
+}{proper_condition_one_point_five}
+
+\lemm{}{
+    In a proper bracket, if $m$ teams have a bye and $k$ games are being played in a given round, then if the bracket goes to chalk those matchups will be seed $m + i$ vs seed $(m + 2k + 1) - i$ for $i \in \{1, ..., k\}.$
+}{
+    In the given round, there are $m + 2k$ teams remaining. Theorem \ref{th:proper_condition_one_point_five} tells us that (if the bracket goes to chalk) those teams must be seeds $1$ through $m + 2k$. Theorem \ref{th:proper_condition_one} tells us that seeds $1$ through $m$ must have a bye, so the teams playing must be seeds $m + 1$ through $m + 2k$. Then condition (2) tells us that the matchups must be exactly $m + i$ vs seed $(m + 2k + 1) - i$ for $i \in \{1, ..., k\}.$ 
+}{proper_condition_two}
+
+We can use Lemmas \ref{th:proper_condition_one} and \ref{th:proper_condition_two} to easily properly seed brackets. For example, consider the seven-team bracket below:
+
+\fig{1}{7 team unseeded.png}{A Seven-Team Bracket}{}
+
+Lemma \ref{th:proper_condition_one} tells us that the first-round matchup must be between the 6-seed and the 7-seed. Lemma \ref{th:proper_condition_two} tells us that if the bracket goes to chalk, the second-round matchups must be 3v6 and 4v5, so the 3-seed must go in the bottom second-round starting. Finally, we can apply Lemma \ref{th:proper_condition_two} again to the semifinals to find that the 1-seed should play the winner of the 4v5 matchup, while the 2-seed should play the winner of the 3v(6v7) matchup. In total, our proper seeding looks like so:
+
+\fig{1}{7 team seeded.png}{A Seven-Team Bracket, Properly Seeded}{}
+
+We can also quickly simulate the bracket going to chalk to verify Lemma \ref{th:proper_condition_one_point_five}.
+
+Lemmas \ref{th:proper_condition_one} through \ref{th:proper_condition_two} are quite powerful: it is not a coincidence that we managed to specify exactly what a proper seeding of the above bracket must look like with no room for variation.
+
+\theo{}{
+    Each bracket admits at most one proper seeding.
+}{
+    We analyze an arbitrary round of the bracket. Assume that thus far the bracket went to chalk.\\
+
+    Two proper seedings cannot disagree on how many teams have a bye in that round or how many teams have been eliminated thus far in the tournament, as these are set by the shape of the bracket. Additionally, Lemma \ref{th:proper_condition_one} determines which teams get a bye, and Lemma \ref{th:proper_condition_one_point_five} determines which teams have been eliminated. Thus, the only place that two proper seedings could disagree would be in how they match up the playing teams in a given round, but this is set by Lemma \ref{th:proper_condition_two}.\\
+
+    So two proper seedings can't disagree about anything in the given round, and since we picked the round arbitrarily, we find that they can't disagree at any point in the tournament. Therefore, each bracket admits at most one proper seeding.
+}{at_most_one_proper_seeding}
+
+Note that not every bracket admits even this one proper seeding. Consider the following six-team bracket:
+
+\fig{1}{non proper bracket.png}{A Six-Team Bracket}{six_team_not_proper}
+
+
+
+\theo{}{The bracket in Figure \ref{fig:six_team_not_proper} admits no proper seedings.}{
+Lemma \ref{th:proper_condition_one} requires that the two teams getting byes be the 1- and 2-seed, but Lemma \ref{th:proper_condition_two} requires that in the second round the 1- and 2-seeds do not play each other. Thus, the bracket admits no proper seedings.}{six_not_proper}
+
+Theorems \ref{th:at_most_one_proper_seeding} and \ref{th:six_not_proper} together imply that some but not all brackets admit a proper seeding. Can we characterize this space of proper brackets in any way? Answering this question will require the development of a key piece of machinery.
+}
