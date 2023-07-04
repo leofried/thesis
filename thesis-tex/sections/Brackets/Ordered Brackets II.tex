@@ -50,13 +50,13 @@ We have shown all three substatements, and so $\C$ is ordered.
     If $\A = [a_0; ...; a_r]$ and $\B = [b_0; ...; b_s]$ are ordered brackets, then $\C = [a_0; ...; a_r + b_0 - 1; ...; b_s]$ is an ordered bracket as well.
 \end{corollary}
 
-We can then construct the set of brackets that we have thus far shown are ordered. We do this by starting with $\{\bracksig{[1]}, \bracksig{[2; 0]}, \bracksig{[4; 0; 0]}\}$ and then repeatedly applying the above theorem on the set to expand it. In other words,
+We can then construct the set of brackets that we have thus far shown are ordered. We do this by starting with $\{\bracksig{1}, \bracksig{2; 0}, \bracksig{4; 0; 0}\}$ and then repeatedly applying the above theorem on the set to expand it. In other words,
 
 \begin{corollary}{}{construct_order}
     Any bracket signature formed by the following process is ordered:
     \begin{enumerate}
-        \item Start with the list $\bracksig{[0]}$ (note that this not yet a bracket signature).
-        \item As many times as desired, prepend the list with $\bracksig{[1]}$ or $\bracksig{[3; 0]}.$
+        \item Start with the list $\bracksig{0}$ (note that this not yet a bracket signature).
+        \item As many times as desired, prepend the list with $\bracksig{1}$ or $\bracksig{3; 0}.$
         \item Then, add 1 to the first element in the list, turning it into a bracket signature.
     \end{enumerate}
 \end{corollary}
@@ -98,9 +98,9 @@ And now the main theorem,
     Corollary \ref{th:construct_order} describes all proper brackets in which each round either has only game, or has two games but is immediately followed by a round with only one game. A proper bracket not described by Corollary \ref{th:construct_order} would thus have to include a round with two or more games followed by another round with two or more games, violating Lemma \ref{th:two_must_play}.
 }{limit_order}
 
-Theorem \ref{th:limit_order} is both exciting and disapointing. On one hand, it means that Corollary \ref{th:construct_order} fully describes the set of ordered brackets, making it easy to, e.g., check whether a given bracket is ordered or not. On the other hand, because in an ordered bracket at most three teams can be introduced each round, the length of the shortest ordered bracket on $n$ teams grows linearly with $n$ (rather than logarithmically as is the case for proper brackets). This means that if we want a bracket on many teams to be ordered, we risk forcing lower-seeded teams to play large numbers of games, and we only permit the top seeded teams to play a few. For example, if the 2022 NCAA Women's Basketball Wichita Region wanted to use an ordered bracket, rather than just a proper one, the shortest bracket they could use would be $\bracksig{[4; 0; 3; 0; 3; 0; 3; 0; 3; 0; 0]},$ which is played over a whopping ten rounds.
+Theorem \ref{th:limit_order} is both exciting and disapointing. On one hand, it means that Corollary \ref{th:construct_order} fully describes the set of ordered brackets, making it easy to, e.g., check whether a given bracket is ordered or not. On the other hand, because in an ordered bracket at most three teams can be introduced each round, the length of the shortest ordered bracket on $n$ teams grows linearly with $n$ (rather than logarithmically as is the case for proper brackets). This means that if we want a bracket on many teams to be ordered, we risk forcing lower-seeded teams to play large numbers of games, and we only permit the top seeded teams to play a few. For example, if the 2022 NCAA Women's Basketball Wichita Region wanted to use an ordered bracket, rather than just a proper one, the shortest bracket they could use would be $\bracksig{4; 0; 3; 0; 3; 0; 3; 0; 3; 0; 0},$ which is played over a whopping ten rounds.
 
 \fig{.475}{ordered_sixteen.png}{The Shortest Sixteen-Team Ordered Bracket}{}
 
-Because of this, few leagues uses ordered brackets, and those who do usually use them by accident. One such as the 2023 College Football Playoffs which uses a $\bracksig{[4; 0; 0]}$ bracket. (Given that all four-team proper brackets are ordered, it seems unlikely that this was an intentional choice. In fact, starting in 2025, the College Football Playoffs will be moving to the unordered $\bracksig{[8; 4; 0; 0; 0]}$ bracket.) One notable exception to this is the Korean Baseball League, which does ele
+Because of this, few leagues uses ordered brackets, and those who do usually use them by accident. One such as the 2023 College Football Playoffs which uses a $\bracksig{4; 0; 0}$ bracket. (Given that all four-team proper brackets are ordered, it seems unlikely that this was an intentional choice. In fact, starting in 2025, the College Football Playoffs will be moving to the unordered $\bracksig{8; 4; 0; 0; 0}$ bracket.) One notable exception to this is the Korean Baseball League,
 }

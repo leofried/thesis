@@ -1,31 +1,4 @@
 \sub {
-
-Let's consider the proper bracket $\bracksig{[16; 0; 0; 0; 0]}$, which was used in the 2021 NCAA Men's Basketball Tournament South Region, and is shown here: (Sometimes brackets are drawn in the manner below, with teams starting on both sides and the winner of each side playing in the championship game.)
-
-\fig{1}{2021 NCAA Basketball Tournament South Region.png}{2021 NCAA Men's Basketball Tournament South Region}{}
-
-The definition of a proper seeding ensures that as long as the bracket goes to chalk, it will always be better to be a higher seed than a lower seed. But what if it doesn't go to chalk?
-
-One counter-intuitive fact about the NCAA Men's Basketball Tournament is that it is probably better to be a 10-seed than a 9-seed. (This doesn't violate the proper seeding property because proper seedings only care about what happens if the bracket goes to chalk, which would eliminate both the 9-seed and 10-seed in the first round.) Why? Let's look at whom each seed-line matchups against in the first two rounds:
-
-\begin{figg}{2021 NCAA Men's Basketball Tournament 9- and 10-seed Schedules}{}
-    \centering
-    \begin{tabular}{ c | c c }
-         Seed & First Round & Second Round \\
-         \hline
-         9 & 8 & 1\\
-        10 & 7 & 2
-    \end{tabular}
-\end{figg}
-
-The 9-seed has an easier first-round matchup, while the 10-seed has an easier second-round matchup. However, this isn't quite symmetrical. Because the teams are (most likely) drawn from a roughly normal distribution, the difference in skill between the 1- and 2-seeds is far greater than the difference between the 7- and 8-seeds, implying that the 10-seed does in fact have an easier route than the 9-seed.
-
-Nate Silver \href{https://fivethirtyeight.com/features/when-15th-is-better-than-8th-the-math-shows-the-bracket-is-backward/}{investigated} this matter in full, finding that in the NCAA Men's Basketball Tournament, seed-lines 10 through 15 give teams better odds of winning the region than seed-lines 8 and 9. Of course this does not mean that the 11-seed (say) has a better chance of winning a given region than the 8-seed does, as the 8-seed is a much better team than the 11-seed. But it does mean that the 8-seed would love to swap places with the 11-seed, and that doing so would increase their odds to win the region.
-
-This is obviously not a great state of affairs: the whole points of seeding is confer an advantage to higher-seeded teams, and giving lower-seeded teams an easier route than higher-seeded ones can incentivize teams to lose during the regular season in order to try to get a lower but more advantageous seed.
-
-Unfortunately, there is no conventional seeding method that can fully eliminate these incentives: Theorem \ref{th:Signature Proper} showed that for any given bracket signature, there is only proper bracket and proper seeding, and we just found that this seeding can sometime lead to these perverse incentives. If we went with a non-proper seeding, then one of the proper-seeding conditions would fail, leading to reverse incentives for the higher seeds that are less likely to be eliminated and thus covered by those conditions.
-
 However, there are a few unconventional seeding methods that attempt to remove perverse incentives entirely.
 
 Ultimately, the issues outlined by Silver are caused by teams that are seeded in the bottom half of seeds being treated, if they win, as the team that they beat for the rest of the format. If an 11-seed wins in the first-round, they take on the schedule of a 6-seed for the rest of the tournament, while if the 9-seed wins, they take on the schedule of an 8-seed. Given that a 6-seed has an easier schedule than an 8-seed, it's not hard to see why it might be preferable to be an 11-seed rather than a 9-seed.
@@ -36,7 +9,7 @@ Ultimately, the issues outlined by Silver are caused by teams that are seeded in
     In a \textit{reseeded} bracket, after each round, match-up the highest-seeded team with the lowest-seeded team, second highest vs second-lowest, etc.
 \end{definition}
 
-Both National Football League conferences use a reseeded bracket with signature $\bracksig{[6; 1; 0; 0]}.$ If the first-round of the bracket goes to chalk, then it looks just like a normal bracket:
+Both National Football League conferences use a reseeded bracket with signature $\bracksig{6; 1; 0; 0}.$ If the first-round of the bracket goes to chalk, then it looks just like a normal bracket:
 
 \fig{0.9}{2023 AFC.png}{2023 National Football League AFC Playoffs}{}
 

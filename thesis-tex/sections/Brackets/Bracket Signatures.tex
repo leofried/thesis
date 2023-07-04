@@ -4,10 +4,20 @@
     The \textit{signature} of a bracket is a list of integers of length $r + 1$, where $r$ is the number of rounds in that bracket, such that the $i$th position in the list denotes the number of teams that play their first game in that round.
 \end{definition}
 
-For example, the signature of the 2023 College Football Playoff is $\bracksig{[4; 0; 0]},$ the signature of the 2023 West Coast Conference Men's Basketball Tournament is $\bracksig{[4;2;2;2;0;0]},$ the signature of the 2015 NBA Eastern Conference Playoffs is $\bracksig{[8; 0; 0; 0]}
-,$ and the signature of the six-team bracket in Figure \ref{fig:six_team_not_proper} is $\bracksig{[4; 2; 0; 0]}.$ It's worth verifying these signatures before moving on.
+The signatures of the brackets we've seen so far are shown in Figure \ref{fig:sigs}. It's worth verifying and making sure you fully understand these signatures before moving on.
 
-Let's note a few important properties of bracket signatures. Firstly, multiple brackets can share the same signature: both brackets in Figure \ref{fig:sixes} have signature $\bracksig{[4;2;0;0]}.$
+\begin{figg}{The Signatures of Some Brackets}{sigs}
+    \begin{tabular}{ c | c }
+         Bracket & Signature \\
+         \hline
+         2023 College Football Playoff & $\bracksig{4; 0; 0}$ \\
+         2023 WCC Men's Basketball Tournament & $\bracksig{4;2;2;2;0;0}$ \\
+         2015 NBA Eastern Conference Playoffs & $\bracksig{8; 0; 0; 0}$\\
+         The Bracket in Figure \ref{fig:six_team_not_proper} & $\bracksig{4; 2; 0; 0}$\\
+    \end{tabular}
+\end{figg}
+
+Let's note a few important properties of bracket signatures. Firstly, multiple brackets can share the same signature: both brackets in Figure \ref{fig:sixes} have signature $\bracksig{4;2;0;0}.$
 \fig{.8}{6 team bracket signatures.png}{Two Brackets with the Same Signature}{sixes}
 And secondly, bracket signatures have a nice sum-product with the list of powers of 1/2, and in fact, every list with this sum-product is the signature of some bracket.
 
@@ -45,7 +55,7 @@ It also gives us a handle on how many proper brackets exist for $n$ teams:
     The sequence $P(n)$ is detailed in by the OEIS in A002572.
 }{}
 
-In practice, virtually every sports league that uses a traditional bracket uses a proper one: while different leagues take very different approaches to how many byes to give teams (compare the 2023 West Coast Conference Men's Basketball Tournament with the 2015 NBA Eastern Conference Playoffs), they are almost all proper. This makes bracket signatures a convinient labeling system for the set of brackets that we might reasonably encounter. They also make are a powerful tool for specifying new brackets: if you are interested in (say) an eleven-team bracket where four teams get no byes, four teams get one bye, one team gets two byes and two teams get three byes, we can describe the proper bracket with those specs as $\bracksig{[4; 4; 1; 2; 0; 0]}$ and use Lemmas \ref{th:proper_condition_one} through \ref{th:proper_condition_two} to draw it with ease:
+In practice, virtually every sports league that uses a traditional bracket uses a proper one: while different leagues take very different approaches to how many byes to give teams (compare the 2023 West Coast Conference Men's Basketball Tournament with the 2015 NBA Eastern Conference Playoffs), they are almost all proper. This makes bracket signatures a convinient labeling system for the set of brackets that we might reasonably encounter. They also make are a powerful tool for specifying new brackets: if you are interested in (say) an eleven-team bracket where four teams get no byes, four teams get one bye, one team gets two byes and two teams get three byes, we can describe the proper bracket with those specs as $\bracksig{4; 4; 1; 2; 0; 0}$ and use Lemmas \ref{th:proper_condition_one} through \ref{th:proper_condition_two} to draw it with ease:
 
-\fig{1}{eleven team.png}{The Proper Bracket of Signature $\bracksig{[4; 4; 1; 2; 0; 0]}$}{}
+\fig{1}{eleven team.png}{The Proper Bracket of Signature $\bracksig{4; 4; 1; 2; 0; 0}$}{}
 }
