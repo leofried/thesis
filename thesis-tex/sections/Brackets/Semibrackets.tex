@@ -1,0 +1,37 @@
+\sub{
+
+    \begin{definition}{Semibracket}{}
+        A \textit{semibracket} is a set of brackets that are played concurrently such that no team plays in more than one bracket.
+    \end{definition}
+
+    \begin{definition}{Order}{}
+        The \textit{order} of a semibracket is the number of brackets it contains.
+    \end{definition}
+
+    All brackets are already semibrackets of order one. You can easily transform a bracket into a semibracket of order two by not playing the championship game.
+
+    \fig{1}{[8;0;0].png}{$[[8;0;0;0]]$ as a Semibracket of Order Two}{}
+    
+    Likewise, a bracket can be transformed into a semibracket of order four by not playing the semifinals or the finals. Semibrackets can be somewhat pathological like this semibracket of order four.
+
+    \fig{1}{pathalogical_semibracket.png}{Pathological Semibracket of Order Four}{pathological}
+
+    In the semibracket in Figure \ref{fig:pathological}, three teams must play no games to win their repesctive brackets, while six other teams compete to win the final bracket.
+
+    The empty semibracket is the unique semibracket of order zero.
+
+    \begin{figg}{The Empty Semibracket}{}
+    \end{figg}
+
+    The ideas of properness and signatures that we used to discuss brackets are also useful when applied to the space of semibrackets, so we port them over.
+
+    \begin{definition}{Proper Semibracket}{}
+        A \textit{proper semibracket} is a semibracket that has been properly seeded.
+    \end{definition}
+
+    \begin{definition}{Semibracket Signature}{}
+        The \textit{signature} of a semibracket is a list of integers of length $r + 1$, where $r$ is the number of rounds in that semibracket, such that the $i$th position in the list denotes the number of teams that play their first game in that round.
+    \end{definition}
+
+    We omit the proofs for brevity, but all of the important theorems about proper brackets and bracket signatures have semibracket analogues.
+}
