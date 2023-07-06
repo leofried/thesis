@@ -34,4 +34,34 @@
     \end{definition}
 
     We omit the proofs for brevity, but all of the important theorems about proper brackets and bracket signatures have semibracket analogues.
+
+    \begin{lemma}{}{}
+        In a proper semibracket bracket, if $m$ teams have a bye in a given round, those teams must be seeds $1$ through $m$.
+    \end{lemma}
+
+    \begin{lemma}{}{}
+        If a proper semibracket goes to chalk, then after each round the $m$ teams remaining will be the top $m$ seeds.
+    \end{lemma}
+
+    \begin{lemma}{}{}
+        In a proper semibracket, if $m$ teams have a bye and $k$ games are being played in a given round, then if the semibracket goes to chalk those matchups will be seed $m + i$ vs seed $(m + 2k + 1) - i$ for $i \in \{1, ..., k\}.$
+    \end{lemma}
+
+    \begin{theorem}{}{}
+        Each semibracket admits at most one proper seeding.
+    \end{theorem}
+
+    \begin{theorem}{}{semisigsum}
+    Let $\A = \bracksig{a_0; ...; a_r}$ be a list of integers. Then $\A$ is a semibracket signature of order $z$ if and only if $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = z.$$
+    \end{theorem}
+
+    \begin{theorem}{}{}
+        There is exactly one proper semibracket with each semibracket signature.
+    \end{theorem}
+
+    The only analogue theorem that has been changed by more then just adding the semi- prefix is Theorem \ref{th:semisigsum}. The semibracket version notes that the signature of a semibracket sumproducts with powers of $\frac{1}{2}$ to the order of the semibracket, rather than just to $1.$
+
+    Finally, as an example, let's use these theorems to draw the semibracket $\bracksig{2;5;3;0},$ which has order $3.$
+
+    \fig{1}{order_three_semibracket.png}{The Proper Semibracket $\bracksig{2;5;3;0}$}{}
 }

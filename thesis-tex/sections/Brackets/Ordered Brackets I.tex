@@ -34,7 +34,7 @@ To fix this, we need a stronger notion of what makes a bracket effective than pr
     A list of teams is \textit{strongly stochastically transitive} if for each $i, j, k$ such that $j < k$, $$\P(t_i \textrm{ beats } t_j) \leq \P(t_i \textrm{ beats } t_k).$$
 \end{definition}
 
-A list of teams being strongly stochastically transitive (or SST) captures the intuition that each team ought to do better against lowers-seeded teams than against lower-seeded teams.
+A list of teams being strongly stochastically transitive (or SST) captures the intuition that each team ought to do better against lower-seeded teams than against lower-seeded teams.
 
 A few quick implications of this definition are:
 
@@ -62,24 +62,11 @@ In particular, a bracket being ordered is a stronger claim than it being proper.
     %this proof is el garbo pants
     Let $\A$ be an ordered $n$-team bracket with $r$ rounds.\\
     
-    Consider a list of teams such that every team wins every game with probability 0.5. These teams are SST. A team that plays their first game in the $i$th round will win the tournament with probability $(\frac{1}{2})^{r-i}$, so teams that get more byes will have a higher probability to win the tournament than teams with fewer byes. Thus, higher-seeded teams must have more byes than lower-seeded teams, so in each round, the teams with byes must be the highest-seeded teams that are still alive. Thus, condition (1) is met.\\
+    Consider a list of teams such that every team wins every game with probability 0.5. These teams are SST. A team that plays their first game in the $i$th round will win the tournament with probability $(\frac{1}{2})^{r-i}$, so teams that get more byes will have a higher probability to win the tournament than teams with fewer byes. This implies that higher-seeded teams must have more byes than lower-seeded teams, so in each round, the teams with byes must be the highest-seeded teams that are still alive. Thus, condition (1) is met.\\
 
+    We show that condition (2) is met by proving the stronger condition from Lemma \ref{th:proper_condition_two}: if $m$ teams have a bye and $k$ games are being played in round $s$, then if the bracket goes to chalk, those matchups will be $t_{m + i}$ vs $t_{(m + 2k + 1) - i}$ for $i \in \{1, ..., k\}.$ We show this by strong induction on $s$ and on $i$.\\
 
-
-    %i vs j
-    %k vs l
-    %i < k, j < l
-    %i < j
-    %
-
-
-    % i < j < k < l s.t. 
-
-   % Now assume for contradiction that condition (2) is not met for the first time in round $s$, so there exists seeds $i < j < k < \ell$ such that in round $s$, if the bracket goes to chalk, they are each paired up against each other, but in some configuration other than $t_i$ vs $t_\ell$ and $t_j$ against $t_k$. Now consider the following SST matchup table: games between teams 
-    %
-    %$t_i$ played $t_j$ and $t_k$ played $t_\ell,$ where $i < k$ but $j < \ell.$ Without loss of geneeralization, assume $i < j.$  
-
-    Consider an arbitrary round $i$. Let $t_1, ... t_m$ be the teams that would be playing in this round if the bracket went to chalk so far, ordered by seed. Consider the following SST matchup table on the teams remaining: every team wins every game with probability 0.5, except for games involving $t_m$, who is guarenteed to lose every game they play. Then, each team playing this round will win the tournament with probability $(\frac{1}{2})^{r-i},$ other than $t_m$ who wins with probability $0$ and the team playing $t_m$ who wins with probability $(\frac{1}{2})^{r-i-1}.$ Since that team has a better chance of winning than the other teams playing this round, and $\B$ is ordered, the team playing $t_m$ has to be the highest-seeded team playing this round, which is $t_1.$  We can then build more SSTs, adding the next-lowest seed as also losing every game they play to ensure that they must play the next-highest seed, until we've shown that all the teams playing this round must be matched up according to condition (2).\\
+    Assume that this is true for every round up until $s$ and for all $i < j$ for some $j$. Let $\ell = (m + 2k + 1) - j.$ We want to show that if the the bracket goes to chalk, $t_{m + j}$ will face off against seed $t_{\ell}$ in the given round. Consider the following SST matchup table: every game is coinflip, except for games involving a team seeded $\ell$ or lower, in which case the higher seed always wins. Then, each team seeded between $\ell - 1$ and $m + j$ will win the tournament with probability $(\frac{1}{2})^{r-s},$ other than the team slated to play $t_\ell$ in round $s$ who wins with probability $(\frac{1}{2})^{r-i-1}.$ In order for $\B$ to be ordered, that team must be $t_{m+j}.$\\
 
     Thus $\B$ satisfies both conditions, and so is a proper bracket.
 }{ordered_proper}
@@ -103,7 +90,7 @@ so $\A$ is ordered.
 
 And thirdly, we show that the balanced four-team bracket is ordered.
 
-\fig{1}{four_team.png}{The Four-Team Bracket $\bracksig{4; 0; 0}$.}{}
+\fig{0.63}{four_team.png}{The Four-Team Bracket $\bracksig{4; 0; 0}$.}{}
 \theo{}{The four-team bracket $\bracksig{4; 0; 0}$ is ordered.}{Let $\A = \bracksig{2; 0}.$ Let $p_{ij}$ be the probability that the $i$-seed beats the $j$-seed. Then,
 \begin{align*}
     \P[t_1 \textrm{ wins } \A] &= p_{14} \cdot (p_{23}p_{12} + p_{32} p_{13})\\
@@ -128,5 +115,5 @@ And thirdly, we show that the balanced four-team bracket is ordered.
 Thus the four-team bracket $\bracksig{4; 0; 0}$ is ordered.
 }{}
 
-In the next section, we stop describing particular ordered brackets in favor of a more general result.
+In the next section, we move on from describing particular ordered brackets in favor of a more general result.
 }
