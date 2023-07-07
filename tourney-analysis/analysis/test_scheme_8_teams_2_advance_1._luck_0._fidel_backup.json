@@ -1,0 +1,82 @@
+[
+  [
+    { "seeds": [ 1, 8, 4, 5, 2, 3, 7, 6 ], "consol": false, "clipped": true },
+    {
+      "samples": 6594,
+      "sum": 3634.004274035317,
+      "sum_squares": 5357.981395601467
+    }
+  ],
+  [
+    { "seeds": [ 1, 8, 6, 4, 2, 3, 7, 5 ], "consol": false, "clipped": true },
+    {
+      "samples": 11261,
+      "sum": 6155.006444701667,
+      "sum_squares": 8825.091241287375
+    }
+  ],
+  [
+    { "seeds": [ 1, 8, 6, 7, 2, 3, 4, 5 ], "consol": false, "clipped": true },
+    {
+      "samples": 23293,
+      "sum": 11740.618435900566,
+      "sum_squares": 17078.66598575101
+    }
+  ],
+  [
+    { "seeds": [ 1, 2, 3, 4, 5, 6, 7, 8 ], "consol": false, "clipped": true },
+    {
+      "samples": 10000,
+      "sum": 16239.876593801344,
+      "sum_squares": 32374.393429537267
+    }
+  ],
+  [
+    { "seeds": [ 1, 8, 4, 5, 2, 7, 3, 6 ], "consol": false, "clipped": true },
+    {
+      "samples": 4578776,
+      "sum": 2070014.3516516127,
+      "sum_squares": 2843038.574242527
+    }
+  ],
+  [
+    { "seeds": [ 1, 8, 6, 7, 2, 3, 4, 5 ], "consol": true, "clipped": true },
+    {
+      "samples": 7614,
+      "sum": 3397.7498104964016,
+      "sum_squares": 4069.0754068172564
+    }
+  ],
+  [
+    { "seeds": [ 1, 2, 3, 4, 5, 6, 7, 8 ], "consol": true, "clipped": true },
+    {
+      "samples": 2000,
+      "sum": 2054.8189827865576,
+      "sum_squares": 3116.3639630651974
+    }
+  ],
+  [
+    { "seeds": [ 1, 8, 4, 5, 2, 7, 3, 6 ], "consol": true, "clipped": true },
+    {
+      "samples": 1796527,
+      "sum": 668185.0143411561,
+      "sum_squares": 726766.5604213548
+    }
+  ],
+  [
+    { "seeds": [ 1, 7, 4, 6, 2, 8, 3, 5 ], "consol": true, "clipped": false },
+    {
+      "samples": 467109,
+      "sum": 169897.65261481094,
+      "sum_squares": 183115.97697991703
+    }
+  ],
+  [
+    { "seeds": [ 1, 8, 4, 5, 2, 7, 3, 6 ], "consol": true, "clipped": false },
+    {
+      "samples": 1036708,
+      "sum": 375395.83641595073,
+      "sum_squares": 398801.97864115215
+    }
+  ]
+]

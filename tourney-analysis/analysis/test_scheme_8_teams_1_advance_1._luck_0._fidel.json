@@ -1,0 +1,26 @@
+[
+  [
+    { "seeds": [ 1, 8, 4, 5, 2, 7, 3, 6 ], "consol": false, "clipped": true },
+    {
+      "samples": 17839,
+      "sum": 5244.243607273836,
+      "sum_squares": 5376.13517443525
+    }
+  ],
+  [
+    { "seeds": [ 1, 2, 3, 4, 5, 6, 7, 8 ], "consol": false, "clipped": true },
+    {
+      "samples": 2460,
+      "sum": 1216.4457208205529,
+      "sum_squares": 1683.273879671884
+    }
+  ],
+  [
+    { "seeds": [ 1, 8, 6, 7, 2, 3, 4, 5 ], "consol": false, "clipped": true },
+    {
+      "samples": 1585676,
+      "sum": 419173.1586790295,
+      "sum_squares": 463036.6913244876
+    }
+  ]
+]

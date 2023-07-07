@@ -54,19 +54,18 @@ Our new, nuanced alternative a proper bracket is an \textit{ordered bracket}.
     A bracket and seeding are \textit{ordered} if, for any SST list of teams, if $i < j$, then $\P(t_i\textrm{ wins the tournament} )\geq \P(t_j\textrm{ wins the tournament}).$
 \end{definition}
 
-In many ways, a bracket being ordered is the strongest thing we can want without making any ``moral'' judgements. It might be unclear (and vary by situation) whether a it is better for a format to almost always declare the most-skilled team the winner, or to give each team roughly the same chance of winning, or anywhere in between. But certainly, better teams should win more, which is what the ordered bracket stipulation requires.
+In many ways, a bracket being ordered is the strongest thing we can want without making any ``moral'' judgments. It might be unclear (and vary by situation) whether a it is better for a format to almost always declare the most-skilled team the winner, or to give each team roughly the same chance of winning, or anywhere in between. But certainly, better teams should win more, which is what the ordered bracket stipulation requires.
 
 In particular, a bracket being ordered is a stronger claim than it being proper.
 %/A vs /B
 \theo{}{Every ordered bracket is proper.}{
-    %this proof is el garbo pants
     Let $\A$ be an ordered $n$-team bracket with $r$ rounds.\\
     
     Consider a list of teams such that every team wins every game with probability 0.5. These teams are SST. A team that plays their first game in the $i$th round will win the tournament with probability $(\frac{1}{2})^{r-i}$, so teams that get more byes will have a higher probability to win the tournament than teams with fewer byes. This implies that higher-seeded teams must have more byes than lower-seeded teams, so in each round, the teams with byes must be the highest-seeded teams that are still alive. Thus, condition (1) is met.\\
 
     We show that condition (2) is met by proving the stronger condition from Lemma \ref{th:proper_condition_two}: if $m$ teams have a bye and $k$ games are being played in round $s$, then if the bracket goes to chalk, those matchups will be $t_{m + i}$ vs $t_{(m + 2k + 1) - i}$ for $i \in \{1, ..., k\}.$ We show this by strong induction on $s$ and on $i$.\\
 
-    Assume that this is true for every round up until $s$ and for all $i < j$ for some $j$. Let $\ell = (m + 2k + 1) - j.$ We want to show that if the the bracket goes to chalk, $t_{m + j}$ will face off against seed $t_{\ell}$ in the given round. Consider the following SST matchup table: every game is coinflip, except for games involving a team seeded $\ell$ or lower, in which case the higher seed always wins. Then, each team seeded between $\ell - 1$ and $m + j$ will win the tournament with probability $(\frac{1}{2})^{r-s},$ other than the team slated to play $t_\ell$ in round $s$ who wins with probability $(\frac{1}{2})^{r-i-1}.$ In order for $\B$ to be ordered, that team must be $t_{m+j}.$\\
+    Assume that this is true for every round up until $s$ and for all $i < j$ for some $j$. Let $\ell = (m + 2k + 1) - j.$ We want to show that if the the bracket goes to chalk, $t_{m + j}$ will face off against seed $t_{\ell}$ in the given round. Consider the following SST matchup table: every game is a coin flip, except for games involving a team seeded $\ell$ or lower, in which case the higher seed always wins. Then, each team seeded between $\ell - 1$ and $m + j$ will win the tournament with probability $(\frac{1}{2})^{r-s},$ other than the team slated to play $t_\ell$ in round $s$ who wins with probability $(\frac{1}{2})^{r-i-1}.$ In order for $\B$ to be ordered, that team must be $t_{m+j}.$\\
 
     Thus $\B$ satisfies both conditions, and so is a proper bracket.
 }{ordered_proper}

@@ -15,7 +15,7 @@ Let $\C$ be the bracket formed by merging $\A$ and $\B.$ We divide proving that 
 \end{enumerate}
 Together, these show that $\C$ is ordered.\\
 
-We begin with the first substatement. Let $i < j < m.$ Then,
+We begin with the first sub-statement. Let $i < j < m.$ Then,
 \begin{align*}
     \P(t_i \textrm{ wins }\C) &= \P(t_i \textrm{ wins }\B)\\
     &= \sum_{k=n}^{n+m-1} \P(t_i \textrm{ wins }\B \;\mid\; t_k \textrm{ wins } \A)\cdot \P(t_k \textrm{ wins } \A)\\
@@ -25,7 +25,7 @@ We begin with the first substatement. Let $i < j < m.$ Then,
 \end{align*}
 The first and last equalities follow from the structure of $\C,$ and the inequality follows from $\B$ being ordered.\\
 
-Now the second substatement.
+Now the second sub-statement.
 \begin{align*}
     \P(t_{m-1} \textrm{ wins }\C) &= \P(t_{m-1} \textrm{ wins }\B)\\
     &\geq \P(t_{m} \textrm{ wins }\B \;\mid\; t_{m} \textrm{ wins }\A)\\
@@ -34,7 +34,7 @@ Now the second substatement.
 \end{align*}
 The equalities follow from the structure of $\C,$ and the first inequality follows from $\B$ being ordered.\\
 
-Finally we show the third substatement. Let $m \leq i < j.$ Then,
+Finally we show the third sub-statement. Let $m \leq i < j.$ Then,
 \begin{align*}
     \P(t_i \textrm{ wins }\C) &= \P(t_i \textrm{ wins }\B \;\mid\; t_i \textrm{ wins } \A)\cdot \P(t_i \textrm{ wins } \A)\\
     &\geq \P(t_i \textrm{ wins }\B \;\mid\; t_i \textrm{ wins } \A)\cdot \P(t_j \textrm{ wins } \A)\\
@@ -43,7 +43,7 @@ Finally we show the third substatement. Let $m \leq i < j.$ Then,
 \end{align*}
 The equalities follow from the structure of $\C$, the first inequality from $\A$ being ordered, and the second inequality from the teams being SST.\\
 
-We have shown all three substatements, and so $\C$ is ordered.
+We have shown all three sub-statements, and so $\C$ is ordered.
 }{order_bracket_sum}
 
 \begin{corollary}{}{}
@@ -61,7 +61,7 @@ We can then construct the set of brackets that we have thus far shown are ordere
     \end{enumerate}
 \end{corollary}
 
-Corollary \ref{th:construct_order} uses the tools that we have developed so far to demark a set of brackets as ordered. Somewhat suprisingly, this set is complete: any bracket not reachable using the process in Corollary \ref{th:construct_order} is not ordered. To prove this we first show a lemma.
+Corollary \ref{th:construct_order} uses the tools that we have developed so far to demark a set of brackets as ordered. Somewhat surprisingly, this set is complete: any bracket not reachable using the process in Corollary \ref{th:construct_order} is not ordered. To prove this we first show a lemma.
 
 \lemm{}{
     If $\A$ is an $r$-round ordered bracket and two games are played in round $s$, then the winners of those games must play each other in round $s+1.$ Further, this must the only game of round $s+1$. 
@@ -98,7 +98,7 @@ And now the main theorem,
     Corollary \ref{th:construct_order} describes all proper brackets in which each round either has only game, or has two games but is immediately followed by a round with only one game. A proper bracket not described by Corollary \ref{th:construct_order} would thus have to include a round with two or more games followed by another round with two or more games, violating Lemma \ref{th:two_must_play}.
 }{limit_order}
 
-Theorem \ref{th:limit_order} is both exciting and disapointing. On one hand, it means that Corollary \ref{th:construct_order} fully describes the set of ordered brackets, making it easy to, e.g., check whether a given bracket is ordered or not. On the other hand, it means that in an ordered bracket at most three teams can be introduced each round, so the length of the shortest ordered bracket on $n$ teams grows linearly with $n$ (rather than logarithmically as is the case for proper brackets). If we want a bracket on many teams to be ordered, we risk forcing lower-seeded teams to play large numbers of games, and we only permit the top seeded teams to play a few. For example, if the shortest ordered bracket that could've been used in the 2022 NCAA Women's Basketball Wichita Region is $\bracksig{4; 0; 3; 0; 3; 0; 3; 0; 3; 0; 0},$ which is played over a whopping ten rounds.
+Theorem \ref{th:limit_order} is both exciting and disappointing. On one hand, it means that Corollary \ref{th:construct_order} fully describes the set of ordered brackets, making it easy to, e.g., check whether a given bracket is ordered or not. On the other hand, it means that in an ordered bracket at most three teams can be introduced each round, so the length of the shortest ordered bracket on $n$ teams grows linearly with $n$ (rather than logarithmically as is the case for proper brackets). If we want a bracket on many teams to be ordered, we risk forcing lower-seeded teams to play large numbers of games, and we only permit the top seeded teams to play a few. For example, if the shortest ordered bracket that could've been used in the 2022 NCAA Women's Basketball Wichita Region is $\bracksig{4; 0; 3; 0; 3; 0; 3; 0; 3; 0; 0},$ which is played over a whopping ten rounds.
 
 \fig{.475}{ordered_sixteen.png}{The Shortest Sixteen-Team Ordered Bracket}{}
 

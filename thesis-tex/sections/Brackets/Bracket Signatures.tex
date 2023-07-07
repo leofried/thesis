@@ -47,15 +47,7 @@ Now that we have developed the idea of a bracket signature, we can use them to d
 
 The fundamental theorem of brackets means that we can refer to the proper bracket $\A = \bracksig{a_0; ...; a_r}$ in a well-defined way, as long as $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$
 
-% It also gives us a handle on how many proper brackets exist for $n$ teams: there are exactly as many $n$-team proper brackets as there are partitions of $1$ into $n$ powers of $
-
-% \corr{}{There are $P(n)$ $n$-team proper brackets, where $P(n)$ is the number of partitions of $1$ into $n$ powers of $\frac{1}{2}.$}{
-%     By \ref{th:signature_proper}, there is one $n$-team proper bracket for each $n$-team bracket signature, and by Theorem \ref{th:Signature Sum}, the set of $n$-team bracket signatures is the set of lists $A = \bracksig{a_0; ...; a_n}$ such that $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$ Such lists are in a bijective correspondence with partitions of $1$ into $n$ powers of $\frac{1}{2}$: the number $\left(\frac{1}{2}\right)^{r - i}$ occurs in the partition $a_i$ times.\\
-
-%     The sequence $P(n)$ is detailed in by the OEIS in A002572.
-% }{}
-
-In practice, virtually every sports league that uses a traditional bracket uses a proper one: while different leagues take very different approaches to how many byes to give teams (compare the 2023 West Coast Conference Men's Basketball Tournament with the 2015 NBA Eastern Conference Playoffs), they are almost all proper. This makes bracket signatures a convinient labeling system for the set of brackets that we might reasonably encounter. They also make are a powerful tool for specifying new brackets: if you are interested in (say) an eleven-team bracket where four teams get no byes, four teams get one bye, one team gets two byes and two teams get three byes, we can describe the proper bracket with those specs as $\bracksig{4; 4; 1; 2; 0; 0}$ and use Lemmas \ref{th:proper_condition_one} through \ref{th:proper_condition_two} to draw it with ease:
+In practice, virtually every sports league that uses a traditional bracket uses a proper one: while different leagues take very different approaches to how many byes to give teams (compare the 2023 West Coast Conference Men's Basketball Tournament with the 2015 NBA Eastern Conference Playoffs), they are almost all proper. This makes bracket signatures a convenient labeling system for the set of brackets that we might reasonably encounter. They also make are a powerful tool for specifying new brackets: if you are interested in (say) an eleven-team bracket where four teams get no byes, four teams get one bye, one team gets two byes and two teams get three byes, we can describe the proper bracket with those specs as $\bracksig{4; 4; 1; 2; 0; 0}$ and use Lemmas \ref{th:proper_condition_one} through \ref{th:proper_condition_two} to draw it with ease:
 
 \fig{1}{eleven team.png}{The Proper Bracket of Signature $\bracksig{4; 4; 1; 2; 0; 0}$}{}
 }
