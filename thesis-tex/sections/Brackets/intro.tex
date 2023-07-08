@@ -1,20 +1,74 @@
 \sub{
 
-\begin{definition}{Bracket}{}
-    A \textit{bracket} is a tournament format in which teams are placed in the leaves of a binary tree, and games are successively played between teams in nodes that share a parent, placing the winner of each game in the shared parent node. At the end of the tournament, the entire tree will be filled out, and the team that has been in the root of the tree (which is the only team that has not yet lost a game) is declared champion.
+The next tournament format that we will study are brackets. Brackets are based upon binary trees, but we use a different langauge to refer to the same concepts.
+
+\begin{definition}{Starting Line}{}
+    A \textit{starting line} is a leaf node.
 \end{definition}
 
-Brackets are traditionally stylized like so:
+\begin{definition}{Game Line}{}
+    A \textit{game line} is a node that is not a leaf node.
+\end{definition}
+
+\begin{definition}{Championship Line}{}
+    The \textit{championship line} is the root node.
+\end{definition}
+
+\begin{definition}{Round}{}
+    A \textit{round} is a level of the binary tree.
+\end{definition}
+
+
+
+\begin{definition}{Bracket}{}
+    A \textit{bracket} is a recursively defined tournament with two cases:
+    \begin{enumerate}
+        \item The unique one-team tournament $\O$ is a bracket.
+        \item If $\A$ and $\B$ are $n$- and $m$-team brackets respectively where $n \leq m$, then the following $(n+m)$-team tournament is also a bracket:
+        \begin{enumerate}
+            \item Use some process to divide the teams $\T$ into $\T_\A$ and $\T_\B$ such that $|\T_\A| = n$ and $|\T_\B| = m$.
+            \item Have $\T_\A$ play $\A$ producing a winner $w_\A$ and have $\T_\B$ play $\B$ producing a winner $w_\B.$
+            \item Play the game $w_\A$ vs $w_\B$, and declare the winner champion.
+        \end{enumerate}
+
+        We sometimes refer to this bracket as $\A \oplus \B.$
+    \end{enumerate}
+\end{definition}
+
+Brackets are traditionally drawn as a tree.
 \fig{1}{2023 College Football Playoff Empty.png}{The 2023 College Football Playoff, Start}{}
 
-By the end of the tournament, the bracket would look like this:
-\fig{1}{2023 College Football Playoff Full.png} {The 2023 College Football Playoff, End}{}
+By the end, the bracket would look like this:
+\fig{1}{2023 College Football Playoff Full.png} {The 2023 College Football Playoff, End}{cfp}
 
-In the first round, Georgia played Ohio State, and Michigan played TCU. Georgia and TCU won their respective games, so they advanced to the next round. Then Georgia beat TCU, winning the tournament.
+% Figure \ref{fig:cfp} means that Georgia beat Ohio States, TCU beat Michigan, and then Georgia beat TCU in the finals.
 
-The 2023 College Football Playoff has a special property that not all brackets have: it is \textit{balanced}. 
+% \theo{}{
+%     In an $n$-team bracket, exactly $n -1$ games are played.
+% }{
+%     We show this by induction on the form of the bracket. In the unique one-team bracket, zero games are played. Now, assume that in the $n$-team bracket $\A$, $n-1$ exactly games are played, and in the $m$-team bracket $\B$, exactly $m-1$ games are played. Then, in the $(n + m)$-team bracket $\A \oplus \B$: $n-1$ games are played in $\A,$ $m -1$ games are played in $\B,$ and one final game is played between $w_\A$ and $w_\B$ for a total of exactly $n + m - 1$ games.
+% }{}
+
+It is often helpful to talk about brackets by grouping together games that could be played simultaneously. To that end, we introduce the concept of a round.
+
+%not a huge fan of this definition. -- need to prove that the two parts align w each other
+\begin{definition}{Round}{}
+    Let $Round$ be a function from the set of brackets to $\N$ defined by:
+    \begin{enumerate}
+        \item $Round(\O) = 0$
+        \item $Round(\A \oplus \B) = \max(Round(\A), Round(\B)) + 1$
+    \end{enumerate}
+    If $Round(\A) = r$, we say that $\A$ is an $r$-round bracket.\\
+
+    We let the $s$th \textit{round} of an $r$-round bracket be the set of games such that the winner of those games need to win $r - s - 1$ more games in order to win the bracket.
+\end{definition}
+
+Thus in the first round of the 2023 CFP, Georgia played Ohio State, and Michigan played TCU. Georgia and TCU won their respective games, and then in the second round, Georgia beat TCU, winning the tournament.
+
+The 2023 College Football Playoff has a special property that not all brackets have: it is \textit{balanced}.
+%do we have to prove that a team frontloads all of its byes? also what if they lose?
 \begin{definition}{Bye}{}
-    When a team doesn't have to play during a certain round of a bracket, we say that team has a \textit{bye}.
+    If a team doesn't have to play during a certain round of a bracket, we say that team has a \textit{bye}.
 \end{definition}
 
 \begin{definition}{Balanced Bracket}{}
@@ -28,16 +82,20 @@ Saint Mary's and Gonzaga each have three byes and so only need to win two games 
 
 In many cases, however, it is undesirable to grant advantages to certain teams over others. One might hope, for any $n$, to be able to construct a balanced bracket for $n$ teams, but unfortunately this is rarely possible.
 
-\begin{definition}{Starting Line}{}
-    A \textit{starting line} is a leaf node of a bracket where a team gets place before they play their first game.
-\end{definition} 
+% \begin{definition}{Starting Line}{}
+%     A \textit{starting line} is a leaf node of a bracket where a team gets place before they play their first game.
+% \end{definition} 
 
-\begin{definition}{Play-in Game}{}
-    A \textit{play-in game} is sub-bracket of the main bracket consisting of just two teams (and thus just a single game).
-\end{definition} 
+% \begin{definition}{Play-in Game}{}
+%     A \textit{play-in game} is sub-bracket of the main bracket consisting of just two teams (and thus just a single game).
+% \end{definition} 
 
 \theo{}{
 There exists an $n$-team balanced bracket if and only if $n$ is a power of two.}{
+    First, note that $\O$ is balanced (there are no games and thus no rounds and thus no byes), and that if $\A$ and $\B$ are balanced, then so is $\A \oplus \B$ because 
+
+
+
 In a balanced bracket, no byes are assigned, so at the conclusion of every round, there are half as many teams alive as at the beginning of the round. If $n$ is not a power of two, then this process will eventually lead to a non-one odd number of teams remaining, at which point a bye will have to be assigned, meaning the bracket is not in fact balanced.\\
 
 If $n$ is a power of two, however, we can inductively build up a balanced bracket. For $n = 1$, the unique one-team bracket is balanced, and for any other $n$, once we have a balanced bracket for $n / 2$ teams, we can replace each starting line with a play-in game, resulting in an $n$-team balanced bracket.

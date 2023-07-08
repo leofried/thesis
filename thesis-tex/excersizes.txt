@@ -1,3 +1,4 @@
+Prove that in an $n$-team bracket, exactly $n-1$ games are played.
 How many brackets with some signature?
 Prove that there are A002572 proper brackets on n teams.
 Prove that [8; 0; 0; 0] is not ordered.
