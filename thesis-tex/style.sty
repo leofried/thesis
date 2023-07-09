@@ -6,8 +6,11 @@
     \usepackage{complexity}
     \usepackage{indentfirst}
     \usepackage{float}
- %   \usepackage{carlito}
     \usepackage{subfiles}
+    \usepackage[plainruled,
+    linesnumbered,
+    noline]{algorithm}
+    \usepackage{algpseudocode}
 
     \hbadness=10000
 
@@ -18,21 +21,18 @@
         \end{document}
     }
 
-    \newcommand{\newsection}[1]{\def\foldername{#1}\section{#1}}
-    %book/chapters? also subsections?
-
-
     \newcommand{\sect}[1]{
-        \newsection{#1}
+        \def\sectname{#1}
+        \def\subsectname{intro}
+        \section{#1}
         \subfile{sections/#1/intro}
     }
     \newcommand{\subsect}[1]{
         \newpage
+        \def\subsectname{#1}
         \subsection{#1}
-        \subfile{sections/\foldername/#1}
+        \subfile{sections/\sectname/#1}
     }
-
-
 
     \newtcbtheorem[number within=subsection]{theorem}{Theorem}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
     \newtcbtheorem[number within=subsection, use counter from=theorem]{lemma}{Lemma}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
@@ -47,7 +47,7 @@
     \newcommand{\fig}[4]{
             \begin{figg}{#3}{#4}
             \centering
-            \includegraphics[scale=#1]{images/#2}
+            \includegraphics[scale=#1]{images/\sectname/\subsectname/#2}
         \end{figg}
     }
 
@@ -89,10 +89,16 @@
        \end{corollary}
     }
     
+    \algnewcommand\algorithmicforeach{\textbf{for each}}
+    \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+    \renewcommand{\algorithmicrequire}{\textbf{Teams:}}
+    \renewcommand{\algorithmicensure}{\textbf{Winner:}}
+
 
     \renewcommand{\A}{\mathcal{A}}
     \newcommand{\B}{\mathcal{B}}
     \renewcommand{\C}{\mathcal{C}}
+    \renewcommand{\D}{\mathcal{D}}
     \newcommand{\N}{\mathbb{N}}
     \renewcommand{\O}{\mathcal{O}}
     \renewcommand{\P}{\mathbb{P}}
