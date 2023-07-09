@@ -1,53 +1,141 @@
 \sub{
 
-\begin{definition}{Bracket Signature}{}
-    The \textit{signature} of a bracket is a list of integers of length $r + 1$, where $r$ is the number of rounds in that bracket, such that the $i$th position in the list denotes the number of teams that play their first game in that round.
+\begin{definition}{Shape}{}
+    The \textit{shape} of a bracket is the binary tree that underlies it.
 \end{definition}
 
-The signatures of the brackets we've seen so far are shown in Figure \ref{fig:sigs}. It's worth verifying and making sure you fully understand these signatures before moving on.
+For example, the following two brackets have the same shape:
+
+\fig{0.78}{same_shape}{Two Brackets with the Same Shape}
+
+One way to describe the shape of a bracket its signature.
+
+\begin{definition}{Bracket Signature}{}
+    The \textit{signature} $\bracksig{a_0; ...; a_r}$ of a bracket $\A$ is a list of natural numbers of length $r + 1$, such that $a_i$ is the number of starting lines in the $i$th round.
+\end{definition}
+
+The signature of a bracket is defined only by its shape: the two brackets in Figure \ref{fig:same_shape} have the same shape, so they also have the same signature.
+
+The signatures of the brackets discussed in this section are shown in Figure \ref{fig:sigs}. It's worth verifying the signatures we've seen so far and trying to draw brackets with the signatures we haven't yet before moving on.
 
 \begin{figg}{The Signatures of Some Brackets}{sigs}
     \begin{tabular}{ c | c }
          Bracket & Signature \\
          \hline
          2023 College Football Playoff & $\bracksig{4; 0; 0}$ \\
+         The brackets in Figure \ref{fig:same_shape} & $\bracksig{2; 3; 0; 0}$\\
+         The brackets in Figure \ref{fig:six_teams} & $\bracksig{4; 2; 0; 0}$\\
          2023 WCC Men's Basketball Tournament & $\bracksig{4;2;2;2;0;0}$ \\
-         2015 NBA Eastern Conference Playoffs & $\bracksig{8; 0; 0; 0}$\\
-         The Bracket in Figure \ref{fig:six_team_not_proper} & $\bracksig{4; 2; 0; 0}$\\
     \end{tabular}
 \end{figg}
 
-Let's note a few important properties of bracket signatures. Firstly, multiple brackets can share the same signature: both brackets in Figure \ref{fig:sixes} have signature $\bracksig{4;2;0;0}.$
-\fig{.8}{6 team bracket signatures.png}{Two Brackets with the Same Signature}{sixes}
-And secondly, bracket signatures have a nice sum-product with the list of powers of 1/2, and in fact, every list with this sum-product is the signature of some bracket.
+So two brackets with the same shape have the same signature, but the converse is not true: two brackets with different shapes can have the same signature. For example, both bracket shapes depicted in Figure \ref{fig:six_teams} have the same signature: $\bracksig{4;2;0;0}.$
+
+\fig{0.8}{six_teams}{Two Shapes with the Signature $\bracksig{4; 2; 0; 0}$}
+
+Despite this, bracket signatures are a useful way to talk about the shape of a bracket. Communicating a bracket's signature is a lot easier than communicating its shape, and much of the important information (such as how many games each team must win in order to win the tournament) is contained in the signature.
+
+Bracket signatures have one more important property.
 
 \theo{}{
-    Let $\A = \bracksig{a_0; ...; a_r}$ be a list of integers. Then $\A$ is a bracket signature if and only if $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$}{
-        Let $\A$ be the signature for some bracket. Assume that every game in the bracket was a coin flip, and consider each team's probability of winning the tournament. A team that gets $i$ byes must win $r-i$ games, and so will win the tournament with probability $\left(\frac{1}{2}\right)^{r - i}.$ For each $i \in \{0, ..., r\}$, there are $a_i$ teams that got that many byes, so (because any two teams winning are mutually exclusive) $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i}$$ is the probability that one of the teams wins, which is just $1.$\\
+    Let $\A = \bracksig{a_0; ...; a_r}$ be a list of natural numbers. Then $\A$ is a bracket signature if and only if $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$}{
+        Let $\A$ be the signature for some bracket. Assume that every game in the bracket was a coin flip, and consider each team's probability of winning the tournament. A team tha play's their first game in the $i$th round must win $r-i$ games, and so will win the tournament with probability $\left(\frac{1}{2}\right)^{r - i}.$ For each $i \in \{0, ..., r\}$, there are $a_i$ teams that play their first game in the $i$th round, so (because any two teams winning are mutually exclusive) $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i}$$ is the probability that one of the teams wins, which is just $1.$\\
 
-        We prove the other direction by induction on $r$. If $r = 0$, then the only list with the desired property is $[1]$, which is the signature for the unique $1$-team bracket. For any other $r$, first note that $a_0$ must be even: if it were odd, then \begin{align*}
+        We prove the other direction by induction on $r$. If $r = 0$, then the only list with the desired property is $\bracksig{1}$, which is the signature for the unique one-team bracket. For any other $r$, first note that $a_0$ must be even: if it were odd, then \begin{align*}
             \sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i}
             &= \frac{1}{2^r} \cdot \sum_{i=0}^r a_i \cdot 2^i\\
             &= \frac{1}{2^r} \cdot \left(a_0 + 2 \sum_{i=1}^r a_i \cdot 2^{i-1}\right)\\
             &= k/2^r &\textrm{for some odd $k$}\\
             &\neq 1.
         \end{align*}
-        Now, consider the signature $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}.$ By induction, there exists a bracket with signature $\B$. But if we take that bracket and replace $a_0/2$ of the starting lines that receive no byes with play-in games, we get a new bracket with signature $\A.$
-}{Signature Sum}
+        Now, consider the signature $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}.$ By induction, there exists a bracket with signature $\B$. But if we take that bracket and replace $a_0/2$ of the starting lines in the zeroth round with game lines whose two input lines are starting lines, we get a new bracket with signature $\A.$
+}{signature_sum}
 
-Now that we have developed the idea of a bracket signature, we can use them to describe the space of proper brackets.
+In the next few sections, we will come to rely on the language and properties of bracket signatures to describe the brackets that we work with. For now though, let's return to the 2023 College Football Playoff. The bracket used in the 2023 CFP has a special property that not all brackets have: it is \textit{balanced}.
 
-\theo{The Fundamental Theorem of Brackets}{There is exactly one proper bracket with each bracket signature.}{
-    Let $\A = \bracksig{a_0; ... a_r}$ be an $n$-team bracket signature. We proceed by induction on $r.$ If $r = 0$, then the only possible bracket signature is $[1]$, and it points to the unique one-team bracket, which is indeed proper.\\
+\begin{definition}{Bye}{}
+    We say a team has a \textit{bye} in round $r$ if it is written on a starting line in round $s$ for $s > r.$ Teams never play games during rounds that they have a bye.
+\end{definition}
 
-    For any other $r$, the first-round matchups of a proper bracket with signature $\A$ are defined by  \ref{th:proper_condition_two}. Then if those matchups go to chalk, we are left with a proper bracket with signature $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}$, which induction tells us exists admits exactly one proper bracket.\\
+\begin{definition}{Balanced Bracket}{}
+    A \textit{balanced bracket} is a bracket in which none of the teams have byes.
+\end{definition} 
 
-    Thus both the first-round matchups and the rest of the bracket are determined, and by combining them we get a proper bracket with signature $\A$, there is exactly one proper bracket with signature $\A$.
-}{signature_proper}
+The 2023 West Coast Conference Men's Basketball Tournament, on the other hand, is unbalanced:
+\fig{0.8}{wcc}{The 2023 WCC Men's Basketball Tournament}
+%did I get the order of gonzaga and saint mary's wrong here?
 
-The fundamental theorem of brackets means that we can refer to the proper bracket $\A = \bracksig{a_0; ...; a_r}$ in a well-defined way, as long as $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$
+Saint Mary's and Gonzaga each have three byes and so only need to win two games to win the tournament, while Portland, San Diego, Pacific, and Pepperdine need to win five. Unsurprisingly, this format conveys a massive advantage to Saint Mary's and Gonzaga, but this was intentional: those two teams were being rewarded for doing the best during the regular season.
 
-In practice, virtually every sports league that uses a traditional bracket uses a proper one: while different leagues take very different approaches to how many byes to give teams (compare the 2023 West Coast Conference Men's Basketball Tournament with the 2015 NBA Eastern Conference Playoffs), they are almost all proper. This makes bracket signatures a convenient labeling system for the set of brackets that we might reasonably encounter. They also make are a powerful tool for specifying new brackets: if you are interested in (say) an eleven-team bracket where four teams get no byes, four teams get one bye, one team gets two byes and two teams get three byes, we can describe the proper bracket with those specs as $\bracksig{4; 4; 1; 2; 0; 0}$ and use Lemmas \ref{th:proper_condition_one} through \ref{th:proper_condition_two} to draw it with ease:
+In many cases, however, it is undesirable to grant advantages to certain teams over others. One might hope, for any $n$, to be able to construct a balanced bracket for $n$ teams, but unfortunately this is rarely possible.
 
-\fig{1}{eleven team.png}{The Proper Bracket of Signature $\bracksig{4; 4; 1; 2; 0; 0}$}{}
+\theo{}{
+    There exists an $n$-team balanced bracket if and only if $n$ is a power of two.
+}{
+    A bracket is balanced if no teams have byes, which is true exactly when its signature is of the form $\A = \bracksig{n; 0; ...; 0}$ where $n$ is the number of teams in the bracket. If $n$ is a power of two, then by Theorem \ref{th:signature_sum} $\A$ is indeed a bracket signature and so points to a balanced bracket for $n$ teams. If $n$ is not a power of two, however, then Theorem \ref{th:signature_sum} tells us that $\A$ is not a valid bracket signature, and so no balanced brackets exist for $n$ teams.
+}{}
+
+Given this, unless we a power of two teams, brackets are not a great option when we want to avoid giving some teams advantages over others. They are a great tool, however, if doling out advantages is the goal, perhaps after some teams did better during the regular season and ought to be rewarded with an easier path in the bracket.
 }
+
+
+
+
+
+% \theo{}{
+%     Balanced brackets only exist 
+% }{
+
+
+
+%     We show this by proving a stronger statement: that every balanced bracket has signature $\bracksig{2^r; 0; ...; 0}$ where $r$ is the number of rounds in the bracket. We show this by inducting on $r$.\\
+    
+%     In the base case, the only zero-round bracket is the unique one-team bracket, which has signature $\bracksig{1}$ and is indeed balanced.\\
+
+%     Now assume the statement holds for $n-1$. Let $\A$ be a balanced bracket over $r$ rounds. In a balanced bracket, no teams have byes, so the signature of $\A$ must be of the form $\bracksig{a; 0; ...; 0}$ for some $a$. As each game requires exactly two teams, $a$ must be even. Now consider a bracket $\B$ with the bracket signature $\bracksig{a/2; 0; ...; 0}$ (with one fewer)  
+% }{}
+
+
+
+%Bracket signatures are useful because they compress the the information of the entire binary tree, which takes $O(2^n)$ spaces to describe, to just a list, which takes $O(\log(n))$ space.
+
+
+
+%f(2n) = f(n)^2
+
+
+
+
+% Let's note a few important properties of bracket signatures. Firstly, multiple brackets can share the same signature: both brackets in Figure \ref{fig:sixes} have signature $\bracksig{4;2;0;0}.$
+% \fig{.8}{6 team bracket signatures.png}{Two Brackets with the Same Signature}{sixes}
+% And secondly, bracket signatures have a nice sum-product with the list of powers of 1/2, and in fact, every list with this sum-product is the signature of some bracket.
+
+% \theo{}{
+%     Let $\A = \bracksig{a_0; ...; a_r}$ be a list of integers. Then $\A$ is a bracket signature if and only if $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$}{
+%         Let $\A$ be the signature for some bracket. Assume that every game in the bracket was a coin flip, and consider each team's probability of winning the tournament. A team that gets $i$ byes must win $r-i$ games, and so will win the tournament with probability $\left(\frac{1}{2}\right)^{r - i}.$ For each $i \in \{0, ..., r\}$, there are $a_i$ teams that got that many byes, so (because any two teams winning are mutually exclusive) $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i}$$ is the probability that one of the teams wins, which is just $1.$\\
+
+%         We prove the other direction by induction on $r$. If $r = 0$, then the only list with the desired property is $[1]$, which is the signature for the unique $1$-team bracket. For any other $r$, first note that $a_0$ must be even: if it were odd, then \begin{align*}
+%             \sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i}
+%             &= \frac{1}{2^r} \cdot \sum_{i=0}^r a_i \cdot 2^i\\
+%             &= \frac{1}{2^r} \cdot \left(a_0 + 2 \sum_{i=1}^r a_i \cdot 2^{i-1}\right)\\
+%             &= k/2^r &\textrm{for some odd $k$}\\
+%             &\neq 1.
+%         \end{align*}
+%         Now, consider the signature $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}.$ By induction, there exists a bracket with signature $\B$. But if we take that bracket and replace $a_0/2$ of the starting lines that receive no byes with play-in games, we get a new bracket with signature $\A.$
+% }{Signature Sum}
+
+% Now that we have developed the idea of a bracket signature, we can use them to describe the space of proper brackets.
+
+% \theo{The Fundamental Theorem of Brackets}{There is exactly one proper bracket with each bracket signature.}{
+%     Let $\A = \bracksig{a_0; ... a_r}$ be an $n$-team bracket signature. We proceed by induction on $r.$ If $r = 0$, then the only possible bracket signature is $[1]$, and it points to the unique one-team bracket, which is indeed proper.\\
+
+%     For any other $r$, the first-round matchups of a proper bracket with signature $\A$ are defined by  \ref{th:proper_condition_two}. Then if those matchups go chalk, we are left with a proper bracket with signature $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}$, which induction tells us exists admits exactly one proper bracket.\\
+
+%     Thus both the first-round matchups and the rest of the bracket are determined, and by combining them we get a proper bracket with signature $\A$, there is exactly one proper bracket with signature $\A$.
+% }{signature_proper}
+
+% The fundamental theorem of brackets means that we can refer to the proper bracket $\A = \bracksig{a_0; ...; a_r}$ in a well-defined way, as long as $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$
+
+% In practice, virtually every sports league that uses a traditional bracket uses a proper one: while different leagues take very different approaches to how many byes to give teams (compare the 2023 West Coast Conference Men's Basketball Tournament with the 2015 NBA Eastern Conference Playoffs), they are almost all proper. This makes bracket signatures a convenient labeling system for the set of brackets that we might reasonably encounter. They also make are a powerful tool for specifying new brackets: if you are interested in (say) an eleven-team bracket where four teams get no byes, four teams get one bye, one team gets two byes and two teams get three byes, we can describe the proper bracket with those specs as $\bracksig{4; 4; 1; 2; 0; 0}$ and use Lemmas \ref{th:proper_condition_one} through \ref{th:proper_condition_two} to draw it with ease:
+
+% \fig{1}{eleven team.png}{The Proper Bracket of Signature $\bracksig{4; 4; 1; 2; 0; 0}$}{}

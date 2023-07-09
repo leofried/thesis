@@ -23,7 +23,7 @@ The next format that we will study is the bracket. Brackets are based upon binar
 \end{definition}
 
 \begin{definition}{Round}{}
-    A \textit{round} is a level of a binary tree. The first round is the lowest level, so the last round is just the level containing only the championship line.
+    A \textit{round} is a level of a binary tree. Rounds are zero indexed and start from the lowest level. (So the first round is the lowest level with game lines, and the last round is the level containing only the championship line.)
 \end{definition}
 
 With the new lexicon in place, we can introduce the format.
@@ -50,51 +50,48 @@ With the new lexicon in place, we can introduce the format.
 \end{definition}
 
 Brackets are traditionally drawn like so:
-\fig{1}{cfp_start.png}{The 2023 College Football Playoff}{}
+\fig{1}{cfp_start}{The 2023 College Football Playoff}
 
-\fig{1}{cfp_middle.png}{The 2023 CFP, After Team Placement}{}
+\fig{1}{cfp_middle}{The 2023 CFP, After Team Placement}
 
-\fig{1}{cfp_end.png} {The 2023 CFP, After Completion}{}
+\fig{1}{cfp_end} {The 2023 CFP, After Completion}
 
 In the first round of the 2023 CFP, Georgia played Ohio State, and Michigan played TCU. Georgia and TCU won their respective games, and then in the second round Georgia beat TCU, winning the tournament.
 
-The 2023 College Football Playoff has a special property that not all brackets have: it is \textit{balanced}.
+%CONCLUSION?
 
-\begin{definition}{Bye}{}
-    We say a team has a \textit{bye} in round $r$ if it is written on a starting line in round $s$ for $s > r.$ Teams never play games during rounds that they have a bye.
-\end{definition}
+% The 2023 College Football Playoff has a special property that not all brackets have: it is \textit{balanced}.
 
-\begin{definition}{Balanced Bracket}{}
-    A \textit{balanced bracket} is a bracket in which none of the teams have byes.
-\end{definition} 
+% \begin{definition}{Bye}{}
+%     We say a team has a \textit{bye} in round $r$ if it is written on a starting line in round $s$ for $s > r.$ Teams never play games during rounds that they have a bye.
+% \end{definition}
 
-The 2023 West Coast Conference Men's Basketball Tournament, on the other hand, is unbalanced:
-\fig{0.8}{wcc.png}{The 2023 West Coast Conference Men's Basketball Tournament}{}
-
-Saint Mary's and Gonzaga each have three byes and so only need to win two games to win the tournament, while Portland, San Diego, Pacific, and Pepperdine need to win five. Unsurprisingly, this format conveys a massive advantage to Saint Mary's and Gonzaga, but this was intentional: those two teams were being rewarded for doing the best during the regular season.
-
-In many cases, however, it is undesirable to grant advantages to certain teams over others. One might hope, for any $n$, to be able to construct a balanced bracket for $n$ teams, but unfortunately this is rarely possible.
-
-% \begin{definition}{Starting Line}{}
-%     A \textit{starting line} is a leaf node of a bracket where a team gets place before they play their first game.
+% \begin{definition}{Balanced Bracket}{}
+%     A \textit{balanced bracket} is a bracket in which none of the teams have byes.
 % \end{definition} 
 
-% \begin{definition}{Play-in Game}{}
-%     A \textit{play-in game} is sub-bracket of the main bracket consisting of just two teams (and thus just a single game).
-% \end{definition} 
+% The 2023 West Coast Conference Men's Basketball Tournament, on the other hand, is unbalanced:
+% \fig{0.8}{wcc}{The 2023 West Coast Conference Men's Basketball Tournament}
 
-\theo{}{
-There exists an $n$-team balanced bracket if and only if $n$ is a power of two.}{
-    We show this by proving that for each $m \in \N$, there exists a balanced bracket for $2^m$ teams, and no balanced brackets for between $2^m + 1$ and $2^{m+1} - 1$ teams.\\
+% Saint Mary's and Gonzaga each have three byes and so only need to win two games to win the tournament, while Portland, San Diego, Pacific, and Pepperdine need to win five. Unsurprisingly, this format conveys a massive advantage to Saint Mary's and Gonzaga, but this was intentional: those two teams were being rewarded for doing the best during the regular season.
 
-    If $m=0$, then the unique one-team bracket is balanced, and there are no numbers of teams between $2^m + 1$ and $2^{m+1} - 1.$\\
+% In many cases, however, it is undesirable to grant advantages to certain teams over others. One might hope, for any $n$, to be able to construct a balanced bracket for $n$ teams, but unfortunately this is rarely possible.
 
-    Now assume the proposition holds for $m-1,$ and let $\A$ be a balanced bracket for $2^{m-1}$ teams. Then we can form a balanced bracket $\B$ for $2^{m}$ teams by starting with $\A$, and then replacing each starting line labelled $i$ with a game line whose two inputs lines are the starting lines labeled $i$ and $2^{m-1}.$\\
+% \theo{}{
+% There exists an $n$-team balanced bracket if and only if $n$ is a power of two.}{
+%     We show this by proving that for each $m \in \N$, there exists a balanced bracket for $2^m$ teams, and no balanced brackets for between $2^m + 1$ and $2^{m+1} - 1$ teams.\\
 
-    Additionally, assume for contradiction that there was a balanced bracket $\C$ for some number of teams $n$ between $2^m + 1$ and $2^{m+1} - 1.$ First, note that $n$ must be even, otherwise, at least one team must have a bye in the first round. Then consider the bracket $\D$ formed by starting with $\C$ and replacing each game line in the second round (and its two input starting lines) with a single starting line, and then labeling the newly created starting lines $1$ through $n/2$. $\D$ is still balanced, but is on $n/2$ teams, which is between $2^{m-1} + 1$ and $2^{m} - 1,$ violating the inductive hypothesis.\\
+%     If $m=0$, then the unique one-team bracket is balanced, and there are no numbers of teams between $2^m + 1$ and $2^{m+1} - 1.$\\
 
-    Thus, for each $m \in \N$, there exists a balanced bracket for $2^m$ teams, and no balanced brackets for between $2^m + 1$ and $2^{m+1} - 1$ teams, and so there exists an $n$-team balanced bracket if and only if $n$ is a power of two.
-}{Balanced brackets}
+%     Now assume the proposition holds for $m-1,$ and let $\A$ be a balanced bracket for $2^{m-1}$ teams. Then we can form a balanced bracket $\B$ for $2^{m}$ teams by starting with $\A$, and then replacing each starting line labelled $i$ with a game line whose two inputs lines are both starting lines.\\
 
-Given this, unless we have exactly $2^m$ teams, brackets are not a great option when we want to avoid giving some teams advantages over others. They are a great tool, however, if doling out advantages is the goal, perhaps after some teams did better during the regular season and ought to be rewarded with an easier path in the bracket.
+%     Additionally, assume for contradiction that there was a balanced bracket $\C$ for some number of teams $n$ between $2^m + 1$ and $2^{m+1} - 1.$ First, note that $n$ must be even, otherwise, at least one team must have a bye in the first round. Then consider the bracket $\D$ formed by starting with $\C$ and replacing each game line in the second round (and its two input starting lines) with a single starting line. $\D$ is still balanced, but is for $n/2$ teams, which is between $2^{m-1} + 1$ and $2^{m} - 1,$ violating the inductive hypothesis.\\
+
+%     Thus, for each $m \in \N$, there exists a balanced bracket for $2^m$ teams, and no balanced brackets for between $2^m + 1$ and $2^{m+1} - 1$ teams, and so there exists an $n$-team balanced bracket if and only if $n$ is a power of two.
+% }{Balanced brackets}
+
+% Given this, unless we have exactly $2^m$ teams, brackets are not a great option when we want to avoid giving some teams advantages over others. They are a great tool, however, if doling out advantages is the goal, perhaps after some teams did better during the regular season and ought to be rewarded with an easier path in the bracket.
+
+
+%ending no longer topical?
 }

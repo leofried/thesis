@@ -4,9 +4,9 @@ Let's consider the proper bracket $\bracksig{16; 0; 0; 0; 0}$, which was used in
 
 \fig{0.8}{2021 NCAA Basketball Tournament South Region.png}{2022 NCAA Women's Basketball Tournament Wichita Region}{}
 
-The definition of a proper seeding ensures that as long as the bracket goes to chalk (that is, higher seeds always beat lower seeds), it will always be better to be a higher seed than a lower seed. But what if it doesn't go to chalk?
+The definition of a proper seeding ensures that as long as the bracket goes chalk (that is, higher seeds always beat lower seeds), it will always be better to be a higher seed than a lower seed. But what if it doesn't go chalk?
 
-One counter-intuitive fact about the NCAA Basketball Tournament is that it is probably better to be a 10-seed than a 9-seed. (This doesn't violate the proper seeding property because 9-seeds have an easier first-round matchup than 10-seeds, and for further rounds, proper seedings only care about what happens if the bracket goes to chalk, which would eliminate both the 9-seed and 10-seed in the first round.) Why? Let's look at whom each seed-line matchups against in the first two rounds:
+One counter-intuitive fact about the NCAA Basketball Tournament is that it is probably better to be a 10-seed than a 9-seed. (This doesn't violate the proper seeding property because 9-seeds have an easier first-round matchup than 10-seeds, and for further rounds, proper seedings only care about what happens if the bracket goes chalk, which would eliminate both the 9-seed and 10-seed in the first round.) Why? Let's look at whom each seed-line matchups against in the first two rounds:
 
 \begin{figg}{NCAA Basketball Tournament 9- and 10-seed Schedules}{}
     \centering
@@ -63,9 +63,9 @@ In particular, a bracket being ordered is a stronger claim than it being proper.
     
     Consider a list of teams such that every team wins every game with probability 0.5. These teams are SST. A team that plays their first game in the $i$th round will win the tournament with probability $(\frac{1}{2})^{r-i}$, so teams that get more byes will have a higher probability to win the tournament than teams with fewer byes. This implies that higher-seeded teams must have more byes than lower-seeded teams, so in each round, the teams with byes must be the highest-seeded teams that are still alive. Thus, condition (1) is met.\\
 
-    We show that condition (2) is met by proving the stronger condition from Lemma \ref{th:proper_condition_two}: if $m$ teams have a bye and $k$ games are being played in round $s$, then if the bracket goes to chalk, those matchups will be $t_{m + i}$ vs $t_{(m + 2k + 1) - i}$ for $i \in \{1, ..., k\}.$ We show this by strong induction on $s$ and on $i$.\\
+    We show that condition (2) is met by proving the stronger condition from Lemma \ref{th:proper_condition_two}: if $m$ teams have a bye and $k$ games are being played in round $s$, then if the bracket goes chalk, those matchups will be $t_{m + i}$ vs $t_{(m + 2k + 1) - i}$ for $i \in \{1, ..., k\}.$ We show this by strong induction on $s$ and on $i$.\\
 
-    Assume that this is true for every round up until $s$ and for all $i < j$ for some $j$. Let $\ell = (m + 2k + 1) - j.$ We want to show that if the the bracket goes to chalk, $t_{m + j}$ will face off against seed $t_{\ell}$ in the given round. Consider the following SST matchup table: every game is a coin flip, except for games involving a team seeded $\ell$ or lower, in which case the higher seed always wins. Then, each team seeded between $\ell - 1$ and $m + j$ will win the tournament with probability $(\frac{1}{2})^{r-s},$ other than the team slated to play $t_\ell$ in round $s$ who wins with probability $(\frac{1}{2})^{r-i-1}.$ In order for $\B$ to be ordered, that team must be $t_{m+j}.$\\
+    Assume that this is true for every round up until $s$ and for all $i < j$ for some $j$. Let $\ell = (m + 2k + 1) - j.$ We want to show that if the the bracket goes chalk, $t_{m + j}$ will face off against seed $t_{\ell}$ in the given round. Consider the following SST matchup table: every game is a coin flip, except for games involving a team seeded $\ell$ or lower, in which case the higher seed always wins. Then, each team seeded between $\ell - 1$ and $m + j$ will win the tournament with probability $(\frac{1}{2})^{r-s},$ other than the team slated to play $t_\ell$ in round $s$ who wins with probability $(\frac{1}{2})^{r-i-1}.$ In order for $\B$ to be ordered, that team must be $t_{m+j}.$\\
 
     Thus $\B$ satisfies both conditions, and so is a proper bracket.
 }{ordered_proper}
