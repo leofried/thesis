@@ -44,10 +44,13 @@
     \newtcbtheorem[number within=subsection, use counter from=theorem]{figg}{Figure}%
     {enhanced, breakable, colback=red!5,colframe=purple!100!,fonttitle=\bfseries}{fig}
 
+    \newcommand{\graph}[2]{\includegraphics[scale=#1]{images/\sectname/\subsectname/#2.png}
+    }
+
     \newcommand{\fig}[3]{
-            \begin{figg}{#3}{#2}
+        \begin{figg}{#3}{#2}
             \centering
-            \includegraphics[scale=#1]{images/\sectname/\subsectname/#2.png}
+            \graph{#1}{#2}
         \end{figg}
     }
 
