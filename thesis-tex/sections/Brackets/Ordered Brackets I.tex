@@ -26,17 +26,11 @@ This is not a great state of affairs: the whole point of seeding is confer an ad
 
 To fix this, we need a stronger notion of what makes a bracket effective than properness. The issue with proper seedings is the false assumption that higher-seeded teams will always beat lower-seeded teams. A more nuanced assumption might look like this:
 
-\begin{definition}{$t_i$}{}
-    For ease of use, in mathematical formulae we sometimes use the notation $t_i$ to refer to the $i$-seed in a tournament.
-\end{definition}
-
 \begin{definition}{Strongly Stochastically Transitive}{}
     A list of teams is \textit{strongly stochastically transitive} if for each $i, j, k$ such that $j < k$, $$\P(t_i \textrm{ beats } t_j) \leq \P(t_i \textrm{ beats } t_k).$$
 \end{definition}
 
-A list of teams being strongly stochastically transitive (or SST) captures the intuition that each team ought to do better against lower-seeded teams than against higher-seeded teams.
-
-A few quick implications of this definition are:
+A list of teams being strongly stochastically transitive (or SST) captures the intuition that each team ought to do better against lower-seeded teams than against higher-seeded teams. A few quick implications of this definition are:
 
 \begin{corollary}{}{}
     If a list of teams is SST, then for each $i < j$, $\P(t_i \textrm{ beats } t_j) \geq 0.5.$

@@ -29,7 +29,7 @@ The signatures of the brackets discussed in this section are shown in Figure \re
     \end{tabular}
 \end{figg}
 
-Two brackets with the same shape have the same signature, but the converse is not true: two brackets with different shapes can have the same signature. For example, both bracket shapes depicted in Figure \ref{fig:six_teams} have the signature $\bracksig{4;2;0;0}.$
+Two brackets with the same shape must have the same signature, but the converse is not true: two brackets with different shapes can have the same signature. For example, both bracket shapes depicted in Figure \ref{fig:six_teams} have the signature $\bracksig{4;2;0;0}.$
 
 \fig{0.8}{six_teams}{Two Shapes with the Signature $\bracksig{4; 2; 0; 0}$}
 
@@ -39,7 +39,7 @@ Bracket signatures have one more important property.
 
 \theo{}{
     Let $\A = \bracksig{a_0; ...; a_r}$ be a list of natural numbers. Then $\A$ is a bracket signature if and only if $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$}{
-        Let $\A$ be the signature for some bracket. Assume that every game in the bracket was a coin flip, and consider each team's probability of winning the tournament. A team tha play's their first game in the $i$th round must win $r-i$ games, and so will win the tournament with probability $\left(\frac{1}{2}\right)^{r - i}.$ For each $i \in \{0, ..., r\}$, there are $a_i$ teams that play their first game in the $i$th round, so (because any two teams winning are mutually exclusive) $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i}$$ is the probability that one of the teams wins, which is just $1.$\\
+        Let $\A$ be the signature for some bracket. Assume that every game in the bracket was a coin flip, and consider each team's probability of winning the tournament. A team that plays their first game in the $i$th round must win $r-i$ games to win the tournament, and so will do so with probability $\left(\frac{1}{2}\right)^{r - i}.$ For each $i \in \{0, ..., r\}$, there are $a_i$ teams that play their first game in the $i$th round, so (because any two teams winning are mutually exclusive) $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i}$$ is the probability that one of the teams wins, which is $1.$\\
 
         We prove the other direction by induction on $r$. If $r = 0$, then the only list with the desired property is $\bracksig{1}$, which is the signature for the unique one-team bracket. For any other $r$, first note that $a_0$ must be even: if it were odd, then \begin{align*}
             \sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i}
@@ -51,7 +51,7 @@ Bracket signatures have one more important property.
         Now, consider the signature $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}.$ By induction, there exists a bracket with signature $\B$. But if we take that bracket and replace $a_0/2$ of the starting lines in the zeroth round with game lines whose two input lines are starting lines, we get a new bracket with signature $\A.$
 }{signature_sum}
 
-In the next few sections, we will come to rely on the language and properties of bracket signatures to describe the brackets that we work with. For now though, let's return to the 2023 College Football Playoff. The bracket used in the 2023 CFP has a special property that not all brackets have: it is \textit{balanced}.
+In the next few sections, we will use the language and properties of bracket signatures to describe the brackets that we work with. For now though, let's return to the 2023 College Football Playoff. The bracket used in the 2023 CFP has a special property that not all brackets have: it is \textit{balanced}.
 
 \begin{definition}{Bye}{}
     We say a team has a \textit{bye} in round $r$ if it is written on a starting line in round $s$ for $s > r.$ Teams never play games during rounds that they have a bye.

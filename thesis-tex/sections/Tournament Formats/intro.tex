@@ -1,0 +1,23 @@
+\sub{
+
+\begin{definition}{Gameplay Function}{}
+    A \textit{gameplay function} $g$ on a list of teams $\T$ is a nondeterministic function $g : \T \times \T \to \T$ with the following properties:
+        \begin{itemize}
+            \item $\P[g(t_1, t_2) = t_1] + \P[g(t_1, t_2) = t_2] = 1.$
+            \item $\P[g(t_1, t_2) = t_1] = \P[g(t_2, t_1) = t_1].$
+            \item $\P[g(t_1, t_2) = t_2] = \P[g(t_2, t_1) = t_2].$
+        \end{itemize}
+\end{definition}
+
+A gameplay function represents a process in which two teams compete in a game, with one of them emerging as the winner. This model simplifies away effects like home-field advantage or teams improving over the course of a tournament: a gameplay function is fully described by a single probability for each pair of teams in the list.
+
+\begin{definition}{Tournament Format}{}
+    A \textit{tournament format} is an algorithm that takes as input a list of teams $\T$ and a gameplay function $g$ and outputs a champion $t \in \T.$
+\end{definition}
+
+\begin{definition}{Playing, Winning, and Losing}{}
+    If a tournament format queries $g$ on input $(t_1, t_2)$ we say that $t_1$ and $t_2$ \textit{played a game}. We  say that the team that got outputted by $g$ \textit{won}, and the team that did not \textit{lost}.
+\end{definition}
+
+(This chapter will be fleshed out but I'm including the important definitions here for the sake of the next chapter.)
+}
