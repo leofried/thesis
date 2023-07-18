@@ -1,17 +1,21 @@
 \sub{
 
 \begin{definition}{Shape}{}
-    The \textit{shape} of a bracket is the binary tree that underlies it.
+    The \textit{shape} of a bracket is the tree that underlies it.
 \end{definition}
 
 For example, the following two brackets have the same shape:
 
 \fig{0.78}{same_shape}{Two Brackets with the Same Shape}
 
+\begin{definition}{Bye}{}
+    A team has a \textit{bye} in round $r$ if it plays no games in round $r$ or before.
+\end{definition}
+
 One way to describe the shape of a bracket its signature.
 
 \begin{definition}{Bracket Signature}{}
-    The \textit{signature} $\bracksig{a_0; ...; a_r}$ of a bracket $\A$ is a list of natural numbers of length $r + 1$, such that $a_i$ is the number of starting lines in the $i$th round.
+    The \textit{signature} $\bracksig{a_0; ...; a_r}$ of an $r$-team bracket $\A$ is a list of natural numbers, such that $a_i$ is the number of teams with $i$ byes.
 \end{definition}
 
 The signature of a bracket is defined only by its shape: the two brackets in Figure \ref{fig:same_shape} have the same shape, so they also have the same signature.
@@ -48,14 +52,10 @@ Bracket signatures have one more important property.
             &= k/2^r &\textrm{for some odd $k$}\\
             &\neq 1.
         \end{align*}
-        Now, consider the signature $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}.$ By induction, there exists a bracket with signature $\B$. But if we take that bracket and replace $a_0/2$ of the starting lines in the zeroth round with game lines whose two input lines are starting lines, we get a new bracket with signature $\A.$
+        Now, consider the signature $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}.$ By induction, there exists a bracket with signature $\B$. But if we take that bracket and replace $a_0/2$ of the teams with no byes with a game whose winner gets placed on that line, we get a new bracket with signature $\A.$
 }{signature_sum}
 
 In the next few sections, we will use the language and properties of bracket signatures to describe the brackets that we work with. For now though, let's return to the 2023 College Football Playoff. The bracket used in the 2023 CFP has a special property that not all brackets have: it is \textit{balanced}.
-
-\begin{definition}{Bye}{}
-    We say a team has a \textit{bye} in round $r$ if it is written on a starting line in round $s$ for $s > r.$ Teams never play games during rounds that they have a bye.
-\end{definition}
 
 \begin{definition}{Balanced Bracket}{}
     A \textit{balanced bracket} is a bracket in which none of the teams have byes.

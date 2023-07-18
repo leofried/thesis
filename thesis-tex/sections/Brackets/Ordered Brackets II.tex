@@ -2,11 +2,11 @@
 
 We now attempt to completely specify the set of ordered brackets, culminating in Corollary \ref{th:construct_order} and Theorem \ref{th:limit_order}.
 
-We begin with a theorem that allows us to combine two smaller ordered brackets together into a larger ordered one by having the winner of one of the brackets slot into the lowest seed starting line of the other. This is depicted in Figure \ref{fig:combine}.
+We begin with a theorem that allows us to combine two smaller ordered brackets together into a larger ordered one by having the winner of one of the brackets be treated as the lowest seed in the other. This is depicted in Figure \ref{fig:combine}.
 
 \fig{.95}{combine}{The Setup of Theorem \ref{th:order_bracket_sum}}
 
-\theo{}{If $\A$ and $\B$ are $n$- and $m$-team ordered brackets, respectively, we can construct an $(n + m - 1)$-team oredered bracket by replacing the lowest seed in $\B$ with the entire bracket $\A$ (lowering the seed of each team in $\A$ by $m-1$).}{
+\theo{}{If $\A$ and $\B$ are $n$- and $m$-team ordered brackets, respectively, we can construct an $(n + m - 1)$-team orerded bracket by replacing the lowest seed in $\B$ with the entire bracket $\A$ (and lowering the seed of each team in $\A$ by $m-1$).}{
 Let $\C$ be the bracket formed by merging $\A$ and $\B.$ We divide proving that $\C$ is ordered into proving three substatements:
 \begin{enumerate}
     \item For $i < j < m,$ $\P(t_i \textrm{ wins }\C) \geq \P(t_j \textrm{ wins }\C)$
@@ -47,7 +47,7 @@ We have shown all three sub-statements, and so $\C$ is ordered.
 }{order_bracket_sum}
 
 \begin{corollary}{}{}
-    If $\A = \bracksig{a_0; ...; a_r}$ and $\B = [b_0; ...; b_s]$ are ordered brackets, then $\C = \bracksig{a_0; ...; a_r + b_0 - 1; ...; b_s}$ is an ordered bracket as well.
+    If $\A = \bracksig{a_0; ...; a_r}$ and $\B = \bracksig{b_0; ...; b_s}$ are ordered brackets, then $\C = \bracksig{a_0; ...; a_r + b_0 - 1; ...; b_s}$ is an ordered bracket as well.
 \end{corollary}
 
 We can then construct the set of brackets that we have thus far shown are ordered. We do this by starting with $\{\bracksig{1}, \bracksig{2; 0}, \bracksig{4; 0; 0}\}$ and then repeatedly applying the above theorem on the set to expand it. In other words,
