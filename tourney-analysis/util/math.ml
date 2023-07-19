@@ -1,7 +1,3 @@
-let inc_ref (r : int ref) : unit = r := !r + 1;;
-
-let inc_array (arr : int array) (i : int) : unit = arr.(i) <- arr.(i) + 1;;
-
 let pos_sub (x : float) (y : float) = if x < y then 0. else x -. y;;
 
 let sqrt_int (x : int) = sqrt (Int.to_float x);;
@@ -26,11 +22,13 @@ let rec pow a = function
 
 let rec gcd a b = if b = 0 then a else gcd b (a mod b);;
 
-let divisors n = List.init n (fun x -> x + 1) |> List.filter (fun x -> n mod x = 0);;
+let divisors n =
+  n
+  |> List.create
+  |> List.map ((+) 1)
+  |> List.filter (fun x -> n mod x = 0);;
 
 let rec log b = function
   | 1 -> 0
   | n -> 1 + if n mod b = 0 then log b (n / b) else (log b (n / b + 1))
 ;;
-
-let next_pow b x = pow b (log b x);;

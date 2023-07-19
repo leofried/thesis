@@ -1,7 +1,5 @@
 (executable
  (public_name tourney_format)
  (name main)
- (libraries util engine struct)
- (preprocess
-  (pps ppx_yojson_conv))
+ (libraries util engine schemes metrics)
 )

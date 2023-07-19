@@ -1,6 +1,6 @@
 (library
- (name engine)
- (libraries util schemes metrics)
+ (name metrics)
+ (libraries util)
  (preprocess
   (pps ppx_sexp_conv)
  )
