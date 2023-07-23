@@ -53,7 +53,7 @@ let sort = L.stable_sort;;
 let sort_rev compare = sort (Fun.flip compare);;
 let sort_by f compare lst =
   lst
-  |> map (Pair.join f)
+  |> map (Pair.join_right f)
   |> sort (Pair.compare ~right:compare)
   |> map (Pair.left)
 ;;

@@ -4,6 +4,8 @@ open! Std;;
 type t = int [@@deriving sexp];;
 type u = Stats.t [@@deriving sexp];;
 
+let kind = "decay";;
+
 let empty (_ : t) = Stats.empty;;
 
 let fold t u ~teams ~results =

@@ -7,6 +7,8 @@ type t =
   | Ladder
 [@@deriving sexp];;
 
+let kind = "tof_bracket";;
+
 let number_of_teams = function
   | Three -> 3
   | Balanced | Ladder -> 4

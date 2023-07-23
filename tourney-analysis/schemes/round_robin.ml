@@ -3,6 +3,8 @@ open! Std;;
 
 type t = int [@@deriving sexp];;
 
+let kind = "round_robin";;
+
 let number_of_teams = Fun.id;;
 
 let run n ~luck teams =
