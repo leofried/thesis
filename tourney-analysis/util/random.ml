@@ -1,6 +1,6 @@
 module R = Stdlib.Random;;
 
-let set_seed () = 
+let () =
   Unix.gettimeofday()
   |> ( *. ) 1000.
   |> Float.to_int

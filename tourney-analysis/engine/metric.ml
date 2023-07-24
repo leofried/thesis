@@ -21,13 +21,18 @@ module type S = sig
   val score : t -> u -> float * float
 end
 
-let create (type a) (module M : S with type t = a) (arg : a) : v =
+let create (type a) (module M : S with type t = a) (arg : a) : t =
+  M.kind, M.sexp_of_t arg
+;;
+
+let empty (type a) (module M : S with type t = a) (arg : a) : v =
   (M.kind, M.sexp_of_t arg),
   (M.sexp_of_u (M.empty arg), 0)
 ;;
 
 let list : (module S) list = [
   (module Decay);
+  (module Disorder);
 ];;
 
 let get kind =
@@ -35,7 +40,6 @@ let get kind =
   |> List.map (Pair.join_left (fun (module M : S) -> M.kind))
   |> List.assoc kind
 ;;
-
 
 let fold ~teams ~results ((kind, sexp1) as t, (sexp2, n) : v) : v =
   let (module M) = get kind in t, (M.sexp_of_u (M.fold (M.t_of_sexp sexp1) (M.u_of_sexp sexp2) ~teams ~results), n+1)

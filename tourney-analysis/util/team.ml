@@ -38,3 +38,7 @@ let play_game ~luck ~is_bracket t1 t2 =
     | true  -> if debug then Printf.printf "Team %d beat team %d\n" t1.id t2.id else (); t1, t2
     | false -> if debug then Printf.printf "Team %d beat team %d\n" t2.id t1.id else (); t2, t1
 ;;
+
+let skill t = t.skill;;
+
+let sort = List.sort_by_rev skill Float.compare;;

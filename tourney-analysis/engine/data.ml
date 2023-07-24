@@ -13,7 +13,7 @@ let get_file_name ~(specs : Specs.t) =
 let read ~specs =
   let file_name = get_file_name ~specs in
   if Sys.file_exists file_name then 
-    t_of_sexp (Sexp.load_sexp file_name)
+    t_of_sexp (Sexp.read file_name)
   else
     []
 ;;

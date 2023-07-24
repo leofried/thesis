@@ -4,26 +4,33 @@ open! Metrics
 open! Engine
 
 let number_of_teams = 4;;
-let specs = {Specs.default with number_of_teams};;
-let metrics =
+let fidel = 1.;;
+let specs = {Specs.default with number_of_teams; fidel};;
+let metrics = Metric.empty (module Disorder) number_of_teams :: (
   number_of_teams + 1
   |> List.create
-  |> List.map (Metric.create (module Decay))
-;;
-let schemes = [
-  Scheme.create (module Round_robin) number_of_teams;
-  Scheme.create (module Tof_bracket) Balanced;
-  Scheme.create (module Tof_bracket) Ladder;
-];;
+  |> List.map (Metric.empty (module Decay))
+);;
 
-schemes
-|> List.map (fun scheme -> scheme, 80000, metrics)
-|> Simulate.simulate_schemes ~specs
-|> Data.write ~specs
-;;
+let schemes = Scheme.create (module Round_robin) number_of_teams :: (
+  number_of_teams
+  |> Bracket.get_all
+  |> List.map (Scheme.create (module Bracket))
+);;
 
-number_of_teams + 1
-|> List.create
-|> List.map (fun x -> "decay", Decay.sexp_of_t x)
-|> List.iter (fun x -> print_endline "..."; Data.print ~specs x)
+
+
+(*number_of_teams + 1
+|> List.create*)
+
+Debug.loop (fun () ->
+  [Metric.create (module Disorder) number_of_teams]
+  |> List.iter (fun x -> print_endline "..."; Data.print ~specs x)
+  ;
+
+  schemes
+  |> List.map (fun scheme -> scheme, 10000, metrics)
+  |> Simulate.simulate_schemes ~specs
+  |> Data.write ~specs
+)
 ;;

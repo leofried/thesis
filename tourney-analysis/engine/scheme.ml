@@ -20,7 +20,7 @@ let create (type a) (module M : S with type t = a) (arg : a) : t=
 
 let list : (module S) list = [
   (module Round_robin);
-  (module Tof_bracket);
+  (module Bracket);
 ];;
 
 let get kind =

@@ -25,9 +25,9 @@ let curry f a b = f (a, b);;
 
 let uncurry f (a, b) = f a b;;
 
-let join_right f x = x, f x;;
-
 let join_left f x = f x, x;;
+
+let join_right f x = x, f x;;
 
 let compare ?(left = fun _ _ -> 0) ?(right = fun _ _ -> 0) (a, b) (c, d) =
   match left a c with

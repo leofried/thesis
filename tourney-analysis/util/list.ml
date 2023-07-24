@@ -1,3 +1,5 @@
+open! Std;;
+
 module L = Stdlib.List;;
 
 type 'a t = 'a list;;
@@ -6,11 +8,18 @@ let length = L.length;;
 let cons = L.cons;;
 let hd = L.hd;;
 let tl = L.tl;;
+let pop t = hd t, tl t;;
 let nth = L.nth;;
+let mem = L.find
 let rev = L.rev;;
 let create n = L.init n Fun.id;;
 let append = L.append;;
 let flatten = L.flatten;;
+let rec find lst x =
+  match lst with
+  | [] -> 0
+  | h :: t -> if x = h then 0 else 1 + find t x
+;;
 let rec top_of_list n lst = 
   if n = 0 then [], lst else
     match lst with
@@ -20,21 +29,29 @@ let rec top_of_list n lst =
       hd :: top, bot
 ;;
 
-
 let iter = L.iter;;
 let map = L.map;;
+let mapi = L.mapi;;
 let filter = L.filter;;
 let filter_map = L.filter_map;;
 let fold_left = L.fold_left;;
-let fold_right = L.fold_right;;
 let fold_left_map = L.fold_left_map;;
-
+let rec fold_downstream f x = function
+  | [] -> x
+  | hd :: tl -> fold_downstream f (f x hd tl) tl
+;;
 
 let assoc = L.assoc;;
 let assoc_opt = L.assoc_opt;;
 let split = L.split;;
 let combine = L.combine;;
-let collapse f t1 t2=
+
+let rec combine_mismatched f t1 t2 =
+  match t1, t2 with
+  | hd1 :: tl1, hd2 :: tl2 -> f hd1 hd2 :: (combine_mismatched f tl1 tl2)
+  | t, [] | [], t -> t
+;;
+let collapse f t1 t2 =
   fold_left (
     fun old_lst (new_id, new_data) ->
       let found, new_lst = fold_left_map
