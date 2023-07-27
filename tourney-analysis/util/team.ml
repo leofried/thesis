@@ -30,7 +30,7 @@ let play_game ~luck ~is_bracket t1 t2 =
     t2.games <- t2.games + 1;
   end;
 
-  let debug = false in
+  let debug = true in
   let t1p = t1.skill +. Random.get_gaussian() *. luck in
   let t2p = t2.skill +. Random.get_gaussian() *. luck in
   let cmp = Float.compare t1p t2p in

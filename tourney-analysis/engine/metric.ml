@@ -51,3 +51,4 @@ let combine (kind, sexp1 : t) ((sexp2, n) : u) (sexp3, m : u) : u =
 
 let score ((kind, sexp1), (sexp2, n) : v) =
   let (module M) = get kind in let a, b = M.score (M.t_of_sexp sexp1) (M.u_of_sexp sexp2) in a, b, n
+;;
