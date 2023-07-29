@@ -1,4 +1,3 @@
-
 type t = {
   number_of_teams : int;
   luck : float;

@@ -24,6 +24,8 @@ let combine t1 t2 = {
   sum_squares = t1.sum_squares +. t2.sum_squares;
 }
 
+let count {samples; _} = samples;;
+
 let mean {samples; sum; _} = Math.divide_float_int sum samples;;
 
 let stdev {samples; sum; sum_squares} = 

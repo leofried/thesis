@@ -1,3 +1,5 @@
+open! Util
+
 type t = {
   id : int;
   skill : float;
@@ -30,7 +32,7 @@ let play_game ~luck ~is_bracket t1 t2 =
     t2.games <- t2.games + 1;
   end;
 
-  let debug = true in
+  let debug = false in
   let t1p = t1.skill +. Random.get_gaussian() *. luck in
   let t2p = t2.skill +. Random.get_gaussian() *. luck in
   let cmp = Float.compare t1p t2p in

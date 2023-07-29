@@ -1,5 +1,6 @@
-open! Util;;
-open! Std;;
+open! Util
+open! Std
+open! Struct
 
 type t = int [@@deriving sexp];;
 

@@ -1,6 +1,6 @@
-open! Util;;
-open! Std;;
-open! Schemes;;
+open! Util
+open! Std
+open! Struct
 
 type t = string * Sexp.t [@@deriving sexp]
 
@@ -14,19 +14,21 @@ module type S = sig
   val run : t -> luck:float -> Team.t list -> Team.t list
 end
 
-let create (type a) (module M : S with type t = a) (arg : a) : t=
-  M.kind, M.sexp_of_t arg
-;;
-
 let list : (module S) list = [
   (module Round_robin);
   (module Bracket);
+  (*;
+  (module Tof_bracket);*)
 ];;
 
 let get kind =
   list
   |> List.map (Pair.join_left (fun (module M : S) -> M.kind))
   |> List.assoc kind
+;;
+
+let create (type a) (module M : S with type t = a) (arg : a) : t=
+  M.kind, M.sexp_of_t arg
 ;;
 
 let number_of_teams (kind, sexp) =

@@ -6,6 +6,8 @@ let right = snd;;
 
 let pair a b = (a, b);;
 
+let rev a b = (b, a);;
+
 let swap (a, b) = (b, a);;
 
 let map f (a, b) = f a, f b;;

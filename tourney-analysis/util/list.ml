@@ -57,7 +57,7 @@ let collapse f t1 t2 =
       let found, new_lst = fold_left_map
         (fun found (old_id, old_data) ->
           if new_id = old_id then
-            true, (old_id, f old_id new_data old_data)
+            true, (old_id, f new_data old_data)
           else 
             found, (old_id, old_data)
         )

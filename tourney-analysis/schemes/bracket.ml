@@ -1,5 +1,6 @@
 open! Util
 open! Std
+open! Struct
 
 type t = int Tree.t;;
 

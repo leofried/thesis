@@ -1,34 +1,39 @@
-open! Util;;
-open! Std;;
+open! Util
+open! Std
+open! Schemes
+open! Metrics
 
-type t = (Scheme.t * (Metric.v list)) list [@@deriving sexp];;
+type t = (Scheme.t * Metric.t) list [@@deriving sexp];;
 
-let get_file_name ~(specs : Specs.t) =
-  "analysis/" ^
-  string_of_int specs.number_of_teams ^ "teams_" ^
-  string_of_float specs.luck ^ "luck_" ^
-  string_of_float specs.fidel ^ "fidel.txt"
+let get_file_name ~metric =
+  let path = "analysis/" ^ Metric.kind metric in
+  if not (Sys.file_exists path) then Sys.mkdir path 0;
+
+  path ^ "/" ^
+  string_of_int metric.specs.number_of_teams ^ "teams_" ^
+  string_of_float metric.specs.luck ^ "luck_" ^
+  string_of_float metric.specs.fidel ^ "fidel.sexp"
 ;;
 
-let read ~specs =
-  let file_name = get_file_name ~specs in
+let read ~metric  =
+  let file_name = get_file_name ~metric in
   if Sys.file_exists file_name then 
     t_of_sexp (Sexp.read file_name)
   else
     []
 ;;
 
-let write ~specs data =
-  read ~specs
-  |> List.collapse (fun _ -> List.collapse Metric.combine) data
+let write ~metric t =
+  read ~metric
+  |> List.collapse (Metric.combine metric) t
   |> sexp_of_t
-  |> Sexp.write (get_file_name ~specs)
+  |> Sexp.write (get_file_name ~metric)
 ;;
 
-let print ~specs (metric : Metric.t) : unit =
+let print ~metric : unit =
   List.iter
-    (fun ((scheme, data)) ->
-      let score, error, samples = Metric.score data in
+    (fun (scheme, data) ->
+      let score, error, samples = Metric.score metric data in
         print_endline @@
         "" ^ 
         Math.to_pct ~digits:2 score ^
@@ -40,13 +45,7 @@ let print ~specs (metric : Metric.t) : unit =
         Sexp.to_string (Scheme.sexp_of_t scheme)
     )
     (
-      read ~specs
-      |> List.filter_map (fun (scheme, metrics) ->
-        metric
-        |> (Fun.flip List.assoc_opt) metrics
-        |?> Pair.pair metric
-        |?> Pair.pair scheme
-      )
-      |> List.sort_by_rev (Pair.right >> Metric.score >> (fun (a, _, _) -> a)) Float.compare
+      read ~metric
+      |> List.sort_by_rev (Pair.right >> Metric.score metric >> (fun (a, _, _) -> a)) Float.compare
     )
 ;;

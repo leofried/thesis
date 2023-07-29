@@ -1,17 +1,14 @@
-open! Util;;
+open! Util
+open! Schemes
+open! Metrics
 
 
 
-
-let simulate_schemes ~(specs : Specs.t) : (Scheme.t * int * Metric.v list) list -> (Scheme.t * Metric.v list) list =
-  List.map (fun (scheme, iters, metrics) -> scheme,
+let simulate_schemes ~(metric : Metric.s) : (Scheme.t * int) list -> (Scheme.t * Metric.t) list =
+  List.map (fun (scheme, iters) -> scheme,
     iters
     |> List.create
-    |> List.fold_left (fun metrics _ ->
-      let teams = Team.create ~fidel:specs.fidel ~n:(Scheme.number_of_teams scheme) in
-      let results = Scheme.run scheme ~luck:specs.luck teams in
-      List.map (Metric.fold ~teams ~results) metrics
-    ) metrics
+    |> List.fold_left (fun data _ -> Metric.fold metric data scheme) (Metric.create metric)
   )
 ;;
 
