@@ -1,4 +1,4 @@
-type ('a, 'b) t = 'a * 'b;;
+type ('a, 'b) t = 'a * 'b [@@deriving sexp];;
 
 let left = fst;;
 

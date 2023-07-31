@@ -11,14 +11,12 @@ module type S = sig
 
   val number_of_teams : t -> int
 
-  val run : t -> luck:float -> Team.t list -> Team.t list
+  val run : t -> Specs.t -> Team.t list -> Team.t list
 end
 
 let list : (module S) list = [
   (module Round_robin);
   (module Bracket);
-  (*;
-  (module Tof_bracket);*)
 ];;
 
 let get kind =

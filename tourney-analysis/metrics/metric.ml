@@ -14,7 +14,7 @@ module type S = sig
 
   val combine : t -> t -> t
 
-  val score : t -> float * float * int
+  val score : t -> Prize.t -> float * float * int
 end
 
 type s = {
@@ -36,6 +36,6 @@ let combine (s : s) t1 t2 : t = let (module M) = s.metric in
   M.sexp_of_t (M.combine (M.t_of_sexp t1) (M.t_of_sexp t2))
 ;;
 
-let score (s : s) t = let (module M) = s.metric in
-  M.score (M.t_of_sexp t)
+let score (s : s) prize t = let (module M) = s.metric in
+  M.score (M.t_of_sexp t) prize
 ;;

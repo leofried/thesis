@@ -1,5 +1,6 @@
 open! Util
 open! Std
+open! Struct
 open! Schemes
 open! Metrics
 
@@ -9,10 +10,7 @@ let get_file_name ~metric =
   let path = "analysis/" ^ Metric.kind metric in
   if not (Sys.file_exists path) then Sys.mkdir path 0;
 
-  path ^ "/" ^
-  string_of_int metric.specs.number_of_teams ^ "teams_" ^
-  string_of_float metric.specs.luck ^ "luck_" ^
-  string_of_float metric.specs.fidel ^ "fidel.sexp"
+  path ^ "/" ^ Sexp.to_string (Specs.sexp_of_t metric.specs) ^ ".sexp"
 ;;
 
 let read ~metric  =
@@ -30,10 +28,10 @@ let write ~metric t =
   |> Sexp.write (get_file_name ~metric)
 ;;
 
-let print ~metric : unit =
+let print ~metric ~prize : unit =
   List.iter
     (fun (scheme, data) ->
-      let score, error, samples = Metric.score metric data in
+      let score, error, samples = Metric.score metric prize data in
         print_endline @@
         "" ^ 
         Math.to_pct ~digits:2 score ^
@@ -46,6 +44,11 @@ let print ~metric : unit =
     )
     (
       read ~metric
-      |> List.sort_by_rev (Pair.right >> Metric.score metric >> (fun (a, _, _) -> a)) Float.compare
+      |> List.sort_by_rev (fun data ->
+        data
+        |> Pair.right 
+        |> Metric.score metric prize
+        |> (fun (a, _, _) -> a)
+      ) Float.compare
     )
 ;;

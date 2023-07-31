@@ -10,16 +10,30 @@ let hd = L.hd;;
 let tl = L.tl;;
 let pop t = hd t, tl t;;
 let nth = L.nth;;
-let mem = L.find
 let rev = L.rev;;
 let create n = L.init n Fun.id;;
+let rec index x = function
+  | [] -> 0
+  | hd :: tl -> if x = hd then 0 else 1 + index x tl
+;;
+let rec insert i x lst =
+  match i with
+  | j when j < 0 -> invalid_arg "List.insert"
+  | 0 -> x :: lst
+  | _ -> match lst with
+    | [] -> invalid_arg "List.insert"
+    | hd :: tl -> hd :: insert (i - 1) x tl
+;;
+let rec on_loc i f = function
+  | [] -> invalid_arg "List.on_loc"
+  | hd :: tl -> match i with
+    | j when j < 0 -> invalid_arg "List.on_loc"
+    | 0 -> f hd :: tl
+    | i -> hd :: on_loc (i - 1) f tl    
+;;
+
 let append = L.append;;
 let flatten = L.flatten;;
-let rec find lst x =
-  match lst with
-  | [] -> 0
-  | h :: t -> if x = h then 0 else 1 + find t x
-;;
 let rec top_of_list n lst = 
   if n = 0 then [], lst else
     match lst with

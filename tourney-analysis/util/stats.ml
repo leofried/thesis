@@ -12,6 +12,15 @@ let empty = {
   sum_squares = 0.;
 }
 
+let of_list = function
+  | [] -> empty
+  | lst -> {
+    samples = List.length lst;
+    sum = List.fold_left (+.) 0. lst;
+    sum_squares = List.fold_left (+.) 0. (List.map (fun x -> x ** 2.) lst)
+  }
+;;
+
 let add_sample t (x : float) = {
   samples = t.samples + 1;
   sum = t.sum +. x;

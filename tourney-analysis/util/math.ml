@@ -2,6 +2,10 @@ let pos_sub (x : float) (y : float) = if x < y then 0. else x -. y;;
 
 let sqrt_int (x : int) = sqrt (Int.to_float x);;
 
+let mul_int_float x y = float_of_int x *. y;;
+
+let mul_float_int x y =  x *. float_of_int y;;
+
 let divide_up (x : int) (y : int) : int = if x mod y = 0 then x / y else x / y + 1;;
 let divide_int_int   (x : int)   (y : int)   : float = Int.to_float x /. Int.to_float y;;
 let divide_int_float (x : int)   (y : float) : float = Int.to_float x /. y;;

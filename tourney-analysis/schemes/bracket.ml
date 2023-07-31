@@ -12,7 +12,7 @@ let rec sexp_of_t : t -> Sexp.t = function
 let rec t_of_sexp sexp = match (sexp : Sexp.t) with
   | Atom s -> Tree.Leaf (int_of_string s)
   | List [s1; Atom "v"; s2] -> Tree.Branch (t_of_sexp s1, t_of_sexp s2) 
-  | List _ -> print_endline (Sexp.to_string sexp); assert false
+  | List _ -> raise (Sexplib.Conv_error.unexpected_stag "bracket.ml" sexp)
 ;;
 
 
@@ -21,13 +21,13 @@ let kind = "bracket";;
 
 let number_of_teams = Tree.count;;
 
-let run bracket ~luck teams =
+let run bracket specs teams =
   let rec play = function
     | Tree.Leaf t -> t, []
     | Branch (t1, t2) ->
       let hd1, tl1 = play t1 in
       let hd2, tl2 = play t2 in
-      let w, l = Team.play_game ~luck ~is_bracket:true hd1 hd2 in
+      let w, l = Team.play_game specs ~is_bracket:true hd1 hd2 in
       w, [l] :: List.combine_mismatched List.append tl1 tl2
   in
   bracket
@@ -37,7 +37,8 @@ let run bracket ~luck teams =
   |> Pair.uncurry List.cons
 ;;
 
-let rec get_all = function
+
+let rec get_all_from_n = function
   | 1 -> [Tree.Leaf 1]
   | n ->
     let rec add_all t =
@@ -47,7 +48,19 @@ let rec get_all = function
         List.map (fun t1 -> Tree.Branch (t1, t2)) (add_all t1) @
         List.map (fun t2 -> Tree.Branch (t1, t2)) (add_all t2)
     in
-    get_all (n - 1)
+    (n - 1)
+    |> get_all_from_n
     |> List.map add_all
     |> List.flatten
 ;;
+
+
+let get_all_from_shape (shape : unit Tree.t) : t list =
+  shape
+  |> Tree.count
+  |> get_all_from_n
+  |> List.filter (Tree.same_shape true shape)
+;;
+
+
+

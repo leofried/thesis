@@ -1,18 +1,26 @@
 open! Util
+open! Std
 
+(*TODO: unique ids / own create function legal? all zeros?*)
 type t = {
   id : int;
   skill : float;
   mutable games : int;
 };;
 
-let create ~(fidel : float) ~(n : int) =
+let create specs () = {
+  id = 0;
+  skill = Random.next_float specs.Specs.distr;
+  games = 0;
+};;
+
+let create_n (specs : Specs.t) n =
   let id = ref 0 in
 
   n
   |> List.create
-  |> List.map (fun _ -> Random.get_gaussian(), Random.get_gaussian())
-  |> List.sort_by_rev (fun (skill, seed) -> fidel *. skill +. (1. -. fidel) *. seed) Float.compare
+  |> List.map (fun _ -> Random.next_float specs.distr, Random.next_float Random.gaussian)
+  |> List.sort_by_rev (fun (skill, seed) -> specs.fidel *. skill +. (1. -. specs.fidel) *. seed) Float.compare
   |> List.map (fun (skill, _) ->
     {
       id = Ref.incr id;
@@ -22,7 +30,7 @@ let create ~(fidel : float) ~(n : int) =
   )
 ;;
 
-let play_game ~luck ~is_bracket t1 t2 = 
+let play_game (specs : Specs.t) ~is_bracket t1 t2 = 
   if is_bracket then begin
     let new_games = 1 + max t1.games t2.games in
     t1.games <- new_games;
@@ -33,8 +41,8 @@ let play_game ~luck ~is_bracket t1 t2 =
   end;
 
   let debug = false in
-  let t1p = t1.skill +. Random.get_gaussian() *. luck in
-  let t2p = t2.skill +. Random.get_gaussian() *. luck in
+  let t1p = Random.next_float (Normal (t1.skill, specs.luck)) in
+  let t2p = Random.next_float (Normal (t2.skill, specs.luck)) in
   let cmp = Float.compare t1p t2p in
   match cmp > 0 || (cmp == 0 && Random.bool ()) with
     | true  -> if debug then Printf.printf "Team %d beat team %d\n" t1.id t2.id else (); t1, t2
