@@ -60,6 +60,8 @@ let assoc_opt = L.assoc_opt;;
 let split = L.split;;
 let combine = L.combine;;
 
+let combine_map f t1 t2 = map (Pair.uncurry f) (combine t1 t2);;
+
 let rec combine_mismatched f t1 t2 =
   match t1, t2 with
   | hd1 :: tl1, hd2 :: tl2 -> f hd1 hd2 :: (combine_mismatched f tl1 tl2)

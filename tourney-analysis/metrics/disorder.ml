@@ -33,6 +33,8 @@ let fold (t : t) (specs : Specs.t) (scheme : Scheme.t) : t =
   ) t
 ;;
 
+
+(*list.map combine*)
 let combine (t1 : t) (t2 : t) : t=
   List.combine t1 t2 
   |> List.map (fun (l1, l2) -> 

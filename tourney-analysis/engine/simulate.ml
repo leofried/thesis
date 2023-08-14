@@ -2,15 +2,18 @@ open! Util
 open! Schemes
 open! Metrics
 
-
-
-let simulate_schemes ~(metric : Metric.s) : (Scheme.t * int) list -> (Scheme.t * Metric.t) list =
+let simulate_schemes metric schemes =
   List.map (fun (scheme, iters) -> scheme,
     iters
     |> List.create
     |> List.fold_left (fun data _ -> Metric.fold metric data scheme) (Metric.create metric)
-  )
+  ) schemes
 ;;
+
+(* let simulate_smart metric schemes = ();; *)
+
+
+
 
 (*
 let run_one_sim ~(scheme : Scheme.t) ~(metric : Metric.t) ~(luck : float) ~(fidel : float)

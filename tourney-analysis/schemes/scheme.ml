@@ -17,6 +17,7 @@ end
 let list : (module S) list = [
   (module Round_robin);
   (module Bracket);
+  (module Eight_team_double_elim)
 ];;
 
 let get kind =
