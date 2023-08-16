@@ -1,25 +1,69 @@
 \sub{
     While the bracket is a very powerful and important tournament design, it has two intimately related shortcomings. First, brackets lead teams to play wildely different numbers of games: in the bracket $\bracksig{8; 0; 0; 0}$, for example, two teams will play three game, two teams will play two, and four teams will play only one.
 
-    And second, brackets tend to do a very poor job of ranking teams beyond just selecting a winner. Again considering the bracket $\bracksig{8; 0; 0; 0}$, the first-place finish is obviosly the winner of the bracket, and we can easily grant the loser of the championship game second-place, but the two semifinals losers both might have a claim to the third-place, and sorting through the fifth- through eight-place finishes is even trickier.
+    And second, brackets tend to do a very poor job of ranking teams beyond just selecting a winner. Again considering the bracket $\bracksig{8; 0; 0; 0}$, the first-place finish is obviously the winner of the bracket, and we can easily grant the loser of the championship game second-place, but the two semifinals losers both might have a claim to the third-place, and sorting through the fifth- through eight-place finishes is even trickier.
     
     These problems are reflections of each other: the reason that ranking the lower-placing teams is so hard is because they play so few games. It's easier to differentiate between first and second because both teams have played three games, but differentiating between the four teams that have played only a single game is nigh impossible.
 
-    In some cases, these problems aren't issues: perhaps we are only interested in crowning a champion and don't care about exactly who came in third, or maybe this bracket is being played at the conclusion of a long season and so teams playing variable numbers of games is not a big deal. But the two problems interconnected natures lets us solve them together, leveraging the extra games that lower-ranked teams have left in order to rank them.
+    In some cases, these problems do not cause concern: perhaps we are only interested in crowning a champion and don't care about exactly who came in third, or maybe this bracket is being played at the conclusion of a long season and so teams playing variable numbers of games is not a big deal. But the interconnected nature of the two problems lets us solve them together, leveraging the extra games that lower-ranked teams have left in order to rank them.
 
-    The most common such system is a third-place game, in which the losers of the two semifinal game play each other for third place. The 2015 Asian Football Confederation Asian Cup, which uses a $\bracksig{8; 0; 0; 0}$ uses a third-place game.
+    The most common example of this is the third-place game, in which the losers of the two semifinal game play each other for third place. The 2015 Asian Football Confederation Asian Cup, which uses a $\bracksig{8; 0; 0; 0}$, employs a third-place game.
 
-    \fig{.7}{third_place_game.png}{2015 AFL Asian Cup}{asian_cup}
+    \fig{.7}{third_place_game}{2015 AFL Asian Cup Knockout Stage}
 
-    A few notes on the figure. First, there are no seeds: brackets don't have to be seeded if the teams are assigned to there spots randomly (in some ways this is a special case of a Randomized Proper Ordered Bracket). This is particular common for balanced brackets such as $\bracksig{8; 0; 0; 0}$, as no teams given an unfair advantage of a bye without having earned it with higher seeding.
+    Each game in this figure is labeled. First-round games are $\bracklabel{A1}$ through $\bracklabel{A4}$, while the semifinals are $\bracklabel{B1}$ and $\bracklabel{B2}$, and the finals is game $\bracklabel{C1}$. The actual labeling scheme is arbitrary, but we adopt the system used in Figure $\ref{fig:third_place_game},$ in which each round is given a letter and then games are numbered from the top to bottom of the bracket within each round. Note that the third-place game is labeled $\bracklabel{D1}$: even though it could be played concurrently to the championship game, we label it as a different round.
 
-    Second, the bracket games are labeled. Games in the first round are $\bracklabel{A1}$ through $\bracklabel{A4}$, while the semifinals are $\bracklabel{B1}$ and $\bracklabel{B2}$, and the finals is game $\bracklabel{C1}$. The actual labeling scheme is arbitrary, but we adopt the system used in Figure $\ref{fig:asian_cup},$ in which each round is given a letter and then games are numbered from the top to bottom of the bracket within each round. Note that the third-place game is labeled $\bracklabel{D1}$: even though it could be played concurrently to the championship game, we label it as a different round.
-
-    Finally, we indicate that the third-place game is to be played in between the losers of games $\bracklabel{B1}$ and $\bracklabel{B2}$ by labeling the starting lines in the third-place game with those games. This is not ambiguous because the winner of those games always just continues on in the original bracket, so those labels refer to the losers.
+    We indicate that the third-place game is to be played in between the losers of games $\bracklabel{B1}$ and $\bracklabel{B2}$ by labeling the starting lines in the third-place game with those games. This is not ambiguous because the winner of those games always just continues on in the original bracket, so such labels always refer to the losers.
 
     The system that was used in the 2015 AFL Asian Cup is far from the only way to rank some of the teams that didn't come in first. Let's consider a few alternatives they could have gone with.
 
-    \fig{1}{third_place_game_bad.png}{2015 AFL Asian Cup First Alternative}{}
+    \fig{0.85}{third_place_game_bad}{2015 AFL Asian Cup First Alternative}
 
-    In this alternative, the thrid-place game is played between the loser of two of $\bracklabel{A1}$ and $\bracklabel{A3}$ instead of between the two semifinal losers. This is probably a bad idea that is included for completeness, but in theory, the losers of any games could be assigned.
+    In this alternative, the third-place game is played between the loser of two of $\bracklabel{A1}$ and $\bracklabel{A3}$ instead of between the two semifinal losers. This is probably a bad idea that is included only for completeness: the losers of $\bracklabel{B1}$ and $\bracklabel{B1}$ are clearly more deserving than the losers of $\bracklabel{A1}$ and $\bracklabel{A3}$, and so they ought to be the teams playing the third-place game.
+    
+    From this we can establish the Multibracket Properness Condition. We intentionally use an informal definition here: later we will construct a more rigorous one.
+    
+    \begin{definition}{Multibracket Properness Condition}{} 
+        A tournament satisfies the \textit{Multiple Elimination Properness Condition} if it is always at least as good to lose in a later round than to lose in an earlier round.
+    \end{definition}
+
+    The Multibracket Properness Condition (MPC) is the natural extension of the notion of a proper bracket onto the types of brackets we are examining now: just as properness ensures that teams would prefer to be higher seeded rather than lower, the MPC ensures that teams would rather lose later rather than earlier.
+
+    Note that the MPC also does some work in specifying which team comes in second in Figure \ref{fig:third_place_game}: it must be at least as good to be the loser of $\bracklabel{C1}$ as to be the loser of $\bracklabel{B1}$ and $\bracklabel{B2}$, and so the former must be awarded second-place, while the latter two must be playing for third. Without the MPC its ambiguous: perhaps game $\bracklabel{D1}$ is for second.
+    
+
+    Returning to the format actually used in Figure \ref{fig:third_place_game}, one could argue that the loser of $\bracklabel{C1}$, who gets comes in second place, isn't really more deserving than the winner of $\bracklabel{D1}$, who comes in third. One could imagine the UAE saying: both South Korea and us finished with two wins and one loss -- a first round win, a win against Iraq, and a loss against Australia. The only reason that South Korea came in second and we came in third was because South Korea lucked out by having Australia on the other half of the bracket as them. That's not equitable!
+
+    If the AFL took this complaint seriously, they could change their format to the one in Figure \ref{fig:second_place_game}.
+
+    \fig{0.85}{second_place_game}{2015 AFL Asian Cup Second Alternative}.
+
+    If the AFL used the format in Figure \ref{fig:second_place_game} in 2015, then South Korea and the UAE would have played each other for second place after all of the other games were completed. In some sense, this is a more equitable format than the one used in reality: we have the same data about the UAE and South Korea and so we ought to let them play for second place instead of having decided almost randomly.
+
+    However, swapping formats doesn't come without costs. For one thing, South Korea and the UAE would've had to play a fourth game: if the AFL had only three days to put on the tournament and teams can play at most one game a day, then the format in \ref{fig:second_place_game} isn't feasible.
+
+    Another concern: what if Iraq had beaten the UAE when they played in game $\bracklabel{D1}$? Then the two teams with a claim to second-place would have been South Korea and Iraq, except South Korea already beat Iraq! In this world, South Korea being given second place without having to win a rematch with Iraq seems more equitable than giving Iraq a second chance. To address this, one could imagine a format in which game $\bracklabel{E1}$ is played only if it is not rematch, although at this point we begin to go out of scope.
+
+    Ultimately, whether including game $\bracklabel{E1}$ is worth it depends on the goal of the format. If there is a huge difference between the prizes for coming in second and third, for example, if the top two finishing teams in the Asian Cup qualified for the World Cup, then $\bracklabel{E1}$ is quite important. If, on the other hand, this is self-contained format played purely for bragging rights, $\bracklabel{E1}$ could probably be left out. In reality, the 2015 AFL Asian Cup qualified only its winner to another tournament (the 2017 Confederations Cup), and so game $\bracklabel{E1}$ was deemed unnecessary.
+
+    Let's imagine, however, that instead of just the champion, the top four teams from the Asian Cup advanced to the Confederations Cup. In this case, the format used in 2015 would be quite poor, as teams finish in the top-four based only on the result of their first-round game: the rest of the games don't even have to be played.
+
+    A better format for selecting the top four teams might look like this:
+
+    \fig{0.85}{fourth_place_game}{2015 AFL Asian Cup Third Alternative}
+
+    %2-1s
+    %MPC sets four teams
+    %can drop the final games
+    %like swiss?
+    %rematches
+
 }
+
+
+%Open Questions:
+%-- can you not play the second place game if it was a semifinal game.
+%-- should you seed in someway that is not proper.
+%-- rounds just for reseeding and replaying
+%-- swapping adjacent rounds for rematch
+%-- how to think pairing swisses
