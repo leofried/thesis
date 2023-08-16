@@ -16,8 +16,8 @@ let kind = "eight_team_double_elimination";;
 
 let number_of_teams _ = 8;;
 
-let run (bracket, mode) specs teams =
-  match Bracket.run bracket specs teams with
+let run (bracket, mode) specs teams = [
+  match List.flatten (Bracket.run bracket specs teams) with
   | [t1; t2; tb1; tb2; ta1; ta2; ta3; ta4] ->
     let w1, l1 = Team.play_game ~is_bracket:true specs ta1 ta2 in
     let w2, l2 = Team.play_game ~is_bracket:true specs ta3 ta4 in
@@ -26,7 +26,6 @@ let run (bracket, mode) specs teams =
     let w4, l4 = Team.play_game ~is_bracket:true specs w2 tb1 in
 
     let w5, l5 = Team.play_game ~is_bracket:true specs w3 w4 in
-
 
     let losers =  [l5; l4; l3; l2; l1] in
 
@@ -46,7 +45,7 @@ let run (bracket, mode) specs teams =
           w8 :: l8 :: losers
 
   | _ -> assert false
-;;
+];;
 
 
 let get_all opts : t list =

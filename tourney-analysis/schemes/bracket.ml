@@ -31,9 +31,9 @@ let run bracket specs teams =
       w, [l] :: List.combine_mismatched List.append tl1 tl2
   in
   bracket
-  |> Tree.map (fun n -> List.nth teams (n - 1))
+  |> Tree.map_und (fun n -> List.nth teams (n - 1))
   |> play
-  |> Pair.map_right List.flatten
+  |> Pair.map_left (fun x -> [x])
   |> Pair.uncurry List.cons
 ;;
 

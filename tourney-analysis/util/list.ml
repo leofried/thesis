@@ -50,6 +50,7 @@ let filter = L.filter;;
 let filter_map = L.filter_map;;
 let fold_left = L.fold_left;;
 let fold_left_map = L.fold_left_map;;
+let fold_right = L.fold_right;;
 let rec fold_downstream f x = function
   | [] -> x
   | hd :: tl -> fold_downstream f (f x hd tl) tl

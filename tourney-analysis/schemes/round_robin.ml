@@ -45,5 +45,5 @@ let run n specs teams =
       List.fold_left (fun ranks level -> (rank_teams teams level) @ ranks) [] levels
   in
   
-  List.map (Array.get teams_arr) (rank_teams teams (List.create (List.length teams)))
+  [List.map (Array.get teams_arr) (rank_teams teams (List.create (List.length teams)))]
 ;;

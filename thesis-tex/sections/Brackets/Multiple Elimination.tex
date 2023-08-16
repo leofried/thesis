@@ -17,29 +17,29 @@
 
     \fig{.7}{third_place_game}{2015 AFL Asian Cup}
 
-    Each game in this figure is labeled. First-round games are $\bracklabel{A1}$ through $\bracklabel{A4}$, while the semifinals are $\bracklabel{B1}$ and $\bracklabel{B2}$, and the finals is game $\bracklabel{C1}$. The actual labeling scheme is arbitrary, but we adopt the system used in Figure $\ref{fig:third_place_game},$ in which each round is given a letter and then games are numbered from the top to bottom of the bracket within each round. Note that the third-place game is labeled $\bracklabel{D1}$: even though it could be played concurrently to the championship game, it is part of a different bracket and so we label it as a different round.
+    Each game in this figure is labeled. In the primary bracket, first-round games are $\bracklabel{A1}$ through $\bracklabel{A4}$, while the semifinals are $\bracklabel{B1}$ and $\bracklabel{B2}$, and the finals is game $\bracklabel{C1}$. The actual labeling scheme is arbitrary, but we adopt the system used in Figure $\ref{fig:third_place_game},$ in which each round is given a letter and then games are numbered from the top to bottom of the bracket within each round. Note that the third-place game is labeled $\bracklabel{D1}$: even though it could be played concurrently to the championship game, it is part of a different bracket and so we label it as a different round.
 
     We indicate that the third-place game is to be played in between the losers of games $\bracklabel{B1}$ and $\bracklabel{B2}$ by labeling the starting lines in the third-place game with those games. This is not ambiguous because the winner of those games always just continues on in the original bracket, so such labels always refer to the losers. In theory, the Asian Cup could have had any two teams play for third.
 
     \fig{0.85}{third_place_game_bad}{2015 AFL Asian Cup Alternative Format}
 
     In this alternative, the third-place game is played between the loser of two of $\bracklabel{A1}$ and $\bracklabel{A3}$ instead of between the two semifinal losers. This is probably a bad idea: the losers of $\bracklabel{B1}$ and $\bracklabel{B1}$ are clearly more deserving than the losers of $\bracklabel{A1}$ and $\bracklabel{A3}$, and so they ought to be the teams playing the third-place game.
-    
-    From this we can establish the Multibracket Properness Condition. We once again intentionally use an informal definition here: later we will construct a more rigorous one.
-    
-    \begin{definition}{Multibracket Properness Condition}{} 
-        A multibracket satisfies the \textit{Multibracket Properness Condition} if it is always at least as good to lose in a later round than to lose in an earlier round.
+
+    We can use this intuition to define what it means for a simple multibracket to be proper.
+
+    \begin{definition}{Proper Simple Multibracket}{}
+        A simple multibracket is \textit{proper} if: 
+        NEED BETTER DEFINITION
+        %todo: define proper simple bracket.
     \end{definition}
 
-    The Multibracket Properness Condition (MPC) is the natural extension of the notion of a proper bracket onto multibrackets: just as properness ensures that teams would prefer to be higher seeded rather than lower, the MPC ensures that teams would prefer to lose later rather than earlier.
+    Note that as a simple multibracket with only two brackets, the Asian Cup is actually not quite proper: remember that because a team's final place is based on which bracket it wins. In order for the Asian Cup to have a top three, it needs to have three brackets in its multibracket. Otherwise, the winner of game $\bracklabel{D1}$ would be given second place, leaving the loser of $\bracklabel{C1}$ out in the cold and violating the properness condition.
 
-    Note that the MPC also does some work in specifying which team comes in second in Figure \ref{fig:third_place_game}: it must be at least as good to be the loser of $\bracklabel{C1}$ as to be the loser of $\bracklabel{B1}$ and $\bracklabel{B2}$, and so the former must be awarded second-place, while the latter two must be playing for third. Without the MPC its ambiguous: perhaps game $\bracklabel{D1}$ is for second.
-
-    Because we assumed the Asian Cup satisfied the MPC, Figure \ref{fig:third_place_game} doesn't specify that the loser of $\bracklabel{C1}$ is automatically awarded second place. For completeness, we could draw it in the following more rigorous way:
+    In reality there is an implied one-team bracket in between the primary bracket and the third-place game. Rigorously, the Asian Cup multibracket looks like this:
 
     \fig{0.85}{second_place_default}{2015 AFL Asian Cup, Rigorously}
 
-    However for clarity, when drawing figures, we will omit brackets in a multibracket of signature $\bracksig{1}$: the MPC guarantees that if the loser of the championship of a bracket doesn't not appear in the bracket right below it, then there is an implied bracket of signature $\bracksig{1}$ between them.
+    However for clarity, when drawing figures, we will omit brackets in a multibracket of signature $\bracksig{1}$. We restrict our study of simple multibrackets to proper ones, so if the loser of the championship of a bracket doesn't appear in the next bracket, then there is an implied bracket of signature $\bracksig{1}$ between them.
 
     \begin{definition}{Multibracket Signature}{}
         The \textit{signature} of a multibracket is simply the list of signatures of its brackets.

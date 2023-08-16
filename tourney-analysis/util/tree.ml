@@ -16,9 +16,14 @@ let rec depth = function
   | Branch (x, y) -> 1 + Int.max (depth x) (depth y)
 ;;
 
-let rec map f = function
+let rec map_und f = function
   | Leaf x -> Leaf (f x)
-  | Branch (x, y) -> Branch ((map f x), (map f y))
+  | Branch (x, y) -> Branch ((map_und f x), (map_und f y))
+;;
+
+let rec map_tree f = function
+  | Leaf x -> f x
+  | Branch (x, y) -> Branch ((map_tree f x), (map_tree f y))
 ;;
 
 let rec fold f = function
