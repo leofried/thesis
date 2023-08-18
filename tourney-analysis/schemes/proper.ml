@@ -43,4 +43,26 @@ let run t specs teams =
   build_brackets t
   |> List.map (fun bracket -> Bracket.run bracket specs teams)
   |> List.fold_left (List.combine_mismatched List.append) []
-;;  
+;;
+
+
+let get_all
+  ?(max_games = None)
+  ?(target_sum = 1) 
+  ?(require_games = false)
+  tiers 
+: t list =  
+  let rec f max_games target_sum curr tiers : t list =
+    if target_sum = 0 then [[curr]] else
+    if target_sum < 0 then [] else
+    if Option.fold ((>=) 0) max_games false then [] else 
+      let hds = List.map (List.cons curr) (f (Option.map (Fun.flip (-) 1) max_games) (target_sum * 2) 0 tiers) in
+      if tiers = [] then hds else 
+        let next, new_tiers = List.pop tiers in
+        hds @ f max_games (target_sum - next) (curr + next) new_tiers
+          
+  in List.map List.rev (
+    if require_games then (List.map (List.cons 0) (f (Option.map (Fun.flip (-) 1) max_games) (target_sum * 2) 0 tiers))
+    else f max_games target_sum 0 tiers
+  )
+;;

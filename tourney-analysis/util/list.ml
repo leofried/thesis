@@ -2,7 +2,7 @@ open! Std;;
 
 module L = Stdlib.List;;
 
-type 'a t = 'a list;;
+type 'a t = 'a list [@@deriving sexp];;
 
 let length = L.length;;
 let cons = L.cons;;
