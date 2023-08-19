@@ -14,9 +14,25 @@
 
     \fig{0.8}{eight}{$\bracksig{8;0;0;0}$}
 
-    The United States and Croatia, as the two teams in the top tier, are given seeds one and two. The two tier-two teams, Australia and Spain, get seeds three and four, and so on. The actual algorithm used for assigning the seeds to the teams within each tier can be arbitrary: unless stated otherwise, we will assume that it is done randomly. (In the particular case of the 2016 Olympic Basketball Tournament, teams from Group A were given the odds seeds and teams from Group B the evens.)
+    The United States and Croatia, as the two teams in the top tier, are given seeds one and two. The two tier-two teams, Australia and Spain, get seeds three and four, and so on. The actual algorithm used for assigning the seeds to the teams within each tier can be arbitrary: unless stated otherwise, we will assume that it is done randomly. (In the particular case of the 2016 Olympic Basketball Tournament, teams from Group A were given the odd seeds and teams from Group B the evens.)
 
-    
+    We describe a tiered seeding with list of integers indicating how many teams are in each tier. The eight teams that advanced to bracket at the Olympics were divided into four pools of two teams each, so we write $\bracktier{2,2,2,2}.$
+
+    The tiered seeding $\bracktier{2,2,2,2}$ interacts very nicely with the proper bracket $\bracksig{8;0;0;0}$: there is no advantage to being assigned a particular seed within your tier.
+
+    \begin{definition}{Strongly Respecful}{}
+        A bracket \textit{strongly respects} a tiered seeding if within each tier, each team's opponents or potential opponents are of the same tier. %we can actually probably restrict this to chalk games. but what about [4;2;0;0] s.r. (2, 4)?
+    \end{definition}
+
+    Both teams in the first tier have the same schedule: in the first round they play a tier-four team, in the second round the winner of a tier-two team and a tier-three team and in the third round, the winner of the other half of the bracket which are the same. Thus, $\bracksig{8;0;0;0}$ strongly respects  $\bracktier{2,2,2,2}$.
+
+    It's not obvious that the informal property we are trying to capture -- that there is no advantage to being assigned a particular seed within your tier -- is the same as the formal classification of a bracket strongly respecting a tiered seeding. However,
+
+    \theo{}{
+        Actually, they are the same.
+    }{
+        Proof! %todo:proof
+    }{}
 
 
 }
@@ -24,6 +40,9 @@
 
 
 % Possible, Chalk (strong vs weak?), Round/Compensation
-% (Open question proper)
+% (Open question does strongly respectful == win-rates are the same?)
+% Open question (do things in the chalk column exists?)
 % (Open question, giving tiers, does there exists a strong, weak seeding)
-% ordered brackets stay ordered (but new ones become ordered) [e.g. tenis]
+% ordered brackets stay ordered (but new ones become ordered) [e.g. tennis]
+
+
