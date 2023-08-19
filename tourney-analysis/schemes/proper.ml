@@ -45,24 +45,30 @@ let run t specs teams =
   |> List.fold_left (List.combine_mismatched List.append) []
 ;;
 
-
-let get_all
-  ?(max_games = None)
-  ?(target_sum = 1) 
-  ?(require_games = false)
-  tiers 
-: t list =  
-  let rec f max_games target_sum curr tiers : t list =
-    if target_sum = 0 then [[curr]] else
-    if target_sum < 0 then [] else
-    if Option.fold ((>=) 0) max_games false then [] else 
-      let hds = List.map (List.cons curr) (f (Option.map (Fun.flip (-) 1) max_games) (target_sum * 2) 0 tiers) in
-      if tiers = [] then hds else 
-        let next, new_tiers = List.pop tiers in
-        hds @ f max_games (target_sum - next) (curr + next) new_tiers
-          
-  in List.map List.rev (
-    if require_games then (List.map (List.cons 0) (f (Option.map (Fun.flip (-) 1) max_games) (target_sum * 2) 0 tiers))
-    else f max_games target_sum 0 tiers
-  )
+let rec get_all 
+  ?(max_target_sum = 1)
+  ?(include_smaller = false)
+= function
+  | 0 -> []
+  | n ->
+    (n - 1)
+    |> get_all ~max_target_sum
+    |> List.map (fun lst ->
+      List.length lst
+      |> List.create
+      |> List.filter_map (function
+          | 0 -> Some (2 :: (List.hd lst - 1) :: (List.tl lst))
+          | i -> match List.nth lst i with
+            | 0 -> None
+            | _ -> Some (
+              lst
+              |> List.on_loc (i - 1) ((+) 2)
+              |> List.on_loc i (Fun.flip (-) 1)
+            )
+      )
+    )
+    |> List.flatten
+    |> List.drop_dupes
+    |> Bool.do_if (n <= max_target_sum) (List.cons [n])
+    |> Bool.do_if include_smaller (List.append (get_all ~max_target_sum ~include_smaller (n - 1)))
 ;;

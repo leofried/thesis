@@ -92,3 +92,4 @@ let sort_by f compare lst =
   |> map (Pair.left)
 ;;
 let sort_by_rev f compare = sort_by f (Fun.flip compare);;
+let drop_dupes t = L.sort_uniq compare t
