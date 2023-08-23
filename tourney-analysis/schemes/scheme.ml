@@ -18,6 +18,7 @@ let list : (module S) list = [
   (module Round_robin);
   (module Bracket);
   (module Eight_team_double_elim);
+  (module Eight_team_group_test);
   (module Proper);
 ];;
 

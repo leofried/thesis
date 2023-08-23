@@ -10,12 +10,11 @@ let rev a b = (b, a);;
 
 let swap (a, b) = (b, a);;
 
-let map f (a, b) = f a, f b;;
-
 let map_left f (a, b) = f a, b;;
 
 let map_right f (a, b) = a, f b;;
 
+let map (f, g) (a, b) = f a, g b;;
 
 let apply (f, g) x = f x, g x;;
 

@@ -4,6 +4,7 @@ module L = Stdlib.List;;
 
 type 'a t = 'a list [@@deriving sexp];;
 
+let item x = [x];;
 let length = L.length;;
 let cons = L.cons;;
 let hd = L.hd;;
@@ -58,6 +59,11 @@ let rec fold_downstream f x = function
 
 let assoc = L.assoc;;
 let assoc_opt = L.assoc_opt;;
+let assoc_update k f t =
+  let v = assoc_opt k t in
+  let t = L.remove_assoc k t in
+  (k, f v) :: t
+;;
 let split = L.split;;
 let combine = L.combine;;
 

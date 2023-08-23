@@ -29,14 +29,15 @@ let write ~metric t =
 ;;
 
 let print ~metric ~prize : unit =
+  let digits = 6 in
   List.iter
     (fun (scheme, data) ->
       let score, error, samples = Metric.score metric prize data in
         print_endline @@
         "" ^ 
-        Math.to_pct ~digits:2 score ^
+        Math.to_pct ~digits score ^
         " [" ^
-        Math.to_pct ~digits:2 error ^
+        Math.to_pct ~digits error ^
         "], on " ^
         Int.to_string samples ^
         " iters : " ^

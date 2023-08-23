@@ -6,12 +6,14 @@ type t = {
   id : int;
   skill : float;
   mutable games : int;
+  mutable opps : (int * int) list;
 };;
 
 let create specs () = {
   id = 0;
   skill = Random.next_float specs.Specs.distr;
   games = 0;
+  opps = [];
 };;
 
 let create_n (specs : Specs.t) n =
@@ -25,7 +27,8 @@ let create_n (specs : Specs.t) n =
     {
       id = Ref.incr id;
       skill;
-      games = 0
+      games = 0;
+      opps = [];
     }
   )
 ;;
@@ -39,6 +42,9 @@ let play_game (specs : Specs.t) ~is_bracket t1 t2 =
     t1.games <- t1.games + 1;
     t2.games <- t2.games + 1;
   end;
+
+  t1.opps <- List.assoc_update t2.id (Option.fold 1 ((+) 1)) t1.opps;
+  t2.opps <- List.assoc_update t1.id (Option.fold 1 ((+) 1)) t2.opps;
 
   let debug = false in
   let t1p = Random.next_float (Normal (t1.skill, specs.luck)) in

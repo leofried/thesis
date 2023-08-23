@@ -2,4 +2,7 @@
  (public_name tourney_format)
  (name main)
  (libraries util engine schemes metrics)
+ (preprocess
+  (pps ppx_sexp_conv)
+ )
 )
