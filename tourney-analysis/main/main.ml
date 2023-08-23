@@ -26,5 +26,9 @@ let shell ~len f x =
 |> List.map (Fun.const 1)
 |> shell Tiers.get_all *)
 
-24
-|> shell ~len:true (Proper.get_all ~max_target_sum:24 ~include_smaller:false)
+16
+|> Debug.time (Proper.get_all ~max_target_sum:1 ~include_smaller:false)
+|> Debug.time (List.filter Tiers.(check_proper_bracket Strong (T.make [1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;])))
+|> List.sexp_of_t (List.sexp_of_t sexp_of_int)
+|> Sexp.to_string
+|> print_endline

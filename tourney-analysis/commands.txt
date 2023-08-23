@@ -1,0 +1,3 @@
+(& opam env) -split '\r?\n' | ForEach-Object { Invoke-Expression $_ }
+dune build
+dune exec tourney_format
