@@ -21,6 +21,7 @@ type s =
 module T : sig
   type t
   val make : int list -> t
+  val get : t -> int list
   val length : t -> int
   val number_of_teams : t -> int
   val empty : t
@@ -33,6 +34,7 @@ module T : sig
 end = struct
   type t = int list
   let make = Fun.id
+  let get = Fun.id
   let length = List.length
   let number_of_teams = List.fold_left (+) 0
   let empty = []
@@ -81,64 +83,30 @@ let check_proper_bracket s t bracket =
     ) (Some T.empty)
     |> Option.is_some
 ;;
-    
 
 
-(*
-let assign_tiers_to_bracket ~tiers ~bracket =
-  bracket
-  |> List.rev
-  |> List.fold_left_map (fun tiers n ->
-    let rec f k = function
-    | []
-    
+let f (tiers : T.t) (bracket : Proper.t) (odds : float) (games_played : ((int * int) * (int * int)) list) =
+  tiers
+  |> T.get
+  |> List.map List.create
+  |> List.mapi (fun i -> List.map (Pair.pair i))
+  |> List.map List.permutations
+  |> List.combinations
+  |> List.map List.flatten
+  |> Debug.print (List.sexp_of_t (List.sexp_of_t (Pair.sexp_of_t sexp_of_int sexp_of_int)) >> Sexp.to_string)
+  |> List.map (fun lst -> List.map (Tree.map_und (List.nth_one lst)) (Proper.build_brackets bracket))
+  |> List.map (List.map (Tree.map_und (fun x -> Discrete.single (x, 0))))
+  |> List.map (List.map (Tree.fold (fun (d1 : ((int * int) * int) Discrete.t) d2 ->
+    Discrete.cross d1 d2
+    |> Discrete.map (fun (((t1, i1), r1), ((t2, i2), r2)) ->
+      let odds = if t1 < t2 then odds else if t1 > t2 then 1. -. odds else 0.5 in
+      let r3 = r1 + r2 + if List.mem ((t1, i1), (t2, i2)) games_played || List.mem ((t2, i2), (t1, i1)) games_played then 1 else 0 in
+      [((t1, i1), r3), odds; ((t2, i2), r3), 1. -. odds]
     )
-
-
-
-
-
- let rec check_proper_bracket t s b = match s with
-  | Rounds ->
-    match b with
-    | [] -> print_endline "a"; assert false
-    | [n] -> number_of_teams t = n
-    | n1 :: n2 :: bracket ->
-      match t with
-      | [] ->  print_endline "a";  print_endline "a"; assert false
-      | hd1 :: t ->
-        if hd1 > n1 then false else
-        if hd1 = n1 then check_proper_bracket ((hd1 / 2) :: t) Rounds (n2 + hd1 / 2 :: bracket) else
-          match t with
-          | [] ->  print_endline "a";  print_endline "a";  print_endline "a"; assert false
-          | hd2 :: t -> 
-            check_proper_bracket (hd1 + hd2 :: t) Rounds b
-;; *)
-
-
-
-
-
-
-
-(* 
-let get_all
-  ?(max_games = None)
-  ?(target_sum = 1) 
-  ?(require_games = false)
-  tie
-: Proper.t list =  
-  let rec f max_games target_sum curr tiers : t list =
-    if target_sum = 0 then [[curr]] else
-    if target_sum < 0 then [] else
-    if Option.fold ((>=) 0) max_games false then [] else 
-      let hds = List.map (List.cons curr) (f (Option.map (Fun.flip (-) 1) max_games) (target_sum * 2) 0 tiers) in
-      if tiers = [] then hds else 
-        let next, new_tiers = List.pop tiers in
-        hds @ f max_games (target_sum - next) (curr + next) new_tiers
-          
-  in List.map List.rev (
-    if require_games then (List.map (List.cons 0) (f (Option.map (Fun.flip (-) 1) max_games) (target_sum * 2) 0 tiers))
-    else f max_games target_sum 0 tiers
-  )
-;; *)
+    |> Discrete.collapse_horizontal
+    |> Discrete.collapse_verticle
+  )))
+  |> List.map (List.map (Discrete.map (Pair.right >> float_of_int)))
+  |> List.map (List.map Discrete.expect)
+  |> List.map (List.fold_left (+.) 0.)
+;;

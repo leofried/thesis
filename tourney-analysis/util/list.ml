@@ -11,7 +11,9 @@ let hd = L.hd;;
 let tl = L.tl;;
 let pop t = hd t, tl t;;
 let nth = L.nth;;
+let nth_one t n = nth t (n-1);;
 let rev = L.rev;;
+let mem = L.mem;;
 let create n = L.init n Fun.id;;
 let rec index x = function
   | [] -> 0
@@ -74,7 +76,7 @@ let rec combine_mismatched f t1 t2 =
   | hd1 :: tl1, hd2 :: tl2 -> f hd1 hd2 :: (combine_mismatched f tl1 tl2)
   | t, [] | [], t -> t
 ;;
-let collapse f t1 t2 =
+let collapse f =
   fold_left (
     fun old_lst (new_id, new_data) ->
       let found, new_lst = fold_left_map
@@ -86,7 +88,7 @@ let collapse f t1 t2 =
         )
         false old_lst
       in if found then new_lst else (new_id, new_data) :: new_lst
-  ) [] (t1 @ t2)
+  ) []
 ;;
 
 let sort = L.stable_sort;;
@@ -99,3 +101,30 @@ let sort_by f compare lst =
 ;;
 let sort_by_rev f compare = sort_by f (Fun.flip compare);;
 let drop_dupes t = L.sort_uniq compare t
+
+
+
+let permutations = 
+  let rec f x = function
+    | [] -> [[x]]
+    | hd :: tl as lst ->
+      (x :: lst) :: (map (fun l -> hd :: l) (f x tl))
+  in let rec g = function
+  | [] -> [[]]
+  | hd :: tl ->
+    let perms = g tl in
+    fold_left (fun acc p -> acc @ f hd p) [] perms
+  in g
+;;
+
+let combinations t =
+  let rec combine acc current_lists =
+    match current_lists with
+    | [] -> [rev acc]
+    | hd_list :: tl_lists ->
+      fold_left
+        (fun acc' hd_elem -> acc' @ combine (hd_elem :: acc) tl_lists)
+        [] hd_list
+  in
+  combine [] t
+;;

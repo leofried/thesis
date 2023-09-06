@@ -5,7 +5,28 @@ open! Struct
 open! Metrics
 ;;
 
-Prog.run ()
+(*Prog.run ()*)
+
+
+
+
+let bracket = [6; 1; 0; 0]
+let tiers = Tiers.T.make [1; 2; 4]
+let games_played = [
+  (0, 0), (1, 0);
+  (0, 0), (1, 1);
+  (1, 0), (2, 0);
+  (1, 0), (2, 1);
+  (1, 1), (2, 2);
+  (1, 1), (2, 3);
+];;
+
+Tiers.f tiers bracket 0.75 games_played
+|> List.sexp_of_t sexp_of_float
+|> Sexp.to_string
+|> print_endline
+;;
+
 
 
 (* 

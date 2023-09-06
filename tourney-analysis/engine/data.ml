@@ -22,8 +22,9 @@ let read ~metric  =
 ;;
 
 let write ~metric t =
-  read ~metric
-  |> List.collapse (Metric.combine metric) t
+  t
+  |> List.append (read ~metric)
+  |> List.collapse (Metric.combine metric)
   |> sexp_of_t
   |> Sexp.write (get_file_name ~metric)
 ;;

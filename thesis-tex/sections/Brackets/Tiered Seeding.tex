@@ -4,7 +4,7 @@
 
     \fig{0.78}{olympics}{The 2016 Olympic Basketball Tournament}
 
-    The seeding going into the bracket portion of the 2016 Olympic Basketball Tournament is a little different than the seedings that we have discussed so far. Rather than the ranking on the teams being a complete ordering, it is a partial one: teams are grouped into tiers, which are themselves ordered. Two teams, one from each group, occupy each tier.
+    The seeding going into the bracket portion of the 2016 Olympic Basketball Tournament is a little different than the seedings that we have discussed so far. Rather than the ranking on the teams being a complete ordering, it is a partial one: teams are grouped into tiers, and the tiers are ordered. Two teams, one from each group, occupy each tier.
 
     \begin{definition}{Tiered Seeding}{}
         A \textit{tiered seeding} is a partial ordering on the teams entering a tournament.
@@ -16,7 +16,7 @@
 
     The United States and Croatia, as the two teams in the top tier, are given seeds one and two. The two tier-two teams, Australia and Spain, get seeds three and four, and so on. The actual algorithm used for assigning the seeds to the teams within each tier can be arbitrary: unless stated otherwise, we will assume that it is done randomly. (In the particular case of the 2016 Olympic Basketball Tournament, teams from Group A were given the odd seeds and teams from Group B the evens.)
 
-    We describe a tiered seeding with list of integers indicating how many teams are in each tier. The eight teams that advanced to bracket at the Olympics were divided into four pools of two teams each, so we write $\bracktier{2,2,2,2}.$
+    We can describe a tiered seeding with list of integers indicating how many teams are in each tier. The eight teams that advanced to bracket at the Olympics were divided into four pools of two teams each, so we write $\bracktier{2,2,2,2}.$
 
     The tiered seeding $\bracktier{2,2,2,2}$ interacts very nicely with the proper bracket $\bracksig{8;0;0;0}$: there is no advantage to being assigned a particular seed within your tier.
 
@@ -26,13 +26,17 @@
 
     Both teams in the first tier have the same schedule: in the first round they play a tier-four team, in the second round the winner of a tier-two team and a tier-three team and in the third round, the winner of the other half of the bracket which are the same. Thus, $\bracksig{8;0;0;0}$ strongly respects  $\bracktier{2,2,2,2}$.
 
-    It's not obvious that the informal property we are trying to capture -- that there is no advantage to being assigned a particular seed within your tier -- is the same as the formal classification of a bracket strongly respecting a tiered seeding. However,
+    It's not obvious that the informal property we are trying to capture -- that there is no advantage to being assigned a particular seed within your tier -- is the same as the formal classification of a bracket strongly respecting a tiered seeding. But indeed,
 
     \theo{}{
         Actually, they are the same.
     }{
-        Proof! %todo:proof
+        Proof! %todo:proof -- one direction -- that strongly implies n prefernce seems obvious, the other dctinos seems less clear.
     }{}
+
+    In an ideal world, we might hope to always choose a bracket that strongly respects the tiered seeding that we've been given. However, this is not always possible. Consider the tiered seeding $\bracktier{2,1,2}.$ 
+    %
+    There are three proper brackets on five teams: $\bracksig{2;3;0;0},$ $\bracksig{4;0;1;0},$ and $\bracksig{2;1;1;1;0},$ but none of them strongly respect 
 
 
 }
@@ -44,7 +48,7 @@
 % Open question (do things in the chalk column exists?)
 % (Open question, giving tiers, does there exists a strong, weak seeding)
 % ordered brackets stay ordered (but new ones become ordered) [e.g. tennis]
-% if same sarting round and all teirs same size then strongly respectful
+% if same starting round and all tiers same size then strongly respectful (true of brackets but NOT semi brackets)
 
 
 
@@ -56,6 +60,6 @@
 %--same starting round
 %--compensation? shifted bracket
 %--starting round varies by "not that much"
-%--something about tennis being correct? ordereness?
+%--something about tennis being correct? ordered-ness?
 %--anarchy
 

@@ -22,17 +22,12 @@ let kind = "bracket";;
 let number_of_teams = Tree.count;;
 
 let run bracket specs teams =
-  let rec play = function
-    | Tree.Leaf t -> t, []
-    | Branch (t1, t2) ->
-      let hd1, tl1 = play t1 in
-      let hd2, tl2 = play t2 in
-      let w, l = Team.play_game specs ~is_bracket:true hd1 hd2 in
-      w, [l] :: List.combine_mismatched List.append tl1 tl2
-  in
   bracket
-  |> Tree.map_und (fun n -> List.nth teams (n - 1))
-  |> play
+  |> Tree.map_und (fun n -> List.nth teams (n - 1), [])
+  |> Tree.fold (fun (hd1, tl1) (hd2, tl2) ->
+    let w, l = Team.play_game specs ~is_bracket:true hd1 hd2 in
+    w, [l] :: List.combine_mismatched List.append tl1 tl2
+  )
   |> Pair.map_left (fun x -> [x])
   |> Pair.uncurry List.cons
 ;;

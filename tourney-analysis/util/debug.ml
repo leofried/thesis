@@ -4,8 +4,6 @@ let mark s = hold (fun _ -> print_endline s);;
 
 let print f = hold (fun x -> print_endline (f x));;
 
-let to_string = ();;(*use sexp module*)
-
 let time f x =
   let t = Sys.time() in
   let fx = f x in
