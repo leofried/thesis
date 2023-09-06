@@ -2,6 +2,7 @@ open! Util
 open! Std
 open! Struct
 open! Schemes
+open! Engine
 
 type t = int list list [@@deriving sexp];;
 
@@ -26,7 +27,7 @@ let fold (t : t) (specs : Specs.t) (scheme : Scheme.t) : t =
       (
         teams
         |> List.insert i target
-        |> Scheme.run scheme specs
+        |> Scheme.run scheme (Team.play_game specs)
         |> List.index target
       )
       ((+) 1)

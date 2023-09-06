@@ -2,7 +2,6 @@ open! Util
 open! Std
 open! Struct
 open! Schemes
-open! Metrics
 
 type t = (Scheme.t * Metric.t) list [@@deriving sexp];;
 

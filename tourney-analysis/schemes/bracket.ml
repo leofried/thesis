@@ -16,16 +16,15 @@ let rec t_of_sexp sexp = match (sexp : Sexp.t) with
 ;;
 
 
-
 let kind = "bracket";;
 
 let number_of_teams = Tree.count;;
 
-let run bracket specs teams =
+let run bracket play teams =
   bracket
   |> Tree.map_und (fun n -> List.nth teams (n - 1), [])
   |> Tree.fold (fun (hd1, tl1) (hd2, tl2) ->
-    let w, l = Team.play_game specs ~is_bracket:true hd1 hd2 in
+    let w, l = play hd1 hd2 in
     w, [l] :: List.combine_mismatched List.append tl1 tl2
   )
   |> Pair.map_left (fun x -> [x])

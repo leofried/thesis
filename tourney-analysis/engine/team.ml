@@ -1,6 +1,8 @@
 open! Util
 open! Std
 
+type s = Specs.t;;
+
 (*TODO: unique ids / own create function legal? all zeros?*)
 type t = {
   id : int;
@@ -33,7 +35,8 @@ let create_n (specs : Specs.t) n =
   )
 ;;
 
-let play_game (specs : Specs.t) ~is_bracket t1 t2 = 
+let play_game (specs : Specs.t) (*~is_bracket*) t1 t2 = 
+  let is_bracket = false in
   if is_bracket then begin
     let new_games = 1 + max t1.games t2.games in
     t1.games <- new_games;

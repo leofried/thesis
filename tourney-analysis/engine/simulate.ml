@@ -1,6 +1,5 @@
 open! Util
 open! Schemes
-open! Metrics
 
 let simulate_schemes metric schemes =
   List.map (fun (scheme, iters) -> scheme,

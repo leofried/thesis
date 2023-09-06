@@ -2,6 +2,7 @@ open! Util
 open! Std
 open! Struct
 open! Schemes
+open! Engine
 
 
 (*list.combine map*)
@@ -17,7 +18,7 @@ let fold (t : t) (specs : Specs.t) (scheme : Scheme.t) : t =
   Stats.add_sample (
     List.combine_map (fun t r -> Team.skill t -. Team.skill r)
       (Team.sort teams)
-      (Scheme.run scheme specs teams)
+      (Scheme.run scheme (Team.play_game specs) teams)
   ) t
 ;;
 

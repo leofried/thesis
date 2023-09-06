@@ -2,6 +2,7 @@ open! Util
 open! Std
 open! Struct
 open! Schemes
+open! Engine
 
 type t = Stats.t [@@deriving sexp];;
 
@@ -11,7 +12,7 @@ let empty (_ : Specs.t) : t = Stats.empty 1;;
 
 let fold (t : t) (specs : Specs.t) (scheme : Scheme.t) : t =
   let teams = Team.create_n specs (Scheme.number_of_teams scheme) in
-  let _ = Scheme.run scheme specs teams in
+  let _ = Scheme.run scheme (Team.play_game specs) teams in
 
   teams
   |> List.map (fun t -> t.Team.opps)

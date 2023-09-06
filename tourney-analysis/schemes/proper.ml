@@ -39,9 +39,9 @@ let build_brackets t =
     lst
 ;; 
 
-let run t specs teams =
+let run t play teams =
   build_brackets t
-  |> List.map (fun bracket -> Bracket.run bracket specs teams)
+  |> List.map (fun bracket -> Bracket.run bracket play teams)
   |> List.fold_left (List.combine_mismatched List.append) []
 ;;
 

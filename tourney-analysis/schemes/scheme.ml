@@ -11,14 +11,12 @@ module type S = sig
 
   val number_of_teams : t -> int
 
-  val run : t -> Specs.t -> Team.t list -> Team.t list list
+  val run : t -> ('a -> 'a -> 'a * 'a) -> 'a list -> 'a list list
 end
 
 let list : (module S) list = [
   (module Round_robin);
   (module Bracket);
-  (module Eight_team_double_elim);
-  (module Eight_team_group_test);
   (module Proper);
 ];;
 
@@ -36,6 +34,6 @@ let number_of_teams (kind, sexp) =
   let (module M) = get kind in M.number_of_teams (M.t_of_sexp sexp)
 ;;
 
-let run (kind, sexp) specs team =
-  let (module M) = get kind in List.flatten (M.run (M.t_of_sexp sexp) specs team)
+let run (kind, sexp) play teams =
+  let (module M) = get kind in List.flatten (M.run (M.t_of_sexp sexp) play teams)
 ;;

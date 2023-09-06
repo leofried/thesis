@@ -1,6 +1,6 @@
 (library
  (name metrics)
- (libraries util struct schemes)
+ (libraries util struct schemes engine)
  (preprocess
   (pps ppx_sexp_conv)
  )

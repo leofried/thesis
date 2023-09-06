@@ -5,7 +5,12 @@ open! Struct
 open! Metrics
 ;;
 
-(*Prog.run ()*)
+
+Ord_prop.f ()
+
+
+
+(* Prog.run ()
 
 
 
@@ -75,4 +80,4 @@ print_endline (if (Some a = Some b) then  "yes" else "no") *)
 |> List.sexp_of_t (List.sexp_of_t sexp_of_int)
 |> Sexp.to_string
 |> print_endline *)
-
+ *)

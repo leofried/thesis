@@ -90,8 +90,8 @@ let f (tiers : T.t) (bracket : Proper.t) (odds : float) (games_played : ((int * 
   |> T.get
   |> List.map List.create
   |> List.mapi (fun i -> List.map (Pair.pair i))
-  |> List.map List.permutations
-  |> List.combinations
+  |> List.map Combo.permutations
+  |> Combo.combinations
   |> List.map List.flatten
   |> Debug.print (List.sexp_of_t (List.sexp_of_t (Pair.sexp_of_t sexp_of_int sexp_of_int)) >> Sexp.to_string)
   |> List.map (fun lst -> List.map (Tree.map_und (List.nth_one lst)) (Proper.build_brackets bracket))
