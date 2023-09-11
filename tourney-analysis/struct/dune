@@ -1,7 +1,0 @@
-(library
- (name struct)
- (libraries util)
- (preprocess
-  (pps ppx_sexp_conv)
- )
-)

@@ -1,19 +1,32 @@
 open! Util
 open! Std
 open! Schemes
-open! Struct
 open! Metrics
 ;;
 
 
-Ord_prop.f ()
+Prop_ord.f2
+  ~bracket:[16;0;0;0]
+  (* ~tiers:[[1];[2];[3];[4];[5];[6]]
+  ~scores: (Prop_ord.T.C [
+  [0.5; 0.5; 0.7; 0.7; 0.9; 1.0;];
+  [0.5; 0.5; 0.7; 0.7; 0.9; 1.0;];
+  [0.3; 0.3; 0.5; 0.5; 0.7; 0.8;];
+  [0.3; 0.3; 0.5; 0.5; 0.7; 0.8;];
+  [0.1; 0.1; 0.3; 0.3; 0.5; 0.6;];
+  [0.0; 0.0; 0.2; 0.2; 0.4; 0.5;];
+])
+|> string_of_bool
+|> print_endline *)
+  
+
+(* Prop_ord.run [2;1;1;0];;
+Prop_ord.run [4;0;0];; *)
+
+(* Prog.run () *)
 
 
-
-(* Prog.run ()
-
-
-
+(* 
 
 let bracket = [6; 1; 0; 0]
 let tiers = Tiers.T.make [1; 2; 4]
@@ -31,7 +44,7 @@ Tiers.f tiers bracket 0.75 games_played
 |> Sexp.to_string
 |> print_endline
 ;;
-
+ *)
 
 
 (* 
@@ -79,5 +92,5 @@ print_endline (if (Some a = Some b) then  "yes" else "no") *)
 |> Debug.time (List.filter Tiers.(check_proper_bracket Strong (T.make [1;1;2;2;4;4])))
 |> List.sexp_of_t (List.sexp_of_t sexp_of_int)
 |> Sexp.to_string
-|> print_endline *)
+|> print_endline
  *)

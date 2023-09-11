@@ -35,3 +35,11 @@ let partitions n =
   upped_partitions 1 n
 ;; 
     
+let ssts n =
+  let rec upped_ssts i n =
+    if i = n then [[n]] else
+    upped_ssts (i + 1) n
+    |> List.map (fun lst -> (List.hd lst - i + 1) |> List.create |> List.map ((+) i) |> List.map (Fun.flip List.cons lst))
+    |> List.flatten
+  in
+  upped_ssts 0 (n-1)

@@ -1,6 +1,6 @@
 (library
  (name schemes)
- (libraries util struct)
+ (libraries util)
  (preprocess
   (pps ppx_sexp_conv)
  )

@@ -1,6 +1,5 @@
 open! Util
 open! Std
-open! Struct
 
 (* 
 type s =
@@ -103,8 +102,7 @@ let f (tiers : T.t) (bracket : Proper.t) (odds : float) (games_played : ((int * 
       let r3 = r1 + r2 + if List.mem ((t1, i1), (t2, i2)) games_played || List.mem ((t2, i2), (t1, i1)) games_played then 1 else 0 in
       [((t1, i1), r3), odds; ((t2, i2), r3), 1. -. odds]
     )
-    |> Discrete.collapse_horizontal
-    |> Discrete.collapse_verticle
+    |> Discrete.flatten
   )))
   |> List.map (List.map (Discrete.map (Pair.right >> float_of_int)))
   |> List.map (List.map Discrete.expect)

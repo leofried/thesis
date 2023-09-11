@@ -1,6 +1,5 @@
 open! Util
 open! Schemes
-open! Struct
 open! Metrics
 open! Engine
 

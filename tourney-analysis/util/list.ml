@@ -58,6 +58,7 @@ let rec fold_downstream f x = function
   | [] -> x
   | hd :: tl -> fold_downstream f (f x hd tl) tl
 ;;
+let for_all = L.for_all;;
 
 let assoc = L.assoc;;
 let assoc_opt = L.assoc_opt;;
@@ -88,12 +89,12 @@ let collapse f =
         )
         false old_lst
       in if found then new_lst else (new_id, new_data) :: new_lst
-  ) []
+  ) [] >> rev
 ;;
 
 let sort = L.stable_sort;;
 let sort_rev compare = sort (Fun.flip compare);;
-let sort_by f compare lst =
+let sort_by f compare lst = (*this is probably uncessary -- cant we just use normal sort with a good compare? this is sugar*)
   lst
   |> map (Pair.join_right f)
   |> sort (Pair.compare ~right:compare)

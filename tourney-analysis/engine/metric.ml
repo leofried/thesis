@@ -1,6 +1,5 @@
 open! Util
 open! Std
-open! Struct
 open! Schemes
 
 module type S = sig
