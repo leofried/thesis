@@ -18,5 +18,13 @@ A gameplay function represents a process in which two teams compete in a game, w
     If a tournament format queries $g$ on input $(t_1, t_2)$ we say that $t_1$ and $t_2$ \textit{played a game}. We  say that the team that got outputted by $g$ \textit{won}, and the team that did not \textit{lost}.
 \end{definition}
 
+Finally, we can use a gameplay function $g$ to construct a \textit{matchup table}.
+
+% \begin{definition}{}{}
+%     A \textit{matchup table} implied by a gameplay function $g$ on a list of teams $\T$ of length $n$ is a $n$-by-$n$ matrix $A$ such that $A_{ij} = \P[t_1 \textrm{ beats } t_2].$
+% \end{definition}
+
+% We use a gameplay function rather than a matchup table in the definition of a tournament format to indicate that when designing a tournament format, one cannot simply look at the matchup-table itself in order to decide which teams are best (though this problem is not trivial either) and must instead make calls to the gameplay function (that is play games) in order to gather information about the teams. That said, matchup-tables will sometimes be useful in our \textit{analysis} of tournament formats. 
+
 (This chapter will be fleshed out but I'm including the important definitions here for the sake of the next chapter.)
 }

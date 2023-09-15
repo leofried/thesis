@@ -1,10 +1,13 @@
 \sub{
 
-    Consider the 2016 Olympic Basketball Tournament. Twelve teams qualified for the Olympics, and they were divided into two groups of six teams each. Each group conducted a mini-tournament, ranking the teams in each group form first through sixth. Then, the bottom two teams in each group were eliminated, with the remaining eight teams (four from each group) entering the bracket $\bracksig{8;0;0;0}.$ The entire format as it played out is displayed in Figure \ref{fig:olympics}.
+%pick notation letters/brackets of sigs/tieres/tiered-sigs
+%talk about hte matchup table explicitly.
+
+    Consider the 2016 Olympic Basketball Tournament. Twelve teams qualified for the Olympics, and they were divided into two groups of six teams each. Each group conducted a mini-tournament, ranking the teams in each group from first through sixth (the specifics of the mini-tournament are not relevant). Then, the bottom two teams in each group were eliminated, with the remaining eight teams (four from each group) entering the bracket $\bracksig{8;0;0;0}.$ The entire format as it played out is displayed in Figure \ref{fig:olympics}.
 
     \fig{0.78}{olympics}{The 2016 Olympic Basketball Tournament}
 
-    The seeding going into the bracket portion of the 2016 Olympic Basketball Tournament is a little different than the seedings that we have discussed so far. Rather than the ranking on the teams being a complete ordering, it is a partial one: teams are grouped into tiers, and the tiers are ordered. Two teams, one from each group, occupy each tier.
+    The seeding going into the bracket portion of the 2016 Olympic Basketball Tournament is a little different than the seedings that we have discussed so far. Rather than the ranking of the teams being a complete ordering, it is a partial one: teams are grouped into tiers, and the tiers are ordered. Two teams, one from each group, occupy each tier.
 
     \begin{definition}{Tiered Seeding}{}
         A \textit{tiered seeding} is a partial ordering on the teams entering a tournament.
@@ -14,52 +17,111 @@
 
     \fig{0.8}{eight}{$\bracksig{8;0;0;0}$}
 
-    The United States and Croatia, as the two teams in the top tier, are given seeds one and two. The two tier-two teams, Australia and Spain, get seeds three and four, and so on. The actual algorithm used for assigning the seeds to the teams within each tier can be arbitrary: unless stated otherwise, we will assume that it is done randomly. (In the particular case of the 2016 Olympic Basketball Tournament, teams from Group A were given the odd seeds and teams from Group B the evens.)
+    The United States and Croatia, as the two teams in the top tier, are given seeds one and two. The two tier-two teams, Australia and Spain, get seeds three and four, and so on. The actual algorithm used for assigning the seeds to the teams within each tier can be arbitrary: in the particular case of the 2016 Olympic Basketball Tournament, teams from Group A were given the odd seeds and teams from Group B the evens.
 
-    We can describe a tiered seeding with list of integers indicating how many teams are in each tier. The eight teams that advanced to bracket at the Olympics were divided into four pools of two teams each, so we write $\bracktier{2,2,2,2}.$
+    We can describe a tiered seeding with a list of integers indicating how many teams are in each tier. The eight teams that advanced to bracket at the Olympics were divided into four pools of two teams each, so we write $\bracktier{2,2,2,2}.$ A quick notational note: we list tier sizes in reverse order, with the size of the lowest tier coming first, and the size of the top tier coming last. This is done to keep it consistent with bracket signatures, in which the lower-seeded teams are listed earlier, and higher-seeded teams that get more byes are listed later.
 
-    The tiered seeding $\bracktier{2,2,2,2}$ interacts very nicely with the proper bracket $\bracksig{8;0;0;0}$: there is no advantage to being assigned a particular seed within your tier.
+    The tiered seeding $\bracktier{2,2,2,2}$ interacts very nicely with the proper bracket $\bracksig{8;0;0;0}$: there is no advantage for a team being assigned a particular seed within their tier.
 
     \begin{definition}{Strongly Respecful}{}
-        A bracket \textit{strongly respects} a tiered seeding if within each tier, each team's opponents or potential opponents are of the same tier. %we can actually probably restrict this to chalk games. but what about [4;2;0;0] s.r. (2, 4)?
+        A bracket \textit{strongly respects} a tiered seeding if, as long as teams in the same tier have the same win probabilities as each other (that is, $\P(t_i \textrm{ beats } t_k) = \P(t_j \textrm{ beats } t_k)$ as long as $t_i$ and $t_j$ are in the same tier), then teams in the same tier have the same probability of winning the tournament.
     \end{definition}
 
-    Both teams in the first tier have the same schedule: in the first round they play a tier-four team, in the second round the winner of a tier-two team and a tier-three team and in the third round, the winner of the other half of the bracket which are the same. Thus, $\bracksig{8;0;0;0}$ strongly respects  $\bracktier{2,2,2,2}$.
+    Sometimes, it is not possible to generate a bracket that strongly respects a tiered seeding (for example, the tiered seeding $\bracktier{3, 1}$), so we also introduce the concept of a bracket weakly respecting a tiered seeding.
 
-    It's not obvious that the informal property we are trying to capture -- that there is no advantage to being assigned a particular seed within your tier -- is the same as the formal classification of a bracket strongly respecting a tiered seeding. But indeed,
+    \begin{definition}{Weakly Respectful}{}
+        A bracket \textit{weakly respects} a tiered seeding if each team in a tier is given the same number of byes.
+    \end{definition}
 
-    \theo{}{
-        Actually, they are the same.
-    }{
-        Proof! %todo:proof -- one direction -- that strongly implies n prefernce seems obvious, the other dctinos seems less clear.
+    Although no bracket strongly respects that tiered seeding $\bracktier{3, 1},$ the bracket $\bracksig{4;0;0}$ is preferable to $\bracksig{2;1;1;0}$ because at least it weakly respects it. The names of the two conditions come from strong respectfulness being a stronger condition than weak respectfulness.
+
+    \theo{}{If a bracket strongly respects a tiered seeding then it weakly respects it as well.}{
+        If a bracket strongly respects a tiered seeding, then all teams within the same tier must have the same probability of winning the tournament if every game is a coin flip. If indeed every game is coinflip, two teams have the same chance of winning the tournament only if they have the same number of byes, so the bracket must weakly respect the tiered seeding as well.
     }{}
 
-    In an ideal world, we might hope to always choose a bracket that strongly respects the tiered seeding that we've been given. However, this is not always possible. Consider the tiered seeding $\bracktier{2,1,2}.$ 
-    %
-    There are three proper brackets on five teams: $\bracksig{2;3;0;0},$ $\bracksig{4;0;1;0},$ and $\bracksig{2;1;1;1;0},$ but none of them strongly respect 
+    Checking if a bracket signature weakly respects a tiered seeding is somewhat straightforward: we can simply matchup the signature with the tiered seeding to see if we ever have to split a tier across two different levels in the signature. For example, consider the bracket signature $\A = \bracksig{8;6;3;0;0;0}$ and the tiered seeding $\bracktier{4,4,4,4,1}.$ The four teams in the second-highest tier are distributed over two levels: two the them (seeds 2 and 3) get two byes and two of them (seeds 4 and 5) get a single bye, so $\bracksig{8;6;3;0;0;0}$ does not weakly respect $\bracktier{4,4,4,4,1}.$
 
+    \fig{0.6}{863000 seeded}{$\bracksig{8;6;3;0;0;0}$}
 
+    If a bracket signature \textit{does} respect a tiered seeding, we can combine the information of the bracket signature and the tiered seeding into a single list of lists called the \textit{tiered signature}.
+
+    \begin{definition}{Tiered Signature}{}
+        If a bracket signature $\A = \bracksig{a_0; ...; a_r}$ weakly respects a tiered signature $\B$, then the \textit{tiered signature} of the signature-seeding pair $(\A, \B)$ is a list $\C = \bracksig{\C_0; ...; \C_r}$ where $\C_i$ is the sublist of $\B$ corresponding to the $a_i$ teams that get $i$ byes.
+    \end{definition}
+
+    For example, the bracket $\A = \bracksig{8;6;3;0;0;0}$ \textit{does} weakly respect the tiered seeding $\B = \bracktier{4,4,4,2,2,1}.$ The associated tiered signature of this pair is $$\C = \bracksig{\bracktier{4, 4};\bracktier{4,2};\bracktier{2,1};\bracktier{};\bracktier{};\bracktier{}}.$$ The somewhat trivial tiered signature of the 2016 Olympic Basketball Tournament is $$\bracksig{\bracktier{2, 2, 2, 2};\bracktier{};\bracktier{};\bracktier{}}.$$
+
+    Note that we can easily extract both the bracket signature and the tiered seeding from the tiered signature. For the former, sum each sublist, and for the latter, concatenate the sublists into a single list. Sometimes, we will refer a tiered signature as being strongly respectful as a shorthand for saying that the associated tiered seeding respects the associate bracket signature.
+
+    While checking if a bracket weakly respects a tiered seeding is somewhat intuitive, checking for strong respectfulness seems much trickier. Somehow, we need to be able to verify that for any distribution of win probabilities, (as long as teams within the same tier have the same matchup table,) teams within the same tier have the same probability of winning the tournament. Luckily, there is a simple algorithm for quickly verifying strong respectfulness.
+    
+    We will first intuitively describe what the algorithm is doing, then we will describe it, before running the algorithm on a few examples and then finally proving its correctness. The idea behind the algorithm is to ensure that in each round, teams of the same tier are being assigned opponents of the same tier. This is done by keeping track of the tiers of the teams that will be playing in each round, and ensuring that the round-specific tiered signatures are palandromic. Formally,
+
+    \begin{definition}{The Palandromic Algorithm for Tiered Signatures (PATS)}{}
+        Let $\A$ be a bracket signature and $\B$ be a tiered seeding. First, check if $\A$ weakly respects $\B$. If it doesn't, then it certainly doesn't strongly respect it. If it does, then let $\C$ be the tiered signature of $(\A, \B).$\\
+
+        We define $\F$, a recursive operator that maps a tiered signature to either $\true$ or $\false$. Then, if $\F(\C)$ is true, $\A$ strongly respects $\B$, otherwise it does not.\\
+
+        The operator $\F$ is defined in the following way on $\C = \bracksig{\C_{0}; ...; \C_{r}}.$
+        \begin{itemize}
+            \item If $r = 0$, then $\F(\C)$ is $\true.$
+            \item Otherwise, if $\C_0$ is not palandromic, then $\F(\C)$ is $\false.$
+            \item Otherwise, let $\D_0$ be the right half of $\C_0$ concatenated with $\C_1$, and $\D = \F(\bracksig{\D_0; \C_2; ...; \C_{r}}).$ Then, $\F(\C) = \F(\D).$
+        \end{itemize} 
+
+        (For the last step, if $\C_0$ has odd length, then the first element of $\D_0$ is half of the middle element of $\C_0.$ The middle element of $\C_0$ will always be even because it is palandromic and its sum must be even.)
+    \end{definition}
+
+    Let's go over a few examples. Consider the bracket signature $\A = \bracksig{8;6;3;0;0;0}$ along with the tiered seeding $\B = \bracktier{4,4,4,2,2,1}.$ As we verified earlier, $\A$ weakly respects $\B$, so we can apply PATS to check if it is strongly respectful.
+    \begin{align*}
+        \F(\C) &= \F(\bracksig{\bracktier{4, 4};\bracktier{4,2};\bracktier{2,1};\bracktier{};\bracktier{};\bracktier{}})\\
+        &= \F(\bracksig{\bracktier{4, 4,2};\bracktier{2,1};\bracktier{};\bracktier{};\bracktier{}})\\
+        &= \false \textrm{ (because $\bracktier{4, 4, 2}$ is not palandromic.)}
+    \end{align*}
+
+    \fig{0.6}{863000 tiered}{$\bracksig{\bracktier{4, 4};\bracktier{4,2};\bracktier{2,1};\bracktier{};\bracktier{};\bracktier{}}$}
+
+    We can verify this result intuitively with the help of the bracket $\A$. In the second round, for example, two of the Tier 4 teams play each other, while two of them play the winner of a Tier 5 vs Tier 6 matchup. If the Tier 5 and 6 teams are much worse than the rest of the teams, it is not hard to imagine that the two Tier 4 teams who have to play each other are at a severe disadvantage.
+
+    Let's instead consider the bracket signature $\A = \bracksig{8;0;6;0;0;1;0}$ along with the tiered seeding $\B = \bracktier{8,4,2,1}.$ $\A$ weakly respects $\B$ with tiered signature $$\C = \bracksig{\bracktier{8};\bracktier{};\bracktier{4,2};\bracktier{};\bracktier{};\bracktier{1};\bracktier{}}$$
+
+    Applying PATS,
+    \begin{align*}
+        \F(\C) &= \F(\bracksig{\bracktier{8};\bracktier{};\bracktier{4,2};\bracktier{};\bracktier{};\bracktier{1};\bracktier{}})\\
+        &= \F(\bracksig{\bracktier{4};\bracktier{4,2};\bracktier{};\bracktier{};\bracktier{1};\bracktier{}})\\
+        &= \F(\bracksig{\bracktier{2,4,2};\bracktier{};\bracktier{};\bracktier{1};\bracktier{}})\\
+        &= \F(\bracksig{\bracktier{2,2};\bracktier{};\bracktier{1};\bracktier{}})\\
+        &= \F(\bracksig{\bracktier{2};\bracktier{1};\bracktier{}})\\
+        &= \F(\bracksig{\bracktier{2};\bracktier{}})\\
+        &= \F(\bracksig{\bracktier{1}})\\
+        &= \true
+    \end{align*}
+
+    So $\A$ does strongly respect $\B$. This can also be seen intuitively by looking at the bracket: teams in each tier have the same exact path throughout the tournament.
+
+    \fig{0.6}{806001 tiered}{$\bracksig{\bracktier{8};\bracktier{};\bracktier{4,2};\bracktier{};\bracktier{};\bracktier{1};\bracktier{}}$}
+
+    Finally, we will leave as an exercise to the reader to use PATS to show that the 2016 Olympic Basketball Tournament was strongly respectful.
+
+    Hopefully, these three examples have given a sense as to why PATS accurately ascertains whether a bracket signature strongly respects a tiered seeding. We will prove it by induction.
+
+    \theo{}{
+        PATS correctly ascertains whether a bracket signature strongly respects a tiered seeding.
+    }{
+        Let $\A$ be a bracket signature with $r$ rounds and $\B$ be a tiered seeding. If $\A$ doesn't weakly respect $\B$, then PATS will correctly say that it doesn't strongly respect $\B$ either. Assume then that $\A$ does weakly respect $\B$, where $\C = \bracksig{\C_{0}; ...; \C_{r}}.$ is the tiered signature of the pair $(\A, \B).$\\
+
+        We proceed by induction on $r$. If $r = 0$, then $\A = \bracksig{1}$, $\B = \bracktier{1}$, and $\C = \bracksig{\bracktier{1}}.$ PATS will correctly claim that $\A$ strongly respects $\B$ without any recursive calls.\\
+
+        For any other $r$, we will show that PATS returns $\false$ if and only if $\A$ does not strongly respect $\B$.\\
+        
+        Assume first that $A$ does not strongly respect $B$. Then, for some tier, either teams in that tier are not all equally likely to make it out of the first round, or they are not all equally likely to win the bracket, conditional on having made it out of the first round. In the former case, this would be caused by teams in the same tier having first-round matchups in different tiers, meaning $C_0$ would not be palandromic, and so PATS would fail on its first iteration. In the latter case, this would imply that $\D = \bracksig{\D_0; \C_2; ...; \C_{r}}$ is not a strongly respectful tiered signature, (where $\D_0$ is the right half of $\C_0$ concatenated with $\C_1$), so by induction, $\F(\C) = \F(\D) = \false.$ In either case, PATS correctly identifies that $A$ does not strongly respect $B.$\\
+
+        Now, assume that PATS returns $\false.$ If it did so in the first iteration, then that means that there are two tiers $T_0, T_1$ for which some but not all teams in $T_0$ are matched up in the first-round against teams in $T_1$. Consider a list of teams such that teams in $T_1$ always lose, and all other games are coin-flips. Then, the teams in $T_0$ matched up against $T_1$ teams in the first-round will win the tournament with probability $(0.5)^{r-1}$, while the teams that are not will win with probability $0.5^r$, so $\A$ does not strongly respect $\B$.\\
+        
+        Meanwhile, if PATS failed at a later iteration, then by induction, $\D = \bracksig{\D_0; \C_2; ...; \C_{r}}$ is not a strongly respectful tiered signature, (where $\D_0$ is the right half of $\C_0$ concatenated with $\C_1$). However, if we consider a set of teams such that all of the first-round matchups in $\C$ are guaranteed wins for the higher tier, then a team's probability of winning the entire bracket (as long as they are in a tier that will win in the first-round) is the same as their probability of winning $\D.$ Because $\D$ is not a strongly respectful tiered signature, some teams in the same tier have different tournament-win probabilities, so $\C$ is also not strongly respectful. Thus, $\A$ does not strongly respect $\B$.\\
+
+        Therefore by induction, PATS claims that a bracket signature strongly respects a tiered seeding if and only if it truly does so.
+    }{}
+
+    With PATS in our back pocket, we can now quickly identify the relation between a given bracket signature and tiered seeding: whether it is strongly, weakly, or not at all respectful. The concept of tiered seedings will show up in a few different places down the line: tiers are a powerful and generalizable tool for understanding tournaments from Wimbledon to the NCAA Softball Tournament to the World Cup, as we shall investigate in the coming sections.
 }
-
-
-
-% Possible, Chalk (strong vs weak?), Round/Compensation
-% (Open question does strongly respectful == win-rates are the same?)
-% Open question (do things in the chalk column exists?)
-% (Open question, giving tiers, does there exists a strong, weak seeding)
-% ordered brackets stay ordered (but new ones become ordered) [e.g. tennis]
-% if same starting round and all tiers same size then strongly respectful (true of brackets but NOT semi brackets)
-
-
-
-
-
-%criteria:
-%--exact same
-%--exact same up until loss
-%--same starting round
-%--compensation? shifted bracket
-%--starting round varies by "not that much"
-%--something about tennis being correct? ordered-ness?
-%--anarchy
-
