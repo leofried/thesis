@@ -38,10 +38,9 @@
     \newtcbtheorem[number within=subsection, use counter from=theorem]{lemma}{Lemma}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
     \newtcbtheorem[number within=subsection, use counter from=theorem]{corollary}{Corollary}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
 
-    %better naming system for refrences of lemma/theo/corr/ fundamental
-    \newtcbtheorem[number within=subsection, use counter from=theorem]{definition}{Definition}%
+   \newtcbtheorem[number within=subsection, use counter from=theorem]{definition}{Definition}
     {enhanced, breakable, colback=blue!5,colframe=teal!100!,fonttitle=\bfseries}{def}
-    \newtcbtheorem[number within=subsection, use counter from=theorem]{figg}{Figure}%
+    \newtcbtheorem[number within=subsection, use counter from=theorem]{figg}{Figure}
     {enhanced, breakable, colback=red!5,colframe=purple!100!,fonttitle=\bfseries}{fig}
 
     \newcommand{\graph}[2]{\includegraphics[scale=#1]{images/\sectname/\subsectname/#2.png}
@@ -56,7 +55,7 @@
 
     \makeatletter
         \def\namedlabel#1#2{\begingroup
-        \def\@currentlabel{#2}%
+        \def\@currentlabel{#2}
         \label{#1}\endgroup
         }
     \makeatother
@@ -68,8 +67,7 @@
             \begin{proof}
             #3
             \end{proof}
-     %       \ifthenelse{\equal{#1}{}}{}{\namedlabel{theo:#4}{#1}}
-        \end{theorem}
+      \end{theorem}
     }
     
     \newcommand{\lemm}[4]{
