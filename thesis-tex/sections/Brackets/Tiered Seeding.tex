@@ -1,12 +1,10 @@
 \sub{
 
-
-
     Consider the 2016 Olympic Basketball Tournament. Twelve teams qualified for the Olympics, and they were divided into two groups of six teams each. Each group conducted a mini-tournament, ranking the teams in each group from first through sixth (the specifics of the mini-tournament are not relevant). Then, the bottom two teams in each group were eliminated, with the remaining eight teams (four from each group) entering the bracket $\bracksig{8;0;0;0}.$ The entire format as it played out is displayed in Figure \ref{fig:olympics}.
 
     \fig{0.78}{olympics}{The 2016 Olympic Basketball Tournament}
 
-    The seeding going into the bracket portion of the 2016 Olympic Basketball Tournament is a little different than the seedings that we have discussed so far. Rather than the ranking of the teams being a complete ordering, it is a partial one: teams are grouped into tiers, and the tiers are ordered. Two teams, one from each group, occupy each tier.
+    The seeding going into the bracket portion of the 2016 Olympic Basketball Tournament is a little different than the seedings that we have discussed so far. Rather than the ranking of the teams being a complete ordering, it is a partial one: teams are grouped into tiers, and the tiers are ranked. Two teams, one from each group, occupy each tier.
 
     \begin{definition}{Tiered Seeding}{}
         A \textit{tiered seeding} is a partial ordering on the teams entering a tournament.
@@ -23,7 +21,7 @@
     The tiered seeding $\bracktier{2,2,2,2}$ interacts very nicely with the proper bracket $\bracksig{8;0;0;0}$: there is no advantage for a team being assigned a particular seed within their tier.
 
     \begin{definition}{Strongly Respecful}{}
-        A bracket \textit{strongly respects} a tiered seeding if, as long as teams in the same tier have the same win probabilities as each other (that is, $\P(t_i \textrm{ beats } t_k) = \P(t_j \textrm{ beats } t_k)$ as long as $t_i$ and $t_j$ are in the same tier), then teams in the same tier have the same probability of winning the tournament.
+        A bracket \textit{strongly respects} a tiered seeding if, as long as teams in the same tier have the same win probabilities as each other (that is, for all $k$, $\P(t_i \textrm{ beats } t_k) = \P(t_j \textrm{ beats } t_k)$ as long as $t_i$ and $t_j$ are in the same tier), then teams in the same tier have the same probability of winning the tournament.
     \end{definition}
 
     Sometimes, it is not possible to generate a bracket that strongly respects a tiered seeding (for example, the tiered seeding $\bracktier{3, 1}$), so we also introduce the concept of a bracket weakly respecting a tiered seeding.
@@ -32,7 +30,7 @@
         A bracket \textit{weakly respects} a tiered seeding if each team in a tier is given the same number of byes.
     \end{definition}
 
-    Although no bracket strongly respects that tiered seeding $\bracktier{3, 1},$ the bracket $\bracksig{4;0;0}$ is preferable to $\bracksig{2;1;1;0}$ because at least it weakly respects it. The names of the two conditions come from strong respectfulness being a stronger condition than weak respectfulness.
+    Although no bracket strongly respects the tiered seeding $\bracktier{3, 1},$ the bracket $\bracksig{4;0;0}$ is preferable to $\bracksig{2;1;1;0}$ because at least it weakly respects it. The names of the two conditions come from strong respectfulness being a stronger condition than weak respectfulness.
 
     \theo{}{If a bracket strongly respects a tiered seeding then it weakly respects it as well.}{
         If a bracket strongly respects a tiered seeding, then all teams within the same tier must have the same probability of winning the tournament if every game is a coin flip. If indeed every game is coinflip, two teams have the same chance of winning the tournament only if they have the same number of byes, so the bracket must weakly respect the tiered seeding as well.
@@ -42,7 +40,7 @@
 
     \fig{0.6}{863000 seeded}{$\bracksig{8;6;3;0;0;0}$}
 
-    If a bracket signature \textit{does} respect a tiered seeding, we can combine the information of the bracket signature and the tiered seeding into a single list of lists called the \textit{tiered signature}.
+    If a bracket signature \textit{does} weakly respect a tiered seeding, we can combine the information of the bracket signature and the tiered seeding into a single list of lists called the \textit{tiered signature}.
 
     \begin{definition}{Tiered Signature}{}
         If a bracket signature $\A = \bracksig{a_0; ...; a_r}$ weakly respects a tiered signature $\B$, then the \textit{tiered signature} of the signature-seeding pair $(\A, \B)$ is a list $\C = \bracksig{\C_0; ...; \C_r}$ where $\C_i$ is the sublist of $\B$ corresponding to the $a_i$ teams that get $i$ byes.
@@ -54,7 +52,7 @@
 
     While checking if a bracket weakly respects a tiered seeding is somewhat intuitive, checking for strong respectfulness seems much trickier. Somehow, we need to be able to verify that for any distribution of win probabilities, (as long as teams within the same tier have the same matchup table,) teams within the same tier have the same probability of winning the tournament. Luckily, there is a simple algorithm for quickly verifying strong respectfulness.
     
-    We will first intuitively describe what the algorithm is doing, then we will describe it, before running the algorithm on a few examples and then finally proving its correctness. The idea behind the algorithm is to ensure that in each round, teams of the same tier are being assigned opponents of the same tier. This is done by keeping track of the tiers of the teams that will be playing in each round, and ensuring that the round-specific tiered signatures are palandromic. Formally,
+    We will first intuitively describe what the algorithm is doing and then we will formally specify it, before running the algorithm on a few examples and then finally proving its correctness. The idea behind the algorithm is to ensure that in each round, teams of the same tier are being assigned opponents of the same tier. This is done by keeping track of the tiers of the teams that will be playing in each round, and ensuring that the round-specific tiered signatures are palandromic. Formally,
 
     \begin{definition}{The Palandromic Algorithm for Tiered Signatures (PATS)}{}
         Let $\A$ be a bracket signature and $\B$ be a tiered seeding. First, check if $\A$ weakly respects $\B$. If it doesn't, then it certainly doesn't strongly respect it. If it does, then let $\C$ be the tiered signature of $(\A, \B).$\\
@@ -91,7 +89,7 @@
         &= \F(\bracksig{\bracktier{2,4,2};\bracktier{};\bracktier{};\bracktier{1};\bracktier{}})\\
         &= \F(\bracksig{\bracktier{2,2};\bracktier{};\bracktier{1};\bracktier{}})\\
         &= \F(\bracksig{\bracktier{2};\bracktier{1};\bracktier{}})\\
-        &= \F(\bracksig{\bracktier{2};\bracktier{}})\\
+        &= \F(\bracksig{\bracktier{1, 1};\bracktier{}})\\
         &= \F(\bracksig{\bracktier{1}})\\
         &= \true
     \end{align*}
@@ -119,7 +117,7 @@
         
         Meanwhile, if PATS failed at a later iteration, then by induction, $\D = \bracksig{\D_0; \C_2; ...; \C_{r}}$ is not a strongly respectful tiered signature, (where $\D_0$ is the right half of $\C_0$ concatenated with $\C_1$). However, if we consider a set of teams such that all of the first-round matchups in $\C$ are guaranteed wins for the higher tier, then a team's probability of winning the entire bracket (as long as they are in a tier that will win in the first-round) is the same as their probability of winning $\D.$ Because $\D$ is not a strongly respectful tiered signature, some teams in the same tier have different tournament-win probabilities, so $\C$ is also not strongly respectful. Thus, $\A$ does not strongly respect $\B$.\\
 
-        Therefore by induction, PATS claims that a bracket signature strongly respects a tiered seeding if and only if it truly does so.
+        So by induction, PATS claims that a bracket signature strongly respects a tiered seeding if and only if it truly does so.
     }{}
 
     With PATS in our back pocket, we can now quickly identify the relation between a given bracket signature and tiered seeding: whether it is strongly, weakly, or not at all respectful. The concept of tiered seedings will show up in a few different places down the line: tiers are a powerful and generalizable tool for understanding tournaments from Wimbledon to the NCAA Softball Tournament to the World Cup, as we shall investigate in the coming sections.
