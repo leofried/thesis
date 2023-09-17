@@ -1,6 +1,6 @@
 \sub {
 
-We now attempt to completely specify the set of ordered brackets, culminating in Corollary \ref{th:construct_order} and Theorem \ref{th:limit_order}.
+We now attempt to completely specify the set of ordered brackets, culminating in Corollary \ref{th:construct_order} and Theorem \ref{th:limit_order}, which together form Edwards's Theorem \cite{montana}.
 
 We begin with a theorem that allows us to combine two smaller ordered brackets together into a larger ordered one by having the winner of one of the brackets be treated as the lowest seed in the other. This is depicted in Figure \ref{fig:combine}.
 
@@ -92,13 +92,13 @@ Corollary \ref{th:construct_order} uses the tools that we have developed so far 
 
 And now the main theorem,
 
-\theo{}{
+\theo{Edwards's Theorem}{
     The only ordered brackets are those described by Corollary \ref{th:construct_order}.
 }{
     Corollary \ref{th:construct_order} describes all proper brackets in which each round either has only game, or has two games but is immediately followed by a round with only one game. A proper bracket not described by Corollary \ref{th:construct_order} would thus have to include a round with two or more games followed by another round with two or more games, violating Lemma \ref{th:two_must_play}.
 }{limit_order}
 
-Theorem \ref{th:limit_order} is both exciting and disappointing. On one hand, it means that Corollary \ref{th:construct_order} fully describes the set of ordered brackets, making it easy to check whether a given bracket is ordered or not. On the other hand, it means that in an ordered bracket at most three teams can be introduced each round, so the length of the shortest ordered bracket on $n$ teams grows linearly with $n$ (rather than logarithmically as is the case for proper brackets). If we want a bracket on many teams to be ordered, we risk forcing lower-seeded teams to play large numbers of games, and we only permit the top seeded teams to play a few. For example, if the shortest ordered bracket that could've been used in the 2022 NCAA Women's Basketball Wichita Region is $\bracksig{4; 0; 3; 0; 3; 0; 3; 0; 3; 0; 0},$ which is played over a whopping ten rounds.
+Edwards's Theorem is both exciting and disappointing. On one hand, it means that we can fully describes the set of ordered brackets, making it easy to check whether a given bracket is ordered or not. On the other hand, it means that in an ordered bracket at most three teams can be introduced each round, so the length of the shortest ordered bracket on $n$ teams grows linearly with $n$ (rather than logarithmically as is the case for proper brackets). If we want a bracket on many teams to be ordered, we risk forcing lower-seeded teams to play large numbers of games, and we only permit the top seeded teams to play a few. For example, if the shortest ordered bracket that could've been used in the 2022 NCAA Women's Basketball Wichita Region is $\bracksig{4; 0; 3; 0; 3; 0; 3; 0; 3; 0; 0},$ which is played over a whopping ten rounds.
 
 \fig{.475}{ordered_sixteen}{The Shortest Sixteen-Team Ordered Bracket}
 
