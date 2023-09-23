@@ -21,7 +21,7 @@
     The tiered seeding $\bracktier{2,2,2,2}$ interacts very nicely with the proper bracket $\bracksig{8;0;0;0}$: there is no advantage for a team being assigned a particular seed within their tier.
 
     \begin{definition}{Strongly Respecful}{}
-        A bracket \textit{strongly respects} a tiered seeding if, as long as teams in the same tier have the same win probabilities as each other (that is, for all $k$, $\P(t_i \textrm{ beats } t_k) = \P(t_j \textrm{ beats } t_k)$ as long as $t_i$ and $t_j$ are in the same tier), then teams in the same tier have the same probability of winning the tournament.
+        A bracket \textit{strongly respects} a tiered seeding if, as long as teams' win probabilities are defined only by what tier they are in (that is, for all $t_i, t_j$ that share a tier and $t_k, t_\ell$ that share a tier, $\P(t_i \textrm{ beats } t_k) = \P(t_j \textrm{ beats } t_\ell)$), then teams in the same tier have the same probability of winning the tournament.
     \end{definition}
 
     Sometimes, it is not possible to generate a bracket that strongly respects a tiered seeding (for example, the tiered seeding $\bracktier{3, 1}$), so we also introduce the concept of a bracket weakly respecting a tiered seeding.
@@ -30,7 +30,7 @@
         A bracket \textit{weakly respects} a tiered seeding if each team in a tier is given the same number of byes.
     \end{definition}
 
-    Although no bracket strongly respects the tiered seeding $\bracktier{3, 1},$ the bracket $\bracksig{4;0;0}$ is preferable to $\bracksig{2;1;1;0}$ because at least it weakly respects it. The names of the two conditions come from strong respectfulness being a stronger condition than weak respectfulness.
+    Although no signature strongly respects the tiered seeding $\bracktier{3, 1},$ the bracket $\bracksig{4;0;0}$ is preferable to $\bracksig{2;1;1;0}$ because at least it weakly respects it. The names of the two conditions come from strong respectfulness being a stronger condition than weak respectfulness.
 
     \theo{}{If a bracket strongly respects a tiered seeding then it weakly respects it as well.}{
         If a bracket strongly respects a tiered seeding, then all teams within the same tier must have the same probability of winning the tournament if every game is a coin flip. If indeed every game is coinflip, two teams have the same chance of winning the tournament only if they have the same number of byes, so the bracket must weakly respect the tiered seeding as well.
@@ -46,7 +46,7 @@
         If a bracket signature $\A = \bracksig{a_0; ...; a_r}$ weakly respects a tiered signature $\B$, then the \textit{tiered signature} of the signature-seeding pair $(\A, \B)$ is a list $\C = \bracksig{\C_0; ...; \C_r}$ where $\C_i$ is the sublist of $\B$ corresponding to the $a_i$ teams that get $i$ byes.
     \end{definition}
 
-    For example, the bracket $\A = \bracksig{8;6;3;0;0;0}$ \textit{does} weakly respect the tiered seeding $\B = \bracktier{4,4,4,2,2,1}.$ The associated tiered signature of this pair is $$\C = \bracksig{\bracktier{4, 4};\bracktier{4,2};\bracktier{2,1};\bracktier{};\bracktier{};\bracktier{}}.$$ The somewhat trivial tiered signature of the 2016 Olympic Basketball Tournament is $$\bracksig{\bracktier{2, 2, 2, 2};\bracktier{};\bracktier{};\bracktier{}}.$$
+    For example, the bracket $\A = \bracksig{8;6;3;0;0;0}$ weakly respects the tiered seeding $\B = \bracktier{4,4,4,2,2,1},$ and the associated tiered signature of this pair is $$\C = \bracksig{\bracktier{4, 4};\bracktier{4,2};\bracktier{2,1};\bracktier{};\bracktier{};\bracktier{}}.$$ The somewhat trivial tiered signature of the 2016 Olympic Basketball Tournament is $$\bracksig{\bracktier{2, 2, 2, 2};\bracktier{};\bracktier{};\bracktier{}}.$$
 
     Note that we can easily extract both the bracket signature and the tiered seeding from the tiered signature. For the former, sum each sublist, and for the latter, concatenate the sublists into a single list. Sometimes, we will refer a tiered signature as being strongly respectful as a shorthand for saying that the associated tiered seeding respects the associate bracket signature.
 
