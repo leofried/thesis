@@ -1,0 +1,110 @@
+\sub{
+    While the bracket is a very powerful and important tournament design, it has two intimately related shortcomings. First, brackets lead teams to play wildely different numbers of games: in the bracket $\bracksig{8; 0; 0; 0}$, for example, two teams will play three game, two teams will play two, and four teams will play only one.
+
+    And second, brackets tend to do a very poor job of ranking teams beyond just selecting a winner. Again considering the bracket $\bracksig{8; 0; 0; 0}$, the first-place finish is obviously the winner of the bracket, and we can easily grant the loser of the championship game second place, but the two semifinals losers both might have a claim to the third place, and sorting through the fifth- through eight-place finishes is even trickier.
+    
+    These problems are reflections of each other: the reason that ranking the lower-placing teams is so hard is because they play so few games. It's easier to differentiate between first and second because both teams have played three games, but differentiating between the four teams that have played only a single game is nigh impossible.
+
+    In some cases, these problems do not cause concern: perhaps we are only interested in crowning a champion and don't care about exactly who came in third, or maybe this bracket is being played at the conclusion of a long season and so teams playing variable numbers of games is not a big deal. But the interconnected nature of the two problems lets us solve them together, leveraging the extra games that lower-ranked teams have left in order to rank them.
+
+    We consider class of formats called \textit{simple multibrackets}.
+
+    \begin{definition}{Simple Multibracket}{} 
+        A \textit{simple multibracket} is a sequence of brackets in which the losers of certain games in the upper brackets fall into the lower brackets rather than being eliminated outright, and teams place based on which bracket they won.
+    \end{definition}
+
+    \begin{definition}{Order of a Simple Multibracket}{}
+        The \textit{order} of a Simple Multibracket is the number of brackets it contains.
+    \end{definition}
+
+    Multibrackets of order one are just traditional brackets. The simplest example of a multibracket with order greater than one is the third-place game, in which the losers of the two semifinal games play each other for third. The 2015 Asian Football Confederation Asian Cup, whose bracket is of signature $\bracksig{8; 0; 0; 0}$, employs a third-place game.
+
+    \fig{.7}{third_place_game}{2015 AFL Asian Cup}
+
+    Each game in this figure is labeled. In the primary bracket, first-round games are $\bracklabel{A1}$ through $\bracklabel{A4}$, while the semifinals are $\bracklabel{B1}$ and $\bracklabel{B2}$, and the finals is game $\bracklabel{C1}$. The labeling system works as follows: each round in the first bracket is given a letter, and then each round in the second bracket, etc. Then games are assigned a number from the top of the bracket to the bottom within each round.
+    
+    Thus, the third-place game is labeled $\bracklabel{D1}$: even though it could be played concurrently to the championship game, it is part of a different bracket and so we label it as a different round.
+
+    We indicate that the third-place game is to be played in between the losers of games $\bracklabel{B1}$ and $\bracklabel{B2}$ by labeling the starting lines in the third-place game with those games. This is not ambiguous because the winner of those games always continue on in the original bracket, so such labels only refer to the losers. 
+    
+    In theory, the Asian Cup could have had any two teams play for third.
+
+    \fig{0.75}{third_place_game_bad}{2015 AFL Asian Cup Alternative Format}
+
+    In this alternative, the third-place game is played between the loser of $\bracklabel{A1}$ and $\bracklabel{A3}$ instead of between the two semifinal losers. This is probably a bad idea: the losers of $\bracklabel{B1}$ and $\bracklabel{B2}$ each made it further in the main bracket than the losers of $\bracklabel{A1}$ and $\bracklabel{A3}$ did, and so they ought to be the teams playing the third-place game.
+
+    We can use this intuition to define what it means for a multibracket to be proper.
+
+    \begin{definition}{Proper Multibracket}{}
+        A multibracket is \textit{proper} if: 
+        \begin{itemize}
+            \item Each of its brackets are proper.
+            \item It is better to lose in a later round than in an earlier round, where:
+            \begin{itemize}
+                \item A round being ``earlier'' means it is earlier in the alphabet, and ``later'' means later in the alphabet.
+                \item It is better to be slotted into a bracket than not.
+                \item It is better to be slotted into a higher-up bracket than a lower-down bracket.
+                \item It is better to be a higher seed within a given bracket than a lower seed.
+            \end{itemize}
+        \end{itemize}
+    \end{definition}
+
+    Note that as a multibracket of order two, the Asian Cup is actually not quite proper: remember that a team's final place is based on which bracket it wins. Thus, in order for the Asian Cup to have a top-three, it needs to have order three. Otherwise, the winner of game $\bracklabel{D1}$ would come in second place, leaving the loser of $\bracklabel{C1}$ out in the cold and violating the properness condition.
+
+    In reality there is an implied one-team bracket in between the primary bracket and the third-place game. Rigorously, the Asian Cup multibracket is proper with order three and looks like this:
+
+    \fig{0.75}{second_place_default}{2015 AFL Asian Cup, Rigorously}
+
+    However for clarity, when drawing figures, we will omit brackets in a simple multibracket of signature $\bracksig{1}$. Much like the case with traditional brackets, we will almost always focus our study on \textit{proper} multibrackets: unless stated otherwise, it is safe to assume that all multibrackets discussed are proper. Thus in a figure, if the loser of the championship of a bracket doesn't appear in the next bracket, then there is an implied bracket of signature $\bracksig{1}$ between them.
+
+
+    \begin{definition}{Multibracket Signature}{}
+        The \textit{signature} of a multibracket is simply the list of signatures of its brackets.
+    \end{definition}
+
+    So the 2015 AFL Asian Cup has signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}.$ But the multibracket with this signature is far from the only multibracket that the AFL could have used to give out gold, silver, and bronze. In fact, it's not clear the loser of $\bracklabel{C1}$, who comes in second place, is really more deserving than the winner of $\bracklabel{D1}$, who comes in third. One could imagine the UAE saying: we and South Korea both finished with two wins and one loss -- a first round win, a win against Iraq, and a loss against Australia. The only reason that South Korea came in second and we came in third was because South Korea lucked out by having Australia on the other half of the bracket as them. That's not fair!
+
+    If the AFL took this complaint seriously, they could modify their format to have signature $\bracksig{8;0;0;0} \to \bracksig{2; 1; 0} \to \bracksig{1}.$ (Again, the bracket of signature $\bracksig{1}$ is implied and left out of the figure.)
+    
+    \fig{0.75}{second_place_game}{$\bracksig{8;0;0;0} \to \bracksig{2; 1; 0} \to \bracksig{1}$}
+
+    If the AFL used the format in Figure \ref{fig:second_place_game} in 2015, then South Korea and the UAE would have played each other for second place after all of the other games were completed. In some sense, this is a more equitable format than the one used in reality: we have the same data about the UAE and South Korea and so we ought to let them play for second place instead of having decided almost randomly.
+
+    However, swapping formats doesn't come without costs. For one thing, South Korea and the UAE would've had to play a fourth game: if the AFL had only three days to put on the tournament and teams can play at most one game a day, then the format in Figure \ref{fig:second_place_game} isn't feasible.
+
+    Another concern: what if Iraq had beaten the UAE when they played in game $\bracklabel{D1}$? Then the two teams with a claim to second place would have been South Korea and Iraq, except South Korea already beat Iraq! In this world, South Korea being given second place without having to win a rematch with Iraq seems more equitable than giving Iraq a second chance to win. To address this, one could imagine a format in which game $\bracklabel{E1}$ is played only if it is not rematch, although this would no longer be a multibracket and is a bit out of scope.
+
+    Ultimately, whether including game $\bracklabel{E1}$ is worth it depends on the goal of the format. If there is a huge difference between the prizes for coming in second and third, for example, if the top two finishing teams in the Asian Cup qualified for the World Cup, then $\bracklabel{E1}$ is quite important. If, on the other hand, this is self-contained format played purely for bragging rights, $\bracklabel{E1}$ could probably be left out. In reality, the 2015 AFL Asian Cup qualified only its winner to another tournament (the 2017 Confederations Cup), and gave medals to its top three, and so game $\bracklabel{E1}$, which distinguishes between second and third place, is probably unnecessary.
+
+    Let's imagine, however, that instead of just the champion, the top four teams from the Asian Cup advanced to the Confederations Cup. In this case, the format used in 2015 would be quite poor, as teams finish in the top-four based only on the result of their first-round game: the rest of the games don't even have to be played. (Formally, the simple multibracket $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 0}$ has order three and so doesn't even assign a fourth-place, but it could easily be extended to the following multibracket of order four $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 0} \to \bracksig{1},$ which has the property mentioned above.)
+    
+    A better format for selecting the top four teams might look like this:
+
+    \fig{0.75}{fourth_place_game}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$}
+
+    The simple multibracket in Figure \ref{fig:fourth_place_game} selects a top-four without having the selection be completely determined by the first-round games. In fact, $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ has the attractive property that a team will finish in the top four if and only if it wins two of its first three games.
+
+    A few notes about what we've seen so far. First, note that the fundamental theorem of brackets doesn't apply to multibrackets: the signature of a proper multibracket does not uniquely determine it. For example, here is another proper multibracket with the same signature.
+
+    \fig{0.75}{fourth_place_game_bad}{Alternative $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$}
+
+    We generally prefer the format in Figure \ref{fig:fourth_place_game} to the one in Figure \ref{fig:fourth_place_game_bad} because it ensures that no rematches can occur until game $\bracklabel{F1},$ but both are proper. (Further discussion of rematches in multibrackets can be found in later sections.)
+
+    A second thing of note is that $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ is not the only simple multibracket signature of order four whose primary bracket is $\bracksig{8;0;0;0}.$ Another option might be $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}.$
+
+    \fig{0.75}{fourth_place_game_very_bad}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}$}
+
+    The bracket in Figure \ref{fig:fourth_place_game_very_bad} is proper: both (or technically, all four) of its brackets are proper, and teams that lose in later rounds are given better spots in later brackets than teams that lost earlier. However it still feels unfair in some sense: the losers of $\bracklabel{B1}$ and $\bracklabel{B2}$ lost in the same round and so they ought to be on the same foot. Instead the loser of $\bracklabel{B1}$ must win three games to ensure a top-three finish, while the loser of $\bracklabel{B2}$ comes in fourth even in they lose their next game.
+
+    Luckily, we already have the language to discuss this inequity: tiers. If we think about teams that lose in the same round as being part of the same tier, then the fairness that we are looking for can be expressed by discussing whether the brackets in the multibracket weakly or strongly respect those tiers.
+
+    \begin{definition}{Weakly Respectful Simple Multibrackets}{}
+        We say a simple multibracket is \textit{weakly respectful} if it is proper and each of its bracket weakly respects the tiered seeding that groups teams based on the round they most recently lost in.
+    \end{definition}
+
+    \begin{definition}{Strongly Respectful Simple Multibrackets}{}
+        We say a simple multibracket is \textit{strongly respectful} if it is proper and each of its bracket strongly respects the tiered seeding that groups teams based on the round they most recently lost in.
+    \end{definition}
+
+    Thus, the multibrackets of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ are strongly respectful, while ones of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}$ are not respectful at all. As general rule, we prefer multibrackets that are more respectful over ones that are less so, although there can be other factors that might convince us to use less respectful multibrackets, and under some restrictions there might not exist any respectful multibrackets at all.
+}
