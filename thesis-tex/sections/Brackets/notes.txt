@@ -2,8 +2,7 @@ Tiers:
     Notion of properly respectful seeding
     Is proper shape always right? Is there a better one?
     Fidelity open question
-    Reseeding
-
+    
 Cohort Randomized Seeding:
     Tennis seeding was to avoid rematches
 
@@ -19,6 +18,8 @@ Cohort Randomized Seeding:
     Finally, if something is ordered then 2^n of those brackets with tiers of size 2^n is ordered.
 
     General result about what makes something non-ordered (OQ)
+
+    Reseeding
 
 Simple Multibrackets:
     Also though, is proper seeding always right? optimized for odds to win the top tourney rather than lower ones. This is a multibracket thought
