@@ -13,6 +13,10 @@
         A \textit{simple multibracket} is a sequence of brackets in which the losers of certain games in the upper brackets fall into the lower brackets rather than being eliminated outright, and teams place based on which bracket they won.
     \end{definition}
 
+    \begin{definition}{Primary Bracket}{}
+        The first bracket in a simple multibracket is called the \textit{primary bracket.}
+    \end{definition}
+
     \begin{definition}{Order of a Simple Multibracket}{}
         The \textit{order} of a Simple Multibracket is the number of brackets it contains.
     \end{definition}
@@ -33,21 +37,13 @@
 
     In this alternative, the third-place game is played between the loser of $\bracklabel{A1}$ and $\bracklabel{A3}$ instead of between the two semifinal losers. This is probably a bad idea: the losers of $\bracklabel{B1}$ and $\bracklabel{B2}$ each made it further in the main bracket than the losers of $\bracklabel{A1}$ and $\bracklabel{A3}$ did, and so they ought to be the teams playing the third-place game.
 
-    We can use this intuition to define what it means for a multibracket to be proper.
+    This matches very closely with the notion of a bracket being properly respectful of a tiered seeding:
 
     \begin{definition}{Proper Multibracket}{}
-        A multibracket is \textit{proper} if: 
-        \begin{itemize}
-            \item Each of its brackets are proper.
-            \item It is better to lose in a later round than in an earlier round, where:
-            \begin{itemize}
-                \item A round being ``earlier'' means it is earlier in the alphabet, and ``later'' means later in the alphabet.
-                \item It is better to be slotted into a bracket than not.
-                \item It is better to be slotted into a higher-up bracket than a lower-down bracket.
-                \item It is better to be a higher seed within a given bracket than a lower seed.
-            \end{itemize}
-        \end{itemize}
+        A multibracket is \textit{proper} if its primary bracket is proper and the rest of its brackets are each properly respectful of the tiered seeding where teams are tiered by the round of their most recent loss: letters later in the alphabet being higher tiers.
     \end{definition}
+
+    Since the losers of $\bracklabel{B1}$ and $\bracklabel{B2}$ lost more recently and so are in a higher tier than any of the losers of $\bracklabel{A1}$ through $\bracklabel{A4}$, if the Asian Cup wants to be proper, its third-place game must be played between the losers of $\bracklabel{B1}$ and $\bracklabel{B2}$.
 
     Note that as a multibracket of order two, the Asian Cup is actually not quite proper: remember that a team's final place is based on which bracket it wins. Thus, in order for the Asian Cup to have a top-three, it needs to have order three. Otherwise, the winner of game $\bracklabel{D1}$ would come in second place, leaving the loser of $\bracklabel{C1}$ out in the cold and violating the properness condition.
 
@@ -55,8 +51,7 @@
 
     \fig{0.75}{second_place_default}{2015 AFL Asian Cup, Rigorously}
 
-    However for clarity, when drawing figures, we will omit brackets in a simple multibracket of signature $\bracksig{1}$. Much like the case with traditional brackets, we will almost always focus our study on \textit{proper} multibrackets: unless stated otherwise, it is safe to assume that all multibrackets discussed are proper. Thus in a figure, if the loser of the championship of a bracket doesn't appear in the next bracket, then there is an implied bracket of signature $\bracksig{1}$ between them.
-
+    However for clarity, when drawing figures, we will omit brackets in a simple multibracket of signature $\bracksig{1}$. Much like the case with traditional brackets, we will almost always focus our study on \textit{proper} multibrackets: unless stated otherwise, it is safe to assume that all multibrackets discussed are proper. Thus in a figure, if the loser of the championship of a bracket doesn't appear in the next bracket, there is an implied bracket of signature $\bracksig{1}$ between them.
 
     \begin{definition}{Multibracket Signature}{}
         The \textit{signature} of a multibracket is simply the list of signatures of its brackets.
@@ -94,9 +89,7 @@
 
     \fig{0.75}{fourth_place_game_very_bad}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}$}
 
-    The bracket in Figure \ref{fig:fourth_place_game_very_bad} is proper: both (or technically, all four) of its brackets are proper, and teams that lose in later rounds are given better spots in later brackets than teams that lost earlier. However it still feels unfair in some sense: the losers of $\bracklabel{B1}$ and $\bracklabel{B2}$ lost in the same round and so they ought to be on the same foot. Instead the loser of $\bracklabel{B1}$ must win three games to ensure a top-three finish, while the loser of $\bracklabel{B2}$ comes in fourth even in they lose their next game.
-
-    Luckily, we already have the language to discuss this inequity: tiers. If we think about teams that lose in the same round as being part of the same tier, then the fairness that we are looking for can be expressed by discussing whether the brackets in the multibracket weakly or strongly respect those tiers.
+    The bracket in Figure \ref{fig:fourth_place_game_very_bad} is proper: both (or technically, all four) of its brackets are proper, and teams that lose in later rounds are given better spots in later brackets than teams that lost earlier. However it still feels unfair in some sense: the losers of $\bracklabel{B1}$ and $\bracklabel{B2}$ lost in the same round and so they ought to be on the same foot. Instead the loser of $\bracklabel{B1}$ must win three games to ensure a top-three finish, while the loser of $\bracklabel{B2}$ comes in fourth even in they lose their next game. Once again, we can use the already-established language of tiered seeding to express this.
 
     \begin{definition}{Weakly Respectful Simple Multibrackets}{}
         We say a simple multibracket is \textit{weakly respectful} if it is proper and each of its bracket weakly respects the tiered seeding that groups teams based on the round they most recently lost in.
@@ -106,5 +99,5 @@
         We say a simple multibracket is \textit{strongly respectful} if it is proper and each of its bracket strongly respects the tiered seeding that groups teams based on the round they most recently lost in.
     \end{definition}
 
-    Thus, the multibrackets of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ are strongly respectful, while ones of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}$ are not respectful at all. As general rule, we prefer multibrackets that are more respectful over ones that are less so, although there can be other factors that might convince us to use less respectful multibrackets, and under some restrictions there might not exist any respectful multibrackets at all.
+    Thus, the multibrackets of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ are strongly respectful, while ones of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}$ are not respectful at all. As general rule, we prefer multibrackets that are more respectful over ones that are less so, although there can be other factors that might convince us to use less respectful multibrackets, and under some restrictions no respectful brackets might be available
 }
