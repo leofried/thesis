@@ -1,5 +1,12 @@
+Tournament Formats:
+    Define matchup tables
+
+Proper Brackets:
+    Use teams names rather than city
+
 Ordered Brackets:
     fidelity open question
+    mlb playoffs are bad
 
 Cohort Randomized Seeding:
     Tennis seeding was to avoid rematches
@@ -21,7 +28,7 @@ Reseeding:
     reseeding
 
 Simple Multibrackets:
-    Also though, is proper seeding always right? optimized for odds to win the top tourney rather than lower ones. This is a multibracket thought
+    Also though, is proper seeding always right? optimized for odds to win the top tourney rather than lower ones. This is a multibracket thought? Proposal!
 
     When to call multibrackets simple in Section 2.6
 
@@ -51,4 +58,44 @@ Rematches Section:
     Thoughts about rematches and how to avoid them. 
     Replay round if we have a spare game?
     Can we just cancel the 2nd vs 3rd match if its a rematch
+
+
+
+
+Rest of the book:
+    Introduction
+    What is a Tournament (entire season is a tournament)
+    Formalizing Tournaments
+    Survey of Literature
+    Balanced and Proper / terms? statistical terms??
+
+    Round Robins:
+        --What they are
+        --Tiebreakers
+        --Scheduling
+        --Impure (ramsey theorem, divisions, mlb, soccer ties, etc)
+        --Combinatorial tournaments (zeroth tiebreaker[?])
+
+    Space of Formats
+        --Hierarchy
+        --Det-Symmetric correspondence (3 team puzzle)
+        --Next game based on winner or team (rr-type vs bracket-type)
+        --Multilevel formats (pool play in particular, how to seed it, etc [possibly this its own section?])
+        --Formats are a optimization
+        --Formats are a Bayesian update
+        --What real sports leagues do / recommendations
+
+    Statistics
+        Accurate: Good E[winner_skill]
+        Balanced: P[W[Spot]] = 1/n
+        Ordered: i < j -> P[W[t_i]] \geq P[W[t_j]]
+        Invariant: Stable under rearranging other teams
+        Rewarding: Probability best preforming team wins
+        Exciting: Prob championship game, 1v2, etc.
+
+        Appendix/Examples
+
+Style:
+    pick notation letters/brackets of sigs/tiers/tiered-sigs
+    colon before figures?
 

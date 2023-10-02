@@ -1,20 +1,11 @@
 \sub{
-    While the bracket is a very powerful and important tournament design, it has two intimately related shortcomings. First, brackets lead teams to play wildely different numbers of games: in the bracket $\bracksig{8; 0; 0; 0}$, for example, two teams will play three game, two teams will play two, and four teams will play only one.
-
-    And second, brackets tend to do a very poor job of ranking teams beyond just selecting a winner. Again considering the bracket $\bracksig{8; 0; 0; 0}$, the first-place finish is obviously the winner of the bracket, and we can easily grant the loser of the championship game second place, but the two semifinals losers both might have a claim to the third place, and sorting through the fifth- through eight-place finishes is even trickier.
-    
-    These problems are reflections of each other: the reason that ranking the lower-placing teams is so hard is because they play so few games. It's easier to differentiate between first and second because both teams have played three games, but differentiating between the four teams that have played only a single game is nigh impossible.
-
-    In some cases, these problems do not cause concern: perhaps we are only interested in crowning a champion and don't care about exactly who came in third, or maybe this bracket is being played at the conclusion of a long season and so teams playing variable numbers of games is not a big deal. But the interconnected nature of the two problems lets us solve them together, leveraging the extra games that lower-ranked teams have left in order to rank them.
-
-    We consider class of formats called \textit{simple multibrackets}.
 
     \begin{definition}{Simple Multibracket}{} 
-        A \textit{simple multibracket} is a sequence of brackets in which the losers of certain games in the upper brackets fall into the lower brackets rather than being eliminated outright, and teams place based on which bracket they won.
+        A \textit{simple multibracket} is a sequence of brackets in which all teams begin in the first bracket, and then the losers of certain games in the upper brackets fall into the lower brackets rather than being eliminated outright, and teams place based on which bracket they won.
     \end{definition}
 
     \begin{definition}{Primary Bracket}{}
-        The first bracket in a simple multibracket is called the \textit{primary bracket.}
+        The first bracket in a multibracket is called the \textit{primary bracket.}
     \end{definition}
 
     \begin{definition}{Order of a Simple Multibracket}{}

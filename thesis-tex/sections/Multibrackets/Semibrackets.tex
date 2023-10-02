@@ -1,0 +1,74 @@
+\sub {
+
+    One common application of multibrackets is when an $n$-team tournament is needed to select the top $m$ teams to move on to the next stage of the competitions (perhaps this is the regional tournament, and the top $m$ teams from this region qualify for nationals.) For a tournament such as this, a natural option would be an $m$-team multibracket of order $n$. This is exactly what the USA Ultimate Manual of Championship Series Tournament Formats \cite{ultimate} calls for in many circumstances. One such example is the following eight-team order four simple multibracket:
+
+    \fig{0.8}{ultimate_format}{$\bracksig{8;0;0;0} \to \bracksig{4;2;0;1;0} \to \bracksig{1} \to \bracksig{1}$}
+
+    One observation about this format is that a few of the games played seem unnecessary. In particular, games $\bracklabel{F1}$ and $\bracklabel{G1}$ are downright silly: after round $\bracklabel{E}$ the four teams that advance to nationals are already set: the winner and loser of $\bracklabel{C1}$, and the winners of the two round $\bracklabel{E}$ games. Perhaps more subtly, game $\bracklabel{C1}$ is also unnecessary: both the winner and loser will advance. A more efficient alternative might look like so.
+
+    \fig{0.8}{ultimate_efficient}{A More Efficient Alternative}
+
+    The format in Figure \ref{fig:ultimate_efficient} isn't an example of anything we've defined thus far. It's almost a simple multibracket but not quite: for one thing, some teams start in the ``second bracket.'' To formally describe what is going in Figure \ref{fig:ultimate_efficient}, we introduce the notion of semibracket.
+
+    \begin{definition}{Semibracket}{}
+        A \textit{semibracket} is a tournament format in which:
+        \begin{itemize}
+            \item Teams don't play any games after their first loss,
+            \item The matchups between teams that have not yet lost are determined based on the ordering of the teams in $\T$ in advance of the outcomes of any games.
+        \end{itemize}
+        All teams that finish a semibracket with no losses are declared co-champions.
+    \end{definition}
+
+    \begin{definition}{Order of a Semibracket}{}
+        The \textit{order} of a semibracket is the number of co-champions it produces.
+    \end{definition}
+
+    This is the same definition of a bracket but without the requirement that games be played until only one team is without losses. Note that semibrackets of order one are just traditional brackets.
+    
+    Many of the important properties of traditional brackets are true of semibrackets as well, up to and including the fundamental theorem. We state the key ones here without proof for brevity, though the proofs are analogous to those presented for traditional brackets.
+
+    \begin{definition}{Semibracket Signature}{}
+        The \textit{signature} $\bracksig{a_0; ...; a_r}$ of an $r$-team semibracket $\A$ is a list of natural numbers, such that $a_i$ is the number of teams with $i$ byes.
+    \end{definition}
+
+    \begin{theorem}{}{}
+        Let $\A = \bracksig{a_0; ...; a_r}$ be a list of natural numbers. Then $\A$ is a semibracket signature of order $z$ if and only if $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = z.$$
+    \end{theorem}
+
+    Note that the semibracket signature summation sums to the order of the semibracket. As traditional brackets are just semibrackets of order one, this is consistent with Theorem \ref{th:signature_sum}.
+
+    \begin{definition}{Proper Semibracket}{}
+        A \textit{proper semibracket} is a semibracket that has been properly seeded.
+    \end{definition}
+
+    \begin{theorem}{}{}
+        There is exactly one proper semibracket with each semibracket signature.
+    \end{theorem}
+
+    We can combine semibrackets into a larger format in the same way that we combined traditional brackets into simple multibrackets.
+
+    \begin{definition}{Multibracket}{} 
+        A \textit{multibracket} is a sequence of semibrackets in which the losers of certain games in the upper semibrackets fall into the lower semibrackets rather than being eliminated outright, and teams place based on which semibracket they won.
+    \end{definition}
+
+    Thus, saying that a multibracket is \textit{simple} means that all of its semibrackets are of order one, and that all teams start in the primary bracket: in generalized multibrackets, some teams (in particular lower seeded teams) might start in lower Brackets.
+    
+    An example of of a non-simple multibracket that took advantage of both properties is the 2021 NBA Western Conference Play-in Tournament, which was a ten-team multibracket with order eight and following signature:
+    $\bracksig{6} \to \bracksig{2;0} \to \bracksig{2;1;0}.$ The play-in tournament was used to whittle the top ten teams in the conference down to eight teams who would qualify for the playoffs.
+
+    \fig{0.7}{nba_playin}{2021 NBA Western Conference Play-in}
+
+    The six top-seeds get slotted into the primary semibracket where they don't have to play any games in order to advance to playoffs. Seeds 7 and 8 each have to win one of their next two games to qualify, while seeds 9 and 10 have to win both of their next two.
+
+    
+
+
+
+
+
+    
+    %Under this frame, we can see that the format in Figure \ref{fig:ultimate_efficient} is composed of two semibrackets.
+
+
+
+}

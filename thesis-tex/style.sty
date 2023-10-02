@@ -22,17 +22,23 @@
         \end{document}
     }
 
+    \newcommand{\secti}[1]{
+        \def\sectname{#1}
+        \section{#1}
+    }
+
     \newcommand{\sect}[1]{
         \def\sectname{#1}
         \def\subsectname{intro}
         \section{#1}
         \subfile{sections/#1/intro}
+        \newpage
     }
     \newcommand{\subsect}[1]{
-        \newpage
         \def\subsectname{#1}
         \subsection{#1}
         \subfile{sections/\sectname/#1}
+        \newpage
     }
 
     \newtcbtheorem[number within=subsection]{theorem}{Theorem}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
