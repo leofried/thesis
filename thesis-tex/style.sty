@@ -12,8 +12,16 @@
     noline]{algorithm}
     \usepackage{algpseudocode}
     \usepackage[nottoc,numbib]{tocbibind}
+    \usepackage{tocloft}
 
     \hbadness=10000
+
+
+    \newcommand{\toc}{
+        \tableofcontents
+        \addtocontents{toc}{\cftpagenumbersoff{sec}}
+        \newpage\
+    }
 
     \newcommand{\sub}[1]{
         \documentclass[../../main.tex]{subfiles}
