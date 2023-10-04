@@ -78,11 +78,12 @@ MULTIBRACKETS
 
 
 Rest of the book:
-    Introduction
-    What is a Tournament (entire season is a tournament)
-    Formalizing Tournaments
-    Survey of Literature
-    Balanced and Proper / terms? statistical terms??
+    Introduction:
+        What is a Tournament (entire season is a tournament)
+        Formalizing Tournaments
+        Survey of Literature
+        Balanced and Proper / terms? statistical terms??
+        gameplay functions being: symmetric, consistent, SST
 
     Round Robins:
         --What they are
@@ -98,7 +99,7 @@ Rest of the book:
         --Multilevel formats (pool play in particular, how to seed it, etc [possibly this its own section?])
         --Formats are a optimization
         --Formats are a Bayesian update
-        --What real sports leagues do / recommendations
+        --What real sports leagues do / recommendations {mlb, drafted opponents}
 
     Statistics
         Accurate: Good E[winner_skill]
@@ -113,4 +114,9 @@ Rest of the book:
 Style:
     pick notation letters/brackets of sigs/tiers/tiered-sigs
     colon before figures?
+    section header pages
+    once I finish brackets I should email everyone
+    shorthand for \P[t_i wins \A] and \P[t_i beats t_j] {P() vs P[]} -> done by hand in reseeding
+    standardize induction on $r$ language
+    successor signature?
 

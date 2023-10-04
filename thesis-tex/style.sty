@@ -33,12 +33,13 @@
     \newcommand{\secti}[1]{
         \def\sectname{#1}
         \section{#1}
+        \newpage
     }
 
     \newcommand{\sect}[1]{
         \def\sectname{#1}
-        \def\subsectname{intro}
         \section{#1}
+        \def\subsectname{intro}
         \subfile{sections/#1/intro}
         \newpage
     }
@@ -115,10 +116,15 @@
     \renewcommand{\D}{\mathcal{D}}
     \renewcommand{\E}{\mathcal{E}}
     \newcommand{\F}{\mathcal{F}}
+    \renewcommand{\G}[2]{#1 \textrm{ beats } #2}
     \newcommand{\N}{\mathbb{N}}
     \renewcommand{\O}{\mathcal{O}}
-    \renewcommand{\P}{\mathbb{P}}
+    \renewcommand{\P}[1]{\mathbb{P}[#1]}
     \newcommand{\T}{\mathcal{T}}
+    \renewcommand{\W}[2]{#1 \textrm{ wins } #2}
+    \newcommand{\Y}{\mathcal{Y}}
+
+    \newcommand{\WW}{\mathbb{W}}
 
     \newcommand{\true}{\mathbf{true}}
     \newcommand{\false}{\mathbf{false}}

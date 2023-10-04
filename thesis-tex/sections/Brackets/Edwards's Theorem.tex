@@ -6,40 +6,40 @@ We begin with a theorem that allows us to combine two smaller ordered brackets t
 
 \fig{.95}{combine}{The Setup of Theorem \ref{th:order_bracket_sum}}
 
-\theo{}{If $\A$ and $\B$ are $n$- and $m$-team ordered brackets, respectively, we can construct an $(n + m - 1)$-team orerded bracket by replacing the lowest seed in $\B$ with the entire bracket $\A$ (and lowering the seed of each team in $\A$ by $m-1$).}{
+\theo{}{If $\A$ and $\B$ are $n$- and $m$-team ordered brackets, respectively, we can construct an $(n + m - 1)$-team ordered bracket by replacing the lowest seed in $\B$ with the entire bracket $\A$ (and lowering the seed of each team in $\A$ by $m-1$).}{
 Let $\C$ be the bracket formed by merging $\A$ and $\B.$ We divide proving that $\C$ is ordered into proving three substatements:
 \begin{enumerate}
-    \item For $i < j < m,$ $\P(t_i \textrm{ wins }\C) \geq \P(t_j \textrm{ wins }\C)$
-    \item $\P(t_{m-1} \textrm{ wins } \C) \geq \P(t_m \textrm{ wins } \C)$
-    \item For $m \leq i < j,$ $\P(t_i \textrm{ wins } \C) \geq \P(t_j \textrm{ wins } \C)$
+    \item For $i < j < m,$ $\P{\W{t_i}{\C}} \geq \P{\W{t_j}{\C}}$
+    \item $\P{\W{t_{m-1}}{\C}} \geq \P{\W{t_m}{\C}}$
+    \item For $m \leq i < j,$ $\P{\W{t_i}{\C}} \geq \P{\W{t_j}{\C}}$
 \end{enumerate}
 Together, these show that $\C$ is ordered.\\
 
 We begin with the first sub-statement. Let $i < j < m.$ Then,
 \begin{align*}
-    \P(t_i \textrm{ wins }\C) &= \P(t_i \textrm{ wins }\B)\\
-    &= \sum_{k=n}^{n+m-1} \P(t_i \textrm{ wins }\B \;\mid\; t_k \textrm{ wins } \A)\cdot \P(t_k \textrm{ wins } \A)\\
-    &\geq \sum_{k=n}^{n+m-1} \P(t_j \textrm{ wins }\B \;\mid\; t_k \textrm{ wins } \A)\cdot \P(t_k \textrm{ wins } \A)\\
-    &=\P(t_j \textrm{ wins }\B)\\
-    &=\P(t_j \textrm{ wins }\C)
+    \P{\W{t_i}{\C}} &= \P{\W{t_i}{\B}}\\
+    &= \sum_{k=n}^{n+m-1} \P{\W{t_i}{\B} \;\mid\; \W{t_k}{\A}}\cdot \P{\W{t_k}{\A}}\\
+    &\geq \sum_{k=n}^{n+m-1} \P{\W{t_j}{\B} \;\mid\; \W{t_k}{\A}}\cdot \P{\W{t_k}{\A}}\\
+    &=\P{\W{t_j}{\B}}\\
+    &=\P{\W{t_j}{\C}}
 \end{align*}
 The first and last equalities follow from the structure of $\C,$ and the inequality follows from $\B$ being ordered.\\
 
 Now the second sub-statement.
 \begin{align*}
-    \P(t_{m-1} \textrm{ wins }\C) &= \P(t_{m-1} \textrm{ wins }\B)\\
-    &\geq \P(t_{m} \textrm{ wins }\B \;\mid\; t_{m} \textrm{ wins }\A)\\
-    &\geq \P(t_{m} \textrm{ wins }\B \;\mid\; t_{m} \textrm{ wins }\A) \cdot \P(t_{m} \textrm{ wins }\A)\\
-    &= \P(t_{m} \textrm{ wins }\C)
+    \P{\W{t_{m-1}}{\C}} &= \P{\W{t_{m-1}}{\B}}\\
+    &\geq \P{\W{t_m}{\B} \;\mid\; \W{t_m}{\A}}\\
+    &\geq \P{\W{t_m}{\B} \;\mid\; \W{t_m}{\A}} \cdot \P{\W{t_m}{\A}}\\
+    &= \P{\W{t_m}{\C}}
 \end{align*}
 The equalities follow from the structure of $\C,$ and the first inequality follows from $\B$ being ordered.\\
 
 Finally we show the third sub-statement. Let $m \leq i < j.$ Then,
 \begin{align*}
-    \P(t_i \textrm{ wins }\C) &= \P(t_i \textrm{ wins }\B \;\mid\; t_i \textrm{ wins } \A)\cdot \P(t_i \textrm{ wins } \A)\\
-    &\geq \P(t_i \textrm{ wins }\B \;\mid\; t_i \textrm{ wins } \A)\cdot \P(t_j \textrm{ wins } \A)\\
-    &\geq \P(t_j \textrm{ wins }\B \;\mid\; t_j \textrm{ wins } \A)\cdot \P(t_j \textrm{ wins } \A)\\
-    &= \P(t_j \textrm{ wins }\C)
+    \P{\W{t_i}{\C}} &= \P{\W{t_i}{\B} \;\mid\; \W{t_i}{\A}}\cdot \P{\W{t_i}{\A}}\\
+    &\geq \P{\W{t_i}{\B} \;\mid\; \W{t_i}{\A}}\cdot \P{\W{t_j}{\A}}\\
+    &\geq \P{\W{t_j}{\B} \;\mid\; \W{t_j}{\A}}\cdot \P{\W{t_j}{\A}}\\
+    &= \P{\W{t_j}{\C}}
 \end{align*}
 The equalities follow from the structure of $\C$, the first inequality from $\A$ being ordered, and the second inequality from the teams being SST.\\
 

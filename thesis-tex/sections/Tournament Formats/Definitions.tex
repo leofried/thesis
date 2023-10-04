@@ -3,8 +3,8 @@
 \begin{definition}{Gameplay Function}{}
     A \textit{gameplay function} $g$ on a list of teams $\T$ is a nondeterministic function $g : \T \times \T \to \T$ with the following properties:
         \begin{itemize}
-            \item $\P[g(t_1, t_2) = t_1] + \P[g(t_1, t_2) = t_2] = 1.$
-            \item $\P[g(t_1, t_2) = t_1] = \P[g(t_2, t_1) = t_1].$
+            \item $\P{g(t_1, t_2) = t_1} + \P{g(t_1, t_2) = t_2} = 1.$
+            \item $\P{g(t_1, t_2) = t_1} = \P{g(t_2, t_1) = t_1}.$
         \end{itemize}
 \end{definition}
 
@@ -18,10 +18,20 @@ A gameplay function represents a process in which two teams compete in a game, w
     If a tournament format queries $g$ on input $(t_1, t_2)$ we say that $t_1$ and $t_2$ \textit{played a game}. We  say that the team that got outputted by $g$ \textit{won}, and the team that did not \textit{lost}.
 \end{definition}
 
-Finally, we can use a gameplay function $g$ to construct a \textit{matchup table}.
+We also introduce some shorthand to help make mathematical notation more concise.
+
+\begin{definition}{$\W{\A}{t}{\T}$}{}
+    $\W{\A}{t}{\T}$ is the probability that team $t \in \T$ wins tournament format $\A$ when it is run on the list of teams $\T$.
+\end{definition}
+
+% \begin{definition}{$\G{t_1}{t_2}$}{}s
+%     $\G{t_1}{t_2}$ is the random variable that is true when team $t_1$ beats team $t_2$. So $\P{\G{t_1}{t_2}}$ is the probability that team $t_1$ beats team $t_2$ in a game.
+% \end{definition}
+
+%Finally, we can use a gameplay function $g$ to construct a \textit{matchup table}.
 
 % \begin{definition}{}{}
-%     A \textit{matchup table} implied by a gameplay function $g$ on a list of teams $\T$ of length $n$ is a $n$-by-$n$ matrix $A$ such that $A_{ij} = \P[t_1 \textrm{ beats } t_2].$
+%     A \textit{matchup table} implied by a gameplay function $g$ on a list of teams $\T$ of length $n$ is a $n$-by-$n$ matrix $A$ such that $A_{ij} = \P{t_1 \textrm{ beats [[except not betas]] } t_2}.$
 % \end{definition}
 
 % We use a gameplay function rather than a matchup table in the definition of a tournament format to indicate that when designing a tournament format, one cannot simply look at the matchup-table itself in order to decide which teams are best (though this problem is not trivial either) and must instead make calls to the gameplay function (that is play games) in order to gather information about the teams. That said, matchup-tables will sometimes be useful in our \textit{analysis} of tournament formats. 

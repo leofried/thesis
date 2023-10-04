@@ -21,7 +21,7 @@
     The tiered seeding $\bracktier{2,2,2,2}$ interacts very nicely with the proper bracket $\bracksig{8;0;0;0}$: there is no advantage for a team being assigned a particular seed within their tier.
 
     \begin{definition}{Strongly Respecful}{}
-        A bracket \textit{strongly respects} a tiered seeding if, as long as teams' win probabilities are defined only by what tier they are in (that is, for all $t_i, t_j$ that share a tier and $t_k, t_\ell$ that share a tier, $\P(t_i \textrm{ beats } t_k) = \P(t_j \textrm{ beats } t_\ell)$), then teams in the same tier have the same probability of winning the tournament.
+        A bracket \textit{strongly respects} a tiered seeding if, as long as teams' win probabilities are defined only by what tier they are in (that is, for all $t_i, t_j$ that share a tier and $t_k, t_\ell$ that share a tier, $\P{\G{t_i}{t_k}} = \P{\G{t_j}{t_\ell}}$), then teams in the same tier have the same probability of winning the tournament.
     \end{definition}
 
     Sometimes, it is not possible to generate a bracket that strongly respects a tiered seeding (for example, the tiered seeding $\bracktier{3, 1}$), so we also introduce the concept of a bracket weakly respecting a tiered seeding.
