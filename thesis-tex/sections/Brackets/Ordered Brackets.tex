@@ -27,17 +27,17 @@ This is not a great state of affairs: the whole point of seeding is confer an ad
 To fix this, we need a stronger notion of what makes a bracket effective than properness. The issue with proper seedings is the false assumption that higher-seeded teams will always beat lower-seeded teams. A more nuanced assumption, initially proposed by H.A. David \cite{stochastic}, might look like this:
 
 \begin{definition}{Strongly Stochastically Transitive}{}
-    A list of teams is \textit{strongly stochastically transitive} if for each $i, j, k$ such that $j < k$, $$\P{\G{t_i}{t_j}} \leq \P{\G{t_i}{t_k}}.$$
+    A list of teams is \textit{strongly stochastically transitive} if for each $i, j, k$ such that $j < k$, $$\G{t_i}{t_j} \leq \G{t_i}{t_k}.$$
 \end{definition}
 
 A list of teams being strongly stochastically transitive (or SST) captures the intuition that each team ought to do better against lower-seeded teams than against higher-seeded teams. A few quick implications of this definition are:
 
 \begin{corollary}{}{}
-    If a list of teams is SST, then for each $i < j$, $\P{\G{t_i}{t_j}} \geq 0.5.$
+    If a list of teams is SST, then for each $i < j$, $\G{t_i}{t_j} \geq 0.5.$
 \end{corollary}
 
 \begin{corollary}{}{}
-    If a list of teams is SST, then for each $i, j, k, \ell$ such that $i < j$ and $k < \ell$, $$\P{\G{t_i}{t_\ell}} \geq \P{\G{t_j}{t_k}}.$$
+    If a list of teams is SST, then for each $i, j, k, \ell$ such that $i < j$ and $k < \ell$, $$\G{t_i}{t_\ell} \geq \G{t_j}{t_k}.$$
 \end{corollary}
 
 Note that not every set of teams can be seeded to be SST. Consider, for example, the game of rock-paper-scissors. Rock beats paper which beats scissors which beats rock, so no ordering of these ``teams'' will be SST. For our purposes, however, SST will work well enough.
@@ -76,7 +76,7 @@ Next we look at the unique two-team bracket.
 \fig{1}{two_team}{The Two-Team Bracket $\bracksig{2; 0}$}
 \theo{}{The two-team bracket $\bracksig{2; 0}$ is ordered.}{Let $\A = \bracksig{2; 0}.$ Then,
 \begin{align*}
-   \W{\A}{t_1}{\T} = \P{\G{t_1}{t_2}} \geq 0.5 \geq \P{\G{t_2}{t_1}} = \W{\A}{t_2}{\T}
+   \W{\A}{t_1}{\T} = \G{t_1}{t_2} \geq 0.5 \geq \G{t_2}{t_1} = \W{\A}{t_2}{\T}
 \end{align*}    
 so $\A$ is ordered.
 }{}
@@ -84,7 +84,7 @@ so $\A$ is ordered.
 And thirdly, we show that the balanced four-team bracket is ordered, first proved by Horen and Riezman \cite{four_eight_ordered}.
 
 \fig{0.63}{four_team}{The Four-Team Bracket $\bracksig{4; 0; 0}$}
-\theo{}{The four-team bracket $\bracksig{4; 0; 0}$ is ordered.}{Let $\A = \bracksig{4; 0; 0}$ and let $p_{ij} = \P{\G{t_i}{t_j}}.$ Then,
+\theo{}{The four-team bracket $\bracksig{4; 0; 0}$ is ordered.}{Let $\A = \bracksig{4; 0; 0}$ and let $p_{ij} = \G{t_i}{t_j}.$ Then,
 \begin{align*}
     \W{\A}{t_1}{\T} &= p_{14} \cdot (p_{23}p_{12} + p_{32} p_{13})\\
     &= p_{14}p_{23}p_{12} + p_{14}p_{32} p_{13}\\
