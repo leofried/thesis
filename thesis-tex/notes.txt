@@ -4,6 +4,7 @@ TOURNAMENT FORMATS:
 BRACKETS
     Proper Brackets:
         Use teams names rather than city
+        should i-seed definition be in tournament formats/definitions
 
     Ordered Brackets:
         fidelity open question

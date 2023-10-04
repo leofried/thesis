@@ -33,25 +33,39 @@ Reseeding is powerful technique. For one, the fundamental theorem still applies 
 
 And, more excitingly, Edward's theorem does \textit{not} apply (a fact first shown by Hwang \cite{reseeding}).
 
-\begin{definition}{$\WW$}{}
-    If $\A$ is a reseeded bracket, and $\T$ is a set of teams including $t$, then $\WW_\A(t, \T)$ is the probability that $t$ wins the tournament $\A$ when played by $\T.$
-\end{definition}
-
 \lemm{}{
-    If $\A = \bracksig{a_0; ...; a_r}$ is a proper reseeded bracket on $n$ teams, $\T + \{x, y\}$ is an SST list of $n + 1$ teams, and $x$ and $y$ are one seed apart in $\T + \{x, y\}$, then $\WW_{\A}(x, \T + \{x\}) \geq \WW_\A(y, \T + \{y\}).$
+    If $\A = \bracksig{a_0; ...; a_r}$ is a proper reseeded bracket on $n$ teams, $\T + \{x, y\}$ is an SST list of $n + 1$ teams, and $x$ and $y$ are one seed apart in $\T + \{x, y\}$, then $\W{\A}{x}{\T + \{x\}} \geq \W{\A}{y}{\T + \{y\}}.$
 }{
     We proceed by induction on $r$. If $r = 0$, then $\A = \bracksig{1}$ and so the theorem is immediately true. For any other $r$, if $x$ would receive a first-round bye when $\A$ is run on $\T + \{x\}$ (and thus as would $y$ when $\A$ is run on $\T + \{y\}),$ then the statement follows immediately by induction. \\
     
-    Otherwise, let $\B = \bracksig{a_0 / 2 + a_1; a_2; ...; a_r},$ let $z$ be the first-round opponent of $x$, let $\Y$ be any subset of $\T - \{z\}$ of size $n - a_0/2 - 1$, and let $P(\Y)$ be the probability that all teams in $\Y$ advance to the second round when $\A$ is run on $\T + \{x\}$ (or $\T + \{y\}$). Then,
+    Otherwise, let $z$ be the first-round opponent of $x$, let $\S$ be any subset of $\T - \{z\}$ of size $n - a_0/2 - 1$, and let $P(\S)$ be the probability that all the teams in $\S$ advance to the second round when $\A$ is run on $\T + \{x\}$ (or $\T + \{y\}$). Then,
     \begin{align*}
-        &\WW_\A(x, \T + \{x\})\\
-        =\; &\P{\G{x}{z}} \cdot \sum_\Y \WW_\B(x, \Y + \{x\}) \cdot P(\Y)\\
-        \geq\; &\P{\G{x}{z}} \cdot \sum_\Y \WW_\B(y, \Y + \{y\}) \cdot P(\Y) & \textrm {by induction}\\
-        \geq\; &\P{\G{y}{z}} \cdot \sum_\Y \WW_\B(y, \Y + \{y\}) \cdot P(\Y) & \textrm {bc $\T + \{x, y\}$ is SST}\\
-        =\; &\WW_\A(y, \T + \{y\})
+        &\W{\A}{x}{\T + \{x\}}\\
+        =\; &\P{\G{x}{z}} \cdot \sum_\S \W{\SS(\A)}{x}{\S + \{x\}} \cdot P(\S)\\
+        \geq\; &\P{\G{x}{z}} \cdot \sum_\S \W{\SS(\A)}{y}{\S + \{y\}} \cdot P(\S) & \textrm {by induction}\\
+        \geq\; &\P{\G{y}{z}} \cdot \sum_\S \W{\SS(\A)}{y}{\S + \{y\}} \cdot P(\S) & \textrm {b/c $\T + \{x, y\}$ is SST}\\
+        =\; &\W{\A}{y}{\T + \{y\}}
     \end{align*}
+
+    Thus, by induction, $\W{\A}{x}{\T + \{x\}} \geq \W{\A}{y}{\T + \{y\}}.$
 }{}
 
+\lemm{}{
+    If $\A = \bracksig{a_0; ...; a_r}$ is a proper reseeded bracket on $n$ teams, $\T + \{x, y\}$ is an SST list of $n + 1$ teams, $x$ and $y$ are one seed apart in $\T + \{x, y\}$, and $z \in \T$, then $\W{\A}{x}{\T + \{x\}} \geq \W{\A}{y}{\T + \{y\}}.$
+}{
+    We proceed by induction on $r$. If $r = 0$, then $\A = \bracksig{1}$ and so the theorem is immediately true. For any other $r$, if $x$ would receive a first-round bye when $\A$ is run on $\T + \{x\}$ (and thus as would $y$ when $\A$ is run on $\T + \{y\}),$ then the statement follows immediately by induction. \\
+    
+    Otherwise, let $z$ be the first-round opponent of $x$, let $\S$ be any subset of $\T - \{z\}$ of size $n - a_0/2 - 1$, and let $P(\S)$ be the probability that all the teams in $\S$ advance to the second round when $\A$ is run on $\T + \{x\}$ (or $\T + \{y\}$). Then,
+    \begin{align*}
+        &\W{\A}{x}{\T + \{x\}}\\
+        =\; &\P{\G{x}{z}} \cdot \sum_\S \W{\SS(\A)}{x}{\S + \{x\}} \cdot P(\S)\\
+        \geq\; &\P{\G{x}{z}} \cdot \sum_\S \W{\SS(\A)}{y}{\S + \{y\}} \cdot P(\S) & \textrm {by induction}\\
+        \geq\; &\P{\G{y}{z}} \cdot \sum_\S \W{\SS(\A)}{y}{\S + \{y\}} \cdot P(\S) & \textrm {b/c $\T + \{x, y\}$ is SST}\\
+        =\; &\W{\A}{y}{\T + \{y\}}
+    \end{align*}
+
+    Thus, by induction, $\W{\A}{x}{\T + \{x\}} \geq \W{\A}{y}{\T + \{y\}}.$
+}{}
 
 
 

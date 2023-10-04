@@ -55,6 +55,12 @@ Bracket signatures have one more important property.
         Now, consider the signature $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}.$ By induction, there exists a bracket with signature $\B$. But if we take that bracket and replace $a_0/2$ of the teams with no byes with a game whose winner gets placed on that line, we get a new bracket with signature $\A.$
 }{signature_sum}
 
+The operation of transforming a bracket signature $\A = \bracksig{a_0; ...; a_r}$ into a bracket signature with one fewer round $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}$ that we used at the end of the proof of Theorem \ref{th:signature_sum} will become somewhat frequent as we often induct on the number of rounds in a bracket, so it has a name:
+
+\begin{definition}{The Successor Signature}{}
+    If $\A = \bracksig{a_0; ...; a_r},$ then the successor signature $$\SS(\A) = \bracksig{a_1 + a_0/2; a_2; ...; a_r}.$$ (The successor signature of zero-round signatures is undefined.)
+\end{definition}
+
 In the next few sections, we will use the language and properties of bracket signatures to describe the brackets that we work with. For now though, let's return to the 2023 College Football Playoff. The bracket used in the 2023 CFP has a special property that not all brackets have: it is \textit{balanced}.
 
 \begin{definition}{Balanced Bracket}{}

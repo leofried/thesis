@@ -83,9 +83,9 @@ But not every shape admits even this one proper seeding. Consider the following 
 This shape admits no proper seedings. Lemma \ref{th:proper_condition_one} requires that the two teams getting byes be the 1- and 2-seed, but this violates Lemma \ref{th:proper_condition_two} which requires that in the second round the 1- and 2-seeds do not play each other. So how can we think about which shapes admit proper seedings?
 
 \theo{The Fundamental Theorem of Brackets}{There is exactly one proper bracket with each bracket signature.}{
-    Let $\A = \bracksig{a_0; ...; a_r}$ be an $n$-team bracket signature. We proceed by induction on $r.$ If $r = 0$, then the only possible bracket signature is $\bracksig{1}$, and it points to the unique one-team bracket, which is indeed proper.\\
+    Let $\A$ be an $r$-round bracket signature. We proceed by induction on $r.$ If $r = 0$, then the only possible bracket signature is $\bracksig{1}$, and it points to the unique one-team bracket, which is indeed proper.\\
 
-    For any other $r$, the first-round matchups of a proper bracket with signature $\A$ are defined by Theorem \ref{th:proper_condition_two}. Then if those matchups go chalk, we are left with a proper bracket with signature $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}$, which induction tells us exists admits exactly one proper bracket.\\
+    For any other $r$, the first-round matchups of a proper bracket with signature $\A$ are defined by Theorem \ref{th:proper_condition_two}. Then if those matchups go chalk, we are left with a proper bracket of signature $\SS(\A)$, which induction tells us exists admits exactly one proper bracket.\\
 
     Thus both the first-round matchups and the rest of the bracket are determined, and by combining them we get a proper bracket with signature $\A$, so there is exactly one proper bracket with signature $\A$.
 }{signature_proper}

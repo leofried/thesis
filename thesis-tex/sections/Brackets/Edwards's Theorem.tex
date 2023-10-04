@@ -7,39 +7,37 @@ We begin with a theorem that allows us to combine two smaller ordered brackets t
 \fig{.95}{combine}{The Setup of Theorem \ref{th:order_bracket_sum}}
 
 \theo{}{If $\A$ and $\B$ are $n$- and $m$-team ordered brackets, respectively, we can construct an $(n + m - 1)$-team ordered bracket by replacing the lowest seed in $\B$ with the entire bracket $\A$ (and lowering the seed of each team in $\A$ by $m-1$).}{
-Let $\C$ be the bracket formed by merging $\A$ and $\B.$ We divide proving that $\C$ is ordered into proving three substatements:
+Let $\C$ be the bracket formed by merging $\A$ and $\B.$ Let $\T$ be an SST list of teams $n + m - 1$ teams, and let $\R, \S \subset \T$ be the lowest $n$ and the highest $m-1$ seeds of $\T$ respectively. We divide proving that $\C$ is ordered into proving three substatements:
 \begin{enumerate}
-    \item For $i < j < m,$ $\P{\W{t_i}{\C}} \geq \P{\W{t_j}{\C}}$
-    \item $\P{\W{t_{m-1}}{\C}} \geq \P{\W{t_m}{\C}}$
-    \item For $m \leq i < j,$ $\P{\W{t_i}{\C}} \geq \P{\W{t_j}{\C}}$
+    \item For $i < j < m,$ $\W{\C}{t_i}{\T} \geq \W{\C}{t_j}{\T}$
+    \item $\W{\C}{t_{m-1}}{\T} \geq \W{\C}{t_m}{\T}$
+    \item For $m \leq i < j,$ $\W{\C}{t_i}{\T} \geq \W{\C}{t_j}{\T}$
 \end{enumerate}
 Together, these show that $\C$ is ordered.\\
 
 We begin with the first sub-statement. Let $i < j < m.$ Then,
 \begin{align*}
-    \P{\W{t_i}{\C}} &= \P{\W{t_i}{\B}}\\
-    &= \sum_{k=n}^{n+m-1} \P{\W{t_i}{\B} \;\mid\; \W{t_k}{\A}}\cdot \P{\W{t_k}{\A}}\\
-    &\geq \sum_{k=n}^{n+m-1} \P{\W{t_j}{\B} \;\mid\; \W{t_k}{\A}}\cdot \P{\W{t_k}{\A}}\\
-    &=\P{\W{t_j}{\B}}\\
-    &=\P{\W{t_j}{\C}}
+    \W{\C}{t_i}{\T} &= \sum_{k=m}^{n+m-1} \W{\A}{t_k}{\R} \cdot \W{\B}{t_i}{\S \cup \{t_k\}}\\
+    &\geq \sum_{k=m}^{n+m-1} \W{\A}{t_k}{\R} \cdot \W{\B}{t_j}{\S \cup \{t_k\}}\\
+    &=\W{\C}{t_j}{\T}
 \end{align*}
 The first and last equalities follow from the structure of $\C,$ and the inequality follows from $\B$ being ordered.\\
 
 Now the second sub-statement.
 \begin{align*}
-    \P{\W{t_{m-1}}{\C}} &= \P{\W{t_{m-1}}{\B}}\\
-    &\geq \P{\W{t_m}{\B} \;\mid\; \W{t_m}{\A}}\\
-    &\geq \P{\W{t_m}{\B} \;\mid\; \W{t_m}{\A}} \cdot \P{\W{t_m}{\A}}\\
-    &= \P{\W{t_m}{\C}}
+    \W{\C}{t_{m-1}}{\T} &= \sum_{k=m}^{n+m-1} \W{\A}{t_k}{\R} \cdot \W{\B}{t_{m-1}}{\S \cup \{t_k\}}\\
+    &\geq \W{\A}{t_m}{\R} \cdot \W{\B}{t_{m-1}}{\S \cup \{t_m\}}\\
+    &\geq \W{\A}{t_m}{\R} \cdot \W{\B}{t_{m}}{\S \cup \{t_m\}}\\
+    &= \W{\C}{t_{m}}{\T}
 \end{align*}
-The equalities follow from the structure of $\C,$ and the first inequality follows from $\B$ being ordered.\\
+The equalities follow from the structure of $\C,$ the first equality follows from probabilities being non-negative, and the second inequality follows from $\B$ being ordered.\\
 
 Finally we show the third sub-statement. Let $m \leq i < j.$ Then,
 \begin{align*}
-    \P{\W{t_i}{\C}} &= \P{\W{t_i}{\B} \;\mid\; \W{t_i}{\A}}\cdot \P{\W{t_i}{\A}}\\
-    &\geq \P{\W{t_i}{\B} \;\mid\; \W{t_i}{\A}}\cdot \P{\W{t_j}{\A}}\\
-    &\geq \P{\W{t_j}{\B} \;\mid\; \W{t_j}{\A}}\cdot \P{\W{t_j}{\A}}\\
-    &= \P{\W{t_j}{\C}}
+    \W{\C}{t_i}{\T} &= \W{\A}{t_i}{\R} \cdot \W{\B}{t_i}{\S \cup \{t_i\}}\\
+    &\geq \W{\A}{t_j}{\R} \cdot \W{\B}{t_i}{\S \cup \{t_i\}}\\
+    &\geq \W{\A}{t_j}{\R} \cdot \W{\B}{t_j}{\S \cup \{t_j\}}\\
+    &= \W{\C}{t_j}{\T}
 \end{align*}
 The equalities follow from the structure of $\C$, the first inequality from $\A$ being ordered, and the second inequality from the teams being SST.\\
 
