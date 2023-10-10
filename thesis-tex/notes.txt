@@ -6,13 +6,12 @@ BRACKETS
         Use teams names rather than city
         should i-seed definition be in tournament formats/definitions
 
-    Ordered Brackets:
-        fidelity open question
-        mlb playoffs are bad
-
 ALTERNATIVE SEEDINGS
     Reseeding:
         finish proofs
+
+    Tiered Seeding:
+        Weakly and Strongly Proper?
 
     Cohort Randomized Seeding:
         Tennis seeding was to avoid rematches
@@ -31,51 +30,41 @@ ALTERNATIVE SEEDINGS
         General result about what makes something non-ordered (OQ)
 
 MULTIBRACKETS
-    --Simple Multibrackets
-    --Properness
-    --Rematches
-    --Multiple Elimination (recharge rounds, bets of 2n+1s)
-    --Semibrackets (and efficiency) [replay rounds OQ]
-    --Swiss
+    [[IN general, how do we want to think about respectfulness and properness language]]
 
+    (written) Simple Multibrackets:
+        When to call multibrackets simple 
+        
+        rigorously define the notion of properness
 
-
-    Simple Multibrackets:
-        Also though, is proper seeding always right? optimized for odds to win the top tourney rather than lower ones. This is a multibracket thought? Proposal!
-
-        When to call multibrackets simple
-
-        Should we be enumerating multibrackets or something?
+        rematches
 
         split this section into two?
 
-        talk more about properness and the fundamental theorem: when you squint, etc, etc.
 
-    Semibracket Section:
-        Note that some games aren't relevant.
-        Introduce semibrackets
-        Introduce multibrackets
-        introduce swiss
-        note that swiss paring methods can be different
-        swiss can be viewed as a multibracket
-        Introduce Efficient Multibrackets
-        Cool that multibrackets unify a bunch of different things
-        max_game_min_round theorem
-        semibrackets being ordered?
+    (needs writing) Properness:
+        intro
+        properness having issues with tiered seeding
+        properness having issues with odds to get a bid
+        alternative seeding proposal (reverse properness?)
+        The power of the fundamental theorem, when you squint, etc
 
-    Multiple Elimination Section:
-
+    (needs writing) Multiple Elimination:
         Double Elimination 
         Recharge Rounds
         Triple Elimination [general combining scheme]
         Best of (2n+1)s
 
-    Rematches Section:
-        Thoughts about rematches and how to avoid them. 
-        Replay round if we have a spare game?
-        Can we just cancel the 2nd vs 3rd match if its a rematch
+    (written) Semibracket Section:
+        max_game_min_round theorem??
+        copy over proper weak and strong respectfulness?
 
-
+    (needs writing) Swiss
+        Introduce swiss
+        Note that swiss paring methods can be different
+        Swiss can be viewed as a multibracket
+        Replay rounds discussion
+        Cool that multibrackets unify a bunch of different things
 
 
 Rest of the book:
@@ -97,10 +86,10 @@ Rest of the book:
         --Hierarchy
         --Det-Symmetric correspondence (3 team puzzle)
         --Next game based on winner or team (rr-type vs bracket-type)
-        --Multilevel formats (pool play in particular, how to seed it, etc [possibly this its own section?])
+        --Multilevel formats (pool play in particular, how to seed it, etc [possibly this its own section?]) {    dropping into the same bracket/wildcard games?}
         --Formats are a optimization
-        --Formats are a Bayesian update
-        --What real sports leagues do / recommendations {mlb, drafted opponents}
+        --Formats are a Bayesian update [fidelity]
+        --What real sports leagues do / recommendations {mlb, drafted opponents [purpose of seeding: reward good or deserving]}
 
     Statistics
         Accurate: Good E[winner_skill]

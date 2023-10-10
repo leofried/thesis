@@ -39,8 +39,12 @@
 
     This matches very closely with the notion of a bracket being properly respectful of a tiered seeding:
 
+    \begin{definition}{The Mulitbracket Tiered Seeding}{}
+        The \textit{the multibracket tiered seeding} is a tiered seeding that groups the teams participating in a multibracket by the round of their most recent loss, with letters later in the alphabet corresponding to higher tiers.
+    \end{definition}
+
     \begin{definition}{Proper Multibracket}{}
-        A multibracket is \textit{proper} if its primary bracket is proper and the rest of its brackets are each properly respectful of the tiered seeding where teams are tiered by the round of their most recent loss: letters later in the alphabet being higher tiers.
+        A multibracket is \textit{proper} if its primary bracket is proper and the rest of its brackets are each properly respect the multibracket tiered seeding.
     \end{definition}
 
     Since the losers of $\bracklabel{B1}$ and $\bracklabel{B2}$ lost more recently and so are in a higher tier than any of the losers of $\bracklabel{A1}$ through $\bracklabel{A4}$, if the Asian Cup wants to be proper, its third-place game must be played between the losers of $\bracklabel{B1}$ and $\bracklabel{B2}$.
@@ -89,15 +93,15 @@
 
     \fig{0.75}{fourth_place_game_very_bad}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}$}
 
-    The bracket in Figure \ref{fig:fourth_place_game_very_bad} is proper: both (or technically, all four) of its brackets are proper, and teams that lose in later rounds are given better spots in later brackets than teams that lost earlier. However it still feels unfair in some sense: the losers of $\bracklabel{B1}$ and $\bracklabel{B2}$ lost in the same round and so they ought to be on the same foot. Instead the loser of $\bracklabel{B1}$ must win three games to ensure a top-three finish, while the loser of $\bracklabel{B2}$ comes in fourth even in they lose their next game. Once again, we can use the already-established language of tiered seeding to express this.
+    The bracket in Figure \ref{fig:fourth_place_game_very_bad} is proper: both (or technically, all four) of its brackets are proper, and teams that lose in later rounds are given better spots in later brackets than teams that lost earlier. However it still feels unfair in some sense: the losers of $\bracklabel{B1}$ and $\bracklabel{B2}$ lost in the same round and so they ought to be on the same foot. Instead the loser of $\bracklabel{B1}$ must win three games to ensure a top-three finish, while the loser of $\bracklabel{B2}$ comes in fourth even if they lose their next game. Once again, we can use the already-established language of tiered seeding to express this.
 
     \begin{definition}{Weakly Respectful Simple Multibrackets}{}
-        We say a simple multibracket is \textit{weakly respectful} if it is proper and each of its bracket weakly respects the tiered seeding that groups teams based on the round they most recently lost in.
+        A simple multibracket is \textit{weakly respectful} if each of its brackets weakly respects the multibracket tiered seeding.
     \end{definition}
 
     \begin{definition}{Strongly Respectful Simple Multibrackets}{}
-        We say a simple multibracket is \textit{strongly respectful} if it is proper and each of its bracket strongly respects the tiered seeding that groups teams based on the round they most recently lost in.
+        A simple multibracket is \textit{strongly respectful} if each of its brackets strongly respects the multibracket tiered seeding.
     \end{definition}
 
-    Thus, the multibrackets of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ are strongly respectful, while ones of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}$ are not respectful at all. As general rule, we prefer multibrackets that are more respectful over ones that are less so, although there can be other factors that might convince us to use less respectful multibrackets, and under some restrictions no respectful brackets might be available.
+    Thus, the multibrackets of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ are strongly respectful, while ones of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}$ are not respectful at all. As general rule, we prefer multibrackets that are more respectful over ones that are less so, although there can be other factors that might convince us to use less respectful multibrackets, and under certain circumstances no strongly or weakly respectful brackets will be available.
 }
