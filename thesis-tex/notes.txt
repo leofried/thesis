@@ -11,7 +11,15 @@ ALTERNATIVE SEEDINGS
         finish proofs
 
     Tiered Seeding:
-        Weakly and Strongly Proper?
+
+    Palandromic Algorithm:
+        clean up
+
+    Proper Tiers:
+        Proper definition
+        Reasons it doesn't work / compensation
+        Strong respectfulness means properness is great
+        but the fundamental theorem is great -- if you assume   teams in a give around are equally good
 
     Cohort Randomized Seeding:
         Tennis seeding was to avoid rematches
@@ -41,23 +49,18 @@ MULTIBRACKETS
 
         split this section into two?
 
-
-    (needs writing) Properness:
-        intro
-        properness having issues with tiered seeding
-        properness having issues with odds to get a bid
+        talk about the opening bracket not being seeded
         alternative seeding proposal (reverse properness?)
-        The power of the fundamental theorem, when you squint, etc
 
-    (needs writing) Multiple Elimination:
-        Double Elimination 
-        Recharge Rounds
-        Triple Elimination [general combining scheme]
-        Best of (2n+1)s
+        Notion of a "perfect" multibracket:
+            -- strongly respectful
+            -- proper
+            -- rematch hesitant
 
     (written) Semibracket Section:
         max_game_min_round theorem??
         copy over proper weak and strong respectfulness?
+        enumeration of things?
 
     (needs writing) Swiss
         Introduce swiss
@@ -65,6 +68,13 @@ MULTIBRACKETS
         Swiss can be viewed as a multibracket
         Replay rounds discussion
         Cool that multibrackets unify a bunch of different things
+
+    (needs writing) Multiple Elimination:
+        Double Elimination 
+        Recharge Rounds
+        Triple Elimination [general combining scheme]
+        Best of (2n+1)s
+
 
 
 Rest of the book:
@@ -109,4 +119,5 @@ Style:
     shorthand for \P[t_i wins \A] and \P[t_i beats t_j] {P() vs P[]} -> done by hand in reseeding
     standardize induction on $r$ language
     successor signature?
+    "we say" for definitions?
 

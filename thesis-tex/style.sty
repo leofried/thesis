@@ -30,11 +30,6 @@
         \end{document}
     }
 
-    \newcommand{\secti}[1]{
-        \def\sectname{#1}
-        \section{#1}
-        \newpage
-    }
 
     \newcommand{\sect}[1]{
         \def\sectname{#1}
@@ -43,10 +38,22 @@
         \subfile{sections/#1/intro}
         \newpage
     }
+    \newcommand{\secti}[1]{
+        \def\sectname{#1}
+        \section{#1}
+        \newpage
+    }
+
+    
     \newcommand{\subsect}[1]{
         \def\subsectname{#1}
         \subsection{#1}
         \subfile{sections/\sectname/#1}
+        \newpage
+    }
+    \newcommand{\subsecti}[1]{
+        \def\subsectname{#1}
+        \subsection{#1}
         \newpage
     }
 
