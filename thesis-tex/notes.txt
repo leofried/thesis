@@ -2,6 +2,9 @@ TOURNAMENT FORMATS:
     Define matchup tables
 
 BRACKETS
+    Bracket Signatures:
+        successor signature
+
     Proper Brackets:
         Use teams names rather than city
         should i-seed definition be in tournament formats/definitions
@@ -52,10 +55,11 @@ MULTIBRACKETS
         talk about the opening bracket not being seeded
         alternative seeding proposal (reverse properness?)
 
-        Notion of a "perfect" multibracket:
+        Notion of a "perfect" multibracket: {swiss cares about this}
             -- strongly respectful
             -- proper
             -- rematch hesitant
+            -- very weak respectful -> same round loss means same semibracket (!!!! for swiss)
 
     (written) Semibracket Section:
         max_game_min_round theorem??
@@ -89,7 +93,7 @@ Rest of the book:
         --What they are
         --Tiebreakers
         --Scheduling
-        --Impure (ramsey theorem, divisions, mlb, soccer ties, etc)
+        --Impure (ramsey theorem, two different seven play four, divisions, mlb, soccer ties, etc)
         --Combinatorial tournaments (zeroth tiebreaker[?])
 
     Space of Formats

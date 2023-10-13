@@ -1,0 +1,227 @@
+\sub {
+    Many tournaments, particularly those in which there are many contestants each looking to play a similar number of games against players of similar skill, use a set of systems referred to as \textit{swiss} systems. In particular, \textit{swiss} systems or near-variants are commonly used in board game tournaments, such as chess or Magic: The Gathering.
+
+    \begin{definition}{Swiss System}{}
+        A \textit{swiss system} is a multibracket in which %how perfect should it be? (swiss systems are just signatures?) doesnt have to be (in fact shouldnt be) strongly respectful, but should be proper? why is 4;0;0 -> 2;1; -> 1 not swiss?
+        \begin{enumerate}
+            \item All teams start in the primary semibracket,
+            \item Each matchup is between teams of the same record,
+            \item All teams play the same number of games, and 
+            \item The order of the multibracket is equal to number of teams participating.
+        \end{enumerate}
+    \end{definition}
+
+    %define a siganture that is
+    %-- weakly respectful
+    %-- weakly proper
+    %-- All non-trivial semibrackets have terminal zeros
+
+    \begin{definition}{$r$-Round Swiss}{}
+        We say a swiss system is an $r$-\textit{round swiss} if each team plays $r$ games.
+    \end{definition}
+
+    We begin our analysis by noting a key structural fact about Swiss systems.
+
+    \theo{}{
+        All $r$-round swiss systems are on $m \cdot 2^r$ teams for some $m$. Further, $m$ divides the order of each its semibrackets.
+    }{
+        In order for a multibracket to be swiss system, its primary semibracket must be balanced. (Otherwise, teams that get byes will play fewer games than teams that don't.) Additionally, since each winner of the primary semibracket will play all of their games in that bracket, it must be exactly $r$ rounds long. A balanced semibracket that is $r$ rounds long has signature $\bracksig{m \cdot 2^r; 0; ...; 0}$ for some $m.$ Thus, since every team starts in the primary semibracket, there must be $m \cdot 2^r$ teams participating for some $m$.\\
+
+        To prove the second half of the theorem, we will show by induction on $s$ that after each team has played $s$ games, the number of teams in each semibracket is divisible by $m \cdot 2^{r - s}.$ Then the case of $r = s$ shows that the number of teams that win each semibracket is divisible by $m$, and so $m$ divides the order of each semibracket.\\
+
+        For $s = 0$, all $m \cdot 2^r$ teams are in the primary semibracket and no teams are in any of the others, so the statement holds. Now assume the statement holds for $s - 1$. Let $t_i$ be the number of teams in the $i$th semibracket after each team has played $s -1$ games. By induction $\; m \cdot 2^{r - s + 1}$ divides $t_i$ for all $i$. After each team plays their $s$th game, the $i$th semibracket contains $t_i/2$ teams that just won, and $t_i/2$ teams just lost and are dropped into another semibracket. (Since swiss systems are weakly respectful, all $t_i/2$ teams must fall into the same semibracket.) Thus, each semibracket now has $\sum_{i \in S} t_i / 2$ teams in it, for some set $S.$ However, each $t_i / 2$ is divisible by $m \cdot 2^{r - s}$, so the the inductive case holds.\\
+        
+        Therefore by induction, $m$ divides the order of each its semibrackets.
+    }{swiss_m}
+
+    Theorem \ref{th:swiss_m} indicates that $r$-round swiss systems on $m \cdot 2^r$ teams are, in a sense, actually $m$ different simultaneous and identical swiss tournaments each operating on $2^r$ teams. Because of this, it is useful to study just the swiss systems that operate on $2^r$ teams, as this will give us strong insights into the full space of swiss systems.
+
+    \begin{definition}{Compact}{}
+        We say a swiss system is \textit{compact} if its primary semibracket has order one.
+    \end{definition}
+
+    Theorem \ref{th:swiss_m} guarantees that $r$-round compact swiss systems are on exactly $2^r$ teams.
+
+    One useful fact about compact swiss system is that it's easy to count how many teams will have each record.
+
+    \theo{}{
+        After each team in an $r$-round compact swiss system has played $s$ games, for each $i$, $2^{r-s} \cdot \binom{s}{i}$ teams will have $i$ wins.
+    }{
+        We show this by induction on $s$. For $s = 0$, no games have yet been played, so all $2^r = 2^{r-0} \cdot \binom{0}{0}$ teams have no wins.\\
+
+        Assume the theorem holds for $s-1$ and fix $i$. A team that after $s$ games has $i$ wins will, after $s-1$ games, have had either $i$ or $i-1$ wins. In fact, half of the teams with $i$ wins after $s-1$ games will have lost and still have $i$ wins, and half of the teams that had $i-1$ wins will have won and now have $i$ wins. Thus,
+        the number of teams that have $i$ wins after $s$ games is \begin{align*}
+            &\; \frac{1}{2}\left(2^{r-s+1} \cdot \binom{s - 1}{i} + 2^{r-s+1} \cdot \binom{s - 1}{i - 1}\right)\\
+            =&\; 2^{r-s} \left(\binom{s - 1 }{i} + \binom{s - 1}{i - 1}\right)\\
+            =&\;2^{r-s} \cdot \binom{s }{i}.
+        \end{align*}
+    }{swiss_record}
+
+    Figure \ref{fig:swiss_cd} visualizes how Theorem \ref{th:swiss_record} applies to compact $4$-round swiss systems.
+
+    \begin{figg}{}{swiss_cd}
+        \begin{center}
+                % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBmAXVJADcBDAGwFcYkQAOAAgB0ecYADxwAnALbAuA+mLhcA7rgAWXAL5divfkNESFWMHFUhVpdJlz5CKAIykATNTpNW7ACxaBw8ZOmz9OCrqNp46Pvpgxqbm2HgERHZuTgwsbIggHnxeur4wMnKKgWoaod56ioZRZiAYsVZE9hTJLmkZpTlSef6FQVwhWWHlBlUxlvEojTbNqez27eF+BcrFcwNlkhVGJtW1Y9bIjQCs067pq9rrnfkBvZprHZsjNRZx++SkxCet-RcdfjfFcjzIaVbajV5Ed6OGgpU4gIH3BZdJZFdTnbLhR5g551cbId5JGEtdgI35I649Yo-DEgp67CEod4ANi+7Gpg1yMgB6juZJBW1UThgUAA5vAiKAAGYiCBiJBkEA4CBIGzREDS2XymhKpD2NUauWIOyK5WIcj6mWGxompDm6oG23a00AdgtmrNTqQHDdVs9iEOPqQhz93vtlqDfoAnIGjX63DG3H7XWH3YmbYgmYLVEA
+        \begin{tikzcd}
+        \end{tikzcd}
+\end{center}
+    \end{figg}
+
+    We now enumerate the compact $r$-round swiss systems for various $r$.
+
+    \theo{}{
+        There are unique compact $0$-, $1$-, and $2$-round swiss systems.
+    }{
+        Certainly the compact $0$-round and $1$-round swiss systems are unique: the former is the unique one-team tournament, and the latter is the unique two-team multibracket in which each team plays one game. Their signatures are $\bracksig{1}$ and $\bracksig{2;0} \to \bracksig{1}$ respectively.\\
+
+        In any compact $2$-round swiss system, Theorem \ref{th:swiss_record} says that after the first round, two teams will have $0$ wins and two teams will have $1$ win. The two teams with $0$ wins must play each other, and as must the two teams with $1$ win, so the compact $2$-round swiss system is unique with signature $\bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}.$
+    }{}
+
+    \theo{}{
+        There are two compact $3$-round swiss systems: 
+        \begin{align*}
+            \A =&\;\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to\\
+            &\;\bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}\\
+            &\;\textrm{and}\\
+            \B =&\;\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0} \to\\
+            &\;\bracksig{2} \to \bracksig{2;0} \to \bracksig{1}
+        \end{align*}
+    }{
+        After the each team has played one game, Theorem \ref{th:swiss_record} says that four teams will have $0$ wins and four teams will have $1$ win. Teams are then matched up in the only way they can be with the $0$ win teams playing each other and the $1$ win teams playing each other. After each team has played two games, two teams will have $2$ wins, four will have $1$ win, and two will have no wins. The two $2$ win teams must play each other, and the two $0$ win teams must play each other. However, there is one decision to be made with respect to the $1$ win teams.\\
+
+        Two of the one wins teams won their first game and then lost their second, while two of them lost their first game and won their second. We can match the two teams that won their first game against each other (and the teams that lost their first game against each other), or we can have the teams that won their first game each play a team that lost their first game, and vise-versa. This is the only decision that can be made in a compact 3-round swiss system, and leads to the swiss system $\A$ and $\B$ respectively.
+    }{swiss_eight}
+
+    \begin{figg}{The Two Compact 3-Round Swiss Systems}{}
+    \end{figg}
+
+    How would a tournament designer decide which compact 3-round system to use? Well, it depends on what the prize structure of the format is. If the goal is to identify a top-three, then system $\A$ is preferable: after all, system $\B$ has the two teams that win its third semibracket tie for third place. But if the goal is to identify a top-four, system $\B$ is preferable: the team that comes in fourth in system $\A$ actually finishes with only one win, while the team the comes in fifth finishes with two. While it is still reasonable to grant the one-win team fourth-place -- they had a more difficult slate of oponnents -- this is a somewhat messy situation that is solved by just using system $\B.$
+    
+    (McGarry and Schutz \cite{four_five_swap} considered outright swapping the positions of the fourth- and fifth-place teams at the conclusion of $\A$, but this provides some incentive for losing in the first round in order to get an easier path to a top-half finish. Simply using $\B$ when identifying the top-four teams is a much preferable solution.)
+
+    For similar reasons, both formats are good for selecting a top-one or top-seven, and $\A$ but not $\B$ is good for selecting a top-five. Finally, it might seem that $\A$ and $\B$ are good formats for selecting a top-two or top-six: in both cases the top two and top six teams are clearly defined, and there are no teams with better records that don't make the cut. However, notice that if we use $\A$ or $\B$ to select a top-two, the final round of games are meaningless: the two teams that finish in the top-two are the two teams that win their first two games, irrespective or how game three went. Better than using either format $\A$ or $\B$ would be to use a non-compact $2$-round swiss for eight teams, so that a third, meaningless round is avoided.
+    
+    We formalize the notion of a swiss sytem being good at selecting a top $m$ in Definition \ref{def:support} and summerize what we have deduced so far in Figure \ref{fig:swiss_table}.
+
+    \begin{definition}{Supporting a Top-$m$}{support}
+        We say a swiss system $\A = \A_1 \to ... \to \A_k$ \textit{supports a top-$m$} if
+        \begin{itemize}
+            \item For some $j$, $\sum_{i=1}^j \textrm{Order}(\A_i) = m.$
+            \item No team that finishes in $\A_i$ for $i > j$ finishes with a better record then a team that finishes in $\A_i$ for $i \leq j.$
+            \item $\A_j$ has at least one round.
+        \end{itemize}
+    \end{definition}
+
+    \begin{figg}{Which Compact Systems Support Top-$m$s}{swiss_table}
+        \begin{center}
+            \begin{tabular}{ c | c c c c c c c }
+            Compact & & & \multicolumn{3}{c}{Top-$m$} & &\\
+            Swiss System& 1 & 2 & 3 & 4 & 5 & 6 & 7\\
+            \hline
+ %           0-round & Y &  &  &  &  &  &  & \\
+            1-round & Y & &  &  &  &  & \\
+            2-round & Y & n & Y & &  &  & \\
+            3-round ($\A$) & Y & n & Y & n & Y & n & Y  \\
+            3-round ($\B$) & Y & n & n & Y & n & n  & Y \\
+            3-round ($\A$ or $\B$) & Y & n & Y & Y & Y & n  & Y  \\
+            \end{tabular}
+        \end{center}
+    \end{figg} 
+
+    Note that even if no \textit{compact} swiss system on $n$ teams supports a top-$m$, we can still sometimes use a non-compact swiss system to identify a top-$m.$ For example, there is no eight team compact system that supports a top-2, but we can still use a $2$-round swiss identify a top two teams out of eight.
+
+    Now we state without proof that there are eight compact $4$-round swiss systems, and in Figure \ref{fig:swiss_table_two} we indicate which of these compact $4-$round systems support various top-$m$s.
+
+    % \begin{figg}{The Eight Compact $4$-Round Swiss Systems}{}
+    %     {\allowdisplaybreaks
+    %     \begin{align*}
+    %         \A_1 =&\; \bracksig{16;0;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to\\
+    %         &\;\bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to\\
+    %         &\;\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to \\
+    %         &\;\bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}\\
+    %         \\
+    %         \A_2 =&\; \bracksig{16;0;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to\\
+    %         &\;\bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to\\
+    %         &\;\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0}\\
+    %         &\;\bracksig{2} \to \bracksig{2;0} \to \bracksig{1}\\
+    %         \\
+    %         \A_3 =&\; \bracksig{16;0;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0} \to\\
+    %         &\;\bracksig{2} \to \bracksig{2;0} \to \bracksig{1} \to\\
+    %         &\;\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to \\
+    %         &\;\bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}\\
+    %         \\
+    %         \\
+    %         \A_4 =&\; \bracksig{16;0;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0} \to\\
+    %         &\;\bracksig{2} \to \bracksig{2;0} \to \bracksig{1} \to\\
+    %         &\;\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0}\to\\
+    %         &\;\bracksig{2} \to \bracksig{2;0} \to \bracksig{1}\\
+    %         \\
+    %         \A_5 =&\; \bracksig{16;0;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to\\
+    %         &\; \bracksig{8;4;0;0} \to \bracksig{2} \to\\
+    %         &\; \bracksig{4;0} \to \bracksig{2} \to \\
+    %         &\;\bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}\\
+    %         \\
+    %         \A_6 =&\; \bracksig{16;0;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to\\
+    %         &\; \bracksig{8;4;0;0} \to \bracksig{2} \to\\
+    %         &\; \bracksig{4;4;0} \to\\
+    %         &\; \bracksig{3} \to \bracksig{2;0} \to \bracksig{1}\\
+    %         \\
+    %         \A_7 =&\; \bracksig{16;0;0;0;0} \to \bracksig{1} \to\\
+    %         &\; \bracksig{8;4;2;0} \to \bracksig{3} \to\\
+    %         &\; \bracksig{4;0} \to \bracksig{2} \to \\
+    %         &\;\bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}\\
+    %         \\
+    %         \A_8 =&\;  \bracksig{16;0;0;0;0} \to \bracksig{1} \to\\
+    %         &\; \bracksig{8;4;2;0} \to \bracksig{3} \to\\
+    %         &\; \bracksig{4;4;0} \to\\
+    %         &\; \bracksig{3} \to \bracksig{2;0} \to \bracksig{1}\\
+    %     \end{align*}
+    %     }
+    % \end{figg}
+
+
+
+    \begin{figg}{Support of Compact $4$-Round Swiss Systems}{swiss_table_two}
+        \begin{center}
+            \begin{tabular}{ c | c c c c c c c c c c c c c c c c }
+            & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15\\
+            \hline
+            $\A_1$ & Y & n & Y & n & n & n & n  & n & n & n & n & n & Y & n & Y\\
+            $\A_2$ & Y & n & Y & n & n & n & n  & n & n & n & n & Y & n & n & Y\\
+            $\A_3$ & Y & n & n & Y & n & n & n  & n & n & n & n & n & Y & n & Y\\
+            $\A_4$ & Y & n & n & Y & n & n & n  & n & n & n & n & Y & n & n & Y\\
+            $\A_5$ & Y & n & Y & n & n & Y & n  & n & n & Y & n & n & Y & n & Y\\
+            $\A_6$ & Y & n & Y & n & n & Y & n  & n & n & n & Y & n & n & n & Y\\
+            $\A_7$ & Y & n & n & n & Y & n & n  & n & n & Y & n & n & Y & n & Y\\
+            $\A_8$ & Y & n & n & n & Y & n & n  & n & n & n & Y & n & n & n & Y\\
+            Any & Y & n & Y & Y & Y & Y & n  & n & n & Y & Y & Y & Y & n & Y\\
+            \end{tabular}
+        \end{center}
+    \end{figg}
+
+    Thus there is a compact $4$-round swiss system that supports a top-$m$ for each $m \in \{1, 3, 4, 5, 6, 10, 11, 12, 13, 15\}.$ The general question, however, is still open.
+
+    \begin{oq}{}{compact_swiss}
+        For which $r$ and $m$ is there a compact $r$-round swiss system that supports a top-$m$?
+    \end{oq}
+
+    We make progress on Open Question \ref{oq:compact_swiss} with the following theorem.
+    
+    \theo{}{
+        For each $r \geq 3$, there is a compact $r$-round swiss system that supports a top-$1, 3, (2^r - 3),$ and $(2^r - 1),$ and there is no compact $r$-round swiss system that supports a top-$2$ or $2^r - 2.$
+    }{
+        We prove the first half of the theorem inductively. If $r=3$, then the system $\A$ from Theorem \ref{th:swiss_eight} supports each of $1, 3, (2^r - 3),$ and $(2^r - 1).$ For any other $r$, let $\A$ be the compact $(r-1)$-round system that supports those four top-$m$s. Now consider the compact $r$-round system $\B$ in which after the first round of games, the winners and losers each playout $\A$ on their own. $\B$ is a compact $r$-round swiss system that supports a top-$1, 3, (2^r - 3),$ and $(2^r - 1).$\\
+
+        For the second half of the theorem, we note that in any compact swiss system, the second-place team will have just lost to the first-place team, and the $(2^r-2)$-place team will have just beaten the $(2^r-1)$-place team. Thus, no compact swiss system can support at top-$2 $ or $2^r-2.$
+    }{}
+
+    Overall, swiss systems very useful and practical tournament designs: they give each team the same number of games, they ensure that games are being played between teams that have the same record and thus, hopefully, similar skill levels, and, for many values of $m$, they efficiently identify a top-$m$ in a fair and satisfying way.
+
+    Further, near-swiss systems are great when the number of teams is exceedingly large. Even if the number of teams is not a power of two, or the system is not compact, or is being used to identify a top-$m$ that it doesn't technically support, formats that are swiss in spirit tend to a great job of gathering a lot of meaningful data about a large number of teams in a minimal number of rounds.
+
+    % better definition
+    % reply rounds
+    % swiss avoid rematches?
+    % better diagrams
+    % shorter/more consise proofs
+}
