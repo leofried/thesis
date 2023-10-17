@@ -45,13 +45,27 @@
         There is exactly one proper semibracket with each semibracket signature.
     \end{theorem}
 
+    One strange feature of semibrackets that brackets (mostly) do not share is that a semibracket can declare arbitrarily many teams champion without any of them having to win a game.
+
+    \begin{definition}{Trivial}{}
+        We say semibrackets with signature $\bracksig{n}$ for some $n$ are \textit{trivial.}
+    \end{definition}
+
+    While the only trivial traditional bracket is the one-team bracket $\bracksig{1}$, there is a trivial semibracket for each natural number. There are even semibrackets in which some but not all teams are declared champion without playing any games.
+
+    \begin{definition}{Somewhat Trivial}{}
+        We say a semibracket $\A = \bracksig{a_0; ...; a_r}$ is \textit{somewhat trivial} if $r \geq 1$ and $a_r \neq 0.$
+    \end{definition}
+
+    For example, the semibracket $\bracksig{4;3}$ is somewhat trivial, but not trivial. There are no somewhat trivial traditional brackets.
+
     We can combine semibrackets into larger formats in the same way that we combined traditional brackets into simple multibrackets.
 
     \begin{definition}{Multibracket}{} 
         A \textit{multibracket} is a sequence of semibrackets in which the losers of certain games in the upper semibrackets fall into the lower semibrackets rather than being eliminated outright, and teams place based on which semibracket they won.
     \end{definition}
 
-    \begin{definition}{Order of a Semibracket}{}
+    \begin{definition}{Order of a Multibracket}{}
         The \textit{order} of a multibracket is the sum of of the orders of the semibrackets it consists of.
     \end{definition}
 
@@ -64,22 +78,34 @@
 
     The top six seeds get slotted into the primary semibracket where they don't have to play any games in order to advance to playoffs. Seeds 7 and 8 each have to win one of their next two games to qualify, while seeds 9 and 10 have to win both of their next two.
 
-    It is now clear that the format in Figure \ref{fig:ultimate_efficient} is also a multibracket, one of order four and signature $\bracksig{8;0;0} \to \bracksig{4;2;0}.$ Both that format and the one used in the 2021 NBA Western Conference Play-in share a property that the original format in Figure \ref{fig:ultimate_format} does not: they are \textit{efficient}.
+    While it is reasonable for a multibracket to have a trivial semibracket as one of its brackets (for example, if we want to grant the loser of the championship game of the primary bracket second-place), somewhat trivial brackets are much harder to justify. Any multibracket $\A = \A_1 \to ... \to \A_k$ in which $\A_i = \bracksig{a_0; ...; a_r}$ is a somewhat trivial can be reconstructed as $$\A' = \A_1 \to ... \to \A_{i-1} \to \bracksig{a_r} \to \bracksig{a_0; ...; a_{r-1}; 0} \to \A_{i+1} \to ... \to \A_k,$$ in which all of the same games are played, but with more granularity in the final rankings.
+
+    Because weak properness and a lack of somewhat trivial semibrackets are such important and universal criteria, we combine them into the notion of a $\textit{standard}$ multibracket.
+
+    \begin{definition}{Standard}{}
+        A multibracket is \textit{standard} if it is weakly proper and contains no somewhat trivial semibrackets.
+    \end{definition}
+
+    It is now clear that the both the 22021 NBA Western Conference Play-in format as well as the format in Figure \ref{fig:ultimate_efficient} are standard multibrackets. Both of these formats share a property that the original format in Figure \ref{fig:ultimate_format} does not: they are \textit{efficient}.
 
     \begin{definition}{Efficient}{}
         A multibracket is \textit{efficient} if there are no games played within it such that both the winner and loser of that game are guaranteed to win a semibracket.
     \end{definition}
 
-    Identifying whether a (weakly proper) multibracket is efficient can be done by looking at its signature.
+    Identifying whether a standard multibracket is efficient can be done by looking at its signature.
+
+    %trivial vs somewhat trivial vs lossless
+    %also this theorem is false: [1] -> [1] -> [2;0] is efficient, but the theorem doesn't think so.
 
     \theo{}{
-        A weakly proper multibracket \begin{align*}
-            \A &= \A_1 \to ... \to \A_k\\
-            &= \bracksig{a_{1,0}; ...; a_{1,r_1}} \to ... \to \bracksig{a_{k,0}; ...; a_{k,r_k}}
-        \end{align*}
-        is efficient if and only if for each $i > 1$, $$a_{i, r_i} = 0.$$
+        A standard multibracket 
+        %\begin{align*}
+            $\A = \A_1 \to ... \to \A_k$
+            % &= \bracksig{a_{1,0}; ...; a_{1,r_1}} \to ... \to \bracksig{a_{k,0}; ...; a_{k,r_k}}
+        %\end{align*}
+        is efficient if and only if for each $i < j$, if $A_j$ is trivial then so is $A_i$.
     }{
-        Let $\A$ be a weakly proper multibracket.\\
+        Let $\A$ be a standard multibracket.\\
         
         Assume that for some $i > 1,$ $a_{i, r_i} \neq 0.$ Thus there is at least one game $\bracklabel{G}$ such that the loser drops into $\A_j$ and wins the semibracket without playing any more games. To show that $\A$ is not efficient, we show that the winner of $\bracklabel{G}$ also wins a semibracket. If the winner of $\bracklabel{G}$ wins $\A_j$ for $j < i,$ then this is clearly true. But even if they don't, they will have lost more recently than the loser of $\bracklabel{G}$, and so because $\A$ is weakly proper, they too must enter into $\A_j$ such that they win the semibracket without playing any more games. Thus, $A_j$ is not efficient.\\
 

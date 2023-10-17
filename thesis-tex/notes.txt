@@ -17,12 +17,7 @@ ALTERNATIVE SEEDINGS
 
     Palandromic Algorithm:
         clean up
-
-    Proper Tiers:
-        Proper definition
-        Reasons it doesn't work / compensation
-        Strong respectfulness means properness is great
-        but the fundamental theorem is great -- if you assume   teams in a give around are equally good
+        $\F$ should be $\Pal$ or something [same with $\Order$]
 
     Cohort Randomized Seeding:
         Tennis seeding was to avoid rematches
@@ -43,10 +38,10 @@ ALTERNATIVE SEEDINGS
 MULTIBRACKETS
     [[IN general, how do we want to think about respectfulness and properness language]]
 
-    (written) Simple Multibrackets:
+    Simple Multibrackets:
         When to call multibrackets simple 
         
-        rigorously define the notion of properness
+        rigorously define the notion of weakly proper
 
         rematches
 
@@ -61,17 +56,18 @@ MULTIBRACKETS
             -- rematch hesitant
             -- very weak respectful -> same round loss means same semibracket (!!!! for swiss)
 
-    (written) Semibracket Section:
+    Semibracket Section:
         max_game_min_round theorem??
         copy over proper weak and strong respectfulness?
         enumeration of things?
 
-    (needs writing) Swiss
-        Introduce swiss
-        Note that swiss paring methods can be different
-        Swiss can be viewed as a multibracket
-        Replay rounds discussion
-        Cool that multibrackets unify a bunch of different things
+    Swiss
+        better definition
+        reply rounds
+        swiss avoid rematches?
+        better diagrams
+        shorter/more concise proofs
+        appendix with 4-round compact swisses.
 
     (needs writing) Multiple Elimination:
         Double Elimination 
@@ -79,6 +75,21 @@ MULTIBRACKETS
         Triple Elimination [general combining scheme]
         Best of (2n+1)s
 
+UGLY THOUGHTS:
+    --Weakly Respectful (same tier -> same byes, same bracket)
+    --Strongly Respectful (same tier -> same path)
+    --Weakly Proper (better tier -> >= byes, >= bracket)
+    --Strongly Proper (proper and better tier -> better seed) [[unclear if this is actually good]]
+    --Not silly (a_{i, r_i} \neq 0 -> i_r = 0)
+    --Something about rematches
+
+    {
+        Proper Tiers:
+        Proper definition
+        Reasons it doesn't work / compensation
+        Strong respectfulness means properness is great
+        but the fundamental theorem is great -- if you assume   teams in a give around are equally good
+    }
 
 
 Rest of the book:
@@ -123,5 +134,6 @@ Style:
     shorthand for \P[t_i wins \A] and \P[t_i beats t_j] {P() vs P[]} -> done by hand in reseeding
     standardize induction on $r$ language
     successor signature?
-    "we say" for definitions?
+    where to put commas, ands, and bullets for lists in definitions
+    "we say" for definitions? in general how to label adjective definitions. USe the noun in the title?
 

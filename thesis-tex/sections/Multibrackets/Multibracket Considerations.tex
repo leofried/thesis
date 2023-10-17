@@ -1,0 +1,136 @@
+\sub{
+
+    At the end of the previous section, we examined the multibracket signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ as an example of simple multibracket signature of order four. However, it is certainly not the only such signature. Another option might be $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}.$
+
+    \fig{0.75}{fourth_place_game_very_bad}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}$}
+
+    The bracket in Figure \ref{fig:fourth_place_game_very_bad} is weakly proper: for both (or technically, all four) of its brackets, teams that lost more recently are given more byes than teams that lost earlier. However it still feels unfair in some sense: the losers of $\bracklabel{B1}$ and $\bracklabel{B2}$ lost in the same round and so they ought to be on the same foot. Instead the loser of $\bracklabel{B1}$ has to win two games just to get in the same spot that the loser of $\bracklabel{B2}$ starts in. We can use the already-established language of tiered seeding to express this.
+
+    \begin{definition}{Weakly Respectful Multibrackets}{}
+        A multibracket is \textit{weakly respectful} if each of its brackets weakly respects the tiering that groups teams by the letter of the round that they lost.
+    \end{definition}
+
+    \begin{definition}{Strongly Respectful Multibrackets}{}
+        A multibracket is \textit{strongly respectful} if each of its brackets weakly respects the tiering that groups teams by the letter of the round that they lost.
+    \end{definition}
+
+    Thus, the weakly respectful multibrackets of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ are strongly respectful, while ones of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}$ are not respectful at all. As a general rule, we prefer multibrackets that are more respectful over ones that are less so, although there can be other factors that might convince us to use less respectful multibrackets, and under certain circumstances no strongly or weakly respectful brackets will be available.
+
+    One natural question to ask is if there's a property called that fills in the final square in the grid.
+
+    \begin{figg}{Strongly Respecful?}{}
+        \begin{center}
+            \begin{tabular}{ | c | c |}
+            \hline
+            & \\
+            Weakly Respectful & Strongly Respectful\\
+            & \\
+            \hline
+            & \\
+            Weakly Proper & ??? \\
+            & \\
+            \hline
+            \end{tabular}
+        \end{center}
+    \end{figg}
+
+    % The respectfulness properties have to do with treating teams that lost in the same round the same, while the the properness property has to do with treating the teams that more recently better. And the weak properties focus only which bracket teams fall into and how many byes they get, while the strong property is aims to be a more complete description. So strong respectfulness should be a relatively complete guarantee at 
+
+    PUT A GOOD PARAGRAPH HERE.
+
+    \begin{definition}{Strongly Proper Multibrackets}{}
+        A multibracket is \textit{strongly proper} if
+        \begin{itemize}
+            \item It is weakly proper,
+            \item Each of its brackets are proper,
+            \item Teams that lost more recently are given the slots of higher seeds than teams that lost less recently.
+        \end{itemize}
+    \end{definition}
+
+    In the traditional bracket world, the idea that proper brackets were preferable to non-proper ones was pretty well accepted, and when combined with the fundamental theorem, meant that there was a clear best bracket for each bracket signature. While strong properness seems like a natural extension of the accepted notion of properness in traditional brackets, it is not obvious that it is quite as desireable in the context of multibrackets. Let's examine a few examples to illustrate this point.
+    
+    First, consider a simple multibracket with signature $\bracksig{4;4;1;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{4;2;0;0}.$ The first three brackets are shown in Figure \ref{fig:top_half} (with the second bracket implied by weak properness left off of the figure).
+
+    \fig{1}{top_half}{$\bracksig{4;4;1;0;0} \to \bracksig{1} \to \bracksig{2;0}$}
+
+    All of the teams that didn't win one the first three brackets will play in the third bracket, but what should that look like? Below, a strongly proper bracket is on the left, but a potentially better option is on the right.
+
+    \fig{0.8}{bottom_half}{Two options for $\bracksig{4;2;0;0}$}
+
+    In the strongly proper bracket, there is clear variation in which the difficulty of the paths of the round-$\bracklabel{B}$ losers: $\bracklabel{B1}$ both gets a first-round bye and avoids the likely best team $\bracklabel{E1}$ until the finals, while $\bracklabel{B2}$ gets neither of those luxuries. This is fine in the traditional bracket setting when we want to treat the $2$-seed better than the $4$-seed, but in a multibracket this is far from ideal. The alternative bracket on the right distributes the advantage by having the round-$\bracklabel{B}$ loser that receives the bye have to face $\bracklabel{E1}$ in the semifinals.
+
+    There are certainly still reasons to support the strongly proper bracket over the alternative, but it's not so cut and dry.
+
+    A second example of strongly proper multibrackets not being quite ideal comes from 
+    
+
+
+    %open question
+    %strongly respectful solves the first issue
+    %fundamental theorem is too damn good (tho not full solvable here -> let's talk about rematches)
+
+
+
+}
+
+
+% This matches very closely with the notion of a bracket being properly respectful of a tiered seeding:
+
+    % \begin{definition}{The Mulitbracket Tiered Seeding}{}
+    %     The \textit{the multibracket tiered seeding} is a tiered seeding that groups the teams participating in a multibracket by the round of their most recent loss, with letters later in the alphabet corresponding to higher tiers.
+    % \end{definition}
+
+    % \begin{definition}{Proper Multibracket}{}
+        % A multibracket is \textit{proper} if its primary bracket is proper and the rest of its brackets are each properly respect the multibracket tiered seeding.
+    % \end{definition}
+
+
+    % A few notes about what we've seen so far. First, note that the fundamental theorem of brackets doesn't apply to multibrackets: the signature of a proper multibracket does not uniquely determine it. For example, here is another proper multibracket with the same signature.
+
+    % \fig{0.75}{fourth_place_game_bad}{Alternative $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$}
+
+    % We generally prefer the format in Figure \ref{fig:fourth_place_game} to the one in Figure \ref{fig:fourth_place_game_bad} because it ensures that no rematches can occur until game $\bracklabel{F1},$ but both are proper. (Further discussion of rematches in multibrackets can be found in later sections.)
+
+    % A second thing of note is that $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ is not the only simple multibracket signature of order four whose primary bracket is $\bracksig{8;0;0;0}.$ Another option might be $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}.$
+
+    % \fig{0.75}{fourth_place_game_very_bad}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}$}
+
+    % The bracket in Figure \ref{fig:fourth_place_game_very_bad} is proper: both (or technically, all four) of its brackets are proper, and teams that lose in later rounds are given better spots in later brackets than teams that lost earlier. However it still feels unfair in some sense: the losers of $\bracklabel{B1}$ and $\bracklabel{B2}$ lost in the same round and so they ought to be on the same foot. Instead the loser of $\bracklabel{B1}$ must win three games to ensure a top-three finish, while the loser of $\bracklabel{B2}$ comes in fourth even if they lose their next game. Once again, we can use the already-established language of tiered seeding to express this.
+
+    % \begin{definition}{Weakly Respectful Simple Multibrackets}{}
+    %     A simple multibracket is \textit{weakly respectful} if each of its brackets weakly respects the multibracket tiered seeding.
+    % \end{definition}
+
+    % \begin{definition}{Strongly Respectful Simple Multibrackets}{}
+    %     A simple multibracket is \textit{strongly respectful} if each of its brackets strongly respects the multibracket tiered seeding.
+    % \end{definition}
+
+    % Thus, the multibrackets of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ are strongly respectful, while ones of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}$ are not respectful at all. As general rule, we prefer multibrackets that are more respectful over ones that are less so, although there can be other factors that might convince us to use less respectful multibrackets, and under certain circumstances no strongly or weakly respectful brackets will be available.
+
+
+% Finally, weak and strong respectfulness give names to the intuition that teams in the same tier should be treated similarly. There is a separate intuition that teams in higher tiers should be treated better than teams in lower tiers. To that end, we introduce the notion of \textit{proper respectfulness}.
+
+%     \begin{definition}{Properly Respectful}{}
+%         A bracket \textit{properly respects} a tiered seeding $\B = \bracktier{b_1, ..., b_m}$ if the bracket is proper and teams in tier $i$ are given seeds $1 + \sum_{j=1}^{i-1} b_j$ through $\sum_{j=1}^{i} b_j.$
+%     \end{definition}
+
+%     If a bracket is not properly respectful, then lower tiers might grant more byes or an easier road to winning the tournament than higher tiers. The 2016 Olympic Basketball Bracket is properly respectful, as well as weakly and strongly respectful.
+
+
+    % \begin{oq}{}{}
+    %     Are properly respectful brackets always best?
+    % \end{oq}
+
+    % To illustrate the point, consider the bracket signature $\bracksig{2;3;2;0;0}$ and tiered seeding $\bracktier{2, 3, 1, 1}.$ The properly respectful bracket is on the left, but a potentially better bracket is on the right.
+
+    % \fig{0.65}{23200 tiered}{Signature $\bracksig{2;3;2;0;0}$ with Seeding $\bracktier{2, 3, 1, 1}$}
+
+    % In the properly respectful bracket, one tier 3 team gets extremely lucky: they have an easier quarterfinal matchup (a tier 4 team rather than another tier 3 team), and an easier semifinal matchup (a tier 2 team rather than a tier 1 team). In the bracket on the right, the luck is more evenly distributed: the tier 3 team that draw the easier quarterfinal matchup also gets the harder semifinal one.
+
+    % A more trivial but more clear example of the same effect is with bracket signature $\bracksig{4;2;0;0}$ and tiered seeding $\bracktier{5, 1}.$ Again the properly respectful bracket is displayed on the left and the alternative bracket is on the right.
+    
+    % \fig{0.65}{4200 tiered}{Signature $\bracksig{4;2;0;0}$ with Seeding $\bracktier{5, 1}$}
+
+    % In the properly respectful bracket, one tier 2 team gets a first round bye, and dodges the lone tier 1 team until the final. The alternative bracket distributes the advantage by having the tier 2 team that receives the bye be matched up with tier 1 team in the semifinals.
+
+    % Unfortunately, this notion of distributing the luck more fairly is difficult to make rigorous. Additionally, it requires sometime using non-proper bracket \textit{shapes} meaning we lose access to the powerful fundamental theorem. Finally, we can avoid this odd effect by ensuring that our bracket signatures strongly respect the tiered seedings that are given to us, if possible. (As we will show next section, a strongly respectful bracket will give each team in a given tier the same path to win the tournament.) For these reasons, we focus primarily on properly respectful brackets, even though there is a compelling argument to be made that other brackets might be preferable in certain circumstances.
