@@ -1,10 +1,26 @@
 \sub{
 
-    At the end of the previous section, we examined the multibracket signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ as an example of simple multibracket signature of order four. However, it is certainly not the only such signature. Another option might be $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}.$
+    At the end of the previous section, we arrived at the weakly proper multibracket in Figure \ref{fig:fourth_place_game} as a great option for selecting a first-, second-, third-, and fourth-place team out of eight competing teams. And while we presented it as the natural instantiation of of the signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1},$ it is far from the only one. Below, we display the format from Figure \ref{fig:fourth_place_game} along with a different format of the same signature on the right.
+    
+    \fig{0.65}{fourth_place_game_bad}{Two Multibrackets with Signature\\ $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$}
+
+    The primary brackets are identical, and both formats are weakly respectful: the difference comes in where the $\bracklabel{A}$-round loses are placed. Why do we prefer the format on the left? Rematches.
+
+    In any tournament format, rematches are far from ideal. From an information theoretical perspective, a rematch is less informative then a new matchup: we already have some data on how those two team compare. From a competitive perspective, they are unsatisfying: without the ability to play a third ``rubber'' match, if each team wins one game, we are left in a disappointing state of uncertainty. And in a multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ they can be particularly frustrating to the teams themselves: to end in the top-four, teams must win two games before they lose two. If a team loses two games to the same team, they might reasonably feel like they didn't get a fair shake.
+
+    So the choice between the two multibrackets in Figure \ref{fig:fourth_place_game_bad} comes down to which bracket will lead to fewer rematches. A quick analysis shows that this is done by the format on the left, where only $\bracklabel{F1}$ could be a rematch, as opposed to the format on the right, where any of $\bracklabel{E1},$ $\bracklabel{E1},$ or $\bracklabel{F1}$ could be.
+
+    In fact, the multibracket on the left is the weakly proper bracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ with the fewest rematch opportunities, and so we consider it the canonical multibracket with that signature. In the general case, however, finding this multibracket is an open question.
+
+    \begin{oq}{}{}
+        Given a multibracket signature $\A$, which instantiation of it has the fewest number of expected rematches?
+    \end{oq}
+
+    Not only is the bracket on the left not the only instantiation of its signature (though we established it is the one that best avoids rematches), its signature is not the only one of order four. Another option might be $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}.$
 
     \fig{0.75}{fourth_place_game_very_bad}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 3; 0; 1; 0} \to \bracksig{1}$}
 
-    The bracket in Figure \ref{fig:fourth_place_game_very_bad} is weakly proper: for both (or technically, all four) of its brackets, teams that lost more recently are given more byes than teams that lost earlier. However it still feels unfair in some sense: the losers of $\bracklabel{B1}$ and $\bracklabel{B2}$ lost in the same round and so they ought to be on the same foot. Instead the loser of $\bracklabel{B1}$ has to win two games just to get in the same spot that the loser of $\bracklabel{B2}$ starts in. We can use the already-established language of tiered seeding to express this.
+    Like the multibrackets in Figure \ref{fig:fourth_place_game_bad}, the multibracket in Figure \ref{fig:fourth_place_game_very_bad} is weakly proper: for both (or technically, all four) of its brackets, teams that lost more recently are given more byes than teams that lost earlier. However it still feels unfair in some sense: the losers of $\bracklabel{B1}$ and $\bracklabel{B2}$ lost in the same round and so they ought to be on the same foot. Instead the loser of $\bracklabel{B1}$ has to win two games just to get in the same spot that the loser of $\bracklabel{B2}$ starts in. We can use the already-established language of tiered seeding to express this.
 
     \begin{definition}{Weakly Respectful Multibrackets}{}
         A multibracket is \textit{weakly respectful} if each of its brackets weakly respects the tiering that groups teams by the letter of the round that they lost.
@@ -51,20 +67,32 @@
     
     First, consider a simple multibracket with signature $\bracksig{4;4;1;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{4;2;0;0}.$ The first three brackets are shown in Figure \ref{fig:top_half} (with the second bracket implied by weak properness left off of the figure).
 
-    \fig{1}{top_half}{$\bracksig{4;4;1;0;0} \to \bracksig{1} \to \bracksig{2;0}$}
+    \fig{0.75}{top_half}{$\bracksig{4;4;1;0;0} \to \bracksig{1} \to \bracksig{2;0}$}
 
     All of the teams that didn't win one the first three brackets will play in the third bracket, but what should that look like? Below, a strongly proper bracket is on the left, but a potentially better option is on the right.
 
-    \fig{0.8}{bottom_half}{Two options for $\bracksig{4;2;0;0}$}
+    \fig{0.75}{bottom_half}{Two options for $\bracksig{4;2;0;0}$}
 
-    In the strongly proper bracket, there is clear variation in which the difficulty of the paths of the round-$\bracklabel{B}$ losers: $\bracklabel{B1}$ both gets a first-round bye and avoids the likely best team $\bracklabel{E1}$ until the finals, while $\bracklabel{B2}$ gets neither of those luxuries. This is fine in the traditional bracket setting when we want to treat the $2$-seed better than the $4$-seed, but in a multibracket this is far from ideal. The alternative bracket on the right distributes the advantage by having the round-$\bracklabel{B}$ loser that receives the bye have to face $\bracklabel{E1}$ in the semifinals.
+    In the strongly proper bracket, there is clear variation between the difficulty of the paths of the round-$\bracklabel{B}$ losers: $\bracklabel{B1}$ both gets a first-round bye and avoids the likely best team $\bracklabel{E1}$ until the finals, while $\bracklabel{B2}$ gets neither of those luxuries. This is fine in the traditional bracket setting when we want to treat the $2$-seed better than the $4$-seed, but in a multibracket this is far from ideal. The alternative bracket on the right distributes the advantages more evenly by having the round-$\bracklabel{B}$ loser that receives the bye face $\bracklabel{E1}$ in the semifinals.
+    
+    There are certainly still reasons to support the strongly proper bracket over the alternative, but it's not so cut and dry. One mitigating factor is strong respectfulness: if a multibracket is strongly respectful, then each team that lost in the same round is treated identically, and so strong properness will not give out lopsided advantages like it did for the not-even-weakly respectful format $\bracksig{4;4;1;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{4;2;0;0}.$
 
-    There are certainly still reasons to support the strongly proper bracket over the alternative, but it's not so cut and dry.
+    For a second example of strongly proper multibrackets not being quite ideal, recall the strongly proper format we began the section with:
+    
+    \fig{0.75}{fourth_place_game_good}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$}
 
-    A second example of strongly proper multibrackets not being quite ideal comes from 
+    The notion of properness in the traditional setting is that, in each round, if the bracket goes to chalk, it is always better to be a higher seed than a lower seed. ETC, ETC.
 
-    THINGS
 
+    %open question
+    %strongly respectful solves the first issue
+    %fundamental theorem is too damn good (tho not full solvable here -> let's talk about rematches)
+
+
+\;\\
+\;\\
+\;\\
+\;\\
 
 
     We conclude this section with an important lemma about weakly proper multibrackets.
@@ -81,9 +109,6 @@
     
 
 
-    %open question
-    %strongly respectful solves the first issue
-    %fundamental theorem is too damn good (tho not full solvable here -> let's talk about rematches)
 
 }
 

@@ -56,6 +56,8 @@ MULTIBRACKETS
             -- rematch hesitant
             -- very weak respectful -> same round loss means same semibracket (!!!! for swiss)
 
+        [[sort out pics]]
+
     Semibracket Section:
         max_game_min_round theorem??
         copy over proper weak and strong respectfulness?
@@ -74,6 +76,7 @@ MULTIBRACKETS
         Recharge Rounds
         Triple Elimination [general combining scheme]
         Best of (2n+1)s
+        swapping parallel opponents
 
 UGLY THOUGHTS:
     --Weakly Respectful (same tier -> same byes, same bracket)
