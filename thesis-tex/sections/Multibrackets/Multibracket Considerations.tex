@@ -62,14 +62,28 @@
     There are certainly still reasons to support the strongly proper bracket over the alternative, but it's not so cut and dry.
 
     A second example of strongly proper multibrackets not being quite ideal comes from 
+
+    THINGS
+
+
+
+    We conclude this section with an important lemma about weakly proper multibrackets.
+
+    \theo{}{
+        In a weakly proper multibracket $\A$, if the loser of game $\bracklabel{G}$ goes to bracket $\A_j$, then the winner of game $\bracklabel{G}$ will either:
+        \begin{enumerate}
+            \item Win a bracket $\A_i$ for $i \leq j$, or
+            \item Lose a game in $\A_j$.
+        \end{enumerate}
+    }{
+        Let $\A$ be a weakly proper multibracket $\A$, and $\bracklabel{G}$ be a game in $\A$ such that the loser of $\bracklabel{G}$ goes to bracket $\A_j$. Let $t$ be the team that won $\bracklabel{G}$. Assume that $t$ does not win bracket $A_i$ for $i \leq j.$ Thus, $t$ must have lost at least one game after playing $\bracklabel{G}$. Upon losing this game, $t$ will have lost more recently than the loser of game $\bracklabel{G}$, and so must fall into bracket $\A_i$ for $i \leq j$. If they fall into $A_i$ for $i < j$, then again they must lose and again fall into $\A_i$ for $i \leq j$. At some point, then, $t$ must fall into $\A_j$. And since $t$ does not win bracket $\A_j$, they must lose in $\A_j$ as well.
+    }{weak_lemma}
     
 
 
     %open question
     %strongly respectful solves the first issue
     %fundamental theorem is too damn good (tho not full solvable here -> let's talk about rematches)
-
-
 
 }
 
