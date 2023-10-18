@@ -34,7 +34,7 @@
 
     One natural question to ask is if there's a property called that fills in the final square in the grid.
 
-    \begin{figg}{Strongly Respecful?}{}
+    \begin{figg}{Strongly Respectful?}{}
         \begin{center}
             \begin{tabular}{ | c | c |}
             \hline
@@ -50,9 +50,7 @@
         \end{center}
     \end{figg}
 
-    % The respectfulness properties have to do with treating teams that lost in the same round the same, while the the properness property has to do with treating the teams that more recently better. And the weak properties focus only which bracket teams fall into and how many byes they get, while the strong property is aims to be a more complete description. So strong respectfulness should be a relatively complete guarantee at 
-
-    PUT A GOOD PARAGRAPH HERE.
+    Recall that respectfulness involves treating teams that lost in the same round similarly, while properness involves treating teams that lost more recently better. Additionally, the weak properties focus just on how many byes teams are getting, while the strong properties try to be more complete. Thus,
 
     \begin{definition}{Strongly Proper Multibrackets}{}
         A multibracket is \textit{strongly proper} if
@@ -63,7 +61,7 @@
         \end{itemize}
     \end{definition}
 
-    In the traditional bracket world, the idea that proper brackets were preferable to non-proper ones was pretty well accepted, and when combined with the fundamental theorem, meant that there was a clear best bracket for each bracket signature. While strong properness seems like a natural extension of the accepted notion of properness in traditional brackets, it is not obvious that it is quite as desireable in the context of multibrackets. Let's examine a few examples to illustrate this point.
+    In the traditional bracket world, the idea that proper brackets were preferable to non-proper ones was pretty well accepted, and when combined with the fundamental theorem, meant that there was a clear best bracket for each bracket signature. While strong properness seems like a natural extension of the accepted notion of properness in traditional brackets, it is not obvious that it is quite as desireable in the context of multibrackets. Let's examine two examples to illustrate this point.
     
     First, consider a simple multibracket with signature $\bracksig{4;4;1;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{4;2;0;0}.$ The first three brackets are shown in Figure \ref{fig:top_half} (with the second bracket implied by weak properness left off of the figure).
 
@@ -77,25 +75,21 @@
     
     There are certainly still reasons to support the strongly proper bracket over the alternative, but it's not so cut and dry. One mitigating factor is strong respectfulness: if a multibracket is strongly respectful, then each team that lost in the same round is treated identically, and so strong properness will not give out lopsided advantages like it did for the not-even-weakly respectful format $\bracksig{4;4;1;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{4;2;0;0}.$
 
-    For a second example of strongly proper multibrackets not being quite ideal, recall the strongly proper format we began the section with:
-    
-    \fig{0.75}{fourth_place_game_good}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$}
+    For a second example of strongly proper multibrackets not being quite ideal, recall the strongly proper format in Figure \ref{fig:fourth_place_game} that we began the section with: $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$.
 
-    The notion of properness in the traditional setting is that, in each round, if the bracket goes to chalk, it is always better to be a higher seed than a lower seed. ETC, ETC.
+    The notion of properness in the traditional setting is that, in each round, if the bracket goes to chalk, in each round it is better to be a higher seed than a lower seed. But what happens when $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ goes to chalk?
 
+    \fig{0.75}{fourth_place_game_chalk}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ Chalk}
 
-    %open question
-    %strongly respectful solves the first issue
-    %fundamental theorem is too damn good (tho not full solvable here -> let's talk about rematches)
+    In round $\bracklabel{E}$, the matchups are not proper: the 4-seed has an easier opponent than the 3-seed. We could fix this by moving around where each seed starts in the primary bracket, but then the primary bracket would no longer be proper. (We could also fix this by swapping where the losers of $\bracklabel{B1}$ and $\bracklabel{B2}$ go, but this would massively increase the rate of rematches.)
 
+    Overall, strong properness is simply not as nice of a condition in the world of multibrackets as properness was for traditional brackets. While it is still sometimes used, especially when there is a desire to drastically shrink the space of formats that need analyzing, such as in monte-carlo simulations of formats, it leaves a lot to be desired.
 
-\;\\
-\;\\
-\;\\
-\;\\
+    \begin{oq}{}{}
+        Is there a better alternative property to strong properness?
+    \end{oq}
 
-
-    We conclude this section with an important lemma about weakly proper multibrackets.
+    We conclude the section with an important lemma about weakly proper multibrackets.
 
     \theo{}{
         In a weakly proper multibracket $\A$, if the loser of game $\bracklabel{G}$ goes to bracket $\A_j$, then the winner of game $\bracklabel{G}$ will either:
