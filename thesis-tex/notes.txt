@@ -139,4 +139,5 @@ Style:
     successor signature?
     where to put commas, ands, and bullets for lists in definitions
     "we say" for definitions? in general how to label adjective definitions. USe the noun in the title?
+    when to italicize new words
 

@@ -14,6 +14,9 @@
     \usepackage[nottoc,numbib]{tocbibind}
     \usepackage{tocloft}
     \usepackage{tikz-cd}
+    \usepackage{pifont}
+    \usepackage{xcolor}
+
 
     \hbadness=10000
 
@@ -65,7 +68,7 @@
    \newtcbtheorem[number within=subsection, use counter from=theorem]{definition}{Definition}
     {enhanced, breakable, colback=blue!5,colframe=teal!100!,fonttitle=\bfseries}{def}
     \newtcbtheorem[number within=subsection, use counter from=theorem]{figg}{Figure}
-    {enhanced, breakable, colback=red!5,colframe=purple!100!,fonttitle=\bfseries}{fig}
+    {enhanced, width=\linewidth, breakable, colback=red!5,colframe=purple!100!,fonttitle=\bfseries}{fig}
     \newtcbtheorem[number within=subsection, use counter from=theorem]{oq}{Open Question}
     {enhanced, breakable, colback=yellow!5,colframe=orange!100!,fonttitle=\bfseries}{oq}
 
@@ -116,6 +119,9 @@
        \end{corollary}
     }
 
+    \newcommand{\overfullhbox}[1]{\resizebox{\textwidth}{!}{#1}}
+
+
     \renewcommand{\labelitemii}{$\bullet$}
 
     \renewcommand{\A}{\mathcal{A}}
@@ -136,6 +142,10 @@
 
     \newcommand{\true}{\mathbf{true}}
     \newcommand{\false}{\mathbf{false}}
+
+    \definecolor{britishracinggreen}{rgb}{0.0, 0.26, 0.15}
+    \renewcommand{\check}{\textcolor{britishracinggreen}{\ding{52}}}
+    \newcommand{\ex}{\textcolor{red}{\ding{56}}}
 
     \newcommand{\bracksig}[1]{\mathbf{[[#1]]}}
     \newcommand{\bracktier}[1]{\mathbf{(#1)}}
