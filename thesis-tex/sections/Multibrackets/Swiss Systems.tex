@@ -4,7 +4,7 @@
     The idea behind a swiss system is to play a fixed number of rounds, and in each round have each matchup be between teams with the same record. This gives every team a bunch of games, while ensuring that teams are paired with teams that are probably similarly skilled. We can formally describe a swiss system in the language of multibrackets.
 
     \begin{definition}{Swiss System}{}
-        A \textit{swiss system} is a standard weakly respectful multibracket signature in which 
+        A \textit{swiss system} is a standard multibracket signature in which 
         \begin{enumerate}
             \item Each matchup is between teams of the same record,
             \item All teams play the same number of games,
@@ -13,7 +13,7 @@
         \end{enumerate}
     \end{definition}
 
-    The last requirement is just a technical detail that ensures we don't double count systems, once where teams that finish with no wins drop into a trivial last semibracket, and one where they don't drop into any semibracket at all.
+    The first two requirements come from the intuitive notion of a swiss systems, while the last two requirements are technical detail that ensures we don't double count systems: for example once where teams that finish with no wins drop into a trivial last semibracket, and one where they don't drop into any semibracket at all.
 
     \begin{definition}{$r$-Round Swiss}{}
         We say a swiss system is an $r$-\textit{round swiss} if each team plays $r$ games.
@@ -28,7 +28,7 @@
 
         To prove the second half of the theorem, we will show by induction on $s$ that after each team has played $s$ games, the number of teams in each semibracket is divisible by $m \cdot 2^{r - s}.$ Then the case of $r = s$ shows that the number of teams that win each semibracket is divisible by $m$, and so $m$ divides the order of each semibracket.\\
 
-        For $s = 0$, all $m \cdot 2^r$ teams are in the primary semibracket and no teams are in any of the others, so the statement holds. Now assume the statement holds for $s - 1$. Let $t_i$ be the number of teams in the $i$th semibracket after each team has played $s -1$ games. By induction $\; m \cdot 2^{r - s + 1}$ divides $t_i$ for all $i$. After each team plays their $s$th game, the $i$th semibracket contains $t_i/2$ teams that just won, and $t_i/2$ teams just lost and are dropped into another semibracket. (Since swiss systems are weakly respectful, all $t_i/2$ teams must fall into the same semibracket.) Thus, each semibracket now has $\sum_{i \in S} t_i / 2$ teams in it, for some set $S.$ However, each $t_i / 2$ is divisible by $m \cdot 2^{r - s}$, so the the inductive case holds.\\
+        For $s = 0$, all $m \cdot 2^r$ teams are in the primary semibracket and no teams are in any of the others, so the statement holds. Now assume the statement holds for $s - 1$. Let $t_i$ be the number of teams in the $i$th semibracket after each team has played $s -1$ games. By induction $\; m \cdot 2^{r - s + 1}$ divides $t_i$ for all $i$. After each team plays their $s$th game, the $i$th semibracket contains $t_i/2$ teams that just won, and $t_i/2$ teams just lost and are dropped into another semibracket. Thus, each semibracket now has $\sum_{i \in S} t_i / 2$ teams in it, for some set $S.$ However, each $t_i / 2$ is divisible by $m \cdot 2^{r - s}$, so the the inductive case holds.\\
         
         Therefore by induction, $m$ divides the order of each its semibrackets.
     }{swiss_m}
@@ -95,13 +95,16 @@
             &\;\bracksig{2} \to \bracksig{2;0} \to \bracksig{1}
         \end{align*}
     }{
-        After the each team has played one game, Theorem \ref{th:swiss_record} says that four teams will have zero wins and four teams will have one win. Teams are then matched up in the only way they can be with the zero-win teams playing each other and the one-win teams playing each other. After each team has played two games, two teams will have two wins, four will have one win, and two will have no wins. The two two-win teams must play each other, and the two zero-win teams must play each other. However, there is one decision to be made with respect to the one-win teams.\\
 
-        Two of the one-wins teams won their first game and then lost their second, while two of them lost their first game and won their second. We can match the two teams that won their first game against each other (and the teams that lost their first game against each other), or we can have the teams that won their first game each play against a team that lost their first game. This is the only decision that can be made in a compact 3-round swiss system, and leads to the swiss system $\A$ and $\B$ respectively.
+        Any compact $3$-round swiss system must have primary bracket $\bracksig{8;0;0;0}$ and secondary bracket $\bracksig{1}.$ Now let $\C$ be the semibracket that first-round primary brackets losers fall into. $\C$ must have two rounds, and the first-round primary bracket losers must all get no byes (otherwise they may not play the requisit three games). Thus $\C = \bracksig{4;c_1;0}$ for some $c_1$. Becuase swiss systems are standard, $c_1 = 0$ or $2.$\\
+        
+        If $c_1 = 0$, then in between the first two brackets and $\C$, we must have two more brackets for the second-round losers of the primary bracket: $\bracksig{2;0}$ and $\bracksig{1}.$ Then $\C$ must be followed by $\bracksig{1}$ for the loser of its championship game, and then $\bracksig{2;0}$ and $\bracksig{1}$ so that the last two teams get a third game. In total, this leads to the swiss system $\A$.\\
+
+        If $c_1 = 2$, then the losers of the two championship games of $\C$ have already played all three of their games and so need to fall into the bracket $\bracksig{2}$. Then we need $\bracksig{2;0}$ and $\bracksig{1}$ so that the last two teams get a third game. In total, this leads to the swiss system $\B$.
     }{swiss_eight}
 
     \fig{0.8}{two_eight_team_systems}{The Two Compact 3-Round Swiss Systems}
-    
+
     How would a tournament designer decide which compact 3-round system to use? Well, it depends on what the prize structure of the format is. If the goal is to identify a top-three, then system $\A$ is preferable: after all, system $\B$ has the two teams that win its third semibracket tie for third place. But if the goal is to identify a top-four, system $\B$ is preferable: the team that comes in fourth in system $\A$ actually finishes with only one win, while the team the comes in fifth finishes with two. While it is still reasonable to grant the one-win team fourth-place -- they had a more difficult slate of oponnents -- this is a somewhat messy situation that is solved by just using system $\B.$
     
     (McGarry and Schutz \cite{four_five_swap} considered outright swapping the positions of the fourth- and fifth-place teams at the conclusion of $\A$, but this provides some incentive for losing in the first round in order to get an easier path to a top-half finish. Simply using $\B$ when identifying the top-four teams is a much preferable solution.)
@@ -122,11 +125,11 @@
     \begin{figg}{Which Compact Systems Support Top-$m$s}{swiss_table}
         \begin{center}
             \begin{tabular}{ c | c c c c c c c c }
-            Compact & & & \multicolumn{3}{c}{Top-$m$} & &\\
-            Swiss System& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+            & & & \multicolumn{4}{c}{Top-$m$} & &\\
+            Compact  Swiss System& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
             \hline
-            Unique 1-rounder& \check & \ex &  &  &  &  & \\
-            Unique 2-rounder & \check & \ex & \check & \ex &  &  & \\
+            Unique 1-round System& \check & \ex &  &  &  &  & \\
+            Unique 2-round System & \check & \ex & \check & \ex &  &  & \\
             $\A$ & \check & \ex & \check & \ex & \check & \ex & \check & \ex \\
             $\B$ & \check & \ex & \ex & \check & \ex & \ex  & \check & \ex\\
             \end{tabular}
@@ -135,7 +138,7 @@
 
     Note that even if no \textit{compact} swiss system on $n$ teams supports a top-$m$, we can still sometimes use a non-compact swiss system to identify a top-$m.$ For example, there is no eight-team compact system that supports a top-2, but we can still use a $2$-round swiss identify a top two teams out of eight.
 
-    Now we state without proof that there are eight compact $4$-round swiss systems, and in Figure \ref{fig:swiss_table_two} we indicate which of these compact $4-$round systems support various top-$m$s.
+    We state without proof that there are eight compact $4$-round swiss systems, and in Figure \ref{fig:swiss_table_two} we indicate which of these compact $4-$round systems support various top-$m$s.
 
     \begin{figg}{Support of Compact $4$-Round Swiss Systems}{swiss_table_two}
         \begin{center}
@@ -165,11 +168,15 @@
     We make progress on Open Question \ref{oq:compact_swiss} with the following theorem.
     
     \theo{}{
-        For each $r \geq 3$, there is a compact $r$-round swiss system that supports a top-$1$, top-3, top-$(2^r - 3),$ and top-$(2^r - 1),$ and there is no compact $r$-round swiss system that supports a top-$2$, top-$(2^r - 2),$ or top-$2^r.$
-    }{
-        We prove the first half of the theorem inductively. If $r=3$, then the system $\A$ from Theorem \ref{th:swiss_eight} supports each of $1, 3, (2^r - 3),$ and $(2^r - 1).$ For any other $r$, let $\A$ be the compact $(r-1)$-round system that supports those four top-$m$s. Now consider the compact $r$-round system $\B$ in which, after the first round of games, the winners and losers each play out $\A$ on their own. $\B$ is a compact $r$-round swiss system that supports a top-$1, 3, (2^r - 3),$ and $(2^r - 1).$\\
+        % For each $r \geq 3$, there is a compact $r$-round swiss system that supports a top-$1$, top-3, top-$(2^r - 3),$ and top-$(2^r - 1),$ and there is no compact $r$-round swiss system that supports a top-$2$, top-$(2^r - 2),$ or top-$2^r.$
 
-        For the second half of the theorem, we note that any compact system must begin with $\bracksig{2^r; 0; ...; 0} \to \bracksig{1} \to ...$, so the system does not support a top-$2$. Similarly, any compact system must end with $... \to \bracksig{2;0} \to \bracksig{1}$ so that the two teams with no wins can compete for $(2^r-1)$th place. The team in $2^r-2$the place, then, must have won the third-to-last semibracket, which must be trivial (otherwise the team they just beat would have nowhere to go). Finally, clearly a compact system cannot support a top $2^r$, because the $2^r$th place team wins the final semibracket, which is also trivial.
+        For $r \geq 3$, there is a compact $r$-round swiss system that supports a top-$m$ for
+        $$m = 1, 3, 4, (2^r-4), (2^r - 3), \textrm{ or } (2^r - 1),$$ 
+        and no such system for $$m = 2, (2^r-2), \textrm{ or } 2^r.$$
+    }{
+        We prove the first half of the theorem inductively. If $r=3$, then the system $\A$ from Theorem \ref{th:swiss_eight} supports each of $1, 3, (2^r - 3),$ and $(2^r - 1).$ For any other $r$, let $\A$ be the compact $(r-1)$-round system that supports those four top-$m$s. Now consider the compact $r$-round system $\C$ in which, after the first round of games, the winners and losers each play out $\A$ on their own. $\C$ is a compact $r$-round swiss system that supports a top-$1, 3, (2^r - 3),$ and $(2^r - 1).$ The same inductive argument on $\B$ generates compact $r$-round swiss systems that support a top $1, 4, (2^r - 4)$, and $(2^r-1).$\\
+
+        For the second half of the theorem, we note that any compact system must begin with $\bracksig{2^r; 0; ...; 0} \to \bracksig{1} \to ...$, so a system cannot support a top-$2$. Similarly, any compact system must end with $... \to \bracksig{2;0} \to \bracksig{1}$ so that the two teams with no wins can compete for $(2^r-1)$th place. The team in $(2^r-2)$th place, then, must have won the third-to-last semibracket, which must be trivial (otherwise the team they just beat would have nowhere to go). Finally, clearly a compact system cannot support a top $2^r$, because the $(2^r)$th place team wins the final semibracket, which is also trivial.
     }{}
 
     Overall, swiss systems very useful and practical tournament designs: they give each team the same number of games, they ensure that games are being played between teams that have the same record and thus, hopefully, similar skill levels, and, for many values of $m$, they efficiently identify a top-$m$ in a fair and satisfying way.
