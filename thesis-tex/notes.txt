@@ -36,40 +36,6 @@ ALTERNATIVE SEEDINGS
         General result about what makes something non-ordered (OQ)
 
 MULTIBRACKETS
-    [[IN general, how do we want to think about respectfulness and properness language]]
-
-    Simple Multibrackets:
-        When to call multibrackets simple 
-        
-        rigorously define the notion of weakly proper
-
-        rematches
-
-        split this section into two?
-
-        talk about the opening bracket not being seeded
-        alternative seeding proposal (reverse properness?)
-
-        Notion of a "perfect" multibracket: {swiss cares about this}
-            -- strongly respectful
-            -- proper
-            -- rematch hesitant
-            -- very weak respectful -> same round loss means same semibracket (!!!! for swiss)
-
-        [[sort out pics]]
-
-    Semibracket Section:
-        max_game_min_round theorem??
-        copy over proper weak and strong respectfulness?
-        enumeration of things?
-
-    Swiss
-        better definition
-        reply rounds
-        swiss avoid rematches?
-        better diagrams
-        shorter/more concise proofs
-        appendix with 4-round compact swisses.
 
     (needs writing) Multiple Elimination:
         Double Elimination 
@@ -77,23 +43,7 @@ MULTIBRACKETS
         Triple Elimination [general combining scheme]
         Best of (2n+1)s
         swapping parallel opponents
-
-UGLY THOUGHTS:
-    --Weakly Respectful (same tier -> same byes, same bracket)
-    --Strongly Respectful (same tier -> same path)
-    --Weakly Proper (better tier -> >= byes, >= bracket)
-    --Strongly Proper (proper and better tier -> better seed) [[unclear if this is actually good]]
-    --Not silly (a_{i, r_i} \neq 0 -> i_r = 0)
-    --Something about rematches
-
-    {
-        Proper Tiers:
-        Proper definition
-        Reasons it doesn't work / compensation
-        Strong respectfulness means properness is great
-        but the fundamental theorem is great -- if you assume   teams in a give around are equally good
-    }
-
+        Replay rounds?
 
 Rest of the book:
     Introduction:

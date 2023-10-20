@@ -8,7 +8,7 @@
 
     \fig{0.8}{ultimate_efficient}{A More Efficient Alternative}
 
-    The format in Figure \ref{fig:ultimate_efficient} isn't an example of anything we've defined thus far. It's almost a simple multibracket but not quite: for one thing, some teams start in the ``second bracket.'' To formally describe what is going in Figure \ref{fig:ultimate_efficient}, we introduce the notion of semibracket.
+    The format in Figure \ref{fig:ultimate_efficient} isn't an example of anything we've defined thus far. It's almost a simple multibracket but not quite: for one thing, some teams start in the ``second bracket.'' To formally describe what is going on in Figure \ref{fig:ultimate_efficient}, we introduce the notion of semibracket.
 
     \begin{definition}{Semibracket}{}
         A \textit{semibracket} is a tournament format in which:
@@ -66,19 +66,23 @@
     \end{definition}
 
     \begin{definition}{Order of a Multibracket}{}
-        The \textit{order} of a multibracket is the sum of of the orders of the semibrackets it consists of.
+        The \textit{order} of a multibracket is the sum of the orders of the semibrackets it consists of.
     \end{definition}
 
-    Thus, saying that a multibracket is \textit{simple} means that all of its semibrackets are of order one, and that all teams start in the primary bracket: in generalized multibrackets, some teams (in particular lower seeded teams) might start in lower brackets.
+    \begin{definition}{Weakly Proper Multibracket}{}
+        A multibracket is \textit{weakly proper} if each $m$-team bracket $\A_i$ includes either the $m$ teams that lost most recently but have not yet been placed, or all of the teams that have lost and not yet been placed, (where rounds later in the alphabet are more recent,) and teams that lose in the same round are placed in the same bracket.
+    \end{definition}
+
+    Thus, saying that a multibracket is \textit{simple} means that all of its semibrackets are of order one, and that all teams start in the primary bracket: in generalized multibrackets, some teams (in particular lower-seeded teams) might start in lower brackets.
     
-    An example of of a non-simple multibracket that took advantage of both properties is the 2021 NBA Western Conference Play-in Tournament, which was a ten-team multibracket with order eight and following signature:
+    An example of a non-simple multibracket that took advantage of both properties is the 2021 NBA Western Conference Play-in Tournament, which was a ten-team multibracket with order eight and following signature:
     $\bracksig{6} \to \bracksig{2;0} \to \bracksig{2;1;0}.$ The play-in tournament was used to whittle the top ten teams in the conference down to eight teams who would qualify for the playoffs.
 
     \fig{0.7}{nba_playin}{2021 NBA Western Conference Play-in}
 
-    The top six seeds get slotted into the primary semibracket where they don't have to play any games in order to advance to playoffs. Seeds 7 and 8 each have to win one of their next two games to qualify, while seeds 9 and 10 have to win both of their next two.
+    The top six seeds get slotted into the primary semibracket where they don't have to play any games in order to advance to playoffs. Seeds 7 and 8 each must win one of their next two games to qualify, while seeds 9 and 10 must win both of their next two.
 
-    While it is reasonable for a multibracket to have a trivial semibracket as one of its brackets (for example, if we want to grant the loser of the championship game of the primary bracket second-place), semitrivial brackets are much harder to justify. Any multibracket $\A = \A_1 \to ... \to \A_k$ in which $\A_i = \bracksig{a_0; ...; a_r}$ is semitrivial can be reconstructed as $$\A' = \A_1 \to ... \to \A_{i-1} \to \bracksig{a_r} \to \bracksig{a_0; ...; a_{r-1}; 0} \to \A_{i+1} \to ... \to \A_k.$$ $\A'$ plays all of the same games as $\A$, but with more granularity in the final rankings.
+    While it is reasonable for a multibracket to have a trivial semibracket as one of its brackets, (for example, if we want to grant the loser of the championship game of the primary bracket second-place,) semitrivial brackets are much harder to justify. Any multibracket $\A = \A_1 \to ... \to \A_k$ in which $\A_i = \bracksig{a_0; ...; a_r}$ is semitrivial can be reconstructed as $$\A' = \A_1 \to ... \to \A_{i-1} \to \bracksig{a_r} \to \bracksig{a_0; ...; a_{r-1}; 0} \to \A_{i+1} \to ... \to \A_k.$$ $\A'$ plays all of the same games as $\A$, but with more granularity in the final rankings.
 
     Because weak properness and a lack of semitrivial semibrackets are such important and universal criteria, we combine them into the notion of a $\textit{standard}$ multibracket.
 
@@ -86,7 +90,7 @@
         A multibracket is \textit{standard} if it is weakly proper and contains no semitrivial semibrackets.
     \end{definition}
 
-    It is now clear that the both the 22021 NBA Western Conference Play-in format as well as the format in Figure \ref{fig:ultimate_efficient} are standard multibrackets. Both of these formats share an additional property that the original format in Figure \ref{fig:ultimate_format} does not: they are \textit{efficient}.
+    It is now clear that both the 2021 NBA Western Conference Play-in format as well as the format in Figure \ref{fig:ultimate_efficient} are standard multibrackets. Both of these formats share an additional property that the original format in Figure \ref{fig:ultimate_format} does not: they are \textit{efficient}.
 
     \begin{definition}{Efficient}{}
         A multibracket is \textit{efficient} if there are no games played within it such that both the winner and loser of that game are guaranteed to win a semibracket.
@@ -102,12 +106,12 @@
 
         Assume no such $j$ exists, and let $i$ be the first trivial bracket that follows a nontrivial one. Thus there is at least one game $\bracklabel{G}$ such that the loser drops into $\A_i.$ Because $\A_i$ is trivial, the loser of $\bracklabel{G}$ wins $\A_i$. Applying Lemma \ref{th:weak_lemma}, we see that the winner of $\bracklabel{G}$ will either win a semibracket as well, or lose in $\A_i$. But $\A_i$ is trivial, so they must win a semibracket. Thus, $\A$ is not efficient.\\
 
-        Now assume that such a $j$ exists. We will show by inducting on the semibrackets in $\A$ in reverse that none of the semibrackets contain a game that violates the efficiency condition. Firstly, $\A_k$ upholds the condition because any team that loses a game in $\A_k$ doesn't fall into a another semibracket, much less have a chance to win one.\\
+        Now assume that such a $j$ exists. We will show by inducting on the semibrackets in $\A$ in reverse that none of the semibrackets contain a game that violates the efficiency condition. Firstly, $\A_k$ upholds the condition because any team that loses a game in $\A_k$ doesn't fall into another semibracket, much less have a chance to win one.\\
         
-        Now we must show that if all of the semibrackets from $\A_{i+1}$ to $\A_k$ uphold the condition, then $\A_i$ does as well. If $i<j$, then $\A_i$ is trivial so there no games to violate the condition with. Otherwise, let $\bracklabel{G}$ be a game in $\A_i$. If the loser of $\bracklabel{G}$ does not fall into another semibracket, then we are done. If they do, then because that bracket is not trivial, they will play another game. However, by induction, the loser of this game is not guaranteed to win a semibracket. Thus neither is the loser of $\bracklabel{G}$.\\
+        Now we must show that if all of the semibrackets from $\A_{i+1}$ to $\A_k$ uphold the condition, then $\A_i$ does as well. If $i<j$, then $\A_i$ is trivial so there are no games to violate the condition with. Otherwise, let $\bracklabel{G}$ be a game in $\A_i$. If the loser of $\bracklabel{G}$ does not fall into another semibracket, then we are done. If they do, then because that bracket is not trivial, they will play another game. However, by induction, the loser of this game is not guaranteed to win a semibracket. Thus neither is the loser of $\bracklabel{G}$.\\
 
         So by induction, if such a $j$ exists, then $\A$ is efficient. Thus we have proved the theorem.
     }{}
 
-    Efficient multibrackets are great tournament designs for tournaments whose primary goal is to select the top $m$ teams to move on to the next stage of the competitions, as discussed in the beginning of this section. They do so excitingly, with each spot in the top $m$ being award as the winner of a particular game; efficiently, with no games being played between teams who have each already clinched spots; and fairly (as long as the format is as proper and respectful as desired.)
+    Efficient multibrackets are great tournament designs for tournaments whose primary goal is to select the top $m$ teams to move on to the next stage of the competitions, as discussed in the beginning of this section. They do so excitingly, with each spot in the top $m$ being awarded as the winner of a particular game; efficiently, with no games being played between teams who have each already clinched spots; and fairly (as long as the format is as proper and respectful as desired.)
 }
