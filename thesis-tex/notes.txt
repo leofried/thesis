@@ -1,4 +1,5 @@
 TOURNAMENT FORMATS:
+    Flesh out introduction
     Define matchup tables
 
 BRACKETS
@@ -10,16 +11,13 @@ BRACKETS
         should i-seed definition be in tournament formats/definitions
 
 ALTERNATIVE SEEDINGS
-    Reseeding:
-        finish proofs
+    (write) Reseeding
 
-    Tiered Seeding:
-
-    Palandromic Algorithm:
-        clean up
+    (write) Palandromic Algorithm:
+        clean up a lot
         $\F$ should be $\Pal$ or something [same with $\Order$]
 
-    Cohort Randomized Seeding:
+    (write) Cohort Randomized Seeding:
         Tennis seeding was to avoid rematches
 
         Literal Tennis is ordered (conj)
@@ -37,7 +35,7 @@ ALTERNATIVE SEEDINGS
 
 MULTIBRACKETS
 
-    (needs writing) Multiple Elimination:
+    (write) Multiple Elimination:
         Double Elimination 
         Recharge Rounds
         Triple Elimination [general combining scheme]

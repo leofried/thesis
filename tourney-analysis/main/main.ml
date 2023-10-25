@@ -5,8 +5,44 @@ open! Metrics
 ;;
 
 
+(* Reseeding_calcs.(f
+  ~n:7
+  ~table: (let rec table i j = if i > j then Prob.one_minus (table j i) else match (i, j) with 
+    | 3, 4 | 3, 5 | 4, 5 | 4, 6 | 4, 7 | 5, 6 | 5, 7 | 6, 7 -> Prob.half 
+    | _, _ -> Prob.p
+    in (Fun.flip table)
+  )
+  ~bracket: [6;1;0;0]
+) *)
+
+
+Reseeding_calcs.(f
+  ~table: (let rec table i j = if i > j then Prob.one_minus (table j i) else match (i, j) with 
+    | 2, 3 | 2, 4 | 3, 4 | 4, 5 | 7, 8 -> Prob.half 
+    | 1, _ | 2 , 7 | 2, 8 -> Prob.p2
+    | _, _ -> Prob.p
+    in (Fun.flip table)
+  )
+  ~bracket: [4;2;2;0;0]
+)
+
+
+
+
+|> List.iter (fun k ->
+  k
+  |> List.sexp_of_t (sexp_of_float)
+  |> Sexp.to_string
+  |> print_endline
+)
+
+
+
+
+(* 
+
 Prop_ord.f2
-  ~bracket:[16;0;0;0]
+  ~bracket:[16;0;0;0] *)
   (* ~tiers:[[1];[2];[3];[4];[5];[6]]
   ~scores: (Prop_ord.T.C [
   [0.5; 0.5; 0.7; 0.7; 0.9; 1.0;];
