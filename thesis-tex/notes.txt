@@ -1,14 +1,15 @@
-TOURNAMENT FORMATS:
-    Flesh out introduction
-    Define matchup tables
-
 BRACKETS
     Bracket Signatures:
-        successor signature
+        successor signature [used in FToB]
 
     Proper Brackets:
         Use teams names rather than city
-        should i-seed definition be in tournament formats/definitions
+
+    Ordered Brackets:
+        Clean up "Every ordered bracket is proper" proof
+    
+    Edwards Theorem:
+        Clean graphic in main lemma
 
 ALTERNATIVE SEEDINGS
     (write) Reseeding
@@ -80,12 +81,11 @@ Rest of the book:
 Style:
     pick notation letters/brackets of sigs/tiers/tiered-sigs
     colon before figures?
-    section header pages
-    once I finish brackets I should email everyone
-    shorthand for \P[t_i wins \A] and \P[t_i beats t_j] {P() vs P[]} -> done by hand in reseeding
+    cleanup images/
+    shorthand for \P[t_i wins \A] and \P[t_i beats t_j] {P() vs P[]} -> done by hand in reseeding, \G
     standardize induction on $r$ language
     successor signature?
-    where to put commas, ands, and bullets for lists in definitions
+    where to put commas, ands, and bullets vs numbers for lists in definitions
     "we say" for definitions? in general how to label adjective definitions. USe the noun in the title?
     when to italicize new words
 

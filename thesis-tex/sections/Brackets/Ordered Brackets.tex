@@ -27,17 +27,17 @@ This is not a great state of affairs: the whole point of seeding is confer an ad
 To fix this, we need a stronger notion of what makes a bracket effective than properness. The issue with proper seedings is the false assumption that higher-seeded teams will always beat lower-seeded teams. A more nuanced assumption, initially proposed by H.A. David \cite{stochastic}, might look like this:
 
 \begin{definition}{Strongly Stochastically Transitive}{}
-    A list of teams is \textit{strongly stochastically transitive} if for each $i, j, k$ such that $j < k$, $$\G{t_i}{t_j} \leq \G{t_i}{t_k}.$$
+    A list of teams $\T$ is \textit{strongly stochastically transitive} if for each $i, j, k$ such that $j < k$, $$\G{t_i}{t_j} \leq \G{t_i}{t_k}.$$
 \end{definition}
 
-A list of teams being strongly stochastically transitive (or SST) captures the intuition that each team ought to do better against lower-seeded teams than against higher-seeded teams. A few quick implications of this definition are:
+A list of teams being strongly stochastically transitive (SST) captures the intuition that each team ought to do better against lower-seeded teams than against higher-seeded teams. A few quick implications of this definition are:
 
 \begin{corollary}{}{}
-    If a list of teams is SST, then for each $i < j$, $\G{t_i}{t_j} \geq 0.5.$
+    If $\T$ is SST, then for each $i < j$, $\G{t_i}{t_j} \geq 0.5.$
 \end{corollary}
 
 \begin{corollary}{}{}
-    If a list of teams is SST, then for each $i, j, k, \ell$ such that $i < j$ and $k < \ell$, $$\G{t_i}{t_\ell} \geq \G{t_j}{t_k}.$$
+    If $\T$ is SST, then for each $i, j, k, \ell$ such that $i < j$ and $k < \ell$, $$\G{t_i}{t_\ell} \geq \G{t_j}{t_k}.$$
 \end{corollary}
 
 Note that not every set of teams can be seeded to be SST. Consider, for example, the game of rock-paper-scissors. Rock beats paper which beats scissors which beats rock, so no ordering of these ``teams'' will be SST. For our purposes, however, SST will work well enough.
@@ -55,7 +55,7 @@ In particular, a bracket being ordered is a stronger claim than it being proper.
 \theo{}{Every ordered bracket is proper.}{
     Let $\A$ be an ordered $n$-team bracket with $r$ rounds.\\
     
-    Consider a list of teams such that every team wins every game with probability 0.5. These teams are SST. A team that plays their first game in the $i$th round will win the tournament with probability $(\frac{1}{2})^{r-i}$, so teams that get more byes will have a higher probability to win the tournament than teams with fewer byes. This implies that higher-seeded teams must have more byes than lower-seeded teams, so in each round, the teams with byes must be the highest-seeded teams that are still alive. Thus, condition (1) is met.\\
+    Let $\T$ be SST with matchup table $\M$ where $\M_{ij} = 0.5$. A team that plays their first game in the $i$th round will win the tournament with probability $(0.5)^{r-i}$, so teams that get more byes will have a higher probability to win the tournament than teams with fewer byes. This implies that higher-seeded teams must have more byes than lower-seeded teams, so in each round, the teams with byes must be the highest-seeded teams that are still alive. Thus, condition (1) is met.\\
 
     We show that condition (2) is met by proving the stronger condition from Lemma \ref{th:proper_condition_two}: if $m$ teams have a bye and $k$ games are being played in round $s$, then if the bracket goes chalk, those matchups will be $t_{m + i}$ vs $t_{(m + 2k + 1) - i}$ for $i \in \{1, ..., k\}.$ We show this by strong induction on $s$ and on $i$.\\
 

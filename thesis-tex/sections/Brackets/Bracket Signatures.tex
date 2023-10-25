@@ -15,7 +15,7 @@ For example, the following two brackets have the same shape:
 One way to describe the shape of a bracket its signature.
 
 \begin{definition}{Bracket Signature}{}
-    The \textit{signature} $\bracksig{a_0; ...; a_r}$ of an $r$-team bracket $\A$ is a list of natural numbers, such that $a_i$ is the number of teams with $i$ byes.
+    The \textit{signature} $\bracksig{a_0; ...; a_r}$ of an $r$-team bracket $\A$ is list such that $a_i$ is the number of teams with $i$ byes.
 \end{definition}
 
 The signature of a bracket is defined only by its shape: the two brackets in Figure \ref{fig:same_shape} have the same shape, so they also have the same signature.
@@ -55,7 +55,7 @@ Bracket signatures have one more important property.
         Now, consider the signature $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}.$ By induction, there exists a bracket with signature $\B$. But if we take that bracket and replace $a_0/2$ of the teams with no byes with a game whose winner gets placed on that line, we get a new bracket with signature $\A.$
 }{signature_sum}
 
-The operation of transforming a bracket signature $\A = \bracksig{a_0; ...; a_r}$ into a bracket signature with one fewer round $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}$ that we used at the end of the proof of Theorem \ref{th:signature_sum} will become somewhat frequent as we often induct on the number of rounds in a bracket, so it has a name:
+The operation of transforming a bracket signature $\A = \bracksig{a_0; ...; a_r}$ into a bracket signature with one fewer round $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}$ that we used at the end of the proof of Theorem \ref{th:signature_sum} will become somewhat frequent, as we often induct on the number of rounds in a bracket, so it has a name:
 
 \begin{definition}{The Successor Signature}{}
     If $\A = \bracksig{a_0; ...; a_r},$ then the successor signature $$\SS(\A) = \bracksig{a_1 + a_0/2; a_2; ...; a_r}.$$ (The successor signature of zero-round signatures is undefined.)
