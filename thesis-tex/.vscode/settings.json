@@ -15,7 +15,8 @@
         "semibrackets",
         "semitrivial",
         "sublist",
-        "sublists"
+        "sublists",
+        "substatements"
     ],
     "cSpell.enabled": true
 }

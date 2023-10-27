@@ -88,4 +88,6 @@ Style:
     where to put commas, ands, and bullets vs numbers for lists in definitions
     "we say" for definitions? in general how to label adjective definitions. USe the noun in the title?
     when to italicize new words
+    which theorems are named, and how to reference them
+    clean up open questions
 

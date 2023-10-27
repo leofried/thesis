@@ -40,6 +40,10 @@ A list of teams being strongly stochastically transitive (SST) captures the intu
     If $\T$ is SST, then for each $i, j, k, \ell$ such that $i < j$ and $k < \ell$, $$\G{t_i}{t_\ell} \geq \G{t_j}{t_k}.$$
 \end{corollary}
 
+\begin{corollary}{}{}
+    If $\T$ is SST, then the matchup table $\M$ is monotonically increasing along each row and monotonically decreasing along each column.
+\end{corollary}
+
 Note that not every set of teams can be seeded to be SST. Consider, for example, the game of rock-paper-scissors. Rock beats paper which beats scissors which beats rock, so no ordering of these ``teams'' will be SST. For our purposes, however, SST will work well enough.
 
 Our new, nuanced alternative a proper bracket is an \textit{ordered bracket}, first defined by Chen and Hwang \cite{define_ordered}.
@@ -105,8 +109,30 @@ And thirdly, we show that the balanced four-team bracket is ordered, first prove
     &= \W{\A}{t_4}{\T}
 \end{align*}
 
-Thus the four-team bracket $\bracksig{4; 0; 0}$ is ordered.
+Thus $\A$ is ordered.
 }{}
 
-In the next section, we move on from describing particular ordered brackets in favor of a more general result.
+However, not every proper bracket is ordered. One particularly important example of a non-ordered proper bracket is $\bracksig{4;2;0;0}$
+
+\fig{1}{six_team}{The Six-Team Bracket $\bracksig{4; 2; 0; 0}$}
+\theo{}{The six-team bracket $\bracksig{4; 2; 0; 0}$ is not ordered.}{Let $\A = \bracksig{4; 2; 0; 0},$ and let $\T$ have the following matchup table:
+\begin{center}
+    \begin{tabular}{c | c c c c c c}
+    & $t_1$ & $t_2$ & $t_3$ & $t_4$ & $t_5$ & $t_6$\\ 
+    \hline
+    $t_1$ & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1 \\
+    $t_2$ & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1 \\
+    $t_3$ & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 \\
+    $t_4$ & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 \\
+    $t_5$ & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 \\
+    $t_6$ & 0 & 0 & 0.5 & 0.5 & 0.5 & 0.5 \\
+    \end{tabular}
+\end{center}
+
+Then, $$\W{\A}{t_1}{\T} = 0.5 \cdot 0.5 = 0.25,$$ but,
+$$\W{\A}{t_2}{\T} = (0.5 \cdot 0.5 + 0.5 \cdot 1) \cdot 0.5 = 0.375.$$
+Thus $\A$ is not ordered.
+}{}
+
+In the next section, we move on from describing particular ordered and non-ordered brackets in favor of a more general result.
 }
