@@ -67,10 +67,13 @@
 
    \newtcbtheorem[number within=subsection, use counter from=theorem]{definition}{Definition}
     {enhanced, breakable, colback=blue!5,colframe=teal!100!,fonttitle=\bfseries}{def}
+
     \newtcbtheorem[number within=subsection, use counter from=theorem]{figg}{Figure}
     {enhanced, width=\linewidth, breakable, colback=red!5,colframe=purple!100!,fonttitle=\bfseries}{fig}
-    \newtcbtheorem[number within=subsection, use counter from=theorem]{oq}{Open Question}
-    {enhanced, breakable, colback=yellow!5,colframe=orange!100!,fonttitle=\bfseries}{oq}
+    
+    \newtcbtheorem[number within=subsection, use counter from=theorem]{oq}{Open Question}{enhanced, breakable, colback=yellow!5,colframe=orange!100!,fonttitle=\bfseries}{oq}
+    \newtcbtheorem[number within=subsection, use counter from=theorem]{conj}{Conjecture}{enhanced, breakable, colback=yellow!5,colframe=orange!100!,fonttitle=\bfseries}{conj}
+
 
     \newcommand{\graph}[2]{\includegraphics[scale=#1]{images/\sectname/\subsectname/#2.png}
     }
@@ -149,6 +152,7 @@
     \newcommand{\ex}{\textcolor{red}{\ding{56}}}
 
     \newcommand{\bracksig}[1]{\mathbf{[[#1]]}}
+    \newcommand{\bracksigr}[1]{\mathbf{[[#1]]}^R}
     \newcommand{\bracktier}[1]{\mathbf{(#1)}}
     \newcommand{\bracklabel}[1]{\mathbf{#1}}
     

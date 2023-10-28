@@ -90,4 +90,5 @@ Style:
     when to italicize new words
     which theorems are named, and how to reference them
     clean up open questions
+    concluding statements on proofs
 

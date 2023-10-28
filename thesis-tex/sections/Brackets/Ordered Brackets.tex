@@ -110,12 +110,15 @@ And thirdly, we show that the balanced four-team bracket is ordered, first prove
 \end{align*}
 
 Thus $\A$ is ordered.
-}{}
+}{four_ordered}
 
 However, not every proper bracket is ordered. One particularly important example of a non-ordered proper bracket is $\bracksig{4;2;0;0}$
 
 \fig{1}{six_team}{The Six-Team Bracket $\bracksig{4; 2; 0; 0}$}
-\theo{}{The six-team bracket $\bracksig{4; 2; 0; 0}$ is not ordered.}{Let $\A = \bracksig{4; 2; 0; 0},$ and let $\T$ have the following matchup table:
+\theo{}{The six-team bracket $\bracksig{4; 2; 0; 0}$ is not ordered.}{
+    
+Let $\A = \bracksig{4; 2; 0; 0},$ and let $\T$ have the following matchup table:
+
 \begin{center}
     \begin{tabular}{c | c c c c c c}
     & $t_1$ & $t_2$ & $t_3$ & $t_4$ & $t_5$ & $t_6$\\ 
@@ -129,9 +132,11 @@ However, not every proper bracket is ordered. One particularly important example
     \end{tabular}
 \end{center}
 
-Then, $$\W{\A}{t_1}{\T} = 0.5 \cdot 0.5 = 0.25,$$ but,
-$$\W{\A}{t_2}{\T} = (0.5 \cdot 0.5 + 0.5 \cdot 1) \cdot 0.5 = 0.375.$$
-Thus $\A$ is not ordered.
+    Then
+    $$\W{\A}{t_1}{\T} = 0.5 \cdot 0.5 = 0.25,$$
+    but
+    $$\W{\A}{t_2}{\T} = (0.5 \cdot 0.5 + 0.5 \cdot 1) \cdot 0.5 = 0.375.$$
+    Thus $\A$ is not ordered.
 }{}
 
 In the next section, we move on from describing particular ordered and non-ordered brackets in favor of a more general result.

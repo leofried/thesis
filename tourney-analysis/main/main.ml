@@ -4,17 +4,16 @@ open! Schemes
 open! Metrics
 ;;
 
-
-(* Reseeding_calcs.(f
-  ~n:7
+(* 
+Reseeding_calcs.(f
   ~table: (let rec table i j = if i > j then Prob.one_minus (table j i) else match (i, j) with 
     | 3, 4 | 3, 5 | 4, 5 | 4, 6 | 4, 7 | 5, 6 | 5, 7 | 6, 7 -> Prob.half 
     | _, _ -> Prob.p
     in (Fun.flip table)
   )
   ~bracket: [6;1;0;0]
-) *)
-
+)
+ *)
 
 Reseeding_calcs.(f
   ~table: (let rec table i j = if i > j then Prob.one_minus (table j i) else match (i, j) with 
