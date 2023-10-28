@@ -22,7 +22,7 @@ The dotted lines are drawn after the first round of games has been played: if th
 
 In the NFC, 6-seed New York upset 3-seed Minnesota. Had a conventional bracket been used, the semifinal matchups would have been 1-seed vs 5-seed and 2-seed vs 6-seed: the 2-seed would have had an easier draw than the 1-seed, while the 6-seed would have an easier draw than the 5-seed. Reseeding fixes this by matching 6-seed New York is with top-seed Philadelphia, and 2-seed San Francisco with 5-seed Dallas.
 
-Reseeding is a powerful technique. For one, the fundamental theorem still applies to reseeded brackets.
+Reseeding is a powerful technique. For one, the fundamental theorem still applies to reseeded brackets, allowing us to refer to reseeded brackets by their signatures as well.
 
 \theo{}{
     There is exactly one proper reseeded bracket with each bracket signature.
@@ -33,7 +33,7 @@ Reseeding is a powerful technique. For one, the fundamental theorem still applie
 But what about orderedness? It's intuitive to think that all proper reseeded are ordered: it feels like almost by definition, the higher-seeded teams have an easier path than the lower-seeded ones. Hwang \cite{reseeding} conjectured exactly this.
 
 \begin{conj}{}{}
-    All proper reseeded are ordered.
+    All proper reseeded brackets are ordered.
 \end{conj}
 
 Unfortunately, this is not true. Our classification of the ordered reseeded brackets takes the same route as our proof of Edwards's Theorem did: we first examine the orderedness of certain important brackets, and then we use the stapling and containment lemmas to specify the complete set of ordered reseeded brackets.
@@ -63,11 +63,11 @@ Our primary example of a reseeded bracket that is ordered despite the traditiona
 \theo{}{
     $\bracksigr{4;2;0;0}$ is ordered.
 }{
-    This be shown by computing the probability of each team winning the format and then applying the SST conditions to establish the inequalities, as we did in Theorem \ref{th:four_ordered}. In the interest of brevity, however, we instead give an intuitive argument.\\
+    This can be shown by computing the probability of each team winning the format and then applying the SST conditions to establish the inequalities, as we did in Theorem \ref{th:four_ordered}. In the interest of brevity, however, we instead give an intuitive argument.\\
 
     $\W{A}{t_1}{\T} \geq \W{A}{t_2}{\T}$ because from those two teams perspectives, this format is just  $\bracksigr{4;0;0}.$ $\W{A}{t_2}{\T} \geq \W{A}{t_3}{\T}$ because $t_2$ has better odds if $t_3$ wins in the first round and they meet in the semifinals, and certainly has better odds if $t_3$ loses in the first round. $\W{A}{t_4}{\T} \geq \W{A}{t_5}{\T}$ because $t_4$ is at least as likely to win the first-round matchup, and then their paths would be identical.\\
 
-    $\W{A}{t_3}{\T} \geq \W{A}{t_4}{\T}$ holds because if both teams win the first round then $t_3$ has better odds in the remaining $\bracksigr{4;0;0}$ bracket. Meanwhile, if only one does, then $t_3$ will be joined by $t_5$ while $t_4$ will be joined by $t_6,$ and so $t_3$ is more likely to dodge playing $t_1$ in the finals. The same argument applies to show that $\W{A}{t_5}{\T} \geq \W{A}{t_6}{\T}$ as well.
+    $\W{A}{t_3}{\T} \geq \W{A}{t_4}{\T}$ holds because if both teams win the first round then $t_3$ has better odds in the remaining $\bracksigr{4;0;0}$ bracket. Meanwhile if only one does, then $t_3$ will be joined by $t_5$ while $t_4$ will be joined by $t_6,$ and so $t_3$ is more likely to dodge playing $t_1$ in the finals. The same argument applies to show that $\W{A}{t_5}{\T} \geq \W{A}{t_6}{\T}$ as well.
 }{}
 
 Unfortunately, that is where the power of reseeding to convert non-ordered signatures into ordered ones ends. The following two signatures are not ordered:
@@ -177,4 +177,4 @@ In many ways, the NFL conference playoffs are a perfect place to use a reseeded 
 Other leagues with similar structures might consider adopting forms of reseeding to protect their incentives and competitive balance (looking at you, Major League Baseball), but in many cases, the traditional bracket structure is too appealing to adopt a reseeded one.
 
 In the coming sections, we will develop the framework of \textit{tiered seeding} which will be used in our next attempt to generate ordered brackets of arbitrary signatures: \textit{cohort randomized seeding}.
-}
+} %cite paper
