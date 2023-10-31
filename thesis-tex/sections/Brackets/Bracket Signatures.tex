@@ -15,7 +15,7 @@ For example, the following two brackets have the same shape:
 One way to describe the shape of a bracket its signature.
 
 \begin{definition}{Bracket Signature}{}
-    The \textit{signature} $\bracksig{a_0; ...; a_r}$ of an $r$-team bracket $\A$ is list such that $a_i$ is the number of teams with $i$ byes.
+    The \textit{signature} $\bracksig{a_0; ...; a_r}$ of an $r$-round bracket $\A$ is list such that $a_i$ is the number of teams with $i$ byes.
 \end{definition}
 
 The signature of a bracket is defined only by its shape: the two brackets in Figure \ref{fig:same_shape} have the same shape, so they also have the same signature.
@@ -42,7 +42,8 @@ Despite this, bracket signatures are a useful way to talk about the shape of a b
 Bracket signatures have one more important property.
 
 \theo{}{
-    Let $\A = \bracksig{a_0; ...; a_r}$ be a list of natural numbers. Then $\A$ is a bracket signature if and only if $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$}{
+    Let $\A = \bracksig{a_0; ...; a_r}$ be a list of natural numbers. Then $\A$ is a bracket signature if and only if $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$
+    }{
         Let $\A$ be the signature for some bracket. Assume that every game in the bracket was a coin flip, and consider each team's probability of winning the tournament. A team that has $i$ byes must win $r-i$ games to win the tournament, and so will do so with probability $\left(\frac{1}{2}\right)^{r - i}.$ For each $i \in \{0, ..., r\}$, there are $a_i$ teams with $i$ byes, so (because any two teams winning are mutually exclusive) $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i}$$ is the probability that one of the teams wins, which is $1.$\\
 
         We prove the other direction by induction on $r$. If $r = 0$, then the only list with the desired property is $\bracksig{1}$, which is the signature for the unique one-team bracket. For any other $r$, first note that $a_0$ must be even: if it were odd, then \begin{align*}

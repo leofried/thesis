@@ -58,15 +58,18 @@ Rest of the book:
         --Scheduling
         --Impure (ramsey theorem, two different seven play four, divisions, mlb, soccer ties, etc)
         --Combinatorial tournaments (zeroth tiebreaker[?])
+        --Faithfulness
 
     Space of Formats
         --Hierarchy
         --Det-Symmetric correspondence (3 team puzzle)
         --Next game based on winner or team (rr-type vs bracket-type)
-        --Multilevel formats (pool play in particular, how to seed it, etc [possibly this its own section?]) {    dropping into the same bracket/wildcard games?}
+        --Multilevel formats (pool play in particular, how to seed it, etc [possibly this its own section?]) {    dropping into the same bracket/wildcard games?, power pools?}
         --Formats are a optimization
         --Formats are a Bayesian update [fidelity]
-        --What real sports leagues do / recommendations {mlb, drafted opponents [purpose of seeding: reward good or deserving]}
+        --What real sports leagues do / recommendations {mlb, wildcards in general, drafted opponents [purpose of seeding: reward good or deserving]}
+
+
 
     Statistics
         Accurate: Good E[winner_skill]

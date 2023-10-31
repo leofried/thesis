@@ -1,0 +1,73 @@
+\sub{
+
+    Consider the format used in the 2015 Asian Football Confederation Asian Cup: a bracket of signature $\bracksig{8; 0; 0; 0}$, plus a third-place game.
+
+    \fig{.7}{third_place_game}{2015 AFL Asian Cup}
+
+    Each game in this figure is labeled. In the primary bracket, first-round games are $\bracklabel{A1}$ through $\bracklabel{A4}$, while the semifinals are $\bracklabel{B1}$ and $\bracklabel{B2}$, and the finals is game $\bracklabel{C1}$. The third-place game is labeled $\bracklabel{D1}$: even though it could be played concurrently to the championship game, it is part of a different bracket and so we label it as a different round.
+
+    We indicate that the third-place game is to be played in between the losers of games $\bracklabel{B1}$ and $\bracklabel{B2}$ by labeling the starting lines in the third-place game with those games. This is not ambiguous because the winners of those games always continue on in the original bracket, so such labels only refer to the losers.
+
+    It might be tempting to think of the 2015 AFL Asian Cup as a semibracket. After all, semibrackets look like multiple brackets being played concurrently when drawn out. Unfortunately, the 2015 AFL Asian Cup doesn't quite fit into the definition of a semibracket: for one thing, the losers of games $\bracklabel{B1}$ and $\bracklabel{B2}$ continue playing even after they lose a game.
+    
+    Instead, the 2015 AFL Asian Cup is a \textit{multibracket}: a sequence of brackets (or semibrackets) in which teams that lose in earlier brackets fall into later brackets instead of being eliminated outright, and teams finish in a place dependent on which bracket they win. Formally,
+
+    \begin{definition}{Multibracket}{}
+        A \textit{multibracket} $\A$ is a sequence of semibrackets $\A_1 \to ... \to \A_k$ where some of the starting lines in some of the semibrackets are assigned to teams that lost certain games in other semibrackets, subject to the following conditions:
+        \begin{enumerate}
+            \item No game sends its loser to multiple locations.
+            \item If the loser of a game in $\A_i$ is sent to $\A_j$, then $i < j.$
+            \item If the loser of a game in round $r$ of $\A_i$ is sent to $\A_j$, then the each loser of each game in round $s$ of $\A_i$ for $r \leq s$ is sent to a $\A_\ell$ for $i < \ell \leq j.$
+            \item If the loser of a game in $\A_i$ is sent to $\A_j$, then the each loser of each game in $\A_\ell$ for $i < \ell < j$ is sent to a $\A_m$ for $\ell < m \leq j.$
+            \item If $t_i$ starts in $\A_\ell$ and $t_j$ starts in $\A_m$ such that $\ell < m$, then $i < j.$
+            \item None of $\A_i$ are semitrivial.
+        \end{enumerate}
+
+        Then, teams that win semibracket $\A_j$ finish in place $$1 + \sum_{i=1}^{j-1} \order{\A_i}.$$
+    \end{definition}
+
+    The first requirement ensures that teams are not playing in multiple semibrackets simultaneously, and the last requirement allows us to avoid having to consider somewhat pathological semitrivial semibrackets. The other four requirements ensure that it is always better to win games then to lose them: losing games should never put you in a earlier bracket then winning them, even accounting for the fact that future games in earlier brackets will likely be against better teams then future games in later brackets.
+
+    \begin{definition}{Higher and Lower Semibrackets}{}
+        If $\A_i$ and $\A_j$ are two semibrackets in a multibracket $\A$ such that $i < j$, we say $\A_i$ is the \textit{higher semibracket} and $\A_j$ is the \textit{lower semibracket}.
+    \end{definition}
+
+    The notion of higher and lower semibrackets fits with the intuitive idea of teams falling down the multibracket as they lose.
+
+    So, how does the 2015 AFL Asian Cup fit into this schema? Though Figure \ref{fig:third_place_game} seems to indicate that it ought to be a sequence of two brackets, this doesn't quite work. For one, the multibracket rule (3) prevents the losers of games $\bracklabel{B1}$ and $\bracklabel{B2}$ from falling into the second bracket without the loser of $\bracklabel{C1}$ being placed anywhere. Additionally, if the format had only two brackets, the winner of the game between $\bracklabel{B1}$ and $\bracklabel{B2}$ would be awarded second place, rather than third.
+
+    However, both of these issue can be fixed if we think of the 2015 AFL Asian Cup as a sequence of three brackets, the second of which has signature $\bracksig{1}.$
+
+    \fig{0.75}{second_place_default}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}$}
+
+    This format satisfies all of the requirements of the multibracket, and correctly assigns first, second, and third place. Thus, we say that the 2015 AFL Asian Cup is a multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}.$ 
+
+    \begin{definition}{Order of a Multibracket}{}
+        The \textit{order} of a multibracket is the sum of the orders of the semibrackets it consists of.
+    \end{definition}
+
+    The order of a multibracket can also be thought of as how many teams finish with a place. The 2015 AFL Asian Cup determines a top-three, so the multibracket $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}$ has order three.  
+    But the multibracket with signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}$ was far from the only multibracket of order three that the AFL could have used to dole out gold, silver, and bronze.
+    
+    In fact, it's not clear the loser of $\bracklabel{C1}$, who comes in second place, is really more deserving than the winner of $\bracklabel{D1}$, who comes in third. One could imagine the UAE arguing: we and South Korea both finished with two wins and one loss -- a first-round win, a win against Iraq, and a loss against Australia. The only reason that South Korea came in second and we came in third was because South Korea lucked out by having Australia on the other half of the bracket as them. That's not fair!
+
+    If the AFL took this complaint seriously, they could modify their format to have signature $\bracksig{8;0;0;0} \to \bracksig{2; 1; 0} \to \bracksig{1}.$
+    
+    \fig{0.75}{second_place_game}{$\bracksig{8;0;0;0} \to \bracksig{2; 1; 0} \to \bracksig{1}$}
+
+    If the AFL used the format in Figure \ref{fig:second_place_game} in 2015, then South Korea and the UAE would have played each other for second place after all of the other games were completed. In some sense, this is a more equitable format than the one used in reality: we have the same data about the UAE and South Korea and so we ought to let them play for second place instead of having decided almost randomly.
+
+    However, swapping formats doesn't come without costs. For one thing, South Korea and the UAE would've had to play a fourth game: if the AFL had only three days to put on the tournament and teams can play at most one game a day, then the format in Figure \ref{fig:second_place_game} isn't feasible.
+
+    Another concern: what if Iraq had beaten the UAE when they played in game $\bracklabel{D1}$? Then the two teams with a claim to second place would have been South Korea and Iraq, except South Korea already beat Iraq! In this world, South Korea being given second place without having to win a rematch with Iraq seems more equitable than giving Iraq a second chance to win. To address this, one could imagine a format in which game $\bracklabel{E1}$ is played only if it is not a rematch, although this would no longer be a multibracket and is a bit out of scope.
+
+    Ultimately, whether including game $\bracklabel{E1}$ is worth it depends on the goal of the format. If there is a huge difference between the prizes for coming in second and third, for example, if the top-two finishing teams in the Asian Cup qualified for the World Cup, then $\bracklabel{E1}$ is quite important. If, on the other hand, this is self-contained format played purely for bragging rights, $\bracklabel{E1}$ could probably be left out. In reality, the 2015 AFL Asian Cup qualified only its winner to another tournament (the 2017 Confederations Cup), and gave medals to its top three, so game $\bracklabel{E1}$, which distinguishes between second and third place, is probably unnecessary.
+
+    Let's imagine, however, that instead of just the champion, the top four teams from the Asian Cup advanced to the Confederations Cup. In this case, the format used in 2015 would be quite poor, as teams finish in the top four based only on the result of their first-round game: the rest of the games don't even have to be played. (Formally, the multibracket $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 0}$ has order three and so doesn't even assign a fourth-place, but it could easily be extended to the following multibracket of order four $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 0} \to \bracksig{1},$ which has the property mentioned above.)
+    
+    A better format for selecting the top four teams might look like this:
+
+    \fig{0.75}{fourth_place_game}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$}
+
+    The multibracket in Figure \ref{fig:fourth_place_game} selects a top four without having the selection be determined only by the first-round games. In fact, $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ has the attractive property that a team will finish in the top four if and only if it wins two of its first three games.
+}

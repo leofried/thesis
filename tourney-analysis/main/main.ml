@@ -4,6 +4,8 @@ open! Schemes
 open! Metrics
 ;;
 
+(*WHEN RANDOMIZING (WITH FIDEL=0), WE SHOULD SHUFFLE THE TEAMS A BUNCH TO INCREASE STAT. SIG.?*)
+
 (* 
 Reseeding_calcs.(f
   ~table: (let rec table i j = if i > j then Prob.one_minus (table j i) else match (i, j) with 
