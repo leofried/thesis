@@ -9,11 +9,9 @@ BRACKETS
         Clean up "Every ordered bracket is proper" proof
     
     Edwards Theorem:
-        Clean graphic in main lemma
+        open fidelity-based question
 
 ALTERNATIVE SEEDINGS
-    (write) Reseeding
-
     (write) Palandromic Algorithm:
         clean up a lot
         $\F$ should be $\Pal$ or something [same with $\Order$]
@@ -35,6 +33,10 @@ ALTERNATIVE SEEDINGS
         General result about what makes something non-ordered (OQ)
 
 MULTIBRACKETS
+
+    Third-Place Games:
+        Multibracket Signatures
+
 
     (write) Multiple Elimination:
         Double Elimination 
@@ -94,4 +96,6 @@ Style:
     which theorems are named, and how to reference them
     clean up open questions
     concluding statements on proofs
+    font size / margins
+    clean up citations
 
