@@ -33,9 +33,13 @@ ALTERNATIVE SEEDINGS
         General result about what makes something non-ordered (OQ)
 
 MULTIBRACKETS
-
     Third-Place Games:
         Multibracket Signatures
+
+    Efficient Multibrackets:
+        Efficient for a top (a, b, c)
+
+    [[some sense of losing teams staying in the same bracket,rolling for a place (7v8 in nba [2;1;7]), 13 format i designed for gameplay]]
 
 
     (write) Multiple Elimination:

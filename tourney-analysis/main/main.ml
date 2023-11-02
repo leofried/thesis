@@ -1,10 +1,19 @@
-open! Util
+
+
+Nationals.solve [[], [], [],[] ] 5;
+
+(* open! Util
 open! Std
 open! Schemes
 open! Metrics
 ;;
 
+
+Nationals.
 (*WHEN RANDOMIZING (WITH FIDEL=0), WE SHOULD SHUFFLE THE TEAMS A BUNCH TO INCREASE STAT. SIG.?*)
+
+
+
 
 (* 
 Reseeding_calcs.(f
@@ -130,4 +139,4 @@ print_endline (if (Some a = Some b) then  "yes" else "no") *)
 |> List.sexp_of_t (List.sexp_of_t sexp_of_int)
 |> Sexp.to_string
 |> print_endline
- *)
+ *) *)

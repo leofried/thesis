@@ -73,19 +73,19 @@
 
     In the format in Figure \ref{fig:1200}, there is no potential for this bracket to be completed in the traditional manner: three teams a bracket round will not make. But, as a semibracket, this is an incredibly viable format, one that perfectly solves the tournament design problem that we were given.
     
-    \begin{definition}{Order of a Semibracket}{}
-        The \textit{order} of a semibracket is the number of co-champions it produces.
+    \begin{definition}{Rank of a Semibracket}{}
+        If semibracket $\A$ has $m$ co-champions, then $\rank{\A} = m$. We say $\A$ has rank $m$ or that $\A$ \textit{ranks m teams}.
     \end{definition}
 
-    Thus, traditional brackets are exactly the semibrackets of order one. The formats in Figures \ref{fig:800} and \ref{fig:1200} have orders two and three, respectively.
+    Thus, traditional brackets are exactly the semibrackets that rank one team. The formats in Figures \ref{fig:800} and \ref{fig:1200} rank two and three teams, respectively.
 
     We can adapt the concept of a bracket signature to semibrackets.
 
     \begin{definition}{Semibracket Signature}{}
-        The \textit{signature} $\bracksig{a_0; ...; a_r}_m$ of an $r$-round semibracket $\A$ is list such that $a_i$ is the number of teams with $i$ byes and $m = \order{\A}.$ (In the case where $m = \order{\A} = 1$, it can be omitted.)
+        The \textit{signature} $\bracksig{a_0; ...; a_r}_m$ of an $r$-round semibracket $\A$ is list such that $a_i$ is the number of teams with $i$ byes and $m = \rank{\A}.$ (In the case where $m = \rank{\A} = 1$, it can be omitted.)
     \end{definition}
 
-    Thus the signature of traditional brackets are the same as when they are viewed as semibrackets of order one. The signatures of the formats in Figures \ref{fig:800} and \ref{fig:1200} are $\bracksig{8;0;0}_2$ and $\bracksig{12;0;0}_3,$ respectively.
+    Thus the signature of traditional brackets are the same as when they are viewed as semibrackets that rank one team. The signatures of the formats in Figures \ref{fig:800} and \ref{fig:1200} are $\bracksig{8;0;0}_2$ and $\bracksig{12;0;0}_3,$ respectively.
 
     In analogy with traditional bracket signature's Theorem \ref{th:signature_sum}, we have
 
@@ -105,7 +105,7 @@
         We say semibrackets is \textit{trivial} if it has signature $\bracksig{n}_n$ for some $n$.
     \end{definition}
 
-    No games are played in a trivial semibracket: all teams that enter one exit having been declared champion. The only trivial traditional bracket is $\bracksig{1}$, but there is one trivial semibracket of each order. Trivial semibrackets look a bit strange when drawn.
+    No games are played in a trivial semibracket: all teams that enter one exit having been declared champion. The only trivial traditional bracket is $\bracksig{1}$, but there is one trivial semibracket with each rank. Trivial semibrackets look a bit strange when drawn.
 
     \fig{1}{trivial}{$\bracksig{6}_6$}
 

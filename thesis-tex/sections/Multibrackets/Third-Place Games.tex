@@ -21,7 +21,7 @@
             \item None of $\A_i$ are semitrivial.
         \end{enumerate}
 
-        Then, teams that win semibracket $\A_j$ finish in place $$1 + \sum_{i=1}^{j-1} \order{\A_i}.$$
+        Then, teams that win semibracket $\A_j$ finish in place $$1 + \sum_{i=1}^{j-1} \rank{\A_i}.$$
     \end{definition}
 
     The first requirement ensures that teams are not playing in multiple semibrackets simultaneously, and the last requirement allows us to avoid having to consider somewhat pathological semitrivial semibrackets. The other four requirements ensure that it is always better to win games than to lose them: losing games should never put you in an earlier bracket than winning them, even accounting for the fact that future games in earlier brackets will likely be against better teams then future games in later brackets.
@@ -40,12 +40,11 @@
 
     This format satisfies all of the requirements of the multibracket, and correctly assigns first, second, and third place. Thus, we say that the 2015 AFL Asian Cup is a multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}.$ 
 
-    \begin{definition}{Order of a Multibracket}{}
-        The \textit{order} of a multibracket is the sum of the orders of the semibrackets it consists of.
+    \begin{definition}{Rank of a Multibracket}{}
+        If $\A = \A_1 \to ... \to \A_k$ is a multibracket, then $\rank{\A} = \sum_{i=1}^k \rank{\A_i}.$ We say $\A$ has rank $\rank{\A}$ or that $\A$ \textit{ranks $\rank{\A}$ teams}.
     \end{definition}
 
-    The order of a multibracket can also be thought of as how many teams finish with a place. The 2015 AFL Asian Cup determines a top-three, so the multibracket $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}$ has order three.  
-    But this multibracket is far from the only multibracket of order three that the AFL could have used to dole out gold, silver, and bronze.
+    The 2015 AFL Asian Cup determines a top-three, so the multibracket $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}$ has rank three. But this multibracket is far from the only multibracket of rank three that the AFL could have used to dole out gold, silver, and bronze.
     
     In fact, it's not clear the loser of $\bracklabel{C1}$, who comes in second place, is really more deserving than the winner of $\bracklabel{D1}$, who comes in third. One could imagine the UAE arguing: South Korea and we both finished with two wins and one loss -- a first-round win, a win against Iraq, and a loss against Australia. The only reason that South Korea came in second and we came in third was because South Korea lucked out by having Australia on the other half of the bracket as them. That's not fair!
 
@@ -61,7 +60,7 @@
 
     Ultimately, whether including game $\bracklabel{E1}$ is worth it depends on the goal of the format. If there is a huge difference between the prizes for coming in second and third, for example, if the top two finishing teams in the Asian Cup qualified for the World Cup, then $\bracklabel{E1}$ is quite important. If, on the other hand, this is  a self contained format played purely for bragging rights, $\bracklabel{E1}$ could probably be left out. In reality, the 2015 AFL Asian Cup qualified only its winner to another tournament (the 2017 Confederations Cup), and gave medals to its top three, so game $\bracklabel{E1}$, which distinguishes between second and third place, is probably unnecessary.
 
-    Let's imagine, however, that instead of just the champion, the top four teams from the Asian Cup advanced to the Confederations Cup. In this case, the format used in 2015 would be quite poor, as teams finish in the top four based only on the result of their first-round game: the rest of the games don't even have to be played. (Formally, the multibracket $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 0}$ has order three and so doesn't even assign a fourth place, but it could easily be extended to the following multibracket of order four $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 0} \to \bracksig{1},$ which has the property mentioned above.)
+    Let's imagine, however, that instead of just the champion, the top four teams from the Asian Cup advanced to the Confederations Cup. In this case, the format used in 2015 would be quite poor, as teams finish in the top four based only on the result of their first-round game: the rest of the games don't even have to be played. (Formally, the multibracket $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 0}$ only ranks three teams but it could easily be extended to the following multibracket that ranks four, $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2; 0} \to \bracksig{1},$ which has the property mentioned above.)
     
     A better format for selecting the top four teams might look like this:
 
