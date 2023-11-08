@@ -1,7 +1,7 @@
 \sub{
 
 \begin{definition}{Gameplay Function}{}
-    A \textit{gameplay function} $g$ on a list of teams $\T = \{t_1, ..., t_n\}$ is a nondeterministic function $g : \T \times \T \to \T$ with the following properties:
+    A \textit{gameplay function} $g$ on a list of teams $\T = [t_1, ..., t_n]$ is a nondeterministic function $g : \T \times \T \to \T$ with the following properties:
         \begin{itemize}
             \item $\P{g(t_i, t_j) = t_i} + \P{g(t_i, t_j) = t_j} = 1.$
             \item $\P{g(t_i, t_j) = t_i} = \P{g(t_j, t_i) = t_j}.$
@@ -20,7 +20,7 @@ The information in a gameplay function can be encoded into a \textit{matchup tab
     The \textit{matchup table} implied by a gameplay function $g$ on a list of teams $\T$ of length $n$ is a $n$-by-$n$ matrix $\M$ such that $\M_{ij} = \G{t_i}{t_j}.$
 \end{definition}
 
-For example, let $\T = \{$Favorites, Rock, Paper, Scissors, Conceders$\}$, and $g$ be such that the Conceders concede every game they play, the Favorites are $70\%$ favorites against Rock, Paper, and Scissors, and Rock, Paper, and Scissors matchup with each other as their name implies. Then the matchup table would look like so:
+For example, let $\T = $[Favorites, Rock, Paper, Scissors, Conceders$]$, and $g$ be such that the Conceders concede every game they play, the Favorites are $70\%$ favorites against Rock, Paper, and Scissors, and Rock, Paper, and Scissors matchup with each other as their name implies. Then the matchup table would look like so:
 
 \begin{figg}{The Matchup Table for $(\T, g)$}{}
     \begin{center}
@@ -45,6 +45,7 @@ For example, let $\T = \{$Favorites, Rock, Paper, Scissors, Conceders$\}$, and $
 \begin{definition}{Tournament Format}{}
     A \textit{tournament format} is an algorithm that takes as input a list of teams $\T$ and a gameplay function $g$ and outputs a champion $t \in \T.$
 \end{definition}
+%not really a champion -- more like a top x for some x.
 
 We use a gameplay function rather than a matchup table in the definition of a tournament format because a tournament format cannot simply look at the matchup table itself in order to decide which teams are best. Instead, formats query the gameplay function (have teams play games) in order to gather information about the teams. That said, matchup tables will often be useful in our \textit{analysis} of tournament formats. 
 

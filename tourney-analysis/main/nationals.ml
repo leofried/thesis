@@ -56,7 +56,7 @@ let all_rounds : round list =
       match schedule with
       | [] -> true
       | x :: y :: _ when x + y >= 4 -> false
-      | x :: y :: z :: _ when x + y + z >= 5 -> false
+      | 2 :: 1 :: 2 :: _ -> false
       | 1 :: 2 :: 1 :: _  -> false
       | _ :: tl -> is_ok tl College end
     | Club ->

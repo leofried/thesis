@@ -16,8 +16,9 @@
             \item No game sends its loser to multiple locations.
             \item If the loser of a game in $\A_i$ is sent to $\A_j$, then $i < j.$
             \item If the loser of a game in round $r$ of $\A_i$ is sent to $\A_j$, then the loser of each game in round $s$ of $\A_i$ for $r \leq s$ is sent to a $\A_\ell$ for $i < \ell \leq j.$
-            \item If the loser of a game in $\A_i$ is sent to $\A_j$, then the each loser of each game in $\A_\ell$ for $i < \ell < j$ is sent to a $\A_m$ for $\ell < m \leq j.$ %think
-            \item If $t_i$ starts in $\A_\ell$ and $t_j$ starts in $\A_m$ such that $\ell < m$, then $i < j.$
+            \item If the loser of a game in $\A_i$ is sent to $\A_j$, then the each loser of each game in $\A_\ell$ for $i < \ell < j$ is sent to a $\A_m$ for $\ell < m \leq j.$
+            \item If the $i$-seed starts in $\A_j$, then the loser of each game in $\A_\ell$ for $\ell < j$ is sent to $\A_m$ for $\ell < m \leq j.$
+            \item If the $i$-seed starts in $\A_j$, and $\ell < i$, then the $\ell$-seed starts in $\A_m$ for $m < j.$
             \item None of $\A_i$ are semitrivial.
         \end{enumerate}
 
@@ -25,6 +26,8 @@
     \end{definition}
 
     The first requirement ensures that teams are not playing in multiple semibrackets simultaneously, and the last requirement allows us to avoid having to consider somewhat pathological semitrivial semibrackets. The other four requirements ensure that it is always better to win games than to lose them: losing games should never put you in an earlier bracket than winning them, even accounting for the fact that future games in earlier brackets will likely be against better teams then future games in later brackets.
+
+    %why can we remove semitrivial brackets?
 
     \begin{definition}{Higher and Lower Semibrackets}{}
         If $\A_i$ and $\A_j$ are two semibrackets in a multibracket $\A$ such that $i < j$, we say $\A_i$ is the \textit{higher semibracket} and $\A_j$ is the \textit{lower semibracket}.
@@ -36,12 +39,14 @@
 
     However, both of these issues can be fixed if we think of the 2015 AFL Asian Cup as a sequence of three brackets, the second of which has signature $\bracksig{1}.$
 
+    %define multibracket signature
+
     \fig{0.75}{second_place_default}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}$}
 
     This format satisfies all of the requirements of the multibracket, and correctly assigns first, second, and third place. Thus, we say that the 2015 AFL Asian Cup is a multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}.$ 
 
     \begin{definition}{Rank of a Multibracket}{}
-        If $\A = \A_1 \to ... \to \A_k$ is a multibracket, then $\rank{\A} = \sum_{i=1}^k \rank{\A_i}.$ We say $\A$ has rank $\rank{\A}$ or that $\A$ \textit{ranks $\rank{\A}$ teams}.
+        If $\A = \A_1 \to ... \to \A_k$ is a multibracket, then $$\rank{\A} = \sum_{i=1}^k \rank{\A_i}.$$ We say $\A$ has rank $\rank{\A}$ or that $\A$ \textit{ranks} $\rank{\A}$ teams.
     \end{definition}
 
     The 2015 AFL Asian Cup determines a top-three, so the multibracket $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}$ has rank three. But this multibracket is far from the only multibracket of rank three that the AFL could have used to dole out gold, silver, and bronze.

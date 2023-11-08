@@ -1,105 +1,41 @@
-BRACKETS
-    Bracket Signatures:
-        successor signature [used in FToB]
+Introduction:
+    What is a Tournament (entire season is a tournament)
+    Survey of Literature
+    Roadmap of paper (including key adjectives like ordered, faithful, etc)
+    Formalizing Tournaments (Definitions)
 
-    Proper Brackets:
-        Use teams names rather than city
+Alternative Seedings:
+    --Write Randomized Cohort Seeding
+    --Combine with Brackets?
 
-    Ordered Brackets:
-        Clean up "Every ordered bracket is proper" proof
-    
-    Edwards Theorem:
-        open fidelity-based question
+Multiple Elimination
+    --Properties (respectful, rematches, etc)
+    --Swiss
+    --Multiple Elimination
 
-ALTERNATIVE SEEDINGS
-    (write) Palandromic Algorithm:
-        clean up a lot
-        $\F$ should be $\Pal$ or something [same with $\Order$]
+Round Robins:
+    --What they are
+    --Tiebreakers
+    --Scheduling
+    --Impure (ramsey theorem, two different seven play four, divisions, mlb, soccer ties, etc)
+    --Combinatorial tournaments (zeroth tiebreaker[?])
+    --Pool Play (definition, variants (power pools, wildcards (formal e.g. 13 and informal e.g. mlb)))
 
-    (write) Cohort Randomized Seeding:
-        Tennis seeding was to avoid rematches
+Hierarchy of Formats:
+    --Format Equality
+    --Format Counting
+    --Random, det/symm/aligned, etc.
 
-        Literal Tennis is ordered (conj)
-        For balanced bracket: 2^n-1+1 - 2^n is ordered (conj)
-        Tiers based on chalky number of rounds survived is ordered (conj)
-        
-        Complete randomization is not always ordered (ref)
-        But it is for balanced brackets (ref)
-        In general, tiers by number of byes is ordered (conj)
-        And for nearly (or nearly, nearly, etc) (conj)
-        
-        Finally, if something is ordered then 2^n of those brackets with tiers of size 2^n is ordered.
+Statistics:
+    Accurate: Good E[winner_skill]
+    Balanced: P[W[Spot]] = 1/n
+    Ordered: i < j -> P[W[t_i]] \geq P[W[t_j]]
+    Invariant: Stable under rearranging other teams
+    Rewarding: Probability best preforming team wins
+    Exciting: Prob championship game, 1v2, etc.
+    Aligned: Winning never makes your P[win] go down.
+    Faithful: If P(a beats b) is always 1 or 0, then top-m in a RR is also top-m here
 
-        General result about what makes something non-ordered (OQ)
+Quad ball Formats:
 
-MULTIBRACKETS
-    Third-Place Games:
-        Multibracket Signatures
-
-    Efficient Multibrackets:
-        Efficient for a top (a, b, c)
-
-    [[some sense of losing teams staying in the same bracket,rolling for a place (7v8 in nba [2;1;7]), 13 format i designed for gameplay]]
-
-
-    (write) Multiple Elimination:
-        Double Elimination 
-        Recharge Rounds
-        Triple Elimination [general combining scheme]
-        Best of (2n+1)s
-        swapping parallel opponents
-        Replay rounds?
-
-Rest of the book:
-    Introduction:
-        What is a Tournament (entire season is a tournament)
-        Formalizing Tournaments
-        Survey of Literature
-        Balanced and Proper / terms? statistical terms??
-        gameplay functions being: symmetric, consistent, SST
-
-    Round Robins:
-        --What they are
-        --Tiebreakers
-        --Scheduling
-        --Impure (ramsey theorem, two different seven play four, divisions, mlb, soccer ties, etc)
-        --Combinatorial tournaments (zeroth tiebreaker[?])
-        --Faithfulness
-
-    Space of Formats
-        --Hierarchy
-        --Det-Symmetric correspondence (3 team puzzle)
-        --Next game based on winner or team (rr-type vs bracket-type)
-        --Multilevel formats (pool play in particular, how to seed it, etc [possibly this its own section?]) {    dropping into the same bracket/wildcard games?, power pools?}
-        --Formats are a optimization
-        --Formats are a Bayesian update [fidelity]
-        --What real sports leagues do / recommendations {mlb, wildcards in general, drafted opponents [purpose of seeding: reward good or deserving]}
-
-
-
-    Statistics
-        Accurate: Good E[winner_skill]
-        Balanced: P[W[Spot]] = 1/n
-        Ordered: i < j -> P[W[t_i]] \geq P[W[t_j]]
-        Invariant: Stable under rearranging other teams
-        Rewarding: Probability best preforming team wins
-        Exciting: Prob championship game, 1v2, etc.
-
-        Appendix/Examples
-
-Style:
-    pick notation letters/brackets of sigs/tiers/tiered-sigs
-    colon before figures?
-    cleanup images/
-    shorthand for \P[t_i wins \A] and \P[t_i beats t_j] {P() vs P[]} -> done by hand in reseeding, \G
-    standardize induction on $r$ language
-    successor signature?
-    where to put commas, ands, and bullets vs numbers for lists in definitions
-    "we say" for definitions? in general how to label adjective definitions. USe the noun in the title?
-    when to italicize new words
-    which theorems are named, and how to reference them
-    clean up open questions
-    concluding statements on proofs
-    font size / margins
-    clean up citations
-
+Conclusion:
