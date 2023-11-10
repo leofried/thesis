@@ -1,1 +1,0 @@
-(((proper (1)) ((samples 1) (sums (0)) (prods ((0))))))

@@ -24,13 +24,13 @@ Round Robins:
 Hierarchy of Formats:
     --Format Equality
     --Format Counting
-    --Random, det/symm/aligned, etc.
+    --Random, det/sym/aligned, etc.
 
 Statistics:
     Accurate: Good E[winner_skill]
     Balanced: P[W[Spot]] = 1/n
     Ordered: i < j -> P[W[t_i]] \geq P[W[t_j]]
-    Invariant: Stable under rearranging other teams
+    Invariant: Stable under rearranging other teams (is this the same as holds its own under detsym?)
     Rewarding: Probability best preforming team wins
     Exciting: Prob championship game, 1v2, etc.
     Aligned: Winning never makes your P[win] go down.

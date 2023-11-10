@@ -17,6 +17,7 @@ let list : (module S) list = [
   (module Round_robin);
   (module Bracket);
   (module Proper);
+  (module Multibracket);
 ];;
 
 let get kind =

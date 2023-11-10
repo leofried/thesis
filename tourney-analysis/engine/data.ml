@@ -28,7 +28,7 @@ let write ~metric t =
 ;;
 
 let print ~metric ~prize : unit =
-  let digits = 6 in
+  let digits = 2 in
   List.iter
     (fun (scheme, data) ->
       let score, error, samples = Metric.score metric prize data in

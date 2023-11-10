@@ -7,18 +7,18 @@ let kind = "proper";;
 
 let number_of_teams = List.fold_left (+) 0;;
 
-let rec count_advance = function
-  | [] -> invalid_arg "Bracket.count_advance"
+let rec number_of_winners = function
+  | [] -> invalid_arg "Bracket.number_of_winners"
   | [x] -> x
   | hd :: md :: tl ->
     if hd mod 2 = 1 then
-      invalid_arg "Bracket.count_advance"
+      invalid_arg "Bracket.number_of_winners"
     else
-      count_advance (md + hd / 2 :: tl)
+      number_of_winners (md + hd / 2 :: tl)
 ;;
 
 let build_brackets t =
-  let count = count_advance t in
+  let count = number_of_winners t in
   let lst, i, c = 
     List.fold_right (fun b (lst, i, c) ->
       List.fold_left (fun lst j ->
@@ -41,7 +41,7 @@ let build_brackets t =
 let run t play teams =
   build_brackets t
   |> List.map (fun bracket -> Bracket.run bracket play teams)
-  |> List.fold_left (List.combine_mismatched List.append) []
+  |> List.fold_left Bracket.combine_losers []
 ;;
 
 let rec get_all 

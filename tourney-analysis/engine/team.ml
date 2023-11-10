@@ -36,7 +36,7 @@ let create_n (specs : Specs.t) n =
 ;;
 
 let play_game (specs : Specs.t) (*~is_bracket*) t1 t2 = 
-  let is_bracket = false in
+  (* let is_bracket = false in
   if is_bracket then begin
     let new_games = 1 + max t1.games t2.games in
     t1.games <- new_games;
@@ -44,7 +44,7 @@ let play_game (specs : Specs.t) (*~is_bracket*) t1 t2 =
   end else begin
     t1.games <- t1.games + 1;
     t2.games <- t2.games + 1;
-  end;
+  end; *)
 
   t1.opps <- List.assoc_update t2.id (Option.fold 1 ((+) 1)) t1.opps;
   t2.opps <- List.assoc_update t1.id (Option.fold 1 ((+) 1)) t2.opps;

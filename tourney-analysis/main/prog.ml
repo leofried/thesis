@@ -8,7 +8,7 @@ let run () =
   let number_of_teams = 8 in
 
   let metric : Metric.s = {
-    metric = (module Rematches : Metric.S);
+    metric = (module Decay : Metric.S);
     specs = {
       number_of_teams;
       fidel = 0.;
@@ -19,27 +19,23 @@ let run () =
 
 
   let schemes = 
-    [
-      Scheme.create (module Eight_team_group_test) WorldCup;
-      Scheme.create (module Eight_team_group_test) Jumble
-    ]
+    Scheme.create (module Multibracket) [[8;0;0;0]; [2;1;0]; [4;2;0;0]] 
+    :: Scheme.create (module Multibracket) [[8;0;0;0]; [2;1;0]; [4;2;0;0]; [1]] 
+     :: []
     
-    (* @ (
-    number_of_teams
+    @
+    (number_of_teams
     |> Proper.get_all
-    |> List.map (Scheme.create (module Proper)) 
-  ) *)
-
+    |> List.map (Scheme.create (module Proper)))
   in
 
-  let prize = [1.;0.;0.;0.;0.;0.;0.;0.] in
-
+  let prize = Prize.top_out_of 4 8 in
 
   let () = Debug.loop (fun () ->
     Data.print ~metric ~prize;
 
     schemes
-    |> List.map (Pair.rev 1000000)
+    |> List.map (Pair.rev 1000)
     |> Simulate.simulate_schemes metric
     |> Data.write ~metric
     ;
