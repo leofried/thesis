@@ -20,3 +20,15 @@ let rec run t play teams = match t with
     List.hd results :: run tl play (List.flatten (List.tl results) @ bot)
 ;;
 
+
+
+let rec get_all_complete_simple = function
+  | 0 -> [[]]
+  | n ->
+    let all_propers = Proper.get_all n in
+    let all_multis = get_all_complete_simple (n - 1) in
+    all_propers
+    |> List.map (fun proper -> List.map (fun multi -> proper :: multi) all_multis)
+    |> List.flatten
+;;
+    

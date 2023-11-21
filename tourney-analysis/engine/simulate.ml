@@ -1,12 +1,12 @@
 open! Util
 open! Schemes
 
-let simulate_schemes metric schemes =
-  List.map (fun (scheme, iters) -> scheme,
-    iters
-    |> List.create
-    |> List.fold_left (fun data _ -> Metric.fold metric data scheme) (Metric.create metric)
-  ) schemes
+let simulate_schemes metric schemes iters =
+  iters
+  |> List.create
+  |> List.map (fun _ -> Metric.generate metric schemes)
+  |> List.fold_left (fun xs ys -> List.combine xs ys |> List.map (Pair.uncurry (Metric.combine metric))) (List.map (fun _ -> Metric.empty metric) schemes)
+  |> List.combine schemes
 ;;
 
 (* let simulate_smart metric schemes = ();; *)

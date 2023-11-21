@@ -3,22 +3,19 @@ open! Std
 open! Schemes
 open! Engine
 
-
-(*list.combine map*)
 type t = Stats.t [@@deriving sexp];;
 
 let kind = "decay";;
 
 let empty (specs : Specs.t) : t = Stats.empty specs.number_of_teams;;
 
-let fold (t : t) (specs : Specs.t) (scheme : Scheme.t) : t =
-  let teams = Team.create_n specs (Scheme.number_of_teams scheme) in
- 
-  Stats.add_sample (
+let generate (specs : Specs.t) (schemes : Scheme.t list) =
+  let teams, play = Team.preconstruct specs in
+  List.map (fun scheme -> Stats.single (
     List.combine_map (fun t r -> Team.skill t -. Team.skill r)
       (Team.sort teams)
-      (Scheme.run scheme (Team.play_game specs) teams)
-  ) t
+      (Scheme.run scheme (play ()) teams)
+  )) schemes
 ;;
 
 let combine = Stats.combine;;

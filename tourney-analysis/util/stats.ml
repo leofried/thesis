@@ -15,23 +15,7 @@ let empty k =
   }
 ;;
 
-(*
-let of_list = function
-  | [] -> empty
-  | lst -> {
-    samples = List.length lst;
-    sums = List.fold_left (+.) 0. lst;
-    sum_squares = List.fold_left (+.) 0. (List.map (fun x -> x ** 2.) lst)
-  }
-;; *)
-
-let combine t1 t2 = {
-  samples = t1.samples + t2.samples;
-  sums = List.combine_map (+.) t1.sums t2.sums;
-  prods = List.combine_map (List.combine_map (+.)) t1.prods t2.prods;
-}
-
-let add_sample x = 
+let single x =
   let rec cross = function
   | [] -> []
   | hd :: tl as lst ->
@@ -39,11 +23,21 @@ let add_sample x =
     mul lst :: List.combine_map List.cons (mul tl) (cross tl)
   in
   
-  combine {
+  {
     samples = 1;
     sums = x;
     prods = cross x
   }
+;;
+
+let combine t1 t2 = {
+  samples = t1.samples + t2.samples;
+  sums = List.combine_map (+.) t1.sums t2.sums;
+  prods = List.combine_map (List.combine_map (+.)) t1.prods t2.prods;
+}
+
+let add_sample x t = 
+  combine (single x) t
 ;;
 
 let size t = List.length t.sums;;

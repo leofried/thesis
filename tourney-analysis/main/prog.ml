@@ -19,10 +19,12 @@ let run () =
 
 
   let schemes = 
-    Scheme.create (module Multibracket) [[8;0;0;0]; [2;1;0]; [4;2;0;0]] 
+    (* Scheme.create (module Multibracket) [[8;0;0;0]; [2;1;0]; [4;2;0;0]] 
     :: Scheme.create (module Multibracket) [[8;0;0;0]; [2;1;0]; [4;2;0;0]; [1]] 
-     :: []
-    
+     :: [] *)
+    (number_of_teams
+    |> Multibracket.get_all_complete_simple
+    |> List.map (Scheme.create (module Multibracket)))
     @
     (number_of_teams
     |> Proper.get_all
@@ -33,13 +35,9 @@ let run () =
 
   let () = Debug.loop (fun () ->
     Data.print ~metric ~prize;
-
-    schemes
-    |> List.map (Pair.rev 1000)
-    |> Simulate.simulate_schemes metric
-    |> Data.write ~metric
-    ;
+    print_endline (string_of_int @@ List.length schemes);
+    Simulate.simulate_schemes metric schemes 1000 |> Data.write ~metric;
   )
-   in
-   ()
+    
+  in ()
 ;;

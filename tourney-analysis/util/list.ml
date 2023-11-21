@@ -94,7 +94,7 @@ let collapse f =
 
 let sort = L.stable_sort;;
 let sort_rev compare = sort (Fun.flip compare);;
-let sort_by f compare lst = (*this is probably uncessary -- cant we just use normal sort with a good compare? this is sugar*)
+let sort_by f compare lst =
   lst
   |> map (Pair.join_right f)
   |> sort (Pair.compare ~right:compare)
