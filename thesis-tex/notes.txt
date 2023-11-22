@@ -4,14 +4,15 @@ Introduction:
     Roadmap of paper (including key adjectives like ordered, faithful, etc)
     Formalizing Tournaments (Definitions)
 
-Alternative Seedings:
+Brackets:
     --Write Randomized Cohort Seeding
-    --Combine with Brackets?
+    --Alined, Bline, and Clined
 
-Multiple Elimination
+Multibrackets:
     --Properties (respectful, rematches, etc)
     --Swiss
     --Multiple Elimination
+    --Orderedness (re:Maskin)
 
 Round Robins:
     --What they are
@@ -19,23 +20,24 @@ Round Robins:
     --Scheduling
     --Impure (ramsey theorem, two different seven play four, divisions, mlb, soccer ties, etc)
     --Combinatorial tournaments (zeroth tiebreaker[?])
-    --Pool Play (definition, variants (power pools, wildcards (formal e.g. 13 and informal e.g. mlb)))
+    
+Pools:
+    (definition, variants (power pools, wildcards (formal e.g. 13 and informal e.g. mlb)))
+
+Statistics and Applications:
+    Accurate: Good E[winner_skill]
+    Balanced: P[W[Spot]] = 1/n
+    Ordered: i < j -> P[W[t_i]] \geq P[W[t_j]]
+    Invariant: Stable under rearranging other teams (is this the same as holds its own under det-sym?)
+    Rewarding: Probability best preforming team wins
+    Exciting: Prob championship game, 1v2, etc.
+    Aligned: Winning never makes your P[win] go down.
+    Faithful: If P(a beats b) is always 1 or 0, then top-m in a RR is also top-m here
+    Quad ball Formats
 
 Hierarchy of Formats:
     --Format Equality
     --Format Counting
     --Random, det/sym/aligned, etc.
-
-Statistics:
-    Accurate: Good E[winner_skill]
-    Balanced: P[W[Spot]] = 1/n
-    Ordered: i < j -> P[W[t_i]] \geq P[W[t_j]]
-    Invariant: Stable under rearranging other teams (is this the same as holds its own under detsym?)
-    Rewarding: Probability best preforming team wins
-    Exciting: Prob championship game, 1v2, etc.
-    Aligned: Winning never makes your P[win] go down.
-    Faithful: If P(a beats b) is always 1 or 0, then top-m in a RR is also top-m here
-
-Quad ball Formats:
 
 Conclusion:
