@@ -4,8 +4,8 @@ open! Schemes
 let simulate_schemes metric schemes iters =
   iters
   |> List.create
-  |> List.map (fun _ -> Metric.generate metric schemes)
-  |> List.fold_left (fun xs ys -> List.combine xs ys |> List.map (Pair.uncurry (Metric.combine metric))) (List.map (fun _ -> Metric.empty metric) schemes)
+  |> List.map (fun i -> (* print_endline (string_of_int i); *) Metric.generate metric schemes, i)
+  |> List.fold_left (fun xs (ys, _) -> (* print_endline (string_of_int i); *) List.combine xs ys |> List.map (Pair.uncurry (Metric.combine metric))) (List.map (fun _ -> Metric.empty metric) schemes)
   |> List.combine schemes
 ;;
 

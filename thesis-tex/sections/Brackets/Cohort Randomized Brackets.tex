@@ -1,5 +1,7 @@
 \sub {
 
+%finish proofs
+
     Consider the 2022 Wimbledon Mixed Double's Championship, whose bracket is depicted in Figure \ref{fig:wimbledon}.
 
     \fig{0.8}{wimbledon}{2022 Wimbledon Mixed Double's Championship}
@@ -10,9 +12,9 @@
 
     But secondly, even the top 8 teams are not seeded properly: if all games go chalk, the quarterfinals will be 1v5, 2v7, 3v5, and 4v6, and the semifinal will be 1v3 and 2v4. How did Wimbledon come up with such a bizarre seeding? Randomly.
 
-    Before each Wimbledon Mixed Double's Championship, the seeding is constructed in the following way: the 1- and 2-seeds are placed normally. Then, half the time the 3- and 4-seeds are placed normally, and half the time they are swapped. Then the 5- through 8-seeds are randomly placed into the four starting lines that are normally assigned to those four seeds. Finally, the remaining 24 teams are placed randomly into the remaining spots.
+    Before each Wimbledon Mixed Double's Championship, the seeding is constructed in the following way: the 1- and 2-seeds are placed normally. Then half the 3- and 4-seeds are placed normally, and half the time they are swapped. Then the 5- through 8-seeds are randomly placed into the four starting lines that are normally assigned to those four seeds. Finally, the remaining 24 teams are placed randomly into the remaining spots.
 
-    Thus the bracket in Figure \ref{fig:wimbledon} is only one of the forty-eight different possible brackets that could be used in the Wimbledon Mixed Double's Championship: it happens to be the one used in 2022.
+    Thus the bracket in Figure \ref{fig:wimbledon} is only one of the forty eight different possible brackets that could be used in the Wimbledon Mixed Double's Championship: it happens to be the one used in 2022.
 
     Why does Wimbledon use such a strange format? Wimbledon is one of many tournaments on the ATP Tour (the set of tournaments played by the professional tennis players) that all use almost identical formats: large balanced brackets. Additionally, the seeding for these tournaments is set by the ATP rankings, which tend to be slow to update. As a result, if every ATP Tour tournament used a proper seeding, the 6-seed and 27-seed would play each other in the first round at every tournament until one of them moved up or moved down. These rematches were deemed undesirable and so this randomization procedure was introduced: The 1-seed's quarterfinals matchup (if everything goes chalk) is now randomly drawn from the 5- through 8-seeds, instead of always being the 8-seed.
 
@@ -114,7 +116,7 @@
 
     This is very similar to the Wimbledon format, which employs a chalk randomized balanced bracket but merges the first two cohorts. Wimbledon even uses this scheme in their single's tournaments, which are on 128 teams and are parameterized by $$(\bracksig{128; 0; ...; 0}, \bracktier{96 + 16 + 8 + 4 + 2 + 1}).$$
 
-    Chalk randomized balanced brackets are of nice enough form that we can show their orderedness:
+    Chalk randomized balanced brackets are of a nice enough form that we can show their orderedness:
 
     \theo{}{
         All chalk randomized balanced brackets are ordered.

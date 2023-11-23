@@ -34,6 +34,10 @@ let rec on_loc i f = function
     | 0 -> f hd :: tl
     | i -> hd :: on_loc (i - 1) f tl    
 ;;
+let rec grab n t = match n with
+  | 0 -> pop t
+  | n -> let item, lst = grab (n-1) (tl t) in item, hd t :: lst
+;;
 
 let append = L.append;;
 let flatten = L.flatten;;
