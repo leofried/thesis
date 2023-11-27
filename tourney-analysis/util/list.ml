@@ -13,6 +13,7 @@ let pop t = hd t, tl t;;
 let nth = L.nth;;
 let nth_one t n = nth t (n-1);;
 let rev = L.rev;;
+let pop_last t = t |> rev |> tl |> rev;;
 let mem = L.mem;;
 let create n = L.init n Fun.id;;
 let rec index x = function

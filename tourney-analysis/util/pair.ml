@@ -30,11 +30,12 @@ let join_left f x = f x, x;;
 
 let join_right f x = x, f x;;
 
+let envelope a = Option.map (pair a)
+
 let compare ?(left = fun _ _ -> 0) ?(right = fun _ _ -> 0) (a, b) (c, d) =
   match left a c with
   | 0 -> right b d
   | z -> z
 ;;
-
 let to_string left right (a, b) = "(" ^ left a ^ ", " ^ right b ^ ")";;
 

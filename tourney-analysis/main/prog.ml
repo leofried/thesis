@@ -1,11 +1,12 @@
 open! Util
+open! Std
 open! Schemes
 open! Metrics
 open! Engine
 
 let run () =
 
-  let number_of_teams = 8 in
+  let number_of_teams = 4 in
 
   let metric : Metric.s = {
     metric = (module Decay : Metric.S);
@@ -22,16 +23,16 @@ let run () =
     Scheme.create (module Multibracket) [[8;0;0;0]; [2;1;0]; [4;2;0;0]] 
      :: Scheme.create (module Multibracket) [[8;0;0;0]; [4;2;0;1;0]; [2;3;0;1;0]]
      :: []
-(*    (number_of_teams
+   (* (number_of_teams
     |> Multibracket.get_all_complete_simple
     |> List.map (Scheme.create (module Multibracket)))
     @
     (number_of_teams
     |> Proper.get_all
-    |> List.map (Scheme.create (module Proper))) *)
+    |> List.map (Pair.left >> Scheme.create (module Proper))) *)
   in
 
-  let prize = Prize.top_out_of 3 8 in
+  let prize = Prize.top_out_of 3 number_of_teams in
 
   let () = Debug.loop (fun () ->
     Data.print ~metric ~prize;

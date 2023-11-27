@@ -1,5 +1,7 @@
 
-Prog.run()
+(* Prog.run() *)
+
+Util.Debug.time (fun () -> print_int @@ List.length (Schemes.Multibracket.get_all ~respectfulness:Weakly ~triviality:Efficient [2;2;2;2;2;2] [1;2])) ();;
 
 (* let number_of_teams = 10;;
 

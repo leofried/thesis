@@ -8,7 +8,7 @@ let kind = "proper";;
 let number_of_teams = List.fold_left (+) 0;;
 
 let rec number_of_winners = function
-  | [] -> invalid_arg "Bracket.number_of_winners"
+  | [] -> 0
   | [x] -> x
   | hd :: md :: tl ->
     if hd mod 2 = 1 then
@@ -44,30 +44,148 @@ let run t play teams =
   |> List.fold_left Bracket.combine_losers []
 ;;
 
-let rec get_all 
+
+type respectfulness =
+  | Not
+  | Weakly
+      (*    | Strongly *)
+
+let check_tiers (tiers : int list) (bracket : int list) =
+  let rec f = function
+    | [] -> assert false
+    | [n] -> [n]
+    | hd :: md :: tl -> hd / 2 :: f (md + hd / 2 :: tl) 
+  in
+  let rec check_weak (tiers : int list) = function 
+    | [] -> Some (List.rev tiers)
+    | 0 :: b_tl -> check_weak tiers b_tl
+    | b_hd :: b_tl -> match tiers with
+      | [] -> assert false
+      | 0 :: t_tl -> check_weak t_tl b_tl 
+      | t_hd :: t_tl ->
+          if b_hd < t_hd then None
+          else check_weak t_tl ((b_hd - t_hd) :: b_tl)
+  in 
+  function
+  | Not -> let n = number_of_teams tiers and m = number_of_winners bracket in if n = m then Some [n] else Some [n - m; m]
+  | Weakly -> Option.map (Fun.flip List.append (f bracket)) (check_weak (List.rev tiers) (List.rev bracket))
+;;   
+
+let get_all 
   ?(max_target_sum = 1)
   ?(include_smaller = false)
-= function
-  | 0 -> []
-  | n ->
-    (n - 1)
-    |> get_all ~max_target_sum
-    |> List.map (fun lst ->
-      List.length lst
-      |> List.create
-      |> List.filter_map (function
-          | 0 -> Some (2 :: (List.hd lst - 1) :: (List.tl lst))
-          | i -> match List.nth lst i with
-            | 0 -> None
-            | _ -> Some (
-              lst
-              |> List.on_loc (i - 1) ((+) 2)
-              |> List.on_loc i (Fun.flip (-) 1)
-            )
-      )
-    )
-    |> List.flatten
-    |> List.drop_dupes
-    |> Bool.do_if (n <= max_target_sum) (List.cons [n])
-    |> Bool.do_if include_smaller (List.append (get_all ~max_target_sum ~include_smaller (n - 1)))
+  ?(include_trivial = true)
+  ?(include_semitrivial = true)
+  ?(respectfulness = Not)
+  input_tiers
+= 
+  let rec f = function
+    | 0 -> [[]]
+    | n ->
+        let lst = f (n-1) in
+        lst
+        |> List.hd
+        |> List.map (fun lst ->
+            List.length lst
+            |> List.create
+            |> List.filter_map (function
+                | 0 -> Some (2 :: (List.hd lst - 1) :: (List.tl lst))
+                | i -> match List.nth lst i with
+                  | 0 -> None
+                  | _ -> Some (
+                      lst
+                      |> List.on_loc (i - 1) ((+) 2)
+                      |> List.on_loc i (Fun.flip (-) 1)
+                    )
+              )
+          )
+        |> List.flatten
+        |> List.drop_dupes
+        |> Bool.do_if (n <= max_target_sum) (List.cons [n])
+        |> Fun.flip List.cons lst
+  in
+  input_tiers
+  |> number_of_teams
+  |> f
+  |> (if include_smaller then List.flatten else List.hd)
+  |> Bool.do_if_not include_trivial (List.filter (fun lst -> List.length lst <> 1))
+  |> Bool.do_if_not include_semitrivial (List.filter (fun lst -> List.length lst = 1 || List.nth_one lst (List.length lst) = 0))
+  |> List.filter_map (fun lst -> Pair.envelope lst (check_tiers input_tiers lst respectfulness))
+
+
+
+
+
+
+
+
+
+
+
+(* 
+
+let check_tiers (bracket : int list) (tiers : int list) =
+  let rec f (bracket : int list) (tiers : int list) =
+    match bracket with
+    | [] -> Some (List.rev tiers)
+    | 0 :: tl -> f tl tiers
+    | b_hd :: b_tl -> match tiers with
+      | [] -> assert false
+      | 0 :: t_tl -> f b_tl t_tl 
+      | t_hd :: t_tl ->
+          if b_hd < t_hd then None
+          else f ((b_hd - t_hd) :: b_tl) t_tl
+  in
+  let rec g = function
+    | [] -> assert false
+    | [n] -> [n]
+    | hd :: md :: tl -> hd / 2 :: g (md + hd / 2 :: tl) 
+  in
+  match f (List.rev bracket) (List.rev tiers) with
+  | None -> None
+  | Some tiers -> Some (List.append tiers (g bracket))
 ;;
+
+
+let get_all 
+    ?(max_target_sum = 1)
+    ?(include_smaller = false)
+    ?(include_trivial = true)
+    ?(include_semitrivial = true)
+    ?(tiers)
+    n
+  = 
+  let rec f = function
+    | 0 -> [[]]
+    | n ->
+        let lst = f (n-1) in
+        lst
+        |> List.hd
+        |> List.map (fun lst ->
+            List.length lst
+            |> List.create
+            |> List.filter_map (function
+                | 0 -> Some (2 :: (List.hd lst - 1) :: (List.tl lst))
+                | i -> match List.nth lst i with
+                  | 0 -> None
+                  | _ -> Some (
+                      lst
+                      |> List.on_loc (i - 1) ((+) 2)
+                      |> List.on_loc i (Fun.flip (-) 1)
+                    )
+              )
+          )
+        |> List.flatten
+        |> List.drop_dupes
+        |> Bool.do_if (n <= max_target_sum) (List.cons [n])
+        |> Fun.flip List.cons lst
+  in
+  f n
+  |> (if include_smaller then List.flatten else List.hd)
+  |> Bool.do_if_not include_trivial (List.filter (fun lst -> List.length lst <> 1))
+  |> Bool.do_if_not include_semitrivial (List.filter (fun lst -> List.length lst = 1 || List.nth_one lst (List.length lst) = 0))
+  |> List.filter_map (fun x -> match tiers with
+      | None -> Some (x, [])
+      | Some t -> Option.map (fun t -> x, t) (check_tiers x t) 
+    )
+;; *)
