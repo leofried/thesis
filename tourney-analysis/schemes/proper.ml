@@ -44,39 +44,12 @@ let run t play teams =
   |> List.fold_left Bracket.combine_losers []
 ;;
 
-
-type respectfulness =
-  | Not
-  | Weakly
-      (*    | Strongly *)
-
-let check_tiers (tiers : int list) (bracket : int list) =
-  let rec f = function
-    | [] -> assert false
-    | [n] -> [n]
-    | hd :: md :: tl -> hd / 2 :: f (md + hd / 2 :: tl) 
-  in
-  let rec check_weak (tiers : int list) = function 
-    | [] -> Some (List.rev tiers)
-    | 0 :: b_tl -> check_weak tiers b_tl
-    | b_hd :: b_tl -> match tiers with
-      | [] -> assert false
-      | 0 :: t_tl -> check_weak t_tl b_tl 
-      | t_hd :: t_tl ->
-          if b_hd < t_hd then None
-          else check_weak t_tl ((b_hd - t_hd) :: b_tl)
-  in 
-  function
-  | Not -> let n = number_of_teams tiers and m = number_of_winners bracket in if n = m then Some [n] else Some [n - m; m]
-  | Weakly -> Option.map (Fun.flip List.append (f bracket)) (check_weak (List.rev tiers) (List.rev bracket))
-;;   
-
 let get_all 
   ?(max_target_sum = 1)
   ?(include_smaller = false)
   ?(include_trivial = true)
   ?(include_semitrivial = true)
-  ?(respectfulness = Not)
+  ?(respectfulness = Tier.Not)
   input_tiers
 = 
   let rec f = function
@@ -105,12 +78,12 @@ let get_all
         |> Fun.flip List.cons lst
   in
   input_tiers
-  |> number_of_teams
+  |> Tier.number_of_teams
   |> f
   |> (if include_smaller then List.flatten else List.hd)
   |> Bool.do_if_not include_trivial (List.filter (fun lst -> List.length lst <> 1))
   |> Bool.do_if_not include_semitrivial (List.filter (fun lst -> List.length lst = 1 || List.nth_one lst (List.length lst) = 0))
-  |> List.filter_map (fun lst -> Pair.envelope lst (check_tiers input_tiers lst respectfulness))
+  |> List.filter_map (fun lst -> Pair.envelope lst (Tier.check_bracket respectfulness input_tiers lst))
 
 
 

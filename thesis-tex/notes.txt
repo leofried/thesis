@@ -41,3 +41,4 @@ Hierarchy of Formats:
     --Random, det/sym/aligned, etc.
 
 Conclusion:
+    Suggestions for real formats (deservingness vs goodness)

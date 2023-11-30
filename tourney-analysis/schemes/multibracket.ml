@@ -31,6 +31,7 @@ type triviality =
   | NoTrivial
 ;;
 
+(*
 let get_all
     ?(respectfulness : Proper.respectfulness = Not)
     ?(triviality = Anything)
@@ -55,7 +56,7 @@ let get_all
   in
   f input_tiers (0 :: output_tiers)
 ;; 
-
+*)
 
 
 (* let rec get_all_complete_simple = function
