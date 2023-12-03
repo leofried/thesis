@@ -1,0 +1,102 @@
+\sub {
+
+    As we saw in the last section, round robins can vary in their tiebreaking algorithms, and there are a number of different tiebreakers with various properties to chose from. But what can we say about the results of an $n$-team round robin without knowing what the tiebreaking algorithm is? For one thing,
+
+    \theo{}{
+        If a team goes undefeated in a round robin, they will come in first.
+    }{
+        The team that goes undefeated will finish with $n-1$ wins, while every other team lost to the undefeated team and so can finish with at most $n-2$ wins.
+    }{undefeated}
+
+    But this is not a property particularly unique to round robins: it is also true for every bracket and many multibrackets. We will now strengthen the claim in Theorem \ref{th:undefeated} in two different ways, each of which that are indeed somewhat unique to round robins.
+
+    We begin with the first strengthening.
+
+    \theo{}{
+        If round robin on a set of teams $\T$ ends such that for some subset of teams $\S \subset \T$, for every team $s \in S$ and $t \in \T \setminus \S$, $s$ beat $t$, then every team in $\S$ will finish in the top-$|\S|.$
+    }{
+        Let $n = |\T|$ and $m = |\S|.$ Each team in $\S$ will beat every team in $\T \setminus \S$, and so will finish with at least $n - m$ wins. Each team in $\T \setminus \S$ will lose to every team in $\S$ and so finish with at least $m$ losses and thus at most $n - m - 1$ wins. Thus every team in $\S$ will finish ahead of every team in $\T \setminus \S$, and thus in the top-$m.$
+    }{rr_dominating}
+
+    In the case where $|S| = 1$, this reduces to Theorem \ref{th:undefeated}. Theorem \ref{th:rr_dominating} is a nice result, ensuring that if the competing teams can be cleanly divided into a ``better group'' and ``worse group,'' the members of the better group of teams will finish ahead of the teams in the worse group. However, for a team to be able to use this theorem to guarantee themselves a spot in the top-$m$ for some $m$, they would need to rely on the results of many games that they did participate in (except in the trivial case where $|S| = 1$.) The second strengthening of Theorem \ref{th:undefeated} allows a team to guarantee themselves a spot in the top $m$ for various $m$ based only on their own performance.
+
+    \theo{}{
+        If a team finishes a round robin with $\ell$ losses, they are guaranteed to finish in the top $2\ell + 1.$
+    }{
+        Assume for contradication that team $t \in \T$ finishes with $\ell$ losses but is not in the top $2 \ell + 1$. Then there are at least $2\ell + 1$ teams that finish ahead of $t$, each of which who must have $\ell$ losses or fewer. Let $\S$ be such a set of $2\ell + 1$ teams. Then the set of teams $\S \cup \{t\}$ has a combined $(2\ell + 2) \cdot \ell = 2\ell^2 + 2\ell$ losses or fewer. However, there are $${\binom{2\ell + 2}{2}} = \frac{(2\ell + 2)(2\ell + 1)}{2} = 2\ell^2 + 3\ell + 1$$ games played between them, and each one must end in a loss. Contradiction!
+    }{rr_losses}
+
+    Once again, for $\ell = 0$, this reduces to Theorem \ref{th:undefeated}.
+
+    We can think of Theorems \ref{th:rr_dominating} and \ref{th:rr_losses} as guarantees that round robins make to competing teams: if you are a member of an $m$-team set that beats every other team, or if you lose no more than $(m-1)/2$ games, then you are guaranteed a spot in the top-$m$. These are important guarantees, and we generalize them onto formats where not every team plays every other team, (or where two teams might play more than once,) with the notion of faithfulness.
+
+    \begin{definition}{Dominating Set}{}
+        We say a subset of teams $\S \subset \T$ is a \textit{dominating set} if for every $s \in \S$ and $t \in \T \setminus \S$, $$\G{s}{t} = 1.$$
+    \end{definition}
+
+    \begin{definition}{Faithful}{}
+        We say an $n$-team tournament format $\A$ is \textit{faithful to its top-$m$} if, for any set of teams $\T$ the following two conditions hold:
+        \begin{itemize}
+            \item If $\S \subset \T$ is a dominating set and $|\S| \leq m$ then $$\forall s \in \S \ \WW{\A}{m}{s}{\T} = 1.$$
+            \item If there is a team $t \in \T$ and a set of teams $\S \subset (\T \setminus \{t\})$ such that $$|\T \setminus \{t\}| - |\S| \leq (m-1)/2$$ and $$\forall s \in \S \ \G{t}{s} = 1,$$ then $$\WW{\A}{m}{t}{\T} = 1.$$
+        \end{itemize}
+    \end{definition}
+
+    Theorems \ref{th:rr_dominating} and \ref{th:rr_losses} imply that
+
+    \begin{corollary}{}{}
+        For all $m < n$, every $n$-team round robin is faithful to its top-$m$.
+    \end{corollary}
+
+    Additionally, since every team ends up in the top-$n$ no matter what,
+
+    \begin{theorem}{}{all_faithful}
+        Every $n$-team format is faithful to its top-$n.$
+    \end{theorem}
+
+    Faithfulness is an important property for formats that aim to select a top-$m$, as it protects teams from getting unfairly unlucky with whom they are matched up against. For example, if a format is faithful to its top-three, teams know that one bad matchup will not eliminate their chance of medaling, even if they get an unlucky draw, as long as they take care of business against the rest of their opponents.
+
+    \theo{}{
+        A multibracket is faithful to its top-$1$ if and only if every competing team starts in its primary primary semibracket and the primary semibracket ranks one team.
+    }{
+        If there is a team that does not start in the primary semibracket, then even if that team always beats every other team, they will not come in first. And if the primary semibracket ranks more than one team, then no team will come in first. But if the primary semibracket has rank one and if every team starts in it, then any team that always beats every other team is guarenteed to win that semibracket and come in first.
+    }{multi_one_faithful}
+
+    In general, however, multibrackets struggle to be faithful to their top-$m$ for $1 < m < n.$ For example,
+
+    \theo{}{
+        An compact $r$-round swiss systems is faithful to its top-$m$ if and only if:
+        \begin{itemize}
+            \item $m=1,$
+            \item $m=2^r,$ or
+            \item $r=2$ and $m=3.$
+        \end{itemize}
+    }{
+        We note that the first two cases are covered by Theorems \ref{th:multi_one_faithful} and \ref{th:all_faithful} respectively. Left is to show the specific third case as well as to prove sufficiency.\\
+        
+        Next, consider the case when $r \geq 2$ and $m = 2.$ Let $\{t_1, t_2\} \subset \T$ be a dominating set of teams. By Theorem \ref{th:yyy}, the team that comes in second-place in a compact swiss system is the loser of the championship game. If $t_1$ and $t_2$ are matched up against each other in the first round, one of them will not finish in the top-two. Thus, for $r \geq 2$, $r$-round compact swiss systems are not faithful to their top two.\\
+
+        Now fix $r$ and $m$, let $$\ell = \min(\lceil m / 2 \rceil - 1, r),$$ and consider a team $t$ that loses its first $\ell$ games and then wins its last $(r - \ell).$ By Theorem \ref{xyz}, such a team cannot finish ahead of any team that finishes with the same record or better, and by Theorem \ref{xyz}, there are $$k = \sum_{i=0}^\ell {\binom{r}{i}}$$ such teams (including team $t$). Team $t$ can finish at best in $k$th place, despite losing only $\ell$ games, so if $k > m$, then compact $r$-round swiss systems are not faithful to their top-$m$. This inequality holds when $r = 3$ and $m \in \{3, 5, 6, 7\}$ or when $r > 3$ and $2 < m < 2^r.$\\
+
+        We are left with two uncovered cases, when $r = 2$ and $m = 3$, and when $r = 3$ and $m = 4.$\\
+
+        Recall that there is only one compact 2-round swiss system: $$\bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}.$$ Any three-team dominating set will necessarily force the fourth-team into fourth-place, securing a top-three finish for the teams in the set, and any team with one bad matchup will win one of their two games, again guaranteeing themselves a spot in the top three. Thus, $2$-round swiss systems are faithful to their top-3.\\
+
+        Finally, in the case when $r = 3$ and $m = 4$, consider a dominating set of size four, such that teams in the set are matched up against each other in first round and the losers of those two games are matched up against each other in the second round. By Theorems \ref{th:xyz} and \ref{th:yzx}, the loser of that second round game will finish in seventh place at best, so $3$-round swiss systems are not faithful to their top-4.
+    }{}
+
+    So not only are round robins impressive in their faithfulness to ..
+
+    We conjecture ..
+
+    As we will see, we can infuse to get target faithfulness ...
+
+
+
+
+%Undefeated -> first place
+%Two extensions
+
+
+%Landau's theorem?
+}

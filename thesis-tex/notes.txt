@@ -6,18 +6,20 @@ Introduction:
 
 Brackets:
     --Write Randomized Cohort Seeding
-    --Alined, Bline, and Clined
+    --Alined, B-line, and C-lined
 
 Multibrackets:
     --Properties (respectful, rematches, etc)
     --Swiss
     --Multiple Elimination
-    --Orderedness (re:Maskin)
+    --Orderedness (re: Mas-kin)
+    -- [[what does it mean to come in first if the primary bracket ranks 2]]
 
 Round Robins:
     --What they are
     --Tiebreakers
-    --Scheduling
+    --Faithfulness
+    --Scheduling?
     --Impure (ramsey theorem, two different seven play four, divisions, mlb, soccer ties, etc)
     --Combinatorial tournaments (zeroth tiebreaker[?])
     
@@ -41,4 +43,4 @@ Hierarchy of Formats:
     --Random, det/sym/aligned, etc.
 
 Conclusion:
-    Suggestions for real formats (deservingness vs goodness)
+    Suggestions for real formats (deserving-ness vs goodness)

@@ -1,11 +1,23 @@
 
 (* Prog.run() *)
 
-for max_games = 0 to 10 do
+let () =
   Schemes.(Util.Debug.time (fun () -> print_int @@ List.length (
-    Multibracket.get_all ~max_games ~respectfulness:Weakly ~triviality:Efficient (List.map Tier.new_tier [2;2;2;2;2;2]) [1;2]
-  )) ())
-done;;
+    Multibracket.get_all ~max_games:3 ~respectfulness:Weakly ~triviality:Efficient (List.map Tier.new_tier [2;2;2;2;2;2]) [1;2;4]
+  )) ());
+
+  Schemes.(Util.Debug.time (fun () -> print_int @@ List.length (
+    Multibracket.get_all ~max_games:5 ~respectfulness:Weakly ~triviality:Efficient (List.map Tier.new_tier [3;3;3;3]) [1;2;4]
+  )) ());
+
+  Schemes.(Util.Debug.time (fun () -> print_int @@ List.length (
+    Multibracket.get_all ~max_games:6 ~respectfulness:Weakly ~triviality:Efficient (List.map Tier.new_tier [4;4;4]) [1;2;4]
+  )) ());
+
+  Schemes.(Util.Debug.time (fun () -> print_int @@ List.length (
+    Multibracket.get_all ~max_games:7 ~respectfulness:Weakly ~triviality:Efficient (List.map Tier.new_tier [6;6]) [1;2;4]
+  )) ());
+;;
 
 (* let number_of_teams = 10;;
 

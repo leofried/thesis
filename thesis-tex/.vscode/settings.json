@@ -6,6 +6,7 @@
         "Horen",
         "Hwang",
         "matchups",
+        "medaling",
         "Multibracket",
         "Multibrackets",
         "Orderedness",
@@ -19,7 +20,8 @@
         "semitrivial",
         "sublist",
         "sublists",
-        "substatements"
+        "substatements",
+        "tiebreaking"
     ],
     "cSpell.enabled": true
 }
