@@ -10,7 +10,7 @@
 
     The 2015 AFL Asian Cup is a \textit{multibracket}: a sequence of brackets (or semibrackets) in which teams that lose in earlier brackets fall into later brackets instead of being eliminated outright, and teams finish in a place dependent on which bracket they win. Formally,
 
-    \begin{definition}{Multibracket}{}
+    \begin{definition}{Multibracket}{multi}
         A \textit{multibracket} $\A$ is a sequence of semibrackets $\A_1 \to ... \to \A_k$ where some of the starting lines in some of the semibrackets are assigned to teams that lost certain games in other semibrackets, subject to the following conditions:
         \begin{enumerate}
             \item No game sends its loser to multiple locations.
@@ -22,12 +22,22 @@
             \item None of $\A_i$ are semitrivial.
         \end{enumerate}
 
-        Then, teams that win semibracket $\A_j$ finish in place $$1 + \sum_{i=1}^{j-1} \rank{\A_i}.$$
+        Then, teams that win semibracket $\A_j$ finish in place $$\sum_{i=1}^{j} \rank{\A_i}.$$
     \end{definition}
 
-    The first requirement ensures that teams are not playing in multiple semibrackets simultaneously, and the last requirement allows us to avoid having to consider somewhat pathological semitrivial semibrackets. The other four requirements ensure that it is always better to win games than to lose them: losing games should never put you in an earlier bracket than winning them, even accounting for the fact that future games in earlier brackets will likely be against better teams then future games in later brackets.
+    The first requirement ensures that teams are not playing in multiple semibrackets simultaneously, and the last requirement allows us to avoid having to consider somewhat pathological semitrivial semibrackets. The other five requirements ensure that it is always better to win games than to lose them: losing games should never put you in an earlier bracket than winning them, even accounting for the fact that future games in earlier brackets will likely be against better teams then future games in later brackets.
+
+    Note that the definition the multibracket allows multiple teams to finish in the same place. For example, the multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{3}_3$ crowns one team champion and grants fourth-place to three teams. However,
+
+    \theo{}{
+        No more than $m$ teams in a multibracket finish in the top-$m$.
+    }{
+        This follows from how placed finishes are defined in Definition \ref{def:multi}.
+    }{}
 
     %why can we remove semitrivial brackets?
+
+    Colloquially, we use the terms \textit{higher} and \textit{lower} to refer to certain semibrackets in a multibracket.
 
     \begin{definition}{Higher and Lower Semibrackets}{}
         If $\A_i$ and $\A_j$ are two semibrackets in a multibracket $\A$ such that $i < j$, we say $\A_i$ is the \textit{higher semibracket} and $\A_j$ is the \textit{lower semibracket}.
@@ -72,4 +82,6 @@
     \fig{0.75}{fourth_place_game}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$}
 
     The multibracket in Figure \ref{fig:fourth_place_game} selects a top four without having the selection be determined only by the first-round games. In fact, $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4; 2; 0; 0} \to \bracksig{1}$ has the attractive property that a team will finish in the top four if and only if it wins two of its first three games.
+    
+    With the general format of the multibracket established, the next few sections will examine particular classes of the design.
 }

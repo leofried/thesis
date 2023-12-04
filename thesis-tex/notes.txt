@@ -9,11 +9,10 @@ Brackets:
     --Alined, B-line, and C-lined
 
 Multibrackets:
-    --Properties (respectful, rematches, etc)
     --Swiss
     --Multiple Elimination
-    --Orderedness (re: Mas-kin)
-    -- [[what does it mean to come in first if the primary bracket ranks 2]]
+    --Properties (respectfulness, rematches [swapping], orderedness etc)
+
 
 Round Robins:
     --What they are

@@ -72,9 +72,9 @@
             \item $r=2$ and $m=3.$
         \end{itemize}
     }{
-        We note that the first two cases are covered by Theorems \ref{th:multi_one_faithful} and \ref{th:all_faithful} respectively. Left is to show the specific third case as well as to prove sufficiency.\\
+        We note that the first two cases are covered by Theorems \ref{th:multi_one_faithful} and \ref{th:all_faithful} respectively. Left is to show the specific third case as well as to prove that these are the only cases.\\
         
-        Next, consider the case when $r \geq 2$ and $m = 2.$ Let $\{t_1, t_2\} \subset \T$ be a dominating set of teams. By Theorem \ref{th:yyy}, the team that comes in second-place in a compact swiss system is the loser of the championship game. If $t_1$ and $t_2$ are matched up against each other in the first round, one of them will not finish in the top-two. Thus, for $r \geq 2$, $r$-round compact swiss systems are not faithful to their top two.\\
+        Consider first the case when $r \geq 2$ and $m = 2.$ Let $\{t_1, t_2\} \subset \T$ be a dominating set of teams. By Theorem \ref{th:yyy}, the team that comes in second-place in a compact swiss system is the loser of the championship game. Thus if $t_1$ and $t_2$ are matched up against each other in the first round, one of them will not finish in the top-two, so for $r \geq 2$, $r$-round compact swiss systems are not faithful to their top two.\\
 
         Now fix $r$ and $m$, let $$\ell = \min(\lceil m / 2 \rceil - 1, r),$$ and consider a team $t$ that loses its first $\ell$ games and then wins its last $(r - \ell).$ By Theorem \ref{xyz}, such a team cannot finish ahead of any team that finishes with the same record or better, and by Theorem \ref{xyz}, there are $$k = \sum_{i=0}^\ell {\binom{r}{i}}$$ such teams (including team $t$). Team $t$ can finish at best in $k$th place, despite losing only $\ell$ games, so if $k > m$, then compact $r$-round swiss systems are not faithful to their top-$m$. This inequality holds when $r = 3$ and $m \in \{3, 5, 6, 7\}$ or when $r > 3$ and $2 < m < 2^r.$\\
 
