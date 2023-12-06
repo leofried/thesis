@@ -46,6 +46,7 @@ For example, let $\T = $[Favorites, Rock, Paper, Scissors, Conceders$]$, and $g$
     A \textit{tournament format} is an algorithm that takes as input a list of teams $\T$ and a gameplay function $g$ and outputs a champion $t \in \T.$
 \end{definition}
 %not really a champion -- more like a top x for some x.
+%ok actually... see \WW
 
 We use a gameplay function rather than a matchup table in the definition of a tournament format because a tournament format cannot simply look at the matchup table itself in order to decide which teams are best. Instead, formats query the gameplay function (have teams play games) in order to gather information about the teams. That said, matchup tables will often be useful in our \textit{analysis} of tournament formats. 
 
@@ -55,7 +56,7 @@ We also introduce some shorthand to help make notation more concise.
     $\W{\A}{t}{\T}$ is the probability that team $t \in \T$ wins tournament format $\A$ when it is run on the list of teams $\T$.
 \end{definition}
 
-%also do \WW
+%also do \WW --> make note that not more than m teams can granted to m, so co-champions each come in second, etc.
 
 % \begin{definition}{$\G{t_1}{t_2}$}{}s
 %     $\G{t_1}{t_2}$ is the random variable that is true when team $t_1$ beats team $t_2$. So $\P{\G{t_1}{t_2}}$ is the probability that team $t_1$ beats team $t_2$ in a game.

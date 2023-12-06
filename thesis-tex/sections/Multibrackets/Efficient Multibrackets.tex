@@ -50,12 +50,12 @@
 
     Finally, the USA Ultimate Manual of Championship Series Tournament Formats \cite{ultimate}, which is used to determine the formats to be used at the various sectional and regional tournaments in the sport of ultimate frisbee, contains a host of weakly efficient multibrackets for selecting the top $m$ teams out of a list of $n$ for $m$ and $n$ ranging from $1$ to $24.$
 
-    We note two things about the notion of efficiency presented above. First, Theorem \ref{th:w_efficient} implies that a weakly efficient multibracket can begin with a long string of trivial semibrackets before the nontrivial ones begin. While this is sufficient for avoiding playing unnecessary games, it does not completely remove unnecessary semibrackets: the set of leading trivial semibrackets $\bracksig{m_1}_{m_1} \to ... \to \bracksig{m_j}_{m_j}$ of a weakly efficient multibracket can be combined into a single trivial semibracket $\bracksig{m_1 + ... + m_j}_{(m_1 + ... + m_j)}$ without affecting which teams end up ranked.
+    We note two things about the notion of weak efficiency presented above. First, Theorem \ref{th:w_efficient} implies that a weakly efficient multibracket can begin with a long string of trivial semibrackets before the nontrivial ones begin. While this is sufficient for avoiding playing unnecessary games, it does not completely remove unnecessary semibrackets: the set of leading trivial semibrackets $\bracksig{m_1}_{m_1} \to ... \to \bracksig{m_j}_{m_j}$ of a weakly efficient multibracket can be combined into a single trivial semibracket $\bracksig{m_1 + ... + m_j}_{(m_1 + ... + m_j)}$ without affecting which teams end up ranked.
 
     To patch this, we strengthen the notion of weak efficiency into just \textit{efficiency.}
 
     \begin{definition}{Efficient}{}
-        We say a multibracket is \textit{efficient} if it has no trivial semibracket, or only its leading semibracket is trivial.
+        We say a multibracket is \textit{efficient} if it has no trivial semibrackets, or if only its leading semibracket is trivial.
     \end{definition}
 
     Second, efficiency makes a lot of sense if we are only interested in the top-$m$, where $m = \rank\A$, and not in the ranks of of the teams with them. However, sometimes we might be interested in the intermediate ranks as well. For example, let's see we want to design an eight-team tournament format in which the top team receives the grand prizes, while the second- through sixth-place each get equivalent consolation prizes, and seventh and eighth each get nothing. While not weakly efficient, the following format assigns the desired places without playing any games between teams that are guaranteed to receive the same prize.

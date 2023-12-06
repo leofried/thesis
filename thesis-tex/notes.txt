@@ -4,27 +4,32 @@ Introduction:
     Roadmap of paper (including key adjectives like ordered, faithful, etc)
     Formalizing Tournaments (Definitions)
 
+
 Brackets:
     --Write Randomized Cohort Seeding
     --Alined, B-line, and C-lined
 
 Multibrackets:
     --Multibracket : think really hard about definition, both readability and accuracy (and use "multibracket rule") as it applies to swiss->last structural theorem
+            --> maybe this should be the priority thing, followed by a pile of theorems (corollaries?) for the inequality rules.
+    
     --Swiss
     --Multiple Elimination
     --Properties (respectfulness, rematches [swapping], orderedness etc)
     --[[need to do properties before swiss]]
+    --make sure we know that teams can start in lower brackets (worried this might be shocking -- nba play-in does this i suppose, but maybe do rugby?)
+    --do semibracket examples still track
 
 Round Robins:
     --What they are
     --Tiebreakers
     --Faithfulness
-    --Scheduling?
+    --Pools
+    --Pool Extensions (variants (power pools, wildcards (formal e.g. 13 and informal e.g. mlb)), "finishing pool play")
     --Impure (ramsey theorem, two different seven play four, divisions, mlb, soccer ties, etc)
-    --Combinatorial tournaments (zeroth tiebreaker[?])
     
-Pools:
-    (definition, variants (power pools, wildcards (formal e.g. 13 and informal e.g. mlb)))
+
+
 
 Statistics and Applications:
     Accurate: Good E[winner_skill]

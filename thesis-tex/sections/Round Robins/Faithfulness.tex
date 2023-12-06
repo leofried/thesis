@@ -56,6 +56,8 @@
 
     Faithfulness is an important property for formats that aim to select a top-$m$, as it protects teams from getting unfairly unlucky with whom they are matched up against. For example, if a format is faithful to its top-three, teams know that one bad matchup will not eliminate their chance of medaling, even if they get an unlucky draw, as long as they take care of business against the rest of their opponents.
 
+    Many multibrackets (and formats in general) are faithful to their top-1.
+
     \theo{}{
         A multibracket is faithful to its top-$1$ if and only if every competing team starts in its primary primary semibracket and the primary semibracket ranks one team.
     }{
@@ -65,7 +67,7 @@
     In general, however, multibrackets struggle to be faithful to their top-$m$ for $1 < m < n.$ For example,
 
     \theo{}{
-        An compact $r$-round swiss systems is faithful to its top-$m$ if and only if:
+        A compact $r$-round swiss systems is faithful to its top-$m$ if and only if:
         \begin{itemize}
             \item $m=1,$
             \item $m=2^r,$ or
@@ -76,27 +78,22 @@
         
         Consider first the case when $r \geq 2$ and $m = 2.$ Let $\{t_1, t_2\} \subset \T$ be a dominating set of teams. By Theorem \ref{th:swiss_loser_second}, the team that comes in second-place in a compact swiss system is the loser of the championship game. Thus if $t_1$ and $t_2$ are matched up against each other in the first round, one of them will not finish in the top-two, so for $r \geq 2$, $r$-round compact swiss systems are not faithful to their top two.\\
 
-        Now fix $r$ and $m$, let $$\ell = \min(\lceil m / 2 \rceil - 1, r),$$ and consider a team $t$ that loses its first $\ell$ games and then wins its last $(r - \ell).$ By Theorem \ref{xyz}, such a team cannot finish ahead of any team that finishes with the same record or better, and by Theorem \ref{th:swiss_record}, there are $$k = \sum_{i=0}^\ell {\binom{r}{i}}$$ such teams (including team $t$). Team $t$ can finish at best in $k$th place, despite losing only $\ell$ games, so if $k > m$, then compact $r$-round swiss systems are not faithful to their top-$m$. This inequality holds when $r = 3$ and $m \in \{3, 5, 6, 7\}$ or when $r > 3$ and $2 < m < 2^r.$\\
+        Now fix $r$ and $m$, let $$\ell = \min(\lceil m / 2 \rceil - 1, r),$$ and consider a team $t$ that loses its first $\ell$ games and then wins its last $(r - \ell).$ By Theorem \ref{th:swiss_better_record}, such a team cannot finish ahead of any team that finishes with the same record or better, and by Theorem \ref{th:swiss_record}, there are $$k = \sum_{i=0}^\ell {\binom{r}{i}}$$ such teams (including team $t$). Team $t$ can finish at best in $k$th place, despite losing only $\ell$ games, so if $k > m$, then compact $r$-round swiss systems are not faithful to their top-$m$. This inequality holds when $r = 3$ and $m \in \{3, 5, 6, 7\}$ or when $r > 3$ and $2 < m < 2^r.$\\
 
         We are left with two uncovered cases, when $r = 2$ and $m = 3$, and when $r = 3$ and $m = 4.$\\
 
-        Recall that there is only one compact 2-round swiss system: $$\bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}.$$ Any three-team dominating set will necessarily force the fourth-team into fourth-place, securing a top-three finish for the teams in the set, and any team with one bad matchup will win one of their two games, again guaranteeing themselves a spot in the top three. Thus, $2$-round swiss systems are faithful to their top-3.\\
+        Recall that there is only one compact 2-round swiss system: $$\bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}.$$ Any three-team dominating set will necessarily force the fourth-team into fourth place, securing a top-three finish for the teams in the set, and any team with one bad matchup will win one of their two games, again guaranteeing themselves a spot in the top three. Thus, $2$-round swiss systems are faithful to their top-3.\\
 
-        Finally, in the case when $r = 3$ and $m = 4$, consider a dominating set of size four, such that teams in the set are matched up against each other in first round and the losers of those two games are matched up against each other in the second round. By Theorems \ref{th:xyz} and \ref{th:th:swiss_record}, the loser of that second round game will finish in seventh place at best, so $3$-round swiss systems are not faithful to their top-4.
+        Finally, in the case when $r = 3$ and $m = 4$, consider a dominating set of size four, such that teams in the set are matched up against each other in first round and the losers of those two games are matched up against each other in the second round. By Theorems \ref{th:swiss_better_record} and \ref{th:swiss_record}, the loser of that second round game will finish in seventh place at best, so $3$-round swiss systems are not faithful to their top-4.
     }{}
 
-    So not only are round robins impressive in their faithfulness to ..
+    Round robin's faithfulness is very impressive: many multibrackets only faithful to their top-$m$ for a few values of $m$, but round robins are simultaneously faithful top their top-$m$ for all $m.$ In some sense, this is because the definition of faithfulness is designed to express to what extent other formats are able to successfully simulate round robin results, but it is still a very powerful contract between round robins and the teams competing in them.
 
-    We conjecture ..
+    Round robins are able to honor this contract because they call for so many games: in an $n$-team round robin, $O(n^2)$ games. Compare this to compact swiss systems, which call for $O(n\log n)$ games, or brackets, which take only $O(n).$ In fact, we conjecture that asymptotically, round robins are the best we can do.
 
-    As we will see, we can infuse to get target faithfulness ...
+    \begin{conj}{}{}
+        The fastest $n$-team format that is faithful to its top-$m$ for all $m$ takes $O(n^2)$ games to complete.
+    \end{conj}
 
-
-
-
-%Undefeated -> first place
-%Two extensions
-
-
-%Landau's theorem?
+    However not all hope of faithful yet relatively fast formats is lost. In practice, rather than needing to be faithful to the top-$m$ for any $m$, there is often a particular $m$, or list $(m_1, ..., m_k),$ that we want to be faithful to. In the next section, we will combine round robins and multibrackets into a larger format that is faithful to its top-$m$ for particular $m$ that we might care about.
 }
