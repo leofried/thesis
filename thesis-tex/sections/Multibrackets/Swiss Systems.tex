@@ -5,11 +5,11 @@
     The idea behind a swiss system is to play a fixed number of rounds, and in each round have each matchup be between teams with the same record. This gives every team a bunch of games, while ensuring that teams are paired with teams that are probably similarly skilled. We can formally describe a swiss system in the language of multibrackets.
 
     \begin{definition}{Swiss System}{}
-        A \textit{swiss system} is a standard multibracket signature in which 
+        A \textit{swiss system} is a weakly respectful standard multibracket signature in which 
         \begin{enumerate}
             \item Each matchup is between teams of the same record,
             \item All teams play the same number of games,
-            \item All teams start in the primary semibracket, and
+            \item All teams start in the primary semibracket, and    
             \item The multibracket ranks every team.
         \end{enumerate}
     \end{definition}
@@ -107,11 +107,29 @@
 
 
     \theo{}{
-        If team $t_1$ finishes ahead of $t_2$ is a swiss system, then there exists some round $s$ such that after round $s$, $t_1$ has more wins than $t_2.$
+        If team $t_1$ finishes ahead of $t_2$ in a swiss system, then there exists some round $s$ such that after round $s$, $t_1$ has more wins than $t_2.$
     }{
+        We will show that for all $s$, if after every round $u < s$, $t_2$ had at least as many wins as $t_1$, then in round $s$, $t_2$ will be playing in as least as high of a semibracket as $t_1$. The theorem follows.\\
+        
+        We show this by induction on $s.$ For $s = 1$, every team has zero wins and is playing the same multibracket. Now assume the statement holds for $s$ and that after every round $u < s + 1$, $t_2$ had at least as many wins as $t_1.$\\
+        
+        By the inductive hypothesis, in round $s$, $t_2$ played at least as high a semibracket as $t_1$. Now because $t_2$ had at least as many wins as $t_1$ after both round $s-1$ and round $s$, there are three things that could have happened in round $s$:\\
 
-    }{}
+        \begin{enumerate}
+            \item Both $t_1$ and $t_2$ won, in which case they each remain in the same semibracket as before, and so $t_2$ is still playing in at least as high of a semibracket as $t_1$ is.
+            \item $t_1$ lost and $t_2$ won. $t_2$ remains in their semibracket, while $t_1$ drops down, and so $t_2$ is in a higher semibracket as $t_1$.
+            \item Both $t_1$ and $t_2$ lost. If they were in the same semibracket in round $s$, then they will still be in the same semibracket in round $s+1$ by multibracket rule (3). If $t_2$ was in a higher semibracket in round $s$, then $t_2$ will be in at least as high of a semibracket in round $s+1$ by multibracket rule (4).
+        \end{enumerate}
+
+        Thus, for all $s$, if after every round $u < s$, $t_2$ had at least as many wins as $t_1$, then in round $s$, $t_2$ will be playing in as least as high of a semibracket as $t_1$.
+
+        %is this true for other systems?
+    }{swiss_better_record}
 }
+
+%need to organize thoughts about swiss system proofs, weak respectfulness, and multibracket definition.
+
+
 
 
 % %  One useful fact about compact swiss system is that it's easy to count how many teams will have each record.

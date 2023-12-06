@@ -9,10 +9,11 @@ Brackets:
     --Alined, B-line, and C-lined
 
 Multibrackets:
+    --Multibracket : think really hard about definition, both readability and accuracy (and use "multibracket rule") as it applies to swiss->last structural theorem
     --Swiss
     --Multiple Elimination
     --Properties (respectfulness, rematches [swapping], orderedness etc)
-
+    --[[need to do properties before swiss]]
 
 Round Robins:
     --What they are
@@ -34,7 +35,7 @@ Statistics and Applications:
     Exciting: Prob championship game, 1v2, etc.
     Aligned: Winning never makes your P[win] go down.
     Faithful: If P(a beats b) is always 1 or 0, then top-m in a RR is also top-m here
-    Quad ball Formats
+    Quad ball Formats (club sports? regionals?)
 
 Hierarchy of Formats:
     --Format Equality
