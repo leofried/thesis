@@ -44,6 +44,8 @@ A list of teams being strongly stochastically transitive (SST) captures the intu
     If $\T$ is SST, then the matchup table $\M$ is monotonically increasing along each row and monotonically decreasing along each column.
 \end{corollary}
 
+%put these corollaries together
+
 Note that not every set of teams can be seeded to be SST. Consider, for example, the game of rock-paper-scissors. Rock beats paper which beats scissors which beats rock, so no ordering of these ``teams'' will be SST. For our purposes, however, SST will work well enough.
 
 Our new, nuanced alternative a proper bracket is an \textit{ordered bracket}, first defined by Chen and Hwang \cite{define_ordered}  (though we use the name proposed by Edwards \cite{montana}).
@@ -88,7 +90,8 @@ so $\A$ is ordered.
 And thirdly, we show that the balanced four-team bracket is ordered, first proved by Horen and Riezman \cite{four_eight_ordered}.
 
 \fig{0.63}{four_team}{The Four-Team Bracket $\bracksig{4; 0; 0}$}
-\theo{}{The four-team bracket $\bracksig{4; 0; 0}$ is ordered.}{Let $\A = \bracksig{4; 0; 0}$ and let $p_{ij} = \G{t_i}{t_j}.$ Then,
+\theo{}{The four-team bracket $\bracksig{4; 0; 0}$ is ordered.}{
+Let $\A = \bracksig{4; 0; 0}$ and let $p_{ij} = \G{t_i}{t_j}.$ Then,
 \begin{align*}
     \W{\A}{t_1}{\T} &= p_{14} \cdot (p_{23}p_{12} + p_{32} p_{13})\\
     &= p_{14}p_{23}p_{12} + p_{14}p_{32} p_{13}\\

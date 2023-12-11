@@ -8,7 +8,7 @@
         The team that goes undefeated will finish with $n-1$ wins, while every other team lost to the undefeated team and so can finish with at most $n-2$ wins.
     }{undefeated}
 
-    But this is not a property particularly unique to round robins: it is also true for every bracket and many multibrackets. We will now strengthen the claim in Theorem \ref{th:undefeated} in two different ways, each of which that are indeed somewhat unique to round robins.
+    But this is not a property particularly unique to round robins: it is also true for every bracket and many multibrackets. We will now make a couple of attempts at strengthening the claim in Theorem \ref{th:undefeated} in  ways that are indeed somewhat unique to round robins.
 
     We begin with the first strengthening.
 
@@ -33,6 +33,8 @@
     \begin{definition}{Dominating Set}{}
         We say a subset of teams $\S \subset \T$ is a \textit{dominating set} if for every $s \in \S$ and $t \in \T \setminus \S$, $$\G{s}{t} = 1.$$
     \end{definition}
+    
+    %G{s}{t} = 1 <=> s dominates t. Also strong third overlapping faithfulness condition.
 
     \begin{definition}{Faithful}{}
         We say an $n$-team tournament format $\A$ is \textit{faithful to its top-$m$} if, for any set of teams $\T$ the following two conditions hold:

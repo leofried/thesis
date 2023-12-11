@@ -1,23 +1,32 @@
 \sub {
 
-    Consider the 2023 FIFA Women's World Cup. 32 teams qualified for the World Cup, and they were divided into eight pools of four teams each. Each pool played out a self-contained round robin. Then, the bottom two teams in each pool were eliminated, and the remaining sixteen teams (two from each pool) played out the multibracket $\bracksig{16;0;0;0;0} \to \bracksig{1} \to \bracksig{2;0}.$ The entire format as it played out is displayed in Figure \ref{fig:world_cup}.
+    Consider the 2023 World Baseball Classic. 32 teams qualified for the World Cup, and they were divided into eight pools of four teams each. Each pool played out a self-contained round robin. Then, the bottom two teams in each pool were eliminated, and the remaining sixteen teams (two from each pool) played out the multibracket $\bracksig{16;0;0;0;0}.$ The entire format as it played out is displayed in Figure \ref{fig:world_cup}.
 
-    \begin{figg}{The 2023 FIFA Women's World Cup}{world_cup}\end{figg}
+    \fig{0.75}{world_cup}{The 2023 World Baseball Classic}
 
-    Note that the seeds in the primary semibracket $\bracksig{16;0;0;0;0}$ are not just the numbers $1$ through $16$, but instead letter-number combination. $\bracklabel{B2}$ indicates that the second-place team from pool $\bracklabel{B}$ should be placed in that location. To avoid confusion, we start at $I$ when labeling the rounds. In alignment with the discussion in Section XYZ, the 2023 FIFA Women's World Cup attempts to avoid rematches, ensuring that the two teams that qualify to bracket from each pool can only meet in the finals.
+    Note that the seeds in the bracket $\bracksig{16;0;0;0;0}$ are not just the numbers $1$ through $16$, but instead letter-number combination. $\bracklabel{B2}$ indicates that the second-place team from pool $\bracklabel{B}$ should be placed in that location. To avoid confusion, we start at $\bracklabel{E}$ when labeling the rounds. In alignment with the discussion in Section XYZ, the 2023 World Baseball Classic attempts to avoid rematches, ensuring that the two teams that qualify to bracket from each pool can only meet again in the finals.
     %section xyz
 
-    The format in Figure \ref{fig:world_cup} combines the two genres of format we've discussed thus far: the first half is a (bunch of separate) round robins, and the second half is a multibracket. How teams perform in the round robin phase of the format affects how they are seeded (and whether they qualify at all) in the second half. We call such formats \textit{pool to bracket formats.}
+    The format in Figure \ref{fig:world_cup} combines the two genres of format we've discussed thus far: the first half is a (four separate) round robins, and the second half is a multibracket. How teams perform in the round robin phase of the format affects how they are seeded (and whether they qualify at all) in the second half. We call such formats \textit{pool to bracket formats.}
 
     \begin{definition}{Pool to Bracket}{}
-        A \textit{pool to bracket} is a tournament format in which teams are divided amongst a number of pools, each pool plays a round robin, and then the results of the round robins are used to place (some) of the teams into a multibracket which is then played out to get the final placements.
+        A \textit{pool to bracket} is a tournament format in which teams are divided amongst a number of pools, each pool plays a round robin, and then the results of the round robins are used to place (some) of the teams into a multibracket which is then played out to get the final placements. We require that if teams $t_1$ and $t_2$ share a pool, and $t_1$ places higher in the pool, then $t_1$ starts in at least as high of a semibracket than $t_2.$
     \end{definition}
 
-    Pool to bracket formats make use to the strengths of both round robins and multibrackets in order to cover for each others weaknesses. Round robins are maximally faithful, ensuring that unlucky draws don't screw teams out of top-$m$s for any $m$, but they take $O(n^2)$ games to complete, and they aren't very exciting to watch: there is no championship game, and often times games are played in which one or both teams have already been eliminated from placing (or have already secured a particular finish). Meanwhile, multibrackets can be completed in $O(n\log n)$ games or even $O(n)$ games, and are often incredible exciting, with every game in an (efficient) multibracket being played for stakes, but struggle to be faithful: a poor first-round matchup can significantly hinder an otherwise deserving teams ability to finish highly.
-    
-    Pool to bracket formats use ...
+    Pool to bracket formats make use of the strengths of both round robins and multibrackets in order to cover for each others weaknesses. Round robins are maximally faithful, ensuring that unlucky draws don't screw teams out of top-$m$s for any $m$, but they take $O(n^2)$ games to complete, and they aren't very exciting to watch: there is no championship game, and often times games are played in which one or both teams have already been eliminated from placing (or have already secured a particular finish). Meanwhile, multibrackets can be completed in $O(n\log n)$ games or even $O(n)$ games, and are often incredible exciting, with every game in an (efficient) multibracket being played for stakes, but struggle to be faithful: a poor first-round matchup can significantly hinder an otherwise deserving teams ability to finish highly. By having the first half of the format be round robin-based, and the second half a multibracket, pool to bracket format gain access to the best parts of each.
 
-    Because of this, pool to bracket formats are nearly ubiquitous across sporting leagues. Both the Men's and Women's FIFA World Cup use pool to bracket formats, as well as many olympic sports. Most club sport regional and national tournaments also use pool to bracket formats. Even many NCAA sports use a format very similar to pool to bracket: colleges are divided into conferences, play something resembling a round robin with the teams in their conferences, and then proceed to the post-season which is a bracket that mixes together teams from various conferences. Professional leagues such as the NFL can even be looked at through this lense as well.
+    Because of this, pool to bracket formats are nearly ubiquitous across sporting leagues. The World Baseball Classic, the FIFA World Cup, and many olympic sports use them. Most club sport regional and national tournaments also use pool to bracket formats. Even many NCAA sports use a format very similar to pool to bracket: colleges are divided into conferences, play something resembling a round robin with the teams in their conferences, and then proceed to a postseason bracket that mixes together teams from various conferences. Professional leagues such as the NFL can even be looked at through this lense as well (though the regular seasons are often not strict round robins).
+
+    \begin{definition}{Pool to Bracket Signature}{}
+        If $\A$ is a pool to bracket format with pools of size $p_1, ..., p_j$, and a multibracket of signature $\A_1 \to ... \to \A_k,$ then the signature of $\A$ is $$\poolsig{p_1, ..., p_j} \to \A_1 \to ... \to \A_k.$$ In the case where all pools have the same number of teams, we simplify to $$\poolsig{j x p} \to \A_1 \to ... \to \A_k.$$ 
+    \end{definition}
+
+    Thus, the signature of the 2023 World Baseball Classic is $\poolsig{8x4} \to \bracksig{16;0;0;0;0}.$
+
+    Pool to bracket formats can be used to generate formats faithful to their top-$m$ for various values of $m$, without requiring each team to play $n$ games and keeping the excitement the comes with bracket games. For example, in 2023, the US Quadball Northeast National Qualifier needed a format to select three out of twelve teams to advance to the national tournament. They used the pool to bracket format with signature $\poolsig{2x6} \to \bracksig{4;2;0;0} \to \bracksig{1} \to \bracksig{2;0}.$
+    
+    
+    Consider for example to format used by the 2023 US Quadball Northeast Regionals to distribute
 
 
     %signatures / notation

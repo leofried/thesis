@@ -21,13 +21,20 @@ Multibrackets:
     --do semibracket examples still track
 
 Round Robins:
-    --What they are
+    --Intro
+    --Scheduled Formats (impure)
     --Tiebreakers
     --Faithfulness
     --Pools
-    --Pool Extensions (variants (power pools, wildcards (formal e.g. 13 and informal e.g. mlb)), "finishing pool play")
-    --Impure (ramsey theorem, two different seven play four, divisions, mlb, soccer ties, etc)
+    --Pool Extensions (seeding, variants (playing games outside of pools (nfl) power pools, wildcards (formal e.g. 13 and informal e.g. mlb)), "finishing pool play")
+    --Impure 
+        (play too few [ramsey theorem, two different seven play four, etc])
+        (play too many [double round robin])
+        (ramsey theorem, two different seven play four, divisions, mlb, soccer ties, etc)
     
+
+Ideas:
+    --Merge sort as a format for min/games faithfulness
 
 
 
