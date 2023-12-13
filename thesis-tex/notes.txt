@@ -15,10 +15,9 @@ Multibrackets:
     
     --Swiss
     --Multiple Elimination
-    --Properties (respectfulness, rematches [swapping], orderedness etc)
-    --[[need to do properties before swiss]]
+    --Properties (respectfulness, rematches [swapping], orderedness etc, why can we remove semitrivial)
     --make sure we know that teams can start in lower brackets (worried this might be shocking -- nba play-in does this i suppose, but maybe do rugby?)
-    --do semibracket examples still track
+    --do semibracket.tex examples still track
 
 Round Robins:
     --Intro
