@@ -1,7 +1,7 @@
 \sub{
 
 \begin{definition}{Gameplay Function}{}
-    A \textit{gameplay function} $g$ on a list of teams $\T = [t_1, ..., t_n]$ is a nondeterministic function $g : \T \times \T \to \T$ with the following properties:
+    A \i{gameplay function} $g$ on a list of teams $\T = [t_1, ..., t_n]$ is a nondeterministic function $g : \T \times \T \to \T$ with the following properties:
         \begin{itemize}
             \item $\P{g(t_i, t_j) = t_i} + \P{g(t_i, t_j) = t_j} = 1.$
             \item $\P{g(t_i, t_j) = t_i} = \P{g(t_j, t_i) = t_j}.$
@@ -11,13 +11,13 @@
 A gameplay function represents a process in which two teams compete in a game, with one of them emerging as the winner. This model simplifies away effects like home-field advantage or teams improving over the course of a tournament: a gameplay function is fully described by a single probability for each pair of teams in the list.
 
 \begin{definition}{Playing, Winning, and Losing}{}
-    When $g$ is queried on input $(t_i, t_j)$ we say that $t_i$ and $t_j$ \textit{played a game}. We say that the team that got outputted by $g$ \textit{won}, and the team that did not \textit{lost}.
+    When $g$ is queried on input $(t_i, t_j)$ we say that $t_i$ and $t_j$ \i{played a game}. We say that the team that got outputted by $g$ \i{won}, and the team that did not \i{lost}.
 \end{definition}
 
-The information in a gameplay function can be encoded into a \textit{matchup table.}
+The information in a gameplay function can be encoded into a \i{matchup table.}
 
 \begin{definition}{Matchup Table}{}
-    The \textit{matchup table} implied by a gameplay function $g$ on a list of teams $\T$ of length $n$ is a $n$-by-$n$ matrix $\M$ such that $\M_{ij} = \G{t_i}{t_j}.$
+    The \i{matchup table} implied by a gameplay function $g$ on a list of teams $\T$ of length $n$ is a $n$-by-$n$ matrix $\M$ such that $\M_{ij} = \G{t_i}{t_j}.$
 \end{definition}
 
 For example, let $\T = $[Favorites, Rock, Paper, Scissors, Conceders$]$, and $g$ be such that the Conceders concede every game they play, the Favorites are $70\%$ favorites against Rock, Paper, and Scissors, and Rock, Paper, and Scissors match up with each other as their name implies. Then the matchup table would look like so:
@@ -43,12 +43,12 @@ For example, let $\T = $[Favorites, Rock, Paper, Scissors, Conceders$]$, and $g$
 }{}
 
 \begin{definition}{Tournament Format}{}
-    A \textit{tournament format} is an algorithm that takes as input a list of teams $\T$ and a gameplay function $g$ and outputs a champion $t \in \T.$
+    A \i{tournament format} is an algorithm that takes as input a list of teams $\T$ and a gameplay function $g$ and outputs a champion $t \in \T.$
 \end{definition}
 %not really a champion -- more like a top x for some x.
 %ok actually... see \WW
 
-We use a gameplay function rather than a matchup table in the definition of a tournament format because a tournament format cannot simply look at the matchup table itself in order to decide which teams are best. Instead, formats query the gameplay function (have teams play games) in order to gather information about the teams. That said, matchup tables will often be useful in our \textit{analysis} of tournament formats. 
+We use a gameplay function rather than a matchup table in the definition of a tournament format because a tournament format cannot simply look at the matchup table itself in order to decide which teams are best. Instead, formats query the gameplay function (have teams play games) in order to gather information about the teams. That said, matchup tables will often be useful in our \i{analysis} of tournament formats. 
 
 We also introduce some shorthand to help make notation more concise.
 

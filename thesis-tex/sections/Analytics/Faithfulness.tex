@@ -6,24 +6,24 @@
 
     The ideal format, then, would rank teams in the same way that a round robin would, but without playing quite as many games and while including exciting games the large, known, and equal stakes. We want to measure to what extent to formats that require fewer games simulate the results of a round robin.
 
-    We operationalize this using \textit{faithfulness}. Faithfulness is a group of properties that ensure formats are indeed ``faithful'' to the results that a round robin would give on the same set of teams. We identify different guarantees that round robins make to teams about how they will place based on how they matchup with the rest of the teams, and see if other formats make those guarantees as well.
+    We operationalize this using \i{faithfulness}. Faithfulness is a group of properties that ensure formats are indeed ``faithful'' to the results that a round robin would give on the same set of teams. We identify different guarantees that round robins make to teams about how they will place based on how they matchup with the rest of the teams, and see if other formats make those guarantees as well.
 
-    Our first such guarantee is \textit{set-faithfulness}.
+    Our first such guarantee is \i{set-faithfulness}.
 
     \begin{definition}{Dominating}{}
-        If, for $t_1, t_2 \in \T$, $\G{t_1}{t_2} = 1$, then we say $t_1$ \textit{dominates} $t_2.$
+        If, for $t_1, t_2 \in \T$, $\G{t_1}{t_2} = 1$, then we say $t_1$ \i{dominates} $t_2.$
     \end{definition}
 
     \begin{definition}{Dominating Set}{}
-        We say a subset of teams $\S \subset \T$ is a \textit{dominating set} if for every $s \in \S$ and $t \in \T \setminus \S$, $s$ dominates $t.$
+        We say a subset of teams $\S \subset \T$ is a \i{dominating set} if for every $s \in \S$ and $t \in \T \setminus \S$, $s$ dominates $t.$
     \end{definition}
 
     \begin{definition}{Set-Faithful to a Top-$m$}{}
-        We say an $n$-team tournament format $\A$ is \textit{set-faithful to its top-$m$} if, for any dominating set of teams $\S \subset \T$ such that $|\S| \leq m$, teams in $\S$ are guaranteed a spot in the top-$m$.
+        We say an $n$-team tournament format $\A$ is \i{set-faithful to its top-$m$} if, for any dominating set of teams $\S \subset \T$ such that $|\S| \leq m$, teams in $\S$ are guaranteed a spot in the top-$m$.
     \end{definition}
 
     \begin{definition}{Set-Faithful}{}
-        We say an $n$-team tournament format $\A$ is \textit{set-faithful} if it is set-faithful to its top-$m$ for all $m.$
+        We say an $n$-team tournament format $\A$ is \i{set-faithful} if it is set-faithful to its top-$m$ for all $m.$
     \end{definition}
 
     As expected, round robins are set-faithful.
@@ -78,13 +78,13 @@
     % We can think of Theorems \ref{th:rr_dominating} and \ref{th:rr_losses} as guarantees that round robins make to competing teams: if you are a member of an $m$-team set that beats every other team, or if you lose no more than $(m-1)/2$ games, then you are guaranteed a spot in the top-$m$. These are important guarantees, and we generalize them onto formats where not every team plays every other team, (or where two teams might play more than once,) with the notion of faithfulness.
 
     % \begin{definition}{Dominating Set}{}
-    %     We say a subset of teams $\S \subset \T$ is a \textit{dominating set} if for every $s \in \S$ and $t \in \T \setminus \S$, $$\G{s}{t} = 1.$$
+    %     We say a subset of teams $\S \subset \T$ is a \i{dominating set} if for every $s \in \S$ and $t \in \T \setminus \S$, $$\G{s}{t} = 1.$$
     % \end{definition}
     
     % %G{s}{t} = 1 <=> s dominates t. Also strong third overlapping faithfulness condition.
 
     % \begin{definition}{Faithful}{}
-    %     We say an $n$-team tournament format $\A$ is \textit{faithful to its top-$m$} if, for any set of teams $\T$ the following two conditions hold:
+    %     We say an $n$-team tournament format $\A$ is \i{faithful to its top-$m$} if, for any set of teams $\T$ the following two conditions hold:
     %     \begin{itemize}
     %         \item If $\S \subset \T$ is a dominating set and $|\S| \leq m$ then $$\forall s \in \S \ \WW{\A}{m}{s}{\T} = 1.$$
     %         \item If there is a team $t \in \T$ and a set of teams $\S \subset (\T \setminus \{t\})$ such that $$|\T \setminus \{t\}| - |\S| \leq (m-1)/2$$ and $$\forall s \in \S \ \G{t}{s} = 1,$$ then $$\WW{\A}{m}{t}{\T} = 1.$$

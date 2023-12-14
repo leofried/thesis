@@ -1,15 +1,15 @@
 \sub{
     
-    Many tournaments, particularly those in which there are many teams each looking to play a similar number of games against teams of similar skill, use a set of formats referred to as \textit{swiss systems.} In particular, swiss systems or near-variants are commonly used in board game tournaments, such as chess or Magic: The Gathering.
+    Many tournaments, particularly those in which there are many teams each looking to play a similar number of games against teams of similar skill, use a set of formats referred to as \i{swiss systems.} In particular, swiss systems or near-variants are commonly used in board game tournaments, such as chess or Magic: The Gathering.
 
     The idea behind a swiss system is to play a fixed number of rounds, and in each round have each matchup be between teams with the same record. This gives every team a bunch of games, while ensuring that teams are paired with teams that are probably similarly skilled. We can formally describe a swiss system in the language of multibrackets.
 
     \begin{definition}{Simple Multibracket}{}
-        We say a multibracket is \textit{simple} if all teams start in the primary semibracket.
+        We say a multibracket is \i{simple} if all teams start in the primary semibracket.
     \end{definition}
 
     \begin{definition}{Swiss System}{}
-        A \textit{swiss system} is a simple multibracket signature in which 
+        A \i{swiss system} is a simple multibracket signature in which 
         \begin{enumerate}
             \item All teams play the same number of games,
             \item Each matchup is between teams of the same record,
@@ -17,7 +17,7 @@
     \end{definition}
 
     \begin{definition}{$r$-Round Swiss System}{}
-        We say a swiss system is an $r$-\textit{round swiss system} if each team plays $r$ games.
+        We say a swiss system is an $r$-\i{round swiss system} if each team plays $r$ games.
     \end{definition}
 
     We begin our analysis by noting a key structural fact about Swiss systems.
@@ -37,7 +37,7 @@
     Theorem \ref{th:swiss_m} indicates that $r$-round swiss systems on $m \cdot 2^r$ teams are, in a sense, actually $m$ different simultaneous and identical swiss tournaments each operating on $2^r$ teams. Because of this, it is useful to study just the swiss systems that operate on $2^r$ teams, as this will give us strong insights into the full space of swiss systems.
 
     \begin{definition}{Compact}{}
-        We say a swiss system is \textit{compact} if its primary semibracket has rank one.
+        We say a swiss system is \i{compact} if its primary semibracket has rank one.
     \end{definition}
 
     Theorem \ref{th:swiss_m} guarantees that compact $r$-round swiss systems are on exactly $2^r$ teams.
@@ -91,70 +91,77 @@
 
     For similar reasons, both formats are good for selecting a top-one or top-seven, and $\S_3$ but not $\T_3$ is good for selecting a top-five. Finally, it might seem that $\S_3$ and $\T_3$ are good formats for selecting a top-two or top-six: in both cases the top two and top six teams are clearly defined, and there are no teams with better records that don't make the cut. However, notice that if we use $\S_3$ or $\T_3$ to select a top-two, the final round of games are meaningless: the two teams that finish in the top-two are the two teams that win their first two games, irrespective or how game three went. Better than using either format $\S_3$ or $\T_3$ would be to use a non-compact $2$-round swiss for eight teams, that is, two simultaneous instances of $\S_2$, so that a third, meaningless round is avoided.
 
-    We formalize the notion of a swiss system being good at selecting a top-$m$ in Definition \ref{def:support} and summarize what we have deduced so far in Figure \ref{fig:swiss_table}.
-
-    \begin{definition}{Swiss Systems Supporting a Top-$m$}{support}
-        We say a swiss system $\A = \A_1 \to ... \to \A_k$ \textit{supports a top-$m$} if
-        \begin{itemize}
-            \item For some $j$, $\sum_{i=1}^j \rank\A_i = m.$
-            \item No team that wins $\A_i$ for $i > j$ finishes with a better record then a team that wins $\A_i$ for $i \leq j.$
-            \item $\A_j$ is not trivial.
-        \end{itemize}
-    \end{definition}
-
-    \begin{figg}{Which Compact Systems Support Top-$m$s}{swiss_table}
-        \begin{center}
-            \begin{tabular}{ c | c c c c c c c c }
-            & & & \multicolumn{4}{c}{Top-$m$} & &\\
-            & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
-            \hline
-            $\S_1$ & \check & \ex &  &  &  &  & \\
-            $\S_2$ & \check & \ex & \check & \ex &  &  & \\
-            $\S_3$  & \check & \ex & \check & \ex & \check & \ex & \check & \ex \\
-            $\T_3$  & \check & \ex & \ex & \check & \ex & \ex  & \check & \ex\\
-            \end{tabular}
-        \end{center}
-    \end{figg} 
-
-    Note that even if no \textit{compact} swiss system on $n$ teams supports a top-$m$, we can still sometimes use a non-compact swiss system to identify a top-$m.$ For example, there is no compact eight-team system that supports a top-2, but we can still use a $2$-round swiss system to support a top two out of eight teams (namely, $\bracksig{8;0;0} \to \bracksig{2} \to \bracksig{4;0} \to \bracksig{2}.$)
-
-    We state without proof that there are eight compact $4$-round swiss systems, and in Figure \ref{fig:swiss_table_two} we indicate which of these systems support various top-$m$s.
-
-    \begin{figg}{Support of Compact $4$-Round Swiss Systems}{swiss_table_two}
-        \begin{center}
-            \overfullhbox{
-            \begin{tabular}{ c | c c c c c c c c c c c c c c c c c }
-            & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16\\
-            \hline
-            $\U_1$ & \check & \ex & \check & \ex & \ex & \ex & \ex  & \ex & \ex & \ex & \ex & \ex & \check & \ex & \check & \ex\\
-            $\U_2$ & \check & \ex & \check & \ex & \ex & \ex & \ex  & \ex & \ex & \ex & \ex & \check & \ex & \ex & \check & \ex\\
-            $\U_3$ & \check & \ex & \ex & \check & \ex & \ex & \ex  & \ex & \ex & \ex & \ex & \ex & \check & \ex & \check & \ex\\
-            $\U_4$ & \check & \ex & \ex & \check & \ex & \ex & \ex  & \ex & \ex & \ex & \ex & \check & \ex & \ex & \check & \ex\\
-            $\U_5$ & \check & \ex & \check & \ex & \ex & \check & \ex  & \ex & \ex & \check & \ex & \ex & \check & \ex & \check & \ex\\
-            $\U_6$ & \check & \ex & \check & \ex & \ex & \check & \ex  & \ex & \ex & \ex & \check & \ex & \ex & \ex & \check & \ex\\
-            $\U_7$ & \check & \ex & \ex & \ex & \check & \ex & \ex  & \ex & \ex & \check & \ex & \ex & \check & \ex & \check & \ex\\
-            $\U_8$ & \check & \ex & \ex & \ex & \check & \ex & \ex  & \ex & \ex & \ex & \check & \ex & \ex & \ex & \check & \ex\\
-            \end{tabular}
-            }
-        \end{center}
-    \end{figg}
-
-    Thus there is a compact $4$-round swiss system that supports a top-$m$ for each $m \in \{1, 3, 4, 5, 6, 10, 11, 12, 13, 15\},$ but not for $m \in \{2, 7, 8, 9, 14, 16\}.$ The general question, however, is still open.
-
-    \begin{oq}{}{}
-        For which $r$ and $m$ is there a compact $r$-round swiss system that supports a top-$m$?
-    \end{oq}
-
-    As is the question of how many compact $r$-round systems exist.
-
-    \begin{oq}{}{}
-        For arbitrary $r$, how many compact $r$-round swiss systems exist?
-    \end{oq}
-
-    The 2023 League of Legends Worlds Championship put swiss systems into action, using a compact $4$-round swiss to whittle the sixteen remaining teams into the top five that qualify directly to bracket and the next six that advance to a play-in. The tournament decided to select it matchups each round randomly (subject to the constraint of teams playing teams with the same record), which struck me as a somewhat strange decision, especially given that $\U_8$ supports both a top-five and top-eleven, which is exactly what is needed. Perhaps now that the theory of swiss systems have been formalized, leagues that employ them will have a better understanding of the ideal ways to use them.
-
     Overall, swiss systems very useful and practical tournament designs: they give each team the same number of games, they ensure that games are being played between teams that have the same record and thus, hopefully, similar skill levels, and, for many values of $m$, they efficiently identify a top-$m$ in a fair and satisfying way.
 
     Further, swiss or near-swiss systems are great when the number of teams is exceedingly large. Even if the number of teams is not a power of two, or the system is not compact, or it is being used to identify a top-$m$ that it doesn't technically support, formats that are swiss in spirit tend to do a great job of gathering a lot of meaningful data about a large number of teams in a minimal number of rounds.
 
+
+    %Formally define S_n
+
 }
+
+
+
+
+
+% We formalize the notion of a swiss system being good at selecting a top-$m$ in Definition \ref{def:support} and summarize what we have deduced so far in Figure \ref{fig:swiss_table}.
+
+% \begin{definition}{Swiss Systems Supporting a Top-$m$}{support}
+%     We say a swiss system $\A = \A_1 \to ... \to \A_k$ \i{supports a top-$m$} if
+%     \begin{itemize}
+%         \item For some $j$, $\sum_{i=1}^j \rank\A_i = m.$
+%         \item No team that wins $\A_i$ for $i > j$ finishes with a better record then a team that wins $\A_i$ for $i \leq j.$
+%         \item $\A_j$ is not trivial.
+%     \end{itemize}
+% \end{definition}
+
+% \begin{figg}{Which Compact Systems Support Top-$m$s}{swiss_table}
+%     \begin{center}
+%         \begin{tabular}{ c | c c c c c c c c }
+%         & & & \multicolumn{4}{c}{Top-$m$} & &\\
+%         & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+%         \hline
+%         $\S_1$ & \check & \ex &  &  &  &  & \\
+%         $\S_2$ & \check & \ex & \check & \ex &  &  & \\
+%         $\S_3$  & \check & \ex & \check & \ex & \check & \ex & \check & \ex \\
+%         $\T_3$  & \check & \ex & \ex & \check & \ex & \ex  & \check & \ex\\
+%         \end{tabular}
+%     \end{center}
+% \end{figg} 
+
+% Note that even if no \i{compact} swiss system on $n$ teams supports a top-$m$, we can still sometimes use a non-compact swiss system to identify a top-$m.$ For example, there is no compact eight-team system that supports a top-2, but we can still use a $2$-round swiss system to support a top two out of eight teams (namely, $\bracksig{8;0;0} \to \bracksig{2} \to \bracksig{4;0} \to \bracksig{2}.$)
+
+% We state without proof that there are eight compact $4$-round swiss systems, and in Figure \ref{fig:swiss_table_two} we indicate which of these systems support various top-$m$s.
+
+% \begin{figg}{Support of Compact $4$-Round Swiss Systems}{swiss_table_two}
+%     \begin{center}
+%         \overfullhbox{
+%         \begin{tabular}{ c | c c c c c c c c c c c c c c c c c }
+%         & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16\\
+%         \hline
+%         $\U_1$ & \check & \ex & \check & \ex & \ex & \ex & \ex  & \ex & \ex & \ex & \ex & \ex & \check & \ex & \check & \ex\\
+%         $\U_2$ & \check & \ex & \check & \ex & \ex & \ex & \ex  & \ex & \ex & \ex & \ex & \check & \ex & \ex & \check & \ex\\
+%         $\U_3$ & \check & \ex & \ex & \check & \ex & \ex & \ex  & \ex & \ex & \ex & \ex & \ex & \check & \ex & \check & \ex\\
+%         $\U_4$ & \check & \ex & \ex & \check & \ex & \ex & \ex  & \ex & \ex & \ex & \ex & \check & \ex & \ex & \check & \ex\\
+%         $\U_5$ & \check & \ex & \check & \ex & \ex & \check & \ex  & \ex & \ex & \check & \ex & \ex & \check & \ex & \check & \ex\\
+%         $\U_6$ & \check & \ex & \check & \ex & \ex & \check & \ex  & \ex & \ex & \ex & \check & \ex & \ex & \ex & \check & \ex\\
+%         $\U_7$ & \check & \ex & \ex & \ex & \check & \ex & \ex  & \ex & \ex & \check & \ex & \ex & \check & \ex & \check & \ex\\
+%         $\U_8$ & \check & \ex & \ex & \ex & \check & \ex & \ex  & \ex & \ex & \ex & \check & \ex & \ex & \ex & \check & \ex\\
+%         \end{tabular}
+%         }
+%     \end{center}
+% \end{figg}
+
+% Thus there is a compact $4$-round swiss system that supports a top-$m$ for each $m \in \{1, 3, 4, 5, 6, 10, 11, 12, 13, 15\},$ but not for $m \in \{2, 7, 8, 9, 14, 16\}.$ The general question, however, is still open.
+
+% \begin{oq}{}{}
+%     For which $r$ and $m$ is there a compact $r$-round swiss system that supports a top-$m$?
+% \end{oq}
+
+% As is the question of how many compact $r$-round systems exist.
+
+% \begin{oq}{}{}
+%     For arbitrary $r$, how many compact $r$-round swiss systems exist?
+% \end{oq}
+
+% The 2023 League of Legends Worlds Championship put swiss systems into action, using a compact $4$-round swiss to whittle the sixteen remaining teams into the top five that qualify directly to bracket and the next six that advance to a play-in. The tournament decided to select it matchups each round randomly (subject to the constraint of teams playing teams with the same record), which struck me as a somewhat strange decision, especially given that $\U_8$ supports both a top-five and top-eleven, which is exactly what is needed. Perhaps now that the theory of swiss systems have been formalized, leagues that employ them will have a better understanding of the ideal ways to use them.

@@ -1,0 +1,167 @@
+\sub{
+
+    \begin{definition}{Round Robin}{rrdef}
+        A \i{round robin} is a tournament format in which each team plays each other team once, and then teams are ranked according to how many games they won.
+    \end{definition}
+
+    Round robins, or close variants, are used in many leagues across many sports, especially during the regular season or qualifying rounds. For example, the 2014 Ivy League Football Regular Season was structured as round robin. At the conclusion of a round robin, a league table can be used to display the results and rank the teams.
+
+    \begin{figg}{2014 Ivy League Football Regular Season}{}
+        \centering
+        \begin{tabular}{| c | c | c | c | c |}
+            \hline
+            Rank & Team & Games & Wins & Losses\\ \hline
+            1 & Harvard & 7 & 7 & 0\\ \hline
+            2 & Dartmouth & 7 & 6 & 1\\ \hline
+            3 & Yale & 7 & 5 & 2\\ \hline
+            4 & Princeton & 7 & 4 & 3\\ \hline
+            5 & Brown & 7 & 3 & 4\\ \hline
+            6 & Penn & 7 & 2 & 5\\ \hline
+            7 & Cornell & 7 & 1 & 6\\ \hline
+            8 & Columbia & 7 & 0 & 7\\ \hline
+        \end{tabular}
+    \end{figg}
+
+    At the end of an $n$-team round robin, each team has played each other team once, for a total of $n-1$ games. There are $n$ possible records a team could have after playing $n-1$ games, so it is possible for each team to end the tournament with a different record: the 2014 Ivy League Football Regular Season has this property.
+
+    However, this is far from guaranteed: consider the 2019 Big 12 Football Regular Season (strangely enough, in 2019 the Big 12 had only ten teams).
+
+    \begin{figg}{2019 Big 12 Football Regular Season}{}
+        \centering
+        \begin{tabular}{| c | c | c | c | c |}
+            \hline
+            Rank & Team & Games & Wins & Losses\\ \hline
+            1 & Oklahoma & 9 & 8 & 1\\ \hline
+            2 & Baylor & 9 & 8 & 1\\ \hline
+            3 & Texas & 9 & 5 & 4\\ \hline
+            4 & Oklahoma State & 9 & 5 & 4\\ \hline
+            5 & Kansas State & 9 & 5 & 4\\ \hline
+            6 & Iowa State & 9 & 5 & 4\\ \hline
+            7 & West Virginia & 9 & 3 & 6\\ \hline
+            8 & TCU & 9 & 3 & 6\\ \hline
+            9 & Texas Tech & 9 & 2 & 7\\ \hline
+            10 & Kansas & 9 & 1 & 8\\ \hline
+        \end{tabular}
+    \end{figg}
+
+    Nearly every team, including the two leaders Oklahoma and Baylor, ended the season tied with at least one other team. To rank teams with the same record, a \i{tiebreaking algorithm} is used.
+
+    \begin{definition}{Tiebreaking Algorithm}{}
+        A \i{tiebreaking algorithm} is an algorithm for ranking teams that finish with the same record at the conclusion of a round robin.
+    \end{definition}
+
+    Since every team in the 2014 Ivy League Football Regular Season ended with a different record, the tiebreaking algorithm wasn't employed: no matter what algorithm the Ivy League had prescribed, the ranking would have been the same. Not so for the 2019 Big 12 Football Regular Season, where many teams ended the season with identical records: different tiebreaking algorithms might have resulted in different rankings of the tied teams. (Though of course, Oklahoma and Baylor would always be first and second in some order, Texas and the three States would always be third through sixth in some order, etc.)
+
+    \begin{definition}{Tiebreaker}{}
+        A \i{tiebreaker} is a single statistic that can be used to compare teams that finish with the same record at the conclusion of a round robin. Tiebreakers need not be able to successfully generate an order for any given set of tied teams.
+    \end{definition}
+
+    Most tiebreaking algorithms are composed of a sequence of individual \i{tiebreakers}. These tiebreaker are applied one-by-one: if the first tiebreaker successfully breaks the tie, then the algorithm is complete. Otherwise, we proceed to the next tiebreaker.
+
+    Although individual tiebreakers are not required to be able to break all possible ties, the tiebreaking algorithm is. Thus, that last tiebreaker (and only the last tiebreaker) in a tiebreaking algorithm must be \i{terminal}.
+
+    \begin{definition}{Terminal}{}
+        A tiebreaker is \i{terminal} if it is guaranteed to generate an order for a set of tied teams.
+    \end{definition}
+
+    \begin{definition}{\tbreak{PointsScored}}{}
+        \tbreak{PointsScored} ranks teams by how many points they scored over the course of the round robin: the more points, the better.
+    \end{definition}
+
+    \tbreak{PointsScored} is not terminal: any number of tied teams might have scored the same number of points over the course of the round robin and thus would remain tied.
+
+    \begin{definition}{\tbreak{Random}}{}
+        \tbreak{Random} ranks teams randomly: with each ordering being equally likely.
+    \end{definition}
+
+    \tbreak{Random} is terminal, and in fact, \tbreak{Random} is used as the last tiebreaker in the tiebreaking algorithm of many leagues.
+
+    On the other hand, many leagues' first tiebreaker is \tbreak{HeadToHead}.
+
+    \begin{definition}{\tbreak{HeadToHead}}{}
+        \tbreak{HeadToHead} ranks teams by their record against the other tied teams: the more wins, the better.
+    \end{definition}
+
+    \theo{}{
+        \tbreak{HeadToHead} is terminal as a two-team tiebreaker, but not terminal for more than two teams.
+    }{
+        If only two teams are tied, then their record against each other must be 1-0 and 0-1, in some order, and so  \tbreak{HeadToHead} will successfully break the tie.\\
+        
+        If $n$ teams are tied for $n \geq 3,$ then let $t_1, t_2,$ and $t_3$ be three of the tied teams, and consider the situation where $t_1$ beat $t_2$, $t_2$ beat $t_3$, $t_3$ beat $t_1$, and all three of $t_1, t_2,$ and $t_3$ beat every other tied team. Then each of $t_1, t_2$, and $t_3$ will have $(n-2)$ wins and one loss against tied teams, so \tbreak{HeadToHead} cannot break their tie and thus is not terminal.
+    }{}
+
+    Terminal is just one of many desirable properties that a tiebreaker could have.
+
+    \begin{definition}{Noninvasive}{}
+        A tiebreaker is \i{noninvasive} if it does not rely on data from the game itself, only on who won and lost.
+    \end{definition}
+
+    Noninvasiveness is nice for a couple of reasons. For one, our model of tournaments and games doesn't consider any in-game data -- only a single bit of information is collected per game played -- and so all tiebreakers that our model can consider are noninvasive. But invasive tiebreakers are also not ideal in the real world because they warp incentives. \i{PointsScored} is invasive, and it encourages teams to get into high-scoring shootouts, even potentially at the expensive of maximizing their probability of winning any given game.
+
+    \begin{definition}{Local}{}
+        A tiebreaker is \i{local} if it does not depend on the results of games not involving any tied teams.
+    \end{definition}
+
+    Localness might seem somewhat intuitive property for tiebreakers to have, and it might be difficult to imagine a non-local one. But in fact, the 2019 Big Ten Basketball Season used the non-local tiebreaker \tbreak{VictoryStrength} as its second tiebreaker after \tbreak{HeadToHead}.
+
+    \begin{definition}{\tbreak{VictoryStrength}}{}
+        \tbreak{VictoryStrength} ranks teams by their record against the highest ranked non-tied team, and then the next highest, and so on.
+    \end{definition}
+
+    \tbreak{VictoryStrength} is not local: when comparing a set of tied teams, we need to know which non-tied team has the most wins, which requires knowing the results of the entire round robin.
+
+    \begin{definition}{Protected}{}
+        A tiebreaker is \i{protected} if, upon introducing a new team that beats every other team or loses to every other team with identical in-game data, the results of the tiebreaker don't change.
+    \end{definition}
+
+    If it was hard to imagine a tiebreaker that's non-local, imagining an unprotected tiebreaker is nigh-impossible. Almost every remotely reasonable tiebreaker is protected, so we exhibit a silly tiebreaker as an example of an unprotected one.
+
+    \begin{definition}{\tbreak{Silly}}{}
+        If the tied teams each have an even number of losses, \tbreak{Silly} ranks teams by which one was higher-seeded entering the round robin, and otherwise by which one was lower-seeded entering the round robin.
+    \end{definition}
+
+    Finally,
+
+    \begin{definition}{Objective}{}
+        A tiebreaker is \i{objective} if it is only a function of the games that were played (and thus has no randomness, subjectiveness, or references to facts about the teams unrelated to their performance in the round robin itself).
+    \end{definition}
+  
+    \tbreak{Random} is not objective (and neither is \tbreak{Silly}), but the other tiebreakers we've seen so far are.
+
+    We summarize what we know so far in Figure \ref{fig:tiebreaker_props}.
+
+    \begin{figg}{Tiebreakers and Properties}{tiebreaker_props}
+        \begin{center}
+        \overfullhbox{
+            \begin{tabular}{| c | c | c | c | c | c |}
+                \hline
+                Tiebreaker & Noninvasive & Local & Protected & Objective & Terminal \\ \hline
+                2-team \tbreak{HeadToHead} & \check & \check & \check & \check & \check \\ \hline
+                $n$-team \tbreak{HeadToHead} & \check & \check & \check & \check & \ex \\ \hline
+                \tbreak{PointsScored} & \ex & \check & \check & \check & \ex\\ \hline
+                \tbreak{VictoryStrength} & \check & \ex & \check & \check  & \ex\\ \hline
+                \tbreak{Silly} & \check & \check & \ex & \ex  & \ex\\ \hline
+                \tbreak{Random} & \check & \check & \check & \ex & \check \\ \hline
+            \end{tabular}
+        }
+        \end{center}
+    \end{figg}
+
+    Inspection of Figure \ref{fig:tiebreaker_props} begs the question of if $2$-team \tbreak{HeadToHead} is the only tiebreaker that satisfies all five of the desirable properties. In fact there is one other tiebreaker that does so: take a moment to see if you can figure out what it is.
+
+    \begin{definition}{\tbreak{TailToTail}}{}
+        \tbreak{TailToTail} ranks teams by their record against the other tied teams: the fewer wins, the better.
+    \end{definition}
+
+    $2$-team \tbreak{TailToTail} is non-invasive, local, protected, objective, and terminal. In fact,
+
+    \theo{}{
+        For two teams, only \tbreak{HeadToHead} and \tbreak{TailToTail} are non-invasive, local, protected, objective, and terminal. No tiebreaker on three or more teams has all five properties.
+    }{
+        %proof -- might need one more property.
+    }{}
+
+    %discussion about h2h vs t2t
+
+
+}

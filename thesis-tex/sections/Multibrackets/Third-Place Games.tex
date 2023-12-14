@@ -8,10 +8,10 @@
 
     We indicate that the third-place game is to be played in between the losers of games $\bracklabel{B1}$ and $\bracklabel{B2}$ (and that the loser of the championship game comes in second) by labeling the starting lines in the third-place game (and the second-place slot) with those games. This is not ambiguous because the winners of those games always continue on in the original bracket, so such labels only refer to the losers.
 
-    The 2015 AFL Asian Cup is a \textit{multibracket}: a sequence of brackets (or semibrackets) in which teams that lose in earlier brackets fall into later brackets instead of being eliminated outright, and teams finish in a place dependent on which bracket they win. Formally,
+    The 2015 AFL Asian Cup is a \i{multibracket}: a sequence of brackets (or semibrackets) in which teams that lose in earlier brackets fall into later brackets instead of being eliminated outright, and teams finish in a place dependent on which bracket they win. Formally,
 
     \begin{definition}{Multibracket}{multi}
-        A \textit{multibracket} $\A$ is defined by a sequence of non-semitrivial semibrackets $$\A = \A_1 \to ... \to \A_k,$$ and played out in the following way on an inputted list of teams $\T$:\\
+        A \i{multibracket} $\A$ is defined by a sequence of non-semitrivial semibrackets $$\A = \A_1 \to ... \to \A_k,$$ and played out in the following way on an inputted list of teams $\T$:\\
 
         Let $n$ be the number of teams in $\A_1$, and split $\T$ into $\S_1$ and $\S_2$, where $\S_1$ is the top $n$ seeds in $\T$, and $\S_2$ is the rest of the teams. Play $\A_1$ on $\S_1$. Now, let $\U_1$ be the list of teams played in but did not win $\A_1,$ in order of how far they advanced: losers of championship games come first, and then losers of the semifinals, etc. Let $\U_2$ be $\U_1$ appended by $\S_2.$ Finally, recursively play the multibracket $$\A_2 \to ... \to \A_k$$ on $\U_2.$\\
 
@@ -22,7 +22,7 @@
     \end{definition}
 
     \begin{definition}{Multibracket Signature}{}
-        The \textit{signature} of a multibracket $\A$ is the sequence of semibrackets it is defined by separated by arrows.
+        The \i{signature} of a multibracket $\A$ is the sequence of semibrackets it is defined by separated by arrows.
     \end{definition}
 
     Thus, the Asian Cup is a multibracket with signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}.$ Let's play out the multibracket to familiarize ourself with the algorithm in Definition \ref{def:multi} and ensure that it acts in the way we expect.
@@ -35,26 +35,26 @@
 
     In the end, Australia, South Korea, and UAE are granted first-, second-, and third-place according to the calculation in Definition \ref{def:multi}, perfectly matching what actually happened in 2015.
 
-    Colloquially, we use the terms \textit{primary}, \textit{higher} and \textit{lower} to refer to certain semibrackets in a multibracket.
+    Colloquially, we use the terms \i{primary}, \i{higher} and \i{lower} to refer to certain semibrackets in a multibracket.
 
     \begin{definition}{Primary Semibrackets}{}
         If $\A = A_1 \to .. \to \A_k$ is a multibracket, we say $\A$ is the primary semibracket.
     \end{definition}
 
     \begin{definition}{Higher and Lower Semibrackets}{}
-        If $\A_i$ and $\A_j$ are two semibrackets in a multibracket $\A$ such that $i < j$, we say $\A_i$ is the \textit{higher} or \textit{earlier} semibracket and $\A_j$ is the \textit{lower} or \textit{later} semibracket.
+        If $\A_i$ and $\A_j$ are two semibrackets in a multibracket $\A$ such that $i < j$, we say $\A_i$ is the \i{higher} or \i{earlier} semibracket and $\A_j$ is the \i{lower} or \i{later} semibracket.
     \end{definition}
 
-    The notion of higher and lower semibrackets fits with the intuitive idea of teams falling, or \textit{dropping} down the multibracket as they lose.
+    The notion of higher and lower semibrackets fits with the intuitive idea of teams falling, or \i{dropping} down the multibracket as they lose.
     
     \begin{definition}{Dropping}{}
-        When a team loses in a one semibracket and is set to play their next game in another, we say the team \textit{dropped} from the higher semibracket to the lower one.
+        When a team loses in a one semibracket and is set to play their next game in another, we say the team \i{dropped} from the higher semibracket to the lower one.
     \end{definition}
 
     A quick note about the formula from Definition \ref{def:multi} that defines who finishes in which places: the formula means that multiple teams might finish in the same place. For example, the multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{3}_3$ crowns one team champion and grants fourth-place to three teams. However, no more than $m$ teams in a multibracket finish in the top-$m$.
 
     \begin{definition}{Rank of a Multibracket}{}
-        If $\A = \A_1 \to ... \to \A_k$ is a multibracket, then $$\rank{\A} = \sum_{i=1}^k \rank{\A_i}.$$ We say $\A$ has rank $\rank{\A}$ or that $\A$ \textit{ranks} $\rank{\A}$ teams.
+        If $\A = \A_1 \to ... \to \A_k$ is a multibracket, then $$\rank{\A} = \sum_{i=1}^k \rank{\A_i}.$$ We say $\A$ has rank $\rank{\A}$ or that $\A$ \i{ranks} $\rank{\A}$ teams.
     \end{definition}
 
     The 2015 AFL Asian Cup determines a top-three, so the multibracket $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}$ has rank three. But this multibracket is far from the only multibracket of rank three that the AFL could have used to dole out gold, silver, and bronze.

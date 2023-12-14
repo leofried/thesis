@@ -20,16 +20,16 @@
 
     Additionally, this particular way of grouping seeds ensures that after round $s$ for $s>1$, if the format goes chalk, the top $2^{r-s}$ out of $2^r$ teams remain. Finally, it might even allow a balanced bracket on more than four teams to be ordered, a feat that proper and reseeded brackets were both unable to accomplish.
 
-    The format used in the Wimbledon Mixed Double's Championship is a particular example of a class of formats called \textit{cohort randomized brackets} (a generalization of Schwenk's cohort randomized seeding \cite{randomized_cohort}).
+    The format used in the Wimbledon Mixed Double's Championship is a particular example of a class of formats called \i{cohort randomized brackets} (a generalization of Schwenk's cohort randomized seeding \cite{randomized_cohort}).
 
     \begin{definition}{Composition}{}
-        A \textit{composition} $\B = \bracktier{b_1 + ... + b_n}$ of a natural number $n$ is a way of writing $n$ as the sum of a sequence of natural numbers.
+        A \i{composition} $\B = \bracktier{b_1 + ... + b_n}$ of a natural number $n$ is a way of writing $n$ as the sum of a sequence of natural numbers.
     \end{definition}
 
     We will use compositions to describe which seeds are to be randomized with which other seeds (each of these groups is called a cohort). In the particular case of the Wimbledon Mixed Double's Championship, the bottom 24 teams are randomized, as are the next 4 and 2 after that, and then the 2-seed and 1-seed aren't randomized at all. So the composition of the Wimbledon Mixed Double's Championship is $$\B = \bracktier{24 + 4 + 2 + 1 + 1}.$$
 
     \begin{definition}{Cohort Randomized Bracket}{}
-        A \textit{cohort randomized bracket} is an $n$-team tournament format parameterized $(\A, \B)$, where $\A$ is an $n$-team bracket signature and $\B = \bracktier{b_1 + ... + b_k}$ is a composition of $n$. The proper bracket of signature $\A$ is constructed, but, for each $j$, seeds $$n + 1 - \sum_{i=1}^j b_i$$ through $$n - \sum_{i=1}^{j-1} b_i$$ are shuffled randomly. The resulting bracket is played out normally.
+        A \i{cohort randomized bracket} is an $n$-team tournament format parameterized $(\A, \B)$, where $\A$ is an $n$-team bracket signature and $\B = \bracktier{b_1 + ... + b_k}$ is a composition of $n$. The proper bracket of signature $\A$ is constructed, but, for each $j$, seeds $$n + 1 - \sum_{i=1}^j b_i$$ through $$n - \sum_{i=1}^{j-1} b_i$$ are shuffled randomly. The resulting bracket is played out normally.
     \end{definition}
 
     Thus the 2022 Wimbledon Mixed Double's Championship employs the cohort randomized bracket parameterized by $$(\bracksig{32;0;0;0;0;0}, \bracktier{24 + 4 + 2 + 1 + 1}).$$ 
@@ -37,7 +37,7 @@
     But it is certainly not the simplest example of a cohort randomized bracket: a format that totally ignores seeding and just randomly places all the teams into a bracket is also cohort randomized. 
     
     \begin{definition}{Totally Randomized Bracket}{}
-        The \textit{totally randomized bracket} of the $n$-team signature $\A$ is the cohort randomized bracket parameterized by $(\A, \bracktier{n}).$
+        The \i{totally randomized bracket} of the $n$-team signature $\A$ is the cohort randomized bracket parameterized by $(\A, \bracktier{n}).$
     \end{definition}
 
     Chung and Hwang had a conjecture about totally randomized brackets \cite{define_ordered}.
@@ -46,7 +46,7 @@
         All totally randomized brackets are ordered.
     \end{conj}
 
-    Certainly once the randomization is been complete and starting lines have been set this is not true: the resulting bracket will either be improper, in which case it is certainly not ordered, or proper, in which case it is ordered only when it satisfies the condition of Edwards's Theorem. However, in expectation \textit{over the randomization}, it is natural to hope that all totally randomized brackets are ordered: there is no advantage to being one seed or another, so certainly the better teams should win more?
+    Certainly once the randomization is been complete and starting lines have been set this is not true: the resulting bracket will either be improper, in which case it is certainly not ordered, or proper, in which case it is ordered only when it satisfies the condition of Edwards's Theorem. However, in expectation \i{over the randomization}, it is natural to hope that all totally randomized brackets are ordered: there is no advantage to being one seed or another, so certainly the better teams should win more?
 
     Unfortunately, as was the case in the previous section, the sweeping conjecture ultimately falls short, this time due to a counterexample given by Israel \cite{seventeen_team}.
 
@@ -85,7 +85,7 @@
     Chen and Hwang conjectured that this theorem could be extended.
 
     \begin{definition}{Nearly Balanced}{}
-        A bracket is \textit{nearly balanced} if no team receives more than one bye.
+        A bracket is \i{nearly balanced} if no team receives more than one bye.
     \end{definition}
 
     \begin{conj}{}{trnbbo}
@@ -98,10 +98,10 @@
 
     But secondly, total randomness has the undesirable property that it might make for some very lopsided and anti-climatic brackets. It could be that top-two teams, whom everyone wants to see face off in the championship game, are set to play each other in the first round!
 
-    To fix this, we define a new class of cohort randomized brackets: \textit{chalk randomized brackets}.
+    To fix this, we define a new class of cohort randomized brackets: \i{chalk randomized brackets}.
 
     \begin{definition}{Chalk Randomized Brackets}{}
-        The \textit{chalk randomized bracket} of the $n$-team signature $\A = \bracksig{a_0; ...; a_r}$ is the cohort randomized bracket parameterized by $(\A, \bracktier{b_1 + b_2 + ... + b_r + 1}),$ where $b_i$ is the number of games being played in round $i$ of $\A$.
+        The \i{chalk randomized bracket} of the $n$-team signature $\A = \bracksig{a_0; ...; a_r}$ is the cohort randomized bracket parameterized by $(\A, \bracktier{b_1 + b_2 + ... + b_r + 1}),$ where $b_i$ is the number of games being played in round $i$ of $\A$.
     \end{definition}
 
     Chalk randomization solves the second issue with total randomness: that good teams might meet earlier than desired.
@@ -140,7 +140,7 @@
 
     Cohort randomization can still be a valuable tool in cases where many tournaments are being played and rematches would like to be avoided (as in the ATP), cases where a random distribution of advantages might be preferred to a disordered distribution of advantages (as in March Madness), or cases when the true seeding is unknown (and so total randomization is a more accurate model of the format).
     
-    But it is certainly not a completely satisfying tool for generating ordered brackets from arbitrary signatures. In fact, the question of whether such a tool exists at all remains an open one, and we will conclude this chapter without an answer. Instead, we will explore other kinds of formats all together, such as \textit{multibrackets}, \textit{round robins}, and \textit{pools}.
+    But it is certainly not a completely satisfying tool for generating ordered brackets from arbitrary signatures. In fact, the question of whether such a tool exists at all remains an open one, and we will conclude this chapter without an answer. Instead, we will explore other kinds of formats all together, such as \i{multibrackets}, \i{round robins}, and \i{pools}.
     
     %augment to tiered signature for non-weakly respectful things
 

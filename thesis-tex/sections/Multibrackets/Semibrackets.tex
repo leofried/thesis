@@ -1,6 +1,6 @@
 \sub{
 
-    In this chapter, we will develop the theory of a new kind of format called a \textit{multibracket}. The multibracket is a very versatile class of formats, unifying many seemingly different formats that are used in practice and allowing us to study them all more effectively.
+    In this chapter, we will develop the theory of a new kind of format called a \i{multibracket}. The multibracket is a very versatile class of formats, unifying many seemingly different formats that are used in practice and allowing us to study them all more effectively.
     
     Amongst these formats are:
     \begin{enumerate}
@@ -10,7 +10,7 @@
         \item Double elimination tournaments, as in the 2005 Women's College World Series.
     \end{enumerate}
 
-    But before we can develop the concept of a multibracket or see how any of these tournaments are instances of it, we need to first investigate a class of formats called \textit{semibrackets} of which multibrackets are composed.
+    But before we can develop the concept of a multibracket or see how any of these tournaments are instances of it, we need to first investigate a class of formats called \i{semibrackets} of which multibrackets are composed.
 
     Consider the following tournament design problem: we are tasked with designing an eight-team tournament to select the top two teams who will go on to compete as a part of the national tournament. The catch: here's only enough time for two rounds: perhaps due to field space or team fatigue, each team can only play two games. What design should we use?
 
@@ -23,7 +23,7 @@
     While it would be reasonable to describe the format in Figure \ref{fig:800} as two brackets that run side-by-side, it would be nice to be able to describe it as a single format: a bracket in which the championship game is left unplayed.
 
     \begin{definition}{Semibracket}{semibracket}
-        A \textit{semibracket} is a tournament format in which:
+        A \i{semibracket} is a tournament format in which:
         \begin{itemize}
             \item Teams don't play any games after their first loss.
             \item The matchups between teams are determined based on the ordering of the teams in $\T$ in advance of the outcomes of any games.
@@ -74,7 +74,7 @@
     There is no potential for the format in Figure \ref{fig:1200} to be completed into a traditional bracket, the next round would include three teams: and odd number. But as a semibracket, this is still a viable format, one that perfectly solves the tournament design problem that we were given.
     
     \begin{definition}{Rank of a Semibracket}{}
-        If semibracket $\A$ has $m$ co-champions, then $\rank{\A} = m$. We say $\A$ has rank $m$ or that $\A$ \textit{ranks m teams}.
+        If semibracket $\A$ has $m$ co-champions, then $\rank{\A} = m$. We say $\A$ has rank $m$ or that $\A$ \i{ranks m teams}.
     \end{definition}
 
     Thus, traditional brackets are exactly the semibrackets that rank one team. The formats in Figures \ref{fig:800} and \ref{fig:1200} rank two and three teams, respectively.
@@ -82,7 +82,7 @@
     We can adapt the concept of a bracket signature to semibrackets.
 
     \begin{definition}{Semibracket Signature}{}
-        The \textit{signature} $\bracksig{a_0; ...; a_r}_m$ of an $r$-round semibracket $\A$ is list such that $a_i$ is the number of teams with $i$ byes and $m = \rank{\A}.$ (In the case where $m = \rank{\A} = 1$, it can be omitted.)
+        The \i{signature} $\bracksig{a_0; ...; a_r}_m$ of an $r$-round semibracket $\A$ is list such that $a_i$ is the number of teams with $i$ byes and $m = \rank{\A}.$ (In the case where $m = \rank{\A} = 1$, it can be omitted.)
     \end{definition}
 
     Thus the signature of traditional brackets are the same as when they are viewed as semibrackets that rank one team. The signatures of the formats in Figures \ref{fig:800} and \ref{fig:1200} are $\bracksig{8;0;0}_2$ and $\bracksig{12;0;0}_3,$ respectively.
@@ -102,17 +102,17 @@
     Finally, the space of semibrackets contains some slightly bizarre formats.
 
     \begin{definition}{Trivial Semibrackest}{}
-        We say semibrackets is \textit{trivial} if it has signature $\bracksig{n}_n$ for some $n$.
+        We say semibrackets is \i{trivial} if it has signature $\bracksig{n}_n$ for some $n$.
     \end{definition}
 
     No games are played in a trivial semibracket: all teams that enter one exit having been declared champion. The only trivial traditional bracket is $\bracksig{1}$, but there is one trivial semibracket with each rank. Trivial semibrackets look a bit strange when drawn.
 
     \fig{1}{trivial}{$\bracksig{6}_6$}
 
-    Arguably stranger than trivial semibrackets are \textit{semitrivial} semibrackets.
+    Arguably stranger than trivial semibrackets are \i{semitrivial} semibrackets.
 
     \begin{definition}{Semitrivial Semibracket}{}
-        We say a semibracket $\A = \bracksig{a_0; ...; a_r}_m$ is \textit{semitrivial} if $r \geq 1$ and $a_r \neq 0.$
+        We say a semibracket $\A = \bracksig{a_0; ...; a_r}_m$ is \i{semitrivial} if $r \geq 1$ and $a_r \neq 0.$
     \end{definition}
 
     In a semitrivial semibracket, some teams are declared champion without playing any games, while other have games on their schedule. The simplest example of a semitrivial semibracket is $\bracksig{2;1}_2.$
