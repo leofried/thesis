@@ -16,6 +16,7 @@
         Let $n$ be the number of teams in $\A_1$, and split $\T$ into $\S_1$ and $\S_2$, where $\S_1$ is the top $n$ seeds in $\T$, and $\S_2$ is the rest of the teams. Play $\A_1$ on $\S_1$. Now, let $\U_1$ be the list of teams played in but did not win $\A_1,$ in order of how far they advanced: losers of championship games come first, and then losers of the semifinals, etc. Let $\U_2$ be $\U_1$ appended by $\S_2.$ Finally, recursively play the multibracket $$\A_2 \to ... \to \A_k$$ on $\U_2.$\\
 
         Teams that win semibracket $\A_j$ finish in place $$\sum_{i=1}^{j} \rank{\A_i}.$$
+        Teams that do not win a semibracket finish in place $$|\T|.$$
 
         We also somewhat restrict the space of valid multibrackets, requiring that teams that lose in the same round of a given semibracket play their next game in the same semibracket.
     \end{definition}
@@ -28,9 +29,9 @@
 
     First, $\T = [$South Korea, Japan, China, Iran, Iraq, Australia, UAE, Uzbekistan], while $\A_1 = \bracksig{8;0;0;0}.$ There are eight teamS in both $\T$ and $\A_1$, so $\S_1 = \T$, while $\S_2 = [].$ We then play out bracket $\A_1.$ Australia wins, and we are left with $\U_1 = [$South Korea, Iraq, UAE, Uzbekistan, Iran, China, Japan], and then $\U_2 = \U_1.$
 
-    Now we run the format $\bracksig{1} \to \bracksig{2;0}$ on $\U_2$. $\bracksig{1}$ has only one team, so $\S_1 =[$South Korea] and $\S_2 =[$Iraq, UAE, Uzbekistan, Iran, China, Japan]. South Korea immediately wins $\A_2$, leaving $\U_1$ empty, so $\U_2 = \S_2.$
+    Now we run the format $\bracksig{1} \to \bracksig{2;0}$ on $\U_2$. $\A_2 = \bracksig{1}$ has only one team, so $\S_1 =[$South Korea] and $\S_2 =[$Iraq, UAE, Uzbekistan, Iran, China, Japan]. South Korea immediately wins $\A_2$, leaving $\U_1$ empty, so $\U_2 = \S_2.$
 
-    Finally, we again run the multibracket $\bracksig{2;0}$ on $\U_2.$ $\A_3$ takes two teams, so $\S_1 =[$Iraq, UAE]. They play each other, with UAE winning. This leaves us with $\U_1 = [$Iraq] and $\U_2 = [$Iraq, Uzbekistan, Iran, China, Japan], though these no longer matter as there are no more semibrackets.
+    Finally, we again run the multibracket $\bracksig{2;0}$ on $\U_2.$ $\A_3 = \bracksig{2;0}$ takes two teams, so $\S_1 =[$Iraq, UAE]. They play each other, with UAE winning. This leaves us with $\U_1 = [$Iraq] and $\U_2 = [$Iraq, Uzbekistan, Iran, China, Japan], though these no longer matter as there are no more semibrackets.
 
     In the end, Australia, South Korea, and UAE are granted first-, second-, and third-place according to the calculation in Definition \ref{def:multi}, perfectly matching what actually happened in 2015.
 
@@ -97,4 +98,6 @@
     }{
         Consider $\T$ right before $\A_j.$ $\A_i$ already happend, so there is some team $t$ that dropped to $\A_m.$ This team must be deep enough in $\T$ such that it does not play in $\A_j.$ Thus, after $\A_j$ is complete, any losers in $\A_j$ will still be higher than $t$ in $\T_1$, and so $\ell \leq m.$
     }{multi_brack}
+
+    %finally, a quick note about ranking the rest of the teams.
 }

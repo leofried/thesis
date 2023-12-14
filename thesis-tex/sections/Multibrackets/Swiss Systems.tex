@@ -13,11 +13,8 @@
         \begin{enumerate}
             \item All teams play the same number of games,
             \item Each matchup is between teams of the same record,
-            \item The multibracket ranks every team.
         \end{enumerate}
     \end{definition}
-
-    The last requirement is a technical detail that ensures we don't double count systems: once where teams that finish with no wins drop into a trivial last semibracket, and one where they don't drop into any semibracket at all.
 
     \begin{definition}{$r$-Round Swiss System}{}
         We say a swiss system is an $r$-\textit{round swiss system} if each team plays $r$ games.
@@ -154,8 +151,7 @@
         For arbitrary $r$, how many compact $r$-round swiss systems exist?
     \end{oq}
 
-    The 2023 League of Legends Worlds Championship put swiss systems into action, using a compact $4$-round swiss to whittle the sixteen remaining teams into the top five that qualify directly to bracket and the next six that advance to a play-in. They needed to select a top-five and top-eleven, and so naturally employed a (slightly modified) version of $\U_8$.
-    %tho it wasn't great...
+    The 2023 League of Legends Worlds Championship put swiss systems into action, using a compact $4$-round swiss to whittle the sixteen remaining teams into the top five that qualify directly to bracket and the next six that advance to a play-in. The tournament decided to select it matchups each round randomly (subject to the constraint of teams playing teams with the same record), which struck me as a somewhat strange decision, especially given that $\U_8$ supports both a top-five and top-eleven, which is exactly what is needed. Perhaps now that the theory of swiss systems have been formalized, leagues that employ them will have a better understanding of the ideal ways to use them.
 
     Overall, swiss systems very useful and practical tournament designs: they give each team the same number of games, they ensure that games are being played between teams that have the same record and thus, hopefully, similar skill levels, and, for many values of $m$, they efficiently identify a top-$m$ in a fair and satisfying way.
 

@@ -20,7 +20,7 @@ Multibrackets:
     --do semibracket.tex examples still track
 
 Round Robins:
-    --Intro
+    --Intro (landau's theorem) (round robins are ordered)
     --Scheduled Formats (impure)
     --Tiebreakers
     --Faithfulness
