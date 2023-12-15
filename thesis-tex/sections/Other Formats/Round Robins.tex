@@ -161,7 +161,41 @@
         %proof -- might need one more property.
     }{}
 
-    %discussion about h2h vs t2t
 
+    Despite the two options, \tbreak{HeadToHead} is nearly universal across leagues, while I am not aware of a single league in the real world that uses \tbreak{TailToTail} (or the equivalent record-against-non-tied-teams). Why is this?
 
+    One hypothesis might be that \tbreak{HeadToHead} does a better job of selecting the better team than \tbreak{TailToTail} does, that is, maybe it is ordered, or closer to being so. As it happens, this is not always true, and depends a lot on the specific matchup table. Imagine for example, a $4$-team round robin with the following matchup table, where $0 < p < 0.5.$
+
+    %what does it mean for a tiebreaker to be ordered.
+
+    \begin{figg}{A Matchup Table on which \tbreak{HeadToHead} is not Ordered}{tiebreaker_mu_table}
+        \begin{center}
+            \begin{tabular}{c | c c c c c c}
+            & $t_1$ & $t_2$ & $t_3$ & $t_4$\\ 
+            \hline
+            $t_1$ & 0.5 & $1- p$ & 1 & 1 \\
+            $t_2$ & $p$ & 0.5 & $1- p$ & 1 \\
+            $t_3$ & 0 & $p$ & 0.5 & $1- p$ \\
+            $t_4$ & 0 & 0 & $p$ & 0.5 \\
+            \end{tabular}
+        \end{center}
+    \end{figg}
+
+    There will be tie for first-place only when $t_2$ beats $t_1$ and $t_3$ beats $t_2.$ Given that, when $t_3$ beats $t_4$, there will be a three-way tie, which neither \tbreak{HeadToHead} or \tbreak{TailToTail} can break. But when $t_4$ beats $t_3$, $t_1$ and $t_2$ tie for first-place, and \tbreak{HeadToHead} selects the worse $t_2$, while \tbreak{TailToTail} selects the better $t_1$!
+
+    But it is also not hard to find a matchup table to show that \tbreak{TailToTail} isn't an ordered tiebreaker either: In fact, the matchup table in Figure \ref{fig:tiebreaker_mu_table} works if you set $\G{t_1}{t_3} = p.$
+
+    So if neither \tbreak{HeadToHead} nor \tbreak{TailToTail} are ordered, how do decide which is better, and why is out intuition so strong that \tbreak{HeadToHead} is preferable?
+
+    I think the intuition comes from the following idea: the best option, should we find two teams tied at the end of the season, is to just have them play another game. (In fact, for a period of time Major League Baseball did exactly that, although they did use \tbreak{HeadToHead} and not \tbreak{TailToTail} to select home-field advantage for that game.) If we are unable to have the teams play an extra game, we want to guess what might happen in a hypothetical such game, and our best evidence is the game that they just played against each other.
+
+    But if neither \tbreak{HeadToHead} nor \tbreak{TailToTail} are ordered, is any tiebreaker?
+
+    %Think a lot more about tiebreaker orderedness
+
+    % \theo{}{
+    %     An $n$-team round robin where the tiebreaking procedure is just \tbreak{Random} is ordered for all $n$.
+    % }{
+
+    % }{}
 }
