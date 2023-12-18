@@ -113,11 +113,16 @@
 
     For similar reasons, both formats are good for selecting a top-one or top-seven, and $\S_3$ but not $\T_3$ is good for selecting a top-five. Finally, it might seem that $\S_3$ and $\T_3$ are good formats for selecting a top-two or top-six: in both cases the top two and top six teams are clearly defined, and there are no teams with better records that don't make the cut. However, notice that if we use $\S_3$ or $\T_3$ to select a top-two, the final round of games are meaningless: the two teams that finish in the top-two are the two teams that win their first two games, irrespective or how game three went. Better than using either format $\S_3$ or $\T_3$ would be to use the non-compact $2\x\S_2,$ shortening the format down to two rounds without losing any important games.
 
-    There are eight compact 4-round systems: $\S_4$ and seven others. The count of compact $r$-round systems for $r > 4$, however, is still an open question.
+    There are eight compact 4-round systems: $\S_4$ and seven others. The count of compact $r$-round systems for general $r$, however, is still on open question.
 
-    \begin{oq}{}{}
-        How many compact $r$-round swiss systems are there for $r > 4$?
-    \end{oq}
+    \begin{conj}{}{}
+        Let $s_r$ be the number of compact $r$-round swiss systems. Then $s_r$ is given by:
+        \begin{align*}
+            s_0 &= s_ 1 = 1\\
+            s_r &= s_{r-1} \cdot \sum_{i=1}^{r-1}s_i
+        \end{align*}
+        This is OEIS sequence A001697.
+    \end{conj}
 
     Overall, swiss systems very useful and practical tournament designs: they give each team the same number of games, they ensure that games are being played between teams that have the same record and thus, hopefully, similar skill levels, and, for many values of $m$, they efficiently identify a top-$m$ in a fair and satisfying way.
 
