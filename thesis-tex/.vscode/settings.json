@@ -15,6 +15,7 @@
         "Noninvasiveness",
         "OEIS",
         "operationalize",
+        "operationalized",
         "Orderedness",
         "palandromic",
         "Pepperdine",
@@ -29,6 +30,7 @@
         "sublist",
         "sublists",
         "substatements",
+        "Terminality",
         "tiebreaking"
     ],
     "cSpell.enabled": true

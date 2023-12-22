@@ -64,19 +64,19 @@
         A tiebreaker is \i{terminal} if it is guaranteed to generate an order for a set of tied teams.
     \end{definition}
 
+    Two possible tiebreakers are \tbreak{PointsScored} and \tbreak{Random}.
+
     \begin{definition}{\tbreak{PointsScored}}{}
         \tbreak{PointsScored} ranks teams by how many points they scored over the course of the round robin: the more points, the better.
     \end{definition}
-
-    \tbreak{PointsScored} is not terminal: any number of tied teams might have scored the same number of points over the course of the round robin and thus would remain tied.
-
+    
     \begin{definition}{\tbreak{Random}}{}
         \tbreak{Random} ranks teams randomly: with each ordering being equally likely.
     \end{definition}
 
-    \tbreak{Random} is terminal, and in fact, \tbreak{Random} is used as the last tiebreaker in the tiebreaking algorithm of many leagues.
+    \tbreak{PointsScored} is not terminal: any number of tied teams might have scored the same number of points over the course of the round robin and thus would remain tied. \tbreak{Random}, on the other hand, is terminal. In fact, many leagues use \tbreak{Random} as the last tiebreaker in their tiebreaking algorithm.
 
-    On the other hand, many leagues' first tiebreaker is \tbreak{HeadToHead}.
+    Many leagues' first tiebreaker, on the other hand, is \tbreak{HeadToHead}.
 
     \begin{definition}{\tbreak{HeadToHead}}{}
         \tbreak{HeadToHead} ranks teams by their record against the other tied teams: the more wins, the better.
@@ -90,13 +90,13 @@
         If $n$ teams are tied for $n \geq 3,$ then let $t_1, t_2,$ and $t_3$ be three of the tied teams, and consider the situation where $t_1$ beat $t_2$, $t_2$ beat $t_3$, $t_3$ beat $t_1$, and all three of $t_1, t_2,$ and $t_3$ beat every other tied team. Then each of $t_1, t_2$, and $t_3$ will have $(n-2)$ wins and one loss against tied teams, so \tbreak{HeadToHead} cannot break their tie and thus is not terminal.
     }{}
 
-    Terminal is just one of many desirable properties that a tiebreaker could have.
+    Terminality is just one of many desirable properties that a tiebreaker could have.
 
     \begin{definition}{Noninvasive}{}
         A tiebreaker is \i{noninvasive} if it does not rely on data from the game itself, only on who won and lost.
     \end{definition}
 
-    Noninvasiveness is nice for a couple of reasons. For one, our model of tournaments and games doesn't consider any in-game data -- only a single bit of information is collected per game played -- and so all tiebreakers that our model can consider are noninvasive. But invasive tiebreakers are also not ideal in the real world because they warp incentives. \i{PointsScored} is invasive, and it encourages teams to get into high-scoring shootouts, even potentially at the expensive of maximizing their probability of winning any given game.
+    Noninvasiveness is nice for a couple of reasons. For one, our model of tournaments and games doesn't consider any in-game data -- only a single bit of information is collected per game played -- and so all tiebreakers that our model can consider are noninvasive. But invasive tiebreakers are also not ideal in the real world because they warp incentives. \tbreak{PointsScored} is invasive: It encourages teams to get into high-scoring shootouts, even, in certain situations, at the expensive of maximizing their probability of winning any given game.
 
     \begin{definition}{Local}{}
         A tiebreaker is \i{local} if it does not depend on the results of games not involving any tied teams.
@@ -120,43 +120,47 @@
         If the tied teams each have an even number of losses, \tbreak{Silly} ranks teams by which one was higher-seeded entering the round robin, and otherwise by which one was lower-seeded entering the round robin.
     \end{definition}
 
-    Finally,
+    \tbreak{Silly} is also not \i{symmetric}: it gives certain seeds advantages over others.
 
-    \begin{definition}{Objective}{}
-        A tiebreaker is \i{objective} if it is only a function of the games that were played (and thus has no randomness, subjectiveness, or references to facts about the teams unrelated to their performance in the round robin itself).
+    \begin{definition}{Symmetric}{}
+        A tiebreaker is \i{symmetric} if it looks only on the data from the games played and randomness that does not privilege any team. Unbalanced randomness, or use of seeds, human decisions, or things like ``which team played their game on Tuesday'' make a tiebreaker asymmetric.
     \end{definition}
-  
-    \tbreak{Random} is not objective (and neither is \tbreak{Silly}), but the other tiebreakers we've seen so far are.
+
+    Finally, we know that \tbreak{Random} is not \i{deterministic}.
+
+    \begin{definition}{Deterministic}{}
+        A tiebreaker is \i{deterministic} if there is no randomness in it.
+    \end{definition}
 
     We summarize what we know so far in Figure \ref{fig:tiebreaker_props}.
 
     \begin{figg}{Tiebreakers and Properties}{tiebreaker_props}
         \begin{center}
         \overfullhbox{
-            \begin{tabular}{| c | c | c | c | c | c |}
+            \begin{tabular}{| c | c | c | c | c | c | c |}
                 \hline
-                Tiebreaker & Noninvasive & Local & Protected & Objective & Terminal \\ \hline
-                2-team \tbreak{HeadToHead} & \check & \check & \check & \check & \check \\ \hline
-                $n$-team \tbreak{HeadToHead} & \check & \check & \check & \check & \ex \\ \hline
-                \tbreak{PointsScored} & \ex & \check & \check & \check & \ex\\ \hline
-                \tbreak{VictoryStrength} & \check & \ex & \check & \check  & \ex\\ \hline
-                \tbreak{Silly} & \check & \check & \ex & \ex  & \ex\\ \hline
-                \tbreak{Random} & \check & \check & \check & \ex & \check \\ \hline
+                Tiebreaker & Noninvasive & Local & Protected & Symmetric & Deterministic & Terminal \\ \hline
+                2-team \tbreak{HeadToHead} & \check & \check & \check & \check & \check & \check \\ \hline
+                $n$-team \tbreak{HeadToHead} & \check & \check & \check & \check & \check & \ex \\ \hline
+                \tbreak{PointsScored} & \ex & \check & \check & \check & \check & \ex\\ \hline
+                \tbreak{VictoryStrength} & \check & \ex & \check & \check & \check & \ex\\ \hline
+                \tbreak{Silly} & \check & \check & \ex & \ex & \check & \ex\\ \hline
+                \tbreak{Random} & \check & \check & \check & \check & \ex & \check \\ \hline
             \end{tabular}
         }
         \end{center}
     \end{figg}
 
-    Inspection of Figure \ref{fig:tiebreaker_props} begs the question of if $2$-team \tbreak{HeadToHead} is the only tiebreaker that satisfies all five of the desirable properties. In fact there is one other tiebreaker that does so: take a moment to see if you can figure out what it is.
+    Inspection of Figure \ref{fig:tiebreaker_props} begs the question of if $2$-team \tbreak{HeadToHead} is the only tiebreaker that satisfies all six of the desirable properties. In fact there is one other tiebreaker that does so: take a moment to see if you can figure out what it is.
 
     \begin{definition}{\tbreak{TailToTail}}{}
         \tbreak{TailToTail} ranks teams by their record against the other tied teams: the fewer wins, the better.
     \end{definition}
 
-    $2$-team \tbreak{TailToTail} is non-invasive, local, protected, objective, and terminal. In fact,
+    Though it may seem cheap, $2$-team \tbreak{TailToTail} is non-invasive, local, protected, symmetric, deterministic, and terminal. In fact,
 
     \theo{}{
-        For two teams, only \tbreak{HeadToHead} and \tbreak{TailToTail} are non-invasive, local, protected, objective, and terminal. No tiebreaker on three or more teams has all five properties.
+        For two teams, only \tbreak{HeadToHead} and \tbreak{TailToTail} are non-invasive, local, protected, symmetric, deterministic, and terminal. No tiebreaker on three or more teams has all six properties.
     }{
         %proof_needed -- might need one more property.
     }{}
@@ -164,9 +168,17 @@
 
     Despite the two options, \tbreak{HeadToHead} is nearly universal across leagues, while I am not aware of a single league in the real world that uses \tbreak{TailToTail} (or the equivalent record-against-non-tied-teams). Why is this?
 
-    One hypothesis might be that \tbreak{HeadToHead} does a better job of selecting the better team than \tbreak{TailToTail} does, that is, maybe it is ordered, or closer to being so. As it happens, this is not always true, and depends a lot on the specific matchup table. Imagine for example, a $4$-team round robin with the following matchup table, where $0 < p < 0.5.$
+    One hypothesis might be that \tbreak{HeadToHead} is more fair than \tbreak{TailToTail} is. In Chapter 2, we operationalized fairness as \i{orderded}: is \tbreak{HeadToHead} ordered while \tbreak{TailToTail} is not? %chapter 2
 
-    %what does it mean for a tiebreaker to be ordered.
+    In fact, both are ordered.
+
+    \theo{}{
+        Any round robin using only noninvasive, symmetric tiebreakers is ordered.
+    }{
+        %proof_needed
+    }{}
+
+    Another hypothesis might be that \tbreak{HeadToHead} is more \i{accurate} than \tbreak{TailToTail}, which we operationalize as  more often selecting the better team. But this too is not clearly true, depending a lot on the specific matchup table. Imagine for example, a $4$-team round robin with the following matchup table, where $0 < p < 0.5.$
 
     \begin{figg}{A Matchup Table on which \tbreak{HeadToHead} is not Ordered}{tiebreaker_mu_table}
         \begin{center}
@@ -183,19 +195,9 @@
 
     There will be tie for first-place only when $t_2$ beats $t_1$ and $t_3$ beats $t_2.$ Given that, when $t_3$ beats $t_4$, there will be a three-way tie, which neither \tbreak{HeadToHead} or \tbreak{TailToTail} can break. But when $t_4$ beats $t_3$, $t_1$ and $t_2$ tie for first-place, and \tbreak{HeadToHead} selects the worse $t_2$, while \tbreak{TailToTail} selects the better $t_1$!
 
-    But it is also not hard to find a matchup table to show that \tbreak{TailToTail} isn't an ordered tiebreaker either: In fact, the matchup table in Figure \ref{fig:tiebreaker_mu_table} works if you set $\G{t_1}{t_3} = p.$
+    But it is also not hard to find a matchup table to show that \tbreak{TailToTail} isn't an ordered tiebreaker either: the matchup table in Figure \ref{fig:tiebreaker_mu_table} works if you set $\G{t_1}{t_3} = p.$
 
-    So if neither \tbreak{HeadToHead} nor \tbreak{TailToTail} are ordered, how do decide which is better, and why is out intuition so strong that \tbreak{HeadToHead} is preferable?
+    So if both \tbreak{HeadToHead} and \tbreak{TailToTail} are produce ordered round robins, and accuracy is a push, why is our intuition for \tbreak{HeadToHead} is so strong?
 
     I think the intuition comes from the following idea: the best option, should we find two teams tied at the end of the season, is to just have them play another game. (In fact, for a period of time Major League Baseball did exactly that, although they did use \tbreak{HeadToHead} and not \tbreak{TailToTail} to select home-field advantage for that game.) If we are unable to have the teams play an extra game, we want to guess what might happen in a hypothetical such game, and our best evidence is the game that they just played against each other.
-
-    But if neither \tbreak{HeadToHead} nor \tbreak{TailToTail} are ordered, is any tiebreaker?
-
-    %Think a lot more about tiebreaker orderedness
-
-    % \theo{}{
-    %     An $n$-team round robin where the tiebreaking procedure is just \tbreak{Random} is ordered for all $n$.
-    % }{
-
-    % }{}
 }
