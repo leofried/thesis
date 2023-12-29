@@ -34,30 +34,18 @@
         \end{document}
     }
 
-
-    \newcommand{\sect}[1]{
-        \def\sectname{#1}
-        \section{#1}
-        \def\subsectname{intro}
-        \subfile{sections/#1/intro}
-        \newpage
-    }
     \newcommand{\secti}[1]{
         \def\sectname{#1}
         \section{#1}
+        \label{cha:#1}
         \newpage
     }
 
-    
     \newcommand{\subsect}[1]{
         \def\subsectname{#1}
         \subsection{#1}
+        \label{sec:#1}
         \subfile{sections/\sectname/#1}
-        \newpage
-    }
-    \newcommand{\subsecti}[1]{
-        \def\subsectname{#1}
-        \subsection{#1}
         \newpage
     }
 
@@ -196,6 +184,9 @@
     % A thing like rank but for number of teams, and for number of semibrackets.
     % cite at end of sentence or upon nameing
     % pools vs groups
+    % check for plagarism
+    % higher quality images
+    % organize citations and references.tex
 
 
 

@@ -76,7 +76,7 @@
         If $m \in \N$ and $\A$ is a multibracket signature, than $m\x\A$ is the multibracket signature formed by multiplying every number in every signature in $\A$ by $m$.
     \end{definition}
 
-    swiss systems formed by the construction in \ref{def:mbya} are somewhat less interesting to study than other systems, so we introduce the notion of a \i{compact} system.
+    Swiss systems formed by the construction in \ref{def:mbya} are somewhat less interesting to study than other systems, so we introduce the notion of a \i{compact} system.
 
     \begin{definition}{Compact Swiss System}{}
         We say a swiss system is \i{compact} if its primary semibracket is a bracket.
@@ -94,7 +94,7 @@
 
     $\S_3$ is not the unique compact $3$-round system, however. The other system, sometimes referred to as $\T_3$, is displayed in Figure \ref{fig:swisst3}. (Note that there are instantiations of $\T_3$ that risk playing rematches. As per Theorem \ref{th:swiss_most_no_rematches}, we show the instantiation that does not).
 
-    \fig{1}{swisst3}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0}_2 \to \bracksig{2}_2 \to \bracksig{2;0} \to \bracksig{1}$}
+    \fig{1}{swisst3}{$\T_3 = \bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0}_2 \to \bracksig{2}_2 \to \bracksig{2;0} \to \bracksig{1}$}
 
     \theo{}{
     $\S_3$ and $\T_3$ are the only compact 3-round swiss systems.
@@ -105,8 +105,6 @@
     
      If $a_1 = 2$, then the losers of the two championship games of $\A$ have already played all three of their games and so need to fall into the bracket $\bracksig{2}$. Then we need $\bracksig{2;0}$ and $\bracksig{1}$ so that the last two teams get a third game. This is the swiss system $\T_3$.
 }{}
-
-
     How would a tournament designer decide which compact 3-round system to use? Well, it depends on what the prize structure of the format is. If the goal is to identify a top-three, then system $\S_3$ is preferable: system $\T_3$ doesn't even recognize a third-place, instead assigning fourth-place to two teams. But if the goal is to identify a top-four, system $\T_3$ is preferable: the team that comes in fourth in system $\S_3$ actually finishes with only one win, while the team the comes in fifth finishes with two. While it is still reasonable to grant the one-win team fourth-place -- they had a more difficult slate of opponents -- this is a somewhat messy situation that is solved by just using system $\T_3.$
 
     (McGarry and Schutz \cite{four_five_swap} considered outright swapping the positions of the fourth- and fifth-place teams at the conclusion of $\S_3$, but this provides some incentive for losing in the first round in order to get an easier path to a top-half finish. Simply using $\T_3$ when identifying the top-four teams is preferable.)
