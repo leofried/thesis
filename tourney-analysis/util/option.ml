@@ -9,3 +9,7 @@ let bind f t = O.bind t f;;
 let map = O.map;;
 
 let is_some = O.is_some;;
+
+let join = O.join;;
+
+let some = O.some;;

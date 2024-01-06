@@ -6,12 +6,19 @@ let () =
     Pools.get_all ~max_games:8 12 [1;3;7]
   )) ()); *)
 
-  Schemes.(Util.Debug.time (fun () -> print_endline @@ string_of_int @@ List.length (
-    let prizes = [1; 3; 7] in
-    Pools.get_all ~max_games:8 12 prizes
-    |> List.filter (fun f -> List.for_all (fun m -> Metrics.Faithfulness.evaluate_format f m) prizes)
-    |> List.map (fun x -> x |> Pools.sexp_of_t |> Util.Sexp.to_string |> print_endline)
-  )) ());
+  for n = 1 to 20 do
+    for p = 2 to n do
+      print_endline (string_of_int n ^ ", " ^ string_of_int p ^ ", " ^ string_of_int
+      Schemes.((*Util.Debug.time*) (fun () -> List.length (
+        let prizes = [1; p] in
+        Pools.get_all ~respectfulness:Strongly ~triviality:Efficient ~max_games:8 n prizes
+        |> List.filter (fun f -> List.for_all (fun m -> Metrics.Faithfulness.evaluate_format f m) prizes)
+        (* |> List.map (fun x -> x |> Pools.sexp_of_t |> Util.Sexp.to_string |> print_endline)  *)
+      )) ()));
+      ()
+    done
+
+  done
 
 
  (* let () =
