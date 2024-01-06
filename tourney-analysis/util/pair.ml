@@ -6,6 +6,8 @@ let right = snd;;
 
 let pair a b = (a, b);;
 
+let dup a = (a, a);;
+
 let rev a b = (b, a);;
 
 let swap (a, b) = (b, a);;
@@ -30,7 +32,7 @@ let join_left f x = f x, x;;
 
 let join_right f x = x, f x;;
 
-let envelope a = Option.map (pair a)
+let tuck a = Option.map (pair a);;
 
 let compare ?(left = fun _ _ -> 0) ?(right = fun _ _ -> 0) (a, b) (c, d) =
   match left a c with

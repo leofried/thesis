@@ -72,7 +72,7 @@ let f1 ~bracket ~(tiers : t) =
 
 let f2 ~bracket =
   Proper.number_of_teams bracket
-  |> Combo.partitions
+  |> Combo.compositions
   |> List.sort_by_rev (List.length) Int.compare
   |> Debug.print (List.length >> Int.to_string) 
   |> List.filter (fun tiers -> f1 ~bracket ~tiers)

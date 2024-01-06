@@ -84,6 +84,6 @@ let get_all
   |> (if include_smaller then List.flatten else List.hd)
   |> Bool.do_if_not include_trivial (List.filter (fun lst -> List.length lst <> 1))
   |> Bool.do_if_not include_semitrivial (List.filter (fun lst -> List.length lst = 1 || List.nth_one lst (List.length lst) = 0))
-  |> List.filter_map (fun lst -> Pair.envelope lst (Tier.check_bracket respectfulness input_tiers lst))
+  |> List.filter_map (fun lst -> Pair.tuck lst (Tier.check_bracket respectfulness input_tiers lst))
   |> List.filter (fun (_, tiers) -> List.for_all (fun tier -> tier.Tier.games_played <= max_games) tiers)
 ;;

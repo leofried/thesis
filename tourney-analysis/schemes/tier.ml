@@ -10,7 +10,7 @@ let new_tier x = {
   games_played = 0;
 }
 
-let number_of_teams t = t |> List.map (fun t -> t.number_of_teams) |> List.fold_left (+) 0
+let number_of_teams lst = lst |> List.map (fun t -> t.number_of_teams) |> List.fold_left (+) 0
 
 let play_game t = {
   number_of_teams = t.number_of_teams / 2;

@@ -21,9 +21,6 @@ let rec run t play teams = match t with
 ;;
 
 
-
-
-
 type triviality =
   | Anything
   | NoSemitrivial
@@ -55,5 +52,5 @@ let get_all
         |> List.map (fun (bracket, lst) -> List.map (List.cons bracket) lst)
         |> List.flatten
   in
-  f input_tiers (0 :: output_tiers)
+  f input_tiers (0 :: output_tiers |> Stdlib.List.fold_left_map (fun total x -> x, x - total) 0 |> Pair.right)
 ;;

@@ -25,15 +25,28 @@ let combinations t =
   combine [] t
 ;;
 
-let partitions n =
-  let rec upped_partitions i n =
+let compositions n =
+  let rec upped_compositions i n =
     if i = n then [[[n]]] else
-    upped_partitions (i + 1) n
+    upped_compositions (i + 1) n
     |> List.map (fun lst -> [[i] :: lst; (i :: List.hd lst) :: List.tl lst])
     |> List.flatten
   in
-  upped_partitions 1 n
+  upped_compositions 1 n
 ;; 
+
+let rec partitions ~n ?m ?(l = -1) () = 
+  if n = 0 then 
+    if l <= 0 then [[]] else [l |> List.create |> List.map (Fun.const 0)]
+  else if n < 0 || l = 0 then []
+  else
+    m
+    |> Option.fold n Fun.id
+    |> List.create
+    |> List.map ((+) 1)
+    |> List.map (fun x -> List.map (List.cons x) (partitions ~n:(n - x) ~m:x ~l:(l - 1) ()))
+    |> List.flatten 
+;;
     
 let ssts n =
   let rec upped_ssts i n =

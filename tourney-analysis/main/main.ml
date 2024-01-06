@@ -2,22 +2,35 @@
 (* Prog.run() *)
 
 let () =
-  Schemes.(Util.Debug.time (fun () -> print_int @@ List.length (
-    Multibracket.get_all ~max_games:3 ~respectfulness:Weakly ~triviality:Efficient (List.map Tier.new_tier [2;2;2;2;2;2]) [1;2;4]
+  (* Schemes.(Util.Debug.time (fun () -> print_endline @@ string_of_int @@ List.length (
+    Pools.get_all ~max_games:8 12 [1;3;7]
+  )) ()); *)
+
+  Schemes.(Util.Debug.time (fun () -> print_endline @@ string_of_int @@ List.length (
+    let prizes = [1; 3; 7] in
+    Pools.get_all ~max_games:8 12 prizes
+    |> List.filter (fun f -> List.for_all (fun m -> Metrics.Faithfulness.evaluate_format f m) prizes)
+    |> List.map (fun x -> x |> Pools.sexp_of_t |> Util.Sexp.to_string |> print_endline)
   )) ());
 
-  Schemes.(Util.Debug.time (fun () -> print_int @@ List.length (
-    Multibracket.get_all ~max_games:5 ~respectfulness:Weakly ~triviality:Efficient (List.map Tier.new_tier [3;3;3;3]) [1;2;4]
+
+ (* let () =
+  Schemes.(Util.Debug.time (fun () -> print_endline @@ string_of_int @@ List.length (
+    Multibracket.get_all ~max_games:3 ~respectfulness:Weakly ~triviality:Efficient (List.map Tier.new_tier [2;2;2;2;2;2]) [1;3;7]
   )) ());
 
-  Schemes.(Util.Debug.time (fun () -> print_int @@ List.length (
-    Multibracket.get_all ~max_games:6 ~respectfulness:Weakly ~triviality:Efficient (List.map Tier.new_tier [4;4;4]) [1;2;4]
+  Schemes.(Util.Debug.time (fun () -> print_endline @@ string_of_int @@ List.length (
+    Multibracket.get_all ~max_games:5 ~respectfulness:Weakly ~triviality:Efficient (List.map Tier.new_tier [3;3;3;3]) [1;3;7]
   )) ());
 
-  Schemes.(Util.Debug.time (fun () -> print_int @@ List.length (
-    Multibracket.get_all ~max_games:7 ~respectfulness:Weakly ~triviality:Efficient (List.map Tier.new_tier [6;6]) [1;2;4]
+  Schemes.(Util.Debug.time (fun () -> print_endline @@ string_of_int @@ List.length (
+    Multibracket.get_all ~max_games:6 ~respectfulness:Weakly ~triviality:Efficient (List.map Tier.new_tier [4;4;4]) [1;3;7]
   )) ());
-;;
+
+  Schemes.(Util.Debug.time (fun () -> print_endline @@ string_of_int @@ List.length (
+    Multibracket.get_all ~max_games:7 ~respectfulness:Weakly ~triviality:Efficient (List.map Tier.new_tier [6;6]) [1;3;7]
+  )) ());
+;; *)
 
 (* let number_of_teams = 10;;
 

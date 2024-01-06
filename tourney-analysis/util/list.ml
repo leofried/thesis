@@ -97,6 +97,17 @@ let collapse f =
   ) [] >> rev
 ;;
 
+let rec interleave t =
+  if t = [] || hd t = [] then 
+    [] 
+  else
+    let hds, tls = 
+      t
+      |> map pop
+      |> split
+    in hds @ (interleave tls)
+;; 
+
 let sort = L.stable_sort;;
 let sort_rev compare = sort (Fun.flip compare);;
 let sort_by f compare lst =
