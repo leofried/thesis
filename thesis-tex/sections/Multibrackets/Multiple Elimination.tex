@@ -6,23 +6,23 @@
 
    The format in Figure \ref{fig:ann_arbor} is neither a bracket nor a multibracket. It has seven starting lines (labeled $\bracklabel{1}, \bracklabel{2}, \bracklabel{3}, \bracklabel{4}, \bracklabel{A1}, \bracklabel{A2},$ and $\bracklabel{B1}$), but only four teams, so it's not a bracket. It's not a series of semibrackets, so it's not quite a multibracket either. If we momentarily ignore game $\bracklabel{E1^*},$ however, it does look like a simple multibracket of rank two with signature $\bracksig{4;0;0} \to \bracksig{2;1;0}.$
 
-   So what's going on with game $\bracklabel{E1^*}$ then? As indicated in the figure, the asterisk means that the lower team, (the team that just won game $\bracklabel{D1}$) must win twice in a row in order to win the format, while the upper team can lose the first game as long as they win a rematch. Why structure a format like this? The 2016 NCAA Softball Ann Arbor Regional has the property that every team will finish with exactly two losses, except for the winner, which will have zero or one. This format is an example of a \i{perfect double elimination tournament}.
+   So what's going on with game $\bracklabel{E1^*}$ then? As indicated in the figure, the asterisk means that the lower team, (the team that just won game $\bracklabel{D1}$) must win twice in a row in order to win the format, while the upper team can lose the first game as long as they win a rematch. Why structure a format like this? The 2016 NCAA Softball Ann Arbor Regional has the property that every team will finish with exactly two losses, except for the winner, which will have zero or one. This format is an example of a \i{perfect double-elimination tournament}.
 
-   \begin{definition}{Multiple Elimination}{}
-        A \i{multiple elimination format} is defined by a pair of formats $(\A, \B)$ in which $\A = \A_1 \to ... \to \A_k$ is a multibracket with the property that whenever a team loses in $\A_i$ for $i < k$ they drop into $\A_{i+1}.$ The format proceeds by running $\A$, and then running $\B$ on the teams that won a semibracket in $\A.$\\
+   \begin{definition}{Double-Elimination}{}
+        A \i{double-elimination format} is defined by a pair of formats $(\A, \B)$ in which $\A = \A_1 \to \A_2$ is a simple multibracket with the property that every team that loses in $\A_1$ drops into $\A_2.$ The format proceeds by running $\A$, and then running $\B$ on the teams that won $\A_1$ and $\A_2$\\
         
-        We call $\A$ the \i{multibracket phase}, $\B$ the \i{consolidation phase}, and $(\A, \B)$ a $k$-elimination tournament.
+        We call the primary bracket of $\A$ the \i{winners' bracket}, $\A_2$ the \i{losers' bracket}, $\A$ the \i{multibracket phase}, and $\B$ the \i{consolidation phase}.
    \end{definition}
 
-   \begin{definition}{Perfect Multiple Elimination}{}
-        We say a multiple elimination format $(\A_1 \to ... \to \A_k, \B)$ is \i{perfect} if it guarantees that, at its conclusion, every team will have exactly $k$ losses except the winner, which will have fewer than $k$ losses.
+   \begin{definition}{Perfect Double-Elimination}{}
+        We say a double-elimination format $(\A_1 \to \A_2, \B)$ is \i{perfect} if it guarantees that, at its conclusion, every team will have exactly $2$ losses except the winner, which will have zero or one loss.
     \end{definition}
 
-    Thus the 2016 NCAA Softball Ann Arbor Regional is indeed a perfect double elimination tournament, with $\A = \bracksig{4;0;0} \to \bracksig{2;1;0}$ comprising rounds $\bracklabel{A}$ through $\bracklabel{D}$, and $\B$ being a best of three in which the one-seed starts up one game to zero.
+    Thus the 2016 NCAA Softball Ann Arbor Regional is indeed a perfect double-elimination tournament, with $\A = \bracksig{4;0;0} \to \bracksig{2;1;0}$ comprising rounds $\bracklabel{A}$ through $\bracklabel{D}$, and $\B$ being a playoff between the winner of the winners' and losers' bracket, in which the winners' bracket winner needs to win once, while the losers' bracket winner needs to win twice.
 
-    What would an imperfect double elimination format look like? One option would be to use the same $\A = \bracksig{4;0;0} \to \bracksig{2;1;0}$, but for $\B$ to simply be the bracket $\B = \bracksig{1},$ resulting in the format below.
+    What would an imperfect double-elimination format look like? One option would be to use the same $\A = \bracksig{4;0;0} \to \bracksig{2;1;0}$, but for $\B$ to simply be the bracket $\B = \bracksig{1},$ resulting in the format below.
 
-    \fig{0.53}{ann_arbor_no_recharge}{An Imperfect Double Elimination}
+    \fig{0.53}{ann_arbor_no_recharge}{An Imperfect Double-Elimination}
 
     The replaying of game $\bracklabel{E1}$ is sometimes called a \i{recharge round}. Without the recharge round, the format in Figure \ref{fig:ann_arbor_no_recharge} is imperfect: a team could win their first two games and then lose their third, getting eliminated after just a single loss.
 
@@ -30,10 +30,10 @@
 
     And while there is certainly a compelling argument to be made that perfect formats are ``fairer'' than their imperfect counterparts, Dabney showed that under certain assumptions, omitting the recharge round is actually more fair \cite{recharge_rounds}.
 
-    In any case, many of the multiple elimination format used in practice are indeed perfect, the most common of which is the \i{standard double elimination}, or $\D_r.$
+    In any case, many of the multiple-elimination format used in practice are indeed perfect, the most common of which is the \i{standard double-elimination}, or $\D_r.$
 
-    \begin{definition}{Standard Double Elimination ($\D_r$)}{}
-        $\D_r,$ or the \i{standard double elimination on $2^r$ teams}, is the double elimination format $(\A_1 \to \A_2, \B)$ where
+    \begin{definition}{Standard Double-Elimination ($\D_r$)}{}
+        $\D_r,$ or the \i{standard double-elimination on $2^r$ teams}, is the double-elimination format $(\A_1 \to \A_2, \B)$ where
         \begin{align*}
             \A_1 &= \bracksig{2^r; 0; ... ; 0},\\
             \A_2 &= \bracksig{2^{r-1}; 2^{r-2}; 0; 2^{r-3}; 0; ...; 2; 0; 1; 0},
@@ -43,29 +43,45 @@
 
     For example,
 
-    \fig{0.75}{D4}{$\D_4$}
+    \fig{0.75}{D4}{$\D_4 (\A_1 = \bracksig{16;0;0;0;0}$ and $\A_2 = \bracksig{8;4;0;2;0;1;0})$}
 
-    Note that although there are many options for how to shuffle $\bracklabel{A1}$ through $\bracklabel{A8}$, $\bracklabel{B1}$ through $\bracklabel{B4}$, etc, we opt for the one that minimizes opportunities for rematches: rounds $\bracklabel{E}, \bracklabel{F}$, and $\bracklabel{G}$ are guaranteed to be rematch free. A further discussion of rematches can be found in the next section.
+    Note that although there are many options for how to shuffle $\bracklabel{A1}$ through $\bracklabel{A8}$, $\bracklabel{B1}$ through $\bracklabel{B4}$, etc, we opt for the one that minimizes opportunities for rematches: rounds $\bracklabel{E}, \bracklabel{F}$, and $\bracklabel{G}$ are guaranteed to be rematch free. Why we might want to avoid rematches will be discussed further in the next section.
 
-    The standard double elimination brackets are far from the only perfect ones. Figure \ref{fig:shifted} shows another perfect sixteen-team double elimination tournament, first proposed by Dabney \cite{shifted}, that has the advantage of taking one fewer round then $\D_4.$
+    The standard double-elimination brackets are far from the only perfect ones. Figure \ref{fig:shifted} shows another perfect sixteen-team double-elimination tournament, first proposed by Dabney \cite{shifted}, that has the advantage of taking one fewer round then $\D_4.$
 
-    \fig{0.8}{shifted}{The Perfect Double Elimination Bracket with $\A_1 = \bracksig{16;0;0;0;0}$ and $\A_2 = \bracksig{8;4;2;1;0;0}$}
+    \fig{0.8}{shifted}{The Perfect Double-Elimination Bracket with $\A_1 = \bracksig{16;0;0;0;0}$ and $\A_2 = \bracksig{8;4;2;1;0;0}$}
 
-    Consider the following tournament design problem: we want a sixteen-team format in which the winner finishes with exactly six wins, and each other team with exactly two losses. Neither the standard $\D_4$, nor the format in Figure \ref{fig:shifted} (which Dabney referred to as a \i{shifted} double eliminated format) are up to the task: winner of $\D_4$ can finish with anywhere from five to eight wins.
+    Now, consider the following tournament design problem: we want a sixteen-team format in which the winner finishes with exactly six wins, and each other team with exactly two losses. Neither the standard $\D_4$, nor the format in Figure \ref{fig:shifted} (which Dabney referred to as a \i{shifted} double-eliminated tournament) are up to the task: the winner of $\D_4$ can finish with anywhere from five to eight wins.
 
     But we can use the shifted bracket to inspire a solution. After the shifted bracket's round $\bracklabel{H},$ three teams remain: the winner of $\bracklabel{D}$, who is 4-0, and then winners of games $\bracklabel{H1}$ and $\bracklabel{H2}$, who are each 4-1. If we end the multibracket phase here, we are left needing a three team format that leaves the winner with two more wins and both losers two total losses.
 
-    Consider the following format: We have the $1$-seed play a game against both the $2$-seed and the $3$-seed. If the $1$-seed won both, they are declared champion. Otherwise, the winners of the two games play. This fits our specification, and we are left with the perfect double elimination format where $\A_1 = \bracksig{16;0;0;0;0},\ \A_2 = \bracksig{8;4;2;1;0}_2$, and $\B$ is the format just described.
+    The following format works: We have the winner of $\A_1$ play against both winners of $\A_2$. If the $1$-seed won both, they are declared champion. Otherwise, the winners of the two games play. This fits our specification, and we are left with the perfect double-elimination format where $\A_1 = \bracksig{16;0;0;0;0},\ \A_2 = \bracksig{8;4;2;1;0}_2$, and $\B$ is the format just described.
     
-    \fig{0.8}{6wins2losses}{Perfect Double Elimination where the Winner Finishes with Six Wins}
+    \fig{0.8}{6wins2losses}{Perfect Double-Elimination where the Winner Finishes with Six Wins}
 
-    Of course, not all multiple elimination formats are double elimination, although it becomes trickier to keep the format perfect while keeping the number of rounds under control with larger values of $k$. The 2021 Curling Masters used an imperfect triple elimination, with $\A = \bracksig{16;0;0;0}_2 \to \bracksig{8;4;2;0}_3 \to \bracksig{4;4;3;0}_3$ and $\B = \bracksig{8;0;0;0}.$
+    We can also generalize the notion of double-elimination formats to allow for more than two losses, or \i{multiple-elimination}, as defined below.
+
+    \begin{definition}{Multiple-Elimination}{}
+        A \i{multiple-elimination format} is defined by a pair of formats $(\A, \B)$ in which $\A = \A_1 \to ... \to \A_k$ is a simple multibracket with the property that whenever a team loses in $\A_i$ for $i < k$ they drop into $\A_{i+1}.$ The format proceeds by running $\A$, and then running $\B$ on the teams that won a semibracket in $\A.$\\
+        
+        We call $\A$ the \i{multibracket phase}, $\B$ the \i{consolidation phase}, and $(\A, \B)$ a $k$-elimination tournament.
+   \end{definition}
+
+   \begin{definition}{Perfect Multiple-Elimination}{}
+        We say a multiple-elimination format $(\A_1 \to ... \to \A_k, \B)$ is \i{perfect} if it guarantees that, at its conclusion, every team will have exactly $k$ losses except the winner, which will have fewer than $k$ losses.
+    \end{definition}
+
+    We can also generalize the notion of perfection, although it becomes trickier to keep the format perfect while keeping the number of rounds under control with larger values of $k$. The 2021 Curling Masters used an imperfect triple-elimination, with $\A = \bracksig{16;0;0;0}_2 \to \bracksig{8;4;2;0}_3 \to \bracksig{4;4;3;0}_3$ and $\B = \bracksig{8;0;0;0}.$
 
     \fig{0.75}{curling}{2021 Curling Masters}
 
     Semibracket $\A_1$ consists of rounds $\bracklabel{A}, \bracklabel{B},$ and $\bracklabel{C}$; $\A_2$ of rounds $\bracklabel{D}, \bracklabel{E},$ and $\bracklabel{F}$; $\A_3$ of rounds $\bracklabel{G}, \bracklabel{H},$ and $\bracklabel{I}$; and $\B$ of rounds $\bracklabel{J}, \bracklabel{K},$ and $\bracklabel{L}.$ While the 2021 Curling Masters are imperfect, they do ensure that the champion finishes as the only team with exactly six wins.
 
-    %conclusion, they are very expansive, the next section looks to narrow them down.
-    %maybe start only defining double elimination (and winners and losers bracket) and then expand.
-    %double elimination or double-elimination
+    Multiple-elimination formats are nice in that they ensure a team can't be eliminated for one (or more) bad games, and do a better job of crowning second-place than just traditional brackets, or multibrackets who's second bracket is just $\bracksig{1}$ do. At the same time, multiple-elimination formats can end up being quite long, with many rounds near the end containing just a single game.
+
+    Unlike plain multibrackets, multiple-elimination tournaments can crown a champion that didn't win its primary bracket. It is thus possible that double- or multiple-elimination brackets allow for ordered formats who's primary bracket is one that is not ordered by Edwards's Theorem. Under what circumstances this is the case is an open question.
+
+    \begin{oq}{}{}
+        Which multiple-elimination formats are ordered?
+    \end{oq}
 }

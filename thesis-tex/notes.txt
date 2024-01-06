@@ -5,38 +5,6 @@ Introduction:
     Formalizing Tournaments (Definitions)
     Similarities to Sorting, Faithfulness (Lewis Carol/Dodgson)
 
-Brackets:
-    --Write Randomized Cohort Seeding
-    --Alined, B-line, and C-lined (and write it down)
-
-Multibrackets:
-    --Multibracket : think really hard about definition, both readability and accuracy (and use "multibracket rule") as it applies to swiss->last structural theorem
-            --> maybe this should be the priority thing, followed by a pile of theorems (corollaries?) for the inequality rules.
-    
-    --Swiss
-    --Multiple Elimination
-    --Properties (respectfulness, rematches [swapping], orderedness etc, why can we remove semitrivial)
-    --make sure we know that teams can start in lower brackets (worried this might be shocking -- nba play-in does this i suppose, but maybe do rugby?)
-    --do semibracket.tex examples still track
-
-Round Robins:
-    --Intro (landau's theorem) (round robins are ordered)
-    --Scheduled Formats (impure)
-    --Tiebreakers
-    --Faithfulness
-    --Pools
-    --Pool Extensions (seeding, variants (playing games outside of pools (nfl) power pools, wildcards (formal e.g. 13 and informal e.g. mlb)), "finishing pool play", pools but not round robin insides)
-    --Impure 
-        (play too few [ramsey theorem, two different seven play four, etc])
-        (play too many [double round robin])
-        (ramsey theorem, two different seven play four, divisions, mlb, soccer ties, etc)
-    
-
-Ideas:
-    --Merge sort as a format for min/games faithfulness
-
-
-
 Statistics and Applications:
     Accurate: Good E[winner_skill]
     Balanced: P[W[Spot]] = 1/n
@@ -54,4 +22,9 @@ Hierarchy of Formats:
     --Random, det/sym/aligned, etc.
 
 Conclusion:
-    Suggestions for real formats (deserving-ness vs goodness)
+    Suggestions for real formats:
+        (deserving-ness vs goodness)
+        march madness draft
+        mlb seeding vs nba seeding vs nlf seeding!!
+        league of legends swiss
+        fi ba and mls longer best ofs

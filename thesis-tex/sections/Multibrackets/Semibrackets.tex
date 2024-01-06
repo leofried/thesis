@@ -3,18 +3,18 @@
     In this chapter, we will develop the theory of a new kind of format called a \i{multibracket}. The multibracket is a very versatile class of formats, unifying many seemingly different formats that are used in practice and allowing us to study them all more effectively.
     
     Amongst these formats are:
-    \begin{enumerate}
+    \begin{itemize}
         \item Third-place games, as in the 2015 AFL Asian Cup.
-        \item Assigning bids for a future tournament, as in the Ultimate Frisbee Sectional and Regional Tournaments.
-        \item Swiss systems, as in the 2023 League of Legends World Championships.
-        \item Double elimination tournaments, as in the 2005 Women's College World Series.
-    \end{enumerate}
+        \item Assigning bids for a future tournament, as in the 2023 AFL Semifinals Selection
+        \item Swiss systems, as in the 1998 Maui Invitational
+        \item Double-elimination tournaments, as in the 2016 NCAA Softball Ann Arbor Regional
+    \end{itemize}
 
     But before we can develop the concept of a multibracket or see how any of these tournaments are instances of it, we need to first investigate a class of formats called \i{semibrackets} of which multibrackets are composed.
 
-    Consider the following tournament design problem: we are tasked with designing an eight-team tournament to select the top two teams who will go on to compete as a part of the national tournament. The catch: here's only enough time for two rounds: perhaps due to field space or team fatigue, each team can only play two games. What design should we use?
+    Consider the following tournament design problem: we are tasked with designing an eight-team tournament to select the top two teams who will go on to compete in the national tournament. The catch: here's only enough time for two rounds: perhaps due to field space or team fatigue, each team can only play two games. What design should we use?
 
-    The most natural answer to this question is to simply use a traditional eight-team bracket, but to leave the championship game unplayed. This format is displayed in the figure below.
+    The most natural answer to this question is to use an traditional eight-team bracket, but leave the championship game unplayed. This format is displayed in the figure below.
 
     \fig{1}{800}{$\bracksig{8;0;0;0}$ with no Championship Game}
 
@@ -65,35 +65,35 @@
 
     Definition \ref{def:semibracket} implies that traditional brackets are a subset of semibrackets. Of course, not all semibrackets are traditional brackets: the format in Figure \ref{fig:800} is one such example.
 
-    That said, this format is not a particularly exciting example of a semibracket: after all, it is just a traditional bracket minus one game. Are there any examples of semibrackets that are not traditional brackets with some rounds left uncompleted?
+    But this format is not a particularly exciting example of a semibracket: it is just a traditional bracket minus one game. Are there any examples of semibrackets that are not traditional brackets with some rounds left uncompleted?
 
     Indeed there are. Let's modify the original problem so that we need to pick a top three teams out of twelve. Again, no team can play more then two games. The natural choice is shown below in Figure \ref{fig:1200}.
     
     \fig{1}{1200}{A More Exciting Semibracket}
 
-    There is no potential for the format in Figure \ref{fig:1200} to be completed into a traditional bracket, the next round would include three teams: and odd number. But as a semibracket, this is still a viable format, one that perfectly solves the tournament design problem that we were given.
+    There is no potential for the format in Figure \ref{fig:1200} to be completed into a traditional bracket, the next round would include three teams: an odd number. But as a semibracket, this is still a viable format, one that nicely solves the tournament design problem that we were given.
     
     \begin{definition}{Rank of a Semibracket}{}
-        If semibracket $\A$ has $m$ co-champions, then $\rank{\A} = m$. We say $\A$ has rank $m$ or that $\A$ \i{ranks m teams}.
+        The \i{rank} of a semibracket is how many co-champions it crowns. If the semibracket $\A$ has rank $m$, we say $\rank{\A} = m$ or that $\A$ \i{ranks m teams}.
     \end{definition}
 
-    Thus, traditional brackets are exactly the semibrackets that rank one team. The formats in Figures \ref{fig:800} and \ref{fig:1200} rank two and three teams, respectively.
+    If a semibracket ranks one team, then it is a traditional bracket. are exactly the semibrackets that rank one team. The formats in Figures \ref{fig:800} and \ref{fig:1200} rank two and three teams, respectively.
 
     We can adapt the concept of a bracket signature to semibrackets.
 
     \begin{definition}{Semibracket Signature}{}
-        The \i{signature} $\bracksig{a_0; ...; a_r}_m$ of an $r$-round semibracket $\A$ is list such that $a_i$ is the number of teams with $i$ byes and $m = \rank{\A}.$ (In the case where $m = \rank{\A} = 1$, it can be omitted.)
+        The \i{signature} $\bracksig{a_0; ...; a_r}_m$ of an $r$-round semibracket $\A$ is a list such that $a_i$ is the number of teams with $i$ byes and $m = \rank{\A}.$ (In the case where $m = \rank{\A} = 1$, it can be omitted.)
     \end{definition}
 
     Thus the signature of traditional brackets are the same as when they are viewed as semibrackets that rank one team. The signatures of the formats in Figures \ref{fig:800} and \ref{fig:1200} are $\bracksig{8;0;0}_2$ and $\bracksig{12;0;0}_3,$ respectively.
 
-    In analogy with traditional bracket signature's Theorem \ref{th:signature_sum}, we have
+    In analogy with traditional bracket signature's Theorem \ref{th:signature_sum}, we have Theorem \ref{th:semi_signature_sum}.
 
-    \begin{theorem}{}{}
+    \begin{theorem}{}{semi_signature_sum}
         Let $\A = \bracksig{a_0; ...; a_r}_m$ be a list of natural numbers. Then $\A$ is a semibracket signature if and only if $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = m.$$
     \end{theorem}
 
-    The proof is almost identical to that of Theorem \ref{th:signature_sum} so we leave it out for brevity. Likewise, the fundamental theorem still applies, again with almost the exact same proof (also left out for brevity).
+    The proof is almost identical to that of Theorem \ref{th:signature_sum} so we leave it out for brevity. Likewise, the fundamental theorem still applies, again with almost the exact same proof, also left out for brevity.
 
     \begin{theorem}{}{}
         There is exactly one proper semibracket with each semibracket signature.

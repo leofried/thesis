@@ -10,11 +10,28 @@
 
     But the networking property is still a powerful and general frame to view formats with, primarily because we can understand networked formats using \i{network diagrams}. A network diagram contains one horizontal line for each team competing, and vertical lines for each game to played. When two teams play, the winner is moved to the higher horizontal line between the two teams, and the loser is moved to the lower one. Teams are ranked by which horizontal line they end up on.
 
-    % what about formats that do weird rankings.
+    % what about formats that do weird rankings. (!! think about this !!)
 
     For example, recall the 2023 College Football Playoff. Figure \ref{fig:playoff_bracket} displays the format as a bracket, while Figure \ref{fig:playoff_network} displays it as a network diagram.
 
-    \fig{0.85}{playoff_bracket}{The 2023 College Football Playoff Bracket}
+    \fig{0.82}{playoff_bracket}{The 2023 College Football Playoff Bracket}
+
+    \begin{figg}{The 2023 College Football Playoff Network Diagram}{playoff_network}
+        \begin{tikzpicture}
+            \foreach \a in {1,...,4}
+              \draw[thick] (0,\a) -- ++(5,0);
+            \foreach \x in {{1,1},{1,4},{2,2},{2,3},{4,3},{4,4}}
+              \filldraw (\x) circle (1.5pt);
+
+            \draw[thick] (1,1) -- (1,4);
+            \draw[thick] (2,2) -- (2,3);
+            \draw[thick] (4,3) -- (4,4);
+
+            \node[] at (1,1) {Georgia};
+            \end{tikzpicture}
+    \end{figg}
+
+
 
 
     % networked representation

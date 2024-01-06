@@ -18,7 +18,7 @@
         Teams that win semibracket $\A_j$ finish in place $$\sum_{i=1}^{j} \rank{\A_i}.$$
         Teams that do not win a semibracket finish in place $$|\T|.$$
 
-        We also somewhat restrict the space of valid multibrackets, requiring that teams that lose in the same round of a given semibracket play their next game in the same semibracket as each other.
+        We also restrict the space of valid multibrackets, requiring that teams that lose in the same round of a given semibracket play their next game in the same semibracket as each other.
     \end{definition}
 
     \begin{definition}{Multibracket Signature}{}
@@ -26,6 +26,8 @@
     \end{definition}
 
     Thus, the Asian Cup is a multibracket with signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}.$ Let's play out the multibracket to familiarize ourself with the algorithm in Definition \ref{def:multi} and ensure that it acts in the way we expect.
+
+    % graphic
 
     First, $\T = [$South Korea, Japan, China, Iran, Iraq, Australia, UAE, Uzbekistan], while $\A_1 = \bracksig{8;0;0;0}.$ There are eight teams in both $\T$ and $\A_1$, so $\S_1 = \T$, while $\S_2 = [].$ We then play out bracket $\A_1.$ Australia wins, and we are left with $\U_1 = [$South Korea, Iraq, UAE, Uzbekistan, Iran, China, Japan], and then $\U_2 = \U_1.$
 
@@ -98,6 +100,4 @@
     }{
         Consider $\T$ right before $\A_j.$ $\A_i$ already happend, so there is some team $t$ that dropped to $\A_m.$ This team must be deep enough in $\T$ such that it does not play in $\A_j.$ Thus, after $\A_j$ is complete, any losers in $\A_j$ will still be higher than $t$ in $\T_1$, and so $\ell \leq m.$
     }{multi_brack}
-
-    %finally, a quick note about ranking the rest of the teams.
 }

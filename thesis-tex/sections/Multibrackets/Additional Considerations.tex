@@ -1,9 +1,8 @@
 \sub {
     
-    % As discussed at the end of the previous section, we will now consider properties that multibrackets 
-    %IDK INTRO
+    In this section, we reorient: instead of examining particular classes of multibrackets (such as third-place games, efficient multibrackets, swiss systems, and multiple-elimination formats) we will consider a general multibracket (or really, a single semibracket in a multibracket) and look at some desirable fairness properties for that semibracket to have.
 
-    As a case study throughout this section, we will consider the losers' bracket of a double elimination tournament who's winners' bracket has signature $\bracksig{8;0;0;0}.$ And while we won't worry about whether the format is perfect or not, we will assume that the format in $\B$ only takes two teams. In summary, our job is to construct a bracket to narrow the four $\bracklabel{A}$-round losers, two $\bracklabel{B}$-round losers, and three $\bracklabel{C}$-round loser down to a single team, that will face the winner of the winners' bracket in the consolidation phase.
+    As a case study throughout this section, we will consider the losers' bracket of a double-elimination tournament who's winners' bracket has signature $\bracksig{8;0;0;0}.$ And while we won't worry about whether the format is perfect or not, we will assume that the format in $\B$ only takes two teams. In summary, our job is to construct a bracket to narrow the four $\bracklabel{A}$-round losers, two $\bracklabel{B}$-round losers, and single $\bracklabel{C}$-round loser down to a single team, which will face the winner of the winners' bracket in the consolidation phase.
 
     \fig{1}{winners}{$\bracksig{8;0;0;0}$}
 
@@ -11,11 +10,11 @@
 
     \fig{1}{standard_losers}{$\bracksig{4;2;0;1;0}$}
 
-    But the standard losers' bracket isn't the only option: any bracket on seven team will do. Figure \ref{fig:ladder_losers} gives another such bracket.
+    But the standard losers' bracket isn't the only option: any seven-team bracket on will do. Figure \ref{fig:ladder_losers} gives another such bracket.
 
     \fig{1}{ladder_losers}{$\bracksig{2;1;1;1;1;1;0}$}
 
-    The standard losers' is quite a bit better than alternative in Figure \ref{fig:ladder_losers}. For one thing, it is more compact, taking four rounds instead of six. But more importantly it feel more fair: teams that lose in the same round treated equally. This is as opposed to Figure \ref{fig:ladder_losers}, in which $\bracklabel{A4}$ is given two more byes than $\bracklabel{A1}$ despite them having lost in the same round. We call a semibracket that respects this equality between teams that lose in the same round \i{weakly respectful}.
+    The standard losers' is quite a bit better than alternative in Figure \ref{fig:ladder_losers}. For one thing, it is more compact, taking four rounds instead of six. But more importantly, it feels more fair: teams that lose in the same round are treated equally. This is as opposed to Figure \ref{fig:ladder_losers}, in which $\bracklabel{A4}$ is given two more byes than $\bracklabel{A1}$ despite them having lost in the same round. We call a semibracket that respects this equality between teams that lose in the same round \i{weakly respectful}.
 
     \begin{definition}{Weakly Respectful Semibracket}{weakly_respectful}
         A semibracket $\A_i$ for $i > 1$ in a multibracket $\A$ is \i{weakly respectful} if it satisfies the following conditions:
@@ -37,7 +36,7 @@
 
     \fig{0.8}{double_ladder}{$\bracksig{2;1;1;1;1;1;1;0} \to \bracksig{2;1;1;1;1;1;0}$}
 
-    Returning the point at hand, we know that the standard $\bracksig{4;2;0;1;0}$ is weakly respectful for purposes. But there are two other weakly respectful bracket signatures, which are displayed below.
+    Returning the point at hand, we know that the standard $\bracksig{4;2;0;1;0}$ is weakly respectful in $\D_3$. There are two other brackets what are weakly respectful of the primary bracket $\bracksig{8;0;0;0}$ weakly respectful bracket signatures, which are displayed below.
 
     \fig{1}{losers_6100}{$\bracksig{6;1;0;0}$}
     \fig{1}{losers_40300}{$\bracksig{4;0;3;0;0}$}
@@ -52,10 +51,12 @@
         A multibracket is \i{strongly respectful} if each of its semibrackets are strongly respectful.
     \end{definition}
 
-    (Definition \ref{def:strongly_respectful} can be formalized by counting automorphisms the graph underlying the bracket up to the letters labeling the starting lines.)
+    (Definition \ref{def:strongly_respectful} can be formalized by counting automorphisms on the graph underlying the bracket up to the letters labeling the starting lines.)
 
-    So if we are looking for strong respectfulness, there are two signatures, $\bracksig{4;2;0;1;0}$ and $\bracksig{4;0;3;0;0},$ that satisfy all of our requirements. Let's say we settled on the first, which is used in the standard format $\D_3.$ How do we decide where to place the various $\bracklabel{A}$- and $\bracklabel{B}$-round drops? To illustrate the point, consider the following losers' bracket, also with signature $\bracksig{4;2;0;1;0}$ as opposed to the one used in the standard system in Figure \ref{fig:standard_losers}.
+    Thus, if strong respectfulness is desired, there are two signatures that satisfy all of our requirements: $\bracksig{4;2;0;1;0}$ and $\bracksig{4;0;3;0;0}.$ Let's, say we've settled on the first, which is used in the standard format $\D_3.$ We still have to decide where to place the various $\bracklabel{A}$- and $\bracklabel{B}$-round drops. For example, consider the following losers' bracket, also with signature $\bracksig{4;2;0;1;0}$ as opposed to the one used in the standard system in Figure \ref{fig:standard_losers}.
 
+    %properness considerations
+    
     \fig{1}{rematches_allowed}{Alternative $\bracksig{4;2;0;1;0}$}
 
     Like the standard losers' bracket, this one is strongly respectful: the only difference is that $\bracklabel{A2}$ and $\bracklabel{A3}$ have been swapped. So why does the standard losers' bracket put the teams where it does? Rematches.
@@ -64,18 +65,19 @@
 
     So the choice between the two instantiations of $\bracksig{4;2;0;1;0}$ comes down to which bracket will lead to fewer rematches. A quick analysis shows that this is done by the standard construction, where only $\bracklabel{F1}$ or $\bracklabel{G1}$ could be a rematch, as opposed to the format on the right, where any game after the first round could be.
 
-    In fact, rematches in multiple elimination formats are so bad that many tournaments include a provision, allowing the structure of a given round to be rearranged to avoid them. While there are no opportunities to do so in $\D_3$, an format using $\D_4$ should strongly consider using such a provision, swapping $\bracklabel{C1}$ and $\bracklabel{C2}$ in round $\bracklabel{H}$ if doing so would reduce the number of rematches in that round. (Earlier rounds are free of rematches, and later rounds are one game each.)
+    In fact, rematches in multiple-elimination formats are so bad, that many tournaments include a provision allowing the structure of a given round to be rearranged to avoid them. While there are no opportunities to do so in $\D_3$, an format using $\D_4$ should strongly consider using such a provision, swapping $\bracklabel{C1}$ and $\bracklabel{C2}$ in round $\bracklabel{H}$ if doing so would reduce the number of rematches in that round. (Earlier rounds are free of rematches, and later rounds are one game each.)
 
     \fig{0.75}{D4additional}{$\D_4$}
 
    The USA Ultimate Manual of Championship Series Tournament Formats includes a full page detailing their policy for when teams should be swapped in an effort to avoid rematches during a multibracket \cite{ultimate}.
 
-    %properness
+   Finally, we make a quick note about our definition of multibrackets from Section \ref{sec:Third-Place Games}.
+   Definition \ref{def:multi}, says that a multibracket is a sequence of \i{non-semitrivial} semibrackets. Why require the semibrackets not be semitrivial? Consider the compact two-round swiss system $\S_2.$
 
+   \fig{1}{S2}{$\S_2$}
 
+   Recall from Section \ref{sec:Swiss Systems} that $\S_2$ has multibracket signature $\bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}.$ But if we allow for multibrackets to include semitrivial semibrackets, this same format has another possible signature: $\bracksig{4;0;0} \to \bracksig{2;1} \to \bracksig{1}.$
 
-
-
-
+   In general, any sequence of semibrackets including a semitrivial bracket $$\A_1 \to ... \to \bracksig{a_0; ...; a_r} \to ... \to \A_k$$ where $r > 1$ and $a_r \neq 0$ can be converted into the following multibracket which describes the same format $$\A_1 \to ... \to \bracksig{a_r} \to \bracksig{a_0; ...; a_{r-1}; 0} \to ... \to \A_k.$$ To avoid double counting formats and signature ambiguity, we just prohibit semitrivial brackets from multibrackets.
 }
 
