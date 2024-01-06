@@ -124,15 +124,15 @@ let rec interleave ?(rand = false) t =
       t
       |> map pop
       |> split
-    in ((if rand then shuffle else Fun.id) hds) @ (interleave tls)
+    in ((if rand then shuffle else Fun.id) hds) @ (interleave ~rand tls)
 ;;
 
 let rec outerleave ?(rand = false) n = function
-| [] -> n |> create |> Fun.const []
+| [] -> n |> create |> map (Fun.const [])
 | lst ->
   let top, rest = top_of_list n lst in
   rest
-  |> outerleave n
+  |> outerleave ~rand n
   |> combine ((if rand then shuffle else Fun.id) top)
   |> map (Pair.uncurry cons)
 ;;

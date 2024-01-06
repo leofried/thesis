@@ -18,6 +18,7 @@ let list : (module S) list = [
   (module Bracket);
   (module Proper);
   (module Multibracket);
+  (module Pools);
 ];;
 
 let get kind =

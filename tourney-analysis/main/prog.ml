@@ -6,38 +6,32 @@ open! Engine
 
 let run () =
 
-  let number_of_teams = 4 in
+  let number_of_teams = 12 in
+  let max_games = 8 in
+  let prizes = [1;3;7] in
 
   let metric : Metric.s = {
     metric = (module Decay : Metric.S);
     specs = {
       number_of_teams;
-      fidel = 0.1;
+      fidel = 0.;
       luck = 1.;
       distr = Random.(Floored (0., gaussian));
     };
   } in
 
-
   let schemes = 
-    Scheme.create (module Multibracket) [[8;0;0;0]; [2;1;0]; [4;2;0;0]] 
-     :: Scheme.create (module Multibracket) [[8;0;0;0]; [4;2;0;1;0]; [2;3;0;1;0]]
-     :: []
-   (* (number_of_teams
-    |> Multibracket.get_all_complete_simple
-    |> List.map (Scheme.create (module Multibracket)))
-    @
-    (number_of_teams
-    |> Proper.get_all
-    |> List.map (Pair.left >> Scheme.create (module Proper))) *)
+    Pools.get_all ~respectfulness:Strongly ~triviality:Efficient ~max_games number_of_teams prizes
+    |> List.filter (fun f -> List.for_all (fun m -> Metrics.Faithfulness.evaluate_format f m) prizes)
+    |> List.map (Scheme.create (module Pools))
   in
 
-  let prize = Prize.top_out_of 3 number_of_teams in
+  let prize = Prize.convert number_of_teams prizes in
 
   let () = Debug.loop (fun () ->
     Data.print ~metric ~prize;
     print_endline (string_of_int @@ List.length schemes);
-    Simulate.simulate_schemes metric schemes 10000 |> Data.write ~metric;
+    Simulate.simulate_schemes metric schemes 1000 |> Data.write ~metric;
   )
     
   in ()
