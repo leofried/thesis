@@ -38,7 +38,7 @@ let run n play teams =
   let rec rank_teams teams (indicies : int list) : int list =
     let scores = List.fold_left (score_team wins_arr indicies) IMap.empty indicies in
     match IMap.cardinal scores with
-    | 1 -> Random.shuffle indicies
+    | 1 -> List.shuffle indicies
     | _ ->
       let levels = snd @@ List.split @@ IMap.bindings @@ scores in
       List.fold_left (fun ranks level -> (rank_teams teams level) @ ranks) [] levels

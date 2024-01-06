@@ -45,8 +45,4 @@ let rec next_float f = match f with
 
 let bool = R.bool;;
 
-let shuffle lst =
-  let nd = List.map (fun c -> (R.bits (), c)) lst in
-  let sond = List.sort compare nd in
-  List.map snd sond
-;;
+let bits = R.bits;;

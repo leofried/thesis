@@ -11,7 +11,25 @@ let kind = "pools";;
 
 let number_of_teams t = t.number_of_pools * t.teams_per_pool;;
 
-let run _ = assert false;;
+let run t play teams =
+  teams
+  |> List.outerleave ~rand:true t.number_of_pools
+  |> List.map (Round_robin.run t.teams_per_pool play)
+  |> List.map List.flatten
+  |> List.interleave ~rand:true
+  |> Multibracket.run t.multibracket play
+;;
+  
+(*   
+  
+  match t with
+| [] -> [teams]
+| hd :: tl ->
+  let n = Proper.number_of_teams hd in
+  let top, bot = List.top_of_list n teams in
+  let results = Proper.run hd play top in
+  List.hd results :: run tl play (List.flatten (List.tl results) @ bot)
+;; *)
 
 
 

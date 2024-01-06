@@ -97,17 +97,6 @@ let collapse f =
   ) [] >> rev
 ;;
 
-let rec interleave t =
-  if t = [] || hd t = [] then 
-    [] 
-  else
-    let hds, tls = 
-      t
-      |> map pop
-      |> split
-    in hds @ (interleave tls)
-;; 
-
 let sort = L.stable_sort;;
 let sort_rev compare = sort (Fun.flip compare);;
 let sort_by f compare lst =
@@ -118,3 +107,33 @@ let sort_by f compare lst =
 ;;
 let sort_by_rev f compare = sort_by f (Fun.flip compare);;
 let drop_dupes t = L.sort_uniq compare t
+
+
+
+let shuffle lst =
+  let nd = map (fun c -> (Random.bits (), c)) lst in
+  let sond = sort compare nd in
+  map snd sond
+;;
+
+let rec interleave ?(rand = false) t =
+  if t = [] || hd t = [] then 
+    [] 
+  else
+    let hds, tls = 
+      t
+      |> map pop
+      |> split
+    in ((if rand then shuffle else Fun.id) hds) @ (interleave tls)
+;;
+
+let rec outerleave ?(rand = false) n = function
+| [] -> n |> create |> Fun.const []
+| lst ->
+  let top, rest = top_of_list n lst in
+  rest
+  |> outerleave n
+  |> combine ((if rand then shuffle else Fun.id) top)
+  |> map (Pair.uncurry cons)
+;;
+

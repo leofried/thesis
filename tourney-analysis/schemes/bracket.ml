@@ -18,7 +18,7 @@ let kind = "bracket";;
 
 let number_of_teams = Tree.count;;
 
-let combine_losers lst1 = List.combine_mismatched (fun lst1 lst2 -> List.append lst1 lst2 |> Random.shuffle) lst1;;
+let combine_losers lst1 = List.combine_mismatched (fun lst1 lst2 -> List.append lst1 lst2 |> List.shuffle) lst1;;
 
 let run bracket play teams =
   bracket
