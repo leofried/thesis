@@ -37,13 +37,15 @@ let run t game teams =
 let get_all
     ?(respectfulness = Tier.Weakly)
     ?(triviality = Multibracket.Efficient)
+    ?(allow_two = false)
     ?(max_games = Int.max_int)
     (n : int)
     (output_tiers : int list)
   = 
   n
   |> Math.divisors
-  |> List.map (fun x -> {number_of_pools = x; teams_per_pool = n / x; multibracket = []})
+  |> List.filter (fun x -> x <> 2 || allow_two)
+  |> List.map (fun x -> {number_of_pools = n / x; teams_per_pool = x; multibracket = []})
   |> List.map (Pair.join_right (fun t -> 
     t.teams_per_pool
     |> List.create 
