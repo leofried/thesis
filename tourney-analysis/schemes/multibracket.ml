@@ -11,13 +11,13 @@ let number_of_teams t =
   |> Pair.uncurry (+)
 ;;
 
-let rec run t play teams = match t with
+let rec run t game teams = match t with
   | [] -> [teams]
   | hd :: tl ->
     let n = Proper.number_of_teams hd in
     let top, bot = List.top_of_list n teams in
-    let results = Proper.run hd play top in
-    List.hd results :: run tl play (List.flatten (List.tl results) @ bot)
+    let results = Proper.run hd game top in
+    List.hd results :: run tl game (List.flatten (List.tl results) @ bot)
 ;;
 
 

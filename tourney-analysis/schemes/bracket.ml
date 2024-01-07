@@ -20,11 +20,11 @@ let number_of_teams = Tree.count;;
 
 let combine_losers lst1 = List.combine_mismatched (fun lst1 lst2 -> List.append lst1 lst2 |> List.shuffle) lst1;;
 
-let run bracket play teams =
+let run bracket game teams =
   bracket
   |> Tree.map_und (fun n -> List.nth teams (n - 1), [])
   |> Tree.fold (fun (hd1, tl1) (hd2, tl2) ->
-    let w, l = play hd1 hd2 in
+    let w, l = game.Game.play hd1 hd2 in
     w, [l] :: combine_losers tl1 tl2
   )
   |> Pair.map_left (fun x -> [x])

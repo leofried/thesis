@@ -1,29 +1,39 @@
-(* open! Util
-open! Engine
-open! Schemes *)
-
 Prog.run ();;
 
 
-(* 
+
+(* open! Util
+open! Engine
+open! Schemes
+
 let (specs : Specs.t) = Specs.{
-  number_of_teams = 12;
+  number_of_teams = 3;
   fidel = 0.;
   luck = 1.;
   distr = Random.(Floored (0., gaussian));
+  tiebreaker = WorstCase;
 };;
 
  let () =
-      let pool = Pools.get_all ~respectfulness:Strongly ~triviality:Efficient ~max_games:8 12 [4]
-        |> List.hd
-        |> Debug.print (fun x -> x |> Pools.sexp_of_t |> Sexp.to_string)
-        |> (Scheme.create (module Pools))
-      in
+      let scheme = Scheme.create (module Round_robin) 3 in
       let teams, play = Team.preconstruct specs in
       let f = play () in
       let _ = f in
-      (Scheme.run pool (play ()) teams)
-      |> List.iter (fun k -> print_int k.Team.id) *)
+      (Scheme.run scheme (play ()) teams)
+      |> List.iter (fun k -> print_endline @@ string_of_int k.Team.id ^ ": " ^ string_of_float k.Team.skill)
+ *)
+
+
+
+
+
+
+
+
+
+
+
+
 
   (* for n = 1 to 20 do
     for p = 2 to n do

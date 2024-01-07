@@ -23,12 +23,17 @@ module T = struct
     | C s -> List.nth (List.nth s i1) i2
     
 
-  let play_game (s : s) (t1 : t) (t2 : t) : t * t =
+  let play_game (s : s) = Game.{
+    tiebreaker = Random;
+    compare = Fun.const (Fun.const 0); 
+    play = (fun t1 t2 ->
     Discrete.cross t1 t2
     |> Discrete.map (fun (i1, i2) -> Discrete.pair (get_p s i1 i2) i1 i2)
     |> Discrete.flatten
     |> Pair.rev (Discrete.single ~-1)
+  )}
 end
+
 
 
 let f0 ~bracket ~scores ~(tiers : t) =

@@ -38,9 +38,9 @@ let build_brackets t =
     lst
 ;; 
 
-let run t play teams =
+let run t game teams =
   build_brackets t
-  |> List.map (fun bracket -> Bracket.run bracket play teams)
+  |> List.map (fun bracket -> Bracket.run bracket game teams)
   |> List.fold_left Bracket.combine_losers []
 ;;
 

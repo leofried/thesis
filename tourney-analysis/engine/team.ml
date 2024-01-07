@@ -1,10 +1,17 @@
 open! Util
 open! Std
+open! Schemes
 
 type t = {
   id : int;
   skill : float;
 };;
+
+let skill t = t.skill;;
+
+let compare = Fun.flip (fun x y -> Float.compare x.skill y.skill);;
+
+let sort = List.sort compare;;
 
 let create (specs : Specs.t) =
   let id = ref 0 in
@@ -21,7 +28,7 @@ let create (specs : Specs.t) =
   )
 ;;
 
-let play_game (specs : Specs.t) t1 t2 = 
+let play_game (specs : Specs.t) t1 t2 =
   let debug = false in
   let t1p = Random.next_float (Normal (t1.skill, specs.luck)) in
   let t2p = Random.next_float (Normal (t2.skill, specs.luck)) in
@@ -39,29 +46,31 @@ let preconstruct ?(games = 10) (specs : Specs.t) =
       if j > i then
         let t1 = List.nth teams (i - 1) in
         let t2 = List.nth teams (j - 1) in
-        arr.(i).(j) <- List.create games |> List.map (fun _ -> play_game specs t1 t2)
+        arr.(i).(j) <- List.create games |> List.map (fun _ -> (play_game specs t1 t2))
       else
         arr.(i).(j) <- arr.(j).(i)
     done
   done;
   teams,
   (fun () ->
-    let arr = Array.(map copy) arr in
-    (fun t1 t2 ->
-      match arr.(t1.id).(t2.id) with
-      | [] -> assert false
-      | hd :: tl ->
-        arr.(t1.id).(t2.id) <- tl;
-        arr.(t2.id).(t1.id) <- tl;
-        if false then Printf.printf "Team %d beat team %d (recorded)\n" (fst hd).id (snd hd).id ;
-        hd
-    )
+    Game.{
+      tiebreaker = specs.tiebreaker; 
+      compare = compare;
+      play = 
+        let arr = Array.(map copy) arr in
+          (fun t1 t2 ->
+            match arr.(t1.id).(t2.id) with
+            | [] -> assert false
+            | hd :: tl ->
+              arr.(t1.id).(t2.id) <- tl;
+              arr.(t2.id).(t1.id) <- tl;
+              if false then Printf.printf "Team %d beat team %d (recorded)\n" (fst hd).id (snd hd).id ;
+              hd
+          )
+    }
   )
 ;;
 
-let skill t = t.skill;;
-
-let sort = List.sort_by_rev skill Float.compare;;
 
 
 

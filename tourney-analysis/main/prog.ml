@@ -6,9 +6,9 @@ open! Engine
 
 let run () =
 
-  let number_of_teams = 12 in
-  let max_games = 8 in
-  let prizes = [1;3;7] in
+  let number_of_teams = 8 in
+  (* let max_games = 8 in *)
+  let prizes = [1] in
 
   let metric : Metric.s = {
     metric = (module Decay : Metric.S);
@@ -17,13 +17,15 @@ let run () =
       fidel = 0.;
       luck = 1.;
       distr = Random.(Floored (0., gaussian));
+      tiebreaker = WorstCase;
     };
   } in
 
   let schemes = 
-    Pools.get_all ~respectfulness:Strongly ~triviality:Efficient ~max_games number_of_teams prizes
+    (* Pools.get_all ~respectfulness:Strongly ~triviality:Efficient ~max_games number_of_teams prizes
     |> List.filter (fun f -> List.for_all (fun m -> Metrics.Faithfulness.evaluate_format f m) prizes)
-    |> List.map (Scheme.create (module Pools))
+    |> List.map (Scheme.create (module Pools)) *)
+    [Scheme.create (module Round_robin) metric.specs.number_of_teams]
   in
 
   let prize = Prize.convert number_of_teams prizes in

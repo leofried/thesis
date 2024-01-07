@@ -10,7 +10,7 @@ module type S = sig
 
   val number_of_teams : t -> int
 
-  val run : t -> ('a -> 'a -> 'a * 'a) -> 'a list -> 'a list list
+  val run : t -> 'a Game.t -> 'a list -> 'a list list
 end
 
 let list : (module S) list = [
