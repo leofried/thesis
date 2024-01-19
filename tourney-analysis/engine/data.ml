@@ -27,11 +27,12 @@ let write ~metric t =
   |> Sexp.write (get_file_name ~metric)
 ;;
 
-let print ~metric ~prize : unit =
+let print ?schemes ~metric ~prize () : unit =
   let digits = 2 in
+  let prizes = Prize.convert metric.Metric.specs.number_of_teams prize in
   List.iter
     (fun (scheme, data) ->
-      let score, error, samples = Metric.score metric prize data in
+      let score, error, samples = Metric.score metric prizes data in
         print_endline @@
         "" ^ 
         Math.to_pct ~digits score ^
@@ -44,10 +45,16 @@ let print ~metric ~prize : unit =
     )
     (
       read ~metric
-      |> List.sort_by_rev (fun data ->
+      |> 
+      begin match schemes with
+        | None -> Fun.id
+        | Some schemes -> List.filter (fun (x, _) -> List.mem x schemes)
+      end
+      |>
+      List.sort_by_rev (fun data ->
         data
         |> Pair.right 
-        |> Metric.score metric prize
+        |> Metric.score metric prizes
         |> (fun (a, _, _) -> a)
       ) Float.compare
     )

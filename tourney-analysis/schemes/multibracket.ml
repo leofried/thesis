@@ -32,11 +32,11 @@ let get_all
     ?(respectfulness = Tier.Not)
     ?(triviality = Anything)
     ?(max_games = Int.max_int)
-    (input_tiers : Tier.t list)
-    (output_tiers : int list)
+    (teirs : Tier.t list)
+    (prize : Prize.s)
   = 
-  let rec f input_tiers output_tiers =
-    match input_tiers, output_tiers with
+  let rec f teirs prize =
+    match teirs, prize with
     | _, [] -> assert false 
     | _, [0] -> [[]]
     | [], _ -> assert false
@@ -47,10 +47,10 @@ let get_all
           | _, _ -> triviality
         in
         let m, tl = if m = 0 then List.pop tl else m, tl in
-        Proper.get_all ~max_games ~max_target_sum:m ~include_smaller:true ~respectfulness ~include_semitrivial:(triviality = Anything) ~include_trivial:(triviality <> NoTrivial) input_tiers 
+        Proper.get_all ~max_games ~max_target_sum:m ~include_smaller:true ~respectfulness ~include_semitrivial:(triviality = Anything) ~include_trivial:(triviality <> NoTrivial) teirs 
         |> List.map (fun (bracket, output_tiers) -> bracket, f (List.pop_last output_tiers) ((m - Proper.number_of_winners bracket) :: tl))
         |> List.map (fun (bracket, lst) -> List.map (List.cons bracket) lst)
         |> List.flatten
   in
-  f input_tiers (0 :: output_tiers |> Stdlib.List.fold_left_map (fun total x -> x, x - total) 0 |> Pair.right)
+  f teirs (0 :: prize |> Stdlib.List.fold_left_map (fun total x -> x, x - total) 0 |> Pair.right)
 ;;

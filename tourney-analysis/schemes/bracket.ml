@@ -55,6 +55,3 @@ let get_all_from_shape (shape : unit Tree.t) : t list =
   |> get_all_from_n
   |> List.filter (Tree.same_shape true shape)
 ;;
-
-
-

@@ -74,9 +74,7 @@ let assoc_update k f t =
 ;;
 let split = L.split;;
 let combine = L.combine;;
-
 let combine_map f t1 t2 = map (Pair.uncurry f) (combine t1 t2);;
-
 let rec combine_mismatched f t1 t2 =
   match t1, t2 with
   | hd1 :: tl1, hd2 :: tl2 -> f hd1 hd2 :: (combine_mismatched f tl1 tl2)
@@ -96,6 +94,7 @@ let collapse f =
       in if found then new_lst else (new_id, new_data) :: new_lst
   ) [] >> rev
 ;;
+let intersect t = filter (fun x -> mem x t);;
 
 let sort = L.stable_sort;;
 let sort_rev compare = sort (Fun.flip compare);;
@@ -136,4 +135,3 @@ let rec outerleave ?(rand = false) n = function
   |> combine ((if rand then shuffle else Fun.id) top)
   |> map (Pair.uncurry cons)
 ;;
-

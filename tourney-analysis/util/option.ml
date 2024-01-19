@@ -13,3 +13,5 @@ let is_some = O.is_some;;
 let join = O.join;;
 
 let some = O.some;;
+
+let apply t = fold Fun.id Fun.id t;;

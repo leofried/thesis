@@ -1,6 +1,11 @@
 open! Util
 open! Std
-open! Schemes
+
+type t = {
+  number_of_pools : int;
+  teams_per_pool : int;
+  multibracket : Multibracket.t
+} [@@deriving sexp]
 
 type team = Good | Bad;;
 
@@ -35,7 +40,7 @@ let evaluate_multibracket (multi : Multibracket.t) (teams : team list) =
   simulate_multibracket teams multi = sort_teams teams
 ;; 
   
-let evaluate_format (pools : Pools.t) (m : int) =
+let evaluate_format (pools : t) (m : int) =
   Combo.partitions ~n:m ~m:pools.teams_per_pool ~l:pools.number_of_pools ()
   |> List.map (List.map (fun x ->
     pools.teams_per_pool

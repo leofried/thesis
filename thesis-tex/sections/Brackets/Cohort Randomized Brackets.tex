@@ -111,7 +111,7 @@
     \theo{}{
         If a chalk randomized bracket goes chalk, after each round, the $m$ remaining teams will be the $m$ top seeds.
     }{
-        We proceed by induction on $r.$ If $r = 0$, then $\A = \bracksig{1}$, and so the theorem holds. For any other $r$, in the first round, $a_0$ teams are playing $b_1 = a_0 / 2$ games. However, the $b_1$ lowest seeds in the tournament are shuffled between themselves, so none of them can play each other. Because the tournament goes chalk, they will all lose, so after the first round, the $n - b_1$ remaining teams are the top $n - b_1$ top seeds. Further, we are left with the chalk randomized bracket of signature $\SS(\A)$, so the theorem holds by induction.
+        Let $\A = \bracksig{a_0; ...; a_r}$. We proceed by induction on $r.$ If $r = 0$, then $\A = \bracksig{1}$, and so the theorem holds. For any other $r$, in the first round, $a_0$ teams are playing $b_1 = a_0 / 2$ games. However, the $b_1$ lowest seeds in the tournament are shuffled between themselves, so none of them can play each other. Because the tournament goes chalk, they will all lose, so after the first round, the $n - b_1$ remaining teams are the top $n - b_1$ top seeds. Further, we are left with the chalk randomized bracket of signature $\SS(\A) = \bracksig{a_0/2 + a_1; a_2; ...; a_r}$, so the theorem holds by induction.
     }{}
 
     The chalk randomizations of balanced brackets have particularly nice forms: the chalk randomization of an $r$-round balanced bracket is parameterized by $$(\bracksig{2^r; 0; ...; 0}, \bracktier{2^{r-1} + 2^{r-2} + ... + 2^{0} + 1}).$$
