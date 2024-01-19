@@ -13,7 +13,7 @@ module type S = sig
 
   val combine : t -> t -> t
 
-  val score : t -> Prize.t -> float * float * int
+  val score : t -> float list -> float * float * int
 end
 
 type s = {
@@ -37,5 +37,5 @@ let combine (s : s) t1 t2 : t = let (module M) = s.metric in
 ;;
 
 let score (s : s) prize t = let (module M) = s.metric in
-  M.score (M.t_of_sexp t) prize
+  M.score (M.t_of_sexp t) (Prize.convert s.specs.number_of_teams prize)
 ;;

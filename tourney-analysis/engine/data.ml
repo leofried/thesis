@@ -11,17 +11,26 @@ let get_file_name ~metric =
   path ^ "/" ^ Sexp.to_string (Specs.sexp_of_t metric.specs) ^ ".sexp"
 ;;
 
-let read ~metric  =
+let read ?schemes ~metric () =
   let file_name = get_file_name ~metric in
-  if Sys.file_exists file_name then 
+  let raw = if Sys.file_exists file_name then 
     t_of_sexp (Sexp.read file_name)
   else
     []
+  in match schemes with 
+  | None -> raw
+  | Some schemes ->
+    List.map (fun scheme -> 
+      scheme
+      |> Fun.flip List.assoc_opt raw 
+      |> Option.set (Metric.empty metric) 
+      |> Pair.pair scheme
+    ) schemes
 ;;
 
 let write ~metric t =
   t
-  |> List.append (read ~metric)
+  |> List.append (read ~metric ())
   |> List.collapse (Metric.combine metric)
   |> sexp_of_t
   |> Sexp.write (get_file_name ~metric)
@@ -29,10 +38,10 @@ let write ~metric t =
 
 let print ?schemes ~metric ~prize () : unit =
   let digits = 2 in
-  let prizes = Prize.convert metric.Metric.specs.number_of_teams prize in
+  (* let prizes = Prize.convert metric.Metric.specs.number_of_teams prize in *)
   List.iter
     (fun (scheme, data) ->
-      let score, error, samples = Metric.score metric prizes data in
+      let score, error, samples = Metric.score metric prize data in
         print_endline @@
         "" ^ 
         Math.to_pct ~digits score ^
@@ -44,17 +53,12 @@ let print ?schemes ~metric ~prize () : unit =
         Sexp.to_string (Scheme.sexp_of_t scheme)
     )
     (
-      read ~metric
+      read ?schemes ~metric ()
       |> 
-      begin match schemes with
-        | None -> Fun.id
-        | Some schemes -> List.filter (fun (x, _) -> List.mem x schemes)
-      end
-      |>
       List.sort_by_rev (fun data ->
         data
         |> Pair.right 
-        |> Metric.score metric prizes
+        |> Metric.score metric prize
         |> (fun (a, _, _) -> a)
       ) Float.compare
     )

@@ -27,7 +27,7 @@ let get_all
     ?(allow_two = false)
     ?(max_games = Int.max_int)
     (n : int)
-    (prize : Prize.s)
+    (prize : Prize.t)
   = 
   n
   |> Math.divisors

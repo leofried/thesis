@@ -33,7 +33,7 @@ let get_all
     ?(triviality = Anything)
     ?(max_games = Int.max_int)
     (teirs : Tier.t list)
-    (prize : Prize.s)
+    (prize : Prize.t)
   = 
   let rec f teirs prize =
     match teirs, prize with

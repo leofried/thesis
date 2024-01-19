@@ -1,13 +1,42 @@
 open! Util
 open! Schemes
 
-let simulate_schemes metric schemes iters =
+let simulate_schemes ~schemes ~metric ~iters =
   iters
   |> List.create
-  |> List.map (fun i -> (* print_endline (string_of_int i); *) Metric.generate metric schemes, i)
-  |> List.fold_left (fun xs (ys, _) -> (* print_endline (string_of_int i); *) List.combine xs ys |> List.map (Pair.uncurry (Metric.combine metric))) (List.map (fun _ -> Metric.empty metric) schemes)
+  |> List.map (fun i -> Metric.generate metric schemes, i)
+  |> List.fold_left (fun xs (ys, _) -> List.combine xs ys |> List.map (Pair.uncurry (Metric.combine metric))) (List.map (fun _ -> Metric.empty metric) schemes)
   |> List.combine schemes
 ;;
+
+
+let smart_simulate ~schemes ~metric ~prize ~iters ~cutoff =
+  let data = Data.read ~schemes ~metric () in
+  let best =
+    data
+    |> List.map Pair.right
+    |> List.map (Metric.score metric prize)
+    |> List.filter_map (fun (u, _, _) -> if Float.is_nan u then None else Some u)
+    |> List.sort Float.compare
+    |> (fun l -> if l = [] then [0.] else l)
+    |> List.hd
+  in
+  let to_sim =
+    data
+    |> List.filter (fun (_, datum) ->
+      let u, s, i = Metric.score metric prize datum in
+      i = 0 || (u -. best) /. s < cutoff
+    )
+    |> List.map Pair.left
+  in
+  let len = List.length to_sim in
+  print_endline (string_of_int len);
+  simulate_schemes ~schemes:to_sim ~metric ~iters:(iters / len)
+  |> Data.write ~metric
+;;
+
+
+
 
 (* let simulate_smart metric schemes = ();; *)
 
