@@ -6,9 +6,9 @@ open! Engine
 
 let run () =
 
-  let number_of_teams = 16 in
-  let max_games = 7 in
-  let prize = [1] in
+  let number_of_teams = 4 in
+  let max_games = 9 in
+  let prize = [1;2;3;4] in
 
   let metric : Metric.s = {
     metric = (module Decay : Metric.S);

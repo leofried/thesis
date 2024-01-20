@@ -1,25 +1,31 @@
 open! Util
 open! Std
 
-type t = int [@@deriving sexp];;
+type t = {
+  number_of_teams : int;
+  cycles : int;
+ } [@@deriving sexp];;
 
 let kind = "round_robin";;
 
-let number_of_teams = Fun.id;;
+let number_of_teams t = t.number_of_teams;;
 
-let run n game teams =
+let run t game teams =
+  let n = t.number_of_teams in
   let teams_arr = Array.of_list teams in
   assert (List.length teams = n);
 
   let wins_arr = Array.init n (fun _ -> Array.make n 0) in
-  for i = 0 to n - 1 do
-    let t1 = teams_arr.(i) in
-    for j = i + 1 to n - 1 do
-      let t2 = teams_arr.(j) in
-        if fst @@ game.Game.play t1 t2 = t1 then
-          wins_arr.(i).(j) <- 1
-        else
-          wins_arr.(j).(i) <- 1
+  for _ = 1 to t.cycles do
+    for i = 0 to n - 1 do
+      let t1 = teams_arr.(i) in
+      for j = i + 1 to n - 1 do
+        let t2 = teams_arr.(j) in
+          if fst @@ game.Game.play t1 t2 = t1 then
+            wins_arr.(i).(j) <- wins_arr.(i).(j) + 1
+          else
+            wins_arr.(j).(i) <- wins_arr.(j).(i) + 1
+      done
     done
   done;
 

@@ -4,6 +4,7 @@ open! Std
 type t = {
   number_of_pools : int;
   teams_per_pool : int;
+  cycles_per_pool : int;
   multibracket : Multibracket.t
 } [@@deriving sexp]
 
