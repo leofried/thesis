@@ -26,6 +26,7 @@ let get_all
     ?(triviality = Multibracket.Efficient)
     ?(faithful = true)
     ?(allow_two = false)
+    ?(allow_cycles = false)
     ?(max_games)
     (n : int)
     (prize : Prize.t)
@@ -34,9 +35,9 @@ let get_all
   |> Math.divisors
   |> Bool.do_if_not allow_two (List.filter (fun x -> x <> 2))
   |> List.map (fun x -> 
-    match x, max_games with
-    | 1, _ | _, None -> [{number_of_pools = n / x; teams_per_pool = x; cycles_per_pool = 1; multibracket = []}]
-    | _, Some m -> (m / (x - 1)) |> List.create |> List.map (fun c -> {number_of_pools = n / x; teams_per_pool = x; cycles_per_pool = (c + 1); multibracket = []})
+    match allow_cycles, x, max_games with
+    | false, _, _ | _, 1, _ | _, _, None -> [{number_of_pools = n / x; teams_per_pool = x; cycles_per_pool = 1; multibracket = []}]
+    | _, _, Some m -> (m / (x - 1)) |> List.create |> List.map (fun c -> {number_of_pools = n / x; teams_per_pool = x; cycles_per_pool = (c + 1); multibracket = []})
     )
   |> List.flatten
   |> List.map (Pair.join_right (fun t -> 

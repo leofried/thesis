@@ -1,11 +1,19 @@
-Prog.run ();;
-
-
-
-(* open! Util
+open! Util
 open! Engine
 open! Schemes
 
+
+;;
+(* 
+Pools.get_all ~respectfulness:Strongly ~triviality:Efficient ~max_games:8 8 [1;1]
+|> List.length
+|> print_int *)
+
+
+Prog.run ();;
+
+
+(*
 let (specs : Specs.t) = Specs.{
   number_of_teams = 3;
   fidel = 0.;
