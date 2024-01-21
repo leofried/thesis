@@ -19,17 +19,18 @@ let run () =
       };
     } in
 
-    for i = 1 to number_of_teams do
+    for i = 1 to (number_of_teams - 1) do
         let prize = [i] in
 
         let schemes = 
-          Pools.get_all ~respectfulness:Strongly ~triviality:Efficient ~max_games number_of_teams prize
+          Pools.get_all ~respectfulness:Strongly ~triviality:Efficient ~max_games ~allow_one:false number_of_teams prize
           |> List.map (Scheme.create (module Pools))
         in
 
-        print_endline @@ string_of_int @@ (List.length schemes);
-
-        Simulate.best_simulate ~schemes ~metric ~prize ~iters:100_000 ~cutoff:5.0
+        if List.length schemes |> Debug.print string_of_int = 0 then
+          print_endline @@ string_of_int number_of_teams ^ "x" ^ string_of_int i ^ " is empty."
+        else
+          Simulate.best_simulate ~schemes ~metric ~prize ~iters:10_000 ~cutoff:5.0
 
       done
   done

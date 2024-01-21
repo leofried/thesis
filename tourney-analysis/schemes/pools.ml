@@ -25,6 +25,7 @@ let get_all
     ?(respectfulness = Tier.Weakly)
     ?(triviality = Multibracket.Efficient)
     ?(faithful = true)
+    ?(allow_one = true)
     ?(allow_two = false)
     ?(allow_cycles = false)
     ?(max_games)
@@ -33,6 +34,7 @@ let get_all
   = 
   n
   |> Math.divisors
+  |> Bool.do_if_not allow_one (List.filter (fun x -> x <> 1))
   |> Bool.do_if_not allow_two (List.filter (fun x -> x <> 2))
   |> List.map (fun x -> 
     match allow_cycles, x, max_games with

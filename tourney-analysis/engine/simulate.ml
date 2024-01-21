@@ -42,11 +42,8 @@ let rec best_simulate ~schemes ~metric ~prize ~iters ~cutoff  =
   let best = smart_simulate ~schemes ~metric ~prize ~iters ~cutoff in
   if List.length best = 1 then
     let scheme = List.hd best in
-    print_endline @@ 
-      string_of_int (Scheme.number_of_teams scheme) ^
-      " teams with prize structue [" ^
-      (Sexp.to_string (sexp_of_list sexp_of_int prize)) ^ 
-      "]: " ^ (Sexp.to_string (Scheme.sexp_of_t scheme))
+    print_endline @@ string_of_int (Scheme.number_of_teams scheme) ^ " teams with prize structure [" ^ (Sexp.to_string (sexp_of_list sexp_of_int prize)) ^ "]:";
+    Data.print ~schemes:best ~metric ~prize ();
   else begin
     Data.print ~schemes:best ~metric ~prize ();
     best_simulate ~schemes ~metric ~prize ~iters ~cutoff
