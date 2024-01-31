@@ -48,6 +48,6 @@ let evaluate_format (pools : t) (m : int) =
     |> List.create
     |> List.map (fun i -> if i < x then Good else Bad)
   ))
-  |> List.map List.interleave
+  |> List.map (List.interleave ~rand:false)
   |> List.for_all (evaluate_multibracket pools.multibracket)
 ;; 

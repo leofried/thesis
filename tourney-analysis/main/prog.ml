@@ -4,68 +4,85 @@ open! Schemes
 open! Metrics
 open! Engine
 
-let run () = 
-  let max_games = 8 in
+let general () = 
 
-  for number_of_teams = 8 to 24 do      
-    let metric : Metric.s = {
-      metric = (module Decay : Metric.S);
-      specs = {
-        number_of_teams;
-        fidel = 0.;
-        luck = 1.;
-        distr = Random.(Floored (0., gaussian));
-        tiebreaker = WorstCase;
-      };
-    } in
+  for number_of_teams = 4 to 4 do      
+    for max_games = 4 to 8 do
+      print_string @@ "----" ^ string_of_int max_games;
 
-    for i = 1 to (number_of_teams - 1) do
-        let prize = [i] in
+      let metric : Metric.s = {
+        metric = (module Decay : Metric.S);
+        specs = {
+          number_of_teams;
+          fidel = 0.;
+          luck = 1.;
+          distr = Random.(Floored (0., gaussian));
+          tiebreaker = WorstCase;
+        };
+      } in
 
-        let schemes = 
-          Pools.get_all ~respectfulness:Strongly ~triviality:Efficient ~max_games ~allow_one:false number_of_teams prize
-          |> List.map (Scheme.create (module Pools))
-        in
+      (* for i = 1 to (number_of_teams - 1) do
+          let prize = [i] in *)
+      List.iter (fun prize -> 
 
-        if List.length schemes |> Debug.print string_of_int = 0 then
-          print_endline @@ string_of_int number_of_teams ^ "x" ^ string_of_int i ^ " is empty."
-        else
-          Simulate.best_simulate ~schemes ~metric ~prize ~iters:10_000 ~cutoff:5.0
+          let schemes = 
+            Pools.get_all ~respectfulness:Strongly ~triviality:Efficient ~max_games ~allow_one:false number_of_teams prize
+            |> List.map (Scheme.create (module Pools))
+          in
 
-      done
+          if List.length schemes |> Debug.print string_of_int = 0 then
+            print_endline @@ string_of_int number_of_teams ^ "x" ^ string_of_int (List.fold_left (+) 0 prize) ^ " is empty."
+          else
+            Simulate.best_simulate ~schemes ~metric ~prize ~iters:10_000 ~cutoff:2.0
+
+      ) [[1]; [2]; [3]; [1;2]; [1;3]; [2;3]; [1;2;3]]
+    done
   done
-(* 
 
 
+let specific () =
 
-let run () =
-
-  let number_of_teams = 4 in
-  let max_games = 9 in
-  let prize = [1;2;3;4] in
-
+  let number_of_teams = 3 in
+  let max_games = 7 in
+  let prize = [2] in
+  
   let metric : Metric.s = {
     metric = (module Decay : Metric.S);
     specs = {
       number_of_teams;
       fidel = 0.;
       luck = 1.;
-      distr = Random.(Floored (0., gaussian));
+      distr = Random.(Floored (0., gaussian)); (*think*)
       tiebreaker = WorstCase;
     };
   } in
 
   let schemes = 
-    Pools.get_all ~respectfulness:Strongly ~triviality:Efficient ~max_games number_of_teams prize
+    Pools.get_all ~respectfulness:Strongly ~triviality:Efficient ~max_games (*~allow_cycles:true*) number_of_teams prize
+    (* |> (List.cons) Pools.{number_of_pools = 3; teams_per_pool = 1; cycles_per_pool = 1; multibracket = [[2;1;0];[1];[1]]}
+    |> (List.cons) Pools.{number_of_pools = 3; teams_per_pool = 1; cycles_per_pool = 1; multibracket = [[2;1;0];[2;0];[1]]} *)
+    (* |> List.filter (fun x  -> x.Pools.number_of_pools <> 1) *)
+    |> List.filter (fun x  -> x.Pools.teams_per_pool <> 1)
+    (* |> List.map (fun x  -> Pools.{x with cycles_per_pool = 0}) *)
     |> List.map (Scheme.create (module Pools))
   in
 
-  let () = Debug.loop (fun () ->
+  (* let base : Pools.t = {number_of_pools = 2; teams_per_pool = 5; cycles_per_pool = 1; multibracket = []} in
+  let schemes = 
+    [
+      {base with multibracket = [[4;2;0;0]; [4;2;0;3;0;0]]};
+      {base with multibracket = [[4;2;0;0]; [  4;0;3;0;0]]};
+      {base with multibracket = [[4;2;0;0]; [4;2;2;0;1;0]]};
+      {base with multibracket = [[4;2;0;0]; [  4;2;0;1;0]]}; 
+    ]
+    |> List.map (Scheme.create (module Pools))
+  in *)
+
+
+  Debug.loop (fun () ->
     Data.print ~schemes ~metric ~prize ();
-    Simulate.smart_simulate ~schemes ~metric ~prize ~iters:10000 ~cutoff:5.0
-(* 
-    Simulate.simulate_schemes metric schemes 1000 |> Data.write ~metric; *)
+    (* Simulate.simulate_schemes ~metric ~schemes ~iters:10000 |> Data.write ~metric; *)
+    (* Simulate.best_simulate ~schemes ~metric ~prize ~iters:10_000 ~cutoff:8.0; *)
+    print_endline "---";
   )
-    
-  in ()
-;;*)
+;; 

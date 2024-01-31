@@ -115,7 +115,7 @@ let shuffle lst =
   map snd sond
 ;;
 
-let rec interleave ?(rand = false) t =
+let rec interleave ~rand t =
   if t = [] || hd t = [] then 
     [] 
   else
@@ -126,7 +126,7 @@ let rec interleave ?(rand = false) t =
     in ((if rand then shuffle else Fun.id) hds) @ (interleave ~rand tls)
 ;;
 
-let rec outerleave ?(rand = false) n = function
+let rec outerleave ~rand n = function
 | [] -> n |> create |> map (Fun.const [])
 | lst ->
   let top, rest = top_of_list n lst in

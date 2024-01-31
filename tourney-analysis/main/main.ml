@@ -10,7 +10,7 @@ Pools.get_all ~respectfulness:Strongly ~triviality:Efficient ~max_games:8 8 [1;1
 |> print_int *)
 
 
-Prog.run ();;
+Prog.specific ();;
 
 
 (*
