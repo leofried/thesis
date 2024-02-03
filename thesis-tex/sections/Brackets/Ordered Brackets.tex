@@ -6,7 +6,7 @@ Consider the proper bracket $\bracksig{16; 0; 0; 0; 0}$, which was used in the 2
 
 The definition of a proper seeding ensures that as long as the bracket goes chalk (that is, higher seeds always beat lower seeds), it will always be better to be a higher seed than a lower seed. But what if it doesn't go chalk?
 
-One counter-intuitive fact about the NCAA Basketball Tournament is that it is probably better to be a 10-seed than a 9-seed. (This doesn't violate the proper seeding property because 9-seeds have an easier first-round matchup than 10-seeds, and for further rounds, proper seedings only care about what happens if the bracket goes chalk, which would eliminate both the 9-seed and 10-seed in the first round.) Why? Let's look at whom each seed-line matchups against in the first two rounds:
+One counter-intuitive fact about the NCAA Basketball Tournament is that it is probably better to be a 10-seed than a 9-seed. (This doesn't violate the proper seeding property because 9-seeds have an easier first-round matchup than 10-seeds, and for further rounds, proper seedings only care about what happens if the bracket goes chalk, which would eliminate both the 9-seed and 10-seed in the first round.) Why? Let's look at whom each seed-line matchups against in the first two rounds.
 
 \begin{figg}{NCAA Basketball Tournament 9- and 10-seed Schedules}{}
     \centering
@@ -24,25 +24,33 @@ Nate Silver \cite{nate_silver} investigated this matter in full, finding that in
 
 This is not a great state of affairs: the whole point of seeding is confer an advantage to higher-seeded teams, and the proper bracket $\bracksig{16; 0; 0; 0; 0}$ is failing to do that. Not to mention that giving lower-seeded teams an easier route than higher-seeded ones can incentivize teams to lose during the regular season in order to try to get a lower but more advantageous seed.
 
-To fix this, we need a stronger notion of what makes a bracket effective than properness. The issue with proper seedings is the false assumption that higher-seeded teams will always beat lower-seeded teams. A more nuanced assumption, initially proposed by H.A. David \cite{stochastic}, might look like this:
+To fix this, we need a stronger notion of what makes a bracket effective than properness. The issue with proper seedings is the false assumption that higher-seeded teams will always beat lower-seeded teams. A more nuanced assumption, initially proposed by H.A. David \cite{stochastic}, might look like this.
 
 \begin{definition}{Strongly Stochastically Transitive}{}
     A list of teams $\T$ is \i{strongly stochastically transitive} if for each $i, j, k$ such that $j < k$, $$\G{t_i}{t_j} \leq \G{t_i}{t_k}.$$
 \end{definition}
 
-A list of teams being strongly stochastically transitive (SST) captures the intuition that each team ought to do better against lower-seeded teams than against higher-seeded teams. A few quick implications of this definition are:
+A list of teams being strongly stochastically transitive (SST) captures the intuition that each team ought to do better against lower-seeded teams than against higher-seeded teams. A few quick implications of this definition are stated below.
 
 \begin{corollary}{}{}
-    If $\T$ is SST, then for each $i < j$, $\G{t_i}{t_j} \geq 0.5.$
-\end{corollary}
+    \begin{enumerate}
+        \item[(a)] If $\T$ is SST, then for each $i < j$, $$\G{t_i}{t_j} \geq 0.5.$$
+        \item[(b)] If $\T$ is SST, then for each $i, j, k, \ell$ such that $i < j$ and $k < \ell$, $$\G{t_i}{t_\ell} \geq \G{t_j}{t_k}.$$
+        \item[(c)] If $\T$ is SST, then the matchup table $\M$ is monotonically increasing along each row and monotonically decreasing along each column.
+    \end{enumerate}
+    \end{corollary}
 
-\begin{corollary}{}{}
-    If $\T$ is SST, then for each $i, j, k, \ell$ such that $i < j$ and $k < \ell$, $$\G{t_i}{t_\ell} \geq \G{t_j}{t_k}.$$
-\end{corollary}
+% \begin{corollary}{}{}
+%     If $\T$ is SST, then for each $i < j$, $\G{t_i}{t_j} \geq 0.5.$
+% \end{corollary}
 
-\begin{corollary}{}{}
-    If $\T$ is SST, then the matchup table $\M$ is monotonically increasing along each row and monotonically decreasing along each column.
-\end{corollary}
+% \begin{corollary}{}{}
+%     If $\T$ is SST, then for each $i, j, k, \ell$ such that $i < j$ and $k < \ell$, $$\G{t_i}{t_\ell} \geq \G{t_j}{t_k}.$$
+% \end{corollary}
+
+% \begin{corollary}{}{}
+%     If $\T$ is SST, then the matchup table $\M$ is monotonically increasing along each row and monotonically decreasing along each column.
+% \end{corollary}
 
 %put these corollaries together
 
@@ -120,7 +128,7 @@ However, not every proper bracket is ordered. One particularly important example
 \fig{1}{six_team}{The Six-Team Bracket $\bracksig{4; 2; 0; 0}$}
 \theo{}{The six-team bracket $\bracksig{4; 2; 0; 0}$ is not ordered.}{
     
-Let $\A = \bracksig{4; 2; 0; 0},$ and let $\T$ have the following matchup table:
+Let $\A = \bracksig{4; 2; 0; 0},$ and let $\T$ have the following matchup table.
 
 \begin{center}
     \begin{tabular}{c | c c c c c c}

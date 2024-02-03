@@ -1,10 +1,45 @@
 \sub{
 
+\begin{definition}{Bracket}{bracket}
+    A \i{bracket} is a tournament format in which:
+    \begin{itemize}
+        \item Teams don't play any games after their first loss,
+        \item Games are played until only one team has no losses, and that team is crowned champion, and
+        \item The matchups between game winners are determined in advance of the outcomes of any games.
+    \end{itemize}
+\end{definition}
+
+We can draw a bracket as a tree-like structure in the following way.
+
+\fig{1}{cfp_start}{The 2023 College Football Playoff}
+
+The numbers 1, 2, 3, and 4 indicate where $t_1, t_2, t_3,$ and $t_4$ in $\T$ are placed to start. In the actual 2023 College Football Playoff, the list of teams $\T$ was Georgia, Michigan, TCU, and Ohio State, in that order, so the bracket was filled in like so.
+
+\fig{1}{cfp_middle}{The 2023 CFP After Team Placement}
+
+As games are played, we write the name of the winning teams on the corresponding lines. This bracket tells us that Georgia played Ohio State, and Michigan played TCU. Georgia and TCU won their respective games, and then Georgia beat TCU, winning the tournament.
+
+\fig{1}{cfp_end}{The 2023 CFP After Completion}
+
+Rearranging the way the bracket is pictured, if it doesn't affect any of the matchups, does not create a new bracket. For example, Figure \ref{fig:cfp_alt} is just another way to draw the same 2023 CFP Bracket. 
+
+\fig{1}{cfp_alt}{Alternative Drawing of the 2023 CFP}
+
+One key piece of bracket vocabulary is the \i{round}.
+
+\begin{definition}{Round}{}
+    A \i{round} is a set of games such that the winners of each of those games have the same number of games remaining to win the tournament.
+\end{definition}
+
+For example, the 2023 CFP has two rounds. The first round included the games Georgia vs Ohio State and Michigan vs TCU, and the second round was just a single game: Georgia vs TCU.
+
+Another important concept is the \i{shape} of a bracket.
+
 \begin{definition}{Shape}{}
     The \i{shape} of a bracket is the tree that underlies it.
 \end{definition}
 
-For example, the following two brackets have the same shape:
+For example, the following two brackets have the same shape.
 
 \fig{0.78}{same_shape}{Two Brackets with the Same Shape}
 
@@ -56,19 +91,13 @@ Bracket signatures have one more important property.
         Now, consider the signature $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}.$ By induction, there exists a bracket with signature $\B$. But if we take that bracket and replace $a_0/2$ of the teams with no byes with a game whose winner gets placed on that line, we get a new bracket with signature $\A.$
 }{signature_sum}
 
-The operation of transforming a bracket signature $\A = \bracksig{a_0; ...; a_r}$ into a bracket signature with one fewer round $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}$ that we used at the end of the proof of Theorem \ref{th:signature_sum} will become somewhat frequent, as we often induct on the number of rounds in a bracket, so it has a name:
-
-\begin{definition}{The Successor Signature}{} %do we want this, if so make it better
-    If $\A = \bracksig{a_0; ...; a_r},$ then the successor signature $$\SS(\A) = \bracksig{a_1 + a_0/2; a_2; ...; a_r}.$$ (The successor signature of zero-round signatures is undefined.)
-\end{definition}
-
 In the next few sections, we will use the language and properties of bracket signatures to describe the brackets that we work with. For now though, let's return to the 2023 College Football Playoff. The bracket used in the 2023 CFP has a special property that not all brackets have: it is \i{balanced}.
 
 \begin{definition}{Balanced Bracket}{}
     A \i{balanced bracket} is a bracket in which none of the teams have byes.
 \end{definition} 
 
-The 2023 West Coast Conference Men's Basketball Tournament, on the other hand, is unbalanced:
+The 2023 West Coast Conference Men's Basketball Tournament, on the other hand, is unbalanced.
 \fig{0.8}{wcc}{The 2023 WCC Men's Basketball Tournament}
 
 Saint Mary's and Gonzaga each have three byes and so only need to win two games to win the tournament, while Portland, San Diego, Pacific, and Pepperdine need to win five. Unsurprisingly, this format conveys a massive advantage to Saint Mary's and Gonzaga, but this was intentional: those two teams were being rewarded for doing the best during the regular season.
