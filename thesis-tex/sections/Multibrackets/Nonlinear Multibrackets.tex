@@ -1,0 +1,71 @@
+\sub {
+
+    The three multibrackets discussed in Section \ref{sec:Third-Place Games} are actually all a special kind of multibracket: they are \i{linear}.
+
+    \begin{definition}{Linear Multibracket}{}
+        We say a multibracket is \i{linear} if its constituent brackets can be ordered such that teams that lose in earlier brackets get placed in later ones.
+    \end{definition}
+
+    An simple example of a nonlinear multibracket is the 1931 Victorian Football League Playoffs, sometimes called the Page-McIntyre system. %\cite?
+
+    \fig{0.65}{page4}{1931 Victorian Football League Playoffs}
+
+    The Page-McIntyre system introduces a number of new concepts that make it different from any of the formats we've seen thus far. The first thing to note is that while the winner of game $\bracklabel{A1}$ goes directly to the final, the loser falls into the semifinal of the \i{same bracket}. This is what we mean when we say that the format is nonlinear: teams can lose but end up back in the same bracket.
+
+    The second thing to note is that the first round appear to have an ``improper'' set of matchups: the games are 1v2 and 3v4 rather than then ``proper'' 1v4 and 2v3. However, properness is a much trickier concept in the world of multibrackets. While we will delay a formal discussion of properness until the end of the chapter, the Page-McIntyre system is indeed proper. While the 1- and 2-seeds to have tougher first round matchups than the 3- and 4-seeds, this is compensated by them getting an extra life: if they lose, they play the winner of the 3v4 matchup, while the 3v4 loser is just eliminated. As long as the seeding accurately reflects team quality, no team would want to swap starting lines with a lower-seeded team, and so the format is proper. 
+
+    The third thing to note is that the shape of the bracket itself looks a little strange: the winner of game $\bracklabel{A1}$ gets a bye \textit{after winning a game}, something that never happens in a traditional bracket. Attempts to give this bracket a signature might lead to $\bracksig{4;1;0;0}$ or even $\bracksig{4;0;0;0}$, neither of which are actually bracket signatures (they both violate Theorem \ref{th:signature_sum}). The issue here is that game $\bracklabel{A1}$ is actually a semifinal, and so ``should'' live in the second round, producing a signature of $\bracksig{2;3;0;0}$. However, because the loser of that game plays in the other semifinal, it needs to be shifted back to the first round. For this reason, bracket signatures for nonlinear multibrackets are not well-defined.
+
+    The fourth thing to note is that game $\bracklabel{C1}$ can be a rematch of game $\bracklabel{A1}.$ In fact, this pretty likely: if the bracket goes chalk, the 1- and 2-seed will find themselves replaying the game they played just two rounds ago. In Figure \ref{fig:page4}, the bracket did not go chalk, but game $\bracklabel{C1}$ was still a rematch. As we discussed in the pervious section, this can lead to pretty unsatisfying results: indeed, in the 1931 Victorian Football League Playoffs, Geelong and Richmond each beat each other once, but Geelong won the game that mattered and so was declared champion. 
+    
+    Again as discussed in the previous section, one option would be to be to make game $\bracklabel{C1}$ contingent on it not being a rematch: if it is a rematch, then the game is skipped and whichever team won the previous game is declared champion. While this solution is effective for the second-place game in Figure \ref{fig:afl_second}, its doesn't work here. Making the game contingent would mean that the loser of $\bracklabel{A1}$ is actually eliminated upon their loss: even if they win $\bracklabel{B1}$, they wouldn't have the ability to play in the championship game.
+
+    A better solution might be a \i{double-elimination tournament}, as employed by the 2016 NCAA Softball Ann Arbor Regional.
+
+    \fig{0.43}{softballv1}{The 2016 NCAA Softball Ann Arbor Regional}
+
+    \begin{definition}{Double-Elimination Tournament}{}
+        A \i{double-elimination} tournament is a multibracket (including one contingent game) in which every team except the champion finishes with exactly two losses, while the champion finishes with one or zero. 
+    \end{definition}
+
+    The 2016 NCAA Softball Ann Arbor Regional is an example of a double-elimination format: Michigan finished undefeated while Valparaiso, Notre Dame, and Miami (OH) finished with two losses. Game $\bracklabel{E1}$ is contingent on the winner of game $\bracklabel{C1}$ winning game $\bracklabel{D1}$ as well: if the $\bracklabel{B1}$ winner wins game $\bracklabel{D1}$, the double-elimination condition is satisfied and so the tournament is over.
+
+    This construction, where rather than a contingent game being played only if its not a rematch, it is played only if the lower team wins, is so common that it has a name.
+
+    \begin{definition}{Recharge Game}{}
+        A \i{recharge game} is a contingent game in a multibracket that is a rematch of a previous game and played only if the lower team won the first game.
+    \end{definition}
+
+    Recharge games are so common that we introduce a special notation: if the name of a game has a star after it, then that game is followed by a recharge game (if necessary). This allows us to condense the format in the Figure \ref{fig:softballv1} a little bit, as displayed in Figure \ref{fig:softballv2}.
+
+    \fig{0.5}{softballv2}{The 2016 NCAA Softball Ann Arbor Regional}
+
+    The only issue with this notation is that, if the recharge game was triggered but won by the upper team, there is no natural place to denote that the recharge game was played. We adopt the convention of writing the the lower team \i{under} the line that the winner of the recharge game is placed over in this case. This is depicted in Figure \ref{fig:softballv3}.
+    
+    \fig{0.5}{softballv3}{Figure \ref{fig:softballv2} if Notre Dame Beat Michigan Once}
+
+    While the recharge game is necessary to ensure that the format is a truly a double-elimination tournament, as well as preventing the problem in the Page-McIntyre System where the champion and runner-up each finish with one-loss, it's not all upside. For one thing, Dabney found some evidence that a Page-McIntyre-style tournament with no recharge game actually does a better job of crowing the best team as champion then the truer double-elimination with the recharge game included \cite{recharge_rounds}. Additionally, formats with recharge games tend to be less exciting, as they risk not playing a true championship game (a game in which either team wins the format if they win that game).
+
+    % % some discussion about why use double eliminations, and some proof about them being more accurate.
+
+    % However, whether the recharge game is included or not, there is some evidence that double-elimination style tournaments are more accurate that traditional brackets: ...
+
+    We'll conclude our discussion of nonlinear multibracket with a couple more interesting examples. The first is the 2022 Big Ten Baseball Tournament.
+
+    \fig{0.5}{baseball}{The 2022 Big Ten Baseball Tournament}
+
+    The 2022 Big Ten Baseball Tournament wanted to balance two effects: first, that double-elimination formats lead to more accurate results, but second, that championship games are exciting and double-elimination games risk not including one. 2022 Big Ten Baseball Tournament innovates to solve the latter issue by including recharge games in the \i{semifinals}, and then having the championship game be single winner-take-all game.
+
+    Note that this format does not fully solve all the problems is attempting to tackle: for one thing, it is not a true double-elimination, as Rutgers gets eliminated with only a single loss. That said, Michigan is unambiguously the most deserving winner: every team other than Michigan and Rutgers lost once, and Michigan defeated Rutgers in their one matchup.
+    
+    However, this property was not guaranteed: had Penn State beaten Iowa in game $\bracklabel{C1}$, Michigan twice in game $\bracklabel{D1}$ and the recharge game, and then Rutgers in the final, we would be back to the issue with the Page-McIntyre System. Penn State and Rutgers would have each finished with only one-loss to the other team, with the champion being determined somewhat arbitrarily by who won the most recent game. This illustrates an important point: the desire for an unambiguous champion and the desire for an unambiguous championship \i{game} are fundamentally in conflict in the world of multibrackets.
+
+    The other nonlinear multibracket of note is the NBA Playoffs. You may recall from Figure \ref{fig:nba} that in 2004, the NBA Eastern Conference Playoffs used a simple bracket of signature $\bracksig{8;0;0;0}$ to determine its champion (the Western Conference did the same, and then the two conference champions played each other in the NBA finals). However, in 2020, after a much of the NBA regular season was cut short due to Covid, there was a feeling that the regular season wasn't as accurate as a measure as it usually is. So the playoffs were expanded slightly: if the 8th and 9th place teams were close enough in record, the playoff for that conference expanded to $\bracksig{2;7;0;0;0},$ allowing both teams in. After the success of that system, the playoffs were expanded further starting in 2021 to the following nonlinear multibracket.
+    %cite a source for this
+    
+    \fig{0.5}{nbaplayin}{2022 NBA Eastern Conference Playoffs}
+
+    The first two rounds of the new NBA playoffs are similar in structure to the Page-McIntyre system: two lower-seeded teams play each other and two higher-seeded teams play each other, and then the winner of the first game plays the loser of the second. But because the two qualifying teams get dumped into a larger eight-team bracket, rather than facing off immediately, the issues of the original Page-McIntyre system are avoided.
+
+    Nonlinear multibrackets are powerful tools for selecting a single champion, while avoiding the pitfalls of traditional brackets where a great team can get eliminated after a single loss. However, there are other powerful uses cases for multibrackets as well: in the next section we will explore \i{efficient} multibrackets, which aim to select the top-$m$ out of $n$ teams.
+}
