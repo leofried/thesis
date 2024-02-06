@@ -19,6 +19,7 @@ let list : (module S) list = [
   (module Proper);
   (module Multibracket);
   (module Pools);
+  (module Mlq);
 ];;
 
 let get kind =

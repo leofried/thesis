@@ -46,11 +46,42 @@
 
     While the recharge game is necessary to ensure that the format is a truly a double-elimination tournament, as well as preventing the problem in the Page-McIntyre System where the champion and runner-up each finish with one-loss, it's not all upside. For one thing, Dabney found some evidence that a Page-McIntyre-style tournament with no recharge game actually does a better job of crowing the best team as champion then the truer double-elimination with the recharge game included \cite{recharge_rounds}. Additionally, formats with recharge games tend to be less exciting, as they risk not playing a true championship game (a game in which either team wins the format if they win that game).
 
+    In any case, whether the recharge game is used or not, double-elimination tournaments are a powerful tool in a tournament designer's arsenal, as they more accurately select the best team as champion than their single elimination counterparts. We prove this fact for a toy case where there is a single best team that is favored against every other team with a constant probability $1/2 < p < 1$, and leave a more comprehensive proposition as a conjecture.
+
+    \theo{}{ %make sure all the notation (primary, etc) is cover --> add a picture to different winners nad losers brackets
+        Let $n$ be a positive integer, $p$ be a probability such that $1/2 < p < 1$, and $\T$ be a list of $2^n$ teams with a team $t \in \T$ such that for every other team $s$, $$\G{t}{s} = p.$$ 
+        Let $\A$ be the balanced bracket on $2^n$ team, and let $\B$ be [ADJECTIVE] double-elimination tournament with $\A$ as the primary bracket, with or without a recharge game. Then $$\W{\A}{t}{\T} < \W{\B}{t}{\T}.$$
+        %unless n = 1 and no recharge
+    }{
+        To win $\A$, $t$ simply has to win $n$ games. Thus $$\W{\A}{t}{\T} = p^n.$$
+    
+        We don't know what the losers' bracket of $\B$ looks like, only that it is [ADJECTIVE]. Let $r$ be the number of rounds in the losers' bracket, and let $r_i$ be the round of the losers' bracket that $i$-round winners' bracket losers play their first game. Let $c_i = r - r_i - 1$, so $i$-round losers need to win $c_i$ games in the losers' bracket to win it.\\
+        
+        Since there are $2^{n-i}$ $i$-round losers, by Theorem \ref{th:signature_sum},
+        \begin{align*}
+            &\sum_{i=1}^n 2^{n-i} \cdot \left(\frac{1}{2}\right)^{c_i}  = 1 \\
+            &\sum_{i=1}^n \left(\frac{1}{2}\right)^{c_i + i} = \left(\frac{1}{2}\right)^n
+        \end{align*}
+       
+        Additionally, we arbitrarily set $c_{n+1} = -1$, so 
+        $$ \sum_{i=1}^{n+1} \left(\frac{1}{2}\right)^{c_i + i} = \left(\frac{1}{2}\right)^{n+1}$$
+
+
+
+    }{}
+
+
+
+
+
+
+    %recharge rounds: https://www.desmos.com/calculator/y7xwlv6z0q
+
     % % some discussion about why use double eliminations, and some proof about them being more accurate.
 
     % However, whether the recharge game is included or not, there is some evidence that double-elimination style tournaments are more accurate that traditional brackets: ...
 
-    We'll conclude our discussion of nonlinear multibracket with a couple more interesting examples. The first is the 2022 Big Ten Baseball Tournament.
+    We conclude our discussion of nonlinear multibracket with a couple more interesting examples. The first is the 2022 Big Ten Baseball Tournament. %thirteen team?
 
     \fig{0.5}{baseball}{The 2022 Big Ten Baseball Tournament}
 

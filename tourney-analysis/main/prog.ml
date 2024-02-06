@@ -42,9 +42,9 @@ let general () =
 
 let specific () =
 
-  let number_of_teams = 3 in
-  let max_games = 7 in
-  let prize = [2] in
+  let number_of_teams = 6 in
+  (* let max_games = 7 in *)
+  let prize = [1;2] in
   
   let metric : Metric.s = {
     metric = (module Decay : Metric.S);
@@ -52,19 +52,25 @@ let specific () =
       number_of_teams;
       fidel = 0.;
       luck = 1.;
-      distr = Random.(Floored (0., gaussian)); (*think*)
+      distr = Random.Uniform (-1., 1.);
+      (* Random.(Floored (0., gaussian)); think *)
       tiebreaker = WorstCase;
     };
   } in
 
   let schemes = 
-    Pools.get_all ~respectfulness:Strongly ~triviality:Efficient ~max_games (*~allow_cycles:true*) number_of_teams prize
+    (* Pools.get_all ~respectfulness:Strongly ~triviality:Efficient ~max_games (*~allow_cycles:true*) number_of_teams prize
     (* |> (List.cons) Pools.{number_of_pools = 3; teams_per_pool = 1; cycles_per_pool = 1; multibracket = [[2;1;0];[1];[1]]}
     |> (List.cons) Pools.{number_of_pools = 3; teams_per_pool = 1; cycles_per_pool = 1; multibracket = [[2;1;0];[2;0];[1]]} *)
     (* |> List.filter (fun x  -> x.Pools.number_of_pools <> 1) *)
     |> List.filter (fun x  -> x.Pools.teams_per_pool <> 1)
     (* |> List.map (fun x  -> Pools.{x with cycles_per_pool = 0}) *)
-    |> List.map (Scheme.create (module Pools))
+    |> List.map (Scheme.create (module Pools)) *)
+    [
+      Scheme.create (module Mlq) Old;
+      Scheme.create (module Mlq) New;
+      (* Scheme.create (module Proper) [4;2;0;0] *)
+    ]
   in
 
   (* let base : Pools.t = {number_of_pools = 2; teams_per_pool = 5; cycles_per_pool = 1; multibracket = []} in
@@ -81,7 +87,7 @@ let specific () =
 
   Debug.loop (fun () ->
     Data.print ~schemes ~metric ~prize ();
-    (* Simulate.simulate_schemes ~metric ~schemes ~iters:10000 |> Data.write ~metric; *)
+    Simulate.simulate_schemes ~metric ~schemes ~iters:10000 |> Data.write ~metric;
     (* Simulate.best_simulate ~schemes ~metric ~prize ~iters:10_000 ~cutoff:8.0; *)
     print_endline "---";
   )
