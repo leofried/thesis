@@ -1,0 +1,74 @@
+\sub {
+
+    % While in the previous chapter we examined a few different solutions to a few different tournament design problems (identifying a top-three, top-two using contingent games, and top-four), we will now zero on a particular problem. We 
+
+    INTRODUCTION INTRODUCTION. %maybe explicitly talk about a second-place bracket. And then at the end discuss linear multibrackets. discuss shifted at some point also discuss rematches and properness (both kinds)
+
+    So far, we have seen two approaches. The first what was used by both the 2015 AFC Asian Cup, as well as the 2023 Southern Conference Wrestling Championships: just give the silver medal to the team that lost in the championship game. Since we're interested in giving second-place to the winner of a secondary bracket in the multibracket, we can view this as the secondary bracket having signature $\bracksig{1}:$ the resulting format is displayed below. (We omit the third-place brackets since they are irrelevant to this discussion.)
+
+    \phig{second1}
+
+    The second approach is the pitch made by (our hypothetical) UAE: have the semifinal losers play each other for the right to play the championship game loser for second-place. This is equivalent to the secondary bracket having signature $\bracksig{2;1;0},$ with the teams assigned to starting lines like so.
+
+    \phig{second21}
+
+    However, these are not the only two possible second-place brackets one could imagine. Another (not very good) option is to give second-place to the team that lost game $\bracklabel{B1}$.
+
+    \phig{second1bad}
+
+    This is not great: if we are going to hand out second-place without playing any consolation games, it should pretty clearly go to the loser of the championship game, as they are the ones that lasted the longest and finished with the most wins.
+
+    Another possibility would be to use a second-place bracket of signature $\bracksig{2;1;0},$ but to give the bye to the team that lost $\bracklabel{B1}$ instead of the team that lost the championship game.
+
+    \phig{second21bad}
+
+    This format is similarly problematic. Though its slightly better because the championship game loser is getting a shot at second-place, they did better the in primary bracket and so should be rewarded with the bye. To capture this sense of injustice in both Figure \ref{fig:second1bad} and \ref{fig:second21bad}, we introduce the concept of a second-place bracket being \i{minimally respectful}.
+
+    \begin{definition}{Minimally Respectful Second-Place Bracket}{}
+        We say a second-place bracket is \i{minimally respectful} if, for every pair of teams $s$ and $t$, the following property holds:\\
+
+        If $s$ went further in the primary bracket than $t$, then $s$ gets at least as good of a spot in the secondary bracket as $t$, where:
+        
+        \begin{itemize}
+            \item It is better to be included in the bracket than not.
+            \item It is better to get more byes than fewer byes.
+        \end{itemize}
+    \end{definition}
+
+    From this definition, it is clear that the second-place brackets in Figures \ref{fig:second1} and \ref{fig:second21} are minimally respectful, while those in Figures \ref{fig:second1bad} and \ref{fig:second21bad} are not.
+
+    Consider another potential second-place bracket, in which each loser is given a chance to play for second-place.
+
+    \phig{second_ladder}
+
+    This second-place bracket is minimally respectful: the $\bracklabel{C1}$ loser gets the most byes, and the semifinal losers each get more byes than the first-round losers. But it still feels a little off: teams that lost in the same round get wildly different treatments. The $\bracklabel{A1}$ and $\bracklabel{A2}$ losers each need to win six more games to come in second-place, while the $\bracklabel{A4}$ loser needs only four. This second-place bracket is not \i{weakly respectful}.
+
+    \begin{definition}{Weakly Respectful Second-Place Bracket}{}
+        We say a second-place bracket is \i{weakly respectful} if, for every pair of teams $s$ and $t$, the following property holds:\\
+
+        If $s$ went at least as far in the primary bracket than $t$, then $s$ gets at least as good of a spot in the secondary bracket as $t$, where:
+        
+        \begin{itemize}
+            \item It is better to be included in the bracket than not.
+            \item It is better to get more byes than fewer byes.
+        \end{itemize}
+    \end{definition}
+
+    Note the difference in the definitions of minimally respectful and weakly respectful: the former requires that if $s$ got further than $t$, $s$ be treated at least as well $t$, while the latter requires that if $s$ got \i{at least as far as} $t$, then $s$ be treated at least as well as $t$. Expanding the antecedent to be a greater than or equal to, rather than just a greater than, implies that two teams that went equally far and lost in the same round be treated equally, ensuring that the second-place bracket in Figure \ref{fig:second_ladder} is not weakly respectful.
+    
+    So far we've identified two bracket signatures that admit weakly respectful brackets: $\bracksig{1}$, as in Figure \ref{fig:second1}, and $\bracksig{2;1;0}$ as in Figure \ref{fig:second21}. Are there any others? In particular, let's say we are interested in a second-place bracket that allows even the first-round losers to win second-place: if the two best teams get accidentally matched up in the first-round, we don't want to deny the loser of that game the right to fight for second-place.
+
+    In fact, there are three such signatures: $\bracksig{4;2;0;1;0}$, $\bracksig{4;0;3;0;0}$, and $\bracksig{6;1;0;0}$, displayed in the next three figures.
+
+    \phig{second_4201}
+    \phig{second_403}
+    \phig{second_61}
+
+    Each of these three second-place brackets are weakly respectful: they give the same number of byes to teams that lost in the same round, and teams that lost earlier get no more byes than teams that lost later. What differentiates them is just how much of an advantage is given to teams that lasted longer in the primary bracket: $\bracksig{4;2;0;1;0}$ sends the championship-game loser directly into the second-place game, while $\bracksig{6;1;0;0}$ tries to flatten out the bracket as much as possible, giving them only a single extra bye. $\bracksig{4;0;3;0;0}$ falls somewhere in between, rewarding teams that won at least a single game in the primary bracket with a double-bye in teh second-place bracket, but not differentiating too much between the semifinals-losers and championship-game losers.
+
+
+
+
+    
+
+}
