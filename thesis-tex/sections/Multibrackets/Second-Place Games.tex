@@ -1,0 +1,99 @@
+\sub {
+
+    %second place vs second-place
+
+    In the last section, we noted how our prize structure, that is if we are looking to give out rewards to the top-one, two, three, or four teams, can dramatically affect the optimal shape of our consolation bracket(s). In this section, we will assume that we are looking to select just a second-place team after our tournament-champion won the primary bracket. Even under this assumption there are still a ton of options for what the second-place bracket can look like, some with a number of desirable properties and others that are deeply unfair or misincentivized. We will now explore some of these options and fairness properties.
+
+    So far, we have seen two approaches to selecting the second-place team at a tournament. The first was used by both the 2015 AFC Asian Cup, as well as the 2023 Southern Conference Wrestling Championships: just give the silver medal to the team that lost in the championship game. Since we're interested in giving second-place to the winner of a secondary bracket in the multibracket, we can view this as the secondary bracket having signature $\bracksig{1}:$ the resulting format is displayed below.
+
+    \phig{second1}
+
+    The second approach is the pitch made by (our hypothetical) UAE: have the semifinal losers play each other for the right to play the championship game loser for second-place. This is equivalent to the secondary bracket having signature $\bracksig{2;1;0},$ with the teams assigned to starting lines like so.
+
+    \phig{second21}
+
+   But of course these are not the only second-place brackets that could exist. Another option would be to give second-place (rather than third) to the winner of a game between $\bracklabel{B1}$ and $\bracklabel{B2}$.
+
+    \phig{second1bad}
+
+    This is not great: the team that lost in the championship game is not even given the ability to play for second place, despite having beaten one of the two teams that are given that right in the semifinals. The finals loser went farther than the semifinals losers', and so ought to get a shot at second-place.
+
+    Another possibility would be to use a second-place bracket of signature $\bracksig{2;1;0},$ but to give the bye to the team that lost $\bracklabel{B1}$ instead of the team that lost the championship game.
+
+    \phig{second21bad}
+
+    This format is similarly problematic. Though its slightly better because the championship game loser is at least getting to play for second-place, its still poor. The loser of $\bracklabel{C1}$ did better in the primary bracket and so should be rewarded with the bye.
+
+    These issues feel very similar to the issues with non-proper traditional brackets. Though the teams that participate in consolation brackets don't have seeds, they can be arranged in tiers, with the better/higher tiers being teams that lost later in the primary bracket, and worse/lower tiers being teams that lost earlier in the proper bracket. Thus we introduce the concept of a \i{proper consolation bracket}.
+
+    \begin{definition}{Proper Consolation Bracket}{}
+        A \i{proper consolation bracket} is one in which, if it went to chalk, in every round it is better to be a team that lost later in the primary bracket than team than earlier in the primary bracket, where: \begin{itemize}
+            \item[(1)] It is better to be in the bracket than not.
+            \item[(2)] It is better to have a bye than to play a game.
+            \item[(3)] It is better to play against a team that lost earlier in the primary bracket than against a team that lost later in the primary bracket.
+        \end{itemize}
+    \end{definition}
+    
+    The notion of a proper consolation bracket is not quite as powerful as its traditional bracket analogue. For one thing, as we will see later, the fundamental theorem of brackets doesn't hold for consolation brackets: there are many consolation bracket signatures the admit more than one proper consolation bracket.
+
+    But the bigger issue is that the notion of properness doesn't capture everything that we are looking for in a consolation bracket. To illustrate the point, consider the following alternative for the AFC Asian Cup's second-place bracket.
+
+    \phig{second20}
+
+    This second-place bracket is proper: the best spot is given to the loser of the championship game, and the teams that lost in the semifinals are given spots at least as good as the spots given to teams that lost in the first round. But it still doesn't feel quite right. Properness only guarantees that teams that advanced further in the primary bracket are treated better than teams that didn't. But we also have an intuition that teams that lost in the same round of the primary bracket ought to be treated the same. This intuition has a name: \i{respectfulness}. Unlike properness, respectfulness comes in a few different forms, the weakest of which is \i{minimal respectfulness}.    
+
+    \phig{respectfulness_lattice}
+
+    \begin{definition}{Minimally Respectful Consolation Bracket}{}
+        A \i{minimally respectful} consolation bracket is a proper consolation bracket in which, for each round of the primary bracket, either none or all of the teams that lost in that round fall into the consolation bracket.
+    \end{definition}
+
+    But minimal respectfulness is, as the name implies, just the minimum. Consider, for example the following second-place bracket that the 2015 AFC Asian Cup could have employed.
+
+    \phig{second_ladder}
+
+    This consolation bracket is minimally respectful: every team that lost in the primary bracket is given the right to play for second-place. But still, teams that lost in the same round are not being treated the same: some first-round losers are getting more byes than others. It is not \i{round-respectful}.
+
+    \begin{definition}{Round-Respectful Consolation Bracket}{}
+        A \i{round-respectful} consolation bracket is a minimally respectful consolation bracket in which teams that lost in the same round of the primary bracket are given the same number of byes in the consolation bracket.
+    \end{definition}
+
+    To analyze the next level of respectfulness, we will have to consider a slightly larger primary bracket. Instead of eight teams, imagine the 2015 AFC Asian Cup was played with sixteen teams, leaving behind eight $\bracklabel{A}$-round losers, four $\bracklabel{B}$-round losers, two $\bracklabel{C}$-round losers, and a single $\bracklabel{D}$-round loser. Now consider the following second-place bracket.
+
+    \phig{second80241}
+
+    The consolation bracket in \ref{fig:second80241} is also not round-respectful, but it doesn't feel nearly as problematic as that in \ref{fig:second_ladder}. While two of the $\bracklabel{B}$-round losers have to play an additional game compared to the other two, its not clear that they are at a disadvantage. $\bracklabel{B2}$ and $\bracklabel{B3}$ get an extra bye, and play each other instead of a $\bracklabel{C}$-round loser in the quarterfinals, but in the semifinals are matched up with the championship game loser. $\bracklabel{B1}$ and $\bracklabel{B4}$, on the other hand, don't get the bye, and have a harder quarterfinal matchup, but don't have to face the championship-game loser until they would actually be playing them for second place. Even though the $\bracklabel{C}$-round losers have different numbers of byes, none of their schedules are strictly better than any others: Figure \ref{fig:second80241} is \i{schedule-respectful}.
+
+    \begin{definition}{Schedule-Respectful Consolation Bracket}{}
+        A \i{schedule-respectful} consolation bracket is a minimally respectful consolation bracket in which [[RIGOURIZE THIS DEFINITION]]
+    \end{definition}
+
+    A given minimally respectful consolation bracket can be round-respectful, schedule-respectful, neither, or both. If a consolation bracket is both round- and schedule-respectful, we say it is \i{weakly respectful}.
+
+    \begin{definition}{Weakly Respectful Consolation Bracket}{}
+        A \i{weakly respectful} consolation bracket is  one that is both round-respectful and schedule-respectful.
+    \end{definition}
+
+    The consolation bracket in \ref{fig:second61} is weakly respectful.
+
+    \phig{second61}
+
+    Finally, we can simply require that teams that lost in the same round of the primary bracket be given symmetric spots in the consolation bracket.
+
+    \begin{definition}{Strongly Respectful Consolation Bracket}{}
+        A \i{strongly respectful} consolation bracket is a minimally respectful one in which teams that lost in the same round of the primary bracket are given the same path in the consolation bracket (up to rearranging teams that lost in the same round).
+    \end{definition}
+
+    Strong respectfulness is the gold standard of respectfulness in consolation brackets: while the consolation bracket in \ref{fig:second61} is not strongly respectful, the brackets in \ref{fig:second1} and \ref{fig:second21} are. There are two bracket signatures that admit strongly respectful consolation brackets after a primary bracket of signatures $\bracksig{8;0;0;0}$: they are displayed below.
+
+    \phig{second43}
+
+    \phig{second421}
+
+    As we hinted at earlier, the fundamental theorem of brackets doesn't apply to consolation brackets. The $\bracklable{A}$-round losers in \ref{fig:second421} could be permuted in any of the 24 configurations to produce a proper (and in fact, strongly respectful) second-place bracket. So why do we decide to place the $\bracklabel{A}$-round losers in the way we did in \ref{fig:second421}? (And why did the 2023 Conference make the same decisions in Figure \ref{fig:socon}?) Rematches.
+
+    In any tournament format, rematches are far from ideal. From an information theoretical perspective, a rematch is less informative then a new matchup: we already have some data on how those two team compare. From a competitive perspective, they are unsatisfying: without the ability to play a third ``rubber'' match, if each team wins one game, we are left in a disappointing state of uncertainty. And in a multibracket these issues are exacerbated: nothing feels worse than being eliminated from contention due to two losses from the same team.
+
+    With any other configuration of $\bracklabel{A}$-round losers, we risk a rematch as soon as the second-round of the second-place bracket. By place the $\bracklabel{A}$-round losers in the way that they were, rematches are delayed in the bracket for as long as possible.    
+
+}

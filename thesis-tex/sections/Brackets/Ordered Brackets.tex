@@ -34,25 +34,11 @@ A list of teams being strongly stochastically transitive (SST) captures the intu
 
 \begin{corollary}{}{}
     \begin{enumerate}
-        \item[(a)] If $\T$ is SST, then for each $i < j$, $$\G{t_i}{t_j} \geq 0.5.$$
-        \item[(b)] If $\T$ is SST, then for each $i, j, k, \ell$ such that $i < j$ and $k < \ell$, $$\G{t_i}{t_\ell} \geq \G{t_j}{t_k}.$$
-        \item[(c)] If $\T$ is SST, then the matchup table $\M$ is monotonically increasing along each row and monotonically decreasing along each column.
+        \item[(1)] If $\T$ is SST, then for each $i < j$, $$\G{t_i}{t_j} \geq 0.5.$$
+        \item[(2)] If $\T$ is SST, then for each $i, j, k, \ell$ such that $i < j$ and $k < \ell$, $$\G{t_i}{t_\ell} \geq \G{t_j}{t_k}.$$
+        \item[(3)] If $\T$ is SST, then the matchup table $\M$ is monotonically increasing along each row and monotonically decreasing along each column.
     \end{enumerate}
     \end{corollary}
-
-% \begin{corollary}{}{}
-%     If $\T$ is SST, then for each $i < j$, $\G{t_i}{t_j} \geq 0.5.$
-% \end{corollary}
-
-% \begin{corollary}{}{}
-%     If $\T$ is SST, then for each $i, j, k, \ell$ such that $i < j$ and $k < \ell$, $$\G{t_i}{t_\ell} \geq \G{t_j}{t_k}.$$
-% \end{corollary}
-
-% \begin{corollary}{}{}
-%     If $\T$ is SST, then the matchup table $\M$ is monotonically increasing along each row and monotonically decreasing along each column.
-% \end{corollary}
-
-%put these corollaries together
 
 Note that not every set of teams can be seeded to be SST. Consider, for example, the game of rock-paper-scissors. Rock beats paper which beats scissors which beats rock, so no ordering of these ``teams'' will be SST. For our purposes, however, SST will work well enough.
 
@@ -66,7 +52,7 @@ In an informal sense, a bracket being ordered is the strongest thing we can want
 
 In particular, a bracket being ordered is a stronger claim than it being proper.
 
-\theo{}{Every ordered bracket is proper.}{ %this proof needs cleaning up
+\theo{}{Every ordered bracket is proper.}{ %this proof needs cleaning up --> all three conditions vs just two
     Let $\A$ be an ordered $n$-team bracket with $r$ rounds.\\
     
     Let $\T$ be SST with matchup table $\M$ where $\M_{ij} = 0.5$. A team that plays their first game in the $i$th round will win the tournament with probability $(0.5)^{r-i}$, so teams that get more byes will have a higher probability to win the tournament than teams with fewer byes. This implies that higher-seeded teams must have more byes than lower-seeded teams, so in each round, the teams with byes must be the highest-seeded teams that are still alive. Thus, condition (1) is met.\\

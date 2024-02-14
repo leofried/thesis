@@ -13,7 +13,7 @@
         \end{itemize}
     \end{definition}    
 
-    Third-place is often harder to determine. If a team is given a bye all the way to the finals, and thus there is only one semifinal, then the loser of that semifinal can be unambiguously granted third. The 2023 Korean Baseball Organization League Playoffs have this property: they use a bracket of signature $\bracksig{2;1;1;1;0},$ and so could easily assign third-place to the NC Dinos, who lost in the sole semifinal. (The LG Twins won the format, and finals losers KT Wiz came in second).
+    Third-place is often harder to determine. If a team is given a bye all the way to the finals, and thus there is only one semifinal, then the loser of that semifinal can be unambiguously granted third. The 2023 Korean Baseball Organization League Playoffs have this property: they use a bracket of signature $\bracksig{2;1;1;1;0},$ and so could easily assign third-place to the NC Dinos, who lost in the sole semifinal. (The LG Twins won the format, and finals losers KT Wiz came in second.)
     
     \fig{1}{kbo}{2023 KBO League Playoffs}
 
@@ -69,12 +69,18 @@
         A \i{multibracket} is a collection of one or more brackets coupled with a specification of which winners and losers of which games receive which places. Starting lines in multibrackets can be marked a seed, or by a game, indicating that loser of the specified game should be placed there.
     \end{definition}
 
+    Multibrackets consist of a \i{primary} bracket, and zero or more \i{consolation} brackets.
+
+    \begin{definition}{Primary and Consolation Brackets}{}
+        The \i{primary} bracket of a multibracket the bracket who's winner is declared champion. All other brackets are \i{consolation} brackets.
+    \end{definition} %what about if the loser comes in first? or is this not allowed?
+
     Multibrackets a natural generalization of traditional brackets: recall that brackets are defined as tournament formats in which
     \begin{itemize}
         \item Teams don't play any games after their first loss.
         \item Games are played until one team has no losses, and that team is crowned champion.
         \item The matchups between game winners are determined in advance of the outcomes of any games.
-    \end{itemize}
+    \end{itemize} %where to include actual definition
 
     A multibracket ditches the first two requirements: teams are allowed to continue playing even after they lose, and multibrackets can award more than just first place. The third requirement however, that matchups between game winners (and in the case of multibrackets, game losers) are determined in advance of the results of any games, is maintained.
 
@@ -94,28 +100,8 @@
 
     Knuth went on to derive various results about sorting networks which may also be of interest to us in our study of multibrackets. For further discussion of the relationship between sorting algorithms and tournament designs, see Section \ref{sec:Definitions}. %fix reference
         
-    In any case, as we will see in the coming sections, many tournament formats can be represented as a multibracket, including club sport regional tournaments, double-eliminations, and swiss systems.
+    %Conclusion
 }
 
 
 
-
-    %different chapter title?
-
-
-
-% Third-Place Games
-% Linear/Non-linear (Page -> Double Elimination -> NBA)
-% Efficient Multibrackets (how many linear, efficient for n, m)
-% Swiss??? + generalized swiss
-% Considerations (proper, respectful, etc)
-
-
-
-
-   
-% The comparison between sorting networks and multibrackets (or more generally, between sorting algorithms and tournament formats) is a fascinating one. The problem of tournament design and the space of tournament formats differs from that of sorting algorithms in two important ways.
-
-% First, in tournament design we only have access to a noisy comparison operator: while a sorting algorithm is permitted to depend on the same comparison giving always giving the same results, we get no such luxury. In fact, tournament designers are not even guaranteed that their teams are transitive (although it certainly a useful assumption.)
-
-% Second, while sorting algorithms are required to output a full list and that this full list correctly reflect the ordering of the elements, tournament designed face no such restriction: it is okay to design a tournament that only crowns a champion, or top-three, or whatever, and the best team need not always win. (This may be a desirable property, but it also may not be!)
