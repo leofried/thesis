@@ -1,0 +1,69 @@
+\sub {
+
+    Armed with the knowledge that a multibracket is a just a format that satisfies the network condition, we can view traditional brackets as a multibracket that satisfies two additional restrictions:
+
+    \begin{itemize}
+        \item Teams don't play any games after their first loss.
+        \item Games are played until only one team has no losses, and that team is crowned champion.
+    \end{itemize}
+
+    What happens if we split the difference, eliminating teams after their first loss but not requiring that only one team finishes undefeated? These formats are called \i{semibrackets}.
+
+    \begin{definition}{Semibracket}{}
+        A \i{semibracket} is a multibracket in which teams don't play any more games after their first loss and the team(s) that finish undefeated are declared champion.
+    \end{definition}
+
+    \begin{definition}{Rank of a Semibracket}{}
+        The \i{rank} of a semibracket is how many co-champions it crowns. If the semibracket $\A$ has rank $m$, we say $\rank{\A} = m$ or that $\A$ \i{ranks m teams}.
+    \end{definition}
+
+    Any traditional bracket is also a semibracket of rank one. Meanwhile, the consolation bracket of Figure \ref{fig:2023 Southern Conference Wrestling Championships Alternative}, which selected the final two top-four teams, is a semibracket of order two.
+
+    \phig{semi42}
+
+    Given any bracket (other than the unique one-team bracket $\bracksig{1}$), we can construct a semibracket of order by just leaving the championship game unplayed. But are there more exciting examples of semibrackets?
+
+    Indeed there are. Consider the following tournament design problem: we are tasked with designing an twelve-team tournament to select the top three teams who will go on to compete in the national tournament. The catch? There's only enough time for two rounds: perhaps due to field space or team fatigue, each team can only play two games. What design should we use? The natural choice is shown below in Figure \ref{fig:1200}.
+    
+    \fig{1}{1200}{A More Exciting Semibracket}
+
+    Unlike Figure \ref{fig:semi42}, there is no potential for the format in Figure \ref{fig:1200} to be completed into a traditional bracket. But as a semibracket, this is still a viable format, one that nicely solves the tournament design problem that we were given.
+
+    Like traditional brackets, semibrackets have signatures and a notion of a proper seeding.
+
+    \begin{definition}{Semibracket Signature}{}
+        The \i{signature} $\bracksig{a_0; ...; a_r}_m$ of an $r$-round semibracket $\A$ is a list such that $a_i$ is the number of teams with $i$ byes and $m = \rank{\A}.$ (In the case where $m = \rank{\A} = 1$, it can be omitted.)
+    \end{definition}
+
+    So the signature of \ref{fig:semi42} is $\bracksig{4;2;0}_2$ and the signature of \ref{fig:1200} is $\bracksig{12;0;0}_3.$ A proper seeding of a semibracket is defined in the exact same was that of a traditional bracket, and the fundamental theorem holds as well (stated here without proof.)
+
+    \begin{theorem}{}{}
+        There is exactly one proper semibracket with each semibracket signature.
+    \end{theorem}
+
+    But why do we care about semibrackets? What's wrong with thinking about a semibracket as just a few different traditional brackets played in sequence? The answer is that semibrackets are a key ingredient in the construction of the \i{linear multibracket}.
+
+    Linear multibrackets are the most intuitive and familiar kind of multibracket, and in fact the four multibrackets examples from last section are all linear.
+
+    \begin{definition}{Linear Multibracket}{}
+        A \i{linear multibracket} is a multibracket that can arranged into a sequence of semibrackets such that teams that lose in a given semibracket are either eliminated outright or sent to a later semibracket, and teams that win a given semibracket finish in $n$th place, where $n$ is the number of teams that won the same semibracket as them or an earlier one.
+    \end{definition}
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

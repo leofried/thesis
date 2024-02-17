@@ -1,17 +1,6 @@
 \sub {
 
-    In the pervious chapter, we discussed brackets and similar formats (reseeded and cohort randomized brackets) paying attention only to which team is declared champion. Edwards's Theorem and its analogies, for example, makes claims only about which teams are most likely to win the tournament: all participants that don't are grouped together as losers.
-
-    In fact, the definition of a bracket presented in Section \ref{sec:Bracket Signatures} (and included below) doesn't offer any such distinctions either: the team that finishes undefeated is declare champion while the others are not. Real tournaments, however, do not operate in this way: for example, explicitly or not, the team that lost the championship is often considered to have earned the second-place finish.
-
-    \begin{definition}{Bracket}{}
-        A \i{bracket} is a tournament format in which:
-        \begin{itemize}
-            \item Teams don't play any games after their first loss,
-            \item Games are played until only one team has no losses, and that team is crowned champion, and
-            \item The matchups between game winners are determined in advance of the outcomes of any games.
-        \end{itemize}
-    \end{definition}    
+    In the pervious chapter, we discussed brackets and similar formats (reseeded and cohort randomized brackets) paying attention only to which team is declared champion. Edwards's Theorem and its analogies, for example, makes claims only about which teams are most likely to win the tournament: all participants that don't are grouped together as losers. Real tournaments, however, do not always operate in this way: for example, explicitly or not, the team that lost the championship game is often considered to have earned the second-place finish.
 
     Third-place is often harder to determine. If a team is given a bye all the way to the finals, and thus there is only one semifinal, then the loser of that semifinal can be unambiguously granted third. The 2023 Korean Baseball Organization League Playoffs have this property: they use a bracket of signature $\bracksig{2;1;1;1;0},$ and so could easily assign third-place to the NC Dinos, who lost in the sole semifinal. (The LG Twins won the format, and finals losers KT Wiz came in second.)
     
@@ -35,15 +24,21 @@
 
     A quick note about Figure \ref{fig:afl}: each game in the figure is labeled. In the primary bracket, first-round games are $\bracklabel{A1}$ through $\bracklabel{A4}$, while the semifinals are $\bracklabel{B1}$ and $\bracklabel{B2}$, and the finals is game $\bracklabel{C1}$. The third-place game is labeled $\bracklabel{D1}$: even though it could be played concurrently to the championship game, it is part of a different bracket and so we label it as a different round. %do we still do this?
 
-    We indicate that the third-place game is to be played in between the losers of games $\bracklabel{B1}$ and $\bracklabel{B2}$ by labeling the starting lines in the third-place game with those games. This is not ambiguous because the winners of those games always continue on in the original bracket, so such labels only refer to the losers.
+    We indicate that the third-place game is to be played between the losers of games $\bracklabel{B1}$ and $\bracklabel{B2}$ by labeling the starting lines in the third-place game with those games. This is not ambiguous because the winners of those games always continue on in the original bracket, so such labels only refer to the losers.
 
-    The third-place game, as used by the 2015 AFC Asian Cup, is a relatively common and well-liked system for selecting the top-three teams after a bracket. But it is far from the only way that the AFC could have doled out gold, silver, and bronze
+    The third-place game, which can also be viewed as a two team bracket of signature $\bracksig{2;0}$, in an example of a \i{consolation bracket}.
+
+    \begin{definition}{Consolation Bracket}{}
+        A \i{consolation bracket} is a bracket in which teams that did not win the tournament compete for an $n$-place finish for some $n$.
+    \end{definition}
+
+    The third-place game, as used by the 2015 AFC Asian Cup, is a common and well-liked consolation bracket used for selecting the top-three teams after a bracket. But it is far from the only way that the AFC could have doled out gold, silver, and bronze.
     
     In fact, it's not clear the loser of $\bracklabel{C1}$, who comes in second place, is really more deserving than the winner of $\bracklabel{D1}$, who comes in third. The UAE might argue: South Korea and we both finished with two wins and one loss -- a first-round win, a win against Iraq, and a loss against Australia. The only reason that South Korea came in second and we came in third was because South Korea lucked out by having Australia on the other half of the bracket as them. That's not fair!
 
     If the AFC took this complaint seriously, they could modify their format to add a game $\bracklabel{E1}$ for second-place to be played between the loser of $\bracklabel{C1}$ and the winner of $\bracklabel{D1},$ with the loser coming in third.
 
-    \fig{0.7}{afl_second}{The 2015 AFC Asian Cup (Version 2)}
+    \fig{0.7}{afl_second}{The 2015 AFC Asian Cup Alternative}
 
     If the AFC used the format in Figure \ref{fig:afl_second} in 2015, then South Korea and the UAE would have played each other for second place after all of the other games were completed. In some sense, this is a more equitable format than the one used in reality: we have the same data about the UAE and South Korea and so we ought to let them play for second-place instead of having decided almost randomly.
 
@@ -61,47 +56,59 @@
 
     \fig{0.42}{socon}{2023 Southern Conference Wrestling Championships} %174 pounds
 
-    The format in Figure \ref{fig:socon} is a dramatic improvement for selecting a top-four over that in Figure \ref{fig:afl}. In the 2023 Southern Conference Wrestling Championships, teams finish in the top-four if and only if they win two games before they lose two, which is a nice property to have. The one downside is it takes a fourth round: if there is not enough time for a fourth round, or if there is safety risk to teams playing four matches in a row, the format isn't feasible.
+    The format in Figure \ref{fig:socon} is a dramatic improvement for selecting a top-four over that in Figure \ref{fig:afl}. In the 2023 Southern Conference Wrestling Championships, teams finish in the top-four if and only if they win two games before they lose two, which is a nice property to have. The one downside is it takes a fourth round: if there is not enough time for a fourth round, or if there is safety risk to teams playing four matches in a row, the format isn't feasible. Though if we only care about the top-four, and not the specifics of which team came in third or in fourth, we could drop game $\bracklabel{F1}$, ensuring that each team plays at most three games.
 
-    The three formats presented thus far are examples of \i{multibrackets}.
+    \phig{2023 Southern Conference Wrestling Championships Alternative}
+
+    The four formats presented thus far are examples of \i{multibrackets}.
 
     \begin{definition}{Multibracket}{}
         A \i{multibracket} is a collection of one or more brackets coupled with a specification of which winners and losers of which games receive which places. Starting lines in multibrackets can be marked a seed, or by a game, indicating that loser of the specified game should be placed there.
     \end{definition}
 
-    Multibrackets consist of a \i{primary} bracket, and zero or more \i{consolation} brackets.
-
-    \begin{definition}{Primary and Consolation Brackets}{}
-        The \i{primary} bracket of a multibracket the bracket who's winner is declared champion. All other brackets are \i{consolation} brackets.
-    \end{definition} %what about if the loser comes in first? or is this not allowed?
-
-    Multibrackets a natural generalization of traditional brackets: recall that brackets are defined as tournament formats in which
-    \begin{itemize}
-        \item Teams don't play any games after their first loss.
-        \item Games are played until one team has no losses, and that team is crowned champion.
-        \item The matchups between game winners are determined in advance of the outcomes of any games.
-    \end{itemize} %where to include actual definition
-
-    A multibracket ditches the first two requirements: teams are allowed to continue playing even after they lose, and multibrackets can award more than just first place. The third requirement however, that matchups between game winners (and in the case of multibrackets, game losers) are determined in advance of the results of any games, is maintained.
-
-    This is actually the only requirement for a format to be a multibracket, allowing for the following more formal definition of a multibracket.
+    Since which game each team plays in next (and which place each team ends up in) can be derived only from which game that team played in most recently and whether they won or lost that game, this definition is equivalent to saying that the format upholds the network condition from Section \ref{sec:Definitions}.
 
     \begin{definition}{Multibracket}{}
         A \i{multibracket} is a tournament format in which, after $t_i$ plays $t_j$, the rest of the tournament is identical no matter which team won, except for $t_i$ and $t_j$ are swapped.
     \end{definition}
 
-    (Note that this means multibrackets with contingent games are technically not multibrackets at all. However, they are close enough to being multibrackets and are important enough tools for tournament design that we include them in our discussion, in the same way that  in the last chapter we discussed reseeded brackets even though they are technically not even brackets.)
+    (Note that this means multibrackets with contingent games are technically not multibrackets at all. However, they are close enough to being multibrackets and are important enough tools for tournament design that we include them in our discussion, in the same way that  in the last chapter we discussed reseeded brackets even though they are technically not brackets.)
 
-    This definition of a multibracket may look familiar: Knuth, in a discussion of sorting algorithms, gave an analogous definition for a class of sorting algorithms he named \i{sorting networks} \cite{knuth}.
-
-    \begin{definition}{Sorting Network}{}
-        A \i{sorting network} is a sorting algorithm with the property that whenever we compare $K_i$ versus $K_j$, the subsequent comparisons for the case  $K_i < K_j$ are exactly the same as for the case $K_i > K_j,$ but with $i$ and $j$ interchanged.
-    \end{definition}
-
-    Knuth went on to derive various results about sorting networks which may also be of interest to us in our study of multibrackets. For further discussion of the relationship between sorting algorithms and tournament designs, see Section \ref{sec:Definitions}. %fix reference
-        
-    %Conclusion
+    We will see in the coming sections that many formats, including efficient formats, swiss systems, Page-McIntyre systems, and double-elimination tournaments are all examples of multibrackets.
 }
 
 
+
+
+
+
+
+
+
+% Multibrackets a natural generalization of traditional brackets: recall that brackets are defined as tournament formats in which
+% \begin{itemize}
+%     \item Teams don't play any games after their first loss.
+%     \item Games are played until one team has no losses, and that team is crowned champion.
+%     \item The matchups between game winners are determined in advance of the outcomes of any games.
+% \end{itemize} %where to include actual definition
+
+% A multibracket ditches the first two requirements: teams are allowed to continue playing even after they lose, and multibrackets can award more than just first place. The third requirement however, that matchups between game winners (and in the case of multibrackets, game losers) are determined in advance of the results of any games, is maintained.
+
+% This is actually the only requirement for a format to be a multibracket, allowing for the following more formal definition of a multibracket.
+
+% \begin{definition}{Multibracket}{}
+%     A \i{multibracket} is a tournament format in which, after $t_i$ plays $t_j$, the rest of the tournament is identical no matter which team won, except for $t_i$ and $t_j$ are swapped.
+% \end{definition}
+
+% (Note that this means multibrackets with contingent games are technically not multibrackets at all. However, they are close enough to being multibrackets and are important enough tools for tournament design that we include them in our discussion, in the same way that  in the last chapter we discussed reseeded brackets even though they are technically not even brackets.)
+
+% This definition of a multibracket may look familiar: Knuth, in a discussion of sorting algorithms, gave an analogous definition for a class of sorting algorithms he named \i{sorting networks} \cite{knuth}.
+
+% \begin{definition}{Sorting Network}{}
+%     A \i{sorting network} is a sorting algorithm with the property that whenever we compare $K_i$ versus $K_j$, the subsequent comparisons for the case  $K_i < K_j$ are exactly the same as for the case $K_i > K_j,$ but with $i$ and $j$ interchanged.
+% \end{definition}
+
+% Knuth went on to derive various results about sorting networks which may also be of interest to us in our study of multibrackets. For further discussion of the relationship between sorting algorithms and tournament designs, see Section \ref{sec:Definitions}. %fix reference
+    
+% %Conclusion
 
