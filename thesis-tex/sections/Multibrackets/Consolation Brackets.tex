@@ -26,7 +26,7 @@
 
     We indicate that the third-place game is to be played between the losers of games $\bracklabel{B1}$ and $\bracklabel{B2}$ by labeling the starting lines in the third-place game with those games. This is not ambiguous because the winners of those games always continue on in the original bracket, so such labels only refer to the losers.
 
-    The third-place game, which can also be viewed as a two team bracket of signature $\bracksig{2;0}$, in an example of a \i{consolation bracket}.
+    The third-place game, which can also be viewed as a two-team bracket of signature $\bracksig{2;0}$, in an example of a \i{consolation bracket}.
 
     \begin{definition}{Consolation Bracket}{}
         A \i{consolation bracket} is a bracket in which teams that did not win the tournament compete for an $n$-place finish for some $n$.
@@ -52,19 +52,21 @@
 
     Ultimately, whether game $\bracklabel{E1}$ should be in included or not depends on the purpose of the tournament. If there is a huge difference between the prizes for coming in second and third, for instance, if the top two finishing teams in the Asian Cup qualified for the World Cup, then $\bracklabel{E1}$ is quite important. If, on the other hand, this is a self-contained format played purely for bragging rights, $\bracklabel{E1}$ could probably be left out. In reality, the 2015 AFC Asian Cup qualified only its winner to another tournament (the 2017 Confederations Cup), and gave medals to its top three, so game $\bracklabel{E1}$, which distinguishes between second- and third-place, was probably unnecessary.
 
-    What if instead, however, instead of just the champion, the top four teams from the Asian Cup advanced to the Confederations Cup. One could imagine an easy extension of the format used presently, in which the loser of game $\bracklabel{D1}$ is awarded fourth-place, to determine the four teams that qualify. However, this format would be quite poor: whether or not a team qualifies for the Confederations Cup would be solely determined by the result of their first game and so games $\bracklabel{B1},$ $\bracklabel{B2},$ $\bracklabel{C1},$ and $\bracklabel{D1}$ might as well not even be played. A better format for selecting the top-four would allow first-round losers to win their way back onto the podium, as was employed by the 2023 Southern Conference Wrestling Championships.
+    What if instead, however, instead of just the champion, the top four teams from the Asian Cup advanced to the Confederations Cup. One could imagine an easy extension of the format used presently, in which the loser of game $\bracklabel{D1}$ is awarded fourth-place, to determine the four teams that qualify. However, this format would be quite poor: whether or not a team qualifies for the Confederations Cup would be solely determined by the result of their first-game and so the $\bracklabel{B}$, $\bracklabel{C}$, and $\bracklabel{D}$-round games might as well not even be played. A better format for selecting the top-four would allow first-round losers to win their way back onto the podium, as was employed by the 2023 Southern Conference Wrestling Championships.
 
     \fig{0.42}{socon}{2023 Southern Conference Wrestling Championships} %174 pounds
 
     The format in Figure \ref{fig:socon} is a dramatic improvement for selecting a top-four over that in Figure \ref{fig:afl}. In the 2023 Southern Conference Wrestling Championships, teams finish in the top-four if and only if they win two games before they lose two, which is a nice property to have. The one downside is it takes a fourth round: if there is not enough time for a fourth round, or if there is safety risk to teams playing four matches in a row, the format isn't feasible. Though if we only care about the top-four, and not the specifics of which team came in third or in fourth, we could drop game $\bracklabel{F1}$, ensuring that each team plays at most three games.
 
-    \phig{2023 Southern Conference Wrestling Championships Alternative}
+    \phig{socon1}{2023 Southern Conference Wrestling Championships Alternative}
+
+    (As discussed earlier, we opt to both the $E$-round winners in fourth, to ensure that no more than $m$ teams can claim a top-$m$ finish for any $m$.)
 
     The four formats presented thus far are examples of \i{multibrackets}.
 
     \begin{definition}{Multibracket}{}
         A \i{multibracket} is a collection of one or more brackets coupled with a specification of which winners and losers of which games receive which places. Starting lines in multibrackets can be marked a seed, or by a game, indicating that loser of the specified game should be placed there.
-    \end{definition}
+    \end{definition} %maybe let's get rid of the specification of places -- i don't want to have to do it with linear s its gross
 
     Since which game each team plays in next (and which place each team ends up in) can be derived only from which game that team played in most recently and whether they won or lost that game, this definition is equivalent to saying that the format upholds the network condition from Section \ref{sec:Definitions}.
 

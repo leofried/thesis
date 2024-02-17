@@ -1,55 +1,116 @@
 \sub {
 
-    Armed with the knowledge that a multibracket is a just a format that satisfies the network condition, we can view traditional brackets as a multibracket that satisfies two additional restrictions:
+    The four formats presented in Figures \ref{fig:afl}, \ref{fig:afl_second}, \ref{fig:socon}, and \ref{fig:socon1} are each examples of a special kind of multibracket: \i{linear multibrackets}.
 
-    \begin{itemize}
-        \item Teams don't play any games after their first loss.
-        \item Games are played until only one team has no losses, and that team is crowned champion.
-    \end{itemize}
+    \begin{definition}{Linear Multibracket}{}
+        A \i{linear multibracket} is a multibracket that can be arranged into a sequence of brackets such that 
+        \begin{enumerate}
+            \item[(a)] If a team loses in a given bracket but is not eliminated, they are sent to a later bracket, and
+            \item[(b)] The team that wins the $n$th bracket finishes in $n$th place.
+        \end{enumerate}
+    \end{definition}
 
-    What happens if we split the difference, eliminating teams after their first loss but not requiring that only one team finishes undefeated? These formats are called \i{semibrackets}.
+    A linear multibrackets can be imbued with a signature derived from the signatures of the brackets in the sequence.
 
-    \begin{definition}{Semibracket}{}
-        A \i{semibracket} is a multibracket in which teams don't play any more games after their first loss and the team(s) that finish undefeated are declared champion.
+    \begin{definition}{Linear Multibracket Signatures}{}
+        If the sequence of brackets that comprise a linear multibracket have signature $\A_1, ..., \A_k$ then the linear multibracket has signature $\A_1 \to ... \to \A_k.$
+    \end{definition}
+
+    Let's confirm that the first three multibrackets from the previous section are indeed linear ones. First, the 2015 AFC Asian Cup.
+
+    \fig{0.7}{afc1}{The 2015 AFC Asian Cup}
+
+    Looking at Figure \ref{fig:afc1}, it can be tempting to say that the 2015 AFC Asian Cup is a linear multibracket with signature $\bracksig{8;0;0;0} \to \bracksig{2;0}$. However, this is not quite right: The format with this signature would give second place to the winner of $\bracksig{C2},$ while outright eliminating the loser of $\bracksig{C1}.$ But in fact, the 2015 AFC Asian Cup gives second place to the loser of $\bracklabel{C1}$, while giving third place to the winner of the consolation bracket with signature $\bracksig{2;0}.$ Thus, we make the second bracket be the one-team bracket with signature $\bracksig{1}$, while sliding the bracket with signature $\bracksig{2;0}$ to third.
+
+    In total, the 2015 Asian Cup is a linear multibracket with signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}.$ To make clear that the middle one-team bracket is included, we include it in the figure. This also allows us to drop the labeling of which teams finish in which place, as they are guaranteed by the linearity.
+
+    \fig{0.7}{afc2}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}$}
+
+    Next, let's examine our alternative to the 2015 AFC Asian Cup.
+
+    \fig{0.7}{afc3}{The 2015 AFC Asian Cup Alternative}
+
+    Again, a quick look indicates a signature of $\bracksig{8;0;0;0} \to \bracksig{2;1;0}$. And while this signature would correctly assign a first- and second-place, it doesn't assign third-place. Thus, our alternative proposal is one of signature $\bracksig{8;0;0;0} \to \bracksig{2;1;0} \to \bracksig{1}.$
+
+    \fig{0.7}{afc4}{$\bracksig{8;0;0;0} \to \bracksig{2;1;0} \to \bracksig{1}$}
+
+    A similar analysis finds that the signature of the 2023 Wrestling Championships is $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0;0} \to \bracksig{1}.$
+
+    \fig{0.7}{socon2}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0;0} \to \bracksig{1}.$}
+
+    A quick attempt to conduct the same analysis on our alternative to format that left the $\bracklabel{F}$-round game unplayed might appear to result in a signature of $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;1;0} \to \bracksig{2;1;0}.$
+
+    \fig{0.7}{socon3}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;1;0} \to \bracksig{2;1;0}?$}
+
+    Unfortunately, there is a subtle difference between this format and the one that was proposed last section: this format attempts to grant third place to the winner of game $\bracklabel{E1}$ and fourth place to the winner of game $\bracklabel{E2}$, while we want to place both of those teams in fourth. Currently, linear brackets have no way of treating these two bracket winners equally, so there is no way to scheme around this problem using the tools we have available.
+
+    To solve this problem, we introduce a new kind of format: the \i{semibracket}. % kind of networked format?
+
+    \begin{definition}{Semibracket}{semibracket}
+        A \i{semibracket} is a tournament format in which:
+        \begin{itemize}
+            \item Teams don't play any games after their first loss.
+            \item The matchups between game winners are determined in advance of the outcomes of any games. %network condition
+        \end{itemize}
+        All teams that finish a semibracket with no losses are declared co-champions.
     \end{definition}
 
     \begin{definition}{Rank of a Semibracket}{}
         The \i{rank} of a semibracket is how many co-champions it crowns. If the semibracket $\A$ has rank $m$, we say $\rank{\A} = m$ or that $\A$ \i{ranks m teams}.
     \end{definition}
 
-    Any traditional bracket is also a semibracket of rank one. Meanwhile, the consolation bracket of Figure \ref{fig:2023 Southern Conference Wrestling Championships Alternative}, which selected the final two top-four teams, is a semibracket of order two.
+    Unlike a traditional bracket, the semibracket permits more than one team to finish undefeated and be declared co-champions. The consolation bracket in our alternative 2023 Southern Conference Wrestling Championships, then, can be viewed as a semibracket of rank two.
 
-    \phig{semi42}
+    \fig{0.7}{semi420}{A Semibracket of Rank Two}
 
-    Given any bracket (other than the unique one-team bracket $\bracksig{1}$), we can construct a semibracket of order by just leaving the championship game unplayed. But are there more exciting examples of semibrackets?
-
-    Indeed there are. Consider the following tournament design problem: we are tasked with designing an twelve-team tournament to select the top three teams who will go on to compete in the national tournament. The catch? There's only enough time for two rounds: perhaps due to field space or team fatigue, each team can only play two games. What design should we use? The natural choice is shown below in Figure \ref{fig:1200}.
-    
-    \fig{1}{1200}{A More Exciting Semibracket}
-
-    Unlike Figure \ref{fig:semi42}, there is no potential for the format in Figure \ref{fig:1200} to be completed into a traditional bracket. But as a semibracket, this is still a viable format, one that nicely solves the tournament design problem that we were given.
-
-    Like traditional brackets, semibrackets have signatures and a notion of a proper seeding.
+    Traditional brackets, meanwhile, are semibrackets of rank one. Like traditional brackets, semibrackets have a notion of signatures and proper seedings.
 
     \begin{definition}{Semibracket Signature}{}
         The \i{signature} $\bracksig{a_0; ...; a_r}_m$ of an $r$-round semibracket $\A$ is a list such that $a_i$ is the number of teams with $i$ byes and $m = \rank{\A}.$ (In the case where $m = \rank{\A} = 1$, it can be omitted.)
     \end{definition}
 
-    So the signature of \ref{fig:semi42} is $\bracksig{4;2;0}_2$ and the signature of \ref{fig:1200} is $\bracksig{12;0;0}_3.$ A proper seeding of a semibracket is defined in the exact same was that of a traditional bracket, and the fundamental theorem holds as well (stated here without proof.)
+    So the semibracket in figure \ref{fig:semi420} has signature $\bracksig{4;2;0}_2.$ A proper seeding of a semibracket is defined in the exact same way as that of a traditional bracket, and an analogy to Theorem \ref{th:signature_sum} as well as the fundamental theorem hold as well. (The proofs are almost identical to their traditional counterparts, and so are omitted for brevity.)
 
     \begin{theorem}{}{}
-        There is exactly one proper semibracket with each semibracket signature.
+        Let $\A = \bracksig{a_0; ...; a_r}_m$ be a list of natural numbers. Then $\A$ is a semibracket signature if and only if $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = m.$$
     \end{theorem}
 
-    But why do we care about semibrackets? What's wrong with thinking about a semibracket as just a few different traditional brackets played in sequence? The answer is that semibrackets are a key ingredient in the construction of the \i{linear multibracket}.
+    \begin{theorem}{}{}
+        Each semibracket signature admits exactly one proper semibracket.
+    \end{theorem}
 
-    Linear multibrackets are the most intuitive and familiar kind of multibracket, and in fact the four multibrackets examples from last section are all linear.
-
+    Using the new semibracket terminology, we can modify our definition of a linear multibracket slightly.
+    
     \begin{definition}{Linear Multibracket}{}
-        A \i{linear multibracket} is a multibracket that can arranged into a sequence of semibrackets such that teams that lose in a given semibracket are either eliminated outright or sent to a later semibracket, and teams that win a given semibracket finish in $n$th place, where $n$ is the number of teams that won the same semibracket as them or an earlier one.
+        A \i{linear multibracket} is a multibracket that can be arranged into a sequence of semibrackets such that
+        \begin{enumerate}
+            \item[(a)] If a team loses in a given semibracket but is not eliminated, they are sent to a later semibracket, and
+            \item[(b)] Each team that wins the $n$th semibracket finishes in $m$th place, where $m$ is the sum of the ranks of the first $n$ semibrackets.
+        \end{enumerate}
     \end{definition}
 
+    With our new definition, we can see that our alternative 2023 Southern Conference Wrestling Championships is indeed a linear multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0}_2.$
+
+    \fig{0.7}{socon4}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0}_2$}
+
+    This format is differentiated from the (admittedly a bit strange) format in which the winner of game $\bracklabel{E1}$ comes in third and the winner of game $\bracklabel{E2}$ comes in fourth by the lettering of the games: the fact that games $\bracklabel{E1}$ and $\bracklabel{E2}$ are both $\bracklabel{E}$-round games means they must come from the same semibracket. If games $\bracklabel{D2}$ and $\bracklabel{E2}$ were instead $\bracklabel{G1}$ and $\bracklabel{F1}$ respectively, then we would indeed have a linear multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;1;0} \to \bracksig{2;1;0}.$
+
+
+
+
+
     
+    
+    % While it can be arranged into a series of brackets in which teams that lose but are not eliminated fall into a later brackets (with signature $\bracksig{8;0;0;0} \to \bracksig{2;0})$, the second condition does not hold: following the second condition would require giving second-place to the winner of $\bracksig{C1}$ while eliminating
+    
+    % the format aims to give second-place to the loser of game $\bracksig{C1},$ who did not even win a bracket
+
+
+
+
+
+
+
 
 
 
@@ -67,3 +128,72 @@
 
 
 }
+
+
+%     Armed with the knowledge that a multibracket is a just a format that satisfies the network condition, we can view traditional brackets as a multibracket that satisfies two additional restrictions:
+
+%     \begin{itemize}
+%         \item Teams don't play any games after their first loss.
+%         \item Games are played until only one team has no losses, and that team is crowned champion.
+%     \end{itemize}
+
+%     What happens if we split the difference, eliminating teams after their first loss but not requiring that only one team finishes undefeated? These formats are called \i{semibrackets}.
+
+%     \begin{definition}{Semibracket}{}
+%         A \i{semibracket} is a multibracket in which teams don't play any more games after their first loss and the team(s) that finish undefeated are declared champion.
+%     \end{definition}
+
+%     \begin{definition}{Rank of a Semibracket}{}
+%         The \i{rank} of a semibracket is how many co-champions it crowns. If the semibracket $\A$ has rank $m$, we say $\rank{\A} = m$ or that $\A$ \i{ranks m teams}.
+%     \end{definition}
+
+%     Any traditional bracket is also a semibracket of rank one. Meanwhile, the consolation bracket of Figure \ref{fig:2023 Southern Conference Wrestling Championships Alternative}, which selected the final two top-four teams, is a semibracket of order two.
+
+%     \fig{0.7}{semi42}
+
+%     Given any bracket (other than the unique one-team bracket $\bracksig{1}$), we can construct a semibracket of order by just leaving the championship game unplayed. But are there more exciting examples of semibrackets?
+
+%     Indeed there are. Consider the following tournament design problem: we are tasked with designing an twelve-team tournament to select the top three teams who will go on to compete in the national tournament. The catch? There's only enough time for two rounds: perhaps due to field space or team fatigue, each team can only play two games. What design should we use? The natural choice is shown below in Figure \ref{fig:1200}.
+    
+%     \fig{0.7}{1200}{A More Exciting Semibracket}
+
+%     Unlike Figure \ref{fig:semi42}, there is no potential for the format in Figure \ref{fig:1200} to be completed into a traditional bracket. But as a semibracket, this is still a viable format, one that nicely solves the tournament design problem that we were given.
+
+%     Like traditional brackets, semibrackets have signatures and a notion of a proper seeding.
+
+%     \begin{definition}{Semibracket Signature}{}
+%         The \i{signature} $\bracksig{a_0; ...; a_r}_m$ of an $r$-round semibracket $\A$ is a list such that $a_i$ is the number of teams with $i$ byes and $m = \rank{\A}.$ (In the case where $m = \rank{\A} = 1$, it can be omitted.)
+%     \end{definition}
+
+%     So the signature of \ref{fig:semi42} is $\bracksig{4;2;0}_2$ and the signature of \ref{fig:1200} is $\bracksig{12;0;0}_3.$ A proper seeding of a semibracket is defined in the exact same was that of a traditional bracket, and the fundamental theorem holds as well (stated here without proof.)
+
+%     \begin{theorem}{}{}
+%         There is exactly one proper semibracket with each semibracket signature.
+%     \end{theorem}
+
+%     But why do we care about semibrackets? What's wrong with thinking about a semibracket as just a few different traditional brackets played in sequence? The answer is that semibrackets are a key ingredient in the construction of the \i{linear multibracket}.
+
+%     Linear multibrackets are the most intuitive and familiar kind of multibracket, and in fact the four multibrackets examples from last section are all linear.
+
+%     \begin{definition}{Linear Multibracket}{}
+%         A \i{linear multibracket} is a multibracket that can arranged into a sequence of semibrackets such that teams that lose in a given semibracket are either eliminated outright or sent to a later semibracket, and teams that win a given semibracket finish in $n$th place, where $n$ is the number of teams that won the same semibracket as them or an earlier one.
+%     \end{definition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% }
