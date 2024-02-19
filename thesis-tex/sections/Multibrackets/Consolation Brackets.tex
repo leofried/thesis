@@ -58,15 +58,15 @@
 
     The format in Figure \ref{fig:socon} is a dramatic improvement for selecting a top-four over that in Figure \ref{fig:afl}. In the 2023 Southern Conference Wrestling Championships, teams finish in the top-four if and only if they win two games before they lose two, which is a nice property to have. The one downside is it takes a fourth round: if there is not enough time for a fourth round, or if there is safety risk to teams playing four matches in a row, the format isn't feasible. Though if we only care about the top-four, and not the specifics of which team came in third or in fourth, we could drop game $\bracklabel{F1}$, ensuring that each team plays at most three games.
 
-    \phig{socon1}{2023 Southern Conference Wrestling Championships Alternative}
+    \fig{1}{socon1}{2023 Southern Conference Wrestling Championships Alternative}
 
-    (As discussed earlier, we opt to both the $E$-round winners in fourth, to ensure that no more than $m$ teams can claim a top-$m$ finish for any $m$.)
+    (As discussed earlier, we opt to both the $\bracklabel{E}$-round winners in fourth, to ensure that no more than $m$ teams can claim a top-$m$ finish for any $m$.)
 
-    The four formats presented thus far are examples of \i{multibrackets}.
+    The four formats with consolation brackets presented thus far are examples of \i{multibrackets}.
 
     \begin{definition}{Multibracket}{}
         A \i{multibracket} is a collection of one or more brackets coupled with a specification of which winners and losers of which games receive which places. Starting lines in multibrackets can be marked a seed, or by a game, indicating that loser of the specified game should be placed there.
-    \end{definition} %maybe let's get rid of the specification of places -- i don't want to have to do it with linear s its gross
+    \end{definition}
 
     Since which game each team plays in next (and which place each team ends up in) can be derived only from which game that team played in most recently and whether they won or lost that game, this definition is equivalent to saying that the format upholds the network condition from Section \ref{sec:Definitions}.
 
@@ -76,7 +76,9 @@
 
     (Note that this means multibrackets with contingent games are technically not multibrackets at all. However, they are close enough to being multibrackets and are important enough tools for tournament design that we include them in our discussion, in the same way that  in the last chapter we discussed reseeded brackets even though they are technically not brackets.)
 
-    We will see in the coming sections that many formats, including efficient formats, swiss systems, Page-McIntyre systems, and double-elimination tournaments are all examples of multibrackets.
+    We will see in the coming sections that many formats used in a variety of settings are actually just examples of multibrackets. Figure \ref{fig:zoo} gives an outline of what the space of multibrackets looks like.
+
+    \fig{0.7}{zoo}{The Space of Multibrackets}
 }
 
 
