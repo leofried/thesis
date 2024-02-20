@@ -25,7 +25,9 @@
 
     \newcommand{\toc}{
         \tableofcontents
-        \addtocontents{toc}{\cftpagenumbersoff{sec}}
+        \addtocontents{toc}{
+            \cftpagenumbersoff{sec}
+        }
         \newpage
     }
 
