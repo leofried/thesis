@@ -1,7 +1,5 @@
 \sub{
 
-    %should we use soccer for this?
-
     In this section, we move on from consoloation brackets to focus on semibrackets, which as indicated by Figure \ref{fig:zoo} is a generalization of the traditional bracket. We will then use the notion of a semibracket to define linear multibrackets, which will study for a few sections before addressing nonlinear multibrackets at the end of the chapter.
 
     Consider now the following tournament design problem: we are tasked with designing an eight-team tournament to select the top two teams who will go on to compete in the national tournament. However, there's only enough time for two rounds: perhaps due to field space or team fatigue, each team can only play two games. What design should we use?
@@ -33,7 +31,7 @@
             \begin{tabular}{| c | c | c | c |}
                 \hline
                 & No games & Only one team & Network\\
-                Format & after first loss & finishes undefeated & property  \\
+                Format & after first loss & finishes undefeated & condition  \\
                 \hline
                 Traditional Bracket & \Huge{\check} & \Huge{\check} & \Huge{\check}\\
                 \hline
@@ -41,8 +39,6 @@
                 \hline
                 Multibracket & \Huge{\ex} & \Huge{\ex} & \Huge{\check}\\
                 \hline
-                % Reseeded Bracket & \Huge{\check} & \Huge{\check} & \Huge{\ex}\\
-                % \hline
             \end{tabular}
             }
         \end{center}
@@ -102,30 +98,3 @@
 
     These two properties of semibrackets will sometimes be useful in defining and proving theorems about certain types of multibrackets down the line. In the next section, we will use semibrackets to construct a particularly nice kind of multibrackets: \i{linear multibrackets.}
 }
-
-
-
-
-    % Finally, the space of semibrackets contains some slightly bizarre formats.
-
-    % \begin{definition}{Trivial Semibrackest}{}
-    %     We say semibrackets is \i{trivial} if it has signature $\bracksig{n}_n$ for some $n$.
-    % \end{definition}
-
-    % No games are played in a trivial semibracket: all teams that enter one exit having been declared champion. The only trivial traditional bracket is $\bracksig{1}$, but there is one trivial semibracket with each rank. Trivial semibrackets look a bit strange when drawn.
-
-    % \fig{1}{trivial}{$\bracksig{6}_6$}
-
-    % Arguably stranger than trivial semibrackets are \i{semitrivial} semibrackets.
-
-    % \begin{definition}{Semitrivial Semibracket}{}
-    %     We say a semibracket $\A = \bracksig{a_0; ...; a_r}_m$ is \i{semitrivial} if $r \geq 1$ and $a_r \neq 0.$
-    % \end{definition}
-
-    % In a semitrivial semibracket, some teams are declared champion without playing any games, while other have games on their schedule. The simplest example of a semitrivial semibracket is $\bracksig{2;1}_2.$
-
-    % \fig{1}{21}{$\bracksig{2;1}_2$}
-
-    % There are no semitrivial traditional brackets: if a team wins a traditional bracket without playing any games, they must be the only team in the bracket. Semitrivial semibrackets are pretty unintuitive: luckily, we will soon see that semitrivial semibracket aren't required to develop the theory of multibrackets, and so we won't have to worry about them.
-
-    % With the idea of a semibracket developed and fleshed out, we can now move on to the meat of the chapter: multibrackets.
