@@ -7,9 +7,14 @@ type t = int list list;;
 module T = struct
   type s = 
     | D of int list
-    | C of float list list
+    (* | C of Num.t list list *)
+    [@@deriving sexp]
 
   type t = int Discrete.t
+
+  let p = Rat.frac 1 4
+  let q = Rat.sub_num Rat.one p
+
 
   let get_p s i1 i2 =
     let i1 = i1 - 1 in
@@ -17,10 +22,10 @@ module T = struct
     match s with
     | D s ->
       if i1 < i2 then
-        if List.nth s i1 < i2 then 1. else 0.5
+        if List.nth s i1 < i2 then q else Rat.frac 1 2
       else
-      if List.nth s i2 < i1 then 0. else 0.5
-    | C s -> List.nth (List.nth s i1) i2
+      if List.nth s i2 < i1 then p else Rat.frac 1 2
+    (* | C s -> List.nth (List.nth s i1) i2 *)
     
 
   let play_game (s : s) = Game.{
@@ -28,7 +33,7 @@ module T = struct
     compare = Fun.const (Fun.const 0); 
     play = (fun t1 t2 ->
     Discrete.cross t1 t2
-    |> Discrete.map (fun (i1, i2) -> Discrete.pair (get_p s i1 i2) i1 i2)
+    |> Discrete.map ~eq:Discrete.equal (fun (i1, i2) -> Discrete.pair (get_p s i1 i2) i1 i2)
     |> Discrete.flatten
     |> Pair.rev (Discrete.single ~-1)
   )}
@@ -38,11 +43,8 @@ end
 
 let f0 ~bracket ~scores ~(tiers : t) =
     tiers
-    |> Debug.mark "a"
     |> List.map Combo.permutations
-    |> Debug.mark "a"
     |> Combo.combinations
-    |> Debug.mark "a"
     |> List.map List.flatten
     |> List.map (fun teams ->
       Scheme.run 
@@ -51,11 +53,15 @@ let f0 ~bracket ~scores ~(tiers : t) =
         (List.map Discrete.single teams)
       |> List.hd
     )
-    |> Discrete.uniform
+    |> Discrete.uniform ~eq:Discrete.equal
     |> Discrete.flatten
-    |> Debug.print (Discrete.sexp_of_t sexp_of_int >> Sexp.to_string)
-    |> Discrete.ordered Int.compare
-;;
+    |> (fun d ->
+      let o = Discrete.ordered Int.compare d in
+      print_endline (T.sexp_of_s scores |> Sexp.to_string);
+      if o then () else begin
+        print_endline (Discrete.sexp_of_t sexp_of_int d |> Sexp.to_string)
+      end; o
+    )
 
 let r = ref 0
 
@@ -68,13 +74,14 @@ let f1 ~bracket ~(tiers : t) =
   |> Combo.ssts
   |> Debug.mark "b"
   |> List.map (fun s -> T.D s)
+  (* |> List.map (fun scores -> f0 ~bracket ~scores ~tiers) *)
   |> List.for_all (fun scores -> f0 ~bracket ~scores ~tiers)
   |> Debug.print (string_of_bool)
   |> Debug.hold (fun x -> if x then print_endline "----------------------------xxx" else ())
   |> Debug.mark "---"
 ;;
 
-
+(* 
 let f2 ~bracket =
   Proper.number_of_teams bracket
   |> Combo.compositions
@@ -84,4 +91,4 @@ let f2 ~bracket =
   |> Debug.print (List.length >> Int.to_string) 
   |> List.sexp_of_t (List.sexp_of_t (List.sexp_of_t sexp_of_int))
   |> Sexp.to_string
-  |> print_endline
+  |> print_endline *)

@@ -80,12 +80,12 @@ let rec combine_mismatched f t1 t2 =
   | hd1 :: tl1, hd2 :: tl2 -> f hd1 hd2 :: (combine_mismatched f tl1 tl2)
   | t, [] | [], t -> t
 ;;
-let collapse f =
+let collapse ?(eq = (=)) f =
   fold_left (
     fun old_lst (new_id, new_data) ->
       let found, new_lst = fold_left_map
         (fun found (old_id, old_data) ->
-          if new_id = old_id then
+          if eq new_id old_id then
             true, (old_id, f new_data old_data)
           else 
             found, (old_id, old_data)

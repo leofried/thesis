@@ -1,6 +1,7 @@
 open! Util
 open! Engine
 open! Schemes
+open! Num
 
 
 ;;
@@ -10,7 +11,11 @@ Pools.get_all ~respectfulness:Strongly ~triviality:Efficient ~max_games:8 8 [1;1
 |> print_int *)
 
 
-Prog.specific ();;
+(* Prog.specific ();; *)
+
+(* Progs.Prop_ord.f1 ~tiers:[[1];[2];[3;4];[5;6]] ~bracket:[4;2;0;0];; *)
+Progs.Prop_ord.f1 ~tiers:[[1;2;3;4;5;6;7;8]] ~bracket:[8;0;0;1;0];;
+
 
 
 (*
