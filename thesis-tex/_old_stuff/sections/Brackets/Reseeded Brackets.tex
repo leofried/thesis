@@ -1,0 +1,178 @@
+\sub{
+
+Edwards's Theorem naturally raises the question: is there some bracket-like tournament format, one where undefeated teams face off until only one reamins, that expands the space of signatures that are ordered? \i{Reseeded} brackets are our first attempt at an answer.
+
+Ultimately, the reason that proper brackets are not, in general, ordered, is that lower-seeded teams are treated, if they win, as the team that they beat for the rest of the format. Consider again the proper bracket analyzed by Silver: $\bracksig{16; 0; 0; 0; 0}.$ If an 11-seed wins in the first round, they take on the schedule of a 6-seed for the rest of the tournament, while if the 9-seed wins, they take on the schedule of an 8-seed. Given that a 6-seed has an easier schedule than an 8-seed, it's not hard to see why it might be preferable to be an 11-seed rather than a 9-seed.
+
+\i{Reseeding} (poorly named) fixes this by resorting the match-ups every round: if an 11-seed keeps winning, they will have to play teams according to their seed, rather than getting an effective upgrade to 6-seed status.
+
+\begin{definition}{Reseeded Brackets}{}
+    In a \i{reseeded} bracket, after each round, match up the highest-seeded team with the lowest-seeded team, second-highest vs second-lowest, etc.
+\end{definition}
+
+Note that by Definition \ref{def:bracket}, a reseeded bracket is not a bracket at all, as matchups between teams that have not yet lost are not determined in advance of the outcomes of any games. However, because reseeded brackets act so similarly to traditional brackets, and because colloquially they are referred to as brackets, we opt to continue using the word ``bracket'' to describe them.
+
+In 2023, both National Football League conferences use a reseeded bracket with signature $\bracksigr{6; 1; 0; 0}.$ (The superscript $R$ indicates this is reseeded bracket.) If the first round of the bracket goes chalk, then it looks just like a normal bracket.
+
+\fig{0.9}{2023afc}{2023 National Football League AFC Playoffs}
+
+The dotted lines are drawn after the first round of games has been played: if there are some first-round upsets, then the bracket is rearranged to ensure that it is still better to be a higher seed rather than a lower seed.
+
+\fig{0.9}{2023nfc}{2023 National Football League NFC Playoffs}
+
+In the NFC, 6-seed New York upset 3-seed Minnesota. Had a conventional bracket been used, the semifinal matchups would have been 1-seed vs 5-seed and 2-seed vs 6-seed: the 2-seed would have had an easier draw than the 1-seed, while the 6-seed would have an easier draw than the 5-seed. Reseeding fixes this by matching 6-seed New York with top-seed Philadelphia, and 2-seed San Francisco with 5-seed Dallas.
+
+Reseeding is a powerful technique. For one, the fundamental theorem still applies to reseeded brackets, allowing us to refer to reseeded brackets by their signatures as well.
+
+\theo{}{
+    There is exactly one proper reseeded bracket with each bracket signature.
+}{
+    The definition of properness ensures that there is only one way byes can be distributed such that a reseeded bracket can be proper. Additionally, because reseeded brackets have no additional parameters beyond which seeds get how many byes, there is no more than one reseeded bracket with each signature that could be proper. Finally, that bracket is indeed proper: if the bracket goes to chalk, the matchups will be the exact same as a traditional bracket, which by the fundamental theorem is a proper set of matchups.
+}{}
+
+But what about orderedness? It's intuitive to think that all proper reseeded are ordered: it feels like almost by definition, the higher-seeded teams have an easier path than the lower-seeded ones. Hwang \cite{reseeding} conjectured a weaker version of this.
+
+\begin{conj}{}{}
+    All balanced proper reseeded brackets are ordered.
+\end{conj}
+
+Unfortunately, neither the stronger claim that all proper reseeded brackets are ordered, nor Hwang's weaker conjecture are true. Our classification of the ordered reseeded brackets takes the same route as our proof of Edwards's Theorem did: we first examine the orderedness of certain important brackets, and then we use the stapling and containment lemmas to specify the complete set of ordered reseeded brackets.
+
+The proofs of the stapling and containment lemmas for reseeded brackets, as well as the fact that all ordered reseeded brackets are proper, are so similar to the corresponding proofs for traditional brackets that we just state them without proof. 
+
+\begin{theorem}{}{}
+    All ordered reseeded brackets are proper.
+\end{theorem}
+\begin{lemma}{The Stapling Lemma for Reseeding}{}
+    If $\A = \bracksigr{a_0; ...; a_r}$ and $\B = \bracksigr{b_0; ...; b_s}$ are ordered reseeded brackets, then $\C = \bracksigr{a_0; ...; a_r + b_0 - 1; ...; b_s}$ is an ordered reseeded bracket as well.
+\end{lemma}
+\begin{lemma}{The Containment Lemma for Reseeding}{}
+    If $\A$ and $\B$ are reseeded brackets, $\A$ contains $\B$, and $\B$ is not ordered, then neither is $\A$.
+\end{lemma}
+
+We now examine particular brackets.
+
+\theo{}{
+    $\bracksigr{1}$, $\bracksigr{2;0}$, and $\bracksigr{4;0;0}$ are ordered.
+}{
+    Since no reseeding is  done in a bracket of two or fewer rounds, and since the traditional brackets of these signatures are ordered, so are the reseeded brackets.
+}{}
+
+Our primary example of a reseeded bracket that is ordered despite the traditional bracket of the same signature not being ordered is $\bracksigr{4;2;0;0}.$
+
+\theo{}{
+    $\bracksigr{4;2;0;0}$ is ordered.
+}{
+    This can be shown by computing the probability of each team winning the format and then applying the SST conditions to establish the inequalities, as we did in Theorem \ref{th:four_ordered}. In the interest of brevity, however, we instead give an intuitive argument.\\
+
+    $\W{A}{t_1}{\T} \geq \W{A}{t_2}{\T}$ because from those two teams perspectives, this format is just  $\bracksigr{4;0;0}.$ $\W{A}{t_2}{\T} \geq \W{A}{t_3}{\T}$ because $t_2$ has better odds if $t_3$ wins in the first round and they meet in the semifinals, and certainly has better odds if $t_3$ loses in the first round. $\W{A}{t_4}{\T} \geq \W{A}{t_5}{\T}$ because $t_4$ is at least as likely to win the first-round matchup, and then their paths would be identical.\\
+
+    $\W{A}{t_3}{\T} \geq \W{A}{t_4}{\T}$ holds because if both teams win the first round then $t_3$ has better odds in the remaining $\bracksigr{4;0;0}$ bracket. Meanwhile if only one does, then $t_3$ will be joined by $t_5$ while $t_4$ will be joined by $t_6,$ and so $t_3$ is more likely to dodge playing $t_1$ in the finals. The same argument applies to show that $\W{A}{t_5}{\T} \geq \W{A}{t_6}{\T}$ as well.
+}{}
+
+Unfortunately, that is where the power of reseeding to convert non-ordered signatures into ordered ones ends. The following two signatures are not ordered.
+
+\theo{}{
+    $\bracksigr{6;1;0;0}$ is not ordered.
+}{
+    Let $\A = \bracksigr{6; 1; 0; 0},$ and let $\T$ have the following matchup table.
+
+    \begin{center}
+        \begin{tabular}{c | c c c c c c c}
+        & $t_1$ & $t_2$ & $t_3$ & $t_4$ & $t_5$ & $t_6$ & $t_7$\\ 
+        \hline
+        $t_1$ & $0.5$ & $1-p$ & $1-p$ & $1-p$& $1-p$& $1-p$& $1-p$\\
+        $t_2$ & $p$ & $0.5$ & $1-p$ & $1-p$ & $1-p$& $1-p$& $1-p$\\
+        $t_3$ & $p$ & $p$ & $0.5$ & $0.5$ & $0.5$ & $1-p$& $1-p$\\
+        $t_4$ & $p$ & $p$ & $0.5$ & $0.5$ & $0.5$ & $0.5$& $0.5$\\
+        $t_5$ & $p$ & $p$ & $0.5$ & $0.5$ & $0.5$ & $0.5$& $0.5$\\
+        $t_6$ & $p$ & $p$ & $p$ & $0.5$ & $0.5$ & $0.5$& $0.5$\\
+        $t_7$ & $p$ & $p$ & $p$ & $0.5$ & $0.5$ & $0.5$& $0.5$\\
+        \end{tabular}
+    \end{center}
+
+    Then $$\W{\A}{t_6}{\T} = O(p^3),$$ but
+$$\W{\A}{t_7}{\T} = 0.25p^2 + O(p^3).$$ Thus, for small enough $p,$ $\W{\A}{t_6}{\T} < \W{\A}{t_7}{\T},$ so $\A$ is not ordered.
+}{}
+
+\theo{}{
+    $\bracksigr{4;2;2;0;0}$ is not ordered.
+}{
+    Let $\A = \bracksigr{4; 2; 2; 0; 0},$ and let $\T$ have the following matchup table.
+
+    \begin{center}
+        \begin{tabular}{c | c c c c c c c c}
+        & $t_1$ & $t_2$ & $t_3$ & $t_4$ & $t_5$ & $t_6$ & $t_7$ & $t_8$\\ 
+        \hline
+        $t_1$ & $0.5$ & $1-p^2$ & $1-p^2$ & $1-p^2$ & $1-p^2$& $1-p^2$& $1-p^2$& $1-p^2$\\
+        $t_2$ & $p^2$ & $0.5$ & $0.5$ & $0.5$ & $1-p$ & $1-p$& $1-p^2$& $1-p^2$\\
+        $t_3$ & $p^2$ & $0.5$ & $0.5$ & $0.5$ & $1-p$ & $1-p$ & $1-p$& $1-p$\\
+        $t_4$ & $p^2$ & $0.5$ & $0.5$ & $0.5$ & $0.5$ & $1-p$ & $1-p$ & $1-p$\\
+        $t_5$ & $p^2$ & $p$ & $p$ & $0.5$ & $0.5$ & $1-p$ & $1-p$ & $1-p$\\
+        $t_6$ & $p^2$ & $p$ & $p$ & $p$ & $p$ & $0.5$ & $1-p$ & $1-p$\\
+        $t_7$ & $p^2$ & $p^2$ & $p$ & $p$ & $p$ & $p$ & $0.5$ & $0.5$\\
+        $t_8$ & $p^2$ & $p^2$ & $p$ & $p$ & $p$ & $p$ & $0.5$ & $0.5$\\
+        \end{tabular}
+    \end{center}
+
+    Then 
+        $$\W{\A}{t_7}{\T} = 0.25p^5 + O(p^6)$$
+    but
+        $$\W{\A}{t_8}{\T} = 0.5p^5 + O(p^6).$$
+    Thus, for small enough $p,$ $\W{\A}{t_7}{\T} < \W{\A}{t_8}{\T},$ so $\A$ is not ordered.
+}{}
+
+Recapping,
+
+\begin{figg}{Which Proper Reseeded Brackets are Ordered}{}
+    \begin{center}
+        \begin{tabular}{ c | c }
+            Ordered & Not Ordered\\
+            \hline
+            $\bracksigr{1}$ & $\bracksigr{6;1;0;0}$\\
+            $\bracksigr{2;0}$ & $\bracksigr{4;2;2;0;0}$\\
+            $\bracksigr{4;0;0}$ & \\
+            $\bracksigr{4;2;0;0}$ & \\
+        \end{tabular}
+    \end{center}
+\end{figg} 
+
+Finally, we apply the stapling and containment lemmas to complete the theorem.
+
+\theo{}{
+    The ordered reseeded brackets are exactly those corresponding to signatures that can be generated in the following way.
+    \begin{enumerate}
+        \item Start with the list $\bracksigr{0}$ (note that this not yet a bracket signature).
+        \item As many times as desired, prepend the list with $\bracksig{1},$ $\bracksig{3; 0},$ or $\bracksig{3; 2; 0}.$
+        \item Then, add 1 to the first element in the list, turning it into a bracket signature.
+    \end{enumerate}
+}{
+    The stapling lemma, combined with the fact that $\bracksigr{1}$, $\bracksigr{2;0}$, $\bracksigr{4;0;0}$, and $\bracksigr{4;2;0;0}$ are ordered, ensure that any reseeded brackets generated by the above procedure is indeed ordered. Left is to use the containment lemma to ensure that these are the only ones.\\
+
+    Let $\A$ be a bracket signature that cannot be generated by the procedure. Then, either there is a round in which three or more games are to be played, or there is a round in which exactly two games are played and the next two rounds each have exactly two games played as well.\\
+
+    Let $i$ be the latest such round. If round $i$ is the first of three rounds with two games each, then round $i+3$ must have only one game played (otherwise $i$ would not be the latest such round). But then $\A$ contains $\bracksigr{4;2;2;0;0}$, and so is not ordered.\\
+    
+    If round $i$ has three or more games, then round $i+1$ must contain exactly two games (any less and not every winner would have a game, any more and $i$ would not be the latest such round.) Then, if round $i+2$ has one game, then $\A$ contains $\bracksigr{6;1;0;0}$, and if it has two, then $\A$ contains $\bracksigr{4;2;2;0;0}.$ In either case, $\A$ is not ordered.\\
+
+    Thus, the ordered reseeded brackets are exactly those generated by the procedure.
+}{}
+
+So, the space of ordered reseeded brackets is slightly larger than the space of ordered traditional brackets, although perhaps this is not quite as much of an expansion as we would've liked or expected. Despite this, reseeded brackets definitely \i{feel} more ordered than traditional brackets of the same signature, even if neither is ordered in the definitional sense.
+
+\begin{conj}{}{}
+    There is some reasonable restriction on a set of teams that is stronger than SST under which all reseeded brackets ordered.
+\end{conj}
+
+In the meantime, reseeding remains an important tool in our tournament design toolkit. But it is not without its drawbacks, as discussed by Baumann, Matheson, and Howe \cite{reseeding_issues}. 
+
+In a reseeded bracket, teams and spectators alike don't know who they will play or where their next game will be until the entire previous round is complete. This can be an especially big issue if parts of the bracket are being played in different locations on short turnarounds: in the NCAA Basketball Tournament, the first two rounds are played over a weekend at various pre-determined locations. It would cause problems if teams had to pack up and travel across the country because they got reseeded and their opponent and thus location changed.
+
+In addition, part of what makes the NCAA Basketball Tournament (affectionately known as ``March Madness'') such a fun spectator experience is the fact that these matchups are known ahead of time. In ``bracket pools,'' groups of fans each fill out their own brackets, predicting who will win each game and getting points based on how many they get right. If it wasn't clear where in the bracket the winner of a given game was supposed to go, this experience would be diminished.
+
+Finally, reseeding gives the top seed(s) an even greater advantage than they already have: instead of playing against merely the \i{expected} lowest-seeded team(s) each round, they would get to play against the \i{actual} lowest-seeded team(s). In March Madness, ``Cinderella Stories,'' that is, deep runs by low seeds, would become much less common.
+
+In many ways, the NFL conference playoffs are a perfect place to use a reseeded bracket: games are played once a week, giving plenty of time for travel; only seven teams make the playoffs in each, so a huge March Madness-style bracket challenge is unlikely; as a professional league, the focus is far more on having the best team win and protecting Cinderella Stories isn't as important; and because the bracket is only three rounds long, reseeding is only required once. Somewhat ironically, the NFL conference playoffs used to use the format $\bracksigr{4;2;0;0}$ which is ordered, but have since allowed a seventh team from each conference into the playoffs and changed to the non-ordered $\bracksigr{6;1;0;0}.$ 
+
+Other leagues with similar structures might consider adopting forms of reseeding to protect their incentives and competitive balance (looking at you, Major League Baseball), but in many cases, the traditional bracket structure is too appealing to adopt a reseeded one.
+}

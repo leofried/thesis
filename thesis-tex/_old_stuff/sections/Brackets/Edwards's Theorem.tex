@@ -1,0 +1,126 @@
+\sub {
+
+We now attempt to completely classify the set of ordered brackets. Edwards \cite{montana} originally accomplished this without access to the machinery of bracket signatures or proper brackets: we present a quicker proof that makes use of the fundamental theorem of brackets and develop two nice lemmas along the way.
+
+We begin with the stapling lemma, which allows us to combine two smaller ordered brackets into a larger ordered one by having the winner of one of the brackets be treated as the lowest seed in the other. This is depicted in Figure \ref{fig:combine}.
+
+\fig{.85}{combine}{Setup of the Stapling Lemma with $\A = \bracksig{2;1;0},$ $\B = \bracksig{4;0;0}$, and $\C = \bracksig{2;1;3;0;0}$}
+
+\lemm{The Stapling Lemma}{If $\A = \bracksig{a_0; ...; a_r}$ and $\B = \bracksig{b_0; ...; b_s}$ are ordered brackets, then $\C = \bracksig{a_0; ...; a_r + b_0 - 1; ...; b_s}$ is an ordered bracket as well.
+}{Let $\A, \B,$ and $\C$ be as specified. Let $\T$ be an SST list of teams $n + m - 1$ teams, and let $\R, \S \subset \T$ be the lowest $n$ and the highest $m-1$ seeds of $\T$ respectively. We divide proving that $\C$ is ordered into proving three sub-statements:
+\begin{enumerate}
+    \item For $i < j < m,$ $\W{\C}{t_i}{\T} \geq \W{\C}{t_j}{\T}$
+    \item $\W{\C}{t_{m-1}}{\T} \geq \W{\C}{t_m}{\T}$
+    \item For $m \leq i < j,$ $\W{\C}{t_i}{\T} \geq \W{\C}{t_j}{\T}$
+\end{enumerate}
+Together, these show that $\C$ is ordered.\\
+
+We begin with the first sub-statement. Let $i < j < m.$ Then,
+\begin{align*}
+    \W{\C}{t_i}{\T} &= \sum_{k=m}^{n+m-1} \W{\A}{t_k}{\R} \cdot \W{\B}{t_i}{\S \cup \{t_k\}}\\
+    &\geq \sum_{k=m}^{n+m-1} \W{\A}{t_k}{\R} \cdot \W{\B}{t_j}{\S \cup \{t_k\}}\\
+    &=\W{\C}{t_j}{\T}
+\end{align*}
+The first and last equalities follow from the structure of $\C,$ and the inequality follows from $\B$ being ordered.\\
+
+Now the second sub-statement.
+\begin{align*}
+    \W{\C}{t_{m-1}}{\T} &= \sum_{k=m}^{n+m-1} \W{\A}{t_k}{\R} \cdot \W{\B}{t_{m-1}}{\S \cup \{t_k\}}\\
+    &\geq \W{\A}{t_m}{\R} \cdot \W{\B}{t_{m-1}}{\S \cup \{t_m\}}\\
+    &\geq \W{\A}{t_m}{\R} \cdot \W{\B}{t_{m}}{\S \cup \{t_m\}}\\
+    &= \W{\C}{t_{m}}{\T}
+\end{align*}
+The equalities follow from the structure of $\C,$ the first inequality follows from probabilities being non-negative, and the second inequality follows from $\B$ being ordered.\\
+
+Finally, we show the third sub-statement. Let $m \leq i < j.$ Then,
+\begin{align*}
+    \W{\C}{t_i}{\T} &= \W{\A}{t_i}{\R} \cdot \W{\B}{t_i}{\S \cup \{t_i\}}\\
+    &\geq \W{\A}{t_j}{\R} \cdot \W{\B}{t_i}{\S \cup \{t_i\}}\\
+    &\geq \W{\A}{t_j}{\R} \cdot \W{\B}{t_j}{\S \cup \{t_j\}}\\
+    &= \W{\C}{t_j}{\T}
+\end{align*}
+The equalities follow from the structure of $\C$, the first inequality from $\A$ being ordered, and the second inequality from the teams being SST.\\
+
+We have shown all three sub-statements, and so $\C$ is ordered.
+}{}
+
+Now, if we begin with the set of brackets $\{\bracksig{1}, \bracksig{2; 0}, \bracksig{4; 0; 0}\}$ and then repeatedly apply the stapling lemma, we can construct a set of brackets that we know are ordered. In other words,
+
+\begin{corollary}{}{construct_order}
+    Any bracket signature formed by the following process is ordered:
+    \begin{enumerate}
+        \item Start with the list $\bracksig{0}$ (note that this not yet a bracket signature).
+        \item As many times as desired, prepend the list with $\bracksig{1}$ or $\bracksig{3; 0}.$
+        \item Then, add 1 to the first element in the list, turning it into a bracket signature.
+    \end{enumerate}
+\end{corollary}
+
+Corollary \ref{th:construct_order} uses the tools that we have developed so far to identify a set of ordered brackets. Somewhat surprisingly, this set is complete: any bracket not reachable using the process in Corollary \ref{th:construct_order} is not ordered. To prove this we first need to show the containment lemma.
+
+\begin{definition}{Containment}{}
+    Let $\A$ and $\B$ be bracket signatures. We say $\A$ \i{contains} $\B$ if there exists some $i$ such that
+    \begin{itemize}
+        \item At least as many games are played in the $(i+1)$th round of $\A$ as in the first round of $\B$, and
+        \item For $j > 1$, there are exactly as many games played in the $(i + j)$th round of $\A$ as in the $j$th round of $\B$.
+    \end{itemize}
+\end{definition}
+
+Intuitively, $\A$ containing $\B$ means that if $\A$ went chalk, and games within each round were played in order of largest seed-gap to smallest seed-gap, then at some point, there would be a bracket of shape $\B$ used to determine to identify the last team in the rest of bracket $\A$. Figure \ref{fig:contain} shows $\A = \bracksig{2;5;1;0;3;0;0}$ containing $\B = \bracksig{4;2;0;0}.$ After the 10v11 game and the 5v(10v11) game, there is a bracket of shape $\B$ (the solid lines) that must be played to determine the last team in the rest of the bracket
+
+\fig{.85}{contain}{Setup of the Containment Lemma with\\
+$\A = \bracksig{2;5;1;0;3;0;0}$ and $\B = \bracksig{4;2;0;0}.$}
+
+\lemm{The Containment Lemma}{
+    If $\A$ contains $\B$, and $\B$ is not ordered, then neither is $\A$.
+}{
+    Let $\A$ be a bracket signature with $r$ rounds and $n$ teams, and let $\B$ have $s$ round and $m$ teams, such that $\A$ contains $\B$ and $\B$ is not ordered. Let $k$ be the number of teams in $\A$ that get at least $s + i$ byes (where $i$ is from the definition of contains).\\
+
+    $\B$ is not ordered, so let $\M$ be a matchup table that violates the orderedness condition, where none of the win probabilities are $0.$ (If we have an $\M$ that includes $0$s, we can replace them with $\epsilon.$ For small enough $\epsilon$, $\M$ will still violate the condition.) Let $p$ be the minimum probability in $\M$. Let $\mathbf{P}$ be a matchup table in which the lower-seeded team wins with probability $p$, and let $\mathbf{Z}$ be a matchup table in which the lower-seeded team wins with probability $0.$\\
+
+    Now, consider the following block matchup table on $\T,$ a list of $n$ teams.
+
+    \begin{center}
+        \begin{tabular}{c | c | c | c |}
+        & $t_1$ - $t_k$ & $t_{k+1}$ - $t_{k + m}$ & $t_{k+ m + 1}$ - $t_n$\\
+        \hline
+        $t_1$ - $t_k$ & $\mathbf{P}$ & $\mathbf{P}$ & $\mathbf{Z}$\\
+        \hline
+        $t_{k+1}$ - $t_{k + m}$ & $\mathbf{P}$ & $\M$ & $\mathbf{Z}$\\
+        \hline
+        $t_{k+ m + 1}$ - $t_n$ & $\mathbf{Z}$ & $\mathbf{Z}$ & $\mathbf{Z}$\\
+        \hline
+        \end{tabular}
+    \end{center}
+    
+    \;\\
+
+    Let $\S \subset \T$ be the sublist of teams seeded between $k+1$ and $k+m$. Then, for $t_j \in \S,$
+    $$\W{\A}{t}{\T} = \W{\B}{t}{\S} \cdot p^{r-s-i},$$ since $t_j$ wins any games it might have to play in rounds $i$ or before automatically, any games after $s+i$ with probability $p$, and any games in between according to $\M.$\\
+
+    However, $\M$ (and thus $\S$) violates the orderedness condition for $\B$, and so $\T$ does for $\A.$ 
+}{}
+
+With the containment lemma shown, we can proceed to the main theorem.
+
+\theo{Edwards's Theorem}{
+    The only ordered brackets are those described by Corollary \ref{th:construct_order}.
+}{
+    Let $\A$ be a proper bracket not described by Corollary \ref{th:construct_order}. The corollary describes all proper brackets in which each round either has only game, or has two games but is immediately followed by a round with only one game. Thus $\A$ must include at least two successive rounds with two or more games each.\\
+    
+    The final round in such a chain will be followed by a round with a single game, and so the final round must have only two games. Thus, $\A$ includes a sequence of three rounds, the first of which has at least two games, the second of which has exactly two games, and the third of which has one game.\\
+
+    Therefore, $\A$ contains $\bracksig{4;2;0;0}$. But we know that $\bracksig{4;2;0;0}$ is not ordered, and so by the containment lemma, neither is $\A$.
+}{edwards}
+
+Edwards's Theorem is both exciting and disappointing. On one hand, it means that we can fully describe the set of ordered brackets, making it easy to check whether a given bracket is ordered or not. On the other hand, it means that in an ordered bracket at most three teams can be introduced each round, so the length of the shortest ordered bracket on $n$ teams grows linearly with $n$ (rather than logarithmically as is the case for the shortest proper bracket). If we want a bracket on many teams to be ordered, we risk forcing lower-seeded teams to play a large number of games, and we only permit the top-seeded teams to play a few. For example, the shortest ordered bracket that could've been used in the 2021 NCAA Basketball South Region is $\bracksig{4; 0; 3; 0; 3; 0; 3; 0; 3; 0; 0},$ which is played over a whopping ten rounds.
+
+\fig{.475}{ordered_sixteen}{The Shortest Sixteen-Team Ordered Bracket}
+
+Because of this, few leagues use ordered brackets, and those who do usually have so few teams that every proper bracket is ordered (the 2023 College Football Playoffs, for example). Even the Korean Baseball Organization League, which uses a somewhat unconventional $\bracksig{2; 1; 1; 1; 0},$ only sends five teams to the playoffs, and again every five-team proper bracket is ordered. If the KBO League ever expanded to the six-team bracket $\bracksig{2; 1; 1; 1; 1; 0},$ we would have a case of an ordered bracket being used when a proper non-ordered bracket exists on the same number of teams.
+
+% \begin{oq}{}{}
+%     Which brackets are ordered if the inputted list of teams is not required to be SST?
+% \end{oq}
+
+% Edward's Theorem assumes that the inputted list of teams are SST, and in particular, are in the correct order such that better teams are seeded higher. In real life, however, seeding is not that simple: if we knew who the best team was going into the tournament, we wouldn't need to conduct the tournament at all. Instead, seeding is often a guess as to the strengths of various teams based on the information known at the time, and in some cases, certain higher-seeded are generally agreed to be weaker than certain lower-seeded teams. Which brackets remain ordered under weaker assumptions than SST is still open.
+}

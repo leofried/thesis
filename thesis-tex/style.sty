@@ -10,7 +10,6 @@
     linesnumbered,
     noline]{algorithm}
     \usepackage{algpseudocode}
-    \usepackage[nottoc,numbib]{tocbibind}
     \usepackage{tocloft}
     \usepackage{tikz-cd}
     \usepackage{pifont}
@@ -21,7 +20,34 @@
     % \usepackage{tikz}
 
 
+    % \makeatletter
+    % \renewenvironment{thebibliography}[1]
+    %      {\subsection*{\bibname}% <-- this line was changed from \chapter* to \section*
+    %       \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
+    %       \list{\@biblabel{\@arabic\c@enumiv}}%
+    %            {\settowidth\labelwidth{\@biblabel{#1}}%
+    %             \leftmargin\labelwidth
+    %             \advance\leftmargin\labelsep
+    %             \@openbib@code
+    %             \usecounter{enumiv}%
+    %             \let\p@enumiv\@empty
+    %             \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+    %       \sloppy
+    %       \clubpenalty4000
+    %       \@clubpenalty \clubpenalty
+    %       \widowpenalty4000%
+    %       \sfcode`\.\@m}
+    %      {\def\@noitemerr
+    %        {\@latex@warning{Empty `thebibliography' environment}}%
+    %       \endlist}
+    % \makeatother
+    \usepackage[nottoc,numbib]{tocbibind}
+
+
+
     \hbadness=10000
+
+    \renewcommand{\thesubsection}{\arabic{subsection}}
 
 
     \newcommand{\toc}{
@@ -50,7 +76,7 @@
         \def\subsectname{#1}
         \subsection{#1}
         \label{sec:#1}
-        \subfile{sections/\sectname/#1}
+        \subfile{sections/#1}
         \newpage
     }
 
@@ -68,7 +94,7 @@
     \newtcbtheorem[number within=subsection, use counter from=theorem]{conj}{Conjecture}{enhanced, breakable, colback=yellow!5,colframe=orange!100!,fonttitle=\bfseries}{conj}
 
 
-    \newcommand{\graph}[2]{\includegraphics[scale=#1]{images/\sectname/\subsectname/#2.png}
+    \newcommand{\graph}[2]{\includegraphics[scale=#1]{images/\subsectname/#2.png}
     }
 
     \newcommand{\fig}[3]{
