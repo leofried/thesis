@@ -1,54 +1,54 @@
 \sub {
 
-    In traditional brackets, defining properness is relatively straightforward: the teams are totally ordered by seed, and a bracket is proper if, assuming it goes chalk, in every round is better to be a higher seed than a lower one. Properness in the setting of linear multibrackets is a little trickier, as many teams competing in lower semibracket are not there by virtue of being a particular seed, but instead because they lost an earlier game.
+    % In traditional brackets, defining properness is relatively straightforward: the teams are totally ordered by seed, and a bracket is proper if, assuming it goes chalk, in every round is better to be a higher seed than a lower one. Properness in the setting of linear multibrackets is a little trickier, as many teams competing in lower semibracket are not there by virtue of being a particular seed, but instead because they lost an earlier game.
 
-    However, we can still define a partial order on the teams that might be competing in a given semibracket:
+    % However, we can still define a partial order on the teams that might be competing in a given semibracket:
 
-    \begin{definition}{Tiers}{}
-        We say a team $t_i$ is of a higher tier than team $t_j$ if
-        \begin{enumerate}[(a)]
-            \item Neither $t_i$ and $t_j$ have lost a game yet and $t_i$ is seeded higher,
-            \item $t_i$ has lost a game, while $t_j$ has not yet lost one yet.
-            \item $t_i$'s most recent loss was from a lower semibracket than $t_j$'s most recent loss, or
-            \item $t_i$ most recent loss was from a later round of the same semibracket as $t_j$'s most recent loss.
-        \end{enumerate}
-        If two teams most recent losses are from the same round of the same semibracket, then they are of the same tier.
-    \end{definition}
+    % \begin{definition}{Tiers}{}
+    %     We say a team $t_i$ is of a higher tier than team $t_j$ if
+    %     \begin{enumerate}[(a)]
+    %         \item Neither $t_i$ and $t_j$ have lost a game yet and $t_i$ is seeded higher,
+    %         \item $t_i$ has lost a game, while $t_j$ has not yet lost one yet.
+    %         \item $t_i$'s most recent loss was from a lower semibracket than $t_j$'s most recent loss, or
+    %         \item $t_i$ most recent loss was from a later round of the same semibracket as $t_j$'s most recent loss.
+    %     \end{enumerate}
+    %     If two teams most recent losses are from the same round of the same semibracket, then they are of the same tier.
+    % \end{definition}
 
-    While conditions (a) and (d) are seem logical (condition (a) is just traditional bracket properness, and condition (d) says that teams that made it further in a given semibracket belong to a higher tier), conditions (b) and (c) might be a bit more confusing: why should a team that already lost be of a higher tier than one that has not, and why should a team that lost in a lower semibracket be of a \i{higher} tier than a team that lost in a higher semibracket?
+    % While conditions (a) and (d) are seem logical (condition (a) is just traditional bracket properness, and condition (d) says that teams that made it further in a given semibracket belong to a higher tier), conditions (b) and (c) might be a bit more confusing: why should a team that already lost be of a higher tier than one that has not, and why should a team that lost in a lower semibracket be of a \i{higher} tier than a team that lost in a higher semibracket?
 
-    To answer these questions, consider the linear multibracket shape of signature $$\bracksig{2;3;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{2;1;1;0}.$$
+    % To answer these questions, consider the linear multibracket shape of signature $$\bracksig{2;3;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{2;1;1;0}.$$
 
-    \fig{1}{tierform1}{$\bracksig{2;3;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{2;1;1;0}$}
+    % \fig{1}{tierform1}{$\bracksig{2;3;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{2;1;1;0}$}
 
-    [[TALK ABOUT THIS]]
+    % [[TALK ABOUT THIS]]
     
-    % What is the intuitively ``proper'' way to assign teams to the various lines? Well the primary bracket of signature $\bracksig{2;3;0;0}$ ought to be seeded in the same way that a traditional bracket of signature $\bracksig{2;3;0;0}$ is seeded. The single team in the bracket with signature $\bracksig{1}$ will come in second place and so should be the loser of game $\bracklabel{C1},$ while the third place game $\bracklabel{D1}$ should be played between the losers of the $\bracklabel{B}$-round games.
+    % % What is the intuitively ``proper'' way to assign teams to the various lines? Well the primary bracket of signature $\bracksig{2;3;0;0}$ ought to be seeded in the same way that a traditional bracket of signature $\bracksig{2;3;0;0}$ is seeded. The single team in the bracket with signature $\bracksig{1}$ will come in second place and so should be the loser of game $\bracklabel{C1},$ while the third place game $\bracklabel{D1}$ should be played between the losers of the $\bracklabel{B}$-round games.
 
-    % Finally, the four teams that will play in the final semibracket are the two remaining losers (of $\bracklabel{A1}$ and $\bracklabel{D1}$), and then the 6- and 7-seeded teams, who have not yet played a game. How should 
+    % % Finally, the four teams that will play in the final semibracket are the two remaining losers (of $\bracklabel{A1}$ and $\bracklabel{D1}$), and then the 6- and 7-seeded teams, who have not yet played a game. How should 
 
 
-    Now we can extend properness to linear multibrackets in the following way.
+    % Now we can extend properness to linear multibrackets in the following way.
 
-    \begin{definition}{Proper Linear Multibracket}{}
-        We a linear multibracket is proper, if, assuming the semibrackets are played through in order and that higher tiered teams always beat lower tiered ones, then in every round of every semibracket it is better to be a higher tiered team than a lower tiered team, where:
-        \begin{enumerate}[(a)]
-            \item It is better to have already won a semibracket than to have not.
-            \item It is better to be competing in the current semibracket than to have not won a previous semibracket and not be competing in the current one.
-            \item It is better to have a bye than be playing a game.
-            \item It is better to be playing a lower-tiered team than a higher-tiered team.
-        \end{enumerate}
-    \end{definition}
+    % \begin{definition}{Proper Linear Multibracket}{}
+    %     We a linear multibracket is proper, if, assuming the semibrackets are played through in order and that higher tiered teams always beat lower tiered ones, then in every round of every semibracket it is better to be a higher tiered team than a lower tiered team, where:
+    %     \begin{enumerate}[(a)]
+    %         \item It is better to have already won a semibracket than to have not.
+    %         \item It is better to be competing in the current semibracket than to have not won a previous semibracket and not be competing in the current one.
+    %         \item It is better to have a bye than be playing a game.
+    %         \item It is better to be playing a lower-tiered team than a higher-tiered team.
+    %     \end{enumerate}
+    % \end{definition}
 
-    With signatures and properness defined, we can address the question posed last question: does the fundamental theorem apply to linear multibrackets? There are two ways to answer this question. The first is a cheap hack that shows the answer is no, and the second is a more through analysis that also shows the answer is no.
+    % With signatures and properness defined, we can address the question posed last question: does the fundamental theorem apply to linear multibrackets? There are two ways to answer this question. The first is a cheap hack that shows the answer is no, and the second is a more through analysis that also shows the answer is no.
 
-    We begin with the cheap hack. Consider the The 1988 Men's College Basketball Maui Invitational, which was a multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}.$
+    % We begin with the cheap hack. Consider the The 1988 Men's College Basketball Maui Invitational, which was a multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}.$
 
-    \fig{0.8}{maui}{The 1998 Men's College Basketball Maui Invitational}
+    % \fig{0.8}{maui}{The 1998 Men's College Basketball Maui Invitational}
 
-    The cheap idea that proves the fundamental theorem doesn't apply to linear multibrackets is that we can swap (say) $\bracksig{A2}$ and $\bracksig{A3}$ and the resulting multibracket has the same signature and is still proper. Why is this cheap? Because its easily patched over: it would still be a meaningful and important result for the fundamental theorem to be true up the rearranging of teams in the same tier.
+    % The cheap idea that proves the fundamental theorem doesn't apply to linear multibrackets is that we can swap (say) $\bracksig{A2}$ and $\bracksig{A3}$ and the resulting multibracket has the same signature and is still proper. Why is this cheap? Because its easily patched over: it would still be a meaningful and important result for the fundamental theorem to be true up the rearranging of teams in the same tier.
 
-    Unfortunately, this too is not the case. Consider the 
+    % Unfortunately, this too is not the case. Consider the 
 
 
 
