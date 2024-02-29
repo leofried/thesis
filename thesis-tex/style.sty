@@ -47,8 +47,6 @@
 
     \hbadness=10000
 
-    \renewcommand{\thesubsection}{\arabic{subsection}}
-
 
     \newcommand{\toc}{
         \tableofcontents
@@ -76,7 +74,7 @@
         \def\subsectname{#1}
         \subsection{#1}
         \label{sec:#1}
-        \subfile{sections/#1}
+        \subfile{sections/\sectname/#1}
         \newpage
     }
 
@@ -94,7 +92,7 @@
     \newtcbtheorem[number within=subsection, use counter from=theorem]{conj}{Conjecture}{enhanced, breakable, colback=yellow!5,colframe=orange!100!,fonttitle=\bfseries}{conj}
 
 
-    \newcommand{\graph}[2]{\includegraphics[scale=#1]{images/\subsectname/#2.png}
+    \newcommand{\graph}[2]{\includegraphics[scale=#1]{images/\sectname/\subsectname/#2.png}
     }
 
     \newcommand{\fig}[3]{
