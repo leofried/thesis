@@ -19,7 +19,7 @@
     \lemm{}{
         Let $\A$ be a totally randomized bracket with signature $\bracksig{a_0; ...; a_r}$, let $\S$ be a list of teams, and let $\T$ be the list of teams produced by replacing a given team $s \in \S$ with a team $t$ such that for all other teams $u,$ $$\G{t}{u} \geq \G{s}{u}.$$ Then, $$\W{\A}{t}{\T} \geq \W{\A}{s}{\S}.$$
     }{
-        Let $X$ be the set of subsets of $\S \setminus \{s\} = T \setminus \{t\}$, and for each set of teams $Y \subset X$, let $P_Y$ be the probability that $s$ or $t$ will have to beat exactly the set of teams $Y$ in order to win the format (noting that this probability is the same for $s$ and $t$). Then,
+        Let $X$ be the set of subsets of $\S \setminus \{s\} = T \setminus \{t\}$, and for each set of teams $Y \in X$, let $P_Y$ be the probability that $s$ or $t$ will have to beat exactly the set of teams $Y$ in order to win the format (noting that this probability is the same for $s$ and $t$). Then,
         \begin{align*}
             \W{\A}{t}{\T} &= \sum_{Y \in X} \left(P_Y \cdot \prod_{u \in Y} \G{t}{u}\right)\\
             &\geq \sum_{Y \in X} \left(P_Y \cdot \prod_{u \in Y} \G{s}{u}\right)\\
@@ -87,7 +87,7 @@
         Therefore $\A$ is not ordered.
     }{}
 
-    Chung and Hwang's conjecture was rescued by Chen and Hwang who restricting to the domain of the claim to balanced formats \cite{totally_random_balanced}.
+    Chung and Hwang's conjecture was rescued by Chen and Hwang who restricted the domain of the claim to balanced formats \cite{totally_random_balanced}.
 
     \theo{}{
         All totally randomized balanced brackets are ordered.
@@ -125,7 +125,7 @@
         All totally randomized nearly balanced brackets are ordered.
     \end{conj}
 
-    Conjecture \ref{conj:trnbbo} remains open, but would be very powerful if true: unlike balanced brackets, there is a nearly balanced bracket for every number of teams. If the conjecture held, then total randomization would be a format that can provide orderedness to arbitrary numbers of teams $n$ without having $O(n)$ rounds, as the traditional and reseeded options do.
+    Conjecture \ref{conj:trnbbo} would be a nice strengthening of Theorem \ref{th:balance_ord}: unlike balanced brackets, there is a nearly balanced bracket for every number of teams. If the conjecture held, then total randomization would be a format that can provide orderedness to arbitrary numbers of teams $n$ without having $O(n)$ rounds, as the traditional and reseeded options do.
 
     Of course, this orderedness does not come without drawbacks. For one, the randomization makes the orderedness feel a bit cheap: once the randomization is complete, before any games have even been played, the orderedness is lost. (Compare to the proper and reseeded ordered brackets, which maintain their orderedness throughout the whole tournament.)
     
@@ -137,316 +137,71 @@
         The $r$-round \i{cohort randomized bracket} on is the traditional balanced bracket on $2^r$ teams, except, for each $i$, seeds $2^i + 1$ through $2^{i+1}$ are shuffled randomly before play.
     \end{definition}
 
-    Thus the 1- and 2-seeds are locked into their places, the 3- and 4-seeds exchange places half the time, seeds 5-8 are randomly shuffled, and as are 9-16, 17-32, etc. An example of what a cohort randomized bracket might look after randomization is displayed in Figure \ref{fig:16rcb}
+    Thus the 1- and 2-seeds are locked into their places, the 3- and 4-seeds exchange places half the time, seeds 5-8 are randomly shuffled, and as are 9-16, 17-32, etc. 
+    
+    % An example of what a cohort randomized bracket might look after randomization is displayed in Figure \ref{fig:16rcb}.
 
-    \phig{16rcb}{The $16$-Team Cohort Randomized Bracket After Randomization}
+    % \phig{16rcb}{The $16$-Team Cohort Randomized Bracket After Randomization}
     
     Cohort randomization solves the second issue with total randomness: that good teams might meet earlier than desired.
     
         \theo{}{
             If the $r$-round cohort randomized bracket goes chalk, after the $i$th round, the top $2^{r-i}$ seeds will remain. 
         }{
-            We proceed by induction on $r$. If $r = 0$, then there are no rounds and so the theorem holds. For any other $r$, in the first round, the top $2^{r-1}$ seeds will fac the bottom $2^{r-1}$ seeds, and because the format goes chalk, the bottom half of teams will be eliminated. Thus after the first round, the top $2^{r-1}$ seeds will remain. The remaining format is just the $r-1$-round cohort randomized bracket, for which the theorem holds by induction.
+            We proceed by induction on $r$. If $r = 0$, then there are no rounds and so the theorem holds. For any other $r$, in the first round, the top $2^{r-1}$ seeds will face the bottom $2^{r-1}$ seeds, and because the format goes chalk, the bottom half of teams will be eliminated. Thus after the first round, the top $2^{r-1}$ seeds will remain. The remaining format is just the $r-1$-round cohort randomized bracket, for which the theorem holds by induction.
         }{}
 
-    It seems as though cohort randomized brackets ought to be ordered: being in a higher cohort seems certainly preferable to being a lower cohort, as you delay confrontation with the other higher cohorted teams until later, and if two teams are in the same cohort, they are treated identically and thus it seems that the better team would win more.
+    It seems as though cohort randomized brackets ought to be ordered: being in a higher cohort seems certainly preferable to being a lower cohort, as you delay confrontation with the other higher-cohorted teams until later, and if two teams are in the same cohort, they are treated identically and thus it seems that the better team would win more.
 
     Unfortunately, like many other formats we've seen thus far, cohort randomized brackets are not (for more than two rounds) ordered. 
 
-%     \theo{}{
-%         The eight-team cohort randomized bracket is not ordered.
-%     }{
-%         Let $\A$ be the eight-team cohort randomized brakcte, and let $\T$ have the following matchup table for $0 < p < 0.5.$
+    \fig{0.52}{eight_cohort}{Setup of Theorem \ref{th:cohort_counter}}
+
+    \theo{}{
+        The eight-team cohort randomized bracket is not ordered.
+    }{
+        Let $\A$ be the eight-team cohort randomized bracket, and let $\T$ have the following matchup table for $0 < p < 0.5.$
         
-%         \begin{center}
-%             \begin{tabular}{c | c c c c c c c c}
-%     & $t_1$ & $t_2$ & $t_3$ & $t_4$ & $t_5$ & $t_6$ & $t_7$ & $t_8$\\ 
-%     \hline
-%     $t_1$ &  &  &  & & & & &\\
-%     $t_2$ & 0.5 &  &  &  & & & &\\
-%     $t_3$ & 0.5 & 0.5 &  &  &  & & &\\
-%     $t_4$ & 0.5 & 0.5 & 0.5 &  &  & & &\\
-%     $t_5$ & $p$ & 0.5 & 0.5 & 0.5 & & & &\\
-%     $t_6$ &  $p$&$p$  & $p$ &  $p$& 0.5 & & &\\
-%     $t_7$ & $p$ &  $p$& $p$ & $p$ & 0.5 &0.5 & &\\
-%     $t_8$ & $p$ &  $p$& $p$ & $p$ & 0.5 &0.5 &0.5 &\\
-%                 \end{tabular}
-%         \end{center}
-
-%         We will show that $\W_{\A}{t_2}{\T} < \W_{\A}{t_3}{\T}.$ Note first that the half the time when $t_3$ falls on the same side of the bracket as $t_2$, they have the same win probability for their first round, semifinal, and finals games, and thus the same win probability overall. Thus, we let $\B$ be the format identical to $\A$ except $t_3$ is guaranteed to be placed on the starting line traditional given to the 4-seed and look to show that
-%         $$\W_{\B}{t_2}{\T} < \W_{\B}{t_3}{\T}.$$
-
-
-
-%         % Now, note that for all $i$, $p_{2i} = p_{3i} = p_{4i}$ and $p_{6i} = p_{7i} = p_{8i}.$ Thus, the only rand
-
-% %         Define
-% %         \begin{align*}
-% %             q &= 1 - p\\ %X_D
-% %             r &= pq + q\frac{1}{2}\\ %Y_1D, Y_BD
-% %             s &= \frac{1}{4} + \frac{1}{2}q\\ %Y_5D
-% %             t &= q\frac{1}{2} + p(qr + ps)\\%Y_BD15
-% %             u &= q\frac{1}{2} + p(\frac{1}{2}r + \frac{1}{2}s)\\%Y_1DB5, Y_BDB5,
-% %             v &= q^{2}\frac{1}{2}+2pqr+p^{2}q\\
-% %             w &= \frac{1}{2} - p = 1 - \frac{1}{2}%Y_1DBD,  Y_BDBD
-% %         \end{align*}
-% %             % u &= q\frac{1}{2}+p\frac{1}{2}\left(r\right)
-% %             % v &= q\frac{1}{2} + p\left(qr + p\left(\frac{1}{4} + \frac{1}{2}\right)\right)\\
-% %   %          
-% %             % q^2\frac{1}{2} + qpr + pq\f
-% %  %           
-% %             % \frac{1}{2}q^2 + pqr + \frac{1}{2}pq + p^2(1/4 + 1/2q) = 
-% % %
-% % %
-% % %
-% %             % s &= \frac{1}{2}q^{2}+2pqr+p^{2}q\\
-% %             % t &= \frac{q}{2}+\frac{p}{2}\left(r+\frac{1}{4}+\frac{q}{2}\right)\\
-% %             % u &= \frac{1}{2}q+pqr+p^{2}\left(\frac{1}{4}+\frac{q}{2}\right)
-  
-
-% %         Let's first calculate $\W{\A}{t_2}{\T}.$ Note that $t_3$ and $t_4$ have the same matchup probabilities, and $t_6, t_7, t_8$ do as well, so the only randomization property that is relavent is where $t_5$ is placed.Thus,
-% %         \begin{align*}
-% %             \W{\A}{t_2}{\T} &= \frac{1}{4}(qrt + qru + q\frac{1}{2}v + \frac{1}{2}rv)
-% %         \end{align*}
-
-% %         Now, when calculating $\W{\A}{t_3}{\T}$ we note that half the time, when $t_3$ is put on the same side of the bracket as $t_2$, they will win the format at the same rate as $t_2.$ The other half the time, we must calculate it by hand. Thus,
-% %         \begin{align*}
-% %             \W{\A}{t_3}{\T} &= \frac{1}{8}(qrt + qru + q\frac{1}{2}v + \frac{1}{2}rv + q\frac{1}{2}v + \frac{1}{2}rv + 2qru).\\
-% %         \end{align*}
-% %         Comparing, we find
-% %         \begin{align*}
-% %             \W{\A}{t_2}{\T} - \W{\A}{t_3}{\T}  &= \frac{1}{8}(qrt - qru)\\
-% %             &= \frac{qr}{8}(t - u)\\
-% %             &= \frac{qr}{8}(q\frac{1}{2} + p(qr + ps) - q\frac{1}{2} + p(\frac{1}{2}r + \frac{1}{2}s))\\
-% %             &= \frac{pqr}{8}(qr+ps-\frac{1}{2}r-\frac{1}{2}s)\\
-% %             &= \frac{pqrw}{8}(r-s)\\
-% %             &= \frac{pqrw}{8}(pq + q\frac{1}{2}-\frac{1}{4} - \frac{1}{2}q)\\
-% %             &= \frac{pqrw}{8}(pq + q\frac{1}{2}-\frac{1}{4} - \frac{1}{2}q)\\
-% %             &= \frac{pqrw}{8}(pq-\frac{1}{4} )\\
-% %             &<0
-% %         \end{align*}
-
-% %         Thus $\W{\A}{t_2}{\T} < \W{\A}{t_3}{\T}$, so $\A$ is not ordered.
-
-% %         % Let $q = 1 - p.$ Let $r = pq + \frac{1}{2}q$ Noting that $r$ is the probability that $t_2$ beats the winner of a game between $t_i$ and $t_j$ where $i, j \in \{1, 3, 4\} \times \{6, 7, 8\}.$ Let $s = 
-
-
-% %         %APPENDIX
-
-
-
-%     }{}
-%     %     The cohort randomizations of balanced brackets have particularly nice forms: the cohort randomization of an $r$-round balanced bracket is parameterized by $$(\bracksig{2^r; 0; ...; 0}, \bracktier{2^{r-1} + 2^{r-2} + ... + 2^{0} + 1}).$$
-    
-%     %     This is very similar to the Wimbledon format, which employs a cohort randomized balanced bracket but merges the first two cohorts. Wimbledon even uses this scheme in their single's tournaments, which are on 128 teams and are parameterized by $$(\bracksig{128; 0; ...; 0}, \bracktier{96 + 16 + 8 + 4 + 2 + 1}).$$
-
-
-
-
-
-
-
-
-
-
-
-
-
-%     % While totally randomized (balanced) brackets solves the orderedness problem that Edwards's Theorem presents, it does so at a significant cost: excitment. In Section \ref{sec:Proper Brackets}, we saw Lemma \ref{th:proper_condition_one_point_five}, which guarenteed that if a proper bracket goes to chalk, then after each round, the $m$ remaining teams would be the top $m$ seeds. This ensures that the later rounds of a proper bracket would likely consist of increasingly exciting game, culminating in the championship game which would be between the top two seeds. totally randomized brackets provide no such guarentee: the top two seeds could meet each other in the first round if we get partiularly unlikely.
-
-
-
-
-
-
-%     % \i{Cohort Randomized Brackets}, a variant of which is used in tournaments on the the Assosiation for Tennis Profesionals Tour, and initially named by Schwenk.
-
-%     % \begin{definition}{Cohort Randomized Bracket}{}
-%     %     The \i{cohort randomized bracket} on $2^r$ teams is the traditional balanced bracket on $2^r$ teams, except, for each $i$, seeds $2^i + 1$ through $2^{i+1}$ are shuffled randomly before play.
-%     % \end{definition}
-    
-%     % Thus the 1- and 2-seeds are locked into their places, the 3- and 4-seeds exchange places half the time, seeds 5-8 are randomly shuffled, and as are 9-16, 17-32, etc. An example of what a cohort randomized bracket might look after randomization is displayed in Figure \ref{fig:16rcb}
-
-%     % \phig{16rcb}{The $16$-Team Cohort Randomized Bracket After Randomization}
-
-%     % Cohort Randomization looks to use randomization to maintain its orderedness like totally randomized brakcet
-
-
-
-
-
-
-
-
-
-
-
-
-
-% %finish proofs
-
-%     Consider the 2022 Wimbledon Mixed Double's Championship, whose bracket is depicted in Figure \ref{fig:wimbledon}.
-
-%     \fig{0.8}{wimbledon}{2022 Wimbledon Mixed Double's Championship}
-
-%     The 2022 Wimbledon Mixed Double's Championship used a balanced bracket of signature $\bracksig{32;0;0;0;0;0}.$ However its seeding is certainly not proper, and in fact, looks quite strange.
-    
-%     For one thing, 24 of the 32 starting lines in the bracket are not seeded at all. What does this mean? In Wimbledon, only the top 25\% of teams are seeded. The other 75\% of teams are randomly placed in the remaining starting lines.
-
-%     But secondly, even the top 8 teams are not seeded properly: if all games go chalk, the quarterfinals will be 1v5, 2v7, 3v5, and 4v6, and the semifinal will be 1v3 and 2v4. How did Wimbledon come up with such a bizarre seeding? Randomly.
-
-%     Before each Wimbledon Mixed Double's Championship, the seeding is constructed in the following way: the 1- and 2-seeds are placed normally. Then half the 3- and 4-seeds are placed normally, and half the time they are swapped. Then the 5- through 8-seeds are randomly placed into the four starting lines that are normally assigned to those four seeds. Finally, the remaining 24 teams are placed randomly into the remaining spots.
-
-%     Thus the bracket in Figure \ref{fig:wimbledon} is only one of the forty eight different possible brackets that could be used in the Wimbledon Mixed Double's Championship: it happens to be the one used in 2022.
-
-%     Why does Wimbledon use such a strange format? Wimbledon is one of many tournaments on the ATP Tour (the set of tournaments played by the professional tennis players) that all use almost identical formats: large balanced brackets. Additionally, the seeding for these tournaments is set by the ATP rankings, which tend to be slow to update. As a result, if every ATP Tour tournament used a proper seeding, the 6-seed and 27-seed would play each other in the first round at every tournament until one of them moved up or moved down. These rematches were deemed undesirable and so this randomization procedure was introduced: The 1-seed's quarterfinals matchup (if everything goes chalk) is now randomly drawn from the 5- through 8-seeds, instead of always being the 8-seed.
-
-%     Additionally, this particular way of grouping seeds ensures that after round $s$ for $s>1$, if the format goes chalk, the top $2^{r-s}$ out of $2^r$ teams remain. Finally, it might even allow a balanced bracket on more than four teams to be ordered, a feat that proper and reseeded brackets were both unable to accomplish.
-
-%     The format used in the Wimbledon Mixed Double's Championship is a particular example of a class of formats called \i{cohort randomized brackets} (a generalization of Schwenk's cohort randomized seeding \cite{randomized_cohort}).
-
-%     \begin{definition}{Composition}{}
-%         A \i{composition} $\B = \bracktier{b_1 + ... + b_n}$ of a natural number $n$ is a way of writing $n$ as the sum of a sequence of natural numbers.
-%     \end{definition}
-
-%     We will use compositions to describe which seeds are to be randomized with which other seeds (each of these groups is called a cohort). In the particular case of the Wimbledon Mixed Double's Championship, the bottom 24 teams are randomized, as are the next 4 and 2 after that, and then the 2-seed and 1-seed aren't randomized at all. So the composition of the Wimbledon Mixed Double's Championship is $$\B = \bracktier{24 + 4 + 2 + 1 + 1}.$$
-
-%     \begin{definition}{Cohort Randomized Bracket}{}
-%         A \i{cohort randomized bracket} is an $n$-team tournament format parameterized $(\A, \B)$, where $\A$ is an $n$-team bracket signature and $\B = \bracktier{b_1 + ... + b_k}$ is a composition of $n$. The proper bracket of signature $\A$ is constructed, but, for each $j$, seeds $$n + 1 - \sum_{i=1}^j b_i$$ through $$n - \sum_{i=1}^{j-1} b_i$$ are shuffled randomly. The resulting bracket is played out normally.
-%     \end{definition}
-
-%     Thus the 2022 Wimbledon Mixed Double's Championship employs the cohort randomized bracket parameterized by $$(\bracksig{32;0;0;0;0;0}, \bracktier{24 + 4 + 2 + 1 + 1}).$$ 
-
-%     But it is certainly not the simplest example of a cohort randomized bracket: a format that totally ignores seeding and just randomly places all the teams into a bracket is also cohort randomized. 
-    
-%     \begin{definition}{Totally Randomized Bracket}{}
-%         The \i{totally randomized bracket} of the $n$-team signature $\A$ is the cohort randomized bracket parameterized by $(\A, \bracktier{n}).$
-%     \end{definition}
-
-%     Chung and Hwang had a conjecture about totally randomized brackets \cite{define_ordered}.
-    
-%     \begin{conj}{}{}
-%         All totally randomized brackets are ordered.
-%     \end{conj}
-
-%     Certainly once the randomization is been complete and starting lines have been set this is not true: the resulting bracket will either be improper, in which case it is certainly not ordered, or proper, in which case it is ordered only when it satisfies the condition of Edwards's Theorem. However, in expectation \i{over the randomization}, it is natural to hope that all totally randomized brackets are ordered: there is no advantage to being one seed or another, so certainly the better teams should win more?
-
-%     Unfortunately, as was the case in the previous section, the sweeping conjecture ultimately falls short, this time due to a counterexample given by Israel \cite{seventeen_team}.
-
-%     \theo{}{
-%         Let $\A = \bracksig{16;0;0;0;1;0}$. The totally randomized bracket $\B = (\A, \bracktier{17})$ is not ordered.
-%     }{
-%     %proof_needed
-
-%         % Consider the following SST matrix on 17 teams $\T$, four teams named 1, 3, 4, and 5, and thirteen teams named 2, whose matchups are identical. The upper half of the matrix is implied.
-
-%         % \begin{center}
-%         %     \begin{tabular}{c | c c c c c}
-%         %         & 1 & 2 & 3 & 4 & 5\\ 
-%         %         \hline
-%         %         1 & & & & &\\
-%         %         2 & 0.5 & & & &\\
-%         %         3 & 0 & $2p$ & & &\\
-%         %         4 & 0 & $p$ & $2p$ & & \\
-%         %         5 & 0 & $p$ & $p$ & 0.5 & \\
-%         %         \end{tabular}
-%         % \end{center}
-
-%         % Assume $p$ is very small. We will show that $\W{\B}{4}{\T} < \W{\B}{5}{\T}.$ The difference will be $O(p^3)$, so terms of $O(p^4)$ will be dropped throughout the analysis.\\
-
-%         % Now, let $i \in \{4, 5\}$ and let $j = 9 - i$. First note that if team $i$ were to win $\B$ while starting in any of the sixteen starting lines that receive no byes, they will need to win at least four games against teams 1, 2, and 3, which happens with probability $O(p^4)$. Thus we restrict our study to cases when $i$ start with the quadruple bye.\\
-
-%         % In such a case, they would play team $j$ in the championship game with probability $O(p^4)$, team $3$ with probability $O(p^3)$ (but beat them with probability $O(p)$), and of course if they play team $1$ they have no chance to win. Thus, we can restrict out study to worlds where team $i$ beats (a) team $2$ in the championship game. So letting $\S = \T \setminus \{i\}$, and $\C$ be the totally randomized bracket $(\bracksig{16;0;0;0;0}, \bracktier{16})$,        $$\W{\B}{i}{\T} = \frac{1}{17} \cdot p \cdot \W{\C}{2}{\S} + O(p^4).$$
-%     }{}
-
-%     However, again analogously to the previous section, orderedness can be rescued for a smaller set of brackets, this time by Chen and Hwang \cite{totally_random_balanced}.
-
-%     \theo{}{
-%         All totally randomized balanced brackets are ordered.
-%     }{
-% %proof_needed
-%     }{}
-
-%     Chen and Hwang conjectured that this theorem could be extended.
-
-%     \begin{definition}{Nearly Balanced}{}
-%         A bracket is \i{nearly balanced} if no team receives more than one bye.
-%     \end{definition}
-
-%     \begin{conj}{}{trnbbo}
-%         All totally randomized nearly balanced brackets are ordered.
-%     \end{conj}
-
-%     Conjecture \ref{conj:trnbbo} remains open, but would be very powerful if true: unlike balanced brackets, there is a nearly balanced bracket for every number of teams, if the conjecture held, then total randomization would be a format that can provide orderedness to arbitrary numbers of teams $n$ without having $O(n)$ rounds, as the traditional and reseeded options do.
-
-%     Of course, this orderedness does not come without drawbacks. For one, the randomization makes the orderedness feel a bit cheap: once the randomization is complete, before any games have even been played, the orderedness is lost. (Compare to the proper and reseeded ordered brackets, which maintain their orderedness throughout the whole tournament.)
-
-%     But secondly, total randomness has the undesirable property that it might make for some very lopsided and anti-climatic brackets. It could be that top-two teams, whom everyone wants to see face off in the championship game, are set to play each other in the first round!
-
-%     To fix this, we define a new class of cohort randomized brackets: \i{chalk randomized brackets}.
-
-%     \begin{definition}{Chalk Randomized Brackets}{}
-%         The \i{chalk randomized bracket} of the $n$-team signature $\A = \bracksig{a_0; ...; a_r}$ is the cohort randomized bracket parameterized by $(\A, \bracktier{b_1 + b_2 + ... + b_r + 1}),$ where $b_i$ is the number of games being played in round $i$ of $\A$.
-%     \end{definition}
-
-%     Chalk randomization solves the second issue with total randomness: that good teams might meet earlier than desired.
-
-%     \theo{}{
-%         If a chalk randomized bracket goes chalk, after each round, the $m$ remaining teams will be the $m$ top seeds.
-%     }{
-%         Let $\A = \bracksig{a_0; ...; a_r}$. We proceed by induction on $r.$ If $r = 0$, then $\A = \bracksig{1}$, and so the theorem holds. For any other $r$, in the first round, $a_0$ teams are playing $b_1 = a_0 / 2$ games. However, the $b_1$ lowest seeds in the tournament are shuffled between themselves, so none of them can play each other. Because the tournament goes chalk, they will all lose, so after the first round, the $n - b_1$ remaining teams are the top $n - b_1$ top seeds. Further, we are left with the chalk randomized bracket of signature $\bracksig{a_0/2 + a_1; a_2; ...; a_r}$, so the theorem holds by induction.
-%     }{}
-
-%     The chalk randomizations of balanced brackets have particularly nice forms: the chalk randomization of an $r$-round balanced bracket is parameterized by $$(\bracksig{2^r; 0; ...; 0}, \bracktier{2^{r-1} + 2^{r-2} + ... + 2^{0} + 1}).$$
-
-%     This is very similar to the Wimbledon format, which employs a chalk randomized balanced bracket but merges the first two cohorts. Wimbledon even uses this scheme in their single's tournaments, which are on 128 teams and are parameterized by $$(\bracksig{128; 0; ...; 0}, \bracktier{96 + 16 + 8 + 4 + 2 + 1}).$$
-
-%     Chalk randomized balanced brackets are of a nice enough form that we can show their orderedness.
-
-%     \theo{}{
-%         All chalk randomized balanced brackets are ordered.
-%     }{
-% %proof_needed
-%     }{}
-
-%     However, the natural extension, that all chalk randomized brackets are ordered, remains open.
-
-%     \begin{conj}{}{}
-%         All chalk randomized brackets are ordered.
-%     \end{conj}
-
-%     Finally, the Wimbledon formats are not technically chalk randomized, as they merge the first two cohorts. However, we conjecture that they too are ordered.
-
-%     \begin{conj}{}{}
-%         The Wimbledon formats are ordered.
-%     \end{conj}
-
-%     Ultimately, cohort randomization is a useful tool that uses randomness to generate ordered formats for a given signature (balanced ones in particular), when traditional and reseeded brackets were unable to do so. As we discussed, however, this orderedness can feel a bit fake, as the format is orderedness only over the randomness in the starting line selection: as soon as the bracket has been set, the format is no longer ordered.
-
-%     Cohort randomization can still be a valuable tool in cases where many tournaments are being played and rematches would like to be avoided (as in the ATP), cases where a random distribution of advantages might be preferred to a disordered distribution of advantages (as in March Madness), or cases when the true seeding is unknown (and so total randomization is a more accurate model of the format).
-    
-%     But it is certainly not a completely satisfying tool for generating ordered brackets from arbitrary signatures. In fact, the question of whether such a tool exists at all remains an open one, and we will conclude this chapter without an answer. Instead, we will explore other kinds of formats all together, such as \i{multibrackets}, \i{round robins}, and \i{pools}.
-%     %update list of other formats
-
-
-%     %augment to tiered signature for non-weakly respectful things
-
-
-%     %-tennis seeding was to avoid rematches
-
-
-%     %Orderedness Results:
-%     %--Literal Tennis is ordered (manual)
-%     %--For balanced bracket: 2^n-1+1 - 2^n is ordered (ref)
-%     %--Tiers based on chalky number of rounds survived is ordered (conj)
-    
-%     %--Complete randomization is not always ordered (ref)
-%     %--But it is for balanced brackets (ref)
-%     %--And for nearly (or nearly, nearly, etc) (conj)
-    
-%     %--Tiers by number of byes is ordered (conj)
-%     %--Finally, if something is ordered then 2^n of those brackets with tiers of size 2^n is ordered.
-%     %--General result about what makes something non-ordered (conj)
-% }
-
+        \begin{center}
+            \begin{tabular}{c | c c c c c c c c}
+    & $t_1$ & $t_2$ & $t_3$ & $t_4$ & $t_5$ & $t_6$ & $t_7$ & $t_8$\\ 
+    \hline
+    $t_1$ &  &  &  & & & & &\\
+    $t_2$ & 0.5 &  &  &  & & & &\\
+    $t_3$ & 0.5 & 0.5 &  &  &  & & &\\
+    $t_4$ & 0.5 & 0.5 & 0.5 &  &  & & &\\
+    $t_5$ & $p$ & 0.5 & 0.5 & 0.5 & & & &\\
+    $t_6$ &  $p$&$p$  & $p$ &  $p$& 0.5 & & &\\
+    $t_7$ & $p$ &  $p$& $p$ & $p$ & 0.5 &0.5 & &\\
+    $t_8$ & $p$ &  $p$& $p$ & $p$ & 0.5 &0.5 &0.5 &\\
+                \end{tabular}
+        \end{center}
+
+        Note that because $t_6, t_7,$ and $t_8$ each have identical matchups against every other team, permutations of those teams don't affect the probability of any other teams winning the tournament. Thus we consider the eight possible randomizations in Figure \ref{fig:eight_cohort} noting that for $i \in \{2, 3\},$
+        $$\W{\A}{t_i}{\T} = \frac{1}{8}\sum_{j = 1}^8 \W{\A_j}{t_i}{\T}.$$
+        (The three empty starting lines can be filled with any permutation of $\{t_6, t_7, t_8\}.$)\\
+
+        Some calculation finds
+        \begin{align*}
+            \W{\A_1}{t_2}{\T} &= \W{\A_1}{t_3}{\T}\\
+            \W{\A_2}{t_2}{\T} &= \W{\A_2}{t_3}{\T}\\
+            \W{\A_3}{t_2}{\T} &= \W{\A_4}{t_3}{\T}\\
+            \W{\A_4}{t_2}{\T} &= \W{\A_3}{t_3}{\T}\\
+            \W{\A_6}{t_2}{\T} &= \W{\A_8}{t_3}{\T}\\
+            \W{\A_7}{t_2}{\T} &= \W{\A_5}{t_3}{\T}\\
+            \W{\A_8}{t_2}{\T} &= \W{\A_6}{t_3}{\T}
+        \end{align*}
+        However, letting $q = 1- p,$ $r = \frac{1}{2}q + \frac{1}{4},$ and $s = pq + \frac{1}{2}q$
+        \begin{align*}
+            \W{\A_5}{t_2}{\T} &= qs\left(q\frac{1}{2}+p(pr + qs)\right)\\
+            &<qs\left(q\frac{1}{2}+p\left(\frac{1}{2}r + \frac{1}{2}s\right)\right) &\textrm{because $r < s$ and $p < \frac{1}{2} < q$}\\
+            &=\W{\A_7}{t_3}{\T} 
+        \end{align*}
+        Thus, $$\W{\A}{t_2}{\T} < \W{\A}{t_3}{\T}$$ so $\A$ is not ordered.
+    }{cohort_counter}
+
+    If cohort randomized brackets don't solve the orderedness problem, why would we use them over traditional proper brackets? Cohort randomization is most famously found on the ATP Tour, a collection of tournaments played by professional tennis players that all use almost identical formats: large balanced brackets. Additionally, the seeding for these tournaments is set by the ATP rankings, which tend to be slow to update. As a result, if every ATP Tour tournament used the proper seeding, the 6-seed and 27-seed would play each other in the first round at every tournament until one of them moved up or moved down. These rematches were deemed undesirable and so this randomization procedure was introduced: The 1-seed's quarterfinals matchup (if everything goes chalk) is now randomly drawn from the 5- through 8-seeds, instead of always being the 8-seed.
+
+    But Theorem \ref{th:cohort_counter} tells us that they are not ordered. Thus we are left with the following question: does there exist a bracket-like format with the property that 
+    [[[NAME THIS PROPERTY]]]
 }
