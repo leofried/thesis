@@ -104,5 +104,15 @@
 
     The first two rounds of the new NBA playoffs are similar in structure to the Page-McIntyre system: two lower-seeded teams play each other and two higher-seeded teams play each other, and then the winner of the first game plays the loser of the second. But because the two qualifying teams get dumped into a larger eight-team bracket, rather than facing off immediately, the issues of the original Page-McIntyre system are avoided.
 
-    % Nonlinear multibrackets are powerful tools for selecting a single champion, while avoiding the pitfalls of traditional brackets where a great team can get eliminated after a single loss. However, there are other powerful uses cases for multibrackets as well: in the next section we will explore \i{efficient} multibrackets, which aim to select the top-$m$ out of $n$ teams.
+    A final nice example of nonlinear multibrackets is bitonic sort. Bitonic sort was developed by Batcher \cite{batcher} as a networked sorting algorithm with low delay (the sorting-theory equivalent to a low number of rounds). As every sorting algorithm can be transformed into a tournament format, and every networked sorting algorithm can be transformed into a multibracket, we can construct an nonlinear multibracket that executes Batcher's bitonic sort.
+
+    \begin{definition}{Bitonic Sort}{}
+        The \i{bitonic sort} on $2^r$ teams proceed by diving the teams into two groups of $2^{r-1}$ teams, recursively running the bitonic sort on $2^{r-1}$ teams on each group, and then running the standard swiss format $\S_r$ on the full group of $2^r$ teams, with one of the groups getting the odd seeds in $\S_r$ and the other group getting the even seeds.
+    \end{definition}
+
+    The 8-team bitonic sort is displayed in Figure \ref{fig:bitonic}. The $\bracklabel{A}$-, $\bracklabel{B}$-, and $\bracklabel{C}$- round games facilitate the running of two parallel instantiations of the 4-team bitonic sort, while the $\bracklabel{D}$-, $\bracklabel{E}$-, and $\bracklabel{F}-$round games carry out $\S_3.$
+
+    \fig{1}{bitonic}{8-Team Bitonic Sort}
+
+    We leave it to the reader to verify that bitonic sort is in fact a sorting algorithm: that is, if the matchup table is SST with all win probabilities being 0 or 1 (even if the teams are not seeded in the correct order initially!), bitonic sort will correctly sort the teams. Impressively, the 8-team bitonic sort does this in only six rounds: no team needs to play every other team in order to complete the sort.
 }
