@@ -1,24 +1,25 @@
 \sub {
 
-    The three multibrackets discussed in Section \ref{sec:Third-Place Games} are actually all a special kind of multibracket: they are \i{linear}.
-
-    \begin{definition}{Linear Multibracket}{}
-        We say a multibracket is \i{linear} if its constituent brackets can be ordered such that teams that lose in earlier brackets get placed in later ones.
-    \end{definition}
+    For the four sections we have focused our study on \i{linear} multibrackets with the property that when a team loses in a given semibracket they drop into a different, lower semibracket. But many leagues use nonlinear multibrackets as well, and so while our tools of signature and properness are less equipped to study them, we look at what the space looks like.
 
     An simple example of a nonlinear multibracket is the 1931 Victorian Football League Playoffs, sometimes called the Page-McIntyre system. %\cite?
 
     \fig{0.65}{page4}{1931 Victorian Football League Playoffs}
 
-    The Page-McIntyre system introduces a number of new concepts that make it different from any of the formats we've seen thus far. The first thing to note is that while the winner of game $\bracklabel{A1}$ goes directly to the final, the loser falls into the semifinal of the \i{same bracket}. This is what we mean when we say that the format is nonlinear: teams can lose but end up back in the same bracket.
+    Nonlinear multibrackets are a bit strange: while the winner of game $\bracklabel{A1}$ goes directly to the final, the loser falls into the semifinal of the \i{same bracket}. This poses problems for both attempts to define a signature as well as a notion of properness.
 
-    The second thing to note is that the first round appear to have an ``improper'' set of matchups: the games are 1v2 and 3v4 rather than then ``proper'' 1v4 and 2v3. However, properness is a much trickier concept in the world of multibrackets. While we will delay a formal discussion of properness until the end of the chapter, the Page-McIntyre system is indeed proper. While the 1- and 2-seeds to have tougher first round matchups than the 3- and 4-seeds, this is compensated by them getting an extra life: if they lose, they play the winner of the 3v4 matchup, while the 3v4 loser is just eliminated. As long as the seeding accurately reflects team quality, no team would want to swap starting lines with a lower-seeded team, and so the format is proper. 
+    Beginning with signature, the shape of the bracket is a bit strange: the winner of game $\bracklabel{A1}$ gets a bye \textit{after winning a game}, something that never happens in a traditional bracket. Attempts to give this bracket a signature might lead to $\bracksig{4;1;0;0}$ or even $\bracksig{4;0;0;0}$, neither of which are actually bracket signatures (they both violate Theorem \ref{th:signature_sum}). The issue here is that game $\bracklabel{A1}$ is actually a semifinal, and so ``should'' (if it didn't deliver its loser to the other semifinal) live in the second round, producing a signature of $\bracksig{2;3;0;0}$. But then of course this format is quite different from traditional brackets with that same signature.Bracket signatures on nonlinear multibrackets are in general not well-defined.
 
-    The third thing to note is that the shape of the bracket itself looks a little strange: the winner of game $\bracklabel{A1}$ gets a bye \textit{after winning a game}, something that never happens in a traditional bracket. Attempts to give this bracket a signature might lead to $\bracksig{4;1;0;0}$ or even $\bracksig{4;0;0;0}$, neither of which are actually bracket signatures (they both violate Theorem \ref{th:signature_sum}). The issue here is that game $\bracklabel{A1}$ is actually a semifinal, and so ``should'' live in the second round, producing a signature of $\bracksig{2;3;0;0}$. However, because the loser of that game plays in the other semifinal, it needs to be shifted back to the first round. For this reason, bracket signatures for nonlinear multibrackets are not well-defined.
+    To make matters worse, the first round appears to have an ``improper'' set of matchups: the games are 1v2 and 3v4 rather than then ``proper'' 1v4 and 2v3. However, properness is a much trickier concept for nonlinear multibrackets. While the 1- and 2-seeds to have tougher first round matchups than the 3- and 4-seeds, this is compensated by them getting an extra life: if they lose, they play the winner of the 3v4 matchup, while the 3v4 loser is just eliminated, so no team would prefer to be seeded lower than they are. One could imagine developing this intuition of extra lives into a formal notion of properness, but we leave that question untreated.
 
-    The fourth thing to note is that game $\bracklabel{C1}$ can be a rematch of game $\bracklabel{A1}.$ In fact, this pretty likely: if the bracket goes chalk, the 1- and 2-seed will find themselves replaying the game they played just two rounds ago. In Figure \ref{fig:page4}, the bracket did not go chalk, but game $\bracklabel{C1}$ was still a rematch. As we discussed in the pervious section, this can lead to pretty unsatisfying results: indeed, in the 1931 Victorian Football League Playoffs, Geelong and Richmond each beat each other once, but Geelong won the game that mattered and so was declared champion. 
+    \begin{oq}{}{}
+        What would a notion of signature and properness look like for nonlinear multibrackets?
+    \end{oq}
+
+
+    One final thing of note is that $\bracklabel{C1}$ can be a rematch of game $\bracklabel{A1}.$ In fact, this pretty likely: if the bracket goes chalk, the 1- and 2-seed will find themselves replaying the game they played just two rounds ago. In Figure \ref{fig:page4}, the bracket did not go chalk, but game $\bracklabel{C1}$ was still a rematch. As we discussed in Section \ref{sec:Properness and Respectfulness}, this can be pretty unsatisfying: indeed, in the 1931 Victorian Football League Playoffs, Geelong and Richmond each beat each other once, but Geelong won the game that mattered and so was declared champion. 
     
-    Again as discussed in the previous section, one option would be to be to make game $\bracklabel{C1}$ contingent on it not being a rematch: if it is a rematch, then the game is skipped and whichever team won the previous game is declared champion. While this solution is effective for the second-place game in Figure \ref{fig:afl_second}, its doesn't work here. Making the game contingent would mean that the loser of $\bracklabel{A1}$ is actually eliminated upon their loss: even if they win $\bracklabel{B1}$, they wouldn't have the ability to play in the championship game.
+    Again as discussed in the previous section, one option would be to be to make game $\bracklabel{C1}$ contingent on it not being a rematch: if it is a rematch, then the game is skipped and whichever team won the previous game is declared champion. While this solution is effective for the second-place game in our alternative AFL Asian Cup format (Figure \ref{fig:afl_second}), it doesn't work here. Making the game contingent would mean that the loser of $\bracklabel{A1}$ is actually eliminated upon their loss: even if they win $\bracklabel{B1}$, they wouldn't have the ability to play in the championship game.
 
     A better solution might be a \i{double-elimination tournament}, as employed by the 2016 NCAA Softball Ann Arbor Regional.
 
@@ -28,9 +29,11 @@
         A \i{double-elimination} tournament is a multibracket (including one contingent game) in which every team except the champion finishes with exactly two losses, while the champion finishes with one or zero. 
     \end{definition}
 
+    %define winners and losers
+
     The 2016 NCAA Softball Ann Arbor Regional is an example of a double-elimination format: Michigan finished undefeated while Valparaiso, Notre Dame, and Miami (OH) finished with two losses. Game $\bracklabel{E1}$ is contingent on the winner of game $\bracklabel{C1}$ winning game $\bracklabel{D1}$ as well: if the $\bracklabel{B1}$ winner wins game $\bracklabel{D1}$, the double-elimination condition is satisfied and so the tournament is over.
 
-    This construction, where rather than a contingent game being played only if its not a rematch, it is played only if the lower team wins, is so common that it has a name.
+    This construction, where rather than a contingent game being played only if it is not a rematch, it is played only if the lower team wins, is so common that it has a name.
 
     \begin{definition}{Recharge Game}{}
         A \i{recharge game} is a contingent game in a multibracket that is a rematch of a previous game and played only if the lower team won the first game.
@@ -44,34 +47,38 @@
     
     \fig{0.5}{softballv3}{Figure \ref{fig:softballv2} if Notre Dame Beat Michigan Once}
 
-    While the recharge game is necessary to ensure that the format is a truly a double-elimination tournament, as well as preventing the problem in the Page-McIntyre System where the champion and runner-up each finish with one-loss, it's not all upside. For one thing, Dabney found some evidence that a Page-McIntyre-style tournament with no recharge game actually does a better job of crowing the best team as champion then the truer double-elimination with the recharge game included \cite{recharge_rounds}. Additionally, formats with recharge games tend to be less exciting, as they risk not playing a true championship game (a game in which either team wins the format if they win that game).
+    While the recharge game is necessary to ensure that the format is a truly a double-elimination tournament, as well as preventing the problem in the Page-McIntyre System where the champion and runner-up each finish with one-loss, it's not all upside. For one thing, Dabney found some evidence that a tournament with no recharge game actually does a better job of crowing the best team as champion then the truer double-elimination with the recharge game included \cite{recharge_rounds}. Additionally, formats with recharge games tend to be less exciting, as they risk not playing a true championship game (a game in which either team wins the format if they win that game).
 
-    In any case, whether the recharge game is used or not, double-elimination tournaments are a powerful tool in a tournament designer's arsenal, as they more accurately select the best team as champion than their single elimination counterparts. We prove this fact for a toy case where there is a single best team that is favored against every other team with a constant probability $1/2 < p < 1$, and leave a more comprehensive proposition as a conjecture.
+    In any case, whether the recharge game is used or not, double-elimination tournaments are a powerful tool in a tournament designer's arsenal, as they more accurately select the best team as champion than their single elimination counterparts. We prove this fact for a toy case of a balanced primary bracket where there is a single best team that is favored against every other team with a constant probability $1/2 < p < 1$, and leave a more comprehensive proposition as a conjecture.
 
     \theo{}{ %make sure all the notation (primary, etc) is cover --> add a picture to different winners nad losers brackets
         Let $n$ be a positive integer, $p$ be a probability such that $1/2 < p < 1$, and $\T$ be a list of $2^n$ teams with a team $t \in \T$ such that for every other team $s$, $$\G{t}{s} = p.$$ 
-        Let $\A$ be the balanced bracket on $2^n$ team, and let $\B$ be [ADJECTIVE] double-elimination tournament with $\A$ as the primary bracket, with or without a recharge game. Then $$\W{\A}{t}{\T} < \W{\B}{t}{\T}.$$
-        %unless n = 1 and no recharge
+        Let $\A$ be the balanced bracket on $2^n$ team, and let $\B$ be a round-respectful double-elimination tournament whose winners bracket is $\A,$ with or without a recharge game. Then $$\W{\A}{t}{\T} \leq \W{\B}{t}{\T}$$ with equality only when $n=1$ and there is no recharge round.
+        %technically round respectful doesn't mean anything!
     }{
         To win $\A$, $t$ simply has to win $n$ games. Thus $$\W{\A}{t}{\T} = p^n.$$
     
-        We don't know what the losers' bracket of $\B$ looks like, only that it is [ADJECTIVE]. Let $r$ be the number of rounds in the losers' bracket, and let $r_i$ be the round of the losers' bracket that $i$-round winners' bracket losers play their first game. Let $c_i = r - r_i - 1$, so $i$-round losers need to win $c_i$ games in the losers' bracket to win it.\\
+        We don't know what the losers' bracket of $\B$ looks like, only that it is round-respectful. Let $r$ be the number of rounds in the losers' bracket, and let $c_i$ be the number of games that $i$-round winners' bracket losers need to win the losers' bracket.\\
         
         Since there are $2^{n-i}$ $i$-round losers, by Theorem \ref{th:signature_sum},
-        \begin{align*}
-            &\sum_{i=1}^n 2^{n-i} \cdot \left(\frac{1}{2}\right)^{c_i}  = 1 \\
-            &\sum_{i=1}^n \left(\frac{1}{2}\right)^{c_i + i} = \left(\frac{1}{2}\right)^n
-        \end{align*}
-       
-        Additionally, we arbitrarily set $c_{n+1} = -1$, so 
-        $$ \sum_{i=1}^{n+1} \left(\frac{1}{2}\right)^{c_i + i} = \left(\frac{1}{2}\right)^{n+1}$$
+        $$\sum_{i=1}^n 2^{n-i} \cdot \left(\frac{1}{2}\right)^{c_i} = 1,$$
+        so,
+            \[\sum_{i=1}^n \left(\frac{1}{2}\right)^{c_i + i - 1} = \left(\frac{1}{2}\right)^{n-1}.  \tag{*}\]
+        Letting $q = 1 - p,$ note that $t$ wins the winners' bracket with probability $p^n$, and the losers' bracket with probability
+        $$\sum_{i=1}^n p^{i-1} \cdot q \cdot p^{c_i} = q \cdot \sum_{i=1}^n p^{c_i+i-1} \geq q \cdot p^{n-1},$$
+        with the inequality coming by equation $(*)$ because $p > \frac{1}{2}$, and with equality only when $n = 1.$\\
 
+        Now, if there is a recharge round, then,
+        $$\W{\B}{t}{\T} \leq p^n\cdot p + p^n \cdot q \cdot p + qp^{n-1}\cdot p^2 = p^n(p + qp + p^2) > p^n,= \W{\A}{t}{\T}$$ with the inequality coming because $p > \frac{1}{2}.$ If there is no recharge round, then 
+        $$\W{\B}{t}{\T} = p^n\cdot p + qp^{n-1}\cdot p = p^n(p + qp + p^2) > p^n,= \W{\A}{t}{\T}$$
 
-
+        % You get it, with $\C$ and $\B$ and stuff lol
     }{}
 
 
+        %\conj
 
+        %shifted brackets??
 
 
 
