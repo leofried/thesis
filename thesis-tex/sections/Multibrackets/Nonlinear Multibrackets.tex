@@ -4,7 +4,7 @@
 
     An simple example of a nonlinear multibracket is the 1931 Victorian Football League Playoffs, sometimes called the Page-McIntyre system. %\cite?
 
-    \fig{0.65}{page4}{1931 Victorian Football League Playoffs}
+    \fig{0.6}{page4}{1931 Victorian Football League Playoffs}
 
     Nonlinear multibrackets are a bit strange: while the winner of game $\bracklabel{A1}$ goes directly to the final, the loser falls into the semifinal of the \i{same bracket}. This poses problems for both attempts to define a signature as well as a notion of properness.
 
@@ -23,17 +23,17 @@
 
     A better solution might be a \i{double-elimination tournament}, as employed by the 2016 NCAA Softball Ann Arbor Regional.
 
-    \fig{0.43}{softballv1}{The 2016 NCAA Softball Ann Arbor Regional}
+    \fig{0.4}{softballv1}{The 2016 NCAA Softball Ann Arbor Regional}
 
     \begin{definition}{Double-Elimination Tournament}{}
-        A \i{double-elimination} tournament is a multibracket (including one contingent game) in which every team except the champion finishes with exactly two losses, while the champion finishes with one or zero. 
+        A \i{double-elimination} tournament is a multibracket (plus one contingent game) consisting of a \i{winners' bracket}, where every team starts, a \i{losers'} bracket, that every winners' bracket loser falls into, and a \i{grand finals}, in which the winner of the winners' bracket plays the winner of the losers' bracket for the championship, with the losers' bracket winner needing to win twice, while the winners' bracket winner only needs to win once. 
     \end{definition}
 
-    %define winners and losers
+    A double-elimination tournament guarantees that the winner will finish undefeated or with only one loss, while every other team finishes with two.
 
-    The 2016 NCAA Softball Ann Arbor Regional is an example of a double-elimination format: Michigan finished undefeated while Valparaiso, Notre Dame, and Miami (OH) finished with two losses. Game $\bracklabel{E1}$ is contingent on the winner of game $\bracklabel{C1}$ winning game $\bracklabel{D1}$ as well: if the $\bracklabel{B1}$ winner wins game $\bracklabel{D1}$, the double-elimination condition is satisfied and so the tournament is over.
+    The 2016 NCAA Softball Ann Arbor Regional is an example of a double-elimination format: the winners' bracket consists of games $\bracklabel{A1}, \bracklabel{A2},$ and $\bracklabel{B1}$; the losers' bracket of games $\bracklabel{B2}$ and $\bracklabel{C1}$; and the grand finals of games $\bracklabel{D1}$ and then, if necessary, $\bracklabel{E1}.$ Michigan finished undefeated while Valparaiso, Notre Dame, and Miami (OH) each finished with two losses.
 
-    This construction, where rather than a contingent game being played only if it is not a rematch, it is played only if the lower team wins, is so common that it has a name.
+    Because double-elimination tournaments are so common, and all use a contingent game that is played only if the lower team wins ($\bracklabel{E1}$ in the case of Figure \ref{fig:softballv1}), that contingent game has a name.
 
     \begin{definition}{Recharge Game}{}
         A \i{recharge game} is a contingent game in a multibracket that is a rematch of a previous game and played only if the lower team won the first game.
@@ -41,24 +41,23 @@
 
     Recharge games are so common that we introduce a special notation: if the name of a game has a star after it, then that game is followed by a recharge game (if necessary). This allows us to condense the format in the Figure \ref{fig:softballv1} a little bit, as displayed in Figure \ref{fig:softballv2}.
 
-    \fig{0.5}{softballv2}{The 2016 NCAA Softball Ann Arbor Regional}
+    \fig{0.45}{softballv2}{The 2016 NCAA Softball Ann Arbor Regional}
 
     The only issue with this notation is that, if the recharge game was triggered but won by the upper team, there is no natural place to denote that the recharge game was played. We adopt the convention of writing the the lower team \i{under} the line that the winner of the recharge game is placed over in this case. This is depicted in Figure \ref{fig:softballv3}.
     
     \fig{0.5}{softballv3}{Figure \ref{fig:softballv2} if Notre Dame Beat Michigan Once}
 
-    While the recharge game is necessary to ensure that the format is a truly a double-elimination tournament, as well as preventing the problem in the Page-McIntyre System where the champion and runner-up each finish with one-loss, it's not all upside. For one thing, Dabney found some evidence that a tournament with no recharge game actually does a better job of crowing the best team as champion then the truer double-elimination with the recharge game included \cite{recharge_rounds}. Additionally, formats with recharge games tend to be less exciting, as they risk not playing a true championship game (a game in which either team wins the format if they win that game).
+    While the recharge game is necessary to ensure that the format is a truly a double-elimination tournament, as well as preventing the problem in the Page-McIntyre System where the champion and runner-up each finish with one-loss, it's not all upside. For one thing, Dabney \cite{recharge_rounds} found some evidence that a tournament with no recharge game actually does a better job of crowing the best team as champion then the truer double-elimination with the recharge game included. Additionally, formats with recharge games tend to be less exciting, as they risk not playing a true championship game (a game in which either team wins the format if they win that game).
 
-    In any case, whether the recharge game is used or not, double-elimination tournaments are a powerful tool in a tournament designer's arsenal, as they more accurately select the best team as champion than their single elimination counterparts. We prove this fact for a toy case of a balanced primary bracket where there is a single best team that is favored against every other team with a constant probability $1/2 < p < 1$, and leave a more comprehensive proposition as a conjecture.
+    In any case, whether the recharge game is used or not, double-elimination tournaments are a powerful tool in a tournament designer's arsenal, as they are in some sense more accurate than their single elimination counterparts. We prove this fact for a toy case where the winners' and losers' bracket are relatively nice, and where there is a single best team that is favored against every other team with a constant probability $1/2 < p < 1$.
 
-    \theo{}{ %make sure all the notation (primary, etc) is cover --> add a picture to different winners nad losers brackets
+    \theo{}{ 
         Let $n$ be a positive integer, $p$ be a probability such that $1/2 < p < 1$, and $\T$ be a list of $2^n$ teams with a team $t \in \T$ such that for every other team $s$, $$\G{t}{s} = p.$$ 
-        Let $\A$ be the balanced bracket on $2^n$ team, and let $\B$ be a round-respectful double-elimination tournament whose winners bracket is $\A,$ with or without a recharge game. Then $$\W{\A}{t}{\T} \leq \W{\B}{t}{\T}$$ with equality only when $n=1$ and there is no recharge round.
-        %technically round respectful doesn't mean anything!
+        Let $\A$ be the balanced bracket on $2^n$ teams, let $\B$ be a bracket on $2^{n}-1$ teams such that the linear multibracket $\A \to \B$ is round-respectful, and let $\C$ be the double-elimination format with winners' bracket $\A$ and losers' bracket $\B$. Then $$\W{\C}{t}{\T} \geq \W{\A}{t}{\T}$$ with equality only when $n=1$ and there is no recharge round.
     }{
         To win $\A$, $t$ simply has to win $n$ games. Thus $$\W{\A}{t}{\T} = p^n.$$
     
-        We don't know what the losers' bracket of $\B$ looks like, only that it is round-respectful. Let $r$ be the number of rounds in the losers' bracket, and let $c_i$ be the number of games that $i$-round winners' bracket losers need to win the losers' bracket.\\
+        Now consider $\C.$ Let $r$ be the number of rounds in $\B$, let $r_i$ be the round of $\B$ that teams that lose in the $i$th round of $\A$ fall into, and let $c_i = r-r_i+1,$ so teams that lose in the $i$th round of $\A$ need to win $c_i$ games in $\B$ in order to make the grand finals.\\
         
         Since there are $2^{n-i}$ $i$-round losers, by Theorem \ref{th:signature_sum},
         $$\sum_{i=1}^n 2^{n-i} \cdot \left(\frac{1}{2}\right)^{c_i} = 1,$$
@@ -68,27 +67,27 @@
         $$\sum_{i=1}^n p^{i-1} \cdot q \cdot p^{c_i} = q \cdot \sum_{i=1}^n p^{c_i+i-1} \geq q \cdot p^{n-1},$$
         with the inequality coming by equation $(*)$ because $p > \frac{1}{2}$, and with equality only when $n = 1.$\\
 
-        Now, if there is a recharge round, then,
-        $$\W{\B}{t}{\T} \leq p^n\cdot p + p^n \cdot q \cdot p + qp^{n-1}\cdot p^2 = p^n(p + qp + p^2) > p^n,= \W{\A}{t}{\T}$$ with the inequality coming because $p > \frac{1}{2}.$ If there is no recharge round, then 
-        $$\W{\B}{t}{\T} = p^n\cdot p + qp^{n-1}\cdot p = p^n(p + qp + p^2) > p^n,= \W{\A}{t}{\T}$$
+        Now, if there is a recharge round, then
+        \begin{align*}
+            \W{\C}{t}{\T} &= \W{\A}{t}{\T} \cdot (p + qp) + \W{\B}{t}{\T} \cdot p^2\\
+            &\geq p^n(p + qp) + (q \cdot p^{n-1}) \cdot p^2\\
+            &= p^n (p + 2qp)\\
+            &> p^n\\
+            &= \W{\A}{t}{\T}.
+        \end{align*}
+        
+        If there is no recharge round, then
+        \begin{align*}
+            \W{\C}{t}{\T} &= \W{\A}{t}{\T} \cdot p + \W{\B}{t}{\T} \cdot p\\
+            &\geq p^n(p) + (q \cdot p^{n-1}) \cdot p\\
+            &= p^n\\
+            &= \W{\A}{t}{\T}.
+        \end{align*}
 
-        % You get it, with $\C$ and $\B$ and stuff lol
+        Thus, $$\W{\C}{t}{\T} \geq \W{\A}{t}{\T}$$ with equality only when $n=1$ and there is no recharge round.
     }{}
 
-
-        %\conj
-
-        %shifted brackets??
-
-
-
-    %recharge rounds: https://www.desmos.com/calculator/y7xwlv6z0q
-
-    % % some discussion about why use double eliminations, and some proof about them being more accurate.
-
-    % However, whether the recharge game is included or not, there is some evidence that double-elimination style tournaments are more accurate that traditional brackets: ...
-
-    We conclude our discussion of nonlinear multibracket with a couple more interesting examples. The first is the 2022 Big Ten Baseball Tournament. %thirteen team?
+    We conclude our discussion of nonlinear multibrackets with a few more interesting examples. The first is the 2022 Big Ten Baseball Tournament.
 
     \fig{0.5}{baseball}{The 2022 Big Ten Baseball Tournament}
 
@@ -98,12 +97,12 @@
     
     However, this property was not guaranteed: had Penn State beaten Iowa in game $\bracklabel{C1}$, Michigan twice in game $\bracklabel{D1}$ and the recharge game, and then Rutgers in the final, we would be back to the issue with the Page-McIntyre System. Penn State and Rutgers would have each finished with only one-loss to the other team, with the champion being determined somewhat arbitrarily by who won the most recent game. This illustrates an important point: the desire for an unambiguous champion and the desire for an unambiguous championship \i{game} are fundamentally in conflict in the world of multibrackets.
 
-    The other nonlinear multibracket of note is the NBA Playoffs. You may recall from Figure \ref{fig:nba} that in 2004, the NBA Eastern Conference Playoffs used a simple bracket of signature $\bracksig{8;0;0;0}$ to determine its champion (the Western Conference did the same, and then the two conference champions played each other in the NBA finals). However, in 2020, after a much of the NBA regular season was cut short due to Covid, there was a feeling that the regular season wasn't as accurate as a measure as it usually is. So the playoffs were expanded slightly: if the 8th and 9th place teams were close enough in record, the playoff for that conference expanded to $\bracksig{2;7;0;0;0},$ allowing both teams in. After the success of that system, the playoffs were expanded further starting in 2021 to the following nonlinear multibracket.
+    Another interesting nonlinear multibracket of note is the NBA Playoffs. You may recall from Figure \ref{fig:nba} that in 2004, the NBA Eastern Conference Playoffs used a simple bracket of signature $\bracksig{8;0;0;0}$ to determine its champion (the Western Conference did the same, and then the two conference champions played each other in the NBA finals). However, in 2020, after a much of the NBA regular season was cut short due to Covid, there was a feeling that the regular season wasn't as accurate as a measure as it usually is. So the playoffs were expanded slightly: if the 8th and 9th place teams were close enough in record, the playoff for that conference expanded to $\bracksig{2;7;0;0;0},$ allowing both teams in. After the success of that system, the playoffs were expanded further starting in 2021 to the following nonlinear multibracket.
     %cite a source for this
     
     \fig{0.5}{nbaplayin}{2022 NBA Eastern Conference Playoffs}
 
     The first two rounds of the new NBA playoffs are similar in structure to the Page-McIntyre system: two lower-seeded teams play each other and two higher-seeded teams play each other, and then the winner of the first game plays the loser of the second. But because the two qualifying teams get dumped into a larger eight-team bracket, rather than facing off immediately, the issues of the original Page-McIntyre system are avoided.
 
-    Nonlinear multibrackets are powerful tools for selecting a single champion, while avoiding the pitfalls of traditional brackets where a great team can get eliminated after a single loss. However, there are other powerful uses cases for multibrackets as well: in the next section we will explore \i{efficient} multibrackets, which aim to select the top-$m$ out of $n$ teams.
+    % Nonlinear multibrackets are powerful tools for selecting a single champion, while avoiding the pitfalls of traditional brackets where a great team can get eliminated after a single loss. However, there are other powerful uses cases for multibrackets as well: in the next section we will explore \i{efficient} multibrackets, which aim to select the top-$m$ out of $n$ teams.
 }
