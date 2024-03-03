@@ -13,7 +13,7 @@ So taking inspiration from the way seeding represents a total ordering on the te
         \item $t_i$'s most recent loss was from a lower semibracket than $t_j$'s most recent loss, or
         \item $t_i$ most recent loss was from a later round of the same semibracket as $t_j$'s most recent loss.
     \end{enumerate}
-    If two teams most recent losses are from the same round of the same semibracket, then they are of the same tier.
+    If two teams' most recent losses are from the same round of the same semibracket, then they are of the same tier.
 \end{definition}
 
 While conditions (a) and (d) are seem logical (condition (a) is just the traditional bracket order, and condition (d) says that teams that made it further in a given semibracket belong to a higher tier), conditions (b) and (c) might be a bit more confusing: why should a team that already lost be of a higher tier than one that has not, and why should a team that lost in a lower semibracket be of a \i{higher} tier than a team that lost in a higher semibracket?
@@ -22,13 +22,13 @@ To answer these questions, consider the linear multibracket shape of signature $
 
 \fig{1}{tierform1}{$\bracksig{2;3;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{2;1;1;0}$}
 
-Before fully defining properness for linear multibrackets, let's try to fill out the starting lines in Figure \ref{fig:tierform1} just based on what feels intuitively proper. The primary bracket is easy enough: we use the proper seeding of $\bracksig{2;3;0;0}$ to fill it out. The second and third brackets are also pretty clear: the second bracket just assigns second place, and so ought to contain only the championship game loser, while the third bracket is a third-place game and so should be played between the two semifinals losers. Filling this all in, we are left with the following linear multibracket.
+Before fully defining properness for linear multibrackets, let's try to fill out the starting lines in Figure \ref{fig:tierform1} just based on what feels intuitively proper. The primary bracket is easy enough: we use the proper seeding of $\bracksig{2;3;0;0}$ to fill it out. The second and third brackets are also pretty clear: the second bracket just assigns second place, and so ought to contain only the championship game loser, while the third bracket is a third-place game and so should be played between the two semifinal losers. Filling this all in, we are left with the following linear multibracket.
 
 \fig{1}{tierform2}{$\bracksig{2;3;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{2;1;1;0}$}
 
-Last is to fill out the final bracket. It is to played between four teams: the loser of $\bracklabel{D1}$, who just lost the fourth-place game; the loser of $\bracklabel{A1}$, who lost in the first game of the format and hasn't played since; and two teams who haven't played a game at all yet, the $6$- and $7$-seeds. Which teams should go where?
+Last is to fill out the final bracket. It is to be played between four teams: the loser of $\bracklabel{D1}$, who just lost the fourth-place game; the loser of $\bracklabel{A1}$, who lost in the first game of the format and hasn't played since; and two teams who haven't played a game at all yet, the $6$- and $7$-seeds. Which teams should go where?
 
-The central idea behind properness is that, if a format goes to chalk, you should never prefer to be a lower seed than a higher seed, or to lose than to win. With this mind, the proper seeding becomes clear. The loser of $\bracklabel{D1}$ should get the double bye to the finals of the fourth bracket: if they didn't, then the $4$- and $5$-seeds might prefer to lose game $\bracklabel{A1}$ rather than risk losing in games $\bracklabel{B1}$ and $\bracklabel{D1}$ and getting a worse starting line in the fourth-place bracket. Similarly, the loser of $\bracklabel{A1}$ should get the single bye: if they didn't, then a team interested in a top-four finish might prefer to be the $6$- or $7$-seed to get a better spot in the fourth-place bracket, rather than the $4$- or $5$-seed and risk losing game $\bracklabel{A1}$ and having to win three more games to claim fourth in the format.
+The central idea behind properness is that, if a format goes to chalk, you should never prefer to be a lower seed than a higher seed, or to lose than to win. With this in mind, the proper seeding becomes clear. The loser of $\bracklabel{D1}$ should get the double bye to the finals of the fourth bracket: if they didn't, then the $4$- and $5$-seeds might prefer to lose game $\bracklabel{A1}$ rather than risk losing in games $\bracklabel{B1}$ and $\bracklabel{D1}$ and getting a worse starting line in the fourth-place bracket. Similarly, the loser of $\bracklabel{A1}$ should get the single bye: if they didn't, then a team interested in a top-four finish might prefer to be the $6$- or $7$-seed to get a better spot in the fourth-place bracket, rather than the $4$- or $5$-seed and risk losing game $\bracklabel{A1}$ and having to win three more games to claim fourth in the format.
 
 Thus, the proper seeding of $\bracksig{2;3;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{2;1;1;0}$ is displayed below.
 
@@ -48,15 +48,15 @@ We now formalize the analysis we just conducted to define properness on linear m
     \end{enumerate}
 \end{definition}
 
-With signatures and properness defined, we can address the question posed last question: does the fundamental theorem apply to linear multibrackets? There are two ways to answer this question. The first is a cheap hack that shows the answer is no, and the second is a more through analysis that also shows the answer is no.
+With signatures and properness defined, we can address the question posed last question: does the fundamental theorem apply to linear multibrackets? There are two ways to answer this question. The first is a cheap hack that shows the answer is no, and the second is a more thorough analysis that also shows the answer is no.
 
-We begin with the cheap hack. Consider the The 1988 Men's College Basketball Maui Invitational, which was a multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}.$
+We begin with the cheap hack. Consider the 1988 Men's College Basketball Maui Invitational, which was a multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}.$
 
 \fig{0.8}{maui_pr}{The 1998 Men's College Basketball Maui Invitational}
 
 The cheap idea that proves the fundamental theorem doesn't apply to linear multibrackets is that we can swap (say) $\bracklabel{A2}$ and $\bracklabel{A3}$ and the resulting multibracket has the same signature and is still proper. Why is this cheap? Because its easily patched over: it would still be a meaningful and important result for the fundamental theorem to be true up the rearranging of teams in the same tier.
 
-Unfortunately, this too is not the case. Consider a linear multibracket containing at some point a bracket of signature $\bracksig{4;2;0;0}$, in which the six teams that are set to play in the bracket (by properness) are one team of a higher tier (which we will name $\bracklabel{G1}$), and five teams of a lower tier (which we will name $\bracklabel{F1}$, $\bracklabel{F2}$, $\bracklabel{F3}$, $\bracklabel{F4}$, and $\bracklabel{F5}$.) What might a proper instantiation of $\bracksig{4;2;0;0}$ look like? In fact, there are two.
+Unfortunately, this too is not the case. Consider a linear multibracket containing at some point a bracket of signature $\bracksig{4;2;0;0}$, in which the six teams that are set to play in the bracket (by properness) are one team of a higher tier (which we will name $\bracklabel{G1}$), and five teams of a lower tier (which we will name $\bracklabel{F1}$, $\bracklabel{F2}$, $\bracklabel{F3}$, $\bracklabel{F4}$, and $\bracklabel{F5}$.) What might a proper instantiation of $\bracksig{4;2;0;0}$ look like? In fact there are two.
 
 \fig{0.95}{4200tiers}{Two Proper Instantiations of $\bracksig{4;2;0;0}$ in a Linear Multibracket}
 
@@ -68,5 +68,5 @@ Because linear multibracket properness doesn't distinguish between teams of the 
     Let $\A = \A_1 \to ... \to \A_k.$ We proceed by induction on $k.$ For $k = 1,$ $\A = \A_1$, so the proper semibracket of signature $\A_1$ suffices. For larger $k$, begin with the proper linear multibracket of signature $\A_1 \to ... \to \A_{k-1}$, and then add a semibracket to the end whose shape is the shape of the proper semibracket of signature $\A_k$, and whose seeding is derived by replacing the $1$-seed with the highest-tiered remaining team, and then the $2$-seed with the highest-tiered remaining seed, etc.
 }{}
 
-    The fact that the fundamental theorem doesn't hold for linear multibrackets hints that there is more to be investigated: how should we decide which of various proper linear multibrackets should we use? One tool used to answer this question is i{respectfulness}.
+    The fact that the fundamental theorem doesn't hold for linear multibrackets hints that there is more to be investigated: how should we decide which of various proper linear multibrackets should we use? One tool used to answer this question is \i{respectfulness}.
 }
