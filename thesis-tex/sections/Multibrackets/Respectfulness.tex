@@ -1,0 +1,90 @@
+\sub {
+
+    Properness as defined in the previous section has a weakness: it doesn't require that teams in the \i{same} tier be treated similarly, only that teams in higher tiers be treated better than teams in lower tiers.
+
+    To illustrate this, consider the following proper linear multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{2;0}$.
+
+    \fig{1}{not_minimal}{$\bracksig{8;0;0;0} \to \bracksig{2;0}$}
+
+    This linear multibracket is proper: the primary bracket is simply the proper seeding of $\bracksig{8;0;0;0}$, and the teams that lost in the semifinals are given at least as good of spots as the teams that lost in the first rounds. But it is still pretty clearly wrong. Properness only guarantees that teams that advanced further in the primary bracket are treated better than teams that didn't. But we also have an intuition that teams that lost in the same round of the primary bracket ought to be treated the same. This intuition has a name: \i{respectfulness}. Unlike properness, respectfulness comes in a few different levels, the weakest of which is \i{minimal respectfulness}.    
+
+    \begin{figg}{Respectfulness Properties\\ (Weakest at the Top, Strongest at the Bottom)}{respectful_lattice}
+        \begin{center}
+            \overfullhbox{
+\begin{tikzcd}[ampersand replacement=\&, transform shape, scale=0.2]
+    \& \textrm{Proper}\arrow[dd, no head]                                    \&                                                  \\
+    \&                           \&                                                  \\
+    \& \textrm{Minimally Respectful}\arrow[ldd, no head] \arrow[rdd, no head] \&                                                  \\
+    \&                           \&                                                  \\
+    \textrm{Round-Respectful}\arrow[rdd, no head] \&                                                                       \& \textrm{Schedule-Respectful}\arrow[ldd, no head] \\
+    \&                           \&                                                  \\
+    \& \textrm{Weakly Respectful}\arrow[dd, no head]                         \&                                                  \\
+    \&                           \&                                                  \\
+    \& \textrm{Strongly Respectful}                                         \&                                                 
+\end{tikzcd}
+            }
+\end{center}
+    \end{figg}
+
+    \begin{definition}{Minimally Respectful Linear Multibracket}{}
+        A \i{minimally respectful} linear multibracket is a proper linear multibracket in which all the losers of a given round of a given semibracket all fall into the same other semibracket (or are all eliminated).
+    \end{definition}
+
+    But minimal respectfulness as the name implies, is just the minimum. Consider, the following minimally respectful linear multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1}\to \bracksig{2;0} \to \bracksig{1} \to \bracksig{2;1;1;0}.$
+
+    \fig{1}{not_weak}{$\bracksig{8;0;0;0} \to \bracksig{1}\to \bracksig{2;0} \to \bracksig{1} \to \bracksig{2;1;1;0}$}
+
+%     This consolation bracket is minimally respectful: every team that lost in the primary bracket is given the right to play for second-place. But still, teams that lost in the same round are not being treated the same: some first-round losers are getting more byes than others. It is not \i{round-respectful}.
+
+%     \begin{definition}{Round-Respectful Consolation Bracket}{}
+%         A \i{round-respectful} consolation bracket is a minimally respectful consolation bracket in which teams that lost in the same round of the primary bracket are given the same number of byes in the consolation bracket.
+%     \end{definition}
+
+%     To analyze the next level of respectfulness, we will have to consider a slightly larger primary bracket. Instead of eight teams, imagine the 2015 AFC Asian Cup was played with sixteen teams, leaving behind eight $\bracklabel{A}$-round losers, four $\bracklabel{B}$-round losers, two $\bracklabel{C}$-round losers, and a single $\bracklabel{D}$-round loser. Now consider the following second-place bracket.
+
+%     \fig{1}{second80241}{Proper Second-Place Bracket of Signature $\bracksig{8;0;2;4;1;0;0}$}
+
+%     The consolation bracket in \ref{fig:second80241} is also not round-respectful, but it doesn't feel nearly as problematic as that in \ref{fig:second_ladder}. While two of the $\bracklabel{B}$-round losers have to play an additional game compared to the other two, its not clear that they are at a disadvantage. $\bracklabel{B2}$ and $\bracklabel{B3}$ get an extra bye, and play each other instead of a $\bracklabel{C}$-round loser in the quarterfinals, but in the semifinals are matched up with the championship game loser. $\bracklabel{B1}$ and $\bracklabel{B4}$, on the other hand, don't get the bye, and have a harder quarterfinal matchup, but don't have to face the championship-game loser until they would actually be playing them for second place. Even though the $\bracklabel{C}$-round losers have different numbers of byes, none of their schedules are strictly better than any others: Figure \ref{fig:second80241} is \i{schedule-respectful}.
+
+%     \begin{definition}{Schedule-Respectful Consolation Bracket}{}
+%         A \i{schedule-respectful} consolation bracket is a minimally respectful consolation bracket in which [[RIGOR IZE THIS DEFINITION]]
+%     \end{definition}
+
+%     A given minimally respectful consolation bracket can be round-respectful, schedule-respectful, neither, or both. If a consolation bracket is both round- and schedule-respectful, we say it is \i{weakly respectful}.
+
+%     \begin{definition}{Weakly Respectful Consolation Bracket}{}
+%         A \i{weakly respectful} consolation bracket is  one that is both round-respectful and schedule-respectful.
+%     \end{definition}
+
+%     The consolation bracket in \ref{fig:second61} is weakly respectful.
+
+%     \fig{1}{second61}{Proper Second-Place Bracket of Signature $\bracksig{6;1;0;0}$}
+
+%     Finally, we can simply require that teams that lost in the same round of the primary bracket be given symmetric spots in the consolation bracket.
+
+%     \begin{definition}{Strongly Respectful Consolation Bracket}{}
+%         A \i{strongly respectful} consolation bracket is a minimally respectful one in which teams that lost in the same round of the primary bracket are given the same path in the consolation bracket (up to rearranging teams that lost in the same round).
+%     \end{definition}
+
+%     Strong respectfulness is the gold standard of respectfulness in consolation brackets: while the consolation bracket in \ref{fig:second61} is not strongly respectful, the brackets in \ref{fig:second1} and \ref{fig:second21} are. There are four bracket signatures that admit strongly respectful consolation brackets after a primary bracket of signatures $\bracksig{8;0;0;0}$. Two of them are $\bracksig{1}$ and $\bracksig{2;1;0}$, which we saw in Figures \ref{fig:second1} and \ref{fig:second21}, respectfully. The other two are displayed below.
+
+%     \fig{1}{second43}{Proper Second-Place Bracket of Signature $\bracksig{4;0;3;0;0}$}
+
+%     \fig{1}{second421}{Proper Second-Place Bracket of Signature $\bracksig{4;2;0;1;0}$}
+
+%     As we hinted at earlier, the fundamental theorem of brackets doesn't apply to consolation brackets. The $\bracklabel{A}$-round losers in \ref{fig:second421} could be permuted in any of the 24 configurations to produce a proper (and in fact, strongly respectful) second-place bracket. So why do we decide to place the $\bracklabel{A}$-round losers in the way we did in \ref{fig:second421}? (And why did the 2023 Southern Conference Wrestling Tournament make the same decisions in Figure \ref{fig:socon}?)
+    
+%     Rematches.
+
+%     In any tournament format, rematches are far from ideal. From an information theoretical perspective, a rematch is less informative then a new matchup: we already have some data on how those two team compare. From a competitive perspective, they are unsatisfying: without the ability to play a third ``rubber'' match, if each team wins one game, we are left in a disappointing state of uncertainty. And in a multibracket these issues are exacerbated: nothing feels worse than being eliminated from contention due to two losses from the same team.
+
+%     With any other configuration of $\bracklabel{A}$-round losers, we risk a rematch as soon as the second-round of the second-place bracket. By place the $\bracklabel{A}$-round losers in the way that they were, rematches are delayed in the bracket for as long as possible.    
+
+%     %[[Concluding paragraph about how to use these paragraphs.]]
+
+%     %also the other bad part of properness (wanting the drops to be set up for  8000 the big idea you now you know)
+
+% % also also that > minimal respectfulness is not alway possible! 321 eg.
+
+
+}

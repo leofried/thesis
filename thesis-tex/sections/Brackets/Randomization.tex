@@ -1,6 +1,6 @@
 \sub {
 
-    INTRODUCTION
+    Given that reseeding doesn't solve the orderedness problem presented by Edwards's Theorem, we turn to a new approach at generating potentially ordered elimination tournaments: randomization.
 
     \begin{definition}{Totally Randomized Bracket}{}
         A \i{totally randomized bracket} is a traditional bracket except the teams are randomly placed onto the starting lines instead of being placed according to seed.
@@ -12,7 +12,7 @@
     
     \begin{conj}{}{randord}
         All totally randomized brackets are ordered.
-    \end{conj}
+    \end{conj} 
 
     Indeed, Lemma \ref{th:rand_lemma} seems to provide some evidence for the conjecture. %proved by someone
 
@@ -28,7 +28,7 @@
     }{rand_lemma}
 
     
-    Unfortunately, despite the lemma, Conjecture \ref{conj:randord} turns out to be false. This was first shown by Israel with the following counterexample \cite{seventeen_team}.
+    But the evidence for Conjecture \ref{conj:randord} isn't that strong: Lemma \ref{th:rand_lemma} is true for all traditional brackets as well, even though they, too, are are not always ordered. Indeed, despite the lemma, Conjecture \ref{conj:randord} turns out to be false. This was first shown by Israel with the following counterexample \cite{seventeen_team}.
 
     \fig{1}{17teams}{The Proper Bracket Shape of Signature $\bracksig{16;0;0;0;1;0}$}
 
@@ -149,7 +149,7 @@
             If the $r$-round cohort randomized bracket goes chalk, after the $i$th round, the top $2^{r-i}$ seeds will remain. 
         }{
             We proceed by induction on $r$. If $r = 0$, then there are no rounds and so the theorem holds. For any other $r$, in the first round, the top $2^{r-1}$ seeds will face the bottom $2^{r-1}$ seeds, and because the format goes chalk, the bottom half of teams will be eliminated. Thus after the first round, the top $2^{r-1}$ seeds will remain. The remaining format is just the $r-1$-round cohort randomized bracket, for which the theorem holds by induction.
-        }{}
+        }{top_m}
 
     It seems as though cohort randomized brackets ought to be ordered: being in a higher cohort seems certainly preferable to being a lower cohort, as you delay confrontation with the other higher-cohorted teams until later, and if two teams are in the same cohort, they are treated identically and thus it seems that the better team would win more.
 
@@ -202,8 +202,17 @@
 
     If cohort randomized brackets don't solve the orderedness problem, why would we use them over traditional proper brackets? Cohort randomization is most famously found on the ATP Tour, a collection of tournaments played by professional tennis players that all use almost identical formats: large balanced brackets. Additionally, the seeding for these tournaments is set by the ATP rankings, which tend to be slow to update. As a result, if every ATP Tour tournament used the proper seeding, the 6-seed and 27-seed would play each other in the first round at every tournament until one of them moved up or moved down. These rematches were deemed undesirable and so this randomization procedure was introduced: The 1-seed's quarterfinals matchup (if everything goes chalk) is now randomly drawn from the 5- through 8-seeds, instead of always being the 8-seed.
 
-    But Theorem \ref{th:cohort_counter} tells us that they are not ordered. Thus we are left with the following question: does there exist a bracket-like format with the property that 
-    [[[NAME THIS PROPERTY]]]
-    
-    %delayed confrontation
-}
+    %name this property and name brackets vs eliminations
+    But Theorem \ref{th:cohort_counter} tells us that they are not ordered. Unfortunately, this chapter ends an unsatisfying note, with two key questions in the field remaining open.
+        
+    \begin{oq}{}{}
+        For a given signatures $\A$, does there exists an ordered elimination format with signature $\A$?
+    \end{oq}
+
+    Of course, if $\A$ is a balanced signature, then we know the answer is yes: a totally randomized bracket will suffice. Thus the second open question,
+
+    \begin{oq}{}{}
+        For each $r$, does there exists a balanced ordered elimination format such that if the format goes chalk, after the $i$th round, the top $2^{r-i}$ seeds will remain?
+    \end{oq} %name this property!!
+
+    }
