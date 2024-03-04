@@ -26,19 +26,19 @@
             \item[(a)] If a team loses in a given semibracket but is not eliminated, they are sent to a later semibracket, and
             \item[(b)] Each team that wins the $n$th semibracket finishes in $m$th place, where $m$ is the sum of the ranks of the first $n$ semibrackets.
         \end{enumerate}
-    \end{definition}
+    \end{definition} %what if they are sent there twice?
 
     A linear multibracket can then be easily imbued with a signature derived from the signatures of the semibrackets in the sequence.
 
     \begin{definition}{Linear Multibracket Signatures}{}
-        If the sequence of semibrackets that comprise a linear multibracket have signature $\A_1, ..., \A_k$ then the linear multibracket has signature $\A_1 \to ... \to \A_k.$
+        If the sequence of semibrackets that constitute a linear multibracket have signature $\A_1, ..., \A_k$ then the linear multibracket has signature $\A_1 \to ... \to \A_k.$
     \end{definition}
 
     Let's confirm that the multibrackets from the previous section are indeed linear. First, the 2015 AFC Asian Cup.
 
     \fig{0.7}{afc1}{The 2015 AFC Asian Cup}
 
-    Looking at Figure \ref{fig:afc1}, it can be tempting to say that the 2015 AFC Asian Cup is a linear multibracket with signature $\bracksig{8;0;0;0} \to \bracksig{2;0}$. But this is not quite right: The format with this signature would give second place to the winner of $\bracklabel{C2}$ (as the winner of the second bracket), while outright eliminating the loser of $\bracklabel{C1}$ (as a team that did not win any bracket). But in fact, was want to give second place to the loser of $\bracklabel{C1}$, and then third place to the winner of the consolation bracket with signature $\bracksig{2;0}.$ We can do this by adding a second bracket with signature $\bracksig{1}$ while sliding the bracket with signature $\bracksig{2;0}$ to third.
+    Looking at Figure \ref{fig:afc1}, it can be tempting to say that the 2015 AFC Asian Cup is a linear multibracket with signature $\bracksig{8;0;0;0} \to \bracksig{2;0}$. But this is not quite right: The format with this signature would give second place to the winner of $\bracklabel{D1}$ (as the winner of the second bracket), while outright eliminating the loser of $\bracklabel{C1}$ (as a team that did not win any bracket). But in fact, we want to give second place to the loser of $\bracklabel{C1}$, and then third place to the winner of the consolation bracket with signature $\bracksig{2;0}.$ We can do this by adding a second bracket with signature $\bracksig{1}$ while sliding the bracket with signature $\bracksig{2;0}$ to third.
 
     Thus in total, the 2015 Asian Cup is a linear multibracket with signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}.$ To make clear that the middle one-team bracket is included, we include it in the figure. This also allows us to drop the labeling of which teams finish in which place, as they are guaranteed by the linearity.
 
@@ -56,7 +56,7 @@
 
     \fig{0.7}{socon2}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0;0} \to \bracksig{1}.$}
 
-    In all three examples so far, every semibracket has had rank one (that is, been a traditional bracket). However our final example, the 2023 Southern Conference Wrestling Championships Alternative, requires a semibracket of rank greater than one.
+    In all three examples so far, every semibracket has had rank one (that is, been a traditional bracket). However our final example, the 2023 Southern Conference Wrestling Championships Alternative, requires a semibracket of rank greater than one. (Recall the motivation for the complex multibracket: we want to identify the top-four team while not eliminating any team from contention after just a single loss.)
 
     \fig{0.7}{socon31}{The 2023 Southern Conference Wrestling Championships Alternative}
 

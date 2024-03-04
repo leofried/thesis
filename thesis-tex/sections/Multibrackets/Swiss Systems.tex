@@ -9,9 +9,9 @@
 
     The format used in the Maui Invitational has several nice properties. First, it is strongly respectful. Secondly, unlike some of the efficient linear multibrackets we saw last section, every team starts in the primary bracket, ensuring that if a team wins every game they will win the tournament. Third, the sum of the ranks of its semibrackets sum to the number of participating teams, ensuring that every team ends up ranked. Fourth, every bracket is either trivial or competitive, ensuring that the final rankings are as granular as possible.
 
-    Fifth, every team plays the same number of games, in this case, three. And sixth, every game is between teams with the same record, hopefully leading to evenly matched and exciting games. Linear multibracket with all six of these properties are called \i{swiss formats}, named because of their first recorded use at a chess tournament in Zürich, Switzerland. %cite
+    Fifth, every team plays the same number of games, in this case, three. And sixth, every game is between teams with the same record, hopefully leading to evenly matched and exciting games. Linear multibracket with all six of these properties are called \i{swiss formats}, named because of their first recorded use at a chess tournament in Zürich, Switzerland in 1895. %cite
 
-    \begin{definition}{Swiss Formats}{}
+    \begin{definition}{Swiss Formats}{swiss}
         A \i{swiss format} is a minimally respectful linear multibracket with the following five properties.
         \begin{itemize}
             \item Every team starts in the primary semibracket.
@@ -22,7 +22,7 @@
         \end{itemize}
     \end{definition}
 
-    Note that even though the Maui Invitational was strongly respectful, we only require minimal respectfulness: this allows for a substantially larger space of swiss formats while still maintaining the important properties of the class of format.
+    Note that even though the Maui Invitational was strongly respectful, we only require minimal respectfulness: this allows for a substantially larger space of swiss formats while still maintaining the important properties of the class of formats.
 
     \begin{definition}{$r$-Round Swiss}{}
         We say a swiss format in which each team plays $r$ games is an $r$-round swiss format.
@@ -43,7 +43,7 @@
     \fig{0.4}{s3_flow}{The Maui Invitational Flowchart}
 
 
-    The signature used in the Maui Invitational is are particular example of a family of swiss signature known as the the \i{standard swiss signatures}, which we abbreviate by $\S_r$ for some $r$.
+    The signature used in the Maui Invitational is a particular example of a family of swiss signature known as the the \i{standard swiss signatures}, which we abbreviate by $\S_r$ for some $r$.
 
     \begin{definition}{Standard Swiss Signature $(\S_r)$}{standard_swiss}
         $\S_r,$ or the \i{standard $r$-round swiss signature}, is the multibracket signature defined recursively by $$\S_0 = \bracksig{1},$$ and
@@ -103,7 +103,7 @@
         \end{center}
         \end{figg}
 
-    The swiss signatures on the diagonal of Figure \ref{fig:swiss_names} are the compact ones. While standard swiss signature and $m\x$ notation are sufficient for explaining almost every signature in Figure \ref{fig:swiss_names}, there is a second 8-team 3-round swiss signature, $\T_3,$ that we have yet to define. It's worth attempting to construct $\T_3$ before looking at Figures \ref{fig:swisst3} and \ref{fig:t3_flow}.
+    The swiss signatures on the diagonal of Figure \ref{fig:swiss_names} are the compact ones. While standard swiss signature and $m\x$ notation are sufficient for explaining almost every signature in Figure \ref{fig:swiss_names}, there is a second 8-team 3-round swiss signature, $\T_3,$ that we have yet to define. It's worth attempting to construct $\T_3$ before reading on.
 
     The key insight is to realize that teams with the same record in vertically adjacent cells of the flowchart can actually play against each other without violating any of the swiss format requirements, merging the cells. Thus the flow chart for $\T_3$ looks like so.
 
@@ -145,7 +145,7 @@ There are eight compact 4-round signatures: $\S_4$ and seven others. The count o
     \end{align*}
 \end{conj}
 
-Overall, swiss formats very useful and practical tournament designs: they give each team the same number of games, they ensure that games are being played between teams that have the same record and thus, hopefully, similar skill levels, and, for many values of $m$, they efficiently identify a top-$m$ in a fair and satisfying way.
+Overall, swiss formats are very useful and practical tournament designs: they give each team the same number of games, they ensure that games are being played between teams that have the same record and thus, hopefully, similar skill levels, and, for many values of $m$, they efficiently identify a top-$m$ in a fair and satisfying way.
 
-Further, swiss or near-swiss formats are great when the number of teams is exceedingly large. Even if the number of teams is not a power of two, or the signature is not compact, or there is a round at the end that doesn't affect placement for important places, formats that are swiss in spirit tend to do a great job of gathering a lot of meaningful data about a large number of teams in a small number of rounds. For this reason, they are often used in large tournaments for board or cards games, such as chess or Magic: The Gathering.
+Further, swiss or near-swiss formats are great when the number of teams is exceedingly large. Even if not every requirement in Definition \ref{def:swiss} is met, or the number of teams isn't a power of two, or or the signature is not compact, or there is a round at the end that doesn't affect placement for important places, formats that are swiss in spirit tend to do a great job of gathering a lot of meaningful data about a large number of teams in a small number of rounds. For this reason, they are often used in large tournaments for board or cards games, such as chess or Magic: The Gathering. %cite
 }

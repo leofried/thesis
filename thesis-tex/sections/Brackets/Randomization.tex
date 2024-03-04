@@ -101,7 +101,7 @@
         
         For two other teams $t_a$ and $t_b$, let $M_{ab}$ be the set of $2^{r-1}-2$ team subsets of $\T \setminus \{t_i, t_j, t_a, t_b\},$ and for $\S \in M_{ab},$ let $P_\S$ be the probability that the teams in $\S$ all win their first-round games and none of them play any of $t_i, t_j, t_a,$ or $t_b$ in the first round.
 
-        Now,
+        Now, %multiline?
         \begin{align*}
             \W{C_r}{t_i}{\T} &= \frac{1}{2}\sum_{t_a, t_b \in \T \setminus \{t_i, t_j\}} \sum_{\S \in M_{ab}} P_\S \cdot ((p_{ia}p_{jb} + p_{ib}p_{ja}) \cdot \W{A_{r-1}}{t_i}{\S \cup \{t_i, t_j\}}\\
             &+p_{ia}p_{bj} \cdot \W{A_{r-1}}{t_i}{\S \cup \{t_i, t_b\}}+p_{ib}p_{aj} \cdot \W{A_{r-1}}{t_i}{\S \cup \{t_i, t_a\}})\\

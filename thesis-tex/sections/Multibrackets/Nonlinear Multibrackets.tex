@@ -55,7 +55,7 @@
 
     \theo{}{ 
         Let $n$ be a positive integer, $p$ be a probability such that $1/2 < p < 1$, and $\T$ be a list of $2^n$ teams with a team $t \in \T$ such that for every other team $s$, $$\G{t}{s} = p.$$ 
-        Let $\A$ be the balanced bracket on $2^n$ teams, let $\B$ be a bracket on $2^{n}-1$ teams such that the linear multibracket $\A \to \B$ is round-respectful, and let $\C$ be the double-elimination format with winners' bracket $\A$ and losers' bracket $\B$. Then $$\W{\C}{t}{\T} \geq \W{\A}{t}{\T}$$ with equality only when $n=1$ and there is no recharge round.
+        Let $\A$ be the balanced bracket on $2^n$ teams, let $\B$ be a bracket on $2^{n}-1$ teams such that the linear multibracket $\A \to \B$ is round-respectful, and let $\C$ be the double-elimination format with winners' bracket $\A$ and losers' bracket $\B$. Then, $$\W{\C}{t}{\T} \geq \W{\A}{t}{\T}$$ with equality only when $n=1$ and there is no recharge round.
     }{
         To win $\A$, $t$ simply has to win $n$ games. Thus $$\W{\A}{t}{\T} = p^n.$$
     
@@ -72,7 +72,7 @@
         Now, if there is a recharge round, then
         \begin{align*}
             \W{\C}{t}{\T} &= \W{\A}{t}{\T} \cdot (p + qp) + \W{\B}{t}{\T} \cdot p^2\\
-            &\geq p^n(p + qp) + (q \cdot p^{n-1}) \cdot p^2\\
+            &\geq p^n(p + qp) + (q \cdot p^{n-1}) \cdot p^2 &\textrm{with equality only when $n=1$}\\
             &= p^n (p + 2qp)\\
             &> p^n\\
             &= \W{\A}{t}{\T}.
@@ -81,10 +81,11 @@
         If there is no recharge round, then
         \begin{align*}
             \W{\C}{t}{\T} &= \W{\A}{t}{\T} \cdot p + \W{\B}{t}{\T} \cdot p\\
-            &\geq p^n(p) + (q \cdot p^{n-1}) \cdot p\\
+            &\geq p^n(p) + (q \cdot p^{n-1}) \cdot p &\textrm{with equality only when $n=1$}\\
             &= p^n\\
             &= \W{\A}{t}{\T}.
         \end{align*}
+        
 
         Thus, $$\W{\C}{t}{\T} \geq \W{\A}{t}{\T}$$ with equality only when $n=1$ and there is no recharge round.
     }{}
