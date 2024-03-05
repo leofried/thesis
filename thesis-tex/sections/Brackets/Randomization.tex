@@ -1,23 +1,23 @@
 \sub {
 
-    Given that reseeding doesn't solve the orderedness problem presented by Edwards's Theorem, we turn to a new approach at generating potentially ordered elimination tournaments: randomization.
+    Given that reseeding doesn't solve the orderedness problem presented by Edwards's Theorem, we turn to a new approach at generating potentially ordered knockout tournaments: randomization.
 
-    \begin{definition}{Totally Randomized Bracket}{}
-        A \i{totally randomized bracket} is a traditional bracket except the teams are randomly placed onto the starting lines instead of being placed according to seed.
+    \begin{definition}{Totally Randomized Knockout Tournament}{}
+        A \i{totally randomized knockout tournament} is a bracket except the teams are randomly placed onto the starting lines instead of being placed according to seed.
     \end{definition}
 
-    This randomization means that the shape of a totally randomized bracket uniquely defines it. There is a no notion of two totally randomized brackets having the same shapes but different seedings, as the teams are randomly placed in the bracket the beginning of the format.
+    Clearly totally randomized knockout tournaments are indeed knockout tournaments.
 
-    Chung and Hwang conjectured that all totally randomized brackets were ordered \cite{define_ordered}. After all, the teams are all being treated identically: how could a better team be at a disadvantage relative to a worse one?
-    
+    Chung and Hwang \cite{define_ordered} conjectured that all totally randomized knockout tournaments were ordered. After all, the teams are all being treated identically: how could a better team be at a disadvantage relative to a worse one?
+
     \begin{conj}{}{randord}
-        All totally randomized brackets are ordered.
+        All totally randomized knockout tournaments are ordered.
     \end{conj} 
 
-    Indeed, Lemma \ref{th:rand_lemma} seems to provide some evidence for the conjecture. %proved by someone
+    Indeed, Lemma \ref{th:rand_lemma}, proved by Chen and Hwang \cite{totally_random_balanced}, seems to provide some evidence for the conjecture.
 
     \lemm{}{
-        Let $\A$ be a totally randomized bracket with signature $\bracksig{a_0; ...; a_r}$, let $\S$ be a list of teams, and let $\T$ be the list of teams produced by replacing a given team $s \in \S$ with a team $t$ such that for all other teams $u,$ $$\G{t}{u} \geq \G{s}{u}.$$ Then, $$\W{\A}{t}{\T} \geq \W{\A}{s}{\S}.$$
+        Let $\A$ be a totally randomized knockout tournament with signature $\bracksig{a_0; ...; a_r}$, let $\S$ be a list of teams, and let $\T$ be the list of teams produced by replacing a given team $s \in \S$ with a team $t$ such that for all other teams $u,$ $$\G{t}{u} \geq \G{s}{u}.$$ Then, $$\W{\A}{t}{\T} \geq \W{\A}{s}{\S}.$$
     }{
         Let $X$ be the set of subsets of $\S \setminus \{s\} = T \setminus \{t\}$, and for each set of teams $Y \in X$, let $P_Y$ be the probability that $s$ or $t$ will have to beat exactly the set of teams $Y$ in order to win the format (noting that this probability is the same for $s$ and $t$). Then,
         \begin{align*}
@@ -28,12 +28,12 @@
     }{rand_lemma}
 
     
-    But the evidence for Conjecture \ref{conj:randord} isn't that strong: Lemma \ref{th:rand_lemma} is true for all traditional brackets as well, even though they, too, are are not always ordered. Indeed, despite the lemma, Conjecture \ref{conj:randord} turns out to be false. This was first shown by Israel with the following counterexample \cite{seventeen_team}.
+    But the evidence for Conjecture \ref{conj:randord} isn't that strong: Lemma \ref{th:rand_lemma} is true for all traditional brackets as well, even though they are not always ordered. Indeed, despite the lemma, Conjecture \ref{conj:randord} turns out to be false. This was first shown by Israel \cite{seventeen_team} with the following counterexample.
 
-    \fig{1}{17teams}{The Proper Bracket Shape of Signature $\bracksig{16;0;0;0;1;0}$}
+    \fig{1}{17teams}{The Proper knockout tournament Shape of Signature $\bracksig{16;0;0;0;1;0}$}
 
     \theo{}{
-        The totally randomized bracket whose shape is the proper bracket shape of signature $\bracksig{16;0;0;0;1;0}$ is not ordered.
+        The totally randomized knockout tournament whose shape is the proper knockout tournament shape of signature $\bracksig{16;0;0;0;1;0}$ is not ordered.
     }{
         Let $\A$ be the format in question, and let $\T$ be the list of seventeen teams containing one copy of each of $t_1, t_3, t_4,$ and $t_5,$ and thirteen copies of $t_2$ with the following matchup table.
 
@@ -87,14 +87,14 @@
         Therefore $\A$ is not ordered.
     }{}
 
-    Chung and Hwang's conjecture was rescued by Chen and Hwang who restricted the domain of the claim to balanced formats \cite{totally_random_balanced}.
+    Chung and Hwang's conjecture was rescued by Chen and Hwang \cite{totally_random_balanced} who restricted the domain of the claim to balanced formats .
 
     \theo{}{
-        All totally randomized balanced brackets are ordered.
+        All totally randomized balanced knockout tournaments are ordered.
     }{
-        Let $\A_r$ be the totally randomized balanced bracket on $2^r$ teams. We induct on $r$. Clearly the one-team format $\A_0$ is ordered. For any other $r$, let $\T$ be a list of teams, and let $t_i$ and $t_j$ be teams such that $i < j.$\\
+        Let $\A_r$ be the totally randomized balanced knockout tournament on $2^r$ teams. We induct on $r$. Clearly the one-team format $\A_0$ is ordered. For any other $r$, let $\T$ be a list of teams, and let $t_i$ and $t_j$ be teams such that $i < j.$\\
 
-        Let $\B_r$ be the totally randomized balanced bracket on $2^r$ teams except $t_i$ and $t_j$ are forced to play each other in the first round, and let $\C_r$ be the totally randomized balanced bracket on $2^r$ teams except $t_i$ and $t_j$ cannot play each other in the first round. Then,
+        Let $\B_r$ be the totally randomized balanced knockout tournament on $2^r$ teams except $t_i$ and $t_j$ are forced to play each other in the first round, and let $\C_r$ be the totally randomized balanced knockout tournament on $2^r$ teams except $t_i$ and $t_j$ cannot play each other in the first round. Then,
         $$\W{A_r}{t_i}{\T} = \left(\frac{1}{2^r-1}\right)\W{B_r}{t_i}{\T} + \left(\frac{2^r-2}{2^r-1}\right)\W{C_r}{t_i}{\T}$$ and likewise for $t_j.$\\
 
         Because $p_{ij} \geq p_{ji}$, and by Lemma \ref{th:rand_lemma}, $\W{B_r}{t_i}{\T} \geq \W{B_r}{t_j}{\T}.$ Thus left is to show that $\W{C_r}{t_i}{\T} \geq \W{C_r}{t_j}{\T}.$\\
@@ -115,52 +115,50 @@
         Thus, $\A_r$ is ordered.
     }{balance_ord}
 
-    Chen and Hwang also conjectured that Theorem \ref{th:balance_ord} could be extended to totally randomized nearly balanced brackets as well, but this remains an open question.
+    Chen and Hwang also conjectured that Theorem \ref{th:balance_ord} could be extended to totally randomized nearly balanced knockout tournaments as well, but this remains an open question.
 
     \begin{definition}{Nearly Balanced}{}
-        A bracket is \i{nearly balanced} if no team receives more than one bye.
+        A knockout tournament is \i{nearly balanced} if no team receives more than one bye.
     \end{definition}
 
     \begin{conj}{}{trnbbo}
-        All totally randomized nearly balanced brackets are ordered.
+        All totally randomized nearly balanced knockout tournaments are ordered.
     \end{conj}
 
-    Conjecture \ref{conj:trnbbo} would be a nice strengthening of Theorem \ref{th:balance_ord}: unlike balanced brackets, there is a nearly balanced bracket for every number of teams. If the conjecture held, then total randomization would be a format that can provide orderedness to arbitrary numbers of teams $n$ without having $O(n)$ rounds, as the traditional and reseeded options do.
+    Note that even if Conjecture \ref{conj:trnbbo} failed, Theorem \ref{th:balance_ord} could be used to generate ordered formats that take a logarithmic number of rounds by simply inserting dummy teams that grant the teams that they are set to play against a bye. Unfortunately, the resulting tournament is technically not a knockout tournament: these dummy teams can advance into later rounds by getting randomly assigned to play against each other, and so there is some chance that a team will be given a bye after playing a game in an earlier round. For many purposes, however, this is not an issue, and the described procedure can be used to generated ordered formats that take a logarithmic number of rounds on arbitrary numbers of teams with no concerns.
 
-    Of course, this orderedness does not come without drawbacks. For one, the randomization makes the orderedness feel a bit cheap: once the randomization is complete, before any games have even been played, the orderedness is lost. (Compare to the proper and reseeded ordered brackets, which maintain their orderedness throughout the whole tournament.)
+    Of course, this orderedness does not come without drawbacks. For one, the randomization it feel a bit cheap: once the randomization is complete, before any games have even been played, the orderedness is lost. (Compare to the ordered traditional and reseeded brackets, which maintain their orderedness throughout the whole tournament.)
     
-    But secondly, total randomness has the undesirable property that it might make for some very lopsided and anti-climatic brackets. It could be that top-two teams, whom everyone wants to see face off in the championship game, are set to play each other in the first round!
+    But secondly, total randomness has the undesirable property that it might make for some very lopsided and anti-climatic knockout tournaments. It could be that top-two teams, whom everyone wants to see face off in the championship game, are set to play each other in the first round! We can extend the notion of \i{exciting} from brackets to knockout tournaments, noting that total randomized knockout tournaments are not exciting.
+
+    \begin{definition}{Exciting Knockout Tournament}{}
+        A knockout tournament is \i{exciting} if, as long as the knockout tournament goes chalk, in every round, the $m$ remaining teams are guaranteed to be the top $m$ seeds.
+    \end{definition}
     
-    To fix this, we define a new class of randomized brackets: \i{cohort randomized brackets}, first defined by Schwenk \cite{randomized_cohort}.
+    To fix this, we define a new class of randomized knockout tournaments: \i{cohort randomized knockout tournaments}, first defined by Schwenk \cite{randomized_cohort}.
     
-    \begin{definition}{Cohort Randomized Bracket}{}
-        The $r$-round \i{cohort randomized bracket} on is the traditional balanced bracket on $2^r$ teams, except, for each $i$, seeds $2^i + 1$ through $2^{i+1}$ are shuffled randomly before play.
+    \begin{definition}{Cohort Randomized Knockout Tournament}{}
+        The $r$-round \i{cohort randomized knockout tournament} is the traditional balanced knockout tournament on $2^r$ teams, except, for each $i$, seeds $2^i + 1$ through $2^{i+1}$ are shuffled randomly before play.
     \end{definition}
 
     Thus the 1- and 2-seeds are locked into their places, the 3- and 4-seeds exchange places half the time, seeds 5-8 are randomly shuffled, and as are 9-16, 17-32, etc. 
     
-    % An example of what a cohort randomized bracket might look after randomization is displayed in Figure \ref{fig:16rcb}.
-
-    % \phig{16rcb}{The $16$-Team Cohort Randomized Bracket After Randomization}
-    
-    Cohort randomization solves the second issue with total randomness: that good teams might meet earlier than desired.
-    
         \theo{}{
-            If the $r$-round cohort randomized bracket goes chalk, after the $i$th round, the top $2^{r-i}$ seeds will remain. 
+            Cohort randomized knockout tournaments are exciting.
         }{
-            We proceed by induction on $r$. If $r = 0$, then there are no rounds and so the theorem holds. For any other $r$, in the first round, the top $2^{r-1}$ seeds will face the bottom $2^{r-1}$ seeds, and because the format goes chalk, the bottom half of teams will be eliminated. Thus after the first round, the top $2^{r-1}$ seeds will remain. The remaining format is just the $r-1$-round cohort randomized bracket, for which the theorem holds by induction.
+            We proceed by induction on $r$. If $r = 0$, then there are no rounds and so the theorem holds. For any other $r$, in the first round, the top $2^{r-1}$ seeds will face the bottom $2^{r-1}$ seeds, and because the format goes chalk, the bottom half of teams will be eliminated. Thus after the first round, the top $2^{r-1}$ seeds will remain. The remaining format is just the $r-1$-round cohort randomized knockout tournament, for which the theorem holds by induction.
         }{top_m}
 
-    It seems as though cohort randomized brackets ought to be ordered: being in a higher cohort seems certainly preferable to being a lower cohort, as you delay confrontation with the other higher-cohorted teams until later, and if two teams are in the same cohort, they are treated identically and thus it seems that the better team would win more.
+    It seems as though cohort randomized knockout tournaments ought to be ordered: being in a higher cohort seems certainly preferable to being a lower cohort, as you delay confrontation with the other higher-cohorted teams until later, and if two teams are in the same cohort, they are treated identically and thus it seems that the better team would win more.
 
-    Unfortunately, like many other formats we've seen thus far, cohort randomized brackets are not (for more than two rounds) ordered. 
+    Unfortunately, like many other formats we've seen thus far, cohort randomized knockout tournaments are not (for more than two rounds) ordered. 
 
     \fig{0.52}{eight_cohort}{Setup of Theorem \ref{th:cohort_counter}}
 
     \theo{}{
-        The eight-team cohort randomized bracket is not ordered.
+        The eight-team cohort randomized knockout tournament is not ordered.
     }{
-        Let $\A$ be the eight-team cohort randomized bracket, and let $\T$ have the following matchup table for $0 < p < 0.5.$
+        Let $\A$ be the eight-team cohort randomized knockout tournament, and let $\T$ have the following matchup table for $0 < p < 0.5.$
         
         \begin{center}
             \begin{tabular}{c | c c c c c c c c}
@@ -197,22 +195,20 @@
             &<qs\left(q\frac{1}{2}+p\left(\frac{1}{2}r + \frac{1}{2}s\right)\right) &\textrm{because $r < s$ and $p < \frac{1}{2} < q$}\\
             &=\W{\A_7}{t_3}{\T} 
         \end{align*}
-        Thus, $$\W{\A}{t_2}{\T} < \W{\A}{t_3}{\T}$$ so $\A$ is not ordered.
+        Therefore, $$\W{\A}{t_2}{\T} < \W{\A}{t_3}{\T}$$ so $\A$ is not monotonic with respect to $\T$ and thus not ordered.
     }{cohort_counter}
 
-    If cohort randomized brackets don't solve the orderedness problem, why would we use them over traditional proper brackets? Cohort randomization is most famously found on the ATP Tour, a collection of tournaments played by professional tennis players that all use almost identical formats: large balanced brackets. Additionally, the seeding for these tournaments is set by the ATP rankings, which tend to be slow to update. As a result, if every ATP Tour tournament used the proper seeding, the 6-seed and 27-seed would play each other in the first round at every tournament until one of them moved up or moved down. These rematches were deemed undesirable and so this randomization procedure was introduced: The 1-seed's quarterfinals matchup (if everything goes chalk) is now randomly drawn from the 5- through 8-seeds, instead of always being the 8-seed.
+    If cohort randomized knockout tournaments don't solve the orderedness problem, why would we use them over traditional proper knockout tournaments? Cohort randomization is most famously found on the ATP Tour, a collection of tournaments played by professional tennis players that all use almost identical formats: large balanced knockout tournaments. Additionally, the seeding for these tournaments is set by the ATP rankings, which tend to be slow to update. As a result, if every ATP Tour tournament used the proper seeding, the 6-seed and 27-seed would play each other in the first round at every tournament until one of them moved up or moved down. These rematches were deemed undesirable and so this randomization procedure was introduced: The 1-seed's quarterfinals matchup (if everything goes chalk) is now randomly drawn from the 5- through 8-seeds, instead of always being the 8-seed.
 
-    %name this property and name brackets vs eliminations
-    But Theorem \ref{th:cohort_counter} tells us that they are not ordered. Unfortunately, this chapter ends an unsatisfying note, with two key questions in the field remaining open.
-        
+    But Theorem \ref{th:cohort_counter} tells us that they are not ordered, meaning that the only ordered balanced knockout format we've developed for more than two rounds is the totally randomized one. Unfortunately, we conclude the chapter without a more satisfying design, leaving behind two big open questions.
+    
     \begin{oq}{}{}
-        For a given signatures $\A$, does there exists an ordered elimination format with signature $\A$?
+        Does there exist a deterministic ordered balanced knockout tournament for arbitrary numbers of rounds?
     \end{oq}
 
-    Of course, if $\A$ is a balanced signature, then we know the answer is yes: a totally randomized bracket will suffice. Thus the second open question,
-
     \begin{oq}{}{}
-        For each $r$, does there exists a balanced ordered elimination format such that if the format goes chalk, after the $i$th round, the top $2^{r-i}$ seeds will remain?
-    \end{oq} %name this property!!
+        Does there exist an exciting ordered balanced knockout tournament for arbitrary numbers of rounds?
+    \end{oq}
 
+    We (pessimistically) conjecture that both answers are no.
     }
