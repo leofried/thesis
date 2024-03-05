@@ -1,61 +1,59 @@
 \sub{
 
-%formally talk about "admit" and "instantiate"
-
-\begin{definition}{Elimination Format}{elimination} 
-    An \i{elimination} tournament format is one in which
-    \begin{itemize}
+\begin{definition}{Bracket}{bracket}
+    A \i{bracket} is a networked format in which
+    \begin{enumerate}[(a)]
         \item Teams don't play any games after their first loss, and
         \item Games are played until only one team has no losses, and that team is crowned champion.
-    \end{itemize}
-\end{definition}
-
-\begin{definition}{Bracket}{bracket}
-    A \i{bracket} is a elimination tournament format that upholds the network condition.
+    \end{enumerate}
 \end{definition}
 
 We can draw a bracket as a tree-like structure in the following way.
 
-\fig{1}{cfp_start}{The 2023 College Football Playoff}
+\fig{1}{cfp_start}{The 2024 College Football Playoff}
 
-The numbers 1, 2, 3, and 4 indicate where $t_1, t_2, t_3,$ and $t_4$ in $\T$ are placed to start. In the actual 2023 College Football Playoff, the list of teams $\T$ was Georgia, Michigan, TCU, and Ohio State, in that order, so the bracket was filled in like so.
+The numbers 1, 2, 3, and 4 indicate where $t_1, t_2, t_3,$ and $t_4$ in $\T$ are placed to start. In the actual 2024 College Football Playoff, the list of teams $\T$ was Michigan, Washington, Texas, and Alabama, in that order, so the bracket was filled in like so.
 
-\fig{1}{cfp_middle}{The 2023 CFP After Team Placement}
+\fig{1}{cfp_middle}{The 2024 College Football Playoff After Team Placement}
 
-As games are played, we write the name of the winning teams on the corresponding lines. This bracket tells us that Georgia played Ohio State, and Michigan played TCU. Georgia and TCU won their respective games, and then Georgia beat TCU, winning the tournament.
+As games are played, we write the name of the winning teams on the corresponding lines. This bracket tells us that Michigan played Alabama, and Washington played Texas. Michigan and Washington won their respective games, and then Michigan beat Washington, winning the tournament.
 
-\fig{1}{cfp_end}{The 2023 CFP After Completion}
+\fig{1}{cfp_end}{The 2024 College Football Playoff After Completion}
 
-Rearranging the way the bracket is pictured, if it doesn't affect any of the matchups, does not create a new bracket. For example, Figure \ref{fig:cfp_alt} is just another way to draw the same 2023 CFP Bracket. 
+Rearranging the way the bracket is pictured, if it doesn't affect any of the matchups, does not create a new bracket. For example, Figure \ref{fig:cfp_alt} is just another way to draw the same bracket. 
 
-\fig{1}{cfp_alt}{Alternative Drawing of the 2023 CFP}
+\fig{1}{cfp_alt}{Alternative Drawing of the 2024 College Football Playoffs}
 
-One key piece of bracket vocabulary is the \i{round}.
+There are a few important pieces of vocabulary when it comes to brackets.
+
+\begin{definition}{Starting Line}{}
+    A \i{starting line} is a line in a bracket where a team goes before it has played any games. Equivalently, the starting lines are the leaf nodes on the tree that is the bracket.
+\end{definition}
 
 \begin{definition}{Round}{}
     A \i{round} is a set of games such that the winners of each of those games have the same number of games remaining to win the tournament.
 \end{definition}
 
-For example, the 2023 CFP has two rounds. The first round included the games Georgia vs Ohio State and Michigan vs TCU, and the second round was just a single game: Georgia vs TCU.
+\begin{definition}{Bye}{}
+    A team has a \i{bye} in round $r$ if it plays no games in round $r$ or before.
+\end{definition}
 
-Another important concept is the \i{shape} of a bracket.
+The 2024 College Football Playoffs had four starting lines, one for each of its participating teams, and was played over two rounds: The first round consisted of the games Michigan vs Alabama and Washington vs Texas, and the second round was just the single  Michigan vs Washington. The 2024 College Football Playoffs had no byes.
+
+With the key terminology established, we begin by investigating the \i{shape} of brackets.
 
 \begin{definition}{Shape}{}
     The \i{shape} of a bracket is the tree that underlies it.
 \end{definition}
 
-For example, the following two brackets have the same shape.
+The following two brackets have the same shape.
 
 \fig{0.78}{same_shape}{Two Brackets with the Same Shape}
-
-\begin{definition}{Bye}{}
-    A team has a \i{bye} in round $r$ if it plays no games in round $r$ or before.
-\end{definition}
 
 One way to describe the shape of a bracket its signature.
 
 \begin{definition}{Bracket Signature}{}
-    The \i{signature} $\bracksig{a_0; ...; a_r}$ of an $r$-round bracket $\A$ is list such that $a_i$ is the number of teams with $i$ byes.
+    The \i{signature} of an $r$-round bracket $\A$ is the list $\bracksig{a_0; ...; a_r}$ where $a_i$ is the number of teams the get $i$ byes.
 \end{definition}
 
 The signature of a bracket is defined only by its shape: the two brackets in Figure \ref{fig:same_shape} have the same shape, so they also have the same signature.
@@ -63,14 +61,16 @@ The signature of a bracket is defined only by its shape: the two brackets in Fig
 The signatures of the brackets discussed in this section are shown in Figure \ref{fig:sigs}. It's worth verifying the signatures we've seen so far and trying to draw brackets with the signatures we haven't yet before moving on.
 
 \begin{figg}{The Signatures of Some Brackets}{sigs}
-    \begin{tabular}{ c | c }
-         Bracket & Signature \\
-         \hline
-         2023 College Football Playoff & $\bracksig{4; 0; 0}$ \\
-         The brackets in Figure \ref{fig:same_shape} & $\bracksig{2; 3; 0; 0}$\\
-         The brackets in Figure \ref{fig:six_teams} & $\bracksig{4; 2; 0; 0}$\\
-         2023 WCC Men's Basketball Tournament & $\bracksig{4;2;2;2;0;0}$ \\
-    \end{tabular}
+    \begin{center}
+        \begin{tabular}{ c | c }
+            Bracket & Signature \\
+            \hline
+            2024 College Football Playoff & $\bracksig{4; 0; 0}$ \\
+            The brackets in Figure \ref{fig:same_shape} & $\bracksig{2; 3; 0; 0}$\\
+            The brackets in Figure \ref{fig:six_teams} & $\bracksig{4; 2; 0; 0}$\\
+            2024 WCC Men's Basketball Tournament & $\bracksig{4;2;2;2;0;0}$ \\
+        \end{tabular}
+    \end{center}
 \end{figg}
 
 Two brackets with the same shape must have the same signature, but the converse is not true: two brackets with different shapes can have the same signature. For example, both bracket shapes depicted in Figure \ref{fig:six_teams} have the signature $\bracksig{4;2;0;0}.$
@@ -96,14 +96,14 @@ Bracket signatures have one more important property.
         Now, consider the signature $\B = \bracksig{a_1 + a_0/2; a_2; ...; a_r}.$ By induction, there exists a bracket with signature $\B$. But if we take that bracket and replace $a_0/2$ of the teams with no byes with a game whose winner gets placed on that line, we get a new bracket with signature $\A.$
 }{signature_sum}
 
-In the next few sections, we will use the language and properties of bracket signatures to describe the brackets that we work with. For now though, let's return to the 2023 College Football Playoff. The bracket used in the 2023 CFP has a special property that not all brackets have: it is \i{balanced}.
+In the next few sections, we will use the language and properties of bracket signatures to describe the brackets that we work with. For now though, let's return to the 2024 College Football Playoff. The bracket used in the 2024 College Football Playoff has a special property that not all brackets have: it is \i{balanced}.
 
 \begin{definition}{Balanced Bracket}{}
-    A \i{balanced bracket} is a bracket in which none of the teams have byes.
+    A bracket is \i{balanced} if none of the participating teams have byes.
 \end{definition} 
 
-The 2023 West Coast Conference Men's Basketball Tournament, on the other hand, is unbalanced.
-\fig{0.8}{wcc}{The 2023 WCC Men's Basketball Tournament}
+The 2024 West Coast Conference Men's Basketball Tournament, on the other hand, is unbalanced.
+\fig{0.8}{wcc}{The 2024 WCC Men's Basketball Tournament}
 
 Saint Mary's and Gonzaga each have three byes and so only need to win two games to win the tournament, while Portland, San Diego, Pacific, and Pepperdine need to win five. Unsurprisingly, this format conveys a massive advantage to Saint Mary's and Gonzaga, but this was intentional: those two teams were being rewarded for doing the best during the regular season.
 
@@ -112,7 +112,7 @@ In many cases, however, it is undesirable to grant advantages to certain teams o
 \theo{}{
     There exists an $n$-team balanced bracket if and only if $n$ is a power of two.
 }{
-    A bracket is balanced if no teams have byes, which is true exactly when its signature is of the form $\A = \bracksig{n; 0; ...; 0}$ where $n$ is the number of teams in the bracket. If $n$ is a power of two, then by Theorem \ref{th:signature_sum} $\A$ is indeed a bracket signature and so points to a balanced bracket for $n$ teams. If $n$ is not a power of two, however, then Theorem \ref{th:signature_sum} tells us that $\A$ is not a bracket signature, and so no balanced brackets exist for $n$ teams.
+    A bracket is balanced if no teams have byes, which is true exactly when its signature is of the form $\A = \bracksig{n; 0; ...; 0},$ where $n$ is the number of teams in the bracket. By Theorem \ref{th:signature_sum}, $\A$ is a bracket signature exactly when $n$ is a power of two, and so there exists an $n$-team balanced bracket if and only if $n$ is a power of two.
 }{balanced}
 
 Given this, brackets are not a great option when we want to avoid giving some teams advantages over others unless we have a power of two teams. They are a fantastic tool, however, if doling out advantages is the goal, perhaps after some teams did better during the regular season and ought to be rewarded with an easier path in the bracket.

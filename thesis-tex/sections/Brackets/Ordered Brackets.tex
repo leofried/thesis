@@ -24,11 +24,11 @@ One counter-intuitive fact about the NCAA Basketball Tournament is that it is pr
 
 The 9-seed has an easier first-round matchup, while the 10-seed has an easier second-round matchup. However, this isn't quite symmetrical. Because the teams are probably drawn from a roughly normal distribution, the expected difference in skill between the 1- and 2-seeds is far greater than the expected difference between the 7- and 8-seeds, implying that the 10-seed does in fact have an easier route than the 9-seed.
 
-Nate Silver \cite{nate_silver} investigated this matter in full, finding that in the NCAA Basketball Tournament, seed-lines 10 through 15 give teams better odds of winning the region than seed-lines 8 and 9. Of course this does not mean that the 11-seed (say) has a better chance of winning a given region than the 8-seed does, as the 8-seed is a much better team than the 11-seed. But it does mean that the 8-seed would love to swap places with the 11-seed, and that doing so would increase their odds to win the region.
+Silver \cite{nate_silver} investigated this matter in full, finding that in the NCAA Basketball Tournament, starting lines 10 through 15 give teams better odds of winning the region than starting lines 8 and 9. Of course this does not mean that the 11-seed (say) has a better chance of winning a given region than the 8-seed does, as the 8-seed is a much better team than the 11-seed. But it does mean that the 8-seed would love to swap places with the 11-seed, and that doing so would increase their odds to win the region.
 
 This is not a great state of affairs: the whole point of seeding is confer an advantage to higher-seeded teams, and the proper bracket $\bracksig{16; 0; 0; 0; 0}$ is failing to do that. Not to mention that giving lower-seeded teams an easier route than higher-seeded ones can incentivize teams to lose during the regular season in order to try to get a lower but more advantageous seed.
 
-To fix this, we need a stronger notion of what makes a bracket effective than properness. The issue with proper seedings is the false assumption that higher-seeded teams will always beat lower-seeded teams. A more nuanced assumption, initially proposed by H.A. David \cite{stochastic}, might look like this.
+To fix this, we need a stronger notion of what makes a bracket effective than properness. The issue with proper seedings is the false assumption that higher-seeded teams will always beat lower-seeded teams. A more nuanced assumption, initially proposed by David \cite{stochastic}, might look like this.
 
 \begin{definition}{Strongly Stochastically Transitive}{}
     A list of teams $\T$ is \i{strongly stochastically transitive} if for each $i, j, k$ such that $j < k$, $$\G{t_i}{t_j} \leq \G{t_i}{t_k}.$$
@@ -37,35 +37,43 @@ To fix this, we need a stronger notion of what makes a bracket effective than pr
 A list of teams being strongly stochastically transitive (SST) captures the intuition that each team ought to do better against lower-seeded teams than against higher-seeded teams. A few quick implications of this definition are stated below.
 
 \begin{corollary}{}{}
-    \begin{enumerate}
-        \item[(1)] If $\T$ is SST, then for each $i < j$, $$\G{t_i}{t_j} \geq 0.5.$$
-        \item[(2)] If $\T$ is SST, then for each $i, j, k, \ell$ such that $i < j$ and $k < \ell$, $$\G{t_i}{t_\ell} \geq \G{t_j}{t_k}.$$
-        \item[(3)] If $\T$ is SST, then the matchup table $\M$ is monotonically increasing along each row and monotonically decreasing along each column.
+    \begin{enumerate}[(1)]
+        \item If $\T$ is SST, then for each $i < j$, $$\G{t_i}{t_j} \geq 0.5.$$
+        \item If $\T$ is SST, then for each $i, j, k, \ell$ such that $i < j$ and $k < \ell$, $$\G{t_i}{t_\ell} \geq \G{t_j}{t_k}.$$
+        \item If $\T$ is SST, then the matchup table $\M$ is monotonically increasing along each row and monotonically decreasing along each column.
     \end{enumerate}
     \end{corollary}
 
 Note that not every set of teams can be seeded to be SST. Consider, for example, the game of rock-paper-scissors. Rock beats paper which beats scissors which beats rock, so no ordering of these ``teams'' will be SST. For our purposes, however, SST will work well enough.
 
-Our new, nuanced alternative a proper bracket is an \i{ordered bracket}, first defined by Chen and Hwang \cite{define_ordered}  (though we use the name proposed by Edwards \cite{montana}).
+Our new, nuanced alternative a proper bracket is an \i{ordered bracket}. The concept of orderedness was first used in analyses by by Chen and Hwang \cite{define_ordered} as well as Horen and Riezman \cite{four_eight_ordered}, but Edwards \cite{montana} was the one to formalize and name it.
+
+\begin{definition}{Monotonic}
+    A tournament format $\A$ is monotonic with respect to an SST list of teams $\T$ if, for all $i < j,$ $\W{\A}{t_i}{\T} \geq \W{\A}{t_j}{\T}.$
+\end{definition}
 
 \begin{definition}{Ordered}{}
-    A tournament format $\A$ is \i{ordered} if, for any SST list of teams $\T$, if $i < j$, then $\W{\A}{t_i}{\T} \geq \W{\A}{t_j}{\T} $
+    An $n$-team tournament format $\A$ is \i{ordered} if it is monotonic with respect to every SST list of $n$ teams.
 \end{definition}
 
 In an informal sense, a bracket being ordered is the strongest thing we can want without knowing more about why the tournament is being played. Depending on the situation, we might be interested in a format that almost always declares the most-skilled team as the winner, or in a format that gives each team roughly the same chance of winning, or anywhere in between. But certainly, better teams should win more, which is what the ordered bracket condition requires.
 
 In particular, a bracket being ordered is a stronger claim than it being proper.
 
-\theo{}{Every ordered bracket is proper.}{ %this proof needs cleaning up --> all three conditions vs just two
-    Let $\A$ be an ordered $n$-team bracket with $r$ rounds.\\
+\theo{}{Every ordered bracket is proper.}{
+    We show the contrapositive. Let $\A$ be an $r$-round non-proper bracket.
+
+    Assume first that $\A$ violates condition (a). Let $t_i$ and $t_j$ be teams such that $i < j$, but $t_i$ plays its first game in round $r_i$ while $t_j$ plays its first game in round $r_j$ for $r_i < r_j.$
     
-    Let $\T$ be SST with matchup table $\M$ where $\M_{ij} = 0.5$. A team that plays their first game in the $i$th round will win the tournament with probability $(0.5)^{r-i}$, so teams that get more byes will have a higher probability to win the tournament than teams with fewer byes. This implies that higher-seeded teams must have more byes than lower-seeded teams, so in each round, the teams with byes must be the highest-seeded teams that are still alive. Thus, condition (1) is met.\\
+    Let $\T$ be a list of teams such that $p_{ij} = 0.5$ for all $i, j.$ Then,
+    $$\W{\A}{t_i}{\T} = 0.5^{r-r_i+1} < 0.5^{r-r_j+1} = \W{\A}{t_j}{\T},$$
+    so $\A$ is not ordered.
 
-    We show that condition (2) is met by proving the stronger condition from Lemma \ref{th:proper_condition_two}: if $m$ teams have a bye and $k$ games are being played in round $s$, then if the bracket goes chalk, those matchups will be $t_{m + i}$ vs $t_{(m + 2k + 1) - i}$ for $i \in \{1, ..., k\}.$ We show this by strong induction on $s$ and on $i$.\\
-
-    Assume that this is true for every round up until $s$ and for all $i < j$ for some $j$. Let $\ell = (m + 2k + 1) - j.$ We want to show that if the the bracket goes chalk, $t_{m + j}$ will face off against seed $t_{\ell}$ in the given round. Consider the following SST matchup table: every game is a coin flip, except for games involving a team seeded $\ell$ or lower, in which case the higher seed always wins. Then, each team seeded between $\ell - 1$ and $m + j$ will win the tournament with probability $(\frac{1}{2})^{r-s},$ other than the team slated to play $t_\ell$ in round $s$ who wins with probability $(\frac{1}{2})^{r-i-1}.$ In order for $\B$ to be ordered, that team must be $t_{m+j}.$\\
-
-    Thus $\A$ satisfies both conditions, and so is a proper bracket.
+    Now assume $\A$ violated condition (b) for the first time in the $s$th round, and let $t_\ell$ be the lowest-seeded team such that there exists a $t_i, t_j,$ and $t_k$ where if $\A$ goes chalk, then in round $s$, $t_i$ will play $t_j$ and $t_k$ will play $t_\ell$, but $i < k$ and $j < \ell$ (thus breaking condition (b)). Because $t_\ell$ is the lowest such seed, we also have $k < \ell.$
+    
+    Let $\T$ be the SST set of teams where all games between teams seeded $\ell-1$ or better is a coin flip, but all games involving at least one team seeded $\ell$ or worse is always won by the higher seeded team. Then $$\W{\A}{t_i}{\T} = 0.5^{r-s+1} > 0.5^{r-s} = \W{\A}{t_k}{\T},$$ so $\A$ is not ordered.
+    
+    Thus there is no ordered bracket that is not proper, so all ordered brackets are proper.
 }{ordered_proper}
 
 With Theorem \ref{th:ordered_proper}, we can use the language of bracket signatures to describe ordered brackets without worrying that two ordered brackets might share a signature. Now we examine three particularly important examples of ordered brackets.
@@ -124,20 +132,16 @@ Let $\A = \bracksig{4; 2; 0; 0},$ and let $\T$ have the following matchup table.
     \begin{tabular}{c | c c c c c c}
     & $t_1$ & $t_2$ & $t_3$ & $t_4$ & $t_5$ & $t_6$\\ 
     \hline
-    $t_1$ & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1 \\
-    $t_2$ & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 1 \\
-    $t_3$ & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 \\
-    $t_4$ & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 \\
-    $t_5$ & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 \\
-    $t_6$ & 0 & 0 & 0.5 & 0.5 & 0.5 & 0.5 \\
+    $t_1$ &  & & & & & \\
+    $t_2$ & 0.5 & & & & & \\
+    $t_3$ & 0.5 & 0.5& & & & \\
+    $t_4$ & 0.5 & 0.5& 0.5& & & \\
+    $t_5$ & 0 & 0.5& 0.5& 0.5& & \\
+    $t_6$ & 0 & 0.5 & 0.5 & 0.5 & 0.5 & \\
     \end{tabular}
 \end{center}
 
-    Then
-    $$\W{\A}{t_1}{\T} = 0.5 \cdot 0.5 = 0.25,$$
-    but
-    $$\W{\A}{t_2}{\T} = (0.5 \cdot 0.5 + 0.5 \cdot 1) \cdot 0.5 = 0.375.$$
-    Thus $\A$ is not ordered.
+    Then $\W{\A}{t_5}{\T} = 0$ but $\W{\A}{t_2}{\T} > 0$ so $\A$ is not ordered.
 }{}
 
 In the next section, we move on from describing particular ordered and non-ordered brackets in favor of a more general result.

@@ -1,6 +1,6 @@
 \sub{
 
-%matchuo tables are top half and pij = ti vs tj
+%matchuo tables are top half and pij = ti vs tj --> this needs fleching obviously
 
 \begin{definition}{Gameplay Function}{}
     A \i{gameplay function} $g$ on a list of teams $\T = [t_1, ..., t_n]$ is a nondeterministic function $g : \T \times \T \to \T$ with the following properties:
@@ -19,7 +19,7 @@ A gameplay function represents a process in which two teams compete in a game, w
 The information in a gameplay function can be encoded into a \i{matchup table.}
 
 \begin{definition}{Matchup Table}{}
-    The \i{matchup table} implied by a gameplay function $g$ on a list of teams $\T$ of length $n$ is a $n$-by-$n$ matrix $\M$ such that $\M_{ij} = \G{t_i}{t_j}.$
+    The \i{matchup table} implied by a gameplay function $g$ on a list of teams $\T$ of length $n$ is a $n$-by-$n$ matrix $\M$ such that $\M_{ij} = \G{t_i}{t_j}.$ (We adopt a convention that for all $t$, $\G{t}{t} = 0.5.$)
 \end{definition}
 
 For example, let $\T = $[Favorites, Rock, Paper, Scissors, Conceders$]$, and $g$ be such that the Conceders concede every game they play, the Favorites are $70\%$ favorites against Rock, Paper, and Scissors, and Rock, Paper, and Scissors match up with each other as their name implies. Then the matchup table would look like so:
@@ -42,13 +42,27 @@ For example, let $\T = $[Favorites, Rock, Paper, Scissors, Conceders$]$, and $g$
     If $\M$ is the matchup table for $(\T, g)$, then $\M + \M^T$ is the matrix of all ones.
 }{
     $(\M + \M^T)_{ij} = \M_{ij} + \M_{ji} = \G{t_i}{t_j} + \G{t_j}{t_i} = 1.$
-}{}
+}{matchup_diag}
+
+Theorem \ref{th:matchup_diag} tells us that a matchup table is defined by the entries below the diagonal, so to reduce busyness we will often display only those entries.
+
+\begin{figg}{The Matchup Table for $(\T, g)$}{}
+    \begin{center}
+        \begin{tabular}{ c | c c c c c}
+        & Favorites & Rock & Paper & Scissors & Conceders\\
+        \hline
+        Favorites & &  &  &  & \\
+        Rock      & 0.3 & & &  & \\
+        Paper     & 0.3 & 1.0 & & & \\
+        Scissors  & 0.3 & 0.0 & 1.0 & & \\
+        Conceders & 0.0 & 0.0 & 0.0 & 0.0 &
+        \end{tabular}
+    \end{center}
+\end{figg}
 
 \begin{definition}{Tournament Format}{}
-    A \i{tournament format} is an algorithm that takes as input a list of teams $\T$ and a gameplay function $g$ and outputs a champion $t \in \T.$
+    A \i{tournament format} is an algorithm that takes as input a list of teams $\T$ and a gameplay function $g$ and outputs a champion $t \in \T.$ %actually not just a champion but
 \end{definition}
-%not really a champion -- more like a top x for some x.
-%ok actually... see \WW
 
 We use a gameplay function rather than a matchup table in the definition of a tournament format because a tournament format cannot simply look at the matchup table itself in order to decide which teams are best. Instead, formats query the gameplay function (have teams play games) in order to gather information about the teams. That said, matchup tables will often be useful in our \i{analysis} of tournament formats. 
 
