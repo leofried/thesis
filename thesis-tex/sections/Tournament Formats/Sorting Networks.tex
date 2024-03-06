@@ -1,0 +1,20 @@
+\sub {
+
+    The types of questions posed in the field of tournament design are very similar to those posed in the field of sorting algorithm design. In both cases, the designer is given a list of objects (teams), may make an arbitrary number of comparisons (games), and then must output a sorting (champion). There are, however, a number of differences that separate the fields.
+
+    The first difference is that of noise. The sorting theorist works with the guarantee that if two objects are compared twice, the comparison will give the same result both times. For this reason, the sorting theorist often finds it wasteful to compare the same pair of teams more than once. But the tournament theorist's job is much harder, as team performance is noisier. When two teams play, there is no guarantee that the better team will win, and when they play twice, there is no guarantee that the same team will win both times.
+
+    The second difference is that of accuracy. An algorithm submitted by the sorting theorist is required to correctly sort any list of objects, otherwise it is not a sorting algorithm. The tournament theorist is under no such constraints: the noise makes such an algorithm impossible. Thus algorithms like ``randomly select a winner'' and ``play lots of games and then declare the team with the fewest wins champion'' are valid tournament designs, even if they are (probably) not particularly good ones.
+
+    The third difference is that of priors. While the sorting theorists typically begins their algorithms with no priors on the set of objects, tournament theorists are often given a ``seeding'' of teams, identifying which teams are judged to be better. This seeding can be varyingly accurate: in some cases the tournament theorists begins their algorithm with very strong priors, while in others the seeding provides minimal information.
+
+    The fourth difference is that of fairness. The sorting theorist is working with a set of lifeless objects whose feelings will not be hurt based on the algorithm, freeing the sorting theorist to focus only on the task of accurately sorting the objects. The tournament theorist, on the other hand, must appeal to the sense of fairness held by the competitors: in many cases, fairness is a more important consideration than accuracy. 
+    
+    The final difference is that of viewership. The sorting theorist works in private, comparing objects and gathering data until a sort can be published. The tournament theorist, on the other hand, works in front of an audience, who are looking not just for an accurate tournament, but for an exciting one: the NCAA College Basketball Tournament, is a classic example, as we will soon see, of a tournament that is not very accurate but none the less very exciting for viewers.
+
+    Still, there is a lot of overlap between the two fields. The definitive sorting theory text, Knuth's \i{The Art of Computer Programming: Sorting and Searching} \cite{knuth} often used the tournament design theory language of teams and games when presenting various algorithms. We, too, borrow from the field of sorting theory: in particular the concept of a \i{sorting network}.
+
+    Sorting networks, first patented by Armstrong, Nelson, and O'Connor \cite{pat}, are sorting algorithms with the additional property that, after two objects $a$ and $b$ are compared, the remaining comparisons are identical no matter the result of the comparison between $a$ and $b$, except with every instance of $a$ replaced with $b$, and every instance of $b$ replaced with $a$. Knuth's text has a section about the properties and space of sorting networks.
+
+    This thesis will examine networked tournament formats, that is, tournament formats with this networking property. These formats are a particularly nice set of formats to study. For one thing, the networking property is particularly useful in aiding the study. But also, many tournament formats in use in the real world, most notably the bracket, are networked, giving our study applications to many tournaments and leagues across many sports.
+}

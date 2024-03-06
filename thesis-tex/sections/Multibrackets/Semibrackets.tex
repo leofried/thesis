@@ -11,14 +11,13 @@
     The format in Figure \ref{fig:800} does exactly what we need. The championship game being left unplayed is not a bug but a feature: each team plays a maximum of two games, and the two teams that advance to the national tournament are clear.
 
     While it would be reasonable to describe the format in Figure \ref{fig:800} as two brackets that run side-by-side, it would be nice to be able to describe it as a single format: a bracket in which the championship game is left unplayed.
-
+    
     \begin{definition}{Semibracket}{semibracket}
-        A \i{semibracket} is a tournament format in which:
-        \begin{itemize}
-            \item Teams don't play any games after their first loss.
-            \item The matchups between game winners are determined in advance of the outcomes of any games. %network condition
-        \end{itemize}
-        All teams that finish a semibracket with no losses are declared co-champions.
+        A \i{semibracket} is a networked format in which
+        \begin{enumerate}[(a)]
+            \item Teams don't play any games after their first loss, and
+            \item All teams that finish with no losses are declared co-champions.
+        \end{enumerate}
     \end{definition}
 
     Thus semibrackets are a generalization of brackets: a bracket is a semibracket in which only one team is left undefeated and declared champion.
@@ -27,20 +26,17 @@
 
     \begin{figg}{Properties of Networked Formats}{types_of_brackets}
         \begin{center}
-            \overfullhbox{
-            \begin{tabular}{| c | c | c | c |}
+            \begin{tabular}{| c | c | c |}
                 \hline
-                & No games & Only one team & Network\\
-                Format & after first loss & finishes undefeated & condition  \\
+                Format & No Games After First Loss& Only One Team Finishes Undefeated\\
                 \hline
-                Traditional Bracket & \Huge{\check} & \Huge{\check} & \Huge{\check}\\
+                Bracket & \Large{\check} & \Large{\check}\\
                 \hline
-                Semibracket & \Huge{\check} & \Huge{\ex} & \Huge{\check}\\
+                Semibracket & \Large{\check} & \Large{\ex}\\
                 \hline
-                Multibracket & \Huge{\ex} & \Huge{\ex} & \Huge{\check}\\
+                Multibracket & \Large{\ex} & \Large{\ex}\\
                 \hline
             \end{tabular}
-            }
         \end{center}
     \end{figg} 
 

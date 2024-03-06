@@ -68,15 +68,10 @@
         A \i{multibracket} is a collection of one or more brackets coupled with a specification of which winners and losers of which games receive which places. Starting lines in multibrackets can be marked a seed, or by a game, indicating that loser of the specified game should be placed there.
     \end{definition}
 
-    Since which game each team plays in next (and which place each team ends up in) can be derived only from which game that team played in most recently and whether they won or lost that game, this definition is equivalent to saying that the format upholds the network condition.
-    % from Section \ref{sec:Definitions}.
-
-    \begin{definition}{Network Condition}{}
-        A tournament format upholds the \i{network condition} if after $t_i$ plays $t_j$, the rest of the format is identical no matter which team won, except for $t_i$ and $t_j$ are swapped.
-    \end{definition}
-
+    Since which game each team plays in next (and which place each team ends up in) can be derived only from which game that team played in most recently and whether they won or lost that game, this definition is equivalent to saying that the format is networked.
+    
     \begin{definition}{Multibracket}{}
-        A \i{multibracket} is a tournament format that upholds the network condition.
+        A \i{multibracket} is a networked tournament format.
     \end{definition}
 
     (Note that this means multibrackets with contingent games are technically not multibrackets at all. However, they are close enough to being multibrackets and are important enough tools for tournament design that we include them in our discussion, in the same way that  in the last chapter we discussed reseeded brackets even though they are technically not brackets.)
