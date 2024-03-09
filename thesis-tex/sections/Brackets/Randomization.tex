@@ -17,9 +17,9 @@
     Indeed, Lemma \ref{th:rand_lemma}, proved by Chen and Hwang \cite{totally_random_balanced}, seems to provide some evidence for the conjecture.
 
     \lemm{}{
-        Let $\A$ be a totally randomized knockout tournament with signature $\bracksig{a_0; ...; a_r}$, let $\S$ be a list of teams, and let $\T$ be the list of teams produced by replacing a given team $s \in \S$ with a team $t$ such that for all other teams $u,$ $$\G{t}{u} \geq \G{s}{u}.$$ Then, $$\W{\A}{t}{\T} \geq \W{\A}{s}{\S}.$$
+        Let $\A$ be a totally randomized knockout tournament with signature $\bracksig{a_0; ...; a_r}$, let $\S$ be a set of teams, and let $\T$ be the set of teams produced by replacing a given team $s \in \S$ with a team $t$ such that for all other teams $u,$ $$\G{t}{u} \geq \G{s}{u}.$$ Then, $$\W{\A}{t}{\T} \geq \W{\A}{s}{\S}.$$
     }{
-        Let $X$ be the set of subsets of $\S \setminus \{s\} = T \setminus \{t\}$, and for each set of teams $Y \in X$, let $P_Y$ be the probability that $s$ or $t$ will have to beat exactly the set of teams $Y$ in order to win the format (noting that this probability is the same for $s$ and $t$). Then,
+        Let $X$ be the power set of $\S \setminus \{s\} = T \setminus \{t\}$, and for each set of teams $Y \in X$, let $P_Y$ be the probability that $s$ or $t$ will have to beat exactly the set of teams $Y$ in order to win the format (noting that this probability is the same for $s$ and $t$). Then,
         \begin{align*}
             \W{\A}{t}{\T} &= \sum_{Y \in X} \left(P_Y \cdot \prod_{u \in Y} \G{t}{u}\right)\\
             &\geq \sum_{Y \in X} \left(P_Y \cdot \prod_{u \in Y} \G{s}{u}\right)\\
@@ -28,7 +28,7 @@
     }{rand_lemma}
 
     
-    But the evidence provided by Conjecture \ref{conj:randord} isn't that strong: Lemma \ref{th:rand_lemma} is true for all traditional brackets as well, even though they are not always ordered. Indeed, despite the lemma, Chung and Hwang turns out to be false due to a counterexample given by Israel \cite{seventeen_team}.
+    Unfortunately, despite the lemma, Chung and Hwang's conjecture is false due to a counterexample given by Israel \cite{seventeen_team}.
 
     \fig{1}{17teams}{The Proper knockout tournament Shape of Signature $\bracksig{16;0;0;0;1;0}$}
 
@@ -87,7 +87,7 @@
         Therefore $\A$ is not ordered.
     }{}
 
-    Chung and Hwang's conjecture was rescued by Chen and Hwang \cite{totally_random_balanced} who restricted the domain of the claim to balanced formats .
+    Chung and Hwang's conjecture was rescued by Chen and Hwang \cite{totally_random_balanced} who restricted the domain of the claim to balanced formats.
 
     \theo{}{
         All totally randomized balanced knockout tournaments are ordered.
@@ -114,18 +114,8 @@
 
         Thus, $\A_r$ is ordered.
     }{balance_ord}
-
-    Chen and Hwang also conjectured that Theorem \ref{th:balance_ord} could be extended to totally randomized nearly balanced knockout tournaments as well, but this remains an open question.
-
-    \begin{definition}{Nearly Balanced}{}
-        A knockout tournament is \i{nearly balanced} if no team receives more than one bye.
-    \end{definition}
-
-    \begin{conj}{}{trnbbo}
-        All totally randomized nearly balanced knockout tournaments are ordered.
-    \end{conj}
-
-    Note that even if Conjecture \ref{conj:trnbbo} failed, Theorem \ref{th:balance_ord} could be used to generate ordered formats that take a logarithmic number of rounds by simply inserting dummy teams that grant the teams that they are set to play against a bye. Unfortunately, the resulting tournament is technically not a knockout tournament: these dummy teams can advance into later rounds by getting randomly assigned to play against each other, and so there is some chance that a team will be given a bye after playing a game in an earlier round. For many purposes, however, this is not an issue, and the described procedure can be used to generated ordered formats that take a logarithmic number of rounds on arbitrary numbers of teams with no concerns.
+    
+    In some ways this is a great revelation: we finally have an example of an ordered balanced knockout tournament that works or arbitrary numbers of rounds.
 
     Of course, this orderedness does not come without drawbacks. For one, the randomization feels a bit cheap: once the randomization is complete, before any games have even been played, the orderedness is lost. (Compare to the ordered traditional and reseeded brackets, which maintain their orderedness throughout the whole tournament.)
     
@@ -149,9 +139,9 @@
             We proceed by induction on $r$. If $r = 0$, then there are no rounds and so the theorem holds. For any other $r$, in the first round, the top $2^{r-1}$ seeds will face the bottom $2^{r-1}$ seeds, and because the format goes chalk, the bottom half of teams will be eliminated. Thus after the first round, the top $2^{r-1}$ seeds will remain. The remaining format is just the $r-1$-round cohort randomized knockout tournament, for which the theorem holds by induction.
         }{top_m}
 
-    It seems as though cohort randomized knockout tournaments ought to be ordered: being in a higher cohort seems certainly preferable to being a lower cohort, as you delay confrontation with the other higher-cohorted teams until later, and if two teams are in the same cohort, they are treated identically and thus it seems that the better team would win more.
+    In Schwenk's paper, he wrote that in cohort randomized knockout tournaments, ``higher-seeded teams are never given a schedule more difficult than that of any lower seed.'' Schwenk didn't have a formal notion of what that might mean, but we do: orderedness. It seems as though cohort randomized knockout tournaments ought to be ordered: being in a higher cohort seems preferable to being a lower cohort, as you delay confrontation with the other higher-cohorted teams until later, and if two teams are in the same cohort, they are treated identically and thus it seems that the better team would win more.
 
-    Unfortunately, like many other formats we've seen thus far, cohort randomized knockout tournaments are not (for more than two rounds) ordered. 
+    Unfortunately, like many other formats we've seen thus far, cohort randomized knockout tournaments are not (for more than two rounds) ordered.
 
     \fig{0.52}{eight_cohort}{Setup of Theorem \ref{th:cohort_counter}}
 
@@ -200,14 +190,14 @@
 
     If cohort randomized knockout tournaments don't solve the orderedness problem, why would we use them over traditional proper knockout tournaments? Cohort randomization is most famously found on the ATP Tour, a collection of tournaments played by professional tennis players that all use almost identical formats: large balanced knockout tournaments. Additionally, the seeding for these tournaments is set by the ATP rankings, which tend to be slow to update. As a result, if every ATP Tour tournament used the proper seeding, the 6-seed and 27-seed would play each other in the first round at every tournament until one of them moved up or moved down. These rematches were deemed undesirable and so this randomization procedure was introduced: The 1-seed's quarterfinals matchup (if everything goes chalk) is now randomly drawn from the 5- through 8-seeds, instead of always being the 8-seed.
 
-    But Theorem \ref{th:cohort_counter} tells us that they are not ordered, meaning that the only ordered balanced knockout format we've developed for more than two rounds is the totally randomized one. Unfortunately, we conclude the chapter without a more satisfying design, leaving behind two big open questions.
+    But Theorem \ref{th:cohort_counter} tells us that they are not ordered, meaning that the only ordered balanced knockout format we've developed for more than two rounds is the totally randomized one, which is neither deterministic nor exciting. Unfortunately, we conclude the chapter without a more satisfying design, leaving behind two big open questions.
     
     \begin{oq}{}{}
-        Does there exist a deterministic ordered balanced knockout tournament for arbitrary numbers of rounds?
+        For all $r$, does there exist an $r$-round ordered deterministic balanced knockout tournament?
     \end{oq}
 
     \begin{oq}{}{}
-        Does there exist an exciting ordered balanced knockout tournament for arbitrary numbers of rounds?
+        For all $r$, does there exist an $r$-round ordered exciting balanced knockout tournament?
     \end{oq}
 
     We (pessimistically) conjecture that both answers are no.
