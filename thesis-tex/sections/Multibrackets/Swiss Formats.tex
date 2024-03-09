@@ -2,10 +2,12 @@
 
 %capitalize the word swiss and chapter name should not be system
 % https://app.diagrams.net/
+% draw the flowchart for the four round team ones
+% in general, formalizing with flowcharts might be better, and allow for a proof of conj, and of mxA being the only non-compacts
 
-    Consider the 1998 Men's College Basketball Maui Invitational, which used a proper linear multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to \bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}.$ %recall this was used before
+    Consider again the 1998 Men's College Basketball Maui Invitational, which used a proper linear multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to \bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}.$
 
-    \fig{0.7}{maui}{The 1998 Men's College Basketball Maui Invitational}
+    \fig{0.7}{maui}{1998 Men's College Basketball Maui Invitational}
 
     The format used in the Maui Invitational has several nice properties. First, it is strongly respectful. Secondly, unlike some of the efficient linear multibrackets we saw last section, every team starts in the primary bracket, ensuring that if a team wins every game they will win the tournament. Third, the sum of the ranks of its semibrackets sum to the number of participating teams, ensuring that every team ends up ranked. Fourth, every bracket is either trivial or competitive, ensuring that the final rankings are as granular as possible.
 
@@ -40,7 +42,7 @@
 
     Without a close inspection, it can be difficult to see from the diagram, and certainly from the signature, that the Maui Invitational meets all the requirements of a swiss system: the last one in particular is tricky to confirm. But there is another diagram that we can use to depict swiss signatures in much more intuitive way: flowcharts. Figure \ref{fig:s3_flow} depicts the flow chart for the 1998 Men's College Basketball Maui Invitational. %maybe prove something about flowchart = signature
 
-    \fig{0.4}{s3_flow}{The Maui Invitational Flowchart}
+    \fig{0.4}{s3_flow}{Maui Invitational Flowchart}
 
 
     The signature used in the Maui Invitational is a particular example of a family of swiss signature known as the the \i{standard swiss signatures}, which we abbreviate by $\S_r$ for some $r$.
@@ -77,7 +79,7 @@
         We say a swiss signature is \i{compact} if its primary semibracket has rank one.
    \end{definition}
 
-    We can think of a non-compact swiss signature as multiple copies of another, smaller swiss signature running in parallel. For example, the format in Figures \ref{fig:two_by_two} and \ref{fig:2xs2_flow} can be viewed as two independent instances of the format $\S_2$ being played side by side. We use this to introduce $m\x$ notation.  %prove?
+    We can think of a non-compact swiss signature as multiple copies of another, smaller swiss signature running in parallel. For example, the format in Figures \ref{fig:two_by_two} and \ref{fig:2xs2_flow} can be viewed as two independent instances of the format $\S_2$ being played side by side. We use this to introduce $m\x$ notation.
 
    \begin{definition}{$m\x\A$}{mx_notation}
         If $m \in \N$ and $\A$ is a multibracket signature, then $m\x\A$ is the multibracket signature formed by multiplying every number in every signature in $\A$ by $m$.
@@ -134,8 +136,6 @@ Figure \ref{fig:swiss_names} tells us that there are five $8$-team swiss signatu
 For similar reasons, both formats are good for selecting a top-one or top-seven, and $\S_3$ but not $\T_3$ is good for selecting a top-five. Finally, it might seem that $\S_3$ and $\T_3$ are good formats for selecting a top-two or top-six: in both cases, the top two and top six teams are clearly defined, and there are no teams with better records that don't make the cut. However, notice that if we use $\S_3$ or $\T_3$ to select a top-two, the final round of games are meaningless: the two teams that finish in the top-two are the two teams that win their first two games, irrespective of how the third round of games went. Better than using either format $\S_3$ or $\T_3$ would be to use the non-compact $2\x\S_2,$ shortening the format down to two rounds without losing any important games.
 
 There are eight compact 4-round signatures: $\S_4$ and seven others. The count of compact $r$-round signatures for general $r$, however, is still an open question.
-
-% draw the flowchart for the four round team ones
 
 \begin{conj}{}{}
     Let $s_r$ be the number of compact $r$-round swiss signatures. Then $s_r$ is given by:

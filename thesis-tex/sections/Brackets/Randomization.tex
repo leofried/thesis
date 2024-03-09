@@ -30,7 +30,7 @@
     
     Unfortunately, despite the lemma, Chung and Hwang's conjecture is false due to a counterexample given by Israel \cite{seventeen_team}.
 
-    \fig{1}{17teams}{The Proper knockout tournament Shape of Signature $\bracksig{16;0;0;0;1;0}$}
+    \fig{1}{17teams}{The Format in Theorem \ref{th:israel}}
 
     \theo{}{
         The totally randomized knockout tournament whose shape is the proper knockout tournament shape of signature $\bracksig{16;0;0;0;1;0}$ is not ordered.
@@ -85,7 +85,7 @@
         $$\W{\A}{t_5}{\T} - \W{\A}{t_4}{\T} = cp^3 + O(p^4)$$ for some constant $c.$\\
 
         Therefore $\A$ is not ordered.
-    }{}
+    }{israel}
 
     Chung and Hwang's conjecture was rescued by Chen and Hwang \cite{totally_random_balanced} who restricted the domain of the claim to balanced formats.
 
@@ -101,21 +101,33 @@
         
         For two other teams $t_a$ and $t_b$, let $M_{ab}$ be the set of $2^{r-1}-2$ team subsets of $\T \setminus \{t_i, t_j, t_a, t_b\},$ and for $\S \in M_{ab},$ let $P_\S$ be the probability that the teams in $\S$ all win their first-round games and none of them play any of $t_i, t_j, t_a,$ or $t_b$ in the first round.
 
-        Now, %multiline?
+        Now,
         \begin{align*}
-            \W{C_r}{t_i}{\T} &= \frac{1}{2}\sum_{t_a, t_b \in \T \setminus \{t_i, t_j\}} \sum_{\S \in M_{ab}} P_\S \cdot ((p_{ia}p_{jb} + p_{ib}p_{ja}) \cdot \W{A_{r-1}}{t_i}{\S \cup \{t_i, t_j\}}\\
-            &+p_{ia}p_{bj} \cdot \W{A_{r-1}}{t_i}{\S \cup \{t_i, t_b\}}+p_{ib}p_{aj} \cdot \W{A_{r-1}}{t_i}{\S \cup \{t_i, t_a\}})\\
-            &\geq \frac{1}{2}\sum_{t_a, t_b \in \T \setminus \{t_i, t_j\}} \sum_{\S \in M_{ab}} P_\S \cdot ((p_{ia}p_{jb} + p_{ib}p_{ja}) \cdot \W{A_{r-1}}{t_j}{\S \cup \{t_i, t_j\}}\\
-            &+p_{ja}p_{bi} \cdot \W{A_{r-1}}{t_j}{\S \cup \{t_j, t_b\}}+p_{jb}p_{ai} \cdot \W{A_{r-1}}{t_j}{\S \cup \{t_j, t_a\}})\\
+            \W{C_r}{t_i}{\T} &=
+                \frac{1}{2}\sum_{t_a, t_b \in \T \setminus \{t_i, t_j\}} \sum_{\S \in M_{ab}} P_\S \cdot (
+                \begin{aligned}[t]
+                    &(p_{ia}p_{jb} + p_{ib}p_{ja}) \cdot \W{A_{r-1}}{t_i}{\S \cup \{t_i, t_j\}}\\
+                    +&\;p_{ia}p_{bj} \cdot \W{A_{r-1}}{t_i}{\S \cup \{t_i, t_b\}}\\
+                    +&\;p_{ib}p_{aj} \cdot \W{A_{r-1}}{t_i}{\S \cup \{t_i, t_a\}})
+                \end{aligned}
+                \\
+            &\geq
+                \frac{1}{2}\sum_{t_a, t_b \in \T \setminus \{t_i, t_j\}} \sum_{\S \in M_{ab}} P_\S \cdot (
+                \begin{aligned}[t]
+                    &(p_{ja}p_{ib} + p_{jb}p_{ia}) \cdot \W{A_{r-1}}{t_j}{\S \cup \{t_i, t_j\}}\\
+                    +&\;p_{ja}p_{bi} \cdot \W{A_{r-1}}{t_j}{\S \cup \{t_j, t_b\}}\\
+                    +&\;p_{jb}p_{ai} \cdot \W{A_{r-1}}{t_j}{\S \cup \{t_j, t_a\}})
+                \end{aligned}
+                \\
             &=\W{C_r}{t_i}{\T}
         \end{align*}
 
-        The inequality follows by comparing each term to its corresponding term: the $\W{A_{r-1}}{t_i}{\S \cup \{t_i, t_j\}}$ inequality is by induction, while the other two terms are by Lemma \ref{th:rand_lemma}.\\
+        The inequality follows by comparing each term to its corresponding term: the $\W{A_{r-1}}{t_i}{\S \cup \{t_i, t_j\}}$ term inequality is by induction, while the other two terms are by Lemma \ref{th:rand_lemma}.\\
 
         Thus, $\A_r$ is ordered.
     }{balance_ord}
     
-    In some ways this is a great revelation: we finally have an example of an ordered balanced knockout tournament that works or arbitrary numbers of rounds.
+    In some ways this is a great revelation: we finally have an ordered balanced knockout tournament that works for arbitrary numbers of rounds.
 
     Of course, this orderedness does not come without drawbacks. For one, the randomization feels a bit cheap: once the randomization is complete, before any games have even been played, the orderedness is lost. (Compare to the ordered traditional and reseeded brackets, which maintain their orderedness throughout the whole tournament.)
     

@@ -20,12 +20,12 @@
     Each label in a linear multibracket is used by at most one of its semibrackets.
 
     \begin{definition}{Labels Available to a Semibracket}{}
-        Let $\A = \A_1 \to ... \to \A_k$ be a linear multibracket. We say a label $\LL$ is \i{available to the semibracket} $\A_i$ if $\LL$ is either
+        Let $\A = \A_1 \to ... \to \A_k$ be a linear multibracket. Then label $\LL$ is \i{available} to the semibracket $\A_i$ if $\LL$ is either
         \begin{enumerate}[(a)]
             \item a seed, or
             \item the name of a game in semibracket $\A_j$ for $j < i$,
         \end{enumerate}
-        and $\LL$ is not on a starting line of any semibracket $\A_j$ for $j < i.$
+        and $\LL$ is not used by any semibracket $\A_j$ for $j < i.$
     \end{definition}
 
     Linearity guarantees that every label used by a given semibracket is available to it.
@@ -33,13 +33,13 @@
     Traditional brackets (and thus the primary semibracket of a linear multibracket) only have the seeds available to them, and so defining a total order on the labels available to a linear bracket is easy: higher seeds are better and more deserving than lower seeds. We want to develop an analogous ordering for the labels available to a later semibracket: rather than a total ordering, we divide the labels into tiers.
 
     \begin{definition}{Linear Multibracket Tiers}{}
-        Let $\A = \A_1 \to ... \to \A_k$ be a linear multibracket, and let $\LLone$ and $\LLtwo$ be two labels available to the semibracket $\A_i.$ We say a label $\LLone$ is of a higher tier than label $\LLtwo$ if
+        Let $\A = \A_1 \to ... \to \A_k$ be a linear multibracket, and let $\LLone$ and $\LLtwo$ be two labels available to the semibracket $\A_i.$ Then label $\LLone$ is of a higher \i{tier} than label $\LLtwo$ if
         \begin{enumerate}[(a)]
             \item $\LLone$ and $\LLtwo$ are both seeds and $\LLone$ is a higher seed, or
             \item $\LLone$ is the name of the game and $\LLtwo$ is a seed, or
             \item $\LLone$ and $\LLtwo$ are both the names of a game, but $\LLone$ is later in the alphabet than $\LLtwo$ is.
         \end{enumerate}
-        If $\LLone$ and $\LLtwo$ are names of games in the same round, then they are of the same tier.
+        If $\LLone$ and $\LLtwo$ are names of games in the same round, then they are of the same \i{tier}.
     \end{definition}
 
     While condition (a) is intuitive, conditions (b) and (c) might be a bit more confusing: why should the name of a game be a higher tier than a particular seed, and and why should the names of games with later letters of the alphabet be of a higher tier than the names of a games with an earlier letter of the alphabet.
@@ -63,7 +63,7 @@
     This example justifies why conditions (b) and (c) are what they are. We now formalize the analysis we just conducted to define properness on linear multibrackets.
 
     \begin{definition}{Label Representing a Team}{}
-        We say the label $\LL$ represents the team $t$ if either
+        The label $\LL$ \i{represents} the team $t$ if either
         \begin{enumerate}[(a)]
             \item $\LL$ is a seed and $t$ is the $\LL$-seed, or
             \item $\LL$ is the name of a game and $t$ lost in game $\LL.$
@@ -71,7 +71,7 @@
     \end{definition}
 
     \begin{definition}{Proper Linear Multibracket}{}
-        A linear multibracket is proper, if, assuming teams representing higher-tiered labels always beat teams representing lower-tiered ones, then in every round of every semibracket it is better to be a team representing a higher-tiered label than a lower-tiered label, where:
+        A linear multibracket is \i{proper}, if, assuming teams representing higher-tiered labels always beat teams representing lower-tiered ones, then in every round of every semibracket it is better to be a team representing a higher-tiered label than a lower-tiered label, where:
         \begin{enumerate}[(a)]
             \item It is better to have already won a semibracket than to have not.
             \item It is better to be competing in a semibracket than to be available to a semibracket but not competing.
@@ -84,7 +84,7 @@
 
     We begin with the cheap hack. Consider the 1988 Men's College Basketball Maui Invitational, which was a multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}.$
 
-    \fig{0.8}{maui_pr}{The 1998 Men's College Basketball Maui Invitational}
+    \fig{0.8}{maui_pr}{1998 Men's College Basketball Maui Invitational}
 
     The cheap idea that proves the fundamental theorem doesn't apply to linear multibrackets is that we can swap (say) $\bracklabel{A2}$ and $\bracklabel{A3}$ and the resulting multibracket has the same signature and is still proper. Why is this cheap? Because its easily patched over: it would still be a meaningful and important result for the fundamental theorem to be true up to rearranging labels in the same tier.
 
