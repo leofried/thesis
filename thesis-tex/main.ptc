@@ -1,0 +1,29 @@
+ \cftpagenumbersoff {sec} 
+\contentsline {section}{\numberline {1}Tournament Formats}{2}{section.1}%
+\ttl@starttoc {sections@1}
+\contentsline {subsection}{\numberline {1.1}Definitions}{3}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Brackets}{6}{section.2}%
+\ttl@stoptoc {sections@1}
+\ttl@starttoc {sections@2}
+\contentsline {subsection}{\numberline {2.1}Bracket Signatures}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Proper Brackets}{13}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Ordered Brackets}{19}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Edwards's Theorem}{25}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Reseeded Brackets}{31}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Randomization}{39}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Multibrackets}{48}{section.3}%
+\ttl@stoptoc {sections@2}
+\ttl@starttoc {sections@3}
+\contentsline {subsection}{\numberline {3.1}Consolation Brackets}{49}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Semibrackets}{56}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Linear Multibrackets}{62}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Properness}{69}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Respectfulness}{77}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Efficient Linear Multibrackets}{84}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Swiss Formats}{91}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Nonlinear Multibrackets}{101}{subsection.3.8}%
+\contentsline {section}{\numberline {4}Postmatter}{109}{section.4}%
+\ttl@stoptoc {sections@3}
+\ttl@starttoc {sections@4}
+\contentsline {section}{\numberline {5}References}{111}{section.5}%
+\contentsfinish 
