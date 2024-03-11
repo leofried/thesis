@@ -59,10 +59,10 @@
 
     \begin{definition}{Containment}{}
         Let $\A$ and $\B$ be bracket signatures. We say $\A$ \i{contains} $\B$ if there exists some $i$ such that
-        \begin{itemize}
+        \begin{enumerate}[(a)]
             \item At least as many games are played in the $(i+1)$th round of $\A$ as in the first round of $\B$, and
-            \item For $j > 1$, there are exactly as many games played in the $(i + j)$th round of $\A$ as in the $j$th round of $\B$.
-        \end{itemize}
+            \item For $1 < j \leq r$ where $r$ is the number of rounds in $\B$, there are exactly as many games played in the $(i + j)$th round of $\A$ as in the $j$th round of $\B$.
+        \end{enumerate}
     \end{definition}
 
     Intuitively, $\A$ containing $\B$ means that if $\A$ went chalk, and games within each round were played in order of largest seed-gap to smallest seed-gap, then at some point, there would be a bracket of shape $\B$ used to determine to identify the last team in the rest of bracket $\A$. Figure \ref{fig:contain} shows $\A = \bracksig{2;5;1;0;3;0;0}$ containing $\B = \bracksig{4;2;0;0}.$ After the 10v11 game and the 5v(10v11) game, there is a bracket of shape $\B$ (the solid lines) that must be played to determine the last team in the rest of the bracket.

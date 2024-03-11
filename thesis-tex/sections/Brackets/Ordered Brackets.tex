@@ -4,7 +4,7 @@
 
     \fig{0.8}{ncaa}{2021 NCAA Men's Basketball Tournament South Region}{}
 
-    The definition of a proper seeding ensures that as long as the bracket goes chalk (that is, higher seeds always beat lower seeds), it will always be better to be a higher seed than a lower seed. But what if it doesn't go chalk?
+    The definition of a proper seeding ensures that as long as the bracket goes chalk, it will always be better to be a higher seed than a lower seed. But what if it doesn't go chalk?
 
     One counter-intuitive fact about the NCAA Basketball Tournament is that it is probably better to be a 10-seed than a 9-seed. (This doesn't violate the proper seeding property because 9-seeds have an easier first-round matchup than 10-seeds, and for further rounds, proper seedings only care about what happens if the bracket goes chalk, which would eliminate both the 9-seed and 10-seed in the first round.) Why? Let's look at whom each seed-line matchups against in the first two rounds.
 
@@ -94,7 +94,7 @@
 
     \fig{0.63}{four_team}{$\bracksig{4; 0; 0}$}
     \theo{}{$\bracksig{4; 0; 0}$ is ordered.}{
-    Let $\A = \bracksig{4; 0; 0}$ and let $p_{ij} = \G{t_i}{t_j}.$ Then,
+    Let $\A = \bracksig{4; 0; 0}.$ Then,
     \begin{align*}
         \W{\A}{t_1}{\T} &= p_{14} \cdot (p_{23}p_{12} + p_{32} p_{13})\\
         &= p_{14}p_{23}p_{12} + p_{14}p_{32} p_{13}\\
@@ -138,7 +138,7 @@
         \end{tabular}
     \end{center}
 
-        Then $\W{\A}{t_5}{\T} = 0$ but $\W{\A}{t_2}{\T} > 0,$ so $\A$ is not monotonic with respect to $\T$ and thus not ordered.
+        Then $\W{\A}{t_5}{\T} = 0$ but $\W{\A}{t_6}{\T} > 0,$ so $\A$ is not monotonic with respect to $\T$ and thus not ordered.
     }{}
 
     In the next section, we move on from describing particular ordered and non-ordered brackets in favor of a more general result.
