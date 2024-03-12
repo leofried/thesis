@@ -1,6 +1,7 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{microtype}
 \usepackage[most]{tcolorbox}
 \usepackage[hidelinks]{hyperref}
 \usepackage{complexity}
@@ -15,10 +16,15 @@
 \usepackage[shortlabels]{enumitem}
 \usepackage{multirow}
 \usepackage{etoolbox}
-% \usepackage[hyphens]{url}
-\usepackage[nottoc,numbib]{tocbibind}
+\usepackage[defernumbers=true]{biblatex}
+
+% \usepackage{minitoc}
 % \usepackage{titletoc}
-% \PassOptionsToPackage{hyphens}{url}
+\usepackage{etoc}
+
+\renewcommand*{\mkbibnamefamily}[1]{\textsc{#1}}
+\DeclareNameAlias{author}{family-given}
+\addbibresource{refs.bib}
 
 
 \usepackage{imakeidx}
@@ -30,6 +36,7 @@
 
 
 \newcommand{\toc}{
+    % \dosecttoc
     \tableofcontents
     \addtocontents{toc}{
         \cftpagenumbersoff{sec}
@@ -44,12 +51,21 @@
     \end{document}
 }
 
+
+\newcommand{\sectiontoc}[1]{%
+    % \begingroup
+    \renewcommand{\contentsname}{}
+    \vspace*{-1cm}%
+    \etocsetnexttocdepth{subsection}
+    \localtableofcontents
+    % \endgroup
+}
+
 \newcommand{\secti}[1]{
-    \def\sectname{#1}
     \section{#1}
+    \sectiontoc{#1}
+    \def\sectname{#1}
     \label{cha:#1}
-    % \startcontents[sections]
-    % \printcontents[sections]{}{1}{\textbf{Section Contents:}}
     \newpage
 }
 
@@ -198,4 +214,4 @@
 \newcommand{\bcha}[1]{{\bf Chapter \ref{cha:#1}: #1}}
 \newcommand{\bsec}[1]{{\bf Section \ref{sec:#1}: #1}}
 
-
+\renewcommand\_{\textunderscore\linebreak[1]}

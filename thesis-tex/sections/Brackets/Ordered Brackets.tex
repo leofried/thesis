@@ -1,8 +1,8 @@
 \sub {
 
-    Consider the proper bracket $\bracksig{16; 0; 0; 0; 0}$, which was used in the 2021 NCAA Men's Basketball Tournament South Region, and is shown below. (Sometimes brackets are drawn in the manner below, with teams starting on both sides and the winner of each side playing in the championship game.)
+    Consider the proper bracket $\bracksig{16; 0; 0; 0; 0}$, which was used in the 2013 NCAA Men's Basketball Tournament South Region \cite{wiki_ncaa}, and is shown below. (Sometimes brackets are drawn in the manner below, with teams starting on both sides and the winner of each side playing in the championship game.)
 
-    \fig{0.8}{ncaa}{2021 NCAA Men's Basketball Tournament South Region}{}
+    \fig{0.8}{ncaa}{2013 NCAA Men's Basketball Tournament South Region}{}
 
     The definition of a proper seeding ensures that as long as the bracket goes chalk, it will always be better to be a higher seed than a lower seed. But what if it doesn't go chalk?
 
@@ -25,7 +25,6 @@
     This is not a great state of affairs: the whole point of seeding is confer an advantage to higher-seeded teams, and the proper bracket $\bracksig{16; 0; 0; 0; 0}$ is failing to do that. Not to mention that giving lower-seeded teams an easier route than higher-seeded ones can incentivize teams to lose during the regular season in order to try to get a lower but more advantageous seed.
 
     To fix this, we need a stronger notion of what makes a bracket effective than properness. The issue with proper seedings is the false assumption that higher-seeded teams will always beat lower-seeded teams. A more nuanced assumption, initially proposed by David \cite{stochastic}, might look like this.
-    %CITE
 
     \begin{definition}{Strongly Stochastically Transitive}{}
         A list of teams $\T$ is \i{strongly stochastically transitive} if for each $i, j, k$ such that $j < k$, $$\G{t_i}{t_j} \leq \G{t_i}{t_k}.$$

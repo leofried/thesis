@@ -12,7 +12,7 @@ We can draw a bracket as a tree-like structure in the following way.
 
 \fig{1}{cfp_start}{2024 College Football Playoff}
 
-The numbers 1, 2, 3, and 4 indicate where $t_1, t_2, t_3,$ and $t_4$ in $\T$ are placed to start. In the actual 2024 College Football Playoff, the list of teams $\T$ was Michigan, Washington, Texas, and Alabama, in that order, so the bracket was filled in like so.
+The numbers 1, 2, 3, and 4 indicate where $t_1, t_2, t_3,$ and $t_4$ in $\T$ are placed to start. In the actual 2024 College Football Playoff \cite{wiki_cfp}, the list of teams $\T$ was Michigan, Washington, Texas, and Alabama, in that order, so the bracket was filled in like so.
 
 \fig{1}{cfp_middle}{2024 College Football Playoff After Team Placement}
 
@@ -68,7 +68,7 @@ The signatures of the brackets discussed in this section are shown in Figure \re
             2024 College Football Playoff & $\bracksig{4; 0; 0}$ \\
             The brackets in Figure \ref{fig:same_shape} & $\bracksig{2; 3; 0; 0}$\\
             The brackets in Figure \ref{fig:six_teams} & $\bracksig{4; 2; 0; 0}$\\
-            2024 WCC Men's Basketball Tournament & $\bracksig{4;2;2;2;0;0}$ \\
+            2023 WCC Women's Basketball Tournament & $\bracksig{4;2;2;2;0;0}$ \\
         \end{tabular}
     \end{center}
 \end{figg}
@@ -102,10 +102,10 @@ In the next few sections, we will use the language and properties of bracket sig
     A bracket is \i{balanced} if none of the participating teams have byes.
 \end{definition} 
 
-The 2024 West Coast Conference Men's Basketball Tournament, on the other hand, is unbalanced.
-\fig{0.8}{wcc}{2024 WCC Men's Basketball Tournament}
+The 2023 West Coast Conference Women's Basketball Tournament \cite{wiki_wcc}, on the other hand, is unbalanced.
+\fig{0.8}{wcc}{2023 WCC Women's Basketball Tournament}
 
-Saint Mary's and Gonzaga each have three byes and so only need to win two games to win the tournament, while Portland, San Diego, Pacific, and Pepperdine need to win five. Unsurprisingly, this format conveys a massive advantage to Saint Mary's and Gonzaga, but this was intentional: those two teams were being rewarded for doing the best during the regular season.
+Gonzaga and Portland each have three byes and so only need to win two games to win the tournament, while Santa Clara, Pepperdine, Saint Mary's, and LMU need to win five. Unsurprisingly, this format conveys a massive advantage to Gonzaga and Portland, but this was intentional: those two teams were being rewarded for doing the best during the regular season.
 
 In many cases, however, it is undesirable to grant advantages to certain teams over others. One might hope, for any $n$, to be able to construct a balanced bracket for $n$ teams, but unfortunately this is rarely possible.
 

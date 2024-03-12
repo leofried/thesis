@@ -1,8 +1,8 @@
 \sub {
 
-    Linear multibracket signatures that admit round-respectful multibrackets can be drawn as a flowchart: each cell corresponds to a specific round of a specific semibracket (or a set of teams on bye waiting to play their first game), and winners follow the blue lines, while loses follow the red lines. Consider, for example, the 2023 Major League Quadball Champions Play-In Tournament, which used a linear multibracket of signature $\bracksig{4;2;0;0} \to \bracksig{4;0;1;0}.$ %officially define flowchart
+    Linear multibracket signatures that admit round-respectful multibrackets can be drawn as a flowchart: each cell corresponds to a specific round of a specific semibracket (or a set of teams on bye waiting to play their first game), and winners follow the blue lines, while loses follow the red lines. Consider, for example, the 2023 Major League Quadball Championship Play-In Tournament \cite{wiki_mlq}, which used a linear multibracket of signature $\bracksig{4;2;0;0} \to \bracksig{4;0;1;0}.$ %officially define flowchart
 
-    \fig{1}{mlq}{2023 Major League Quadball Champions Play-In Tournament}
+    \fig{0.5}{mlq}{2023 Major League Quadball Championship Play-In Tournament}
 
     The flowchart for this signature looks like so. (The top two rows represent the primary bracket, while the bottom two rows represent the consolation bracket.)
 
@@ -10,7 +10,7 @@
     
     Note that a flowchart corresponds to a signature, not to a format. For example, the way that the four teams in the first round of the secondary format are matched up with each other is not specified by Figure \ref{fig:mlq_flow}: only the signature is. Additionally, flowcharts can only be drawn for signatures that admit a round-respectful formats, as they require that teams that lose in the same cell (round of a semibracket) fall into the same cell (round of a semibracket). That said, flowcharts are a really nice way to visualize different round-respectful linear multibracket signatures in way that may be more intuitive than drawing out the brackets directly.
 
-    As another example, consider the flowchart from 1988 Men's College Basketball Maui Invitational from Figure \ref{fig:maui_pr} on page \pageref{fig:maui_pr}, which used a proper linear multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to \bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}.$
+    As another example, consider the flowchart from 1988 Men's College Basketball Maui Invitational \cite{wiki_maui} from Figure \ref{fig:maui_pr} on page \pageref{fig:maui_pr}, which used a proper linear multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to \bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}.$
 
     \fig{0.4}{s3_flow}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to\\ \bracksig{4;0;0}\;\;\;\, \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}$ Flowchart}
 
@@ -25,8 +25,7 @@
 
     There is one other niceness property that both flowcharts have, which is that every cell with no out-arrows has only one in-arrow. This property is perhaps less intuitively important than the previous four, but the point is this: if there existed some cell with no-out arrows but more than one in-arrow, then it could be split into multiple cells, one for each in-arrow, with not meaningful change to the format (as the teams in cells with no out-arrows play no games anyways). Thus to avoid double-counting these nice signatures, we prohibit ones that don't have this property. (This is equivalent to having no semibrackets that are neither trivial nor competitive.)
 
-    Signatures with all of these properties are called \i{Swiss signatures}, named because of their first recorded use at a chess tournament in Zürich, Switzerland in 1895.
-    %CITE
+    Signatures with all of these properties are called \i{Swiss signatures}, named because of their first recorded use at a chess tournament in Zürich, Switzerland in 1895 \cite{info_swiss}
 
     \begin{definition}{Swiss Signatures}{Swiss}
         A \i{Swiss signature} is a round-respectful linear multibracket signature with the following additional properties:
@@ -163,7 +162,5 @@
     
     Overall, Swiss formats are very useful and practical tournament designs: they give each team the same number of games, they ensure that games are being played between teams that have the same record and thus, hopefully, similar skill levels, and, for many values of $m$, they efficiently identify a top-$m$ in a fair and satisfying way.
 
-    Further, Swiss or near-Swiss formats are great when the number of teams is exceedingly large. Even if not every requirement in Definition \ref{def:Swiss} is met, or the number of teams isn't a power of two, or or the signature is not compact, or there is a round at the end that doesn't affect placement for important places, formats that are Swiss in spirit tend to do a great job of gathering a lot of meaningful data about a large number of teams in a small number of rounds. For this reason, they are often used in large tournaments for board or cards games, such as chess or Magic: The Gathering.
-    %CITE
-
+    Further, Swiss or near-Swiss formats are great when the number of teams is exceedingly large. Even if not every requirement in Definition \ref{def:Swiss} is met, or the number of teams isn't a power of two, or the signature is not compact, or there is a round at the end that doesn't affect placement for important places, formats that are Swiss in spirit tend to do a great job of gathering a lot of meaningful data about a large number of teams in a small number of rounds. For this reason, they are often used in large tournaments for board or cards games, such as chess or Magic: The Gathering \cite{ifno_mtg}.
 }

@@ -36,11 +36,12 @@
 
     % \printindex\pagebreak
 
-    \begingroup
-    % \bibliographystyle{plain}
-    \bibliographystyle{acm} 
-    \bibliography{refs}
-    \endgroup
+    % \begingroup
+    % \bibliographystyle{acm} 
+    \printbibliography [keyword={math},title={Analysis References}, heading=subbibnumbered]
+    \pagebreak
+    \printbibliography [keyword={sports},title={Format References},  heading=subbibnumbered]
+    % \endgroup
 
     
 
