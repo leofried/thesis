@@ -2,10 +2,9 @@
 
     Given that reseeding doesn't solve the orderedness problem presented by Edwards's Theorem, we turn to a new approach at generating potentially ordered knockout tournaments: randomization.
 
-    \begin{definition}{Totally Randomized Knockout Tournament}{}
+    \writedef{Totally Randomized Knockout Tournament}{
         A \i{totally randomized knockout tournament} is a bracket except the teams are randomly placed onto the starting lines instead of being placed according to seed.
-    \end{definition}
-
+    }{totallyRandomized}
     Clearly totally randomized knockout tournaments are indeed knockout tournaments.
 
     Chung and Hwang \cite{define_ordered} conjectured that all totally randomized knockout tournaments were ordered. After all, the teams are all being treated identically: how could a better team be at a disadvantage relative to a worse one?
@@ -133,15 +132,15 @@
     
     But secondly, totally randomness has the undesirable property that it might make for some very lopsided and anti-climatic knockout tournaments. It could be that top-two teams, whom everyone wants to see face off in the championship game, are set to play each other in the first round! We can extend the notion of \i{exciting} from brackets to knockout tournaments, noting that totally randomized knockout tournaments are not exciting.
 
-    \begin{definition}{Exciting Knockout Tournament}{}
+    \writedef{Exciting Knockout Tournament}{
         A knockout tournament is \i{exciting} if, as long as the knockout tournament goes chalk, in every round, the $m$ remaining teams are guaranteed to be the top $m$ seeds.
-    \end{definition}
+    }{excitingKnockout}
     
     To fix this, we define a new class of randomized knockout tournaments: \i{cohort randomized knockout tournaments}, first defined by Schwenk \cite{randomized_cohort}.
     
-    \begin{definition}{Cohort Randomized Knockout Tournament}{}
+    \writedef{Cohort Randomized Knockout Tournament}{
         The $r$-round \i{cohort randomized knockout tournament} is the traditional balanced knockout tournament on $2^r$ teams, except, for each $i$, seeds $2^i + 1$ through $2^{i+1}$ are shuffled randomly before play.
-    \end{definition}
+    }{cohortRandomized}
 
     Thus the 1- and 2-seeds are locked into their places, the 3- and 4-seeds exchange places half the time, seeds 5-8 are randomly shuffled, and as are 9-16, 17-32, etc. 
     

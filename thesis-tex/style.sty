@@ -36,7 +36,6 @@
 
 
 \newcommand{\toc}{
-    % \dosecttoc
     \tableofcontents
     \addtocontents{toc}{
         \cftpagenumbersoff{sec}
@@ -60,12 +59,10 @@
 
 
 \newcommand{\sectiontoc}[1]{%
-    % \begingroup
     \renewcommand{\contentsname}{}
     \vspace*{-1cm}%
     \etocsetnexttocdepth{subsection}
     \localtableofcontents
-    % \endgroup
 }
 
 \newcommand{\secti}[1]{
@@ -152,21 +149,28 @@
 }
 
 
-% \makeatletter
-% \newcommand{\writedef}[3]{%
-%   \begin{definition}{#1}{#3}
-%     #2
-%   \end{definition}
-%   \@namedef{gloss#3}{
-%     \begin{tcolorbox}[title={Definition \ref{def:#3}: #1 (p. \pageref{def:#3})},enhanced, breakable, colback=blue!5,colframe=teal!100!,fonttitle=\bfseries]
-%         #2
-%     \end{tcolorbox}
-%    }
-% }
-% \makeatother
+\makeatletter
+\newcommand{\writedef}[3]{%
+  \begin{definition}{#1}{#3}
+    #2
+  \end{definition}
+  \global
+  \@namedef{gloss#3}{
+    \begin{tcolorbox}[title={
+    Definition \ref{def:#3}: 
+    #1 (p. \pageref{def:#3})
+    },enhanced, breakable, colback=blue!5,colframe=teal!100!,fonttitle=\bfseries]
+        #2
+    \end{tcolorbox}
+   }
+}
+\makeatother
 
 
-
+\newcommand{\bib}[2]{
+    \printbibliography [keyword={#2},title={#1 References}, heading=subbibnumbered]
+    \pagebreak
+}
 
 
 

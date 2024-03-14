@@ -26,9 +26,9 @@
 
     To fix this, we need a stronger notion of what makes a bracket effective than properness. The issue with proper seedings is the false assumption that higher-seeded teams will always beat lower-seeded teams. A more nuanced assumption, initially proposed by David \cite{stochastic}, might look like this.
 
-    \begin{definition}{Strongly Stochastically Transitive}{}
+    \writedef{Strongly Stochastically Transitive}{
         A list of teams $\T$ is \i{strongly stochastically transitive} if for each $i, j, k$ such that $j < k$, $$\G{t_i}{t_j} \leq \G{t_i}{t_k}.$$
-    \end{definition}
+    }{sst}
 
     A list of teams being strongly stochastically transitive (SST) captures the intuition that each team ought to do better against lower-seeded teams than against higher-seeded teams. A few quick implications of this definition are stated below.
 
@@ -44,13 +44,13 @@
 
     Our new, nuanced alternative a proper bracket is an \i{ordered bracket}. The concept of orderedness was first used by Chen and Hwang \cite{define_ordered}, but Edwards \cite{montana} was the one to formalize and name it.
 
-    \begin{definition}{Monotonic}{}
+    \writedef{Monotonic}{
         A tournament format $\A$ is monotonic with respect to an SST list of teams $\T$ if, for all $i < j,$ $\W{\A}{t_i}{\T} \geq \W{\A}{t_j}{\T}.$
-    \end{definition}
+    }{monotonic}
 
-    \begin{definition}{Ordered}{}
+    \writedef{Ordered}{
         An $n$-team tournament format $\A$ is \i{ordered} if it is monotonic with respect to every SST list of $n$ teams.
-    \end{definition}
+    }{ordered}
 
     In an informal sense, a bracket being ordered is the strongest thing we can want without knowing more about why the tournament is being played. Depending on the situation, we might be interested in a format that almost always declares the most-skilled team as the winner, or in a format that gives each team roughly the same chance of winning, or anywhere in between. But certainly, better teams should win more, which is what the ordered bracket condition requires.
 

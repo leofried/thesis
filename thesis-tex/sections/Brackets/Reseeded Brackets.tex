@@ -3,7 +3,7 @@
 
     Edwards's Theorem tells us that the number of rounds required to construct on ordered bracket grows linearly with the number of teams involved. This can be somewhat frustrating: part of the power of brackets is the ability to crown a champion in a number of rounds logorithmic in the number of teams participating. As an attempt to combat the problem that Edwards's Theorem presents, we expand the range of formats we examine to those that are similar to brackets but not necessarily networked. Can we recover some ordered bracket-like formats that way?
 
-    \begin{definition}{Knockout Tournament}{}
+    \writedef{Knockout Tournament}{
         A \i{knockout tournament} is a tournament in that is played over a series of rounds subject to the following constraints:
         \begin{enumerate}[(a)]
             \item Each team plays at most one game in each round.
@@ -11,33 +11,29 @@
             \item If a team wins in a round, they play a game in the next round.
             \item Exactly one team finishes undefeated, and that team is crowned champion.
         \end{enumerate} 
-    \end{definition}
+    }{knockout}
 
-    Clearly brackets are just networked knockout tournaments, but there are many knockout tournaments that aren't networked. The definition of a knockout tournament is designed to allow for the notions of byes, signatures, and properness to still apply.
+    Clearly brackets are just networked knockout tournaments, but there are many knockout tournaments that aren't networked. The definition of a knockout tournament is designed to allow for the notions signatures and properness to still apply.
 
-    \begin{definition}{Bye}{}
-        A team has a \i{bye} in round $r$ if it plays no games in round $r$ or before.
-    \end{definition}
-
-    \begin{definition}{Knockout Tournament Signature}{}
+    \writedef{Knockout Tournament Signature}{
         The \i{signature} of an $r$-round knockout tournament $\A$ is the list $\bracksig{a_0; ...; a_r}$ where $a_i$ is the number of teams the get $i$ byes.
-    \end{definition}
+    }{knockoutSignature}
 
-    \begin{definition}{Proper Knockout Tournament}{}
+    \writedef{Proper Knockout Tournament}{
         A knockout tournament is \i{proper} if, as long as the tournament goes chalk, in every round it is better to be a higher-seeded team than a lower-seeded one, where:
         \begin{enumerate}[(a)]
             \item It is better to have a bye than to play a game.
             \item It is better to play a lower seed than to play a higher seed.
         \end{enumerate}
-    \end{definition}
+    }{properKnockout}
 
     Ultimately, the reason that proper brackets are not, in general, ordered, is that lower-seeded teams are treated, if they win, as the team that they beat for the rest of the format. Consider again the proper bracket analyzed by Silver: $\bracksig{16; 0; 0; 0; 0}.$ If an 11-seed wins in the first round, they take on the schedule of a 6-seed for the rest of the tournament, while if the 9-seed wins, they take on the schedule of an 8-seed. Given that a 6-seed has an easier schedule than an 8-seed, it's not hard to see why it might be preferable to be an 11-seed rather than a 9-seed.
 
     But knockout tournaments are under no such restrictions. A knockout tournament could simply pair the highest- and lowest-remaining seeds in every round, potentially avoiding the issues we faced in the last two sections. These formats are called \i{reseeded brackets}.
 
-    \begin{definition}{Reseeded Brackets}{}
+    \writedef{Reseeded Brackets}{
         A \i{reseededed bracket} is a knockout tournament in which, after each round, the highest-seeded team playing that round is matched up with the lowest-seeded team playing that round, second-highest vs second-lowest, etc.
-    \end{definition}
+    }{reseeded}
 
     Note that by technically, reseeded brackets are not networked and thus not brackets at all, just knockout tournaments. However, because reseeded brackets act so similarly to traditional brackets, and because colloquially they are referred to as brackets, we opt to continue using the word ``bracket'' to describe them.
 

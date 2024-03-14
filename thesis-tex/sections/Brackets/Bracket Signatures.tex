@@ -1,12 +1,20 @@
 \sub{
 
-\begin{definition}{Bracket}{bracket}
+% \begin{definition}{Bracket}{bracket}
+%     A \i{bracket} is a networked format in which
+%     \begin{enumerate}[(a)]
+%         \item Teams don't play any games after their first loss, and
+%         \item Games are played until only one team has no losses, and that team is crowned champion.
+%     \end{enumerate}
+% \end{definition}
+
+\writedef{Bracket}{
     A \i{bracket} is a networked format in which
     \begin{enumerate}[(a)]
         \item Teams don't play any games after their first loss, and
         \item Games are played until only one team has no losses, and that team is crowned champion.
     \end{enumerate}
-\end{definition}
+}{bracket}
 
 We can draw a bracket as a tree-like structure in the following way.
 
@@ -26,25 +34,25 @@ Rearranging the way the bracket is pictured, if it doesn't affect any of the mat
 
 There are a few important pieces of vocabulary when it comes to brackets.
 
-\begin{definition}{Starting Line}{}
+\writedef{Starting Line}{
     A \i{starting line} is a line in a bracket where a team goes before it has played any games. Equivalently, the starting lines are the leaf nodes on the tree that is the bracket.
-\end{definition}
+}{starting}
 
-\begin{definition}{Round}{}
+\writedef{Round}{
     A \i{round} is a set of games such that the winners of each of those games have the same number of games remaining to win the tournament.
-\end{definition}
+}{round}
 
-\begin{definition}{Bye}{}
+\writedef{Bye}{
     A team has a \i{bye} in round $r$ if it plays no games in round $r$ or before.
-\end{definition}
+}{bye}
 
 The 2024 College Football Playoffs had four starting lines, one for each of its participating teams, and was played over two rounds: The first round consisted of the games Michigan vs Alabama and Washington vs Texas, and the second round was just the single  Michigan vs Washington. The 2024 College Football Playoffs had no byes.
 
 With the key terminology established, we begin by investigating the \i{shape} of brackets.
 
-\begin{definition}{Shape}{}
+\writedef{Shape}{
     The \i{shape} of a bracket is the tree that underlies it.
-\end{definition}
+}{shape}
 
 The following two brackets have the same shape.
 
@@ -52,9 +60,9 @@ The following two brackets have the same shape.
 
 One way to describe the shape of a bracket its signature.
 
-\begin{definition}{Bracket Signature}{}
+\writedef{Bracket Signature}{
     The \i{signature} of an $r$-round bracket $\A$ is the list $\bracksig{a_0; ...; a_r}$ where $a_i$ is the number of teams that get $i$ byes.
-\end{definition}
+}{bracketSignature}
 
 The signature of a bracket is defined by its shape: the two brackets in Figure \ref{fig:same_shape} have the same shape, so they also have the same signature.
 
@@ -98,9 +106,9 @@ Bracket signatures have one more important property.
 
 In the next few sections, we will use the language and properties of bracket signatures to describe the brackets that we work with. For now though, let's return to the 2024 College Football Playoff. The bracket used in the 2024 College Football Playoff has a special property that not all brackets have: it is \i{balanced}.
 
-\begin{definition}{Balanced Bracket}{}
+\writedef{Balanced Bracket}{
     A bracket is \i{balanced} if none of the participating teams have byes.
-\end{definition} 
+}{balanced}
 
 The 2023 West Coast Conference Women's Basketball Tournament \cite{wiki_wcc}, on the other hand, is unbalanced.
 \fig{0.8}{wcc}{2023 WCC Women's Basketball Tournament}

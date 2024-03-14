@@ -1,6 +1,6 @@
 \sub {
- 
-    \fig{0}{maui_pr}{}
+
+    %properness is hard: see mlq decisions, multiplicity, opting down, etc. We think instead about respectfulness, to see this we need flowcharts
 
     \begin{definition}{Flowchart}{}
         The \i{flowchart} of a linear multibracket that consists of $k$ semibrackets is a directed graph in which the nodes are arranged into rows, where
@@ -9,12 +9,12 @@
             \item The zeroth row has the nodes representing each team, arranged from lowest seed to highest seed.
             \item The $i$th row for $1 \leq i \leq k$ has the nodes representing the rounds of the $i$th semibracket, arranged in order, plus the node representing the place a team gets for winning the $i$th semibracket.
             \item The final row row has only the node representing elimination.
-            \item There is an arrow from each team node to the node with that teams starting line.
-            \item For each round $\bracklabel{R},$ there is a arrow from the node representing $\bracklabel{R}$ to the node(s) representing the places that $\bracklabel{R}$-round losers go.
+            \item There is an arrow of each team node to the node with that teams starting line.
+            \item For each round $\bracklabel{R},$ there is a arrow from $\bracklabel{R}$ to the nodes where $\bracklabel{R}$-round losers go.
         \end{enumerate}
     \end{definition}
 
-    For example, consider the the 2023 Major League Quadball Championship Play-In Tournament \cite{wiki_mlq}, which used a linear multibracket of signature $\bracksig{4;2;0;0} \to \bracksig{4;0;1;0}.$
+    For example, consider the 2023 Major League Quadball Championship Play-In Tournament \cite{wiki_mlq}, which used a linear multibracket of signature $\bracksig{4;2;0;0} \to \bracksig{4;0;1;0}.$
 
     \fig{0.5}{mlq}{2023 MLQ Championship Play-In Tournament}
 
@@ -22,13 +22,48 @@
 
     \fig{0.5}{mlq_flow1}{2023 MLQ Championship Play-In Tournament Flowchart}
 
-    Now, the flowchart in Figure \ref{fig:mlq_flow1} has a few nice properties, and its worth investigating which of those are guaranteed by the network condition or linearity, and which just happen to be true about this particular linear multibracket.
+    Flowcharts exist in an in-between space between linear multibrackets and linear multibracket signatures: multiple formats can have the same flowchart, and multiple flowcharts can have the same signature.
 
-    First of all, the network condition is what makes a flowchart even reasonable in the first place: in non-networked format, more data than just which game a team most recently played in what the result of the game was are needed to determine a teams next game.
+    Imagine for example that Major League Quadball was interested in selecting a third and fourth place team using their play-in tournament as well. Figure \ref{fig:three_flow} shows three formats they could use: the left two have the same flowchart, while the rightmost format has a different flowchart. Both flowcharts are displayed in Figure \ref{fig:two_flow_new}, and they have the same signature:  $\bracksig{4;2;0;0} \to \bracksig{4;0;1;0} \to \bracksig{4;0;0} \to \bracksig{2;1;0}.$
 
-    Secondly, all the arrows are pointing down. This is a result of linearity: A non-linear multibracket could have arrows point up, or even from a given multibracket to itself, making a flowchart much more complex. Note that we don't even define a flowchart for nonlinear multibrackets as the niceness of the rows would be lost.
+    \fig{0.8}{three_flow}{Three Linear Multibrackets with the Same Signature}
+
+    \fig{0.3}{two_flow_new}{Two Flowcharts with the Same Signature}
+
+    However, these three formats and two flowcharts are not created equal. While the two leftmost formats, and thus the leftmost flowchart all seem reasonable, the rightmost format and flowchart have some issues. In particular, the fourth semibracket seems poorly seeded: the loser of game $\bracklabel{H1}$ did better than both $\bracklabel{G}$-round losers in the previous semibracket, so they ought to be the one to get the bye. Further, the two $\bracklabel{G}$-round losers ought to be treated the same, instead of one of them getting a bye and one not.
+
+    This two problems are reflected in the flowchart: the fact the the $\bracklabel{G}$-round losers are sent to different rounds of the 4th place bracket means that the $\bracklabel{G}$-node has two arrows coming out of it, and the fact that a less deserving team was treated better than a more deserving team was means that there were two arrows in the flowchart that crossed over. (Note that technically we could wrap the arrow coming out of $\bracklabel{H}$ all the way around the flowchart so it points to $\bracklabel{I}$ from the left side, removing this crossing. However, we can fix hacks like this by imagining arrows coming out of the teams, places, and the elimination node extending infinitely up, to the right, and down respectively.)
+
+    Thus we define the notion of \i{respectfulness}.
+
+    \begin{definition}{Respectful}{}
+        A linear multibracket is \i{respectful} if its flowchart has no crosses and every node in its flowchart has out-degree at most one.
+    \end{definition}
+
+    We can prove a couple of nice lemmas about respectful linear multibrackets.
+
+    \lemm{}{
+        If $\A$ is a respectful linear multibracket, and two teams lose in the same round of the same semibracket of $\A$, then they will either both play their next game in the same round of the same semibracket, or both be elimineted.
+    }{
+        This holds because the outdegree of each node of the flowchart of $\A$ is no more than one.
+    }{respectfulness_round}
+
+    \lemm{}{
+        Let $\A = \A_1 \to ... \to \A_k$ be a linear multibracket, and $i \in \N$ be such that $\A_{i+1}$ is noncompetitive. If $\A$ is respectful, then any team that loses in the final round of $\A_i$ will win $\A_{i+1}$ without playing any more games.
+    }{
+        We show the contrapositive. Let $\bracklabel{R}$ be the final round of $\A_i$, whose losers do not win $\A_{i+1}$ automatically. $\A_{i+1}$ is noncompetitive though, so at least one team wins $\A_{i+1}$ without playing a game in it: let $\bracklabel S$ be the round that the auto-winner fell from. Then $\bracklabel{R}$ is completely boxed in by the arrow coming out of $\bracklabel{S}$ on the left and the arrows extending infinitely from the final ranking nodes on the right: the arrow coming out of $\bracklabel R$ must cross one of those arrows, so $\A$ is not respectful.
+    }{respectful_drop}
+
+
+
+
+    % Now, the flowchart in Figure \ref{fig:mlq_flow1} has a few nice properties, and its worth investigating which of those are guaranteed by the network condition or linearity, and which just happen to be true about this particular linear multibracket.
+
+    % First of all, the network condition is what makes a flowchart even reasonable in the first place: in non-networked format, more data than just which game a team most recently played in what the result of the game was are needed to determine a teams next game.
+
+    % Secondly, all the arrows are pointing down. This is a result of linearity: A non-linear multibracket could have arrows point up, or even from a given multibracket to itself, making a flowchart much more complex. Note that we don't even define a flowchart for nonlinear multibrackets as the niceness of the rows would be lost.
     
-    Thirdly, every non-terminal node (that is, every node except the placement and eliminations ones) has exactly one arrow coming from it. 
+    % Thirdly, every non-terminal node (that is, every node except the placement and eliminations ones) has exactly one arrow coming from it. 
 
 
 
