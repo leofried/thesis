@@ -2,7 +2,7 @@
 
     Linear multibracket signatures that admit round-respectful multibrackets can be drawn as a flowchart: each cell corresponds to a specific round of a specific semibracket (or a set of teams on bye waiting to play their first game), and winners follow the blue lines, while loses follow the red lines. Consider, for example, the 2023 Major League Quadball Championship Play-In Tournament \cite{wiki_mlq}, which used a linear multibracket of signature $\bracksig{4;2;0;0} \to \bracksig{4;0;1;0}.$ %officially define flowchart
 
-    \fig{0.5}{mlq}{2023 Major League Quadball Championship Play-In Tournament}
+    % \fig{0.5}{mlq}{2023 Major League Quadball Championship Play-In Tournament}
 
     The flowchart for this signature looks like so. (The top two rows represent the primary bracket, while the bottom two rows represent the consolation bracket.)
 
@@ -25,7 +25,7 @@
 
     There is one other niceness property that both flowcharts have, which is that every cell with no out-arrows has only one in-arrow. This property is perhaps less intuitively important than the previous four, but the point is this: if there existed some cell with no-out arrows but more than one in-arrow, then it could be split into multiple cells, one for each in-arrow, with not meaningful change to the format (as the teams in cells with no out-arrows play no games anyways). Thus to avoid double-counting these nice signatures, we prohibit ones that don't have this property. (This is equivalent to having no semibrackets that are neither trivial nor competitive.)
 
-    Signatures with all of these properties are called \i{Swiss signatures}, named because of their first recorded use at a chess tournament in Zürich, Switzerland in 1895 \cite{info_swiss}
+    Signatures with all of these properties are called \i{Swiss signatures}, named because of their first recorded use at a chess tournament in Zürich, Switzerland in 1895 \cite{info_swiss}.
 
     \begin{definition}{Swiss Signatures}{Swiss}
         A \i{Swiss signature} is a round-respectful linear multibracket signature with the following additional properties:

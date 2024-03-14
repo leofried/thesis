@@ -76,6 +76,7 @@
     Lemma \ref{th:proper_condition_one} tells us that the first-round matchup must be between the 6-seed and the 7-seed. Lemma \ref{th:proper_condition_two} tells us that if the bracket goes chalk, the second-round matchups must be 3v6 and 4v5, so the 3-seed plays the winner of the first-round matchup. Finally, we can apply Lemma \ref{th:proper_condition_two} again to the semifinals to find that the 1-seed should play the winner of the 4v5 matchup, while the 2-seed should play the winner of the 3v(6v7) matchup. In total, our proper seeding looks like so.
 
     \fig{1}{seven_seeded}{A Seven-Team Bracket, Properly Seeded}{}
+    %bold
 
     We can also quickly simulate the bracket going chalk to verify Lemma \ref{th:proper_condition_one_point_five}.
 
@@ -97,7 +98,7 @@
 
     The fundamental theorem of brackets means that we can refer to the proper bracket $\A = \bracksig{a_0; ...; a_r}$ in a well-defined way, as long as $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = 1.$$
 
-    In practice, virtually every sports league that uses a traditional bracket uses a proper one: while different leagues take very different approaches to how many byes to give teams (compare the 2023 West Coast Conference Men's Basketball Tournament with the 2005 NBA Eastern Conference Playoffs), they are almost all proper. This makes bracket signatures a convenient labeling system for the set of brackets that we might reasonably encounter. They also are a powerful tool for specifying new brackets: if you are interested in (say) an eleven-team bracket where four teams get no byes, four teams get one bye, one team gets two byes and two teams get three byes, we can describe the proper bracket with those specs as $\bracksig{4; 4; 1; 2; 0; 0}$ and use Lemmas \ref{th:proper_condition_one} through \ref{th:proper_condition_two} to draw it with ease.
+    In practice, virtually every sports league that uses a traditional bracket uses a proper one: while different leagues take very different approaches to how many byes to give teams (compare the 2023 West Coast Conference Women's Basketball Tournament with the 2005 NBA Eastern Conference Playoffs), they are almost all proper. This makes bracket signatures a convenient labeling system for the set of brackets that we might reasonably encounter. They also are a powerful tool for specifying new brackets: if you are interested in (say) an eleven-team bracket where four teams get no byes, four teams get one bye, one team gets two byes and two teams get three byes, we can describe the proper bracket with those specs as $\bracksig{4; 4; 1; 2; 0; 0}$ and use Lemmas \ref{th:proper_condition_one} through \ref{th:proper_condition_two} to draw it with ease.
 
     \fig{0.95}{eleven}{The Proper Bracket of Signature $\bracksig{4; 4; 1; 2; 0; 0}$}
 

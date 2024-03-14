@@ -1,5 +1,36 @@
 \sub {
  
-    \fig{1}{maui_pr}{}
+    \fig{0}{maui_pr}{}
+
+    \begin{definition}{Flowchart}{}
+        The \i{flowchart} of a linear multibracket that consists of $k$ semibrackets is a directed graph in which the nodes are arranged into rows, where
+        \begin{enumerate}[(a)]
+            \item There is a node for each team, each round of each semibracket, each place a team could finish in, one additional node representing elimination.
+            \item The zeroth row has the nodes representing each team, arranged from lowest seed to highest seed.
+            \item The $i$th row for $1 \leq i \leq k$ has the nodes representing the rounds of the $i$th semibracket, arranged in order, plus the node representing the place a team gets for winning the $i$th semibracket.
+            \item The final row row has only the node representing elimination.
+            \item There is an arrow from each team node to the node with that teams starting line.
+            \item For each round $\bracklabel{R},$ there is a arrow from the node representing $\bracklabel{R}$ to the node(s) representing the places that $\bracklabel{R}$-round losers go.
+        \end{enumerate}
+    \end{definition}
+
+    For example, consider the the 2023 Major League Quadball Championship Play-In Tournament \cite{wiki_mlq}, which used a linear multibracket of signature $\bracksig{4;2;0;0} \to \bracksig{4;0;1;0}.$
+
+    \fig{0.5}{mlq}{2023 MLQ Championship Play-In Tournament}
+
+    The flowchart for this format is displayed below.
+
+    \fig{0.5}{mlq_flow1}{2023 MLQ Championship Play-In Tournament Flowchart}
+
+    Now, the flowchart in Figure \ref{fig:mlq_flow1} has a few nice properties, and its worth investigating which of those are guaranteed by the network condition or linearity, and which just happen to be true about this particular linear multibracket.
+
+    First of all, the network condition is what makes a flowchart even reasonable in the first place: in non-networked format, more data than just which game a team most recently played in what the result of the game was are needed to determine a teams next game.
+
+    Secondly, all the arrows are pointing down. This is a result of linearity: A non-linear multibracket could have arrows point up, or even from a given multibracket to itself, making a flowchart much more complex. Note that we don't even define a flowchart for nonlinear multibrackets as the niceness of the rows would be lost.
+    
+    Thirdly, every non-terminal node (that is, every node except the placement and eliminations ones) has exactly one arrow coming from it. 
+
+
+
 
 }
