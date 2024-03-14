@@ -14,16 +14,15 @@
         Somewhat confusingly, convention is that smaller numbers are the \i{higher seeds}, and bigger numbers are the \i{lower seeds}.
     \end{definition}
 
-    Seeding is typically used to reward better and more deserving teams. As an example, on the left is the eight-team bracket used in the 2005 National Basketball Association Eastern Conference Playoffs \cite{wiki_nba}. At the end of the regular season, the top eight teams in the Eastern Conference were ranked and placed into the bracket which played out as shown on the right.
+    Seeding is typically used to reward better and more deserving teams. As an example, on the left is the eight-team bracket used in the 2005 National Basketball Association Eastern Conference Playoffs \cite{wiki_nba}. At the end of the regular season, the top eight teams in the Eastern Conference were ranked and placed into the bracket which played out as shown below
 
-    \fig{.7}{nba}{2005 NBA Eastern Conference Playoffs}{}
+    \fig{1}{nba}{2005 NBA Eastern Conference Playoffs}{}
 
-    Despite this bracket being balanced, the higher seeds are still at advantage: they have an easier set of opponents. Compare $1$-seed Atlanta, whose first two rounds are versus $8$-seed Brooklyn and then (most likely) $4$-seed Toronto, versus $7$-seed Boston, whose first two rounds are versus $2$-seed Cleveland and then (most likely) $3$-seed Chicago. Atlanta's schedule is far easier: despite them having the same number of games to win as Boston, Atlanta is expected to play lower seeds in each round than Boston will.
-
+    Despite this bracket being balanced, the higher seeds are still at advantage: they have an easier set of opponents. Compare the $1$-seed Heat, whose first two rounds are versus the $8$-seeded Nets and then the $5$-seeded Wizards, to the $6$-seeded Pacers, whose first two rounds are versus the $3$-seeded Celtics and then the $2$-seeded Pistons. The Heat's schedule is far easier: despite them having the same number of games to win as the Pacers, the Heat will is set up to player lower seeds on their way their than the Pacers are.
 
     Thus, we've identified two ways in which brackets can convey an advantage onto certain teams: by giving them more byes, and by giving them easier (expected) opponents. Not every seeding of a bracket does this: for example, consider the following alternative seeding for the 2005 NBA Eastern Conference Playoffs.
 
-    \fig{0.7}{nba_bad}{An Alternative Seeding of the 2005 NBA Eastern Conference Playoffs}
+    \fig{0.7}{nba_bad}{Alternative Seeding of the 2005 NBA Eastern Conference Playoffs}
 
     This seeding does a very poor job of rewarding the higher-seeded teams: the $1$- and $2$-seeds are matched up in the first round, while the easiest road is given to the $7$-seed, who plays the $8$-seed in the first round and then (most likely) the $5$-seed in the second. Since the whole point of seeding is to give the higher-seeded teams an advantage, we introduce the concept of a \i{proper seeding.}
 
@@ -76,7 +75,6 @@
     Lemma \ref{th:proper_condition_one} tells us that the first-round matchup must be between the 6-seed and the 7-seed. Lemma \ref{th:proper_condition_two} tells us that if the bracket goes chalk, the second-round matchups must be 3v6 and 4v5, so the 3-seed plays the winner of the first-round matchup. Finally, we can apply Lemma \ref{th:proper_condition_two} again to the semifinals to find that the 1-seed should play the winner of the 4v5 matchup, while the 2-seed should play the winner of the 3v(6v7) matchup. In total, our proper seeding looks like so.
 
     \fig{1}{seven_seeded}{A Seven-Team Bracket, Properly Seeded}{}
-    %bold
 
     We can also quickly simulate the bracket going chalk to verify Lemma \ref{th:proper_condition_one_point_five}.
 

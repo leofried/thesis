@@ -1,8 +1,6 @@
 \sub{
 
-    Before we begin our study, we set the stage by defining the key terms in the field of tournament design.
-
-    Let $\T = [t_1, ..., t_n]$ be a list of teams. 
+    Before we begin our study, we set the stage by defining the key terms in the field of tournament design. Let $\T = [t_1, ..., t_n]$ be a list of teams. 
 
     \begin{definition}{Gameplay Function}{}
         A \i{gameplay function} $g$ on $\T$ is a nondeterministic function $g : \T \times \T \to \T$ with the following properties:
@@ -79,7 +77,7 @@
         $\W{\A}{t}{\T}$ is the probability that team $t \in \T$ wins tournament format $\A$ when it is run on the list of teams $\T$.
     \end{definition}
 
-    Finally, we will focus our study on the subset of tournament formats that fulfill the \i{network condition}.
+    Finally, we will focus our study on the subset of tournament formats that fulfill the \i{network condition}, first patented as a condition for sorting algorithms by Armstrong, Nelson, and O'Connor \cite{pat}.
 
     \begin{definition}{Deterministic Tournament Format}{}
         A tournament format is \i{deterministic} if it employs no randomness other than the randomness inherent in the gameplay function $g$.
