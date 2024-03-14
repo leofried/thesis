@@ -2389,23 +2389,21 @@
     <bcf:citekey order="26" intorder="1">wiki_uefa</bcf:citekey>
     <bcf:citekey order="27" intorder="1">wiki_afc</bcf:citekey>
     <bcf:citekey order="28" intorder="1">wiki_socon</bcf:citekey>
-    <bcf:citekey order="29" intorder="1">wiki_maui</bcf:citekey>
-    <bcf:citekey order="30" intorder="1">shifted</bcf:citekey>
-    <bcf:citekey order="31" intorder="1">wiki_mlq</bcf:citekey>
-    <bcf:citekey order="32" intorder="1">wiki_maui</bcf:citekey>
-    <bcf:citekey order="33" intorder="1">info_swiss</bcf:citekey>
-    <bcf:citekey order="34" intorder="1">four_five_swap</bcf:citekey>
-    <bcf:citekey order="35" intorder="1">ifno_mtg</bcf:citekey>
-    <bcf:citekey order="36" intorder="1">wiki_socon</bcf:citekey>
-    <bcf:citekey order="37" intorder="1">ultimate</bcf:citekey>
-    <bcf:citekey order="38" intorder="1">wiki_netball</bcf:citekey>
-    <bcf:citekey order="39" intorder="1">wiki_page</bcf:citekey>
-    <bcf:citekey order="40" intorder="1">wiki_soft</bcf:citekey>
-    <bcf:citekey order="41" intorder="1">recharge_rounds</bcf:citekey>
-    <bcf:citekey order="42" intorder="1">wiki_bigten</bcf:citekey>
-    <bcf:citekey order="43" intorder="1">wiki_nba1</bcf:citekey>
-    <bcf:citekey order="44" intorder="1">wiki_nba2</bcf:citekey>
-    <bcf:citekey order="45" intorder="1">batcher</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">wiki_mlq</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">wiki_maui</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">info_swiss</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">four_five_swap</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">ifno_mtg</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">wiki_socon</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">ultimate</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">wiki_netball</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">wiki_page</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">wiki_soft</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">recharge_rounds</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">wiki_bigten</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">wiki_nba1</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">wiki_nba2</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">batcher</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
