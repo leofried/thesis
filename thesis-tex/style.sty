@@ -18,8 +18,6 @@
 \usepackage{etoolbox}
 \usepackage[defernumbers=true]{biblatex}
 
-% \usepackage{minitoc}
-% \usepackage{titletoc}
 \usepackage{etoc}
 
 \renewcommand*{\mkbibnamefamily}[1]{\textsc{#1}}
@@ -58,9 +56,9 @@
 }
 
 
-\newcommand{\sectiontoc}[1]{%
+\newcommand{\sectiontoc}[1]{
     \renewcommand{\contentsname}{}
-    \vspace*{-1cm}%
+    \vspace*{-1cm}
     \etocsetnexttocdepth{subsection}
     \localtableofcontents
 }
@@ -150,7 +148,7 @@
 
 
 \makeatletter
-\newcommand{\writedef}[3]{%
+\newcommand{\writedef}[3]{
   \begin{definition}{#1}{#3}
     #2
   \end{definition}
