@@ -1,7 +1,4 @@
 \sub{
-
-    %explain gameplay function vs matchup table better
-
     Before we begin our study, we set the stage by defining the key terms in the field of tournament design. Let $\T = [t_1, ..., t_n]$ be a list of teams. 
 
     \writedef{Gameplay Function}{
@@ -69,9 +66,9 @@
 
     \writedef{Tournament Format}{
         A \i{tournament format} is an algorithm that takes as input a list of teams $\T$ and a gameplay function $g$ and outputs a ranking (potentially including ties) on $\T.$
-    }{tournament}{\fried}%XXX
+    }{tournament}{\unattributed}
 
-    We use a gameplay function rather than a matchup table in the definition of a tournament format because a tournament format cannot simply look at the matchup table itself in order to decide which teams are best. Instead, formats query the gameplay function (have teams play games) in order to gather information about the teams. That said, matchup tables will often be useful in our \i{analysis} of tournament formats. 
+    % We use a gameplay function rather than a matchup table in the definition of a tournament format because a tournament format cannot simply look at the matchup table itself in order to decide which teams are best. Instead, formats query the gameplay function (have teams play games) in order to gather information about the teams. That said, matchup tables will often be useful in our \i{analysis} of tournament formats. 
 
     We also introduce a piece of shorthand to help make notation more concise.
 

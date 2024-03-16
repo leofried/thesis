@@ -69,13 +69,14 @@
     \writedef{Efficient with Respect to a Prize Struture\\}{
         A weakly proper linear multibracket $\A = \A_1 \to ... \to \A_k$ is \i{efficient with respect to a prize structure} $\PP = (p_1, ..., p_m)$ if
         \begin{enumerate}[(a)]
-            \item $\A_j$ being noncompetitive implies that for some $\ell < m$, $$\sum_{i=1}^{j-1} \rank {\A_j} = \sum_{i=1}^\ell p_i,$$
+            \item $$\sum_{i=1}^{k} \rank {\A_i} = \sum_{i=1}^m p_i,$$
+            \item $\A_j$ being noncompetitive implies that for some $\ell < m$, $$\sum_{i=1}^{j-1} \rank {\A_i} = \sum_{i=1}^\ell p_i,$$
                          and
-            \item $\A_j$ being trivial implies that for some $\ell < m$, $$\sum_{i=1}^{j} \rank {\A_j} = \sum_{i=1}^\ell p_i.$$
+            \item $\A_j$ being trivial implies that for some $\ell < m$, $$\sum_{i=1}^{j} \rank {\A_i} = \sum_{i=1}^\ell p_i.$$
         \end{enumerate}
     }{effPrize}{\fried}
 
-    (The first condition ensures that the format is weakly efficient with respect to the prize structure, and the second condition ensures that there are no trivial semibrackets that could be combined with another semibracket as per the process detailed before Definition \ref{def:efficient}.)
+    (The first two conditions ensure that the format is weakly efficient with respect to the prize structure, and the last condition ensures that there are no trivial semibrackets that could be combined with another semibracket as per the process detailed before Definition \ref{def:efficient}.)
 
     So the weakly proper linear multibracket $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2}_4 \to \bracksig{2;0}$ is efficient with respect to the prize structure $(1, 1, 5).$ A linear multibracket being efficient is the same as it being efficient with respect the prize structure $(m),$ where $m$ is the sum of the ranks of its semibrackets.
 
