@@ -20,16 +20,14 @@
         A multibracket is \i{weakly efficient} if, once a team is guaranteed to be ranked by the format or guaranteed to finish unranked, they stop playing games.
     \end{definition}
 
-    %flowchart
-
-    Identifying whether a proper linear multibracket is weakly efficient can be done just by looking at its signature.
+    Identifying whether a linear multibracket is weakly efficient can be done by looking at its flowchart and seeing if there are any rounds for which no path ends in elimination. But for weakly proper linear multibrackets, you can tell just from the signature.
 
     \theo{}{
-        A proper linear multibracket with signature $\A = \A_1 \to ... \to \A_k$ is weakly efficient if and only if there is some integer $j$ with $1 \leq j \leq k$ such that every semibracket $\A_i$ with $i < j$ is trivial and every semibracket $\A_i$ with $i > j$ is competitive.
+        A weakly proper linear multibracket with signature $\A = \A_1 \to ... \to \A_k$ is weakly efficient if and only if there is some integer $j$ with $1 \leq j \leq k$ such that every semibracket $\A_i$ with $i < j$ is trivial and every semibracket $\A_i$ with $i > j$ is competitive.
     }{
         Assume first that some $j$ exists. Let $\bracklabel{G}$ be a game. Because all semibrackets $\A_i$ with $i<j$ are trivial, $\bracklabel{G}$ must be in a semibracket $\A_i$ for $i \geq j$, so the loser of $\bracklabel{G}$ is either eliminated outright, or falls into a semibracket $\A_i$ for $i > j,$ which is competitive, in which case they will play another game. If they continue losing, they will continue falling into competitive semibrackets, until they are eliminated outright and do not get ranked. Thus if a team competing in $\bracklabel{G}$ loses the rest of their games, they will finish unranked. But of course if they win the rest of their games they will finish ranked, so $\A$ is weakly efficient.\\
 
-        Assume now that no such $j$ exists, so there exists some some $i$ such that $\A_i$ is nontrivial and $\A_{i+1}$ is noncompetitive. $\A_{i+1}$ is noncompetitive, so at least one team must win $\A_{i+1}$ without playing a game. Because $\A$ is proper, this team must be a championship game loser of $\A_i$, if such a game exists. $\A_i$ is nontrivial so such a game does indeed exist: let $\bracklabel{G}$ be that game. Then the winner of $\bracklabel{G}$ wins $\A_i$, and the loser of $\bracklabel{G}$ wins $\A_{i+1}$, so $\A$ is not weakly efficient.
+        Assume now that no such $j$ exists, so there exists some some $i$ such that $\A_i$ is nontrivial and $\A_{i+1}$ is noncompetitive. $\A_{i+1}$ is noncompetitive, so at least one team must win $\A_{i+1}$ without playing a game. By Lemma \ref{th:weakly_proper_drop}, this team must be a championship game loser of $\A_i$, if such a game exists. $\A_i$ is nontrivial so such a game does indeed exist: let $\bracklabel{G}$ be that game. Then the winner of $\bracklabel{G}$ wins $\A_i$, and the loser of $\bracklabel{G}$ wins $\A_{i+1}$, so $\A$ is not weakly efficient.
     }{w_efficient}
 
     The USA Ultimate Manual of Championship Series Tournament Formats \cite{ultimate}, which is used to determine the formats to be used at the various sectional and regional tournaments in the sport of ultimate frisbee, contains a host of weakly efficient linear multibrackets for selecting the top $m$ teams out of a list of $n$ for various values of $m$ and $n$, after a ``regular season'' portion of the tournament has been played to establish seeds.
@@ -46,7 +44,7 @@
     To patch this, we strengthen the notion of weak efficiency into just \i{efficiency.}
 
     \begin{definition}{Efficient}{efficient}
-        A proper linear multibracket is \i{efficient} if one of three conditions hold:
+        A weakly proper linear multibracket is \i{efficient} if one of three conditions hold:
         \begin{enumerate}
             \item[(a)] It is a single trivial semibracket.
             \item[(b)] It is a sequence of competitive semibrackets.
@@ -69,7 +67,7 @@
     Then,
 
     \begin{definition}{Efficient with Respect to a Prize Struture}{}
-        A proper linear multibracket $\A = \A_1 \to ... \to \A_k$ is \i{efficient with respect to a prize structure} $\PP = (p_1, ..., p_m)$ if
+        A weakly proper linear multibracket $\A = \A_1 \to ... \to \A_k$ is \i{efficient with respect to a prize structure} $\PP = (p_1, ..., p_m)$ if
         \begin{enumerate}[(a)]
             \item $\A_j$ being noncompetitive implies that for some $\ell < m$, $$\sum_{i=1}^{j-1} \rank {\A_j} = \sum_{i=1}^\ell p_i,$$
                          and
@@ -79,7 +77,7 @@
 
     (The first condition ensures that the format is weakly efficient with respect to the prize structure, and the second condition ensures that there are no trivial semibrackets that could be combined with another semibracket as per the process detailed before Definition \ref{def:efficient}.)
 
-    So the proper linear multibracket $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2}_4 \to \bracksig{2;0}$ is efficient with respect to the prize structure $(1, 1, 5).$ A linear multibracket being efficient is the same as it being efficient with respect the prize structure $(m),$ where $m$ is the sum of the ranks of its semibrackets.
+    So the weakly proper linear multibracket $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2}_4 \to \bracksig{2;0}$ is efficient with respect to the prize structure $(1, 1, 5).$ A linear multibracket being efficient is the same as it being efficient with respect the prize structure $(m),$ where $m$ is the sum of the ranks of its semibrackets.
 
     Efficient multibrackets are great tournament designs for tournaments whose primary goal is to select the top $m$ teams to move on to the next stage of the competitions, as discussed in the beginning of this section. They do so excitingly, with each spot in the top-$m$ being awarded as the winner of a particular game; efficiently, with no games being played between teams who will receive the same prize; and fairly, as the multibracket rules ensure that winning is always better than losing. It is not surprising that many sports with regional tournaments that qualify teams for a national one use such formats.
 }
