@@ -40,7 +40,6 @@
             \end{tabular}
         \end{center}
     \end{figg}
-
     
     \theo{theorem}{
         If $\M$ is the matchup table for some gameplay function on $\T$, then $\M + \M^T$ is the matrix of all ones.
@@ -64,11 +63,11 @@
         \end{center}
     \end{figg}
 
+    Finally, we define the tournament format.
+
     \writedef{Tournament Format}{
         A \i{tournament format} is an algorithm that takes as input a list of teams $\T$ and a gameplay function $g$ and outputs a ranking (potentially including ties) on $\T.$
-    }{tournament}{\unattributed}
-
-    % We use a gameplay function rather than a matchup table in the definition of a tournament format because a tournament format cannot simply look at the matchup table itself in order to decide which teams are best. Instead, formats query the gameplay function (have teams play games) in order to gather information about the teams. That said, matchup tables will often be useful in our \i{analysis} of tournament formats. 
+    }{tournament}{\unattributed} 
 
     We also introduce a piece of shorthand to help make notation more concise.
 

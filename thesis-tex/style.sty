@@ -147,6 +147,18 @@
     \end{figg}
 }
 
+\newcommand{\glossfig}[5]{
+    \begin{tcolorbox}[title={
+      Figure \ref{fig:#4}: 
+      #5  \hspace*{\fill} (p. \pageref{fig:#4})
+      },enhanced, width=\linewidth, breakable, colback=red!5,colframe=purple!100!,fonttitle=\bfseries]
+        \centering
+        \includegraphics[scale=#1]{
+            images/#2/#3/#4.png
+        }
+    \end{tcolorbox}
+}
+
 \newcommand{\phig}[2]{
     \begin{figg}{#2}{#1}
     \end{figg}
