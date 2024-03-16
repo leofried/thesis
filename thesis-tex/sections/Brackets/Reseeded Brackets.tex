@@ -11,13 +11,13 @@
             \item If a team wins in a round, they play a game in the next round.
             \item Exactly one team finishes undefeated, and that team is crowned champion.
         \end{enumerate} 
-    }{knockout}{Fried}{2024}
+    }{knockout}{\fried}
 
     Clearly brackets are just networked knockout tournaments, but there are many knockout tournaments that aren't networked. The definition of a knockout tournament is designed to allow for the notions signatures and properness to still apply.
 
     \writedef{Knockout Tournament Signature}{
         The \i{signature} of an $r$-round knockout tournament $\A$ is the list $\bracksig{a_0; ...; a_r}$ where $a_i$ is the number of teams the get $i$ byes.
-    }{knockoutSignature}{Fried}{2024}
+    }{knockoutSignature}{\fried}
 
 
     \writedef{Proper Knockout Tournament}{
@@ -26,7 +26,7 @@
             \item It is better to have a bye than to play a game.
             \item It is better to play a lower seed than to play a higher seed.
         \end{enumerate}
-    }{properKnockout}{Fried}{2024}
+    }{properKnockout}{\fried}
 
 
     Ultimately, the reason that proper brackets are not, in general, ordered, is that lower-seeded teams are treated, if they win, as the team that they beat for the rest of the format. Consider again the proper bracket analyzed by Silver: $\bracksig{16; 0; 0; 0; 0}.$ If an 11-seed wins in the first round, they take on the schedule of a 6-seed for the rest of the tournament, while if the 9-seed wins, they take on the schedule of an 8-seed. Given that a 6-seed has an easier schedule than an 8-seed, it's not hard to see why it might be preferable to be an 11-seed rather than a 9-seed.
@@ -35,7 +35,7 @@
 
     \writedef{Reseeded Bracket}{
         A \i{reseededed bracket} is a knockout tournament in which, after each round, the highest-seeded team playing that round is matched up with the lowest-seeded team playing that round, second-highest vs second-lowest, etc.
-    }{reseeded}{Hwang}{1982}
+    }{reseeded}{Hwang, 1982}
 
     Note that by technically, reseeded brackets are not networked and thus not brackets at all, just knockout tournaments. However, because reseeded brackets act so similarly to traditional brackets, and because colloquially they are referred to as brackets, we opt to continue using the word ``bracket'' to describe them.
 
@@ -55,13 +55,13 @@
         There is exactly one proper reseeded bracket with each bracket signature.
     }{
         The definition of properness ensures that there is only one way byes can be distributed such that a reseeded bracket can be proper. Additionally, because reseeded brackets have no additional parameters beyond which seeds get how many byes, there is no more than one reseeded bracket with each signature that could be proper. Finally, that bracket is indeed proper: if the bracket goes to chalk, the matchups will be the exact same as a traditional bracket, which by the fundamental theorem is a proper set of matchups.
-    }{}{Fried}{2024}
+    }{}{\fried}
 
     But what about orderedness? It's intuitive to think that all proper reseeded are ordered: it feels like almost by definition, the higher-seeded teams have an easier path than the lower-seeded ones. In fact, Hwang \cite{reseeding} published a proof of this fact for balanced reseeded brackets.
 
     \etheo{conj}{}{
         All balanced reseeded brackets are ordered.
-    }{}{Hwang}{1982}
+    }{}{Hwang, 1982}
 
     We show for the first time that Hwang's proof was incorrect: neither the stronger claim that all proper reseeded brackets are ordered, nor Hwang's weaker claim are true. Our classification of the ordered reseeded brackets takes the same route as our proof of Edwards's Theorem did: we first examine the orderedness of certain important brackets, and then we use the stapling and containment lemmas to specify the complete set of ordered reseeded brackets.
 
@@ -69,14 +69,14 @@
 
     \etheo{theorem}{}{
         All ordered reseeded brackets are proper.
-    }{}{Fried}{2024}
+    }{}{\fried}
 
     \etheo{lemma}{}{
         If $\A = \bracksigr{a_0; ...; a_r}$ and $\B = \bracksigr{b_0; ...; b_s}$ are ordered reseeded brackets, then $\C = \bracksigr{a_0; ...; a_r + b_0 - 1; ...; b_s}$ is an ordered reseeded bracket as well.
-    }{}{Fried}{2024}
+    }{}{\fried}
     \etheo{lemma}{}{
         If $\A$ and $\B$ are reseeded brackets, $\A$ contains $\B$, and $\B$ is not ordered, then neither is $\A$.
-    }{}{Fried}{2024}
+    }{}{\fried}
 
     We now examine particular brackets.
 
@@ -84,7 +84,7 @@
         $\bracksigr{1}$, $\bracksigr{2;0}$, and $\bracksigr{4;0;0}$ are ordered.
     }{
         Since no reseeding is done in a bracket of two or fewer rounds, and since the traditional brackets of these signatures are ordered, so are the reseeded brackets.
-    }{}{Fried}{2024}
+    }{}{\fried}
 
     Our primary example of a reseeded bracket that is ordered despite the traditional bracket of the same signature not being ordered is $\bracksigr{4;2;0;0}.$
 
@@ -96,7 +96,7 @@
         $\W{A}{t_1}{\T} \geq \W{A}{t_2}{\T}$ because from those two teams perspectives, this format is just  $\bracksigr{4;0;0}.$ $\W{A}{t_2}{\T} \geq \W{A}{t_3}{\T}$ because $t_2$ has better odds if $t_3$ wins in the first round and they meet in the semifinals, and certainly has better odds if $t_3$ loses in the first round. $\W{A}{t_4}{\T} \geq \W{A}{t_5}{\T}$ because $t_4$ is at least as likely to win the first-round matchup, and then their paths would be identical.\\
 
         Finally, $\W{A}{t_3}{\T} \geq \W{A}{t_4}{\T}$ holds because if both teams win the first round then $t_3$ has better odds in the remaining $\bracksigr{4;0;0}$ bracket. Meanwhile if only one does, then $t_3$ will be joined by $t_5$ while $t_4$ will be joined by $t_6,$ and so $t_3$ is more likely to dodge playing $t_1$ in the finals. The same argument applies to show that $\W{A}{t_5}{\T} \geq \W{A}{t_6}{\T}$ as well.
-    }{}{Fried}{2024}
+    }{}{\fried}
 
     Unfortunately, that is where the power of reseeding to convert non-ordered signatures into ordered ones ends. The following two signatures are not ordered.
 
@@ -126,7 +126,7 @@
     $$\W{\A}{t_7}{\T} = 0.25p^2 + O(p^3).$$ 
     
     So for small enough $p,$ $\W{\A}{t_6}{\T} < \W{\A}{t_7}{\T},$ so $\A$ is not monotonic with respect to $\T$ and thus not ordered.
-    }{}{Fried}{2024}
+    }{}{\fried}
 
     \theo{theorem}{
         $\bracksigr{4;2;2;0;0}$ is not ordered.
@@ -154,7 +154,7 @@
         Similarly, for $t_8$ to win the format on the order of probability $p^5$, they must face $t_5$ in the first round, $t_3$ in the second round, $t_1$ in the semifinal, and $t_4$ (again, crucially not $t_2$) in the final. However, because $t_4$ will be playing $t_6$ in the second round rather than $t_5$, they will almost certainly win, meaning that $t_4$ advances to the final with probability on the order of 0.5. Thus, 
 $$\W{\A}{t_8}{\T} = 0.5p^5 + O(p^6).$$
          So for small enough $p,$ $\W{\A}{t_7}{\T} < \W{\A}{t_8}{\T},$ so $\A$ is not monotonic with respect to $\T$ and thus not ordered.
-    }{}{Fried}{2024}
+    }{}{\fried}
 
     Recapping,
 
@@ -190,13 +190,13 @@ $$\W{\A}{t_8}{\T} = 0.5p^5 + O(p^6).$$
         If round $i$ has three or more games, then round $i+1$ must contain exactly two games (any less and not every winner would have a game, any more and $i$ would not be the latest such round.) Then, if round $i+2$ has one game, then $\A$ contains $\bracksigr{6;1;0;0}$, and if it has two, then $\A$ contains $\bracksigr{4;2;2;0;0}.$ In either case, $\A$ is not ordered.\\
 
         Thus, the ordered reseeded brackets are exactly those generated by the procedure.
-    }{}{Fried}{2024}
+    }{}{\fried}
 
     So, the space of ordered reseeded brackets is slightly larger than the space of ordered traditional brackets, although perhaps this is not quite as much of an expansion as we would've liked or expected. Despite this, reseeded brackets definitely \i{feel} more ordered than traditional brackets of the same signature, even if neither is ordered in the definitional sense.
 
     \etheo{oq}{}{
         Is there some sense in which reseeded brackets that are not ordered are closer to being ordered than their traditional bracket analogues?
-    }{}{Fried}{2024}
+    }{}{\fried}
 
     In the meantime, reseeding remains an important tool in our tournament design toolkit. But it is not without its drawbacks, as discussed by Baumann, Matheson, and Howe \cite{reseeding_issues}. 
 

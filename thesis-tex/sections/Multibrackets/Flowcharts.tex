@@ -2,7 +2,7 @@
 
     Recall the definition of properness for a single bracket: a bracket is proper if, as long as the bracket goes chalk, in every round it is better to be a higher seed than a lower seed. We adapt this definition to linear multibrackets.
 
-    \begin{definition}{Proper Linear Multibracket}{}
+    \writedef{Proper Linear Multibracket}{
         A linear multibracket is \i{proper} if, as long as the bracket goes chalk, in every round of every semibracket it is better to be a higher-seeded team than a lower-seeded one, where:
             \begin{enumerate}[(a)]
                 \item It is best to have already won an earlier semibracket.
@@ -10,7 +10,7 @@
                 \item If you are competing in a semibracket, it is better to have a bye in the current round than to not.
                 \item If you are playing a game, it is better to play a lower seed than to play a higher seed.
             \end{enumerate}
-    \end{definition}
+    }{properLinear}{\fried}
 
     Consider the 2023 Major League Quadball Championship Play-In Tournament \cite{wiki_mlq}, which used a linear multibracket of signature $\bracksig{4;2;0;0} \to \bracksig{4;0;1;0}.$ Is it proper?
 
@@ -42,7 +42,7 @@
 
     Is there any notion of properness that we can hang on to as a property that most formats ought to have? Indeed there is, but to understand it we first must introduce a new way of looking at linear multibrackets: \i{flowcharts}.
 
-    \begin{definition}{Flowchart}{}
+    \writedef{Flowchart}{
         The \i{flowchart} of a linear multibracket that consists of $k$ semibrackets is a directed graph in which the nodes are arranged into rows, where
         \begin{enumerate}[(a)]
             \item There is a node for each team, each round of each semibracket, each place a team could finish in, plus one additional node representing elimination.
@@ -52,7 +52,7 @@
             \item There is an arrow from each team to the round where that teams plays its first game.
             \item For each round $\bracklabel{R},$ there is an arrow (or arrows) from $\bracklabel{R}$ to the round(s) where $\bracklabel{R}$-round losers go.
         \end{enumerate}
-    \end{definition}
+    }{flow}{\fried}
 
     The flowchart for the 2023 MLQ Championship Play-In Tournament is displayed below, with the team nodes labeled $t_1$ through $t_6$, the round nodes labeled with the letter of the round, the nodes representing finishing in $i$th place labeled as such, and the node representing elimination filled in.
 
@@ -72,9 +72,9 @@
 
     Both of these issues fly in the face of our intuitive notion of rewarding better teams that motivated us to define properness in the first place, so we use them to define the notion of \i{weak properness}.
 
-    \begin{definition}{Weakly Proper Linear Multibracket}{}
+    \writedef{Weakly Proper Linear Multibracket}{
         A linear multibracket is \i{weakly proper} if its flowchart has no arrow crossings and every node in its flowchart has at most one arrow coming out of it.
-    \end{definition}
+    }{weakProper}{\fried}
 
     We conclude the section by proving a couple of nice lemmas about weakly proper linear multibrackets.
 
@@ -82,13 +82,13 @@
         If $\A$ is a weakly proper linear multibracket, and two teams lose in the same round of the same semibracket of $\A$, then they will either both play their next game in the same round of the same semibracket, or both be elimineted.
     }{
         This holds because every node in the flowchart of $\A$ has at most one arrow coming out of it.
-    }{weakly_proper_round}{Fried}{2024}
+    }{weakly_proper_round}{\fried}
 
     \theo{lemma}{
         Let $\A = \A_1 \to ... \to \A_k$ be a linear multibracket, and $i \in \N$ be such that $\A_{i+1}$ is noncompetitive. If $\A$ is weakly proper, then any team that loses in the final round of $\A_i$ will win $\A_{i+1}$ without playing any more games.
     }{
         We show the contrapositive. Let $\bracklabel{R}$ be the final round of $\A_i$, whose losers do not win $\A_{i+1}$ automatically. $\A_{i+1}$ is noncompetitive though, so at least one team wins $\A_{i+1}$ without playing a game in it: let $\bracklabel S$ be the round that the auto-winner fell from. Then $\bracklabel{R}$ is completely boxed in by the arrow coming out of $\bracklabel{S}$ on the left and the arrows extending infinitely from the final ranking nodes on the right: the arrow coming out of $\bracklabel R$ must cross one of those arrows, so $\A$ is not weakly proper.
-    }{weakly_proper_drop}{Fried}{2024}
+    }{weakly_proper_drop}{\fried}
 
     %all proper are weakly proper?
 

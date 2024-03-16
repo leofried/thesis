@@ -96,8 +96,8 @@
 \newtcbtheorem[number within=subsection, use counter from=theorem]{eoq}{Open Question}       {enhanced, breakable, colback=yellow!5, colframe=orange!100!, fonttitle=\bfseries, separator sign none}{oq}
 \newtcbtheorem[number within=subsection, use counter from=theorem]{econj}{Conjecture}        {enhanced, breakable, colback=yellow!5, colframe=orange!100!, fonttitle=\bfseries, separator sign none}{conj}
 
-\newcommand{\ntheo}[7]{
-    \begin{#1}{#2 \hspace*{\fill} (#6, #7)}{#5}
+\newcommand{\ntheo}[6]{
+    \begin{#1}{#2 \hspace*{\fill} (#6)}{#5}
         #3
         \tcblower
         \begin{proof}
@@ -108,15 +108,15 @@
     \@namedef{glossTH#5}{
       \begin{tcolorbox}[title={
       \capitalisewords{#1} \ref{th:#5}: 
-      #2  \hspace*{\fill} (#6, #7, p. \pageref{th:#5})
+      #2  \hspace*{\fill} (#6, p. \pageref{th:#5})
       },enhanced, breakable, colback=purple!5, colframe=violet!100!,fonttitle=\bfseries]
           #3
       \end{tcolorbox}
      }
 }
 
-\newcommand{\theo}[6]{
-    \begin{e#1}{\hspace*{\fill} (#5, #6)}{#4}
+\newcommand{\theo}[5]{
+    \begin{e#1}{\hspace*{\fill} (#5)}{#4}
         #2
         \tcblower
         \begin{proof}
@@ -125,8 +125,8 @@
     \end{e#1}
 }
 
-\newcommand{\etheo}[6]{
-    \begin{e#1}{#2 \hspace*{\fill} (#5, #6)}{#4}
+\newcommand{\etheo}[5]{
+    \begin{e#1}{#2 \hspace*{\fill} (#5)}{#4}
         #3
     \end{e#1}
 }
@@ -163,15 +163,15 @@
 {enhanced, breakable, colback=blue!5,colframe=teal!100!,fonttitle=\bfseries}{def}
 
 \makeatletter
-\newcommand{\writedef}[5]{
-  \begin{definition}{#1 \hspace*{\fill} (#4, #5)}{#3}
+\newcommand{\writedef}[4]{
+  \begin{definition}{#1 \hspace*{\fill} (#4)}{#3}
     #2
   \end{definition}
   \global
   \@namedef{gloss#3}{
     \begin{tcolorbox}[title={
     Definition \ref{def:#3}: 
-    #1  \hspace*{\fill} (#4, #5, p. \pageref{def:#3})
+    #1  \hspace*{\fill} (#4, p. \pageref{def:#3})
     },enhanced, breakable, colback=blue!5,colframe=teal!100!,fonttitle=\bfseries]
         #2
     \end{tcolorbox}
@@ -252,5 +252,7 @@
 
 \renewcommand\_{\textunderscore\linebreak[1]}
 
+\newcommand{\unattributed}{Unattributed}
+\newcommand{\fried}{Fried, 2024}
 
 

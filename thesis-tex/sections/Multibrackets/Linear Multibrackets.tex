@@ -4,19 +4,19 @@
 
     This is trickier than it seems: for arbitrary multibrackets, there isn't a natural generalization of signatures and properness. (See Figure \ref{fig:page4} on page \pageref{fig:page4} for an example of a multibracket that is simple, yet difficult to assign a signature to). But there is a subset of multibrackets for which these notions generalize, allowing us to examine the fundamental theorem as it applies to this subset. These multibrackets are called \i{linear multibrackets}.
    
-    \begin{definition}{Linear Multibracket}{}
+    \writedef{Linear Multibracket}{
         A \i{linear multibracket} is a multibracket that can be arranged into a sequence of semibrackets such that
         \begin{enumerate}
             \item[(a)] If a team loses in a given semibracket but is not eliminated, they are sent to a later semibracket, and
             \item[(b)] Each team that wins the $i$th semibracket finishes in $m$th place, where $m$ is the sum of the ranks of the first $i$ semibrackets.
         \end{enumerate}
-    \end{definition}
+    }{linear}{\fried}
 
     A linear multibracket can then be easily imbued with a signature derived from the signatures of the semibrackets in the sequence.
 
-    \begin{definition}{Linear Multibracket Signatures}{}
+    \writedef{Linear Multibracket Signatures}{
         The \i{signature} of a linear multibracket that consists of semibrackets with signature $\A_1, ..., \A_k$ is $\A_1 \to ... \to \A_k.$
-    \end{definition}
+    }{linearSig}{\fried}
 
     All four of the multibrackets discussed in the previous section are linear: let's see what their signatures are. First, the 2015 AFC Asian Cup \cite{wiki_afc}.
 

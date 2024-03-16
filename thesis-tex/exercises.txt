@@ -1,7 +1,0 @@
-Prove that in an $n$-team bracket, exactly $n-1$ games are played.
-How many brackets of a given shape?
-How many shapes/brackets of a given signature.
-Prove that there are A002572 proper brackets on n teams.
-Prove that [8; 0; 0; 0] is not ordered.
-Prove that if all tiers in a tiered seeding are of the same size, and a bracket weakly respects it, then that bracket strongly respects it.
-Give an example of a swiss where all teams play the same number of games but not all matchups are the same record.

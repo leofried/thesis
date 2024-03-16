@@ -12,13 +12,13 @@
 
     While it would be reasonable to describe the format in Figure \ref{fig:800} as two brackets that run side-by-side, it would be nice to be able to describe it as a single format: a bracket in which the championship game is left unplayed.
     
-    \begin{definition}{Semibracket}{semibracket}
+    \writedef{Semibracket}{
         A \i{semibracket} is a networked format in which
         \begin{enumerate}[(a)]
             \item Teams don't play any games after their first loss, and
             \item All teams that finish with no losses are declared co-champions.
         \end{enumerate}
-    \end{definition}
+    }{semibracket}{\fried}
 
     Thus semibrackets are a generalization of brackets: a bracket is a semibracket in which only one team is left undefeated and declared champion.
 
@@ -48,17 +48,17 @@
 
     There is no potential for the format in Figure \ref{fig:1200} to be completed into a traditional bracket, the next round would include three teams: an odd number. But as a semibracket, this is still a viable format, one that nicely solves the tournament design problem that we were given.
     
-    \begin{definition}{Rank of a Semibracket}{}
+    \writedef{Rank of a Semibracket}{
         The \i{rank} of a semibracket is how many co-champions it crowns. If the semibracket $\A$ has rank $m$, we say $\rank{\A} = m$ or that $\A$ \i{ranks m teams}.
-    \end{definition}
+    }{rank}{\fried}
 
     Traditional brackets are exactly the semibrackets that rank one team. The formats in Figures \ref{fig:800} and \ref{fig:1200} rank two and three teams, respectively.
 
     We can adapt the concept of a bracket signature to semibrackets.
 
-    \begin{definition}{Semibracket Signature}{}
+    \writedef{Semibracket Signature}{
         The \i{signature} of an $r$-round semibracket $\A$ is the list $\bracksig{a_0; ...; a_r}_m,$ where $a_i$ is the number of teams that get $i$ byes and $m = \rank{\A}.$ (In the case where $m = \rank{\A} = 1$, it can be omitted.)        
-    \end{definition}
+    }{semiSig}{\fried}
 
     Thus the signature of traditional brackets are the same as when they are viewed as semibrackets that rank one team. The signatures of the formats in Figures \ref{fig:800} and \ref{fig:1200} are $\bracksig{8;0;0}_2$ and $\bracksig{12;0;0}_3,$ respectively.
 
@@ -66,13 +66,13 @@
 
     \etheo{theorem}{}{
         Let $\A = \bracksig{a_0; ...; a_r}_m$ be a list of natural numbers. Then $\A$ is a semibracket signature if and only if $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = m.$$
-    }{semi_signature_sum}{Fried}{2024}
+    }{semi_signature_sum}{\fried}
 
     The proof is almost identical to that of Theorem \ref{th:signature_sum} so we leave it out for brevity. Likewise, properness can be defined in the same way for semibracket, and the fundamental theorem still applies. (Again with a nearly identical proof that is left out for brevity.)
 
     \etheo{theorem}{}{
         Each semibracket signature admits exactly one proper semibracket.
-    }{}{Fried}{2024}
+    }{}{\fried}
 
     Semibrackets are used in practice in situations where the excitement of a single elimination tournament is desired, but multiple winners are needed. The 2023 Union of European Football Associations Champions League Qualifying Phase \cite{wiki_uefa}, for example, used a (somewhat randomized) semibracket of signature $\bracksig{4;0;29;9;8;2;0}_6$ to determine the final six teams that would get to compete in the Group Stage.
 
@@ -80,13 +80,13 @@
 
     Finally, we give a few descriptors to describe certain semibracket shapes.
 
-    \begin{definition}{Trivial Semibracket}{}
+    \writedef{Trivial Semibracket}{
         A semibracket is \i{trivial} if every team is declared co-champion without playing any games. Equivalently, a semibracket is trivial its signature is of the form $\bracksig{m}_m.$
-    \end{definition}
+    }{trivial}{\fried}
 
-    \begin{definition}{Competitive Semibracket}{}
+    \writedef{Competitive Semibracket}{
         A semibracket is \i{competitive} if no teams are declared co-champion without winning at least one game. Equivalently, a semibracket is competitive its signature ends in a $0.$
-    \end{definition}
+    }{competitive}{\fried}
 
     Clearly the two categories are mutually exclusive. Restricting briefly to the domain of traditional brackets, the two categories are also collectively exhaustive: there is no traditional bracket that is neither competitive nor trivial. (In fact, the only trivial traditional bracket is $\bracksig{1}$, every other traditional bracket is competitive.) However, this dichotomy does not apply to semibrackets: there are semibrackets that are neither trivial nor competitive. The simplest example is $\bracksig{2;1}_2,$ where the 1-seed is automatically one co-champion (so it's not competitive), but the 2- and 3-seeds play to be the other co-champion (so it's not trivial).
 

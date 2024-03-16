@@ -16,9 +16,9 @@
 
     This format has signature $\bracksig{8;0;0}_2 \to \bracksig{4;2}_2$, and we say that it is \i{weakly efficient}.
 
-    \begin{definition}{Weakly Efficient}{w_efficient}
+    \writedef{Weakly Efficient}{
         A multibracket is \i{weakly efficient} if, once a team is guaranteed to be ranked by the format or guaranteed to finish unranked, they stop playing games.
-    \end{definition}
+    }{wEfficient}{\fried}
 
     Identifying whether a linear multibracket is weakly efficient can be done by looking at its flowchart and seeing if there are any rounds for which no path ends in elimination. But for weakly proper linear multibrackets, you can tell just from the signature.
 
@@ -28,7 +28,7 @@
         Assume first that some $j$ exists. Let $\bracklabel{G}$ be a game. Because all semibrackets $\A_i$ with $i<j$ are trivial, $\bracklabel{G}$ must be in a semibracket $\A_i$ for $i \geq j$, so the loser of $\bracklabel{G}$ is either eliminated outright, or falls into a semibracket $\A_i$ for $i > j,$ which is competitive, in which case they will play another game. If they continue losing, they will continue falling into competitive semibrackets, until they are eliminated outright and do not get ranked. Thus if a team competing in $\bracklabel{G}$ loses the rest of their games, they will finish unranked. But of course if they win the rest of their games they will finish ranked, so $\A$ is weakly efficient.\\
 
         Assume now that no such $j$ exists, so there exists some some $i$ such that $\A_i$ is nontrivial and $\A_{i+1}$ is noncompetitive. $\A_{i+1}$ is noncompetitive, so at least one team must win $\A_{i+1}$ without playing a game. By Lemma \ref{th:weakly_proper_drop}, this team must be a championship game loser of $\A_i$, if such a game exists. $\A_i$ is nontrivial so such a game does indeed exist: let $\bracklabel{G}$ be that game. Then the winner of $\bracklabel{G}$ wins $\A_i$, and the loser of $\bracklabel{G}$ wins $\A_{i+1}$, so $\A$ is not weakly efficient.
-    }{w_efficient}{Fried}{2024}
+    }{wEfficient}{\fried}
 
     The USA Ultimate Manual of Championship Series Tournament Formats \cite{ultimate}, which is used to determine the formats to be used at the various sectional and regional tournaments in the sport of ultimate frisbee, contains a host of weakly efficient linear multibrackets for selecting the top $m$ teams out of a list of $n$ for various values of $m$ and $n$, after a ``regular season'' portion of the tournament has been played to establish seeds.
 
@@ -38,21 +38,21 @@
    
     \fig{0.7}{ult1655}{$\bracksig{8;0;0}_2 \to \bracksig{4;2;0}_2 \to \bracksig{8;0;2;2;0;0}$}
 
-    We note two things about the notion of weak efficiency presented above. First, Theorem \ref{th:w_efficient} implies that a weakly efficient multibracket can begin with a long string of trivial semibrackets before the nontrivial ones begin. While this is sufficient for avoiding playing unnecessary games, it does not completely remove unnecessary semibrackets: the set of leading trivial semibrackets $$\bracksig{m_1}_{m_1} \to ... \to \bracksig{m_{j}}_{m_{j}}$$ of a weakly efficient multibracket can be combined into a single trivial semibracket $$\bracksig{m_1 + ... + m_{j}}_{(m_1 + ... + m_{j})}$$ without affecting which teams end up ranked. Applying this to the format in Figure \ref{fig:ult672} yields a signature of $$\bracksig{3}_3 \to \bracksig{4;0}_2 \to \bracksig{2;0}.$$ 
+    We note two things about the notion of weak efficiency presented above. First, Theorem \ref{th:wEfficient} implies that a weakly efficient multibracket can begin with a long string of trivial semibrackets before the nontrivial ones begin. While this is sufficient for avoiding playing unnecessary games, it does not completely remove unnecessary semibrackets: the set of leading trivial semibrackets $$\bracksig{m_1}_{m_1} \to ... \to \bracksig{m_{j}}_{m_{j}}$$ of a weakly efficient multibracket can be combined into a single trivial semibracket $$\bracksig{m_1 + ... + m_{j}}_{(m_1 + ... + m_{j})}$$ without affecting which teams end up ranked. Applying this to the format in Figure \ref{fig:ult672} yields a signature of $$\bracksig{3}_3 \to \bracksig{4;0}_2 \to \bracksig{2;0}.$$ 
     In fact, if there is at least one game played in a weakly efficient multibracket, trivial semibrackets can removed entirely, converting a multibracket of signature $$\bracksig{m_1}_{m_1} \to \bracksig{a_1; ...; a_r}_{m_2} \to ... \to \A_k$$ into one of signature $$\bracksig{a_1; ...; a_r + m_1}_{m_1 + m_2} \to ... \to \A_k.$$ 
     Applying this to the format in Figure \ref{fig:ult672} yields a signature of $$\bracksig{4;3}_5 \to \bracksig{2;0}.$$
     To patch this, we strengthen the notion of weak efficiency into just \i{efficiency.}
 
-    \begin{definition}{Efficient}{efficient}
+    \writedef{Efficient}{
         A weakly proper linear multibracket is \i{efficient} if one of three conditions hold:
         \begin{enumerate}
             \item[(a)] It is a single trivial semibracket.
             \item[(b)] It is a sequence of competitive semibrackets.
             \item[(c)] It is a single nontrivial noncompetitive semibracket followed by a sequence of competitive semibrackets.
         \end{enumerate}
-    \end{definition}
+    }{efficient}{\fried}
 
-    Theorem \ref{th:w_efficient} says that in each of these three cases no games are played between teams guaranteed to be ranked, and the process detailed above can reduce any weakly efficient signature into a signature that takes one of those three forms.
+    Theorem \ref{th:wEfficient} says that in each of these three cases no games are played between teams guaranteed to be ranked, and the process detailed above can reduce any weakly efficient signature into a signature that takes one of those three forms.
 
     The second thing to note is that efficiency makes a lot of sense if we are only interested in the top-$m$ teams (where $m$ is the sum of the ranks of the semibrackets in our format) and not in the rankings of the teams within them. But sometimes we might be interested in the intermediate rankings as well. For example, let's say we want to design an eight-team tournament format in which the top team receives the grand prize, second-place receives a second-place prize, while the third- through seventh-place each get equivalent consolation prizes, and last place gets nothing. While not efficient (or even weakly efficient), the following format assigns the desired places without playing any games between teams that are guaranteed to receive the same prize.
 
@@ -60,20 +60,20 @@
 
     To account for this, we introduce the notion of a \i{prize structure}.
     
-    \begin{definition}{Prize Structure}{}
+    \writedef{Prize Structure}{
         A \i{prize structure} $\PP$ is a sequence $(p_1, ..., p_m)$ indicating that the top $p_1$ teams in a format receive some prize, the next $p_2$ receive some smaller prize, etc. Any teams finishing in place $1 + \sum_{i=1}^m p_i$ or worse receive no prize.
-    \end{definition}
+    }{prize}{\fried}
 
     Then,
 
-    \begin{definition}{Efficient with Respect to a Prize Struture}{}
+    \writedef{Efficient with Respect to a Prize Struture\\}{
         A weakly proper linear multibracket $\A = \A_1 \to ... \to \A_k$ is \i{efficient with respect to a prize structure} $\PP = (p_1, ..., p_m)$ if
         \begin{enumerate}[(a)]
             \item $\A_j$ being noncompetitive implies that for some $\ell < m$, $$\sum_{i=1}^{j-1} \rank {\A_j} = \sum_{i=1}^\ell p_i,$$
                          and
             \item $\A_j$ being trivial implies that for some $\ell < m$, $$\sum_{i=1}^{j} \rank {\A_j} = \sum_{i=1}^\ell p_i.$$
         \end{enumerate}
-    \end{definition}
+    }{effPrize}{\fried}
 
     (The first condition ensures that the format is weakly efficient with respect to the prize structure, and the second condition ensures that there are no trivial semibrackets that could be combined with another semibracket as per the process detailed before Definition \ref{def:efficient}.)
 

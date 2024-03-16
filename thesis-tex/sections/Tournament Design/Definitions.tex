@@ -10,23 +10,23 @@
                 \item $\P{g(t_i, t_j) = t_i} + \P{g(t_i, t_j) = t_j} = 1.$
                 \item $\P{g(t_i, t_j) = t_i} = \P{g(t_j, t_i) = t_j}.$
             \end{enumerate}
-    }{gameplay}{Fried}{2024}
+    }{gameplay}{\fried}
 
     A gameplay function represents a process in which two teams compete in a game, with one of them emerging as the winner. This model simplifies away effects like home-field advantage or teams improving over the course of a tournament: a gameplay function is fully described by a single probability for each pair of teams in the list.
 
-    \writedef{Playing, Winning, Losing, and Beating}{
+    \writedef{Playing, Winning, Losing, and Beating\\}{
         When $g$ is queried on input $(t_i, t_j)$ we say that $t_i$ and $t_j$ \i{played a game}. We say that the team that got outputted by $g$ \i{won}, that the team that did not \i{lost}, and that the winning team \i{beat} the losing team.
-    }{playing}{XXX}{XXX}%XXX
+    }{playing}{\unattributed}
 
     \writedef{$p_{ij}$}{
         $p_{ij} = \G{t_i}{t_j}.$
-    }{pij}{XXX}{XXX}%XXX
+    }{pij}{\unattributed}
 
     The information in a gameplay function can be encoded into a \i{matchup table.}
 
     \writedef{Matchup Table}{
         The \i{matchup table} implied by a gameplay function $g$ on a list of teams $\T$ of length $n$ is an $n$-by-$n$ matrix $\M$ such that $\M_{ij} = p_{ij}.$
-    }{matchup}{XXX}{XXX}%XXX
+    }{matchup}{\unattributed}
 
     For example, let $\T$ = [Favorites, Rock, Paper, Scissors, Conceders], and $g$ be such that the Conceders concede every game they play, the Favorites are 70 percent favorites against Rock, Paper, and Scissors, and Rock, Paper, and Scissors match up with each other as their name implies. Then the matchup table would look like so:
 
@@ -49,7 +49,7 @@
         If $\M$ is the matchup table for some gameplay function on $\T$, then $\M + \M^T$ is the matrix of all ones.
     }{
         $(\M + \M^T)_{ij} = \M_{ij} + \M_{ji} = p_{ij} + p_{ji} = 1.$
-    }{matchup_diag}{XXX}{XXX}%XXX
+    }{matchup_diag}{\unattributed}
     
     Theorem \ref{th:matchup_diag} implies that matchup tables are defined by the entries below the diagonal, so to reduce busyness we will often display only those entries.
 
@@ -69,7 +69,7 @@
 
     \writedef{Tournament Format}{
         A \i{tournament format} is an algorithm that takes as input a list of teams $\T$ and a gameplay function $g$ and outputs a ranking (potentially including ties) on $\T.$
-    }{tournament}{Fried}{2024}%XXX
+    }{tournament}{\fried}%XXX
 
     We use a gameplay function rather than a matchup table in the definition of a tournament format because a tournament format cannot simply look at the matchup table itself in order to decide which teams are best. Instead, formats query the gameplay function (have teams play games) in order to gather information about the teams. That said, matchup tables will often be useful in our \i{analysis} of tournament formats. 
 
@@ -77,17 +77,17 @@
 
     \writedef{$\W{\A}{t}{\T}$}{
         $\W{\A}{t}{\T}$ is the probability that team $t \in \T$ wins tournament format $\A$ when it is run on the list of teams $\T$.
-    }{watt}{XXX}{XXX}%XXX
+    }{watt}{\unattributed}
 
     Finally, we will focus our study on the subset of tournament formats that fulfill the \i{network condition}, first patented as a condition for sorting algorithms by Armstrong, Nelson, and O'Connor \cite{pat}.
 
     \writedef{Deterministic Tournament Format}{
         A tournament format is \i{deterministic} if it employs no randomness other than the randomness inherent in the gameplay function $g$.
-    }{det}{XXX}{XXX}%XXX
+    }{det}{\unattributed}
 
     This definition does not require that a deterministic tournament format always declare the same champion when presented with the same list of teams, only that it declare the same champion when presented with the same list of teams and the game results are all the same.
 
-    \writedef{Networked Tournament Format}{
+    \writedef{Networked Tournament Format\\}{
         A tournament format is \i{networked} if it  if it is deterministic, and after each game between $t_i$ and $t_j$, the rest of the format is identical no matter which team won, except for $t_i$ and $t_j$ are swapped.
-    }{networked}{Armstrong, Nelson, and O'Connor}{1957}%XXX
+    }{networked}{Armstrong, Nelson, and O'Connor, 1957}
 }

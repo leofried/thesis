@@ -19,11 +19,11 @@
 
     \fig{0.4}{s3_flow_new}{1988 Men's College Basketball Maui Invitational Flowchart}
 
-    There is one other niceness property that the 1988 Men's College Basketball Maui Invitational Flowchart has, which is that all of its semibrackets are either trivial or competitive. In a weakly proper linear multibracket, any nontrivial noncompetitive semibracket of signature $\bracksig{a_1; ...; a_r}_m$ can be split into the the pair of semibrackets $\bracksig{a_1; ...; a_{r-1}; 0}_{m-a_r} \to \bracksig{a_r}_{a_r}$ without affecting the games played in the tournament at all, and so to avoid double counting signatures, we make note of this niceness property as well.
+    There is one other nice property that the 1988 Men's College Basketball Maui Invitational Flowchart has, which is that all of its semibrackets are either trivial or competitive. In a weakly proper linear multibracket, any nontrivial noncompetitive semibracket of signature $\bracksig{a_1; ...; a_r}_m$ can be split into the the pair of semibrackets $\bracksig{a_1; ...; a_{r-1}; 0}_{m-a_r} \to \bracksig{a_r}_{a_r}$ without affecting the games played in the tournament at all, and so to avoid double counting signatures, we make note of this nice property as well.
 
     Formats with all of these properties are called \i{Swiss formats}, and their signatures are called \i{Swiss signatures}, named because of their first recorded use at a chess tournament in Zürich, Switzerland in 1895 \cite{info_swiss}.
 
-    \begin{definition}{Swiss Format}{Swiss}
+    \writedef{Swiss Format}{
         A \i{Swiss format} is a weakly proper linear multibracket with the following additional properties:
         \begin{enumerate}[(a)]
             \item Every team starts in the primary semibracket.
@@ -32,22 +32,22 @@
             \item Every team wins a semibracket.
             \item Every semibracket is either trivial or competitive.
         \end{enumerate}
-    \end{definition}
+    }{Swiss}{\unattributed}
 
-    \begin{definition}{Swiss Signature}{}
+    \writedef{Swiss Signature}{
         A \i{Swiss signature} is a linear multibracket signature that admits a Swiss format.
-    \end{definition}
+    }{SwissSig}{\fried}
 
-    \begin{definition}{$r$-Round Swiss Signature}{}
+    \writedef{$r$-Round Swiss Signature}{
         An \i{$r$-round Swiss signature} is a Swiss signature in which each team plays $r$ games.
-    \end{definition}
+    }{rSwissSig}{\fried}
     
     Thus $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to \bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}$ is a $3$-round Swiss signature. In fact, it is an example of a particular family of Swiss signature known as the the \i{standard Swiss signatures}, which we abbreviate by $\S_r$ for some $r$.
 
-    \begin{definition}{Standard Swiss Signature $(\S_r)$}{standard_Swiss}
+    \writedef{Standard Swiss Signature $(\S_r)$}{
         $\S_r,$ or the \i{standard $r$-round Swiss signature}, is the multibracket signature defined recursively by $$\S_0 = \bracksig{1},$$ and
         $$\S_r = \bracksig{2^r; ...; 0} \to \S_{0} \to \S_1 \to ... \to \S_i \to ... \to \S_{r-1}.$$
-    \end{definition}
+    }{standardSwiss}{\fried}
 
     Thus we have
     \begin{align*}
@@ -68,9 +68,9 @@
 
     Unlike the standard Swiss signatures, this signature does not crown a single champion: it is not \i{compact}.
 
-    \begin{definition}{Compact Swiss Signature}{}
+    \writedef{Compact Swiss Signature}{
        A Swiss signature is \i{compact} if only one teams finishes undefeated.
-    \end{definition}
+   }{compact}{\fried}
 
     If we attempt to draw the flowchart for the format, we notice something a little strange.
 
@@ -78,9 +78,9 @@
 
     It is identical to $\S_2$! This is not a coincidence: the format is actually just two copies of $\S_2$ being run simultaneously. Taking another look at the signature, it is even the same signature as $\S_2$, just with every number multiplied by 2. We use this to introduce $m\x$ notation.
 
-    \begin{definition}{$m\x\A$}{mx_notation}
+    \writedef{$m\x\A$}{
          If $m \in \N$ and $\A$ is a multibracket signature, then $m\x\A$ is the multibracket signature formed by multiplying every number in every signature in $\A$ by $m$.
-    \end{definition}
+    }{mxNotation}{\fried}
 
     So the format in Figures \ref{fig:two_by_two} and \ref{fig:2xs2_flow_new} is $2\x\S_2.$ In fact, every noncompact Swiss signature can be represented using $m\x\A$ notation.
 
@@ -92,7 +92,7 @@
         We begin with the base case of $i=r$. Only the primary bracket of Swiss signature has an $r$th to last round, and because it is a balanced bracket or rank $m$, it will have $2^rm$ teams. For any other $i$, in the $(i+1)$th round of the semibracket, a number of teams dividing $m \cdot 2^{i+1}$ competed, and half of them won and so are still competing in this semibracket. Meanwhile, if the $i$th round of this semibracket is to take the losers of another round of another semibracket, it must be the $(i+1)$th to last round, so a number of teams dividing $m \cdot 2^{i}$ will fall into this semibracket. Thus the number of teams playing in the $i$th to last round of every semibracket will be divisible by $m \cdot 2^{i}.$\\
         
         With this shown, the same induction proves that the $i$th to last number of every semibracket signature is divisible by $m \cdot 2^{i-1}$, which of course proves the theorem.
-    }{not_compact}{Fried}{2024}
+    }{not_compact}{\fried}
 
 
     With the standard Swiss signature and $m\x$ notation defined, we are ready for Figure \ref{fig:Swiss_names}, which details the various Swiss signatures for 1-, 2-, 4-, and 8-teams.
@@ -123,9 +123,9 @@
         $\bracksig{2;0} \to \bracksig{1}$ is the only 2-team Swiss signature in which a game is played, so it is the only compact 1-round Swiss signature.\\
 
         Finally, a compact 2-round Swiss signature must start with $\bracksig{4;0;0}$ to be compact, its secondary bracket must be $\bracksig{1}$ to ensure every bracket is either trivial or competitive, its tertiary bracket must be $\bracksig{2;0}$ otherwise the two losers would not have a game to play, and it must end in $\bracksig{1}$ to ensure every team is ranked. Thus $\bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}$ is the only compact 2-round Swiss signature.
-    }{small_proof}{Fried}{2024}
+    }{small_proof}{\fried}
 
-    Figure \ref{fig:Swiss_names} tells us that there are, two compact 3-round Swiss signatures: the standard $\S_3$, and the yet to be defined $\T_3.$ It's worth attempting to construct $\T_3$ before reading on.
+    Figure \ref{fig:Swiss_names} tells us that there are two compact 3-round Swiss signatures: the standard $\S_3$, and the yet to be defined $\T_3.$ It's worth attempting to construct $\T_3$ before reading on.
 
     The key insight is to realize that teams with the same record in vertically adjacent nodes of the flowchart can actually play against each other without violating any of the Swiss format requirements, merging the nodes. Thus the flow chart for $\T_3$ looks like so. (Note that the 1-1 node contains four teams, and the bottommost 2-1 node as well as the topmost 1-2 node each contain two teams.)
 
@@ -146,7 +146,7 @@
          If $a_1 = 0$, then in between the first two brackets and $\A$, we must have two more brackets for the second-round losers of the primary bracket: $\bracksig{2;0}$ and $\bracksig{1}.$ Then $\A$ must be followed by $\bracksig{1}$ for the loser of its championship game, and then $\bracksig{2;0}$ and $\bracksig{1}$ so that the last two teams get a third game. This is the Swiss signature $\S_3$.\\
         
          If $a_1 = 2$, then the losers of the two championship games of $\A$ have already played all three of their games and so need to fall into the bracket $\bracksig{2}$. Then we need $\bracksig{2;0}$ and $\bracksig{1}$ so that the last two teams get a third game. This is the Swiss signature $\T_3$.
-        }{}{Fried}{2024}
+        }{}{\fried}
 
     Figure \ref{fig:Swiss_names} tells us that there are five $8$-team Swiss signatures. How would a tournament designer decide which 3-round signature to use? Well, it depends on what the prize structure of the format is. If the goal is to identify a top-three, then  $\S_3$ is preferable: $\T_3$ doesn't even recognize a third-place, instead assigning fourth-place to two teams. But if the goal is to identify a top-four, $\T_3$ is preferable: the team that comes in fourth in $\S_3$ actually finishes with only one win, while the team that comes in fifth finishes with two. While it is still reasonable to grant the one-win team fourth-place -- they had a more difficult slate of opponents -- this is a somewhat messy situation that is solved by just using $\T_3.$
 
@@ -170,7 +170,7 @@
         The half above the middle semibracket is trickier. The first thing to note is that teams from the primary semibracket can continue to fall into the middle semibracket indefinitely, but once one round is skipped, weak properness precludes any later rounds from falling down. Further, once teams are no longer falling into the middle semibracket, there are $s_i$ different ways the primary bracket could arrange the rest of its losers, where $i$ is the number of remaining rounds. Thus in total, there are $\sum_{i=1}^{r-1}s_i$ options for the half of the flowchart above the middle semibracket.\\
 
         Therefore, there are $s_{r-1} \cdot \sum_{i=1}^{r-1}s_i$ different Swiss signatures in total.
-    }{}{Fried}{2024}
+    }{}{\fried}
 
     The eight compact 4-round signatures are displayed below.
 
