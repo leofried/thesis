@@ -1,3 +1,7 @@
+%%%%%%%%%%%%%%%%%%%%
+%%%%%USE_PACKAGE%%%%
+%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{amsthm}
@@ -6,6 +10,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{complexity}
 \usepackage{float}
+\usepackage{mfirstuc}
 \usepackage{subfiles}
 \usepackage{tocloft}
 \usepackage{tikz-cd}
@@ -17,21 +22,21 @@
 \usepackage{multirow}
 \usepackage{etoolbox}
 \usepackage[defernumbers=true]{biblatex}
-
 \usepackage{etoc}
-
-\renewcommand*{\mkbibnamefamily}[1]{\textsc{#1}}
-\DeclareNameAlias{author}{family-given}
-\addbibresource{refs.bib}
-
-
-\usepackage{imakeidx}
-\usepackage[columns=1]{idxlayout}
-\makeindex
-\indexsetup{level=\section}
 
 \hbadness=10000
 
+
+
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%TTL + TOC%%%%%
+%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\ttl}{
+    \subfile{sections/title}
+    \thispagestyle{empty}
+    \newpage
+}
 
 \newcommand{\toc}{
     \tableofcontents
@@ -42,11 +47,9 @@
     \newpage
 }
 
-\newcommand{\ttl}{
-    \subfile{sections/title}
-    \thispagestyle{empty}
-    \newpage
-}
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%SUBFILING%%%%%
+%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\sub}[1]{
     \documentclass[../../main.tex]{subfiles}
@@ -79,23 +82,63 @@
     \newpage
 }
 
-\newtcbtheorem[number within=subsection]{theorem}{Theorem}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
-\newtcbtheorem[number within=subsection, use counter from=theorem]{lemma}{Lemma}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
-\newtcbtheorem[number within=subsection, use counter from=theorem]{corollary}{Corollary}{enhanced, breakable, colback=purple!5,colframe=violet!100!,fonttitle=\bfseries}{th}
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%THEOREMS%%%%%%
+%%%%%%%%%%%%%%%%%%%%
 
-\newtcbtheorem[number within=subsection, use counter from=theorem]{definition}{Definition}
-{enhanced, breakable, colback=blue!5,colframe=teal!100!,fonttitle=\bfseries}{def}
+\newtcbtheorem[number within=subsection                          ]{theorem}     {Theorem}      {enhanced, breakable, colback=purple!5, colframe=violet!100!, fonttitle=\bfseries}{th}
+\newtcbtheorem[number within=subsection, use counter from=theorem]{lemma}       {Lemma}        {enhanced, breakable, colback=purple!5, colframe=violet!100!, fonttitle=\bfseries}{th}
+\newtcbtheorem[number within=subsection, use counter from=theorem]{corollary}   {Corollary}    {enhanced, breakable, colback=purple!5, colframe=violet!100!, fonttitle=\bfseries}{th}
+\newtcbtheorem[number within=subsection, use counter from=theorem]{etheorem}    {Theorem}      {enhanced, breakable, colback=purple!5, colframe=violet!100!, fonttitle=\bfseries, separator sign none}{th}
+\newtcbtheorem[number within=subsection, use counter from=theorem]{elemma}      {Lemma}        {enhanced, breakable, colback=purple!5, colframe=violet!100!, fonttitle=\bfseries, separator sign none}{th}
+\newtcbtheorem[number within=subsection, use counter from=theorem]{ecorollary}  {Corollary}    {enhanced, breakable, colback=purple!5, colframe=violet!100!, fonttitle=\bfseries, separator sign none}{th}
 
+\newtcbtheorem[number within=subsection, use counter from=theorem]{eoq}{Open Question}       {enhanced, breakable, colback=yellow!5, colframe=orange!100!, fonttitle=\bfseries}{oq}
+\newtcbtheorem[number within=subsection, use counter from=theorem]{econj}{Conjecture}        {enhanced, breakable, colback=yellow!5, colframe=orange!100!, fonttitle=\bfseries}{conj}
+
+\newcommand{\ntheo}[7]{
+    \begin{#1}{#2 \hspace*{\fill} (#6, #7)}{#5}
+        #3
+        \tcblower
+        \begin{proof}
+        #4
+        \end{proof}
+    \end{#1}
+    \global
+    \@namedef{glossTH#5}{
+      \begin{tcolorbox}[title={
+      \capitalisewords{#1} \ref{th:#5}: 
+      #2  \hspace*{\fill} (#6, #7, p. \pageref{th:#5})
+      },enhanced, breakable, colback=purple!5, colframe=violet!100!,fonttitle=\bfseries]
+          #3
+      \end{tcolorbox}
+     }
+}
+
+\newcommand{\theo}[6]{
+    \begin{e#1}{\hspace*{\fill} (#5, #6)}{#4}
+        #2
+        \tcblower
+        \begin{proof}
+        #3
+        \end{proof}
+    \end{e#1}
+}
+
+\newcommand{\etheo}[6]{
+    \begin{e#1}{#2 \hspace*{\fill} (#5, #6)}{#4}
+        #3
+    \end{e#1}
+}
+
+%%%%%%%%%%%%%%%%%
+%%%%%FIGURES%%%%%
+%%%%%%%%%%%%%%%%%
 
 \newtcbtheorem[number within=subsection, use counter from=theorem]{figg}{Figure}
 {enhanced, width=\linewidth, breakable, colback=red!5,colframe=purple!100!,fonttitle=\bfseries}{fig}
 
-\newtcbtheorem[number within=subsection, use counter from=theorem]{oq}{Open Question}{enhanced, breakable, colback=yellow!5,colframe=orange!100!,fonttitle=\bfseries}{oq}
-\newtcbtheorem[number within=subsection, use counter from=theorem]{conj}{Conjecture}{enhanced, breakable, colback=yellow!5,colframe=orange!100!,fonttitle=\bfseries}{conj}
-
-
-\newcommand{\graph}[2]{\includegraphics[scale=#1]{images/\sectname/\subsectname/#2.png}
-}
+\newcommand{\graph}[2]{\includegraphics[scale=#1]{images/\sectname/\subsectname/#2.png}}
 
 \newcommand{\fig}[3]{
     \begin{figg}{#3}{#2}
@@ -109,54 +152,26 @@
     \end{figg}
 }
 
-\makeatletter
-    \def\namedlabel#1#2{\begingroup
-    \def\@currentlabel{#2}
-    \label{#1}\endgroup
-    }
-\makeatother
 
-\newcommand{\theo}[4]{
-    \begin{theorem}{#1}{#4}
-        #2
-        \tcblower
-        \begin{proof}
-        #3
-        \end{proof}
-    \end{theorem}
-}
 
-\newcommand{\lemm}[4]{
-    \begin{lemma}{#1}{#4}
-        #2
-        \tcblower
-        \begin{proof}
-        #3
-        \end{proof}
-    \end{lemma}
-}
+%%%%%%%%%%%%%%%%%
+%%%DEFINITIONS%%%
+%%%%%%%%%%%%%%%%%
 
-\newcommand{\corr}[4]{
-    \begin{corollary}{#1}{#4}
-        #2
-        \tcblower
-        \begin{proof}
-        #3
-        \end{proof}
-    \end{corollary}
-}
 
+\newtcbtheorem[number within=subsection, use counter from=theorem]{definition}{Definition}
+{enhanced, breakable, colback=blue!5,colframe=teal!100!,fonttitle=\bfseries}{def}
 
 \makeatletter
-\newcommand{\writedef}[3]{
-  \begin{definition}{#1}{#3}
+\newcommand{\writedef}[5]{
+  \begin{definition}{#1 \hspace*{\fill} (#4, #5)}{#3}
     #2
   \end{definition}
   \global
   \@namedef{gloss#3}{
     \begin{tcolorbox}[title={
     Definition \ref{def:#3}: 
-    #1 (p. \pageref{def:#3})
+    #1  \hspace*{\fill} (#4, #5, p. \pageref{def:#3})
     },enhanced, breakable, colback=blue!5,colframe=teal!100!,fonttitle=\bfseries]
         #2
     \end{tcolorbox}
@@ -165,12 +180,24 @@
 \makeatother
 
 
+%%%%%%%%%%%%%%%%%
+%%%%CITATIONS%%%%
+%%%%%%%%%%%%%%%%%
+
 \newcommand{\bib}[2]{
     \printbibliography [keyword={#2},title={#1 References}, heading=subbibnumbered]
     \pagebreak
 }
 
 
+\renewcommand*{\mkbibnamefamily}[1]{\textsc{#1}}
+\DeclareNameAlias{author}{family-given}
+\addbibresource{refs.bib}
+
+
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%COMMANDS%%%%%%
+%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\overfullhbox}[1]{\resizebox{\textwidth}{!}{#1}}
 
@@ -224,3 +251,6 @@
 \newcommand{\bsec}[1]{{\bf Section \ref{sec:#1}: #1}}
 
 \renewcommand\_{\textunderscore\linebreak[1]}
+
+
+

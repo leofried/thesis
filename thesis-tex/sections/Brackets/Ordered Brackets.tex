@@ -28,17 +28,17 @@
 
     \writedef{Strongly Stochastically Transitive}{
         A list of teams $\T$ is \i{strongly stochastically transitive} if for each $i, j, k$ such that $j < k$, $$\G{t_i}{t_j} \leq \G{t_i}{t_k}.$$
-    }{sst}
+    }{sst}{David}{1963}
 
     A list of teams being strongly stochastically transitive (SST) captures the intuition that each team ought to do better against lower-seeded teams than against higher-seeded teams. A few quick implications of this definition are stated below.
 
-    \begin{corollary}{}{}
+    \etheo{corollary}{}{
         \begin{enumerate}[(1)]
             \item If $\T$ is SST, then for each $i < j$, $$\G{t_i}{t_j} \geq 0.5.$$
             \item If $\T$ is SST, then for each $i, j, k, \ell$ such that $i < j$ and $k < \ell$, $$\G{t_i}{t_\ell} \geq \G{t_j}{t_k}.$$
             \item If $\T$ is SST, then the matchup table $\M$ is monotonically increasing along each row and monotonically decreasing along each column.
         \end{enumerate}
-    \end{corollary}
+    }{}{XXX}{XXX}%XXX
 
     Note that not every set of teams can be seeded to be SST. Consider, for example, the game of rock-paper-scissors. Rock beats paper which beats scissors which beats rock, so no ordering of these ``teams'' will be SST. For our purposes, however, SST will work well enough.
 
@@ -46,17 +46,17 @@
 
     \writedef{Monotonic}{
         A tournament format $\A$ is monotonic with respect to an SST list of teams $\T$ if, for all $i < j,$ $\W{\A}{t_i}{\T} \geq \W{\A}{t_j}{\T}.$
-    }{monotonic}
+    }{monotonic}{XXX}{XXX}%XXX
 
     \writedef{Ordered}{
         An $n$-team tournament format $\A$ is \i{ordered} if it is monotonic with respect to every SST list of $n$ teams.
-    }{ordered}
+    }{ordered}{Edwards}{1991}
 
     In an informal sense, a bracket being ordered is the strongest thing we can want without knowing more about why the tournament is being played. Depending on the situation, we might be interested in a format that almost always declares the most-skilled team as the winner, or in a format that gives each team roughly the same chance of winning, or anywhere in between. But certainly, better teams should win more, which is what the ordered bracket condition requires.
 
     In particular, a bracket being ordered is a stronger claim than it being proper.
 
-    \theo{}{Every ordered bracket is proper.}{
+    \theo{theorem}{Every ordered bracket is proper.}{
         We show the contrapositive. Let $\A$ be an $r$-round non-proper bracket.
 
         Assume first that $\A$ violates condition (a). Let $t_i$ and $t_j$ be teams such that $i < j$, but $t_i$ plays its first game in round $r_i$ while $t_j$ plays its first game in round $r_j$ for $r_i < r_j.$
@@ -70,29 +70,29 @@
         Let $\T$ be the SST set of teams where all games between teams seeded $\ell-1$ or better is a coin flip, but all games involving at least one team seeded $\ell$ or worse is always won by the higher seeded team. Then $$\W{\A}{t_i}{\T} = 0.5^{r-s+1} > 0.5^{r-s} = \W{\A}{t_k}{\T},$$ so $\A$ is not ordered.
         
         Thus there is no ordered bracket that is not proper, so all ordered brackets are proper.
-    }{ordered_proper}
+    }{ordered_proper}{Fried}{2024}
 
     With Theorem \ref{th:ordered_proper}, we can use the language of bracket signatures to describe ordered brackets without worrying that two ordered brackets might share a signature. Now we examine three particularly important examples of ordered brackets.
 
     We begin with the unique one-team bracket.
 
     \fig{1}{one_team}{$\bracksig{1}$}
-    \theo{}{$\bracksig{1}$ is ordered.}{Since there is only team, the ordered bracket condition is vacuously true.}{}
+    \theo{theorem}{$\bracksig{1}$ is ordered.}{Since there is only team, the ordered bracket condition is vacuously true.}{}{XXX}{XXX}%XXX
 
     Next we look at the unique two-team bracket.
 
     \fig{1}{two_team}{$\bracksig{2; 0}$}
-    \theo{}{$\bracksig{2; 0}$ is ordered.}{Let $\A = \bracksig{2; 0}.$ Then,
+    \theo{theorem}{$\bracksig{2; 0}$ is ordered.}{Let $\A = \bracksig{2; 0}.$ Then,
     \begin{align*}
     \W{\A}{t_1}{\T} = \G{t_1}{t_2} \geq 0.5 \geq \G{t_2}{t_1} = \W{\A}{t_2}{\T}
     \end{align*}    
     so $\A$ is ordered.
-    }{}
+    }{}{XXX}{XXX}%XXX
 
     And thirdly, we show that the balanced four-team bracket is ordered, first proved by Horen and Riezman \cite{four_eight_ordered}.
 
     \fig{0.63}{four_team}{$\bracksig{4; 0; 0}$}
-    \theo{}{$\bracksig{4; 0; 0}$ is ordered.}{
+    \theo{theorem}{$\bracksig{4; 0; 0}$ is ordered.}{
     Let $\A = \bracksig{4; 0; 0}.$ Then,
     \begin{align*}
         \W{\A}{t_1}{\T} &= p_{14} \cdot (p_{23}p_{12} + p_{32} p_{13})\\
@@ -115,12 +115,12 @@
     \end{align*}
 
     Thus $\A$ is ordered.
-    }{four_ordered}
+    }{four_ordered}{Horen and Riezman}{1985}
 
     However, not every proper bracket is ordered. One particularly important example of a non-ordered proper bracket is $\bracksig{4;2;0;0}.$
 
     \fig{1}{six_team}{$\bracksig{4; 2; 0; 0}$}
-    \theo{}{$\bracksig{4; 2; 0; 0}$ is not ordered.}{
+    \theo{theorem}{$\bracksig{4; 2; 0; 0}$ is not ordered.}{
         
     Let $\A = \bracksig{4; 2; 0; 0},$ and let $\T$ have the following matchup table.
 
@@ -138,7 +138,7 @@
     \end{center}
 
         Then $\W{\A}{t_5}{\T} = 0$ but $\W{\A}{t_6}{\T} > 0,$ so $\A$ is not monotonic with respect to $\T$ and thus not ordered.
-    }{}
+    }{}{XXX}{XXX}%XXX
 
     In the next section, we move on from describing particular ordered and non-ordered brackets in favor of a more general result.
 }

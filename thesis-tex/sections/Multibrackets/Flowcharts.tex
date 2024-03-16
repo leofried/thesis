@@ -78,17 +78,17 @@
 
     We conclude the section by proving a couple of nice lemmas about weakly proper linear multibrackets.
 
-    \lemm{}{
+    \theo{lemma}{
         If $\A$ is a weakly proper linear multibracket, and two teams lose in the same round of the same semibracket of $\A$, then they will either both play their next game in the same round of the same semibracket, or both be elimineted.
     }{
         This holds because every node in the flowchart of $\A$ has at most one arrow coming out of it.
-    }{weakly_proper_round}
+    }{weakly_proper_round}{Fried}{2024}
 
-    \lemm{}{
+    \theo{lemma}{
         Let $\A = \A_1 \to ... \to \A_k$ be a linear multibracket, and $i \in \N$ be such that $\A_{i+1}$ is noncompetitive. If $\A$ is weakly proper, then any team that loses in the final round of $\A_i$ will win $\A_{i+1}$ without playing any more games.
     }{
         We show the contrapositive. Let $\bracklabel{R}$ be the final round of $\A_i$, whose losers do not win $\A_{i+1}$ automatically. $\A_{i+1}$ is noncompetitive though, so at least one team wins $\A_{i+1}$ without playing a game in it: let $\bracklabel S$ be the round that the auto-winner fell from. Then $\bracklabel{R}$ is completely boxed in by the arrow coming out of $\bracklabel{S}$ on the left and the arrows extending infinitely from the final ranking nodes on the right: the arrow coming out of $\bracklabel R$ must cross one of those arrows, so $\A$ is not weakly proper.
-    }{weakly_proper_drop}
+    }{weakly_proper_drop}{Fried}{2024}
 
     %all proper are weakly proper?
 

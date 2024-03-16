@@ -12,9 +12,9 @@
 
     To make matters worse, the first round appears to have an ``improper'' set of matchups: the games are 1v2 and 3v4 rather than then ``proper'' 1v4 and 2v3. However, properness is a much trickier concept for nonlinear multibrackets. While the 1- and 2-seeds to have tougher first round matchups than the 3- and 4-seeds, this is compensated by them getting an extra life: if they lose, they play the winner of the 3v4 matchup, while the 3v4 loser is just eliminated, so no team would prefer to be seeded lower than they are. One could imagine developing this intuition of extra lives into a formal notion of properness, but we leave that question untreated.
 
-    \begin{oq}{}{}
+    \etheo{oq}{}{
         How can we define signatures and properness for nonlinear multibrackets?
-    \end{oq}
+    }{}{Fried}{2024}
 
     One final thing of note is that $\bracklabel{C1}$ can be a rematch of game $\bracklabel{A1}.$ In fact, this pretty likely: if the bracket goes chalk, the 1- and 2-seed will find themselves replaying the game they played just two rounds ago. In Figure \ref{fig:page4}, the bracket did not go chalk, but game $\bracklabel{C1}$ was still a rematch. As we discussed in Section \ref{sec:Flowcharts}, this can be pretty unsatisfying: indeed, in the 2019 Suncorp Super Netball Playoffs, the Swifts and the Lightning each beat each other once, but the Swifts won the game that mattered and so was declared champion. 
     
@@ -50,7 +50,7 @@
 
     In any case, whether the recharge game is used or not, double-elimination tournaments are a powerful tool in a tournament designer's arsenal, as they are in some sense more accurate than their single elimination counterparts. We prove this fact for a simplified case where the winners' and losers' bracket are relatively nice, and where there is a single best team that is favored against every other team with a constant probability $1/2 < p < 1$.
 
-    \theo{}{ 
+    \theo{theorem}{ 
         Let $n$ be a positive integer, $p$ be a probability such that $1/2 < p < 1$, and $\T$ be a list of $2^n$ teams with a team $t \in \T$ such that for every other team $s$, $$\G{t}{s} = p.$$ 
         Let $\A$ be the balanced bracket on $2^n$ teams, let $\B$ be a bracket on $2^{n}-1$ teams such that the linear multibracket $\A \to \B$ is weakly proper, and let $\C$ be the double-elimination format with winners' bracket $\A$ and losers' bracket $\B$. Then, $$\W{\C}{t}{\T} \geq \W{\A}{t}{\T}$$ with equality only when $n=1$ and there is no recharge round.
     }{
@@ -85,7 +85,7 @@
         
 
         Thus, $$\W{\C}{t}{\T} \geq \W{\A}{t}{\T}$$ with equality only when $n=1$ and there is no recharge round.
-    }{}
+    }{}{Fried}{2024}
 
     We conclude our discussion of nonlinear multibrackets with a few more interesting examples. The first is the 2022 Big Ten Baseball Tournament \cite{wiki_bigten}.
 

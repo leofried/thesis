@@ -84,7 +84,7 @@
 
     So the format in Figures \ref{fig:two_by_two} and \ref{fig:2xs2_flow_new} is $2\x\S_2.$ In fact, every noncompact Swiss signature can be represented using $m\x\A$ notation.
 
-    \theo{}{
+    \theo{theorem}{
         Let $\A$ be a noncompact Swiss signature where $m > 1$ teams end undefeated. Then $m$ will divide every number in the signature of $\A$.
     }{        
         We first prove by reverse induction that the number of teams participating in the $i$th to last round of every semibracket in $\A$ is divisible by $m \cdot 2^i.$\\
@@ -92,7 +92,7 @@
         We begin with the base case of $i=r$. Only the primary bracket of Swiss signature has an $r$th to last round, and because it is a balanced bracket or rank $m$, it will have $2^rm$ teams. For any other $i$, in the $(i+1)$th round of the semibracket, a number of teams dividing $m \cdot 2^{i+1}$ competed, and half of them won and so are still competing in this semibracket. Meanwhile, if the $i$th round of this semibracket is to take the losers of another round of another semibracket, it must be the $(i+1)$th to last round, so a number of teams dividing $m \cdot 2^{i}$ will fall into this semibracket. Thus the number of teams playing in the $i$th to last round of every semibracket will be divisible by $m \cdot 2^{i}.$\\
         
         With this shown, the same induction proves that the $i$th to last number of every semibracket signature is divisible by $m \cdot 2^{i-1}$, which of course proves the theorem.
-    }{not_compact}
+    }{not_compact}{Fried}{2024}
 
 
     With the standard Swiss signature and $m\x$ notation defined, we are ready for Figure \ref{fig:Swiss_names}, which details the various Swiss signatures for 1-, 2-, 4-, and 8-teams.
@@ -115,7 +115,7 @@
 
     How do we know that this diagram is complete? Well the cells below the diagonal must be empty, as after $r$ rounds, only one out of $2^r$ teams can remain undefeated, and if we tried to play an additional round, they would have no teams left to play. The cells above the diagonal are noncompact, and thus complete by Theorem \ref{th:not_compact}. The most interesting cells are on the diagonal, as those are the compact signatures.
 
-    \theo{}{
+    \theo{theorem}{
         The only compact 0-, 1-, and 2-round Swiss signatures are the standard ones.
     }{
         $\bracksig{1}$ is the only 1-team linear multibracket, so it is clearly the only compact 0-round Swiss signature.\\
@@ -123,7 +123,7 @@
         $\bracksig{2;0} \to \bracksig{1}$ is the only 2-team Swiss signature in which a game is played, so it is the only compact 1-round Swiss signature.\\
 
         Finally, a compact 2-round Swiss signature must start with $\bracksig{4;0;0}$ to be compact, its secondary bracket must be $\bracksig{1}$ to ensure every bracket is either trivial or competitive, its tertiary bracket must be $\bracksig{2;0}$ otherwise the two losers would not have a game to play, and it must end in $\bracksig{1}$ to ensure every team is ranked. Thus $\bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}$ is the only compact 2-round Swiss signature.
-    }{small_proof}
+    }{small_proof}{Fried}{2024}
 
     Figure \ref{fig:Swiss_names} tells us that there are, two compact 3-round Swiss signatures: the standard $\S_3$, and the yet to be defined $\T_3.$ It's worth attempting to construct $\T_3$ before reading on.
 
@@ -138,7 +138,7 @@
     $\S_3$ and $\T_3$ differ in how they treat the teams that went 1-1. While $\S_3$ has each team play a team that had their victory in the same round as themselves for either third or fifth place, $\T_3$ has each team play a team that had their victory in a \i{different} round as themselves for fourth place.
     $\T_3$ is also very similar to the format used by the 2023 Southern Conference Wrestling Championships in Figure \ref{fig:socon} on page \pageref{fig:socon}: both use a primary eight-team balanced bracket and let their first-round losers fight their way back for a top-half finish.
 
-    \theo{}{
+    \theo{theorem}{
         $\S_3$ and $\T_3$ are the only compact 3-round Swiss signatures.
         }{
         Any compact $3$-round Swiss signature must begin with $\bracksig{8;0;0;0} \to \bracksig{1}.$ Now let $\A$ be the semibracket that first-round primary brackets losers fall into. $\A$ must have two rounds, and the first-round primary bracket losers must all get no byes (otherwise they would not play the requisite three games). Thus $\A = \bracksig{4;a_1;0}_{(a_1/2+1)}$ for some $a_1$. As neither of the two semifinal winners can fall into $\A$, $a_1 \leq 2.$ Additionally, if $a_1 = 1$, $\A$ would not be a signature. Thus, $a_1 = 0$ or $2$.\\
@@ -146,7 +146,7 @@
          If $a_1 = 0$, then in between the first two brackets and $\A$, we must have two more brackets for the second-round losers of the primary bracket: $\bracksig{2;0}$ and $\bracksig{1}.$ Then $\A$ must be followed by $\bracksig{1}$ for the loser of its championship game, and then $\bracksig{2;0}$ and $\bracksig{1}$ so that the last two teams get a third game. This is the Swiss signature $\S_3$.\\
         
          If $a_1 = 2$, then the losers of the two championship games of $\A$ have already played all three of their games and so need to fall into the bracket $\bracksig{2}$. Then we need $\bracksig{2;0}$ and $\bracksig{1}$ so that the last two teams get a third game. This is the Swiss signature $\T_3$.
-        }{}
+        }{}{Fried}{2024}
 
     Figure \ref{fig:Swiss_names} tells us that there are five $8$-team Swiss signatures. How would a tournament designer decide which 3-round signature to use? Well, it depends on what the prize structure of the format is. If the goal is to identify a top-three, then  $\S_3$ is preferable: $\T_3$ doesn't even recognize a third-place, instead assigning fourth-place to two teams. But if the goal is to identify a top-four, $\T_3$ is preferable: the team that comes in fourth in $\S_3$ actually finishes with only one win, while the team that comes in fifth finishes with two. While it is still reasonable to grant the one-win team fourth-place -- they had a more difficult slate of opponents -- this is a somewhat messy situation that is solved by just using $\T_3.$
 
@@ -156,7 +156,7 @@
 
     We now count the number of $r$-round signatures.
 
-    \theo{}{
+    \theo{theorem}{
         Let $s_r$ be the number of compact $r$-round Swiss signatures. Then,
         \begin{align*}
             s_0 &= s_ 1 = 1\\
@@ -170,7 +170,7 @@
         The half above the middle semibracket is trickier. The first thing to note is that teams from the primary semibracket can continue to fall into the middle semibracket indefinitely, but once one round is skipped, weak properness precludes any later rounds from falling down. Further, once teams are no longer falling into the middle semibracket, there are $s_i$ different ways the primary bracket could arrange the rest of its losers, where $i$ is the number of remaining rounds. Thus in total, there are $\sum_{i=1}^{r-1}s_i$ options for the half of the flowchart above the middle semibracket.\\
 
         Therefore, there are $s_{r-1} \cdot \sum_{i=1}^{r-1}s_i$ different Swiss signatures in total.
-    }{}
+    }{}{Fried}{2024}
 
     The eight compact 4-round signatures are displayed below.
 
