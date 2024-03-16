@@ -63,7 +63,7 @@
         All balanced reseeded brackets are ordered.
     }{}{Hwang}{1982}
 
-    Unfortunately, Hwang's proof was incorrect: neither the stronger claim that all proper reseeded brackets are ordered, nor Hwang's weaker claim are true. Our classification of the ordered reseeded brackets takes the same route as our proof of Edwards's Theorem did: we first examine the orderedness of certain important brackets, and then we use the stapling and containment lemmas to specify the complete set of ordered reseeded brackets.
+    We show for the first time that Hwang's proof was incorrect: neither the stronger claim that all proper reseeded brackets are ordered, nor Hwang's weaker claim are true. Our classification of the ordered reseeded brackets takes the same route as our proof of Edwards's Theorem did: we first examine the orderedness of certain important brackets, and then we use the stapling and containment lemmas to specify the complete set of ordered reseeded brackets.
 
     The proofs of the stapling and containment lemmas for reseeded brackets, as well as the fact that all ordered reseeded brackets are proper, are so similar to the corresponding proofs for traditional brackets that we just state them without proof.
 
@@ -119,8 +119,13 @@
             \end{tabular}
         \end{center}
 
-        Then $$\W{\A}{t_6}{\T} = O(p^3),$$ but
-    $$\W{\A}{t_7}{\T} = 0.25p^2 + O(p^3).$$ For small enough $p,$ $\W{\A}{t_6}{\T} < \W{\A}{t_7}{\T},$ so $\A$ is not monotonic with respect to $\T$ and thus not ordered.
+        For $t_6$ to win the format, three probability $p$ upsets must occur: $t_6$ beating $t_3$ in the first round, $t_6$ beating $t_1$ in the second round, and someone beating $t_2.$ Thus,
+        $$\W{\A}{t_6}{\T} = O(p^3).$$
+
+        But for $t_7$ to win the format, only two probability $p$ upsets are necessary: $t_7$ beating $t_2$ and $t_7$ beating $t_1$, as the winner of $t_4$ vs $t_5$ might beat $t_3$ in the semifinals. Thus,
+    $$\W{\A}{t_7}{\T} = 0.25p^2 + O(p^3).$$ 
+    
+    So for small enough $p,$ $\W{\A}{t_6}{\T} < \W{\A}{t_7}{\T},$ so $\A$ is not monotonic with respect to $\T$ and thus not ordered.
     }{}{Fried}{2024}
 
     \theo{theorem}{
@@ -143,11 +148,12 @@
             \end{tabular}
         \end{center}
 
-        Then 
-            $$\W{\A}{t_7}{\T} = 0.25p^5 + O(p^6)$$
-        but
-            $$\W{\A}{t_8}{\T} = 0.5p^5 + O(p^6).$$
-         For small enough $p,$ $\W{\A}{t_7}{\T} < \W{\A}{t_8}{\T},$ so $\A$ is not monotonic with respect to $\T$ and thus not ordered.
+
+        For $t_7$ to win the format on the order of probability $p^5$, they must face $t_6$ in the first round, $t_3$ in the second round, $t_1$ in the semifinal, and $t_4$ (crucially not $t_2$) in the final. This happens when $t_4$ survives $t_5$ and defeats $t_2$, which has probability on the order of 0.25. Thus, 
+            $$\W{\A}{t_7}{\T} = 0.25p^5 + O(p^6).$$
+        Similarly, for $t_8$ to win the format on the order of probability $p^5$, they must face $t_5$ in the first round, $t_3$ in the second round, $t_1$ in the semifinal, and $t_4$ (again, crucially not $t_2$) in the final. However, because $t_4$ will be playing $t_6$ in the second round rather than $t_5$, they will almost certainly win, meaning that $t_4$ advances to the final with probability on the order of 0.5. Thus, 
+$$\W{\A}{t_8}{\T} = 0.5p^5 + O(p^6).$$
+         So for small enough $p,$ $\W{\A}{t_7}{\T} < \W{\A}{t_8}{\T},$ so $\A$ is not monotonic with respect to $\T$ and thus not ordered.
     }{}{Fried}{2024}
 
     Recapping,

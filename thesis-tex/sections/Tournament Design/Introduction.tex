@@ -1,5 +1,36 @@
 \sub {
    
+    Although tournaments have been in use for as long as humans have played sports, their formal study is underdeveloped, with many key questions in the field remaining open. In this thesis we aim to address five big open questions in the field, focusing primarily on the \i{bracket}: a tournament format in which teams are eliminated upon a loss, games are played until one team remains, and the matchups between game winners are determined in advance of any games being played.
+
+    {\bf Is there a succinct notation for describing brackets?} The space of brackets is quite large, and fully drawing out a given bracket can quite time-consuming, difficult to quickly interpret, and nearly impossible to read.  We introduce the \i{bracket signature}, a new system for lossily compressing an arbitrary bracket into a single succinct list of digits, allowing for brackets to be easily communicated and important properties of brackets to be easily verified.
+
+    {\bf Which brackets are fair?} We construct the notion of a \i{proper bracket}, with a host of desirable fairness properties, noting that nearly all brackets in use by leagues are proper. We then develop insight into the order in which games are played and teams are eliminated in a proper bracket. Finally, we prove the \i{fundamental theorem of brackets}, that there is exactly one proper bracket with each bracket signature, meaning bracket signatures losslessly compress proper brackets.
+
+    {\bf Which brackets are accurate?} Edwards's \cite{montana} answered this question in 1991 using a measure of accuracy he called \i{orderedness}, but at the time the previous two questions were still open. With properness and signatures defined, as well as the fundamental theorem proved, we present a much simpler and more direct proof of the answer that establishes a few other generalizable results along the way. Unfortunately, Edwards's Theorem is quite pessimistic about the number of ordered brackets: even the standard eight-team bracket is not ordered, leading to the next question.
+
+    {\bf Are there other bracket-like formats that are ordered?} Hwang \cite{reseeding} published a proof that \i{reseeded brackets} are ordered in general, but we show that his proof was incorrect. After an analysis of a few other options, we conjecture that any bracket-like format that is ordered for any number of teams lacks several other key properties including determinism.
+
+    {\bf How can brackets select runners-up?} We propose the notion of a \i{multibracket}, a generalization of brackets that unifies a wide variety formats (including, but not limited to, \i{consolation brackets}, \i{semibrackets}, \i{linear multibrackets}, \i{swiss systems}, \i{Page-McIntyre systems}, and \i{double-elimination}) that have been studied independently under a single umbrella. We use this framework to proving several key results about the number of such formats, their efficiency, and their accuracy, and discuss how a tournament designer might select which format to use.
+
+    Over the course of this work, we analyze 16 tournament formats in use by leagues around the world, as well as 42 constructed for the purpose of analysis. We prove 37 theorems, of which 28 are novel (including one that disproves Hwang's theorem). We hope that this thesis will aid developing and established sports leagues alike in the design of their tournaments, as well as serve as a jumping off point for future work in the field of tournament design.
+
+
+
+
+
+    % And while multiple brackets can share a signature, we also prove the \i{fundamental theorem of brackets}: no two \i{proper} brackets share a signature, and every signature admits one proper bracket.
+
+
+
+
+
+
+
+
+
+
+
+
     %define bracket
     %better questions
     %dad notes
@@ -8,17 +39,17 @@
     %conclusion/future work?
 
 
-    Our primary area of study is the \i{bracket} (and variants), a tournament format in which teams are eliminated upon a loss, games are played until one team remains, and the matchups between game winners are determined in advance of any games being played. Our first key result an algorithm for constructing the single proper bracket, given a specification of how many teams should participate and get each number of byes.
+    % Our primary area of study is the \i{bracket} (and variants), a tournament format in which teams are eliminated upon a loss, games are played until one team remains, and the matchups between game winners are determined in advance of any games being played. Our first key result an algorithm for constructing the single proper bracket, given a specification of how many teams should participate and get each number of byes.
 
-    To do this, we begin by developing the notion of a \i{bracket signature}, new system for compressing an arbitrarily complex bracket with any number of teams into a string of numbers, allowing for the easy communication of bracket specifications. We then compare different seedings of brackets, noting that some are preferable to construct the notion of a \i{proper seeding}: seedings in which higher seeds are consistently treated better than lower ones. Finally, we prove the \i{fundamental theroem of brackets} -- each bracket signature admits exactly one proper bracket -- and we do it constructively, allowing for the algorithmic generation of said proper bracket.
+    % To do this, we begin by developing the notion of a \i{bracket signature}, new system for compressing an arbitrarily complex bracket with any number of teams into a string of numbers, allowing for the easy communication of bracket specifications. We then compare different seedings of brackets, noting that some are preferable to construct the notion of a \i{proper seeding}: seedings in which higher seeds are consistently treated better than lower ones. Finally, we prove the \i{fundamental theroem of brackets} -- each bracket signature admits exactly one proper bracket -- and we do it constructively, allowing for the algorithmic generation of said proper bracket.
 
-    Somewhat unintuitively, properness is not enough to ensure that better teams are always more likely to win a bracket than worse teams. In 1991 Edwards \cite{montana} categorized which brackets had this property (which he named \i{ordered}) but did so without access to the notions of signatures or properness: we present a much quicker proof aided by the fundamental theorem. 
+    % Somewhat unintuitively, properness is not enough to ensure that better teams are always more likely to win a bracket than worse teams. In 1991 Edwards \cite{montana} categorized which brackets had this property (which he named \i{ordered}) but did so without access to the notions of signatures or properness: we present a much quicker proof aided by the fundamental theorem. 
     
-    Unfortunately, Edwards's Theorem is quite pessimistic about the number of ordered brackets -- even the standard eight-team bracket is not ordered -- so since he published his proof, there has been a search for bracket-like formats that are more often ordered. Hwang \cite{reseeding} published a proof that \i{reseeded brackets} are ordered in general, but we show that his proof was incorrect, and after an analysis of a few other options, we conjecture that the space of balanced knockout tournaments for eight or more teams is incredibly small.
+    % Unfortunately, Edwards's Theorem is quite pessimistic about the number of ordered brackets -- even the standard eight-team bracket is not ordered -- so since he published his proof, there has been a search for bracket-like formats that are more often ordered. Hwang \cite{reseeding} published a proof that \i{reseeded brackets} are ordered in general, but we show that his proof was incorrect, and after an analysis of a few other options, we conjecture that the space of balanced knockout tournaments for eight or more teams is incredibly small.
     
-    Finally, we look to unify a wide variety formats that are similar to brackets and that have been used and studied independently, under a single umbrella, which we name \i{multibrackets}. (Such formats include \i{consolation brackets}, \i{semibrackets}, \i{linear multibrackets}, \i{Swiss formats}, \i{Page-McIntyre systems}, and \i{double-elimination tournaments}). We then attempt to port over what is known about brackets to multibrackets, and prove a number of new theorems about their count, efficiency, and accuracy.
+    % Finally, we look to unify a wide variety formats that are similar to brackets and that have been used and studied independently, under a single umbrella, which we name \i{multibrackets}. (Such formats include \i{consolation brackets}, \i{semibrackets}, \i{linear multibrackets}, \i{Swiss formats}, \i{Page-McIntyre systems}, and \i{double-elimination tournaments}). We then attempt to port over what is known about brackets to multibrackets, and prove a number of new theorems about their count, efficiency, and accuracy.
     
-    Over the course of this work, we analyze sixteen tournament formats used by different leagues, as well as forty-two constructed for the purpose of analysis. We prove thirty-seven theorems, of which twenty-eight are novel (including the disproof of Hwang's theorem). We hope that this thesis will aid developing and established sports leagues alike in the design of their tournaments, as well as serve as a jumping off point for future work to develop the formal field tournament design.
+    % Over the course of this work, we analyze sixteen tournament formats used by different leagues, as well as forty-two constructed for the purpose of analysis. We prove thirty-seven theorems, of which twenty-eight are novel (including the disproof of Hwang's theorem). We hope that this thesis will aid developing and established sports leagues alike in the design of their tournaments, as well as serve as a jumping off point for future work to develop the formal field tournament design.
 }
 
 
