@@ -4,20 +4,24 @@
 
     \fig{1}{maui}{1988 Men's College Basketball Maui Invitational}
 
-    \fig{0.4}{s3_flow_def}{1988 Men's College Basketball Maui Invitational Flowchart}
+    \fig{0.45}{s3_flow_def}{1988 Men's College Basketball Maui Invitational Flowchart}
 
     The format used in the Maui Invitational is of course weakly proper, but it has several additional properties that even the weakly proper flowchart in Figure \ref{fig:mlq_flow1} from last section does not have.
 
     \begin{itemize}
         \item Every team starts in the same cell, so we can unambiguously drop the top row of nodes.
         \item Games are always between teams of the same record, so we can unambiguously label each node with a record instead of a letter.
-        \item Every team plays the same number of games, so our flowchart is nicely divided into columns, with each team playing one game in each column. Further, this allows us to drop the arrows, as losers always play their next game in the round below the round directly to the right of the round they lost in.
+        \item Every team plays the same number of games, so our flowchart is nicely divided into columns, with each team playing one game in each column. Further, this allows us to unambiguously drop the arrows, as losers always play their next game in the round below the round directly to the right of the round they lost in.
         \item Every team wins a semibracket and so every team ends in a cell, allowing us to drop the elimination node.
     \end{itemize}
 
-    Our newly stylized flowchart for the 1988 Men's College Basketball Maui Invitational is displayed below.
+    Our newly stylized flowchart, which we will refer to as a \i{swisschart} for the 1988 Men's College Basketball Maui Invitational is displayed below.
 
-    \fig{0.4}{s3_flow_new}{1988 Men's College Basketball Maui Invitational Flowchart}
+    \writedef{Swisschart}{
+        A \i{Swisschart} is the flowchart of a Swiss format except with the arrows, nodes representing the teams, and the node representing elimination removed, and with the labels on the remaining nodes replaced with the record of the teams in that node.
+    }{Swisschart}{\fried}
+
+    \fig{0.45}{s3_flow_new}{1988 Men's College Basketball Maui Invitational Swisschart}
 
     There is one other nice property that the 1988 Men's College Basketball Maui Invitational Flowchart has, which is that all of its semibrackets are either trivial or competitive. In a weakly proper linear multibracket, any nontrivial noncompetitive semibracket of signature $\bracksig{a_1; ...; a_r}_m$ can be split into the the pair of semibrackets $\bracksig{a_1; ...; a_{r-1}; 0}_{m-a_r} \to \bracksig{a_r}_{a_r}$ without affecting the games played in the tournament at all, and so to avoid double counting signatures, we make note of this nice property as well.
 
@@ -57,14 +61,16 @@
         \S_3 =\; &\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to \bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}
     \end{align*}
 
-    Figures \ref{fig:three_small_systems} and \ref{fig:three_small_flow_new} display the brackets and flowcharts for $\S_0, \S_1,$ and $\S_2$, while the Maui Invitational used the standard Swiss signature $\S_3.$
+    Figures \ref{fig:three_small_systems} and \ref{fig:three_small_flow_new} display the brackets and swisscharts for $\S_0, \S_1,$ and $\S_2$, while the Maui Invitational used the standard Swiss signature $\S_3.$
 
     \fig{1}{three_small_systems}{$\S_0, \S_1,$ and $\S_2$}
-    \fig{0.4}{three_small_flow_new}{$\S_0, \S_1,$ and $\S_2$}
+    \fig{0.45}{three_small_flow_new}{$\S_0, \S_1,$ and $\S_2$}
+
+    \newpage
 
     Consider now the following non-standard Swiss format.
     
-    \fig{1}{two_by_two}{$\bracksig{8;0;0}_2 \to \bracksig{2}_2 \to \bracksig{4;0}_2 \to \bracksig{2}_2$}
+    \fig{0.8}{two_by_two}{$\bracksig{8;0;0}_2 \to \bracksig{2}_2 \to \bracksig{4;0}_2 \to \bracksig{2}_2$}
 
     Unlike the standard Swiss signatures, this signature does not crown a single champion: it is not \i{compact}.
 
@@ -72,9 +78,9 @@
        A Swiss signature is \i{compact} if only one teams finishes undefeated.
    }{compact}{\fried}
 
-    If we attempt to draw the flowchart for the format, we notice something a little strange.
+    If we attempt to draw the swisschart for the format, we notice something a little strange.
 
-    \fig{0.4}{2xs2_flow_new}{$\bracksig{8;0;0}_2 \to \bracksig{2}_2 \to \bracksig{4;0}_2 \to \bracksig{2}_2$ Flowchart}
+    \fig{0.45}{2xs2_flow_new}{$\bracksig{8;0;0}_2 \to \bracksig{2}_2 \to \bracksig{4;0}_2 \to \bracksig{2}_2$ Swisschart}
 
     It is identical to $\S_2$! This is not a coincidence: the format is actually just two copies of $\S_2$ being run simultaneously. Taking another look at the signature, it is even the same signature as $\S_2$, just with every number multiplied by 2. We use this to introduce $m\x$ notation.
 
@@ -87,15 +93,15 @@
     \theo{theorem}{
         Let $\A$ be a noncompact Swiss signature where $m > 1$ teams end undefeated. Then $m$ will divide every number in the signature of $\A$.
     }{        
-        We first prove by reverse induction that the number of teams participating in the $i$th to last round of every semibracket in $\A$ is divisible by $m \cdot 2^i.$\\
+        We first prove by reverse induction that the number of teams participating in the $i$th-to-last round of every semibracket in $\A$ is divisible by $m \cdot 2^i.$\\
 
-        We begin with the base case of $i=r$. Only the primary bracket of Swiss signature has an $r$th to last round, and because it is a balanced bracket or rank $m$, it will have $2^rm$ teams. For any other $i$, in the $(i+1)$th round of the semibracket, a number of teams dividing $m \cdot 2^{i+1}$ competed, and half of them won and so are still competing in this semibracket. Meanwhile, if the $i$th round of this semibracket is to take the losers of another round of another semibracket, it must be the $(i+1)$th to last round, so a number of teams dividing $m \cdot 2^{i}$ will fall into this semibracket. Thus the number of teams playing in the $i$th to last round of every semibracket will be divisible by $m \cdot 2^{i}.$\\
+        We begin with the base case of $i=r$. Only the primary semibracket of a Swiss format has an $r$th to last round, and because it is a balanced semibracket of rank $m$, it has $m \cdot 2^r$ teams. For any other $i$, by induction, $m \cdot 2^{i+1}$ divides the number of teams that competed in the $(i+1)$th-to-last round of the semibracket. Half of them won and so are still competing in this semibracket. Meanwhile, if the $i$th round of this semibracket is to take the losers of another round of another semibracket, it must also be the $(i+1)$th-to-last round, so by induction $m \cdot 2^{i}$ divides the number of teams that will fall into this semibracket. Thus the number of teams playing in the $i$th-to-last round of every semibracket will be divisible by $m \cdot 2^{i}.$\\
         
-        With this shown, the same induction proves that the $i$th to last number of every semibracket signature is divisible by $m \cdot 2^{i-1}$, which of course proves the theorem.
+        Thus the $i$th-to-last number of every semibracket signature, which is a collection of $i$th-to-last round losers, is divisible by $m \cdot 2^{i-1}$, proving the theorem.
     }{not_compact}{\fried}
 
 
-    With the standard Swiss signature and $m\x$ notation defined, we are ready for Figure \ref{fig:Swiss_names}, which details the various Swiss signatures for 1-, 2-, 4-, and 8-teams.
+    With the standard Swiss signatures and $m\x$ notation defined, we are ready for Figure \ref{fig:Swiss_names}, which details the various Swiss signatures for 1-, 2-, 4-, and 8-teams.
 
     \begin{figg}{The 1-, 2-, 4-, and 8-team Swiss Signatures}{Swiss_names}
         \begin{center}
@@ -113,7 +119,7 @@
         \end{center}
         \end{figg}
 
-    How do we know that this diagram is complete? Well the cells below the diagonal must be empty, as after $r$ rounds, only one out of $2^r$ teams can remain undefeated, and if we tried to play an additional round, they would have no teams left to play. The cells above the diagonal are noncompact, and thus complete by Theorem \ref{th:not_compact}. The most interesting cells are on the diagonal, as those are the compact signatures.
+    How do we know that this diagram is complete? Well the cells below the diagonal must be empty: only one out of $2^r$ teams can remain undefeated after $r$ rounds and so would have no opponent in a hypothetical $(r+1)$th round. The cells above the diagonal are noncompact, and thus complete by Theorem \ref{th:not_compact}. The most interesting cells are the compact ones on the diagonal.
 
     \theo{theorem}{
         The only compact 0-, 1-, and 2-round Swiss signatures are the standard ones.
@@ -127,15 +133,17 @@
 
     Figure \ref{fig:Swiss_names} tells us that there are two compact 3-round Swiss signatures: the standard $\S_3$, and the yet to be defined $\T_3.$ It's worth attempting to construct $\T_3$ before reading on.
 
-    The key insight is to realize that teams with the same record in vertically adjacent nodes of the flowchart can actually play against each other without violating any of the Swiss format requirements, merging the nodes. Thus the flow chart for $\T_3$ looks like so. (Note that the 1-1 node contains four teams, and the bottommost 2-1 node as well as the topmost 1-2 node each contain two teams.)
+    \pagebreak
 
-    \fig{0.4}{t3_flow_new}{$\T_3$}
+    The key insight is to realize that teams with the same record in vertically adjacent nodes of the swisschart can actually play against each other without violating any of the Swiss format requirements, merging the nodes. Thus the flow chart for $\T_3$ looks like so. (Note that the 1-1 node contains four teams, and the bottommost 2-1 node as well as the topmost 1-2 node each contain two teams.)
 
-    We can use the flowchart to reconstruct the bracket and signature.
+    \fig{0.3}{t3_flow_new}{$\T_3$}
 
-    \fig{0.9}{Swisst3}{$\T_3 = \bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0}_2 \to \bracksig{2}_2 \to \bracksig{2;0} \to \bracksig{1}.$}
+    We can use the swisschart to reconstruct the bracket and signature.
 
-    $\S_3$ and $\T_3$ differ in how they treat the teams that went 1-1. While $\S_3$ has each team play a team that had their victory in the same round as themselves for either third or fifth place, $\T_3$ has each team play a team that had their victory in a \i{different} round as themselves for fourth place.
+    \fig{0.8}{Swisst3}{$\T_3 = \bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0}_2 \to \bracksig{2}_2 \to \bracksig{2;0} \to \bracksig{1}.$}
+
+    $\S_3$ and $\T_3$ differ in how they treat the teams that went 1-1. While $\S_3$ pairs teams that had their win and loss in the same order in games for either third or fifth place, $\T_3$ pairs teams that had their win and loss in different orders in games for fourth place.
     $\T_3$ is also very similar to the format used by the 2023 Southern Conference Wrestling Championships in Figure \ref{fig:socon} on page \pageref{fig:socon}: both use a primary eight-team balanced bracket and let their first-round losers fight their way back for a top-half finish.
 
     \theo{theorem}{
@@ -148,9 +156,9 @@
          If $a_1 = 2$, then the losers of the two championship games of $\A$ have already played all three of their games and so need to fall into the bracket $\bracksig{2}$. Then we need $\bracksig{2;0}$ and $\bracksig{1}$ so that the last two teams get a third game. This is the Swiss signature $\T_3$.
         }{}{\fried}
 
-    Figure \ref{fig:Swiss_names} tells us that there are five $8$-team Swiss signatures. How would a tournament designer decide which 3-round signature to use? Well, it depends on what the prize structure of the format is. If the goal is to identify a top-three, then  $\S_3$ is preferable: $\T_3$ doesn't even recognize a third-place, instead assigning fourth-place to two teams. But if the goal is to identify a top-four, $\T_3$ is preferable: the team that comes in fourth in $\S_3$ actually finishes with only one win, while the team that comes in fifth finishes with two. While it is still reasonable to grant the one-win team fourth-place -- they had a more difficult slate of opponents -- this is a somewhat messy situation that is solved by just using $\T_3.$
+    Figure \ref{fig:Swiss_names} tells us that there are five $8$-team Swiss signatures. How would a tournament designer decide which one to use? Well, it depends on what the prize structure of the format is. If the goal is to identify a top-three, then  $\S_3$ is preferable: $\T_3$ doesn't even recognize a third-place, instead assigning fourth-place to two teams. But if the goal is to identify a top-four, $\T_3$ is preferable: the team that comes in fourth in $\S_3$ actually finishes with only one win, while the team that comes in fifth finishes with two. While it is still reasonable to grant the one-win team fourth-place -- they had a more difficult slate of opponents -- this is a somewhat messy situation that is solved by just using $\T_3.$
 
-    (McGarry and Schutz \cite{four_five_swap} considered outright swapping the positions of the fourth- and fifth-place teams at the conclusion of $\S_3$, but this format is not proper and provides some incentive for losing in the first round in order to get an easier path to a top-half finish. Simply using $\T_3$ when identifying the top-four teams is preferable.)
+    (McGarry and Schutz \cite{four_five_swap} considered outright swapping the positions of the fourth- and fifth-place teams at the conclusion of $\S_3$, but this format is not weakly proper and provides some incentive for losing in the first round in order to get an easier path to a top-half finish. Simply using $\T_3$ when identifying the top-four teams is preferable.)
 
     For similar reasons, both formats are good for selecting a top-one or top-seven, and $\S_3$ but not $\T_3$ is good for selecting a top-five. Finally, it might seem that $\S_3$ and $\T_3$ are good formats for selecting a top-two or top-six: in both cases, the top two and top six teams are clearly defined, and there are no teams with better records that don't make the cut. However, notice that if we use $\S_3$ or $\T_3$ to select a top-two, the final round of games are meaningless: the two teams that finish in the top-two are the two teams that win their first two games, irrespective of how the third round of games went. Better than using either $\S_3$ or $\T_3$ would be to use the noncompact $2\x\S_2,$ shortening the format down to two rounds without losing any important games.
 
@@ -163,16 +171,16 @@
             s_r &= s_{r-1} \cdot \sum_{i=1}^{r-1}s_i
         \end{align*}
     }{
-        Theorem \ref{th:small_proof} shows the cases for $r=0$ or $r=1$. For any other case, first name the semibracket that the first-round losers of the primary bracket fall into the ``middle semibracket.'' Now when designing the flowchart for an $r$-round Swiss signature, one can consider the half above the middle semibracket and the half below the middle semibracket separately.\\
+        Theorem \ref{th:small_proof} shows the cases for $r=0$ or $r=1$. For any other case, first name the semibracket that the first-round losers of the primary bracket fall into the ``middle semibracket.'' Now when designing the swisschart for an $r$-round Swiss signature, one can consider the half above the middle semibracket and the half below the middle semibracket separately.\\
         
-        The half of the flowchart below the middle semibracket is straightforward: it looks just like the flowchart of an $(r-1)$ round Swiss signature, and in fact could look like the flow chart of any $(r-1)$ Swiss signature. Thus there are $s_{r-1}$ options.\\
+        The half of the swisschart below the middle semibracket is straightforward: it looks just like the swisschart of an $(r-1)$ round Swiss signature, and in fact could look like the flow chart of any $(r-1)$ Swiss signature. Thus there are $s_{r-1}$ options.\\
 
-        The half above the middle semibracket is trickier. The first thing to note is that teams from the primary semibracket can continue to fall into the middle semibracket indefinitely, but once one round is skipped, weak properness precludes any later rounds from falling down. Further, once teams are no longer falling into the middle semibracket, there are $s_i$ different ways the primary bracket could arrange the rest of its losers, where $i$ is the number of remaining rounds. Thus in total, there are $\sum_{i=1}^{r-1}s_i$ options for the half of the flowchart above the middle semibracket.\\
+        The half above the middle semibracket is trickier. The first thing to note is that teams from the primary semibracket can continue to fall into the middle semibracket indefinitely, but once one round is skipped, weak properness precludes any later rounds from falling down. Further, once teams are no longer falling into the middle semibracket, there are $s_i$ different ways the primary bracket could arrange the rest of its losers, where $i$ is the number of remaining rounds. Thus in total, there are $\sum_{i=1}^{r-1}s_i$ options for the half of the swisschart above the middle semibracket.\\
 
         Therefore, there are $s_{r-1} \cdot \sum_{i=1}^{r-1}s_i$ different Swiss signatures in total.
     }{}{\fried}
 
-    The eight compact 4-round signatures are displayed below.
+    The eight compact 4-round signatures are displayed in Figure \ref{fig:4rounds_new}.
 
     \fig{0.2}{4rounds_new}{The Eight Compact 4-round Swiss Signatures}
     

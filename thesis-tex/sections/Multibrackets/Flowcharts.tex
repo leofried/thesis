@@ -12,9 +12,15 @@
             \end{enumerate}
     }{properLinear}{\fried}
 
+    We state without proof that the fundamental theorem applies to linear multibrackets as well as traditional brackets and semibrackets.
+
+    \etheo{theorem}{
+        There is exactly one proper linear mulibracket with each linear mulibracket signature.
+    }{}{\fried}
+
     Consider the 2023 Major League Quadball Championship Play-In Tournament \cite{wiki_mlq}, which used a linear multibracket of signature $\bracksig{4;2;0;0} \to \bracksig{4;0;1;0}.$ Is it proper?
 
-    \fig{0.9}{mlq}{2023 MLQ Championship Play-In Tournament}
+    \fig{0.57}{mlq}{2023 MLQ Championship Play-In Tournament}
 
     Well the primary semibracket certainly looks good: it is just the proper bracket of signature $\bracksig{4;2;0;0}.$ To analyze the secondary bracket, we begin with Figure \ref{fig:mult_prop} which details which seeds would lose which primary bracket games if it went chalk.
     
@@ -32,20 +38,20 @@
         \end{tabular}
     \end{figg}
     
-    Thus for a linear multibracket of signature $\bracksig{4;2;0;0} \to \bracksig{4;0;1;0}$ to be proper, the first round of the secondary bracket would have to pair the loser of $\bracklabel{A1}$ with the loser of $\bracklabel{B1}$, and the loser of $\bracklabel{A2}$ with the loser of $\bracklabel{B2}.$ Instead, the loser of $\bracklabel{A1}$ is pair with the loser of $\bracklabel{B2}$ and the loser of $\bracklabel{A2}$ with the loser of $\bracklabel{B1},$ meaning that the linear multibracket is not proper. Indeed, the 6-seed Aviators had an easier $\bracklabel{D}$-round matchup than the 5-seed Innovators. And it's not just the MLQ, many leagues that use linear multibrackets use ones that aren't proper. Why? Rematches.
+    Thus for a linear multibracket of signature $\bracksig{4;2;0;0} \to \bracksig{4;0;1;0}$ to be proper, the first round of the secondary bracket would have to pair the loser of $\bracklabel{A1}$ with the loser of $\bracklabel{B1}$ and the loser of $\bracklabel{A2}$ with the loser of $\bracklabel{B2}.$ Instead, the loser of $\bracklabel{A1}$ is paired with the loser of $\bracklabel{B2}$ and the loser of $\bracklabel{A2}$ with the loser of $\bracklabel{B1},$ meaning that the linear multibracket is not proper. Indeed, the 6-seed Aviators had an easier $\bracklabel{D}$-round matchup than the 5-seed Innovators. And it's not just the MLQ, many leagues that use linear multibrackets use ones that aren't proper. Why? Rematches.
 
     In any tournament format, rematches are far from ideal. From an information theoretical perspective, a rematch is less informative than a new matchup: we already have some data on how those two team compare. From a competitive perspective, they are unsatisfying: without the ability to play a third ``rubber'' match, if each team wins one game, we are left in a disappointing state of uncertainty. These issues are only exacerbated in a linear multibracket. In the 2023 MLQ Championship Play-In Tournament teams are eliminated after their second loss: it would feel awful for those two losses to come at the hands of the same team.
 
     If the proper linear multibracket of signature $\bracksig{4;2;0;0} \to \bracksig{4;0;1;0}$ went chalk, both $\bracklabel{D}$-round games would be rematches of the $\bracklabel{A}$-round games, which, as discussed, is disappointing for both the competing teams as well as the audience. In the MLQ's format, by contrast, the $\bracklabel{D}$ rounds games are guaranteed to be new matchups.
 
-    The balance of how much to prioritize properness versus dodging rematches is one that every league is going to have to answer for itself: while the MLQ's format (if it went chalk) would have only a single rematch, there are formats that would have none. In any case, unlike for traditional brackets, where non-proper brackets are hardly ever used, in the world of linear multibrackets they are actually quite common.
+    The balance of how much to prioritize properness versus dodging rematches is one that every league must answer for itself: while the MLQ's format (if it went chalk) would have only a single rematch, there are formats with non-proper primary brackets that would have none. In any case, unlike for traditional brackets, where non-proper brackets are hardly ever used, in the world of linear multibrackets they are actually quite common.
 
-    Is there any notion of properness that we can hang on to as a property that most formats ought to have? Indeed there is, but to understand it we first must introduce a new way of looking at linear multibrackets: \i{flowcharts}.
+    Is there any notion of properness that we can hang on to as a property that most linear multibrackets ought to have? Indeed there is, but to understand it we first must introduce a new way of looking at linear multibrackets: \i{flowcharts}.
 
     \writedef{Flowchart}{
         The \i{flowchart} of a linear multibracket that consists of $k$ semibrackets is a directed graph in which the nodes are arranged into rows, where
         \begin{enumerate}[(a)]
-            \item There is a node for each team, each round of each semibracket, each place a team could finish in, plus one additional node representing elimination.
+            \item There is a node for each team, each round of each semibracket, and each place a team could finish in, plus one additional node representing elimination.
             \item The zeroth row has the nodes representing each team, arranged from lowest seed to highest seed.
             \item The $i$th row for $1 \leq i \leq k$ has the nodes representing the rounds of the $i$th semibracket, arranged in order, plus the node representing the place a team gets for winning the $i$th semibracket.
             \item The final row row has only the node representing elimination.
@@ -56,19 +62,19 @@
 
     The flowchart for the 2023 MLQ Championship Play-In Tournament is displayed below, with the team nodes labeled $t_1$ through $t_6$, the round nodes labeled with the letter of the round, the nodes representing finishing in $i$th place labeled as such, and the node representing elimination filled in.
 
-    \fig{0.5}{mlq_flow1}{2023 MLQ Championship Play-In Tournament Flowchart}
+    \fig{0.48}{mlq_flow1}{2023 MLQ Championship Play-In Tournament Flowchart}
 
     Flowcharts exist in an in-between space between linear multibrackets and linear multibracket signatures: multiple formats can have the same flowchart, and multiple flowcharts can have the same signature.
 
-    Imagine for example that Major League Quadball was interested in selecting a third and fourth place team using their play-in tournament as well. Figure \ref{fig:three_flow} shows three formats they could use: the left two have the same flowchart, while the rightmost format has a different flowchart. Both flowcharts are displayed in Figure \ref{fig:two_flow_new}, and they have the same signature:  $\bracksig{4;2;0;0} \to \bracksig{4;0;1;0} \to \bracksig{4;0;0} \to \bracksig{2;1;0}.$
+    Imagine, for example, that Major League Quadball was interested in selecting a third and fourth place team using their play-in tournament as well. Figure \ref{fig:three_flow} shows three formats they could use: the left two have the same flowchart, while the rightmost format has a different flowchart. Both flowcharts are displayed in Figure \ref{fig:two_flow_new}, and they have the same signature:  $\bracksig{4;2;0;0} \to \bracksig{4;0;1;0} \to \bracksig{4;0;0} \to \bracksig{2;1;0}.$
 
     \fig{0.9}{three_flow}{Three Linear Multibrackets with the Same Signature}
 
-    \fig{0.3}{two_flow_new}{Two Flowcharts with the Same Signature}
+    \fig{0.4}{two_flow_new}{Two Flowcharts with the Same Signature}
 
-    However, these three formats and two flowcharts are not created equal. While the two leftmost formats, and thus the leftmost flowchart all seem reasonable, the rightmost format and flowchart have some issues. In particular, the fourth semibracket seems poorly seeded: the loser of game $\bracklabel{H1}$ did better than both $\bracklabel{G}$-round losers in the previous semibracket, so they ought to be the one to get the bye. Additionally, the two $\bracklabel{G}$-round losers ought to be treated the same, instead of one of them getting a bye and one not. Further, none of these issues are resolved by appealing to a decrease in rematches: teams are being sent to wholly the wrong \i{round}.
+    However, these three formats and two flowcharts are not created equal. While the two leftmost formats -- and thus the leftmost flowchart -- all seem reasonable, the rightmost format and flowchart have some issues. In particular, the fourth semibracket seems poorly seeded: the loser of game $\bracklabel{H1}$ did better than both $\bracklabel{G}$-round losers in the previous semibracket, so they ought to be the one to get the bye. Additionally, the two $\bracklabel{G}$-round losers ought to be treated the same, instead of one of them getting a bye and one not. Further, none of these issues are resolved by appealing to a decrease in rematches: teams are being sent to wholly the wrong \i{round}.
 
-    These two problems are reflected in the flowchart as well: the fact the the $\bracklabel{G}$-round losers are sent to different rounds of the 4th-place bracket means that the $\bracklabel{G}$-node has two arrows coming out of it, and the fact that a less deserving team was treated better than a more deserving team was means that there were two arrows in the flowchart that crossed over. (Note that technically we could wrap the arrow coming out of $\bracklabel{H}$ all the way around the flowchart so it points to $\bracklabel{I}$ from the left side, removing this crossing. However, we can fix hacks like this by imagining arrows coming out of the teams, places, and the elimination node extending infinitely up, to the right, and down respectively.)
+    These two problems are reflected in the flowchart as well: the fact that the $\bracklabel{G}$-round losers are sent to different rounds of the 4th-place bracket means that the $\bracklabel{G}$-node has two arrows coming out of it, and the fact that a less deserving team was treated better than a more deserving team was means that there were two arrows in the flowchart that crossed over. (Note that technically we could wrap the arrow coming out of $\bracklabel{H}$ all the way around the flowchart so it points to $\bracklabel{I}$ from the left side, removing this crossing. However, we can fix hacks like this by imagining arrows coming out of the teams, places, and the elimination node extending infinitely up, to the right, and down respectively.)
 
     Both of these issues fly in the face of our intuitive notion of rewarding better teams that motivated us to define properness in the first place, so we use them to define the notion of \i{weak properness}.
 

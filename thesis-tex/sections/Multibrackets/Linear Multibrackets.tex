@@ -2,7 +2,7 @@
 
     In the past two sections, we have looked at semibrackets, as well as formats with a consolation bracket, as examples of multibrackets. Let's back up a bit from specific examples, however, and ask what information we can learn about arbitrary multibrackets. One potential question to ask is if the fundamental theorem of brackets, which held for traditional brackets and semibrackets, holds for multibrackets as well. But before we can do that, we need to define what a multibracket signature and proper multibracket seeding might look like.
 
-    This is trickier than it seems: for arbitrary multibrackets, there isn't a natural generalization of signatures and properness. (See Figure \ref{fig:page4} on page \pageref{fig:page4} for an example of a multibracket that is simple, yet difficult to assign a signature to). But there is a subset of multibrackets for which these notions generalize, allowing us to examine the fundamental theorem as it applies to this subset. These multibrackets are called \i{linear multibrackets}.
+    This is trickier than it seems: for arbitrary multibrackets, there isn't a natural generalization of signatures and properness. (See Figure \ref{fig:page4} on page \pageref{fig:page4} for an example of a multibracket that is difficult to assign a signature to). But there is a subset of multibrackets for which these notions generalize, allowing us to examine the fundamental theorem as it applies to this subset. These multibrackets are called \i{linear multibrackets}.
    
     \writedef{Linear Multibracket}{
         A \i{linear multibracket} is a multibracket that can be arranged into a sequence of semibrackets such that
@@ -20,33 +20,35 @@
 
     All four of the multibrackets discussed in the previous section are linear: let's see what their signatures are. First, the 2015 AFC Asian Cup \cite{wiki_afc}.
 
-    \fig{0.7}{afc1}{2015 AFC Asian Cup}
+    \pagebreak
+
+    \fig{0.57}{afc1}{2015 AFC Asian Cup}
 
     Looking at Figure \ref{fig:afc1}, it can be tempting to say that the 2015 AFC Asian Cup is a linear multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{2;0}$. But this is not quite right: The format with this signature would give second place to the winner of $\bracklabel{D1}$ (as the winner of the second bracket), while outright eliminating the loser of $\bracklabel{C1}$ (as a team that did not win any bracket). But in fact, we want to give second place to the loser of $\bracklabel{C1}$, and then third place to the winner of the consolation bracket with signature $\bracksig{2;0}.$ We can do this by adding a second bracket with signature $\bracksig{1}$ while sliding the bracket with signature $\bracksig{2;0}$ to third.
 
     Thus in total, the 2015 Asian Cup is a linear multibracket with signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}.$ To make clear that the middle one-team bracket is included, we include it in the figure. This also allows us to drop the labeling of which teams finish in which place, as they are guaranteed by the linearity.
 
-    \fig{0.7}{afc2}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}$}
+    \fig{0.57}{afc2}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0}$}
 
     Next, let's examine our alternative to the 2015 AFC Asian Cup.
 
-    \fig{0.7}{afc3}{2015 AFC Asian Cup Alternative}
+    \fig{0.65}{afc3}{2015 AFC Asian Cup Alternative}
 
     Again, a quick look indicates a signature of $\bracksig{8;0;0;0} \to \bracksig{2;1;0}$. And while this signature would correctly assign a first- and second-place, it doesn't assign third-place. Instead, we need a signature of $\bracksig{8;0;0;0} \to \bracksig{2;1;0} \to \bracksig{1}.$
 
-    \fig{0.7}{afc4}{$\bracksig{8;0;0;0} \to \bracksig{2;1;0} \to \bracksig{1}$}
+    \fig{0.65}{afc4}{$\bracksig{8;0;0;0} \to \bracksig{2;1;0} \to \bracksig{1}$}
 
     A similar analysis finds that the signature of the 2023 Southern Conference Wrestling Championships \cite{wiki_socon} is $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0;0} \to \bracksig{1}.$
 
-    \fig{0.7}{socon2}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0;0} \to \bracksig{1}.$}
+    \fig{0.57}{socon2}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0;0} \to \bracksig{1}.$}
 
-    In all three examples so far, every semibracket has had rank one (that is, been a traditional bracket). However our final example, the 2023 Southern Conference Wrestling Championships Alternative, requires a semibracket of greater rank than one. (Recall the motivation for the complex multibracket: we want to identify the top-four teams while not eliminating any team from contention after just a single loss.)
+    In all three examples so far, every semibracket has had rank one (that is, been a traditional bracket). However our final example, the 2023 Southern Conference Wrestling Championships Alternative, requires a semibracket of greater rank than one. (Recall the motivation for the alternative multibracket: we want to identify the top four teams while not eliminating any team from contention after just a single loss.)
 
-    \fig{0.7}{socon31}{2023 SoCon Wrestling Championships Alternative}
+    \fig{0.57}{socon31}{2023 SoCon Wrestling Championships Alternative}
 
-    An attempt to give a signature of this format without the use of non-traditional semibrackets might be $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;1;0} \to \bracksig{2;1;0}.$ Unfortunately, this isn't quite the same format: it assigns third place to the winner of $\bracklabel{E1}$ and fourth to the loser of $\bracklabel{E2}$. We want to treat both winners identically: this is the exact problem that semibrackets were developed to solve. Using semibrackets, we can see that the signature should be $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0}_2.$
+    An attempt to give a signature of this format without the use of non-traditional semibrackets might be $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;1;0} \to \bracksig{2;1;0}.$ Unfortunately, this isn't quite the same format: it assigns third place to the winner of $\bracklabel{E1}$ and fourth to the loser of $\bracklabel{E2}$. We want to treat both winners identically: luckily, this is the exact problem that semibrackets were developed to solve. Using semibrackets, we can see that the signature should be $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0}_2.$
 
-    \fig{0.7}{socon4}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0}_2$} 
+    \fig{0.65}{socon4}{$\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2;0}_2$} 
 
     This format is differentiated from the (admittedly a bit strange) format in which the winner of game $\bracklabel{E1}$ comes in third and the winner of game $\bracklabel{E2}$ comes in fourth by the lettering of the games: the fact that games $\bracklabel{E1}$ and $\bracklabel{E2}$ are both $\bracklabel{E}$-round games means they must come from the same semibracket. If games $\bracklabel{D2}$ and $\bracklabel{E2}$ were instead $\bracklabel{F1}$ and $\bracklabel{G1}$, respectively, then we would indeed have a linear multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;1;0} \to \bracksig{2;1;0}.$
 

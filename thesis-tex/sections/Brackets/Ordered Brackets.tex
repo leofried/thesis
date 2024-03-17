@@ -6,7 +6,7 @@
 
     The definition of a proper seeding ensures that as long as the bracket goes chalk, it will always be better to be a higher seed than a lower seed. But what if it doesn't go chalk?
 
-    One counterintuitive fact about the NCAA Basketball Tournament is that it is probably better to be a 10-seed than a 9-seed. (This doesn't violate the proper seeding property because 9-seeds have an easier first-round matchup than 10-seeds, and proper seedings only care about what happens if the bracket goes chalk, which would eliminate both the 9-seed and 10-seed in that round.) Why? Let's look at what seeds the $t_9$ and $t_10$ are likely to face in the first two rounds.
+    One counterintuitive fact about the NCAA Basketball Tournament is that it is probably better to be a 10-seed than a 9-seed. Why? Let's look at what seeds the $t_9$ and $t_{10}$ are likely to face in the first two rounds.
 
     \begin{figg}{NCAA Basketball Tournament 9- and 10-seed Schedules}{}
         \centering
@@ -32,7 +32,9 @@
 
     A list of teams being strongly stochastically transitive (SST) captures the intuition that each team ought to do better against lower-seeded teams than against higher-seeded teams. We give a few quick implications of this definition.
 
-    \etheo{corollary}{}{
+    \pagebreak
+
+    \etheo{corollary}{
         \begin{enumerate}[(1)]
             \item If $\T$ is SST, then for each $i < j$, $$\G{t_i}{t_j} \geq 0.5.$$
             \item If $\T$ is SST, then for each $i, j, k, \ell$ such that $i < j$ and $k < \ell$, $$\G{t_i}{t_\ell} \geq \G{t_j}{t_k}.$$
@@ -40,9 +42,9 @@
         \end{enumerate}
     }{}{\unattributed}
 
-    Note that not every set of teams can be seeded to be SST. Consider, for example, the game of rock-paper-scissors. Rock beats paper which beats scissors which beats rock, so no ordering of these ``teams'' will be SST. For our purposes, however, SST will work well enough.
+    Note that not every set of teams can be seeded to be SST. Consider, for example, the game of rock-paper-scissors. Rock loses to paper which loses to scissors which loses to rock, so no ordering of these ``teams'' will be SST. For our purposes, however, SST will work well enough.
 
-    Our new, nuanced alternative a proper bracket is an \i{ordered bracket}. The concept of orderedness was first used by Chung and Hwang \cite{define_ordered}, and Horen and Riezman \cite{four_eight_ordered}, but Edwards \cite{montana} was the one to formalize and name it.
+    Our new, nuanced alternative of a proper bracket is an \i{ordered bracket}. The concept of orderedness was first used by Chung and Hwang \cite{define_ordered} and Horen and Riezman \cite{four_eight_ordered}, but Edwards \cite{montana} was the one to formalize and name it.
 
     \writedef{Monotonic}{
         A tournament format $\A$ is monotonic with respect to a list of teams $\T$ if, for all $i < j,$ $\W{\A}{t_i}{\T} \geq \W{\A}{t_j}{\T}.$
@@ -54,7 +56,9 @@
 
     In an informal sense, a tournament format being ordered is the strongest thing we can want without knowing more about why the tournament is being played. Depending on the situation, we might be interested in a format that almost always declares the most-skilled team as the winner, or in a format that gives each team roughly the same chance of winning, or anywhere in between. But certainly, better teams should win more, which is what the ordered condition requires.
 
-    In particular, a bracket being ordered is a stronger claim than it being proper.
+    \pagebreak
+
+    In particular, a bracket being ordered is a stronger claim than it being proper.   
 
     \theo{theorem}{Every ordered bracket is proper.}{
         We show the contrapositive. Let $\A$ be an $r$-round non-proper bracket.\\
@@ -74,6 +78,8 @@
 
     With Theorem \ref{th:ordered_proper}, we can use the language of bracket signatures to describe ordered brackets without worrying that two ordered brackets might share a signature. Now we examine three particularly important examples of ordered brackets.
 
+    \pagebreak
+
     We begin with the unique one-team bracket.
 
     \fig{1}{one_team}{$\bracksig{1}$}
@@ -89,9 +95,11 @@
     so $\A$ is ordered.
     }{}{\unattributed}
 
+    \pagebreak
+
     And thirdly, we show that the balanced four-team bracket is ordered, first proved by Horen and Riezman \cite{four_eight_ordered}.
 
-    \fig{0.63}{four_team}{$\bracksig{4; 0; 0}$}
+    \fig{1}{four_team}{$\bracksig{4; 0; 0}$}
     \theo{theorem}{$\bracksig{4; 0; 0}$ is ordered.}{
     Let $\A = \bracksig{4; 0; 0}.$ Then,
     \begin{align*}
@@ -116,6 +124,8 @@
 
     Thus $\A$ is ordered.
     }{four_ordered}{Horen and Riezman, 1985}
+
+    \pagebreak
 
     However, not every proper bracket is ordered. One particularly important example of a non-ordered proper bracket is $\bracksig{4;2;0;0}.$
 

@@ -6,7 +6,7 @@
 
     The most natural answer to this question is to use an traditional eight-team bracket, but leave the championship game unplayed. This format is displayed in the figure below.
 
-    \fig{1}{800}{$\bracksig{8;0;0;0}$ with no Championship Game}
+    \fig{0.8}{800}{$\bracksig{8;0;0;0}$ with no Championship Game}
 
     The format in Figure \ref{fig:800} does exactly what we need. The championship game being left unplayed is not a bug but a feature: each team plays a maximum of two games, and the two teams that advance to the national tournament are clear.
 
@@ -22,7 +22,7 @@
 
     Thus semibrackets are a generalization of brackets: a bracket is a semibracket in which only one team is left undefeated and declared champion.
 
-    Figure \ref{fig:types_of_brackets} describes which properties various bracket-like formats require.
+    Figure \ref{fig:types_of_brackets} describes which properties various networked formats require.
 
     \begin{figg}{Properties of Networked Formats}{types_of_brackets}
         \begin{center}
@@ -44,9 +44,9 @@
 
     Indeed there are. Let's modify the original problem so that we need to pick a top three teams out of twelve. Again, no team can play more then two games. The natural choice is shown below in Figure \ref{fig:1200}.
     
-    \fig{1}{1200}{A More Interesting Semibracket}
+    \fig{0.8}{1200}{A More Interesting Semibracket}
 
-    There is no potential for the format in Figure \ref{fig:1200} to be completed into a traditional bracket, the next round would include three teams: an odd number. But as a semibracket, this is still a viable format, one that nicely solves the tournament design problem that we were given.
+    There is no potential for the format in Figure \ref{fig:1200} to be completed into a traditional bracket: the next round would include an odd number of teams. But as a semibracket, this is still a viable format, one that nicely solves the tournament design problem that we were given.
     
     \writedef{Rank of a Semibracket}{
         The \i{rank} of a semibracket is how many co-champions it crowns. If the semibracket $\A$ has rank $m$, we say $\rank{\A} = m$ or that $\A$ \i{ranks m teams}.
@@ -64,17 +64,17 @@
 
     In analogy with traditional bracket signature's Theorem \ref{th:signature_sum}, we have Theorem \ref{th:semi_signature_sum}.
 
-    \etheo{theorem}{}{
+    \etheo{theorem}{
         Let $\A = \bracksig{a_0; ...; a_r}_m$ be a list of natural numbers. Then $\A$ is a semibracket signature if and only if $$\sum_{i=0}^r a_i \cdot \left(\frac{1}{2}\right)^{r - i} = m.$$
     }{semi_signature_sum}{\fried}
 
-    The proof is almost identical to that of Theorem \ref{th:signature_sum} so we leave it out for brevity. Likewise, properness can be defined in the same way for semibracket, and the fundamental theorem still applies. (Again with a nearly identical proof that is left out for brevity.)
+    The proof is almost identical to that of Theorem \ref{th:signature_sum} so we leave it out for brevity. Likewise, properness can be defined in the same way for semibracket, and the fundamental theorem still applies (again with a nearly identical proof that is left out for brevity).
 
-    \etheo{theorem}{}{
-        Each semibracket signature admits exactly one proper semibracket.
+    \etheo{theorem}{
+        There is exactly one proper semibracket with each semibracket signature.
     }{}{\fried}
 
-    Semibrackets are used in practice in situations where the excitement of a single elimination tournament is desired, but multiple winners are needed. The 2023 Union of European Football Associations Champions League Qualifying Phase \cite{wiki_uefa}, for example, used a (somewhat randomized) semibracket of signature $\bracksig{4;0;29;9;8;2;0}_6$ to determine the final six teams that would get to compete in the Group Stage.
+    Semibrackets are used in practice in situations where the excitement of a single elimination tournament is desired, but multiple winners are needed. The 2023 Union of European Football Associations Champions League Qualifying Phase \cite{wiki_uefa}, for example, used a (somewhat randomized) semibracket of signature $\bracksig{4;0;29;9;8;2;0}_6$ to determine the final six teams that would get to compete in the group stage.
 
     \fig{1.15}{paths}{2023 UEFA Champions League Qualifying Phase}
 
@@ -88,12 +88,9 @@
         A semibracket is \i{competitive} if no teams are declared co-champion without winning at least one game. Equivalently, a semibracket is competitive its signature ends in a $0.$
     }{competitive}{\fried}
 
-    Clearly the two categories are mutually exclusive. Restricting briefly to the domain of traditional brackets, the two categories are also collectively exhaustive: there is no traditional bracket that is neither competitive nor trivial. (In fact, the only trivial traditional bracket is $\bracksig{1}$, every other traditional bracket is competitive.) However, this dichotomy does not apply to semibrackets: there are semibrackets that are neither trivial nor competitive. The simplest example is $\bracksig{2;1}_2,$ where the 1-seed is automatically one co-champion (so it's not competitive), but the 2- and 3-seeds play to be the other co-champion (so it's not trivial).
+    Clearly the two categories are mutually exclusive. Restricting briefly to the domain of traditional brackets, the two categories are also collectively exhaustive: there is no traditional bracket that is neither competitive nor trivial. (In fact, the only trivial traditional bracket is $\bracksig{1}$; every other traditional bracket is competitive.) However, this dichotomy does not apply to semibrackets: there are semibrackets that are neither trivial nor competitive. The simplest example is $\bracksig{2;1}_2,$ where the 1-seed is automatically one co-champion (so it's not competitive), but the 2- and 3-seeds play to be the other co-champion (so it's not trivial).
 
     \fig{1}{21}{$\bracksig{2;1}_2$}
 
-    These two properties of semibrackets will sometimes be useful in defining and proving theorems about certain types of multibrackets down the line. In the next section, we will use semibrackets to construct a particularly nice kind of multibracket: \i{linear multibrackets.}
-
-      %trivial vs competitive vs nontrivial vs noncompetitive
-
+    These two properties of semibrackets will sometimes be useful in defining and proving theorems about certain types of multibrackets down the line. In the next section, we will use semibrackets to construct a particularly nice kind of multibracket: the \i{linear multibracket.}
 }

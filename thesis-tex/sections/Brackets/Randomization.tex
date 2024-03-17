@@ -10,7 +10,7 @@
 
     Chung and Hwang \cite{define_ordered} conjectured that all totally randomized knockout tournaments were ordered. After all, the teams are all being treated identically: how could a better team be at a disadvantage relative to a worse one?
 
-    \etheo{conj}{}{
+    \etheo{conj}{
         All totally randomized knockout tournaments are ordered.
     }{randord}{Chung and Hwang, 1978}
 
@@ -19,13 +19,11 @@
     \theo{lemma}{
         Let $\A$ be a totally randomized knockout tournament with signature $\bracksig{a_0; ...; a_r}$, let $\S$ be a set of teams, and let $\T$ be the set of teams produced by replacing a given team $s \in \S$ with a team $t$ such that for all other teams $u,$ $$\G{t}{u} \geq \G{s}{u}.$$ Then, $$\W{\A}{t}{\T} \geq \W{\A}{s}{\S}.$$
     }{
-        Let $X$ be the power set of $\S \setminus \{s\} = T \setminus \{t\}$, and for each set of teams $Y \in X$, let $P_Y$ be the probability that $s$ or $t$ will have to beat exactly the set of teams $Y$ in order to win the format (noting that this probability is the same for $s$ and $t$). Then,
+        Let $X$ be the power set of $\S \setminus \{s\} = T \setminus \{t\}$, and for each set of teams $Y \in X$, let $P_Y$ be the probability that $s$ or $t$ will have to beat exactly the set of teams $Y$ in order to win the tournament (noting that this probability is the same for $s$ and $t$). Then,
         \begin{align*}
             \W{\A}{t}{\T} &= \sum_{Y \in X} \left(P_Y \cdot \prod_{u \in Y} \G{t}{u}\right)\\
             &\geq \sum_{Y \in X} \left(P_Y \cdot \prod_{u \in Y} \G{s}{u}\right)\\
-            &= \W\A s\S
-        \end{align*} 
-    }{rand_lemma}{Chen and Hwang, 1988}
+            &= \W\A s\S \end{align*} }{rand_lemma}{Chen and Hwang, 1988}
 
     
     Unfortunately, despite the lemma, Chung and Hwang's conjecture is false due to a counterexample given by Israel \cite{seventeen_team}. (The colors are not part of the bracket itself and just used to aid the proof.)
@@ -205,11 +203,11 @@
 
     But Theorem \ref{th:cohort_counter} tells us that they are not ordered, meaning that the only ordered balanced knockout format we've developed for more than two rounds is the totally randomized one, which is neither deterministic nor dramatic. Unfortunately, we conclude the chapter without a more satisfying design, leaving behind two big open questions.
     
-    \etheo{oq}{}{
+    \etheo{oq}{
         For all $r$, does there exist an $r$-round deterministic ordered balanced knockout tournament?
     }{}{\fried}
 
-    \etheo{oq}{}{
+    \etheo{oq}{
         For all $r$, does there exist an $r$-round dramatic ordered balanced knockout tournament?
     }{}{\fried}
 
