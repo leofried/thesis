@@ -2,11 +2,11 @@
 
     Consider the proper bracket $\bracksig{16; 0; 0; 0; 0}$, which was used in the 2013 NCAA Men's Basketball Tournament South Region \cite{wiki_ncaa}, and is shown below.
 
-    \fig{0.8}{ncaa}{2013 NCAA Men's Basketball Tournament South Region}{}
+    \fig{0.95}{ncaa}{2013 NCAA Men's Basketball Tournament South Region}{}
 
     The definition of a proper seeding ensures that as long as the bracket goes chalk, it will always be better to be a higher seed than a lower seed. But what if it doesn't go chalk?
 
-    One counterintuitive fact about the NCAA Basketball Tournament is that it is probably better to be a 10-seed than a 9-seed. (This doesn't violate the proper seeding property because 9-seeds have an easier first-round matchup than 10-seeds, and for further rounds, proper seedings only care about what happens if the bracket goes chalk, which would eliminate both the 9-seed and 10-seed in the first round.) Why? Let's look at whom each seed-line matchups against in the first two rounds.
+    One counterintuitive fact about the NCAA Basketball Tournament is that it is probably better to be a 10-seed than a 9-seed. (This doesn't violate the proper seeding property because 9-seeds have an easier first-round matchup than 10-seeds, and proper seedings only care about what happens if the bracket goes chalk, which would eliminate both the 9-seed and 10-seed in that round.) Why? Let's look at what seeds the $t_9$ and $t_10$ are likely to face in the first two rounds.
 
     \begin{figg}{NCAA Basketball Tournament 9- and 10-seed Schedules}{}
         \centering
@@ -18,9 +18,9 @@
         \end{tabular}
     \end{figg}
 
-    The 9-seed has an easier first-round matchup, while the 10-seed has an easier second-round matchup. However, this isn't quite symmetrical. Because the teams are probably drawn from a roughly normal distribution, the expected difference in skill between the 1- and 2-seeds is far greater than the expected difference between the 7- and 8-seeds, implying that the 10-seed does in fact have an easier route than the 9-seed.
+    The 9-seed has an easier first-round matchup, while the 10-seed has an easier second-round matchup. However, this isn't quite symmetrical. Because the teams tend to be drawn from a roughly normal distribution, the expected difference in skill between the 1- and 2-seeds is far greater than the expected difference between the 7- and 8-seeds, implying that the 10-seed does, in fact, have an easier route than the 9-seed.
 
-    Silver \cite{nate_silver} investigated this matter in full, finding that in the NCAA Basketball Tournament, starting lines 10 through 15 give teams better odds of winning the region than starting lines 8 and 9. Of course this does not mean that the 11-seed (say) has a better chance of winning a given region than the 8-seed does, as the 8-seed is a much better team than the 11-seed. But it does mean that the 8-seed would love to swap places with the 11-seed, and that doing so would increase their odds to win the region.
+    Silver \cite{nate_silver} investigated this matter in full, finding that in the NCAA Basketball Tournament, starting lines 10 through 15 give teams better odds of winning the region than starting lines 8 and 9. Of course, this does not mean that the 11-seed (say) has a better chance of winning a given region than the 8-seed does, as the 8-seed is a better team than the 11-seed. But it does mean that the 8-seed would love to swap places with the 11-seed, and that doing so would increase their odds to win the region.
 
     This is not a great state of affairs: the whole point of seeding is confer an advantage to higher-seeded teams, and the proper bracket $\bracksig{16; 0; 0; 0; 0}$ is failing to do that. Not to mention that giving lower-seeded teams an easier route than higher-seeded ones can incentivize teams to lose during the regular season in order to try to get a lower but more advantageous seed.
 
@@ -30,7 +30,7 @@
         A list of teams $\T$ is \i{strongly stochastically transitive} if for each $i, j, k$ such that $j < k$, $$\G{t_i}{t_j} \leq \G{t_i}{t_k}.$$
     }{sst}{David, 1963}
 
-    A list of teams being strongly stochastically transitive (SST) captures the intuition that each team ought to do better against lower-seeded teams than against higher-seeded teams. A few quick implications of this definition are stated below.
+    A list of teams being strongly stochastically transitive (SST) captures the intuition that each team ought to do better against lower-seeded teams than against higher-seeded teams. We give a few quick implications of this definition.
 
     \etheo{corollary}{}{
         \begin{enumerate}[(1)]
@@ -42,34 +42,34 @@
 
     Note that not every set of teams can be seeded to be SST. Consider, for example, the game of rock-paper-scissors. Rock beats paper which beats scissors which beats rock, so no ordering of these ``teams'' will be SST. For our purposes, however, SST will work well enough.
 
-    Our new, nuanced alternative a proper bracket is an \i{ordered bracket}. The concept of orderedness was first used by Chen and Hwang \cite{define_ordered}, but Edwards \cite{montana} was the one to formalize and name it.
+    Our new, nuanced alternative a proper bracket is an \i{ordered bracket}. The concept of orderedness was first used by Chung and Hwang \cite{define_ordered}, and Horen and Riezman \cite{four_eight_ordered}, but Edwards \cite{montana} was the one to formalize and name it.
 
     \writedef{Monotonic}{
-        A tournament format $\A$ is monotonic with respect to an SST list of teams $\T$ if, for all $i < j,$ $\W{\A}{t_i}{\T} \geq \W{\A}{t_j}{\T}.$
+        A tournament format $\A$ is monotonic with respect to a list of teams $\T$ if, for all $i < j,$ $\W{\A}{t_i}{\T} \geq \W{\A}{t_j}{\T}.$
     }{monotonic}{\unattributed}
 
     \writedef{Ordered}{
         An $n$-team tournament format $\A$ is \i{ordered} if it is monotonic with respect to every SST list of $n$ teams.
     }{ordered}{Edwards, 1991}
 
-    In an informal sense, a bracket being ordered is the strongest thing we can want without knowing more about why the tournament is being played. Depending on the situation, we might be interested in a format that almost always declares the most-skilled team as the winner, or in a format that gives each team roughly the same chance of winning, or anywhere in between. But certainly, better teams should win more, which is what the ordered bracket condition requires.
+    In an informal sense, a tournament format being ordered is the strongest thing we can want without knowing more about why the tournament is being played. Depending on the situation, we might be interested in a format that almost always declares the most-skilled team as the winner, or in a format that gives each team roughly the same chance of winning, or anywhere in between. But certainly, better teams should win more, which is what the ordered condition requires.
 
     In particular, a bracket being ordered is a stronger claim than it being proper.
 
     \theo{theorem}{Every ordered bracket is proper.}{
-        We show the contrapositive. Let $\A$ be an $r$-round non-proper bracket.
+        We show the contrapositive. Let $\A$ be an $r$-round non-proper bracket.\\
 
         Assume first that $\A$ violates condition (a). Let $t_i$ and $t_j$ be teams such that $i < j$, but $t_i$ plays its first game in round $r_i$ while $t_j$ plays its first game in round $r_j$ for $r_i < r_j.$
         
         Let $\T$ be a list of teams such that $p_{ij} = 0.5$ for all $i, j.$ Then,
-        $$\W{\A}{t_i}{\T} = 0.5^{r-r_i+1} < 0.5^{r-r_j+1} = \W{\A}{t_j}{\T},$$
-        so $\A$ is not ordered.
+        $$\W{\A}{t_i}{\T} = 0.5^{r-r_i+1} < 0.5^{r-r_j+1} = \W{\A}{t_j}{\T}.$$
+        Thus $\A$ is not monotonic with respect to $\T$, so it is not ordered.\\
 
-        Now assume $\A$ violated condition (b) for the first time in the $s$th round, and let $t_\ell$ be the lowest-seeded team such that there exists a $t_i, t_j,$ and $t_k$ where if $\A$ goes chalk, then in round $s$, $t_i$ will play $t_j$ and $t_k$ will play $t_\ell$, but $i < k$ and $j < \ell$ (thus breaking condition (b)). Because $t_\ell$ is the lowest such seed, we also have $k < \ell.$
+        Now assume $\A$ violated condition (b) for the first time in the $s$th round, and let $t_\ell$ be the lowest-seeded team such that there exists a $t_i, t_j,$ and $t_k$ where if $\A$ goes chalk, then in round $s$, $t_i$ will play $t_j$ and $t_k$ will play $t_\ell$, but $i < k$ and $j < \ell$ (thus breaking condition (b)). Because $t_\ell$ is the lowest such seed, we also have $k < \ell.$\\
         
-        Let $\T$ be the SST set of teams where all games between teams seeded $\ell-1$ or better is a coin flip, but all games involving at least one team seeded $\ell$ or worse is always won by the higher seeded team. Then $$\W{\A}{t_i}{\T} = 0.5^{r-s+1} > 0.5^{r-s} = \W{\A}{t_k}{\T},$$ so $\A$ is not ordered.
+        Let $\T$ be the SST set of teams where all games between teams seeded $\ell-1$ or better is a coin flip, but all games involving at least one team seeded $\ell$ or worse is always won by the higher seeded team. Then $$\W{\A}{t_i}{\T} = 0.5^{r-s+1} > 0.5^{r-s} = \W{\A}{t_k}{\T}.$$ Thus $\A$ is not monotonic with respect to $\T$, so it is not ordered.\\
         
-        Thus there is no ordered bracket that is not proper, so all ordered brackets are proper.
+        Therefore all ordered brackets are proper.
     }{ordered_proper}{\fried}
 
     With Theorem \ref{th:ordered_proper}, we can use the language of bracket signatures to describe ordered brackets without worrying that two ordered brackets might share a signature. Now we examine three particularly important examples of ordered brackets.
@@ -140,7 +140,7 @@
         Then $\W{\A}{t_5}{\T} = 0$ but $\W{\A}{t_6}{\T} > 0,$ so $\A$ is not monotonic with respect to $\T$ and thus not ordered.
     }{}{Edwards, 1991}
 
-    (Note that in this particular example, one could argue that $t_5$ isn't actually better than $t_6$, as they have the same win-rate against every other team, and thus it is not a big deal that $t_6$ is more likely to win. However, any matchup table where $\G{t_i}{t_j} = 0$ if and only if $i \in \{5, 6\}$ and $j = 1$ will be nonmonotonic, even ones where $t_5$ is clearly the superior team.)
+    (Note that in this particular example, one could argue that $t_5$ isn't actually better than $t_6$, as their odds of beating each other team is the same, and thus it is not a big deal that $t_6$ is more likely to win the tournament. However, $\A$ is not monotonic with respect to any matchup table where $\G{t_i}{t_j} = 0$ if and only if $i \in \{5, 6\}$ and $j = 1$, even ones where $t_5$ is clearly the superior team.)
 
     In the next section, we move on from describing particular ordered and non-ordered brackets in favor of a more general result.
 }

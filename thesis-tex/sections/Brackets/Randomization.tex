@@ -3,7 +3,7 @@
     Given that reseeding doesn't solve the orderedness problem presented by Edwards's Theorem, we turn to a new approach at generating potentially ordered knockout tournaments: randomization.
 
     \writedef{Totally Randomized Knockout Tournament\\}{
-        A \i{totally randomized knockout tournament} is a bracket except the teams are randomly placed onto the starting lines instead of being placed according to seed.
+        A \i{totally randomized knockout tournament} is a bracket, except the teams are randomly placed onto the starting lines instead of being placed according to seed.
     }{totallyRandomized}{\unattributed}
     
     Clearly totally randomized knockout tournaments are indeed knockout tournaments.
@@ -30,12 +30,12 @@
     
     Unfortunately, despite the lemma, Chung and Hwang's conjecture is false due to a counterexample given by Israel \cite{seventeen_team}. (The colors are not part of the bracket itself and just used to aid the proof.)
 
-    \fig{1}{17teams}{Setup of Theorem \ref{th:israel}}
+    \fig{0.8}{17teams}{Setup of Theorem \ref{th:israel}}
 
     \theo{theorem}{
-        The totally randomized knockout tournament whose shape is the proper knockout tournament shape of signature $\bracksig{16;0;0;0;1;0}$ is not ordered.
+        The totally randomized knockout tournament of signature $\bracksig{16;0;0;0;1;0}$ is not ordered.
     }{
-        Let $\A$ be the format in question, and let $\T$ be the list of seventeen teams containing one copy of each of $t_1, t_3, t_4,$ and $t_5,$ and thirteen copies of $t_2$ with the following matchup table.
+        Let $\A$ be the format in question, and let $\T$ be the list of seventeen teams containing one copy of each of $t_1, t_3, t_4,$ and $t_5,$ and thirteen copies of $t_2,$ with the following matchup table.
 
         \begin{center}
             \begin{tabular}{c | c c c c c c c}
@@ -49,10 +49,10 @@
             \end{tabular}
         \end{center}
 
-        Let $i \in \{4, 5\}$ and let $j = 9-i.$ For $t_i$ to win $\A$ without getting placed on the red starting line, they must win at least four games against teams $t_1$, $t_2$, or $t_3$, which happens with probability $O(p^4).$ Thus we let $\B_i$ be the format identical to $\A$ except we enforce that $t_i$ will be placed on the red starting line and note that
+        Let $i \in \{4, 5\}$ and let $j = 9-i.$ For $t_i$ to win $\A$ without getting placed on the red starting line, it must win at least four games against teams $t_1$, $t_2$, or $t_3$, which happens with probability $O(p^4).$ Thus we let $\B_i$ be the format identical to $\A$ except we enforce that $t_i$ will be placed on the red starting line and note that
         $$\W{\A}{t_i}{\T} = \frac{1}{17}\W{\B_i}{t_i}{\T} + O(p^4).$$
         
-        Now $t_j$ reaches the finals of $\B_i$ with probability $O(p^4)$, $t_3$ reaches the finals of $\B_i$ with probability $O(p^3)$ and so $t_i$ beats them in the finals with probability $O(p^4)$, and of course $t_i$ cannot beat $t_1$ in the finals. Thus,
+        Now, $t_j$ reaches the finals of $\B_i$ with probability $O(p^4)$, $t_3$ reaches the finals of $\B_i$ with probability $O(p^3)$ and so $t_i$ beats them in the finals with probability $O(p^4)$, and of course $t_i$ cannot beat $t_1$ in the finals. Thus,
         \begin{align*}
             \W{\B_i}{t_i}{\T} &= p \cdot \P{\textrm{$t_2$ reaches the finals of $\B_i$}} + O(p^4).
         \end{align*}
@@ -84,20 +84,22 @@
         for some constant $c$, so
         $$\W{\A}{t_5}{\T} - \W{\A}{t_4}{\T} = cp^3 + O(p^4)$$ for some constant $c.$\\
 
-        Therefore $\A$ is not ordered.
-    }{israel}{Israel}{1981}
+        Therefore $\A$ is not monotonic with respect to $\T$ and so $\A$ is not ordered.
+    }{israel}{Israel, 1981}
+
+    \pagebreak
 
     Chung and Hwang's conjecture was rescued by Chen and Hwang \cite{totally_random_balanced} who restricted the domain of the claim to balanced formats.
 
     \theo{theorem}{
         All totally randomized balanced knockout tournaments are ordered.
     }{
-        Let $\A_r$ be the totally randomized balanced knockout tournament on $2^r$ teams. We induct on $r$. Clearly the one-team format $\A_0$ is ordered. For any other $r$, let $\T$ be a list of teams, and let $t_i$ and $t_j$ be teams such that $i < j.$\\
+        Let $\A_r$ be the totally randomized balanced knockout tournament on $2^r$ teams. We proceed by induction on $r$. Clearly the one-team format $\A_0$ is ordered. For any other $r$, let $\T$ be a list of teams, and let $t_i$ and $t_j$ be teams such that $i < j.$\\
 
         Let $\B_r$ be the totally randomized balanced knockout tournament on $2^r$ teams except $t_i$ and $t_j$ are forced to play each other in the first round, and let $\C_r$ be the totally randomized balanced knockout tournament on $2^r$ teams except $t_i$ and $t_j$ cannot play each other in the first round. Then,
         $$\W{A_r}{t_i}{\T} = \left(\frac{1}{2^r-1}\right)\W{B_r}{t_i}{\T} + \left(\frac{2^r-2}{2^r-1}\right)\W{C_r}{t_i}{\T}$$ and likewise for $t_j.$\\
 
-        Because $p_{ij} \geq p_{ji}$, and by Lemma \ref{th:rand_lemma}, $\W{B_r}{t_i}{\T} \geq \W{B_r}{t_j}{\T}.$ Thus left is to show that $\W{C_r}{t_i}{\T} \geq \W{C_r}{t_j}{\T}.$\\
+        Because $p_{ij} \geq p_{ji}$, and by Lemma \ref{th:rand_lemma}, $\W{B_r}{t_i}{\T} \geq \W{B_r}{t_j}{\T}.$ Left is to show that $\W{C_r}{t_i}{\T} \geq \W{C_r}{t_j}{\T}.$\\
         
         For two other teams $t_a$ and $t_b$, let $M_{ab}$ be the set of $2^{r-1}-2$ team subsets of $\T \setminus \{t_i, t_j, t_a, t_b\},$ and for $\S \in M_{ab},$ let $P_\S$ be the probability that the teams in $\S$ all win their first-round games and none of them play any of $t_i, t_j, t_a,$ or $t_b$ in the first round.
 
@@ -127,11 +129,11 @@
         Thus, $\A_r$ is ordered.
     }{balance_ord}{Chen and Hwang, 1988}
     
-    In some ways this is a great revelation: we finally have an ordered balanced knockout tournament that works for arbitrary numbers of rounds.
-
-    Of course, this orderedness does not come without drawbacks. For one, the randomization feels a bit cheap: once the randomization is complete, before any games have even been played, the orderedness is lost. (Compare to the ordered traditional and reseeded brackets, which maintain their orderedness throughout the whole tournament.)
+    In some ways this is a great revelation: we finally have an ordered balanced knockout tournament for arbitrary numbers of rounds. Of course, this orderedness does not come without drawbacks.
     
-    But secondly, totally randomness has the undesirable property that it might make for some very lopsided and anti-climatic knockout tournaments. It could be that top-two teams, whom everyone wants to see face off in the championship game, are set to play each other in the first round! We can extend the notion of \i{dramatic} from brackets to knockout tournaments, noting that totally randomized knockout tournaments are not dramatic.
+    For one, the randomization feels a bit cheap: once the randomization is complete, before any games have even been played, the orderedness is lost. (Compare to the ordered traditional and reseeded brackets, which maintain their orderedness throughout the whole tournament.)
+    
+    And secondly, totally randomness has the undesirable property that it might make for some very lopsided and anti-climatic knockout tournaments. It could be that top-two teams, whom everyone wants to see face off in the championship game, are set to play each other in the first round! We can extend the notion of \i{dramatic} from brackets to knockout tournaments, noting that totally randomized knockout tournaments are not dramatic.
 
     \writedef{Dramatic Knockout Tournament}{
         A knockout tournament is \i{dramatic} if, as long as the knockout tournament goes chalk, in every round, the $m$ remaining teams are guaranteed to be the top $m$ seeds.
@@ -148,7 +150,7 @@
     \theo{theorem}{
         Cohort randomized knockout tournaments are dramatic.
     }{
-        We proceed by induction on $r$. If $r = 0$, then there are no rounds and so the theorem holds. For any other $r$, in the first round, the top $2^{r-1}$ seeds will face the bottom $2^{r-1}$ seeds, and because the format goes chalk, the bottom half of teams will be eliminated. Thus after the first round, the top $2^{r-1}$ seeds will remain. The remaining format is just the $r-1$-round cohort randomized knockout tournament, for which the theorem holds by induction.
+        We proceed by induction on $r$. If $r = 0$, then there are no rounds and so the theorem holds. For any other $r$, in the first round, the top $2^{r-1}$ seeds will face the bottom $2^{r-1}$ seeds, and because the format goes chalk, the bottom half of teams will be eliminated. Thus after the first round, the top $2^{r-1}$ seeds will remain. The remaining format is just the $(r-1)$-round cohort randomized knockout tournament, for which the theorem holds by induction.
     }{top_m}{Schwenk, 2000}
 
     In Schwenk's paper, he wrote that in cohort randomized knockout tournaments, ``higher-seeded teams are never given a schedule more difficult than that of any lower seed.'' Schwenk didn't have a formal notion of what that might mean, but we do: orderedness. It seems as though cohort randomized knockout tournaments ought to be ordered: being in a higher cohort seems preferable to being a lower cohort, as you delay confrontation with the other higher-cohorted teams until later, and if two teams are in the same cohort, they are treated identically and thus it seems that the better team would win more.
@@ -179,19 +181,18 @@
 
         Note that because $t_6, t_7,$ and $t_8$ each have identical matchups against every other team, permutations of those teams don't affect the probability of any other teams winning the tournament. Thus we consider the eight possible randomizations in Figure \ref{fig:eight_cohort} noting that for $i \in \{2, 3\},$
         $$\W{\A}{t_i}{\T} = \frac{1}{8}\sum_{j = 1}^8 \W{\A_j}{t_i}{\T}.$$
-        (The three empty starting lines can be filled with any permutation of $\{t_6, t_7, t_8\}.$)\\
-
-        Some calculation finds
+        
+        Some calculation finds,
         \begin{align*}
-            \W{\A_1}{t_2}{\T} &= \W{\A_1}{t_3}{\T}\\
-            \W{\A_2}{t_2}{\T} &= \W{\A_2}{t_3}{\T}\\
-            \W{\A_3}{t_2}{\T} &= \W{\A_4}{t_3}{\T}\\
-            \W{\A_4}{t_2}{\T} &= \W{\A_3}{t_3}{\T}\\
-            \W{\A_6}{t_2}{\T} &= \W{\A_8}{t_3}{\T}\\
-            \W{\A_7}{t_2}{\T} &= \W{\A_5}{t_3}{\T}\\
-            \W{\A_8}{t_2}{\T} &= \W{\A_6}{t_3}{\T}
+            \W{\A_1}{t_3}{\T} &= \W{\A_1}{t_2}{\T}\\
+            \W{\A_2}{t_3}{\T} &= \W{\A_2}{t_2}{\T}\\
+            \W{\A_3}{t_3}{\T} &= \W{\A_4}{t_2}{\T}\\
+            \W{\A_4}{t_3}{\T} &= \W{\A_3}{t_2}{\T}\\
+            \W{\A_5}{t_3}{\T} &= \W{\A_7}{t_2}{\T}\\
+            \W{\A_6}{t_3}{\T} &= \W{\A_8}{t_2}{\T}\\
+            \W{\A_8}{t_3}{\T} &= \W{\A_6}{t_2}{\T}
         \end{align*}
-        However, letting $q = 1- p,$ $r = \frac{1}{2}q + \frac{1}{4},$ and $s = pq + \frac{1}{2}q$
+        However, letting $q = 1- p,$ $r = \frac{1}{2}q + \frac{1}{4},$ and $s = pq + \frac{1}{2}q,$
         \begin{align*}
             \W{\A_5}{t_2}{\T} &= qs\left(q\frac{1}{2}+p(pr + qs)\right)\\
             &<qs\left(q\frac{1}{2}+p\left(\frac{1}{2}r + \frac{1}{2}s\right)\right) &\textrm{because $r < s$ and $p < \frac{1}{2} < q$}\\
@@ -200,16 +201,16 @@
         Therefore, $$\W{\A}{t_2}{\T} < \W{\A}{t_3}{\T}$$ so $\A$ is not monotonic with respect to $\T$ and thus not ordered.
     }{cohort_counter}{\fried}
 
-    If cohort randomized knockout tournaments don't solve the orderedness problem, why would we use them over traditional proper knockout tournaments? (A close variant of) cohort randomization is most famously found on the ATP Tour \cite{wiki_atp}, a collection of tournaments played by professional tennis players that all use almost identical formats: large balanced knockout tournaments. Additionally, the seeding for these tournaments is set by the ATP rankings, which tend to be slow to update. As a result, if every ATP Tour tournament used the proper seeding, the 6-seed and 27-seed would play each other in the first round at every tournament until one of them moved up or moved down. These rematches were deemed undesirable and so this randomization procedure was introduced: The 1-seed's quarterfinals matchup (if everything goes chalk) is now randomly drawn from the 5- through 8-seeds, instead of always being the 8-seed.
+    If cohort randomized knockout tournaments don't solve the orderedness problem, why would we use them over traditional proper knockout tournaments? (A close variant of) cohort randomization is most famously found on the ATP Tour \cite{wiki_atp}, a collection of tournaments played by professional tennis players that all use large balanced knockout tournaments. Additionally, the seeding for these tournaments is set by the ATP rankings, which tend to be slow to update. As a result, if every ATP Tour tournament used the proper seeding, the 6-seed and 27-seed would play each other in the first round at every tournament until one of them moved up or moved down. These rematches were deemed undesirable and so this randomization procedure was introduced: The 1-seed's quarterfinals matchup (if everything goes chalk) is now randomly drawn from the 5- through 8-seeds, instead of always being the 8-seed.
 
     But Theorem \ref{th:cohort_counter} tells us that they are not ordered, meaning that the only ordered balanced knockout format we've developed for more than two rounds is the totally randomized one, which is neither deterministic nor dramatic. Unfortunately, we conclude the chapter without a more satisfying design, leaving behind two big open questions.
     
     \etheo{oq}{}{
-        For all $r$, does there exist an $r$-round ordered deterministic balanced knockout tournament?
+        For all $r$, does there exist an $r$-round deterministic ordered balanced knockout tournament?
     }{}{\fried}
 
     \etheo{oq}{}{
-        For all $r$, does there exist an $r$-round ordered dramatic balanced knockout tournament?
+        For all $r$, does there exist an $r$-round dramatic ordered balanced knockout tournament?
     }{}{\fried}
 
     We (pessimistically) conjecture that both answers are no.

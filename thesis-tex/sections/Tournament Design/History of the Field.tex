@@ -2,7 +2,7 @@
     
     The formal theory of tournament design was born out of the study of paired comparisons, a field that began in 1927 with Thurstone's \i{A Law of Comparative Judgement} \cite{thurstone}. Thurstone was a psychologist investigating how individuals rank a collection of objects on some axis (weight, beauty, excellence, etc), while only being able to examine two of the objects at a time. The similarity to the problems of tournament design is clear, though Thurstone did not draw the connection.
 
-    In 1963, David wrote \i{The Method of Paired Comparisons} \cite{stochastic}, aiming to gather all of the theory that had been developed about paired comparisons, as well as several contributions of his own, into a single monograph. At the time of publication, the field was still viewed through Thurstone's psychological lens, rather than the lens we will use involving teams competing in a game or sport. Where we will say ``two teams play a game,'' David says ``a single judge must chose between two objects.'' Still, the formalizations of the problems are equivalent.
+    In 1963, David wrote \i{The Method of Paired Comparisons} \cite{stochastic}, aiming to gather all of the theory that had been developed about paired comparisons, as well as several contributions of his own, into a single monograph. At the time of publication, the field was still viewed through Thurstone's psychological lens, rather than the lens we will use involving teams competing in a game or sport. Where we will say ``two teams play a game,'' David said ``a single judge must chose between two objects.'' Still, the formalizations of the problems are equivalent.
 
     In the years following David's work, the field of tournament design came into its own, with various authors examining the efficacy and fairness of a wide range of tournament formats, most commonly either round-robins or knockout tournaments. Much of the work at the time, however, was an analysis of what happens when a specific set of teams (or a narrow class of sets of teams) takes part in a specific tournament design, rather than anything more general.
 
@@ -26,9 +26,9 @@
 
     Still, there is a lot of overlap between the two fields. Knuth's \i{The Art of Computer Programming: Sorting and Searching} \cite{knuth} often used the tournament design theory language of teams and games when presenting various algorithms. We, too, borrow from the field of sorting theory: in particular the concept of a \i{sorting network}.
 
-    Sorting networks, first patented by Armstrong, Nelson, and O'Connor \cite{pat}, are sorting algorithms with the additional property that, after a comparison is made between $a$ and $b$, the rest of the algorithm is identical no matter the result, except for $a$ and $b$ are swapped. Knuth's text contains a section about the properties and space of sorting networks.
+    Sorting networks, first patented by Armstrong, Nelson, and O'Connor \cite{pat}, are sorting algorithms with the additional property that, after a comparison is made between $a$ and $b$, the rest of the algorithm is identical no matter the result, except that $a$ and $b$ are swapped. Knuth's text contains a section about the properties and space of sorting networks.
 
-    This thesis will primarily examine networked tournament formats, that is, tournament formats with this networking property. These formats are a particularly nice set of formats to study. For one thing, the networking property is particularly useful in aiding the study. But also, many tournament formats in use in the real world, most notably the bracket, are networked, giving our study applications to many tournaments and leagues across many sports.
+    This thesis will primarily examine networked tournament formats, that is, tournament formats with this networking property. These formats are a particularly nice set of formats to study. For one thing, the networking property is particularly useful in aiding the study. Additionally, the tournament formats used in the postseason of many leagues, most notably the bracket, are networked, giving our study applications to many tournaments and leagues across many sports.
 }
 
 
