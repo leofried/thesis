@@ -12,7 +12,7 @@
 
     \fig{0.75}{800_to_42}{An Efficient Format for Selecting a Top Four}
 
-    Instead of being composed of four traditional brackets, the format in Figure \ref{fig:800_to_42} is composed of two semibrackets each of which have rank two: one with the $\bracklabel{A}$ and $\bracklabel{B}$ round games, and one with the $\bracklabel{C}$ and $\bracklabel{D}$ round games. And, as desired, there no games played between two teams such that both the winner and loser of each of those games are guaranteed to finish in the top four. (Nor are there any games where both the winner and loser are guaranteed to finish in the bottom four.)
+    Instead of being composed of four traditional brackets, the format in Figure \ref{fig:800_to_42} is composed of two semibrackets each of which have rank two: one with the $\bracklabel{A}$ and $\bracklabel{B}$ round games, and one with the $\bracklabel{C}$ and $\bracklabel{D}$ round games. As desired, no games are played between two teams where both the winner and loser of each of those games are guaranteed to finish in the top four. (Nor are there any games where both the winner and loser are guaranteed to finish in the bottom four.)
 
     This format has signature $\bracksig{8;0;0}_2 \to \bracksig{4;2}_2$, and it is \i{weakly efficient}.
 
@@ -20,10 +20,10 @@
         A multibracket is \i{weakly efficient} if, once a team is guaranteed to be ranked by the format or guaranteed to finish unranked, they stop playing games.
     }{wEfficient}{\fried}
 
-    Checking whether an arbitrary multibracket is weakly efficient requires fully examining the format, a process that can be quite arduous. But for weakly proper linear multibrackets, you can tell just from the signature.
+    Checking whether an arbitrary multibracket is weakly efficient requires fully examining the format, a process that can be quite arduous. But for respectful linear multibrackets, you can tell just from the signature.
 
     \theo{theorem}{
-        A weakly proper linear multibracket with signature $\A = \A_1 \to ... \to \A_k$ is weakly efficient if and only if there is some integer $j$ with $1 \leq j \leq k$ such that every semibracket $\A_i$ with $i < j$ is trivial and every semibracket $\A_i$ with $i > j$ is competitive.
+        A respectful linear multibracket with signature $\A = \A_1 \to ... \to \A_k$ is weakly efficient if and only if there is some integer $j$ with $1 \leq j \leq k$ such that every semibracket $\A_i$ with $i < j$ is trivial and every semibracket $\A_i$ with $i > j$ is competitive.
     }{
         Assume first that such a $j$ exists. Let $\bracklabel{G}$ be a game. Because all semibrackets $\A_i$ with $i<j$ are trivial, $\bracklabel{G}$ must be in a semibracket $\A_i$ for $i \geq j$. Thus the loser of $\bracklabel{G}$ is either eliminated outright, or falls into a competitive semibracket $\A_i$ for $i > j,$ in which case they will play another game. If they continue losing, they will continue falling into competitive semibrackets, until they are eliminated outright and do not get ranked. Thus if a team competing in $\bracklabel{G}$ loses the rest of their games, they will finish unranked. But of course if they win the rest of their games they will finish ranked, so $\A$ is weakly efficient.\\
 
@@ -44,7 +44,7 @@
     To patch this, we strengthen the notion of weak efficiency into just \i{efficiency.}
 
     \writedef{Efficient}{
-        A weakly proper linear multibracket is \i{efficient} if one of three conditions hold:
+        A respectful linear multibracket is \i{efficient} if one of three conditions hold:
         \begin{enumerate}[(a)]
             \item It is a single trivial semibracket.
             \item It is a sequence of competitive semibrackets.
@@ -67,7 +67,7 @@
     Then,
 
     \writedef{Efficient with Respect to a Prize Struture\\}{
-        A weakly proper linear multibracket $\A = \A_1 \to ... \to \A_k$ is \i{efficient with respect to a prize structure} $\PP = (p_1, ..., p_m)$ if
+        A respectful linear multibracket $\A = \A_1 \to ... \to \A_k$ is \i{efficient with respect to a prize structure} $\PP = (p_1, ..., p_m)$ if
         \begin{enumerate}[(a)]
             \item $$\sum_{i=1}^{k} \rank {\A_i} = \sum_{i=1}^m p_i,$$
             \item $\A_j$ being noncompetitive implies that for some $\ell < m$, $$\sum_{i=1}^{j-1} \rank {\A_i} = \sum_{i=1}^\ell p_i,$$
@@ -78,7 +78,7 @@
 
     (The first condition ensures that teams stop playing games once they have eliminated from prize contention, the second condition ensures that teams stop playing games once their prize can no longer change, and the last condition ensures that there are no trivial semibrackets that could be combined with another semibracket as per the process detailed before Definition \ref{def:efficient}.)
 
-    So the weakly proper linear multibracket $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2}_4 \to \bracksig{2;0}$ is efficient with respect to the prize structure $(1, 1, 5).$ A linear multibracket being efficient is the same as it being efficient with respect the prize structure $(m),$ where $m$ is the sum of the ranks of its semibrackets.
+    So the respectful linear multibracket $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{4;2}_4 \to \bracksig{2;0}$ is efficient with respect to the prize structure $(1, 1, 5).$ A linear multibracket being efficient is the same as it being efficient with respect the prize structure $(m),$ where $m$ is the sum of the ranks of its semibrackets.
 
-    Efficient formats are great for tournaments whose primary goal is to select the top $m$ teams to move on to the next stage of the competitions, as discussed in the beginning of this section. They do so excitingly, with each spot in the top-$m$ being awarded as the winner of a particular game; efficiently, with no games being played between teams who will receive the same prize; and fairly, as weak properness ensures that winning is always better than losing. It is not surprising that many sports with regional tournaments that qualify teams for a national one use such formats.
+    Efficient formats are great for tournaments whose primary goal is to select the top $m$ teams to move on to the next stage of the competitions, as discussed in the beginning of this section. They do so excitingly, with each spot in the top-$m$ being awarded as the winner of a particular game; efficiently, with no games being played between teams who will receive the same prize; and fairly, as respectfulness ensures that winning is always better than losing. It is not surprising that many sports with regional tournaments that qualify teams for a national one use such formats.
 }

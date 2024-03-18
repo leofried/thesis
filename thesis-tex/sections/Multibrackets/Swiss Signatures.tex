@@ -1,12 +1,12 @@
 \sub {
 
-    Consider the 1988 Men's College Basketball Maui Invitational \cite{wiki_maui}, which used a weakly proper linear multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to \bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}.$
+    Consider the 1988 Men's College Basketball Maui Invitational \cite{wiki_maui}, which used a respectful linear multibracket of signature $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to \bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}.$
 
     \fig{1}{maui}{1988 Men's College Basketball Maui Invitational}
 
     \fig{0.45}{s3_flow_def}{1988 Men's College Basketball Maui Invitational Flowchart}
 
-    The format used in the Maui Invitational is of course weakly proper, but it has several additional properties that even the weakly proper flowchart in Figure \ref{fig:mlq_flow1} from last section does not have.
+    The format used in the Maui Invitational is of course respectful, but its flowchart has several additional properties that even the respectful flowchart in Figure \ref{fig:mlq_flow1} from last section does not have.
 
     \begin{itemize}
         \item Every team starts in the same cell, so we can unambiguously drop the top row of nodes.
@@ -23,12 +23,12 @@
 
     \fig{0.45}{s3_flow_new}{1988 Men's College Basketball Maui Invitational Swisschart}
 
-    There is one other nice property that the 1988 Men's College Basketball Maui Invitational Flowchart has, which is that all of its semibrackets are either trivial or competitive. In a weakly proper linear multibracket, any nontrivial noncompetitive semibracket of signature $\bracksig{a_1; ...; a_r}_m$ can be split into the the pair of semibrackets $\bracksig{a_1; ...; a_{r-1}; 0}_{m-a_r} \to \bracksig{a_r}_{a_r}$ without affecting the games played in the tournament at all, and so to avoid double counting signatures, we make note of this nice property as well.
+    There is one other nice property that the 1988 Men's College Basketball Maui Invitational Flowchart has: all of its semibrackets are either trivial or competitive. A nontrivial noncompetitive semibracket of signature $\bracksig{a_1; ...; a_r}_m$ can always be split into the the pair of semibrackets $\bracksig{a_1; ...; a_{r-1}; 0}_{m-a_r} \to \bracksig{a_r}_{a_r}$ without affecting the games played in the tournament or who ends up ranked, and so to avoid double counting formats we require this property as well.
 
     Formats with all of these properties are called \i{Swiss formats}, and their signatures are called \i{Swiss signatures}, named because of their first recorded use at a chess tournament in Zürich, Switzerland in 1895 \cite{info_swiss}.
 
     \writedef{Swiss Format}{
-        A \i{Swiss format} is a weakly proper linear multibracket with the following additional properties:
+        A \i{Swiss format} is a respectful linear multibracket with the following additional properties:
         \begin{enumerate}[(a)]
             \item Every team starts in the primary semibracket.
             \item Every game is between two teams with the same record.
@@ -46,7 +46,7 @@
         An \i{$r$-round Swiss signature} is a Swiss signature in which each team plays $r$ games.
     }{rSwissSig}{\fried}
     
-    Thus $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to \bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}$ is a $3$-round Swiss signature. In fact, it is an example of a particular family of Swiss signature known as the the \i{standard Swiss signatures}, which we abbreviate by $\S_r$ for some $r$.
+    Thus $\bracksig{8;0;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1} \to \bracksig{4;0;0} \to \bracksig{1} \to \bracksig{2;0} \to \bracksig{1}$ is a $3$-round Swiss signature. In fact, it is an example of a particular family of Swiss signatures known as the the \i{standard Swiss signatures}, which we abbreviate by $\S_r$ for some $r$.
 
     \writedef{Standard Swiss Signature $(\S_r)$}{
         $\S_r,$ or the \i{standard $r$-round Swiss signature}, is the multibracket signature defined recursively by $$\S_0 = \bracksig{1},$$ and
@@ -158,7 +158,7 @@
 
     Figure \ref{fig:Swiss_names} tells us that there are five $8$-team Swiss signatures. How would a tournament designer decide which one to use? Well, it depends on what the prize structure of the format is. If the goal is to identify a top-three, then  $\S_3$ is preferable: $\T_3$ doesn't even recognize a third-place, instead assigning fourth-place to two teams. But if the goal is to identify a top-four, $\T_3$ is preferable: the team that comes in fourth in $\S_3$ actually finishes with only one win, while the team that comes in fifth finishes with two. While it is still reasonable to grant the one-win team fourth-place -- they had a more difficult slate of opponents -- this is a somewhat messy situation that is solved by just using $\T_3.$
 
-    (McGarry and Schutz \cite{four_five_swap} considered outright swapping the positions of the fourth- and fifth-place teams at the conclusion of $\S_3$, but this format is not weakly proper and provides some incentive for losing in the first round in order to get an easier path to a top-half finish. Simply using $\T_3$ when identifying the top-four teams is preferable.)
+    (McGarry and Schutz \cite{four_five_swap} considered outright swapping the positions of the fourth- and fifth-place teams at the conclusion of $\S_3$, but this format is not respectful and provides some incentive for losing in the first round in order to get an easier path to a top-half finish. Simply using $\T_3$ when identifying the top-four teams is preferable.)
 
     For similar reasons, both formats are good for selecting a top-one or top-seven, and $\S_3$ but not $\T_3$ is good for selecting a top-five. Finally, it might seem that $\S_3$ and $\T_3$ are good formats for selecting a top-two or top-six: in both cases, the top two and top six teams are clearly defined, and there are no teams with better records that don't make the cut. However, notice that if we use $\S_3$ or $\T_3$ to select a top-two, the final round of games are meaningless: the two teams that finish in the top-two are the two teams that win their first two games, irrespective of how the third round of games went. Better than using either $\S_3$ or $\T_3$ would be to use the noncompact $2\x\S_2,$ shortening the format down to two rounds without losing any important games.
 
@@ -175,7 +175,7 @@
         
         The half of the swisschart below the middle semibracket is straightforward: it looks just like the swisschart of an $(r-1)$ round Swiss signature, and in fact could look like the flow chart of any $(r-1)$ Swiss signature. Thus there are $s_{r-1}$ options.\\
 
-        The half above the middle semibracket is trickier. The first thing to note is that teams from the primary semibracket can continue to fall into the middle semibracket indefinitely, but once one round is skipped, weak properness precludes any later rounds from falling down. Further, once teams are no longer falling into the middle semibracket, there are $s_i$ different ways the primary bracket could arrange the rest of its losers, where $i$ is the number of remaining rounds. Thus in total, there are $\sum_{i=1}^{r-1}s_i$ options for the half of the swisschart above the middle semibracket.\\
+        The half above the middle semibracket is trickier. The first thing to note is that teams from the primary semibracket can continue to fall into the middle semibracket indefinitely, but once one round is skipped, respectfulness precludes any later rounds from falling down. Further, once teams are no longer falling into the middle semibracket, there are $s_i$ different ways the primary bracket could arrange the rest of its losers, where $i$ is the number of remaining rounds. Thus in total, there are $\sum_{i=1}^{r-1}s_i$ options for the half of the swisschart above the middle semibracket.\\
 
         Therefore, there are $s_{r-1} \cdot \sum_{i=1}^{r-1}s_i$ different Swiss signatures in total.
     }{}{\fried}

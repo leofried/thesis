@@ -53,9 +53,7 @@ The following two brackets have the same shape.
 One way to describe the shape of a bracket is its signature.
 
 \writedef{Bracket Signature}{
-    The \i{signature} of an $r$-round bracket $\A$ is the list $\bracksig{a_0; ...; a_r}$ where
-    %for  $0 \leq i \leq r$, 
-    $a_i$ is the number of teams that get $i$ byes.
+    The \i{signature} of an $r$-round bracket $\A$ is the list $\bracksig{a_0; ...; a_r}$ where $a_i$ is the number of teams that get $i$ byes.
 }{bracketSignature}{\fried}
 
 The signature of a bracket is defined by its shape: the two brackets in Figure \ref{fig:same_shape} have the same shape, so they also have the same signature.
@@ -114,7 +112,7 @@ In many cases, however, it is undesirable to grant advantages to certain teams o
 \theo{theorem}{
     There exists an $n$-team balanced bracket if and only if $n$ is a power of two.
 }{
-    A bracket is balanced if no teams have byes, which is true exactly when its signature is of the form $\A = \bracksig{n; 0; ...; 0},$ where $n$ is the number of teams in the bracket. By Theorem \ref{th:signature_sum}, $\A$ is a bracket signature only when $n$ is a power of two, and so there exists an $n$-team balanced bracket if and only if $n$ is a power of two.
+    A bracket is balanced if no teams have byes, which is true exactly when its signature is of the form $\bracksig{n; 0; ...; 0},$ where $n$ is the number of teams in the bracket. By Theorem \ref{th:signature_sum}, such a list is a bracket signature exactly when $n = 2^r$ where $r$ is the number of zeros in the list. Thus there exists an $n$-team balanced bracket if and only if $n$ is a power of two.
 }{balanced}{\unattributed}
 
 Given this, brackets are not a great option when we want to avoid giving some teams advantages over others unless we have a power of two teams. They are a fantastic tool, however, if doling out advantages is the goal, perhaps after some teams did better during the regular season and ought to be rewarded with an easier path in the bracket.

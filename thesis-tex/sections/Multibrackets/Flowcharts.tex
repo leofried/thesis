@@ -76,26 +76,26 @@
 
     These two problems are reflected in the flowchart as well: the fact that the $\bracklabel{G}$-round losers are sent to different rounds of the 4th-place bracket means that the $\bracklabel{G}$-node has two arrows coming out of it, and the fact that a less deserving team was treated better than a more deserving team was means that there were two arrows in the flowchart that crossed over. (Note that technically we could wrap the arrow coming out of $\bracklabel{H}$ all the way around the flowchart so it points to $\bracklabel{I}$ from the left side, removing this crossing. However, we can fix hacks like this by imagining arrows coming out of the teams, places, and the elimination node extending infinitely up, to the right, and down respectively.)
 
-    Both of these issues fly in the face of our intuitive notion of rewarding better teams that motivated us to define properness in the first place, so we use them to define the notion of \i{weak properness}.
+    Both of these issues fly in the face of our intuitive notion of rewarding better teams that motivated us to define properness in the first place, so we use them to define the notion of \i{respectfulness}.
 
-    \writedef{Weakly Proper Linear Multibracket}{
-        A linear multibracket is \i{weakly proper} if its flowchart has no arrow crossings and every node in its flowchart has at most one arrow coming out of it.
-    }{weakProper}{\fried}
+    \writedef{Respectful Linear Multibracket}{
+        A linear multibracket is \i{respectful} if its flowchart has no arrow crossings and every node in its flowchart has at most one arrow coming out of it.
+    }{respectful}{\fried}
 
-    We conclude the section by proving a couple of nice lemmas about weakly proper linear multibrackets.
+    Note that while respectfulness is like properness in that it requires linear multibrackets to treat more-deserving teams better than less-deserving teams (for some definition of deserving and better), it neither implies nor is implied by properness. The signature $\bracksig{2;3;0;0} \to \bracksig{1} \to \bracksig{2;1;0}$ has a proper instantiation but not a respectful one, while the signature $\bracksig{8;0;0;0} \to \bracksig{3} \to \bracksig{4;0;0}$ has only one proper instantiation but many respectful ones. In any case, due to the issues with properness outlined at the beginning of the section, we will primarily deal with respectful linear multibrackets for the rest of the chapter.
+
+    We conclude the section by proving a couple of nice lemmas about respectful linear multibrackets.
 
     \theo{lemma}{
-        If $\A$ is a weakly proper linear multibracket, and two teams lose in the same round of the same semibracket of $\A$, then they will either both play their next game in the same round of the same semibracket, or both be elimineted.
+        If $\A$ is a respectful linear multibracket, and two teams lose in the same round of the same semibracket of $\A$, then they will either both play their next game in the same round of the same semibracket, or both be elimineted.
     }{
         This holds because every node in the flowchart of $\A$ has at most one arrow coming out of it.
     }{weakly_proper_round}{\fried}
 
     \theo{lemma}{
-        Let $\A = \A_1 \to ... \to \A_k$ be a linear multibracket, and $i \in \N$ be such that $\A_{i+1}$ is noncompetitive. If $\A$ is weakly proper, then any team that loses in the final round of $\A_i$ will win $\A_{i+1}$ without playing any more games.
+        Let $\A = \A_1 \to ... \to \A_k$ be a linear multibracket, and $i \in \N$ be such that $\A_{i+1}$ is noncompetitive. If $\A$ is respectful, then any team that loses in the final round of $\A_i$ will win $\A_{i+1}$ without playing any more games.
     }{
-        We show the contrapositive. Let $\bracklabel{R}$ be the final round of $\A_i$, whose losers do not win $\A_{i+1}$ automatically. $\A_{i+1}$ is noncompetitive though, so at least one team wins $\A_{i+1}$ without playing a game in it: let $\bracklabel S$ be the round that the auto-winner fell from. Then $\bracklabel{R}$ is completely boxed in by the arrow coming out of $\bracklabel{S}$ on the left and the arrows extending infinitely from the final ranking nodes on the right: the arrow coming out of $\bracklabel R$ must cross one of those arrows, so $\A$ is not weakly proper.
+        We show the contrapositive. Let $\bracklabel{R}$ be the final round of $\A_i$, whose losers do not win $\A_{i+1}$ automatically. $\A_{i+1}$ is noncompetitive though, so at least one team wins $\A_{i+1}$ without playing a game in it: let $\bracklabel S$ be the round that the auto-winner fell from. Then $\bracklabel{R}$ is completely boxed in by the arrow coming out of $\bracklabel{S}$ on the left and the arrows extending infinitely from the final ranking nodes on the right: the arrow coming out of $\bracklabel R$ must cross one of those arrows, so $\A$ is not respectful.
     }{weakly_proper_drop}{\fried}
-
-    %all proper are weakly proper?
 
 }
