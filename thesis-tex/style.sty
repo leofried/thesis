@@ -58,6 +58,19 @@
 %%%%%%SUBFILING%%%%%
 %%%%%%%%%%%%%%%%%%%%
 
+% \makeatletter
+\newcommand{\removeSpaces}[1]{%
+  \@removeSpaces#1 \@empty
+}
+\def\@removeSpaces#1 #2\@empty{%
+  \ifx\relax#2\relax
+    #1%
+  \else
+    #1\@removeSpaces#2\@empty
+  \fi
+}
+% \makeatother
+
 \newcommand{\sub}[1]{
     \documentclass[../../main.tex]{subfiles}
     \begin{document}
@@ -85,7 +98,8 @@
     \def\subsectname{#1}
     \subsection{#1}
     \label{sec:#1}
-    \subfile{sections/\sectname/#1}
+    \edef\location{\expandafter\removeSpaces\expandafter{\sectname}/\expandafter\removeSpaces\expandafter{\subsectname}}
+    \subfile{sections/\location}
     \newpage
 }
 
@@ -145,7 +159,7 @@
 \newtcbtheorem[number within=subsection, use counter from=theorem]{figg}{Figure}
 {enhanced, width=\linewidth, breakable, colback=red!5,colframe=purple!100!,fonttitle=\bfseries}{fig}
 
-\newcommand{\graph}[2]{\includegraphics[scale=#1]{images/\sectname/\subsectname/#2.png}}
+\newcommand{\graph}[2]{\includegraphics[scale=#1]{images/\location/#2.png}}
 
 \newcommand{\fig}[3]{
     \begin{figg}{#3}{#2}
@@ -161,7 +175,7 @@
       },enhanced, width=\linewidth, breakable, colback=red!5,colframe=purple!100!,fonttitle=\bfseries]
         \centering
         \includegraphics[scale=#1]{
-            images/#2/#3/#4.png
+            images/\removeSpaces{#2}/\removeSpaces{#3}/#4.png
         }
     \end{tcolorbox}
 }
