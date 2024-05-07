@@ -23,6 +23,7 @@
 \usepackage{etoolbox}
 \usepackage[defernumbers=true]{biblatex}
 \usepackage{etoc}
+\usepackage{ifthen}
 
 \hbadness=10000
 
@@ -78,7 +79,6 @@
     \end{document}
 }
 
-
 \newcommand{\sectiontoc}[1]{
     \renewcommand{\contentsname}{}
     \vspace*{-1cm}
@@ -99,6 +99,15 @@
     \subsection{#1}
     \label{sec:#1}
     \edef\location{\expandafter\removeSpaces\expandafter{\sectname}/\expandafter\removeSpaces\expandafter{\subsectname}}
+    \subfile{sections/\location}
+    \newpage
+}
+
+\newcommand{\esubsect}{
+    \def\subsectname{Edwards's Theorem}
+    \subsection{Edwards's Theorem}
+    \label{sec:Edwards's Theorem}
+    \edef\location{\expandafter\removeSpaces\expandafter{\sectname}/EdwardssTheorem}
     \subfile{sections/\location}
     \newpage
 }
